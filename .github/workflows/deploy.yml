@@ -46,6 +46,6 @@ jobs:
       - name: reStart forever
         run: |
           pwd
-          forever restart /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          forever start /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           forever list
-          
+        
