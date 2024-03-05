@@ -1,0 +1,47 @@
+<div class="_19vzoehz rightPart">
+  <div class="_197pih1">
+    <div class="_10qmvhe inlncs23">
+      <div class="_hparjzw">
+        <div class="_sy6x3gg">
+          <div class="_58qm7vs">
+            <div class="_1z121lke">
+              <ul class="_svs3aeb inlncs20" dnd-list="sctnLst">
+                <p class="cntntLl">Contents</p>
+                <br>
+
+                <!-- <span class="_aao3jm9 inlncs21">
+                  <li class="_19lft0mf inlncs16" dnd-draggable="s" dnd-moved="sctnLst.splice($index, 1)"
+                    dnd-effect-allowed="move" ng-click="gotoSection(s,$index)" ng-class="{'active' : activeMenuItm[$index]}"
+                    dnd-disable-if=dragble>Content
+                    1</li>
+                </span> -->
+                <% sub_index.sub.forEach(function(subindex) { %>
+                <span class="_aao3jm9 inlncs21">
+                  <!-- <li class="_19lft0mf inlncs16" ng-repeat="s in sctnLst"
+                        dnd-draggable="s" dnd-moved="sctnLst.splice($index, 1)"
+                        dnd-effect-allowed="move" ng-click="gotoSection(s,$index)"
+                        ng-class="{'active' : activeMenuItm[$index]}" dnd-disable-if=dragble>{{s.sctn_nm}}</li> -->
+
+
+
+                  <li class="_19lft0mf inlncs16" onclick="scrollToItem(this.id)" id=<% %>
+                    <%= subindex.id %>
+                    <% %>>
+
+                    <a>
+                      <%= subindex.sub_name %></a>
+
+
+                  </li>
+
+
+                </span>
+                <% }); %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

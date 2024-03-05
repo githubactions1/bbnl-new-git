@@ -1,0 +1,16 @@
+|bbnlbss.apsfl.co.in|GET|/admin|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/subscriberApp/totalkyctobedonecount|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/subscriberApp/yesterdaykycdonecount|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/subscriberApp/totallmocount|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/subscriberApp/todaykycdonecount|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/subscriberApp/totalkycdonecount|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":10,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}

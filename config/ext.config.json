@@ -1,0 +1,31 @@
+{
+    "ext":{
+        "s3":    {
+                    "accessKeyId": "AKIAIXPSZWJOOTEL4DRQ", 
+                    "secretAccessKey": "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", 
+                    "region": "ap-southeast-1"
+        },
+        "nodemailer": {
+                    "accessKeyId": "AWSACCESSKEY",
+                    "secretAccessKey": "AWS/Secret/key",
+                    "eml": "office.glits@gmail.com", 
+                    "pwd": "sglits_1" 
+        },
+        "gmaps":{
+            "apikey":""
+        },
+        "sms":{
+            "url": "http://api-openhouse.imimobile.com/smsmessaging/1/outbound/tel%3A%2BDRMSTP/requests",
+            "Key": "4360645b-e9c4-49f7-b746-e045bacbb29b"
+        },
+        "exophone"
+        :{
+                "SID" : "glits",
+                "TOKEN" : "399e2e1a090e35f5dfd989c95b150968ca9d3aab",
+                "EXOPHONE" : "09513886363"
+        },
+        "ganalytics":{
+
+        }
+    }
+}

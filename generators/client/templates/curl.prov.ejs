@@ -1,0 +1,14 @@
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%- reqData[0].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/onu'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%- reqData[1].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+curl -XGET -H "Content-type: application/json" '<%-reqData[2].url_tx  %>'
+
+curl -XPUT -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d '{"admin":0,"name":"IPTV"}' '<%-reqData[3].url_tx %>'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%-reqData[4].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+
+curl -XPOST -H 'username: teraadmin' -H 'apikey: 6ed73c1a-7817-49ab-b185-981f97cf5fd8' -H "Content-type:application/json" -d '<%-reqData[5].url_dta_tx  %>' 'http://iptv.apsfl.co.in:8080/appserver/rest/iptv/registersubscriber'
+
+curl -XPOST -H 'username: teraadmin' -H 'apikey: 6ed73c1a-7817-49ab-b185-981f97cf5fd8' -H "Content-type:application/json" -d '{"subscribercode":"subscribercode","servicepacks":[{"servicepack":"Free To Air","expirydate":"29991231"}]}' 'http://iptv.apsfl.co.in:8080/appserver/rest/iptv/addservicepack'

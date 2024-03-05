@@ -1,0 +1,9 @@
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"username":"","password":""}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"username":"","password":""}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"username":"","password":""}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"username":"","password":""}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"username":"sambasiva_glits","password":"123456789"}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"data":{"username":"sambasiva_glits","password":"123456789"}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"data":{"username":"sambasiva_glits","password":"123456789","captcha":"q77y","captchaID":"50023128","saltKey":"613a8af2afc79af4"}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"data":{"username":"sambasiva_glits","password":"123456789","captcha":"q77y","captchaID":"50023128","saltKey":"613a8af2afc79af4"}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"data":{"username":"sambasiva_glits","password":"123456789","captcha":"q77y","captchaID":"50023128","saltKey":"613a8af2afc79af4"}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}

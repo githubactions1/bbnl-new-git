@@ -1,0 +1,14 @@
+|bbnlbss.apsfl.co.in|GET|/admin|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/imgs/modi.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/admin|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/imgs/modi.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/login_new|{"username":"SI00006","password":"12345678","app":"web","captcha":"nXJN","captchaID":50028956,"saltKey":"c9f0324982be6700"}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|172.16.8.44:4500|POST|/dns-query|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|172.16.8.44:4500|GET|/login|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}

@@ -1,0 +1,20 @@
+export class <%= fileNmPrx %>Form
+{
+      
+    <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+        <%= bfld_dtls[i].COLUMN_NAME %> : <%= bfld_dtls[i].SWAGGER_DATA_TYPE %>;<% } %>
+
+            /**
+     * Constructor
+     *
+     * @param <%= fileNmPrx %>Form
+     */
+    constructor(<%= fileNmPrx %>Form)
+    {
+        console.log(<%= fileNmPrx %>Form)
+        {
+            <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+                this.<%= bfld_dtls[i].COLUMN_NAME %>  = <%= fileNmPrx %>Form.<%= bfld_dtls[i].COLUMN_NAME %> || '';<% } %>
+        }
+    }
+}

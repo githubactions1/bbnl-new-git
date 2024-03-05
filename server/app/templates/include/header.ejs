@@ -1,0 +1,156 @@
+<header id="site-header" class="header-area">
+    <div class="header-inner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo-menu-wrap hidden-xs hidden-sm">
+                        <div class="logo">
+                            <a href="#">
+                                <!-- <span>
+                                <img src="/client/public/assets/alliget/libs/img/icon2/char2.png" alt="logo" class="logo-img1">
+                                </span><span>
+                                <img src="/client/public/assets/alliget/libs/img/icon2/name2.png" alt="logo" class="logo-img2">
+                                </span> -->
+
+                                <!-- <img src="/client/public/assets/alliget/libs/img/icon/alligetN.PNG" alt="logo" class="logo-img frt-logo">
+                            <img src="/client/public/assets/alliget/libs/img/icon/alliget.PNG" alt="logo" class="logo-img bg-logo"> -->
+                            <img src="/client/public/assets/alliget/libs/img/icon/logo4.png" alt="logo" class="logo-img frt-logo">
+                                 <!-- <h1>all<span class="blinking">i</span>get</h1> -->
+                            </a>
+                        </div><!--/.logo-->
+                        <nav class="menu">
+                            <ul id="nav">
+                                <li class="dropdown-trigger"><a href="/home">Home</a>
+                                    <!-- <ul class="dropdown-content"> -->
+                                        <!-- <li><a href="index-2.html">home one</a></li> -->
+                                        <!-- <li><a href="index02.html">home two</a></li> -->
+                                    <!-- </ul> -->
+                                </li>
+                                <li class="dropdown-trigger"><a href="/kx">Knowledge Exchange</a>
+                                
+                                 </li>
+                                <li class="dropdown-trigger"><a href="/webinars">Webinars</a></li>
+                                <li class="dropdown-trigger"><a href="/networks">Networks</a></li>
+                                <li class="dropdown-trigger"><a href="/startupnews">News Feed</a></li>
+                                <!-- <li class="dropdown-trigger"><a href="/newsfeed">News Feed</a></li> -->
+
+                                <!-- <li class="dropdown-trigger"><a href="#">Pages</a> -->
+                                    <!-- <ul class="dropdown-content"> -->
+                                        <!-- <li><a href="about.html">about us</a></li> -->
+                                        <!-- <li><a href="e-learning.html">Learning courses</a></li> -->
+                                        <!-- <li><a href="album.html">Album</a></li> -->
+                                        <!-- <li><a href="faq.html">FAQ</a></li> -->
+                                        <!-- <li><a href="pricing-table.html">pricing</a></li> -->
+                                        <!-- <li><a href="login.html">login</a></li> -->
+                                        <!-- <li><a href="register.html">register</a></li> -->
+                                        <!-- <li class="dropdown-trigger"><a href="#">gallery</a> -->
+                                            <!-- <ul class="dropdown-content"> -->
+                                                <!-- <li><a href="gallery-one.html">gallery one</a></li> -->
+                                                <!-- <li><a href="gallery-two.html">gallery two</a></li> -->
+                                                <!-- <li><a href="gallery-three.html">gallery three</a></li> -->
+                                            <!-- </ul> -->
+                                        <!-- </li> -->
+                                        <!-- <li><a href="contact.html">contact us</a></li> -->
+                                        <!-- <li><a href="coming-soon.html">coming soon</a></li> -->
+                                        <!-- <li><a href="404.html">404</a></li> -->
+                                    <!-- </ul> -->
+                                <!-- </li> -->
+                                <li class="register-contact-nav pull-right" id="logInFalse">
+                                    <button class="btn btn-default btn-primary login-btn" type="button" data-toggle="modal" data-target="#loginModal" onclick="loginClick()">Login</button> 
+                                </li>
+                                <li class="dropdown-trigger logInTrue pointer" style="padding: 0px 12px;">
+                                    <div class="profile_page">
+                                        <img src="" id="profile_image">
+                                        <span class="icon-status online"></span>
+                                        <div class="profile_info">
+                                            <div id="profile_name"></div>
+                                            <div id="profile_desc">2004 Passout- CASE-GIET</div>
+                                        </div>
+                                    </div>
+                                    <ul class="dropdown-content" id="p_dropdown">
+                                        <li><a class="pointer" onclick="goToProfile()">Profile</a></li>
+                                        <li><a class="pointer" onclick="logOut()">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                           
+                        </nav><!--/.menu-->
+          
+                    </div><!--/.logo-menu-wrap-->
+                </div><!--/.col-lg-12-->
+            </div><!--/.row-->
+        </div><!--/.container-fluid-->
+    </div><!--/.headier-inner-->
+    
+    <div id="sticky-header"></div><!--/#sticky-header-->
+    
+    <!--Mobile Menu-->
+    <div class="mobile-menu">
+        <a class="mobile-logo" href="/">
+                <img src="/client/public/assets/alliget/libs/img/icon/mobile_logo.svg" alt="logo" class="logo-img">
+        </a>
+    </div>
+    <hr/>
+</header><!--/.header-area-->
+
+<style type="text/css">
+
+    #profile_image{
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        margin: 0;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+    .profile_page .icon-status {
+        position: absolute;
+        margin-right: 0;
+        top: 0;
+        left: 10px;
+        border-radius: 100%;
+        border: 1px solid #3f4257;
+        width: 8px;
+        height: 8px;
+    }
+    .icon-status.online {
+        background-color: #32e4cd;
+    }
+    .profile_info{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #profile_name{
+        font-weight: 700;
+        font-size: 12px;
+        color: #6a6c6d;
+    }
+    #profile_desc{
+        display: block;
+        font-weight: 700;
+        color: #9a9fbf;
+        font-size: 8px;
+    }
+    #p_dropdown li a{
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    
+hr {
+    
+    /* // background-color: red;
+    // background-image: linear-gradient(90deg, red, transparent);
+    // background-image: linear-gradient(20deg, #08ddc1,#ffb3b3,#6ab73a,#ff9999); */
+    /* background-image: linear-gradient(20deg, #2b7369, #5acaff, #3a60b7, #fb7070); */
+    background-image: linear-gradient(20deg, #f81717, #9ddeff, #ff5e3a, #59c7fd);
+    
+    border: 0;
+    /* height: 5px; */
+    height: 3px;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+</style>

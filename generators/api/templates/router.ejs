@@ -1,0 +1,36 @@
+var <%= module_nm %>Rtr = require('express').Router();
+var checkUser 			= require(appRoot +'/server/api/modules/auth/controllers/accessCtrl');
+
+// Routes specific to "<%= module_nm %>" module
+<% tables.forEach(function(f){ %> // Conroller,Schema related to '<%= f.obj_nm %>'
+var <%= f.fileNmPrx %>Ctrl				= require(appRoot +'/server/api/modules/<%= module_nm %>/controllers/<%= f.fileNmPrx %>Ctrl'); 
+var <%= f.fileNmPrx %>Sch				= require(appRoot +'/server/api/modules/<%= module_nm %>/schema/<%= f.fileNmPrx %>Sch');
+<%  });%>
+
+/****************************************************************
+					DB Routes (Generated <%= dt %>)
+*****************************************************************/
+<% tables.forEach(function(f){ %>
+// Routes for Table : <%= f.tble_nm %> (<%= f.obj_nm %>)
+// --------------------------------------------------------------
+//get details of all <%= f.obj_nm %>
+<%= module_nm %>Rtr.get('/<%= f.url %>', 			checkUser.hasToken, checkUser.vldSelect('<%= f.tble_nm %>',<%= f.fileNmPrx %>Sch.<%= f.fileNmPrx %>Schema) ,<%= f.fileNmPrx %>Ctrl.get_<%= f.fileNmPrx %>Ctrl);
+//search details of all <%= f.obj_nm %>
+<%= module_nm %>Rtr.post('/<%= f.url %>/search', 	checkUser.hasToken,checkUser.vldSeach('<%= f.tble_nm %>',<%= f.fileNmPrx %>Sch.<%= f.fileNmPrx %>Schema) , <%= f.fileNmPrx %>Ctrl.srch_<%= f.fileNmPrx %>Ctrl);
+//get details of single  <%= f.obj_nm %>  
+<%= module_nm %>Rtr.get('/<%= f.url %>/:id', 		checkUser.hasToken,checkUser.vldSelect('<%= f.tble_nm %>') ,<%= f.fileNmPrx %>Ctrl.get_<%= f.fileNmPrx %>ByIdCtrl);
+//Add new  <%= f.obj_nm %>
+<%= module_nm %>Rtr.post('/<%= f.url %>', 			checkUser.hasToken,checkUser.vldInsert('<%= f.tble_nm %>',<%= f.fileNmPrx %>Sch.<%= f.fileNmPrx %>Schema) , <%= f.fileNmPrx %>Ctrl.insrt_<%= f.fileNmPrx %>Ctrl);
+//Update existing  <%= f.obj_nm %>
+<%= module_nm %>Rtr.post('/<%= f.url %>/:id', 		checkUser.hasToken,checkUser.vldUpdate('<%= f.tble_nm %>',<%= f.fileNmPrx %>Sch.<%= f.fileNmPrx %>Schema) , <%= f.fileNmPrx %>Ctrl.updte_<%= f.fileNmPrx %>Ctrl);
+//Delete existing  <%= f.obj_nm %>
+<%= module_nm %>Rtr.delete('/<%= f.url %>/:id', 		checkUser.hasToken,checkUser.vldDelete('<%= f.tble_nm %>') ,<%= f.fileNmPrx %>Ctrl.dlte_<%= f.fileNmPrx %>Ctrl);
+<%  }); %>
+
+
+/****************************************************************
+					DB Routes End
+*****************************************************************/
+
+
+module.exports = <%= module_nm %>Rtr;

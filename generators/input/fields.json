@@ -1,0 +1,122 @@
+[
+    {
+        "COLUMN_NAME": "tmple_cd",
+        "COLUMN_KEY": "",
+        "COLUMN_COMMENT": "Erp template code",
+        "COLUMN_TYPE": "varchar(45)",
+        "IS_REQUIRED": "true",
+        "COLUMN_DEFAULT": null,
+        "CHARACTER_MAXIMUM_LENGTH": 45,
+        "SWAGGER_DATA_TYPE": "string",
+        "COL_FLD_TYPE": "text",
+        "CUSTOM_DATA": {
+            "route": null,
+            "input_key": null,
+            "key": null,
+            "label_key": null,
+            "label": null,
+            "table": null
+        },
+        "IS_CUSTOM": false
+    },
+    {
+        "COLUMN_NAME": "tmple_nm",
+        "COLUMN_KEY": "",
+        "COLUMN_COMMENT": "Erp template name",
+        "COLUMN_TYPE": "varchar(45)",
+        "IS_REQUIRED": "true",
+        "COLUMN_DEFAULT": null,
+        "CHARACTER_MAXIMUM_LENGTH": 45,
+        "SWAGGER_DATA_TYPE": "string",
+        "COL_FLD_TYPE": "text",
+        "CUSTOM_DATA": {
+            "route": null,
+            "input_key": null,
+            "key": null,
+            "label_key": null,
+            "label": null,
+            "table": null
+        },
+        "IS_CUSTOM": false
+    },
+    {
+        "COLUMN_NAME": "tmple_type_id",
+        "COLUMN_KEY": "MUL",
+        "COLUMN_COMMENT": "Erp template type identifier",
+        "COLUMN_TYPE": "bigint(20)",
+        "IS_REQUIRED": "true",
+        "COLUMN_DEFAULT": null,
+        "CHARACTER_MAXIMUM_LENGTH": null,
+        "SWAGGER_DATA_TYPE": "number",
+        "COL_FLD_TYPE": "dropdown",
+        "CUSTOM_DATA": {
+            "route": "erp/erpTmpltTyp",
+            "input_key": null,
+            "key": "tmple_type_id",
+            "label_key": "tmple_type_nm",
+            "label": null,
+            "table": "erp_tmple_type_lst_t"
+        },
+        "IS_CUSTOM": true
+    },
+    {
+        "COLUMN_NAME": "tmple_dscrn_tx",
+        "COLUMN_KEY": "",
+        "COLUMN_COMMENT": "Template dscription",
+        "COLUMN_TYPE": "varchar(500)",
+        "IS_REQUIRED": "true",
+        "COLUMN_DEFAULT": null,
+        "CHARACTER_MAXIMUM_LENGTH": 500,
+        "SWAGGER_DATA_TYPE": "string",
+        "COL_FLD_TYPE": "textarea",
+        "CUSTOM_DATA": {
+            "route": null,
+            "input_key": null,
+            "key": null,
+            "label_key": null,
+            "label": null,
+            "table": null
+        },
+        "IS_CUSTOM": false
+    },
+    {
+        "COLUMN_NAME": "crte_usr_id",
+        "COLUMN_KEY": "",
+        "COLUMN_COMMENT": "Create User Identifier",
+        "COLUMN_TYPE": "bigint(20)",
+        "IS_REQUIRED": "true",
+        "COLUMN_DEFAULT": null,
+        "CHARACTER_MAXIMUM_LENGTH": null,
+        "SWAGGER_DATA_TYPE": "number",
+        "COL_FLD_TYPE": "infra",
+        "CUSTOM_DATA": {
+            "route": null,
+            "input_key": null,
+            "key": null,
+            "label_key": null,
+            "label": null,
+            "table": null
+        },
+        "IS_CUSTOM": false
+    },
+    {
+        "COLUMN_NAME": "updte_usr_id",
+        "COLUMN_KEY": "",
+        "COLUMN_COMMENT": "Update User Identifier",
+        "COLUMN_TYPE": "bigint(20)",
+        "IS_REQUIRED": "true",
+        "COLUMN_DEFAULT": null,
+        "CHARACTER_MAXIMUM_LENGTH": null,
+        "SWAGGER_DATA_TYPE": "number",
+        "COL_FLD_TYPE": "infra",
+        "CUSTOM_DATA": {
+            "route": null,
+            "input_key": null,
+            "key": null,
+            "label_key": null,
+            "label": null,
+            "table": null
+        },
+        "IS_CUSTOM": false
+    }
+]

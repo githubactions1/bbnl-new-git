@@ -1,0 +1,225 @@
+package dropbear
+
+config dropbear
+	option PasswordAuth 'on'
+	option RootPasswordAuth 'on'
+	option Port '22'
+
+package easycwmp
+
+config local
+	option interface 'host'
+	option port '30005'
+	option ubus_socket '/var/run/ubus.sock'
+	option date_format '%FT%T%z'
+	option username 'easycwmp'
+	option logging_level '3'
+	option password 'ZWFzeWN3bXAK'
+
+config acs
+	option url ' '
+	option username 'iptv-acs'
+	option periodic_enable '1'
+	option periodic_interval '900'
+	option periodic_time '0001-01-01T00:00:00Z'
+	option password 'dGVzdGUK'
+
+config device
+	option oui '000691'
+	option serial_number '5054494E91182F96'
+	option manufacturer 'PTIN'
+	option hardware_version '3NT7SFU1397B22'
+	option product_class 'GS12001GA'
+	option software_version '3FE7SW04020004'
+
+package firewall
+
+config general 'general'
+	option info 'general'
+	option enabled '0'
+
+config if_general
+	option info 'general'
+	option enabled '0'
+	option interfaceName 'host'
+	option default 'DROP'
+
+config rule 'SYSTEM_SIP_tcp'
+	option name 'SYSTEM_SIP_tcp'
+	option ipVersion '4'
+	option protocol 'tcp'
+	option destIp ' '
+	option typeFilter 'ACCEPT'
+	option interfaceDir 'in'
+	option static '0'
+	option chain 'MAN_INP_SYS'
+	option inInterface 'host'
+	option srcPort '5060'
+	option enable '1'
+	list srcIp '172.18.4.81'
+
+config rule 'SYSTEM_SIP_udp'
+	option name 'SYSTEM_SIP_udp'
+	option ipVersion '4'
+	option protocol 'udp'
+	option destIp ' '
+	option typeFilter 'ACCEPT'
+	option interfaceDir 'in'
+	option static '0'
+	option chain 'MAN_INP_SYS'
+	option inInterface 'host'
+	option srcPort '5060'
+	option enable '1'
+	list srcIp '172.18.4.81'
+
+package login
+
+config login 'admin'
+	option username 'admin'
+	option password '$1$lkhFCzs1$Hg9PLoBBcbQZO0N4hbO2S/'
+	option permission 'Admin'
+	option wan_access '0'
+	option default '1'
+
+config login 'support'
+	option username 'support'
+	option password '$1$jmF7oXWs$Lp7X0IM227ZYBJ4wCDL761'
+	option permission 'Admin'
+	option wan_access '1'
+	option default '1'
+
+config login 'remoteONUmgnt'
+	option username 'remoteONUmgnt'
+	option password '$1$jmF7oXWs$Lp7X0IM227ZYBJ4wCDL761'
+	option permission 'Admin'
+	option wan_access '1'
+	option default '1'
+
+
+
+package omci
+
+config omci 'default'
+	option mib_file '/etc/mibs/ptin_voice_1g_8q.ini'
+	option status_file '/tmp/omci_status'
+
+config me 'extended_vlan_config_data'
+	option vlan_id '12'
+	option sip_p_bit '6'
+	option rtp_p_bit '6'
+
+package ptin_cli
+
+config logging
+	option logging_level '7'
+
+package sipa
+
+config general 'general'
+	option interface 'host'
+	option local_port '5060'
+	option registrar_port '5060'
+	option interdigit_time '4000'
+	option sip_profile 'PT'
+	option dtmf_method 'InBand'
+	option registrar 'vskp.apsflims.in'
+	option outbound '172.18.4.81'
+	option outbound_port '5060'
+	option sip_dscp '46'
+	option domain 'vskp.apsflims.in'
+	option enabled '1'
+	option registration_expire '3600'
+	option registration_period '3600'
+
+config user
+	option userid 'user0'
+	option enabled '1'
+	option display_name ' '
+	option rtp_port '4000'
+	option realm '*'
+	option uri ' '
+	list codecs '8'
+	list codecs '0'
+	list codecs '7'
+	list codecs '9'
+	option rtp_dscp '46'
+	option cidName_enable '0'
+	option cid_enable '1'
+	option caw_enable '1'
+	option coh_enable '1'
+	option c3w_enable '1'
+	option t38_enable '1'
+	option vad_enable '1'
+	option cng_enable '1'
+	option phy_reference_list '0'
+	option ptime '20'
+	option username  '$$username$$'
+	option extension  '$$phoneno$$'
+	option password  '$$passwrd$$'
+
+config codec '0'
+	option ptime '20'
+	option enable '1'
+	option priority '1'
+
+config codec '7'
+	option ptime '20'
+	option enable '1'
+	option priority '4'
+
+config codec '8'
+	option ptime '20'
+	option enable '1'
+	option priority '3'
+
+config codec '9'
+	option ptime '20'
+	option enable '0'
+	option priority '5'
+
+config codec '18'
+	option ptime '20'
+	option enable '1'
+	option priority '2'
+
+config redirect 'redirect'
+	option enable '0'
+	option ip '224.0.0.10'
+	option port '5000'
+
+package system
+
+config system
+	option timezone 'UTC'
+	option hostname 'PTIN-GS12001G'
+
+config timeserver 'ntp'
+	list server '0.openwrt.pool.ntp.org'
+	list server '1.openwrt.pool.ntp.org'
+	list server '2.openwrt.pool.ntp.org'
+	list server '3.openwrt.pool.ntp.org'
+	option enabled '1'
+	option enable_server '0'
+
+config telnet 'telnet'
+	option port '23'
+
+package usb
+
+config redirect 'redirect'
+	option enable '1'
+	option ip '54.169.252.118'
+	option protocol '0'
+	option port '8080'
+	option localport '8080'
+	option buff_len '0'
+	option buff_tout '0'
+	option rs232_tout '2000'
+	option eth_tout '10000'
+
+config serial 'serial'
+	option baud '9600'
+	option data '8'
+	option sbit '1'
+	option parity 'N'
+	option flow 'X'

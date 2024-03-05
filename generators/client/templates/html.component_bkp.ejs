@@ -1,0 +1,38 @@
+<div class="page-layout simple pageBackground">
+
+        <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+        <div class="text-right gridBtns" >
+            <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle *ngIf="(permissions.insrt_in==1)?true:false" id="addGridBtn" (click)="addNewEntry()">Add New {{formDetails.stngs.form_title}}</mat-button-toggle>
+                <mat-button-toggle *ngIf="(permissions.exprt_in==1)?true:false" id="exportBtn" (click)="onBtnExport()">Export</mat-button-toggle>
+              </mat-button-toggle-group>          
+        </div>
+        <div class="fuse-card grid" *ngIf="(permissions.slct_in==1)?true:false">
+          <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="gridData"
+            [columnDefs]="columnDefs" [getRowHeight]="getRowHeight" (cellClicked)="onCellClick($event)"
+            [pagination]="true"[paginationPageSize]="15"  [suppressHorizontalScroll]="false" [floatingFilter]="true"
+            (gridReady)="onGridReady($event)">
+          </ag-grid-angular>
+        </div>
+        <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{permMessage}}</div>
+        
+     </div>
+    
+    <!-- sidebar -->
+    <ds-sidebar  class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+        <ng-container>
+            <div fxLayout="column">
+    
+              <div class="card">
+                  <div class="card-header crdHdng">{{formDetails.stngs.form_title}}
+                      <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel </mat-icon>
+                  </div>
+                  <div class="card-body">
+                      <ds-form-builder (formEvent)="formEventTriggered($event)" [formDetails]="formDetails" [initData2]="initdata"></ds-form-builder>
+                  </div>
+              </div>
+    
+          </div>
+        </ng-container>
+      </ds-sidebar>
+    <!-- sidebar -->

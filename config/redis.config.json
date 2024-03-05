@@ -1,0 +1,9 @@
+{  "redis":{
+	"kx_pages":{
+            "enable":false,
+			"host":"127.0.0.1",
+			"password":null,
+			"port":"6379"	
+	     }
+   }
+}

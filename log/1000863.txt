@@ -1,0 +1,5 @@
+
+[INFO:general|batchCoreCtrl.js|AAO:100:09-21-2022 6:41:50] Starting Job 'Get States List'
+[INFO:general|batchCoreCtrl.js|AAO:100:09-21-2022 6:41:50] [Job-2 | Task-1] Started [Execute SQL] 'States List' 
+[INFO:general|batchCoreCtrl.js|AAO:100:09-21-2022 6:41:50] [Job-2 | Task-1] Completed [Execute SQL] 'States List' 
+[INFO:general|batchCoreCtrl.js|AAO:100:09-21-2022 6:41:50] Task Completed-Updated Audit

@@ -1,0 +1,553 @@
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getMyApprovalPckges/2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getRcntApprovalPckges/2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/customer/caf/waveoffs/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckgeslvl2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/customer/caf/waveoffs/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/reports/ctgrylst|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/reports/rprtlst/101090446|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/reports/ctgrylst|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/reports/rprtlst/101090446|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/details|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/packageAgreement/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/agreement/myapprovals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/agreement/myapprovals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/agreement/recentApprovals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/agreement/myapprovals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/agreement/recentApprovals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/packageAgreement/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/details|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/credit/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/terminate/cafs/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/terminate/cafs/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/terminate/request/cafs/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/terminate/request/cafs/approved/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/terminate/request/cafs/approved/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckges|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getMyApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getRcntApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckgeslvl2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/customer/caf/waveoffs/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/details|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/packageAgreement/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/credit/approvals|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/terminate/cafs/approval|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckges|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/details|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/billing/agent/payment/approvals/recent|{"data":{"frmDt":"","toDt":""}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/approvals/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/17/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/8/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/29/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":8,"mndl_id":29,"vlge_id":10700,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":8,"mndl_id":29,"vlge_id":10701,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000660|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000660|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/8/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/29/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000646|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53005176|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53005176,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53005176,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7BE1E|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021055|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59167908|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000116|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000116|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175745}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":9177761747}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/admin/caf/goi-new-caf|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/8/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/29/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":8,"mndl_id":29,"vlge_id":10701,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000660|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000660|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/8/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/29/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000646|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53005176|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53005176,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53005176,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7BE34|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021054|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59167907|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000117|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000117|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175746}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":8985310673}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000718|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":52000718,"prt_id":53005752,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000718|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/8/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/38/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/29/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":8,"mndl_id":29,"vlge_id":10712,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000732|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000732|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/8/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/29/8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":9000000,"pckge_id":10000000}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000718|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53005752|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53005752,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53005752,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7BCE8|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021053|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59168036|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":52000718,"prt_id":53005752,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":52000190,"prt_id":53001528,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/admin|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"120.0.0.0","o":3,"ov":"10","d":2,"v":"","m":"K","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/16/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/57/16|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/49/16|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/51/16|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/50/16|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/10/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":10,"mndl_id":50,"vlge_id":9943,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/16/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/57/16|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":16,"mndl_id":57,"vlge_id":9920,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/16/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/57/16|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000190|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53001528|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53001528,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53001528,"level1":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53001528,"level1":3,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7BC59|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021051|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59168323|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000961|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/BBNL%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/BBNL%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/7/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/48/7|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":7,"mndl_id":48,"vlge_id":10366,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000969|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000969|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/7/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/48/7|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000961|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53007704|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53007704,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53007704,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B1E7|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B1E7|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B1E7/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/BBNL%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getbbnldt|{"data":{"Caf_type":2,"dstrc_id":"","mso_id":"","mobileno":"","CAf":"300000073","adhar":"","str_dt":null,"end_dt":null,"org_nm":"","Apsf_id":"","Reg_no":"","Caf_sts":"","mndl_id":"","ent_dprtmnt_id":"","apsfl_bbnl":3}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000073|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000073|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000073|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000073|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175705}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175705}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":8985300185}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":8985300185}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/logout|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B1E7|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200074-SRIRANGAPURAM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.69"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200086-Gullapalli GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.193"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235233-KODURU GP","mobile_num":"9395144391,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.211.113"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199995-ASODIVARIPALEM GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.131"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200008- MURUKONDAPADU GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.137"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212316-GaliBhimavaram GP","mobile_num":"9395144391,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.211.121"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Basaladoddi SS","mobile_num":"7286960588,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.251.145"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Mantralayam SS","mobile_num":"7286960588,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.251.109"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200014-CHUNDURUPALLI GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.221"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199998-East.bapatla GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.139"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200073-SEKURU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.119"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"214375-MARKONDAPADU GP","mobile_num":"9154840792,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.219.249"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"214374-MALAVARAM GP","mobile_num":"9154840792,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.134.3"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212630-DALAIVALASA GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.173"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200818- SANGAM JAGARLAMUDI GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.5"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Palthuru SS","mobile_num":"9959233115,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.239.41"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200840-ALAPADU GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.65"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"213247-JONNAVALASA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.15"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Etcherla SS","mobile_num":"8639734042,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.240.139"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212609-K.PALAVALASA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.61"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"211707-TSUNDUR DASAN OLT BBNL","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.129"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":" 200076-THOTLAPALEM DASAN OLT ","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.71"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Palthuru SS","mobile_num":"9121296011,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.239.41"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235086-BASINEPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.213"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200538-VENIGANDLA GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.109"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235004-OBULAPURAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.205"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200074-SRIRANGAPURAM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.69"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200086-Gullapalli GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.193"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200006-MARUPROVARIPALEM GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.135"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"199964- KODITATIPARRU GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.63"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200389-MANDAPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.241"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"245314-Kondubhotlavaripalem GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.245"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235898-Mulukuduru GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.219"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"Gunnampallli","mobile_num":"9121106815,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.219.229"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212624-V.P.REGA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.127"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"196678-TANAKAL GP","mobile_num":"9154143286,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.207.239"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"214375-MARKONDAPADU GP","mobile_num":"9154840792,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.219.249"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235087-M.P.CHERUVU GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.169"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212689-DEVUNIKANAPAKA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.123"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Bommalapuram SS","mobile_num":"7396951955,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.246.123"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"AVULAMANDA","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.225.187"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200818- SANGAM JAGARLAMUDI GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.5"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199916-DALIPADU GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.65"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"213247-JONNAVALASA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.15"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212375_SUBHADRA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.93"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200528-AGARTHAVARAPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.107"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235171_GANGADEVAPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.211"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235520-PEDDAVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.241"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235518-NAMASSIVAYAPURAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.239"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235143_THUMMEDALAPADU GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.207"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235140_BASIREDDIPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.201"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235142_MAREDDIPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.205"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235139_VENKATACHELAMPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.209"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235141_CHANDALUR GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.203"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"2535136-POTTHAVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.73"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235137-DEVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.71"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200244-TELAGAYAPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.197"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212609-K.PALAVALASA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.61"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":" 212426-PIRIDI DASAN OLT BBNL","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.153"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212412-KAMMAVALSA DASAN OLT BB","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.155"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212430-SIVADAVALSA DASAN OLT B","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.157"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":" 212426-PIRIDI DASAN OLT BBNL","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.153"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212412-KAMMAVALSA DASAN OLT BB","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.155"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212430-SIVADAVALSA DASAN OLT B","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.157"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200003-JILLELLAMUDI GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.45"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"199200-DULLA GP","mobile_num":"9154840792,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.223"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235517-BODANAMPADU GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.187"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235516-WEST_GANGAVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.191"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235086-BASINEPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.213"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200237-KOMMURU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.171"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235004-OBULAPURAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.205"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200074-SRIRANGAPURAM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.69"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212363-Galavilli GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.203"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212362-Chilakalapalli GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.109"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212378- VENGALARAYAPURAM GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.117"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212368-Nookalavada GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.111"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212359-BALIJIPETA GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.205"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212379-Vengapuram GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.207"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212372-PEDAPENKI GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.113"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212360-Barli GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.225"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212365-Mirthivalasa GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.239"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|GET|/apiv1/logout|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|localhost:4500|GET|/apiv1/login/capcha|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|localhost:4500|GET|/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Bommalapuram SS","mobile_num":"7396951955,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.246.123"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212370_PALAGARA GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.87"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212376_TUMARADA GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.95"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Etcherla SS","mobile_num":"8639734042,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.240.139"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212423-PAKKI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.159"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212417-KONDADEVUPALLI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.79"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212377-Vantharam GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.115"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Balijipeta SS","mobile_num":"7893855571,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.238.235"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"Barli Mso","mobile_num":"7893855571,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.195.215"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"213209-UDDAVOLU GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.195"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"245314-Kondubhotlavaripalem GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.245"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235898-Mulukuduru GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.219"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV YATAPAKA SS","mobile_num":"8328356162,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.194.209"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"235026-Bollupalli GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.206.89"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"AVULAMANDA","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.225.187"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212624-V.P.REGA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.127"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235087-M.P.CHERUVU GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.169"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212689-DEVUNIKANAPAKA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.123"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212413-karada GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.137.3"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212366-narannaiduvalasa GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.97"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199913-CHAMAGEDDA GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.17"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199918-DEVARAMADUGULA GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.19"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199466-SUNNAMPADU GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.77"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200528-AGARTHAVARAPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.107"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212613-KONDAPALEM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.223"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235139_VENKATACHELAMPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.209"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"2535136-POTTHAVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.73"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV Bommalapuram SS","mobile_num":"7396951955,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.246.123"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200239-KOTHIVANIPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.193"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200244-TELAGAYAPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.197"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200003-JILLELLAMUDI GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.45"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200084-Cherukupalli GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.177"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200237-KOMMURU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.171"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"196204-BANDLAPALLI GP","mobile_num":"9154143286,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.207.177"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200086-Gullapalli GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.193"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199964- KODITATIPARRU GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.63"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200015-VEDULLAPALLI GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.141"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212469-PARLA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.213"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212623-THONDRANGI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.227"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212615-KONURU GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.225"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200389-MANDAPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.241"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"245314-Kondubhotlavaripalem GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.245"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"199998-East.bapatla GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.139"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212961-ALUGOLU GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.231"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212694-GUJJANGIVALASA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.193"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212606-GEDDAPUVALASA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.123"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212624-V.P.REGA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.127"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212693-GUDEM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.63"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"203750-amudalapalli GP","mobile_num":"8977945137,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.214.211"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212975-MOIDAVIJAYRAMPURAM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.135"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212687-CHODAVARAM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.221"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212979-PUTHIKAPETA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.137"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212970-Kondagumpam GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.133"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212967-GUSHINI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.233"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212689-DEVUNIKANAPAKA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.123"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"MRO Office ,VR PURAM","mobile_num":"8328356162,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.195.137"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/inventory/updatebbnlboxinvntrydtls|{"data":{"adhr_nu":924718600986,"actvn_dt":null,"agnt_id":100000128,"apsf_unq_id":0,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_cycle_id":0,"blng_dstrct_id":11,"blng_eml1_tx":"","blng_house_flat_no":"398","blng_lnd_nu":null,"blng_lcly_tx":"chinnajonnavaram","blng_mndl_id":4,"blng_buildingname":"chinnajonnavaram","blng_pn_cd":516359,"blng_ste_id":0,"blng_std_cd":8564,"blng_streetname":"sivalayam street","blng_vlge_id":14522,"blble_caf_in":0,"caf_type_id":1,"cnctn_sts_id":1,"cst_at":"190.00","cpe_pop_id":855,"crnt_caf_sts_id":1,"crnt_pckge_id":"9000000","custInfo":{"adhr_nu":924718600986,"actvn_dt":null,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_dstrct_id":11,"blng_eml1_tx":"","blng_house_flat_no":"398","blng_lnd_nu":null,"blng_lcly_tx":"chinnajonnavaram","blng_mndl_id":4,"blng_buildingname":"chinnajonnavaram","blng_pn_cd":516359,"blng_ste_id":1,"blng_std_cd":8564,"blng_streetname":"sivalayam street","blng_vlge_id":14522,"custmrTyp":"","dob_dt":"1969-05-07","frst_nm":"BASHA ATCHUKATLA ","frqncy_id":1,"gndr_id":1,"instl_buildingname":"chinnajonnavaram","instl_chk_ind":false,"instl_house_flat_no":"398","instl_pincode":516359,"instl_state":1,"instl_streetname":"sivalayam street","lst_nm":"MAHABOOB","loc_dstrct_id":11,"loc_eml1_tx":"","loc_lnd_nu":null,"loc_lmdle1_nu":"9989467645","loc_lcly_tx":"chinnajonnavaram","loc_mndl_id":4,"loc_std_cd":8564,"loc_vlge_id":14522,"mdlr_nm":"","mbl_nu":9989467645,"pan_nu":"","pop_id":855,"rltve_nm":"","tle_nm":"Mr"},"custmrTyp":"","dob_dt":"1969-05-07","dprmnt_id":0,"efcte_dt":"2022-12-18","enty_sts_id":1,"expry_dt":"9999-12-31","frst_nm":"BASHA ATCHUKATLA ","frqncy_id":1,"gndr_id":1,"inst_amt":"","instl_buildingname":"chinnajonnavaram","instl_chk_ind":true,"instl_house_flat_no":"398","instl_pincode":516359,"instl_state":1,"instl_streetname":"sivalayam street","iptv_bx_amt":null,"iptv_bx_emi":null,"iptv_bx_own":null,"iptv_bx_srl_num":null,"iptv_bx_up_amt":null,"iptv_mac_addr_tx":null,"iptv_mdl":null,"iptv_stpbx_id":null,"lst_nm":"MAHABOOB","lat":0,"lvl1_slt":2,"lvl2_slt":2,"lvl3_slt":2,"lg_id":"lag::","loc_eml1_tx":"","loc_lmdle1_nu":"9989467645","loc_lcly_tx":"chinnajonnavaram","loc_dstrct_id":11,"loc_lnd_nu":null,"loc_mndl_id":4,"loc_std_cd":8564,"loc_vlge_id":14522,"lng":0,"mdlr_nm":"","mbl_nu":"9989467645","olt_acs_nde_id":"236089","olt_crd_nu":1,"olt_id":1109,"olt_ip_addr_tx":"172.16.236.89","olt_prt_nm":6,"olt_prt_id":5919,"olt_prt_splt_tx":"2-2-2","olt_srl_nu":"9111100731","onu_amt":"50","onu_emi":"50","onu_id":11,"onu_mac_addr_tx":"9C:65:EE:34:8B:61","onu_mdl":"DSN-COMBO","onu_own":0,"onu_srl_nu":"DSNW26348b60","onu_stpbx_id":956025159,"onu_up_frmt_amt":"0","orgsn_cd":"","pan_nu":"","pop_id":855,"prnt_cstmr_id":0,"prv_Dtls":{"accessId":"9c65.ee34.8b619c65.ee34.8b61","address":"398,sivalayam street,chinnajonnavaram","admin":"1","card":1,"contactno":"9989467645","countryCode":"INDIA","countryISO2":"IN","districtCode":"YSR","downstreamTrafficProfileName":null,"emailid":"","fec":"true","firstname":"BASHA ATCHUKATLA ","fup":"7Mbps_UP_20Mbps_DOWN","identityProofId":0,"ipAddress":"172.16.236.89","lastname":"MAHABOOB","mandal":"RAJU PALEM","name":"","nativeVlan":false,"networkServiceName":"HSI","olt_srl_nu":"9111100731","onuId":11,"partnerCode":"LMO13518","profileName":"DSN-COMBO","registerType":"1","serialNumber":"44534E5726348B60","srvcs":[{"chrge_at":155.8,"cre_srvce_id":1,"gst_at":34.2,"srvcpk_id":8000000,"srvcpk_nm":"HOME_ULTRA"},{"chrge_at":0,"cre_srvce_id":3,"gst_at":0,"srvcpk_id":8000001,"srvcpk_nm":"VOIP Services"}],"stateCode":"AP","swUpgradeMode":"2","tp":6,"tps":["2"],"upstreamTrafficProfileName":"APSFL_7mbps 4474","village":"THONDALADINNE","aghra_cd":"172.16.236.89-1-14-11-HSI","adjstdPrt":14,"aaa_cd":"lag:236089:1:6:11","crps_mdlwr_in":1,"ds_mdlwr_in":0,"vndr":3,"ztevlan":null,"iptv_crnt_pckge_id":"9000000","newFup":"7Mbps_UP_20Mbps_DOWN","servicepacks":[],"ZTEstatus":false,"adhr_nu":924718600986,"actvn_dt":null,"agnt_id":100000128,"apsf_unq_id":0,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_cycle_id":0,"blng_dstrct_id":11,"blng_eml1_tx":"","blng_house_flat_no":"398","blng_lnd_nu":null,"blng_lcly_tx":"chinnajonnavaram","blng_mndl_id":4,"blng_buildingname":"chinnajonnavaram","blng_pn_cd":516359,"blng_ste_id":0,"blng_std_cd":8564,"blng_streetname":"sivalayam street","blng_vlge_id":14522,"blble_caf_in":0,"caf_type_id":1,"cnctn_sts_id":1,"cst_at":"190.00","cpe_pop_id":855,"crnt_caf_sts_id":1,"crnt_pckge_id":"9000000","custInfo":{"adhr_nu":924718600986,"actvn_dt":null,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_dstrct_id":11,"blng_eml1_tx":"","blng_house_flat_no":"398","blng_lnd_nu":null,"blng_lcly_tx":"chinnajonnavaram","blng_mndl_id":4,"blng_buildingname":"chinnajonnavaram","blng_pn_cd":516359,"blng_ste_id":1,"blng_std_cd":8564,"blng_streetname":"sivalayam street","blng_vlge_id":14522,"custmrTyp":"","dob_dt":"1969-05-07","frst_nm":"BASHA ATCHUKATLA ","frqncy_id":1,"gndr_id":1,"instl_buildingname":"chinnajonnavaram","instl_chk_ind":false,"instl_house_flat_no":"398","instl_pincode":516359,"instl_state":1,"instl_streetname":"sivalayam street","lst_nm":"MAHABOOB","loc_dstrct_id":11,"loc_eml1_tx":"","loc_lnd_nu":null,"loc_lmdle1_nu":"9989467645","loc_lcly_tx":"chinnajonnavaram","loc_mndl_id":4,"loc_std_cd":8564,"loc_vlge_id":14522,"mdlr_nm":"","mbl_nu":9989467645,"pan_nu":"","pop_id":855,"rltve_nm":"","tle_nm":"Mr"},"custmrTyp":"","dob_dt":"1969-05-07","dprmnt_id":0,"efcte_dt":"2022-12-18","enty_sts_id":1,"expry_dt":"9999-12-31","frst_nm":"BASHA ATCHUKATLA ","frqncy_id":1,"gndr_id":1,"inst_amt":"","instl_buildingname":"chinnajonnavaram","instl_chk_ind":true,"instl_house_flat_no":"398","instl_pincode":516359,"instl_state":1,"instl_streetname":"sivalayam street","iptv_bx_amt":null,"iptv_bx_emi":null,"iptv_bx_own":null,"iptv_bx_srl_num":null,"iptv_bx_up_amt":null,"iptv_mac_addr_tx":null,"iptv_mdl":null,"iptv_stpbx_id":null,"lst_nm":"MAHABOOB","lat":0,"lvl1_slt":2,"lvl2_slt":2,"lvl3_slt":2,"lg_id":"lag::","loc_eml1_tx":"","loc_lmdle1_nu":"9989467645","loc_lcly_tx":"chinnajonnavaram","loc_dstrct_id":11,"loc_lnd_nu":null,"loc_mndl_id":4,"loc_std_cd":8564,"loc_vlge_id":14522,"lng":0,"mdlr_nm":"","mbl_nu":"9989467645","olt_acs_nde_id":"236089","olt_crd_nu":1,"olt_id":1109,"olt_ip_addr_tx":"172.16.236.89","olt_prt_nm":6,"olt_prt_id":5919,"olt_prt_splt_tx":"2-2-2","onu_amt":"50","onu_emi":"50","onu_id":11,"onu_mac_addr_tx":"9C:65:EE:34:8B:61","onu_mdl":"DSN-COMBO","onu_own":0,"onu_srl_nu":"DSNW26348b60","onu_stpbx_id":956025159,"onu_up_frmt_amt":"0","orgsn_cd":"","pan_nu":"","pop_id":855,"prnt_cstmr_id":0,"prv_Dtls":"[Circular ~.data.prv_Dtls]","rltve_nm":"","splt_id":334711,"status":1,"tel_cns":"0","tle_nm":"Mr","aghora_cd":"172.16.236.89-1-14-11","prpd_in":0,"hsi_prfl_tx":"7Mbps_UP_20Mbps_DOWN","ott_pckge_nm":null,"ott_price":null,"cafNumber":200267201},"rltve_nm":"","splt_id":334711,"status":1,"tel_cns":1,"tle_nm":"Mr","aghra_cd":"172.16.236.89-1-14-11-HSI","aghora_cd":"172.16.236.89-1-14-11","aaa_cd":"lag:236089:1:6:11","prpd_in":0,"hsi_prfl_tx":"7Mbps_UP_20Mbps_DOWN"},"caf_id":200267201,"user":{"frst_nm":"A. M. Basha","pswrd_encrd_tx":"2d2648fcb0fde98aae4f88accbea0a2d960d1ca1","wallet_flag":1,"prpd_flag":1,"lst_nm":null,"mrcht_id":1,"mrcht_nm":"Dreamstep Software Innovations","mrcht_usr_id":21853,"pwd_chngd_in":0,"chng_lg_in":0,"hyrchy_id":null,"hyrchy_grp_id":null,"admn_in":0,"mrcht_usr_nm":"LMO13518","mbl_nu":9989467645,"orgn_id":null,"dprts_id":null,"dsgn_id":null,"usr_ctgry_nm":"LMO","usr_ctgry_id":8,"usr_ctgry_ky":100000128,"sde_mnu_prfl_id":2000001,"mnu_prfle_id":5,"rpt_prfle_id":41,"stp_prfle_id":23,"lmo_org_nm":"A M Basha Cable Network","lmo_cd":"LMO13518","mso_cd":"MSO2001586","app":"app","cmpnt_id":2,"user_id":21853,"aud":"http://dreamstep.com","iss":"Dreamstep","sub":"21853_user","iat":1704038855,"exp":1704049655,"jti":"5"}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199470-ANANTHAVARAM GP","mobile_num":"9989211433,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.193"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199021-BHATNAVILLI GP","mobile_num":"9989211433,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.179"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199028-KAMANAGARURU","mobile_num":"9989211433,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.175"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199036-SAMANASA GP","mobile_num":"9989211433,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.185"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235171_GANGADEVAPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.211"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235520-PEDDAVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.241"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235518-NAMASSIVAYAPURAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.239"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235143_THUMMEDALAPADU GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.207"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235140_BASIREDDIPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.201"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235142_MAREDDIPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.205"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235141_CHANDALUR GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.203"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200231-BODIPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.187"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200569-PAMIDIVARIPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.199"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200869-PULLADIGUNTA GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.19"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235137-DEVARAM GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.71"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200244-TELAGAYAPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.197"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200872-VINJANAMPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.21"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200869-PULLADIGUNTA GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.19"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235578-BATTUPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.61"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Chennakesavapuram SS","mobile_num":"7675895192,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.250.151"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}

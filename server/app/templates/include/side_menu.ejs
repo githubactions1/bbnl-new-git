@@ -1,0 +1,69 @@
+<div class="_6h00ax">
+  <div class="_1txqudd9">
+    <div class="_h3nyq5">
+      <div class="_l469m9t">
+        <div class="_vvk9t95">
+          <div class="_g66pp6f">
+            <div class="inlncs1"></div>
+            <div class="_1t6cbs3 inlncs2">
+              <div class="_ef5cl00 inlncs3">
+
+                <% indexes.forEach(function(index) { %>
+
+                <div>
+                  <div class="_cifjr2 inlncs4">
+                    <div class="_197pih1">
+                      <div class="_hnaeki1 inlncs5">
+                        <div class="_1kea1wpt">
+                          <div ng-class="{'selected':i.indx_grp_id == indxgrpid}" ng-if="i.indx_grp_nm">
+                            <span class="_f1b38kq inlncs6" href="">
+                              <span class="_ib3ozv4">
+                                <%= index.name %></span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul dnd-list="i.index" style="list-style: none;" dnd-external-sources="true" dnd-drop="dropCallback(index, item, external, type,i.indx_grp_id)">
+                    <% index.sub.forEach(function(subindex) { %>
+                    <div class="_cifjr1 cnghvr">
+                      <div class=<% if (subindex.sub.selected) {%>
+                        <%= "selected" %>
+                        <% } %>>
+                        <div class="_197pih1">
+                          <div class="_hnaeki0 inlncs7">
+                            <div class="_1kea1wpt">
+                              <span class="_f1b38kq" href="">
+                                <li class="_ib3ozv4 inlncs8" dnd-draggable="j" dnd-moved="i.index.splice($index, 1)"
+                                  dnd-effect-allowed="copyMove" ng-click="getIndexData(j);getactive(j.indx_id);"
+                                  data-dismiss="modal" dnd-type="'{{i.indx_grp_id}}'" dnd-disable-if=dragble>
+                                  <span class="_1e84efvx" ng-show="savebtn || updbtn"><svg preserveAspectRatio="xMidYMid meet"
+                                      height="1em" width="1em" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                      stroke="none" class="_13gjrqj">
+                                      <g>
+                                        <path d="M6 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-12-6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-12 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
+                                      </g>
+                                    </svg></span>
+                                  <a href="/tutorial/<%= index.name %>/<%= subindex.sub_name %>" style="padding-right: 12px;text-decoration: none;color: dimgray">
+                                    <%= subindex.sub_name %></a>
+
+                                </li>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% }); %>
+                  </ul>
+                </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

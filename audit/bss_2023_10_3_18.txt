@@ -1,0 +1,7 @@
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}

@@ -1,0 +1,328 @@
+import { Component, OnInit, ViewChild, Inject, Output, EventEmitter, Input } from '@angular/core';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { CrudService } from '../../../crud.service';
+import { <%= fileNmPrx %>Form } from './<%= fileNmPrx %>s.model';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ConfirmDialogComponent } from '../../../confirm-dialog/confirm-dialog.component';
+import { AgGridNg2 } from 'ag-grid-angular';
+import { FltrHeaderSrvc } from 'app/providers/filterheader/fltrheader.service';
+import { ColDef, GridApi, ColumnApi } from 'ag-grid-community';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+
+export interface Element {
+  "index": string;
+  "name": string;
+  "buttons": string;
+}
+
+
+@Component({
+  selector: 'app-<%= clntFleNmPrx %>',
+  templateUrl: './<%= clntFleNmPrx %>.component.html',
+  styleUrls: ['./<%= clntFleNmPrx %>.component.scss']
+})
+export class <%= compName %>Component implements OnInit {
+  displayedColumns = ['index', 'name', 'buttons'];
+  dataSource = new MatTableDataSource<Element>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dialogRef: any;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  confirmDialogRef: MatDialogRef<ConfirmDialogComponent>;
+  columnDefs = [];
+  rowData = [];
+  modules;
+  getRowHeight;
+  usr_Dtls: any;
+  usrdtls: any;
+  @Output() aggridEvent = new EventEmitter<string>();
+  @Output() gridReadyEvent = new EventEmitter<string>();
+  @Input() rowSelection;
+  slctdRow;
+  params;
+  columnApi;
+  status;
+  gridApi: any;
+  loadingCellRendererParams;
+
+  overlayLoadingTemplate = '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>';
+
+  action: string;
+  location: <%= fileNmPrx %>Form;
+  formData: FormGroup;
+  dialogTitle: string;
+  merchant;
+  dprtlst: any;
+  sideBarHeader: string;
+  editClicked: boolean = false;
+  updateData: any;
+  delete<%= fileNmPrx %>: boolean = false;
+  /**
+ * Constructor
+ * @param {FuseSidebarService} _fuseSidebarService
+ * 
+ * @param _data
+ * @param {FormBuilder} _formBuilder
+ */
+
+
+  constructor(private _fuseSidebarService: FuseSidebarService, public crdsrv: CrudService, public dialog: MatDialog, public snackBar: MatSnackBar, public fltrService: FltrHeaderSrvc,
+    @Inject(MAT_DIALOG_DATA) private _data: any,
+    private _formBuilder: FormBuilder, ) {
+    // this.fltrService.getTableRowHeight().subscribe((res) => {
+    //   console.log(res);
+    //   this.rowHeight = res;
+    // });
+    let rowHeight = 40;
+    this.getRowHeight = function (params) {
+      return rowHeight;
+    };
+
+    this.action = _data.action
+    console.log(this.action)
+    if (this.action === 'edit') {
+      this.dialogTitle = 'Edit <%= obj_nm %>';
+      this.location = _data.location;
+    }
+    else {
+      this.dialogTitle = 'New <%= obj_nm %>';
+      this.location = new <%= fileNmPrx %>Form({});
+      console.log(this.location)
+    }
+    this.formData = this.createContactForm();
+
+
+  }
+
+  /**
+  * Create contact form
+  *
+  * @returns {FormGroup}
+  */
+  createContactForm(): FormGroup {
+    return this._formBuilder.group({
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+        <%= bfld_dtls[i].COLUMN_NAME %> :[this.location.<%= bfld_dtls[i].COLUMN_NAME %>],<% } %>
+    });
+  }
+
+
+  ngOnInit() {
+    console.log('ngOnInit <%= fileNmPrx %>');
+
+
+
+    // this.modules = AllCommunityModules;
+
+    this.get<%=module_nm %>();
+    this.formData = new FormGroup({
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+        <%= bfld_dtls[i].COLUMN_NAME %> : new FormControl('', Validators.required),<% } %>
+    })
+    let rte1 = `<%=module_nm %>/<%=url %>`
+    this.crdsrv.get(rte1).subscribe((res) => {
+      console.log(res['data'])
+      this.dprtlst = res['data'];
+      console.log(this.dprtlst)
+    }, (error) => {
+      console.log(error)
+    });
+
+
+  }
+  get<%=module_nm %>() {
+    let rte = "<%=module_nm %>/<%=url %>"
+    this.crdsrv.get(rte).subscribe((res) => {
+      console.log(res['data']);
+
+      this.rowData = res['data'];
+
+      this.columnDefs = [
+      { headerName: 'Sno', field: 'sno', cellStyle: { 'text-align': "center" }, cellClass: "pm-grid-number-cell", width: 100 }, 
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>
+        { headerName: '<%= bfld_dtls[i].COLUMN_COMMENT %>', field: '<%= bfld_dtls[i].COLUMN_NAME %>', cellStyle: { 'text-align': "left" }, cellClass: "pm-grid-number-cell", width: 450, filter:true },<% } %>
+        {
+          headerName: 'Edit',
+          cellStyle: { textAlign: 'center' },
+          width: 150,
+          cellRenderer: function (param) {
+            const eDiv = document.createElement('div');
+            eDiv.innerHTML = `<span class="my-css-class">
+          <button class="btn-simple editBtn-color edtBtnstls" style="  
+          box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+          color: #fff;cursor: pointer;border: none;line-height: 20px;border-radius: 3px;"><mat-icon _ngcontent-smm-c39="" 
+          class="secondary-text pt-2  mat-icon notranslate material-icons addBtn-icon-color" 
+          role="img" aria-hidden="true">edit</mat-icon></button></span>
+          <span class="my-css-class">
+          </span>`;
+            const eButton = eDiv.querySelectorAll('.btn-simple')[0];
+            eButton.addEventListener('click', function (param) {
+              // console.log(param);
+            });
+            return eDiv;
+          },
+        }, {
+          headerName: 'Delete',
+          cellStyle: { textAlign: 'center' },
+          width: 150,
+          cellRenderer: function (param) {
+            const eDiv = document.createElement('div');
+            eDiv.innerHTML = `<span class="my-css-class">
+        <button class="btn-simple deleteBtn-color dlteBtnStyls" style=" 
+        box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+        color: #fff;cursor: pointer;border: none;line-height: 17px;border-radius: 3px;"><mat-icon _ngcontent-smm-c39="" 
+        class="secondary-text pt-4  mat-icon notranslate material-icons deleteBtn-icon-color" 
+        role="img" aria-hidden="true">delete</mat-icon></button></span>
+        <span class="my-css-class">
+        </span>`;
+            const eButton = eDiv.querySelectorAll('.btn-simple')[0];
+            eButton.addEventListener('click', function (param) {
+              // console.log(param);
+            });
+            return eDiv;
+          },
+        }];
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  opensideBar(key, data) {
+    if (data) {
+      this.sideBarHeader = 'Edit';
+      this.editClicked = true;
+      this.updateData = data;
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+        this.formData.get('<%= bfld_dtls[i].COLUMN_NAME %>').setValue(data.<%= bfld_dtls[i].COLUMN_NAME %>);<% } %>
+
+    } else {
+      this.sideBarHeader = 'Add New';
+      this.editClicked = false;
+      this.delete<%= fileNmPrx %> = false;
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+        this.formData.get('<%= bfld_dtls[i].COLUMN_NAME %>').setValue('');<% } %>
+    }
+   // console.log(desgUpdtData); ..?
+    // console.log("************************calll ************************");
+    this._fuseSidebarService.getSidebar(key).toggleOpen();
+  }
+
+  onGridReady(params): void {
+    this.gridApi = params.api;
+    this.columnApi = params.columnApi;
+    this.gridApi.sizeColumnsToFit();
+    this.gridApi.setHeaderHeight(35);
+    this.params = params;
+    this.gridReadyEvent.emit(this.params);
+    this.gridApi.showLoadingOverlay();
+
+  }
+
+  save<%= fileNmPrx %>() {
+    if (this.editClicked == false) {
+      this.newentry();
+    } else if (this.delete<%= fileNmPrx %> == true) {
+      this.delete(this.updateData);
+    } else {
+      this.update(this.updateData);
+    }
+  }
+  update(data) {
+    console.log(this.formData.value);
+    console.log(data);
+    // return;
+
+    let rte = "<%=module_nm %>/<%=url %>/${data.<%=pk %>}";
+    this.usrdtls = JSON.parse(localStorage.getItem('usrDtls'));
+
+    let <%= fileNmPrx %>Data = {
+      <%=pk %>: data.<%=pk %>,
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+        <%= bfld_dtls[i].COLUMN_NAME %> : this.formData.value.<%= bfld_dtls[i].COLUMN_NAME %>,<% } %>
+
+    };
+
+    this.crdsrv.create(<%= fileNmPrx %>Data, rte).subscribe((res) => {
+      if (res['status'] == 200) {
+        this.snackBar.open("Sucessfully Added", 'End now', {
+          duration: 3000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+        this.get<%=module_nm %>();
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  delete(data) {
+    console.log("delete");
+    console.log(data);
+
+    let <%= fileNmPrx %>DelRte = `<%=module_nm %>/<%=url %>/${data.<%=pk %>}`;
+    this.crdsrv.delete(<%= fileNmPrx %>DelRte).subscribe((res) => {
+
+
+    this.confirmDialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '25%',
+      panelClass: 'my-class',
+      data: { message: 'Are you sure deleting this item ?', id: data.<%=pk %>, nm: data.dsgn_nm, entityname: 'Designation', flag: false, rte: `<%=module_nm %>/<%=url %>/${data.<%=pk %>}` }
+    });
+
+    this.confirmDialogRef.afterClosed().subscribe((response) => {
+      if (response == undefined) { }
+      else if (response.status == 200)
+        this.get<%=module_nm %>();
+    })
+  }
+
+)}
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  newentry() {
+    this.usrdtls = JSON.parse(localStorage.getItem('usrDtls'));
+    console.log(this.formData.value);
+    console.log(this.usrdtls);
+
+    this.usrdtls = JSON.parse(localStorage.getItem('usrDtls'));
+
+    let rte = "<%=module_nm %>/<%=url %>";
+    let data = {
+      <% for(var i=0; i < bfld_dtls.length; i++) { %>  
+          <%= bfld_dtls[i].COLUMN_NAME %> : this.formData.value.<%= bfld_dtls[i].COLUMN_NAME %>,<% } %>
+    };
+    console.log(data);
+    this.crdsrv.create(data, rte).subscribe((res) => {
+      console.log(res);
+      if (res['status'] == 200) {
+        this.snackBar.open("Sucessfully Added", 'End now', {
+          duration: 2000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+        this.get<%=module_nm %>();
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  onCellClick(event) {
+    console.log(event);
+    if (event.colDef.headerName == 'Edit') {
+      // this.editentry(event.data);
+      this.delete<%= fileNmPrx %> = false;
+      this.opensideBar('addFormPanel', event.data);
+
+    } else if (event.colDef.headerName == 'Delete') {
+      this.delete<%= fileNmPrx %> = true;
+      this.opensideBar('addFormPanel', event.data);
+    }
+
+  }
+}

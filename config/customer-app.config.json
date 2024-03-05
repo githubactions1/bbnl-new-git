@@ -1,0 +1,21 @@
+{
+    "customer-app": {
+        "reports": {
+            "history": {
+                "voip": {
+                    "id": "1000004",
+                    "label": "call-history"
+                },
+                "hsi": {
+                    "id": "",
+                    "label": "internet-history"
+                },
+                "bills": {
+                    "id": "",
+                    "label": "payment-history"
+                }
+            }
+        }
+    }
+}
+

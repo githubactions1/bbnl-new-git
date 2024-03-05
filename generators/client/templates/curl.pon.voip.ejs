@@ -1,0 +1,23 @@
+curl -XGET -H "Content-type: application/json" '<%-reqData[0].url_tx  %>'
+
+curl -XDELETE -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json"  '<%-reqData[1].url_tx  %>'
+
+curl -XDELETE -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json"  '<%-reqData[2].url_tx  %>'
+
+curl -XDELETE -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json"  '<%-reqData[3].url_tx  %>'
+
+curl -XDELETE -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json"  '<%-reqData[4].url_tx  %>'
+
+curl -XGET -H "Content-type: application/json" '<%-reqData[5].url_tx  %>'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%- reqData[6].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/onu'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%- reqData[7].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%-reqData[8].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'<%-reqData[9].url_dta_tx  %>' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+curl -XPUT -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d '{"admin":0,"name":"IPTV"}' '<%-reqData[10].url_tx %>'
+
+

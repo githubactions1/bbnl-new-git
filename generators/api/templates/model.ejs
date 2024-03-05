@@ -1,0 +1,164 @@
+var sqldb = require(appRoot + '/config/db.config');
+var dbutil = require(appRoot + '/utils/db.utils');
+var df = require(appRoot + '/utils/dflower.utils');
+let attachmentUtils = require(appRoot + '/utils/attachment.utils');
+var attchMnts = require(appRoot + '/utils/attachment.utils');
+var cntxtDtls = df.getModuleMetaData(__dirname, __filename);
+
+/*****************************************************************************
+* Function      : get<%= fileNmPrx %>Mdl
+* Description   : get details of all <%= obj_nm %>
+* Arguments     : callback function
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+******************************************************************************/
+exports.get<%= fileNmPrx %>Mdl = (user,callback) => {
+    <% if('undefined' != typeof sel_qry) { %> var QRY_TO_EXEC = `<%= sel_qry %>` <%}else {%>
+    
+    var QRY_TO_EXEC = ` SELECT ROW_NUMBER() OVER ( ORDER BY <%=pk %>) sno,
+                                <%=flds %> 
+                        FROM <%=tble_nm %> 
+                        WHERE a_in = 1 
+                        ORDER BY <%=pk %>; `;
+    <% } %>
+    if (callback && typeof callback == "function")
+        dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user, function (err, results) {
+            callback(err, results);
+            return;
+        });
+    else
+        return dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user);
+}
+
+/*****************************************************************************
+* Function      : srch<%= fileNmPrx %>Mdl
+* Description   : search details of all <%= obj_nm %>
+* Arguments     : callback function
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+******************************************************************************/
+exports.srch<%= fileNmPrx %>Mdl = (data,user,callback) => {
+    var QRY_WHERE = "1 = 1"
+    <% for(var i=0; i < bfld_dtls.length; i++) { %> <% if(bfld_dtls[i].SWAGGER_DATA_TYPE=='string'){ %>
+            if(data.hasOwnProperty('<%= bfld_dtls[i].COLUMN_NAME %>')) {
+                QRY_WHERE += ` AND <%= bfld_dtls[i].COLUMN_NAME %>='${data.<%= bfld_dtls[i].COLUMN_NAME %>}'`
+            }<% } else{ %>  
+            if(data.hasOwnProperty('<%= bfld_dtls[i].COLUMN_NAME %>')) {
+                QRY_WHERE += ` AND <%= bfld_dtls[i].COLUMN_NAME %>=${data.<%= bfld_dtls[i].COLUMN_NAME %>}`
+            } <% } %> <% } %>
+        if(data.hasOwnProperty('a_in')) { QRY_WHERE += ` AND a_in=${data.a_in}`  } else { QRY_WHERE += ` AND a_in=1` }
+        if(data.hasOwnProperty('d_ts')) { QRY_WHERE += ` AND d_ts IS NOT NULL`  } else { QRY_WHERE += ` AND d_ts IS NULL` }
+    var QRY_TO_EXEC = `SELECT SELECT ROW_NUMBER() OVER ( ORDER BY <%=pk %>) sno,
+                                <%=flds %> 
+                        FROM <%=tble_nm %> 
+                        WHERE ${QRY_WHERE} AND <%=pk %>= ${data.<%=pk %>}; `;
+    
+    if (callback && typeof callback == "function")
+        dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user, function (err, results) {
+            callback(err, results);
+            return;
+        });
+    else
+        return dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user);
+}
+
+/*****************************************************************************
+* Function      : get<%= fileNmPrx %>ByIdMdl
+* Description   : get details of single  <%= obj_nm %>
+* Arguments     : callback function
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+******************************************************************************/
+exports.get<%= fileNmPrx %>ByIdMdl = (id,user,callback) => {
+    var QRY_TO_EXEC = `SELECT <%=flds %> 
+                        FROM <%=tble_nm %> 
+                        WHERE a_in = 1 AND <%=pk %>= ${id}; `;
+    
+    if (callback && typeof callback == "function")
+        dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user, function (err, results) {
+            callback(err, results);
+            return;
+        });
+    else
+        return dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user);
+}
+
+/*****************************************************************************
+* Function      : insrt<%= fileNmPrx %>Mdl
+* Description   : Add new  <%= obj_nm %>
+* Arguments     : callback function
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+******************************************************************************/
+exports.insrt<%= fileNmPrx %>Mdl = (data,user,callback) => {
+    var QRY_TO_EXEC = `INSERT INTO <%=tble_nm %>(<%=npk %>,i_ts,crte_usr_id) 
+                        VALUES(<%-insFields %>,1,CURRENT_TIMESTAMP(),${user.user_id})`;
+
+    if (callback && typeof callback == "function")
+        dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user, function (err, results) {
+            callback(err, results);
+            return;
+        });
+    else
+        return dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user);
+}
+
+/*****************************************************************************
+* Function      : updte<%= fileNmPrx %>Mdl
+* Description   : Update existing  <%= obj_nm %>
+* Arguments     : callback function
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+******************************************************************************/
+exports.updte<%= fileNmPrx %>Mdl = (data,id,user,callback) => {
+    var QRY_SET = ""
+    <% for(var i=0; i < bfld_dtls.length; i++) { %> <% if(bfld_dtls[i].SWAGGER_DATA_TYPE=='string'){ %>
+            if(data.hasOwnProperty('<%= bfld_dtls[i].COLUMN_NAME %>')) {
+                QRY_SET += ` , <%= bfld_dtls[i].COLUMN_NAME %>='${data.<%= bfld_dtls[i].COLUMN_NAME %>}'`
+            }<% } else{ %>  
+            if(data.hasOwnProperty('<%= bfld_dtls[i].COLUMN_NAME %>')) {
+                QRY_SET += ` , <%= bfld_dtls[i].COLUMN_NAME %>=${data.<%= bfld_dtls[i].COLUMN_NAME %>}`
+            } <% } %> <% } %>
+
+    var QRY_TO_EXEC = ` UPDATE <%=tble_nm %> 
+                        SET u_ts = current_timestamp(), a_in = 1,updte_usr_id=${user.user_id} ${QRY_SET}
+                        WHERE <%=pk %>= ${id}; `;
+    
+    if (callback && typeof callback == "function")
+        dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user, function (err, results) {
+            callback(err, results);
+            return;
+        });
+    else
+        return dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user);
+}
+
+/*****************************************************************************
+* Function      : dlte<%= fileNmPrx %>Mdl
+* Description   : Delete existing  <%= obj_nm %>
+* Arguments     : callback function
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+******************************************************************************/
+exports.dlte<%= fileNmPrx %>Mdl = (id,user,callback) => {
+    var QRY_TO_EXEC = `UPDATE <%=tble_nm %> 
+                       SET d_ts = current_timestamp(), a_in = 0 ,updte_usr_id=${user.user_id}
+                       WHERE <%=pk %>= ${id};`;
+    
+    if (callback && typeof callback == "function")
+        dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user, function (err, results) {
+            callback(err, results);
+            return;
+        });
+    else
+        return dbutil.execQuery(sqldb.MySQLConPool, QRY_TO_EXEC, cntxtDtls, user);
+}
+
+
+

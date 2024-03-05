@@ -1,0 +1,14 @@
+{
+	"ds-utils":{
+		"scheduler":{
+			"start_on_launch":true,
+			"log_scheule_run":false,
+			"log_detailed_run":true
+		},
+		"batch_jobs":{
+			"audit":true
+		}
+	
+		
+	}
+}

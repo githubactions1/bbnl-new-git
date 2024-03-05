@@ -1,0 +1,17 @@
+|223.196.196.134|GET|/owa/auth/logon.aspx|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|172.16.8.44:4500|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7E3BC/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B683/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C708/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B4D0/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B4D0/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|172.16.8.44:4500|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B4D0/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}

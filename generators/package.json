@@ -1,0 +1,23 @@
+{
+  "name": "generators",
+  "version": "1.0.0",
+  "description": "Generate API and angular Components",
+  "main": "ds.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sunil Mulagada",
+  "license": "glits Software Innovations Pvt. Ltd.",
+  "dependencies": {
+    "caporal": "^1.3.0",
+    "ejs": "^3.0.1",
+    "fs": "0.0.1-security",
+    "line-reader": "^0.4.0",
+    "moment": "^2.24.0",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7",
+    "prompt": "^1.0.0",
+    "prompt-sync": "^4.2.0",
+    "shelljs": "^0.8.3"
+  }
+}

@@ -1,0 +1,11 @@
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/prepaid_business_info_version|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/chckblncelmo|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getTotalAgentCafCnts|{"data":{"agntId":103000730,"sts":0,"frm_dt":"","lmt_pstn":0,"srch_txt":"","srch_type":1,"to_dt":"","trmnd_in":null}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getAgntCafDetailsWthLmtCndtn|{"data":{"agntId":103000730,"sts":0,"frm_dt":"","lmt_pstn":0,"srch_txt":"","srch_type":1,"to_dt":"","trmnd_in":null}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getAgntCafDetailsWthLmtCndtn|{"data":{"agntId":103000730,"sts":6,"frm_dt":"","lmt_pstn":0,"srch_txt":"","srch_type":1,"to_dt":"","trmnd_in":null}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getTotalAgentCafCnts|{"data":{"agntId":103000730,"sts":6,"frm_dt":"","lmt_pstn":0,"srch_txt":"","srch_type":1,"to_dt":"","trmnd_in":null}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getAgntCafDetailsWthLmtCndtn|{"data":{"agntId":103000730,"sts":0,"frm_dt":"","lmt_pstn":0,"srch_txt":"","srch_type":1,"to_dt":"","trmnd_in":null}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getTotalAgentCafCnts|{"data":{"agntId":103000730,"sts":0,"frm_dt":"","lmt_pstn":0,"srch_txt":"","srch_type":1,"to_dt":"","trmnd_in":null}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/chckblncelmo|{}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|223.196.196.134|GET|/webui/|{}|{}|{"b":10,"bv":"109.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}

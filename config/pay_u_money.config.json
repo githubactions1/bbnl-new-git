@@ -1,0 +1,19 @@
+{
+    "pg": {
+        "key": "RpbBgZ",
+        "salt": "ABcsrc4S67aXJ4ODinoSb19Sc2fF8j4U",
+        "init_api": "https://secure.payu.in/_payment",
+        "vpa": "",
+        "setlemnet_api": "https://info.payu.in/merchant/postservice.php?form=2"
+    },
+    "upi": {
+        "key": "RpbBgZ",
+        "mid": "",
+        "vpa": "",
+        "salt": "ABcsrc4S67aXJ4ODinoSb19Sc2fF8j4U",
+        "expiryTime": "3600",
+        "qrName": "BSS",
+        "init_api": "https://info.payu.in/merchant/postservice.php",
+        "setlemnet_api": "https://info.payu.in/merchant/postservice.php?form=2"
+    }
+}

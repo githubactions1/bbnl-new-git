@@ -1,0 +1,6 @@
+exports.<%= fileNmPrx %>Schema = { 
+                                    "fields":  [<% for(var i=0; i < bfld_dtls.length; i++) { %> {"nm": "<%=bfld_dtls[i].COLUMN_NAME%>","type":"<%=bfld_dtls[i].COLUMN_TYPE%>","required":"<%=bfld_dtls[i].IS_REQUIRED%>"},
+									<% } %>],
+                                    "required": ["<%= nnull%>"],
+                                    "keys": ["<%= pk%>"]
+                                 };

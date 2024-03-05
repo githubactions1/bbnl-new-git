@@ -1,0 +1,72 @@
+{
+    "fcm": {
+        "url": "https://fcm.googleapis.com/fcm/send",
+        "method": "POST",
+        "headers": {
+            "Authorization": "key=AAAAiHr68b0:APA91bHAVIwSMhTW_54qKLBG_4t3mzjEKqHame6Wnx9DBOkcSmObJZIeLexMaItL-UubIpM4dYzefY5A51tdbpWRCQ4__MuTifobu45k9UXExFt3d0ZMCCQyx4_OnFXaSyA0F283pOHZ",
+            "Content-Type": "application/json"
+        },
+        "sender": [
+            {
+                "type": "single_user",
+                "body": {
+                    "to": "",
+                    "collapse_key": "type_a",
+                    "priority": "high",
+                    "restricted_package_name": "",
+                    "notification": {
+                        "body": "Welcome to APSFL.",
+                        "title": "APSFL",
+                        "sound": "default",
+                        "click_action": "FCM_PLUGIN_ACTIVITY",
+                        "icon": "fcm_push_icon",
+                        "image": ""
+                    },
+                    "data": {
+                        "ntfctn_id": 1
+                    }
+                }
+            },
+            {
+                "type": "multiple_users",
+                "body": {
+                    "registration_ids": [],
+                    "collapse_key": "type_a",
+                    "priority": "high",
+                    "restricted_package_name": "",
+                    "notification": {
+                        "body": "Welcome to APSFL.",
+                        "title": "APSFL",
+                        "sound": "default",
+                        "click_action": "FCM_PLUGIN_ACTIVITY",
+                        "icon": "fcm_push_icon",
+                        "image": ""
+                    },
+                    "data": {
+                        "ntfctn_id": 1
+                    }
+                }
+            },
+            {
+                "type": "all",
+                "body": {
+                    "to": "/topics/all",
+                    "collapse_key": "type_a",
+                    "priority": "high",
+                    "restricted_package_name": "",
+                    "notification": {
+                        "body": "Welcome to APSFL.",
+                        "title": "APSFL",
+                        "sound": "default",
+                        "click_action": "FCM_PLUGIN_ACTIVITY",
+                        "icon": "fcm_push_icon",
+                        "image": ""
+                    },
+                    "data": {
+                        "ntfctn_id": 1
+                    }
+                }
+            }
+        ]
+    }
+}

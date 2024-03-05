@@ -1,0 +1,7 @@
+app_stre_lst_t|store|App Store
+app_ctgry_lst_t|category|App Category(s)
+app_lst_t|apps|Apps
+app_type_lst_t|appstore/apptype|App Types
+app_prpry_lst_t|properties|Module properties
+app_dtype_lst_t|datatypes|Data Types
+app_mdle_lst_t|modules|Modules

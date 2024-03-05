@@ -1,0 +1,9 @@
+[{
+    "dsn_path": "glits/DSN",
+    "ztc_path": "glits/ZTC"
+},
+{
+ "USER" : "testuser",
+ "PWD" : "admin123",
+ "DB_HOST_NAME" : "172.16.0.45"
+}]

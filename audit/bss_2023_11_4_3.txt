@@ -1,0 +1,4 @@
+|bbnlbss.apsfl.co.in|GET|/admin|{}|{}|{"b":10,"bv":"91.0.4472.88","o":3,"ov":"9","d":2,"v":"","m":"CPH2083","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"91.0.4472.88","o":3,"ov":"9","d":2,"v":"","m":"CPH2083","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/imgs/modi.png|{}|{}|{"b":10,"bv":"91.0.4472.88","o":3,"ov":"9","d":2,"v":"","m":"CPH2083","c":"","i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"91.0.4472.88","o":3,"ov":"9","d":2,"v":"","m":"CPH2083","c":"","i":""}

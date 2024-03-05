@@ -1,0 +1,2 @@
+|223.196.196.134|GET|/admin/config.php|{}|{}|{"b":2,"bv":"4.0","o":3,"ov":"4.3","d":2,"v":36,"m":"Z667G","c":"","i":""}
+|223.196.196.134|GET|/autodiscover/autodiscover.json?@zdi/Powershell|{}|{"@zdi/Powershell":""}|{"b":"","o":"","d":"","v":"","c":"","i":""}

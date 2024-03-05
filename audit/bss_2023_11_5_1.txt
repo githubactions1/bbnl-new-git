@@ -1,0 +1,2 @@
+|172.16.8.44:4500|GET|/dns-query?dns=2EwBAAABAAAAAAAABmdvb2dsZQNjb20AAAEAAQ|{}|{"dns":"2EwBAAABAAAAAAAABmdvb2dsZQNjb20AAAEAAQ"}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|172.16.8.44:4500|GET|/autodiscover/autodiscover.json?@zdi/Powershell|{}|{"@zdi/Powershell":""}|{"b":"","o":"","d":"","v":"","c":"","i":""}

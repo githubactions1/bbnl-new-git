@@ -1,0 +1,114 @@
+const <%= fileNmPrx %>Mdl = require(appRoot + '/server/api/modules/<%= module_nm %>/models/<%= fileNmPrx %>Mdl');
+var df = require(appRoot + '/utils/dflower.utils');
+var cntxtDtls = df.getModuleMetaData(__dirname, __filename);
+
+/**************************************************************************************
+* Controller     : get_<%= fileNmPrx %>Ctrl
+* Parameters     : req,res()
+* Description    : get details of all <%= obj_nm %>
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+***************************************************************************************/
+exports.get_<%= fileNmPrx %>Ctrl = function (req, res) {
+
+    <%= fileNmPrx %>Mdl.get<%= fileNmPrx %>Mdl(req.user)
+        .then(function (results) {
+            df.formatSucessRes(req,res, results, cntxtDtls, '', {});
+        }).catch(function (error) {
+            df.formatErrorRes(req,res, error, cntxtDtls, '', {});
+        });
+}
+
+/**************************************************************************************
+* Controller     : srch_<%= fileNmPrx %>Ctrl
+* Parameters     : req,res()
+* Description    : search details of all <%= obj_nm %>
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+***************************************************************************************/
+exports.srch_<%= fileNmPrx %>Ctrl = function (req, res) {
+
+    <%= fileNmPrx %>Mdl.srch<%= fileNmPrx %>Mdl(req.body,req.user)
+        .then(function (results) {
+            df.formatSucessRes(req,res, results, cntxtDtls, '', {});
+        }).catch(function (error) {
+            df.formatErrorRes(req,res, error, cntxtDtls, '', {});
+        });
+}
+
+
+/**************************************************************************************
+* Controller     : get_<%= fileNmPrx %>ByIdCtrl
+* Parameters     : req,res()
+* Description    : get details of single  <%= obj_nm %>
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+***************************************************************************************/
+exports.get_<%= fileNmPrx %>ByIdCtrl = function (req, res) {
+
+    <%= fileNmPrx %>Mdl.get<%= fileNmPrx %>ByIdMdl(req.params.id,req.user)
+        .then(function (results) {
+            df.formatSucessRes(req,res, results, cntxtDtls, '', {});
+        }).catch(function (error) {
+            df.formatErrorRes(req,res, error, cntxtDtls, '', {});
+        });
+}
+
+/**************************************************************************************
+* Controller     : insrt_<%= fileNmPrx %>Ctrl
+* Parameters     : req,res()
+* Description    : Add new  <%= obj_nm %>
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+***************************************************************************************/
+exports.insrt_<%= fileNmPrx %>Ctrl = function (req, res) {
+
+    <%= fileNmPrx %>Mdl.insrt<%= fileNmPrx %>Mdl(req.body.data,req.user)
+        .then(function (results) {
+            df.formatSucessRes(req,res, results, cntxtDtls, '', {});
+        }).catch(function (error) {
+            df.formatErrorRes(req,res, error, cntxtDtls, '', {});
+        });
+}
+
+
+/**************************************************************************************
+* Controller     : updte_<%= fileNmPrx %>Ctrl
+* Parameters     : req,res()
+* Description    : Update existing  <%= obj_nm %>
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+***************************************************************************************/
+exports.updte_<%= fileNmPrx %>Ctrl = function (req, res) {
+
+    <%= fileNmPrx %>Mdl.updte<%= fileNmPrx %>Mdl(req.body.data,req.params.id,req.user)
+        .then(function (results) {
+            df.formatSucessRes(req,res, results, cntxtDtls, '', {});
+        }).catch(function (error) {
+            df.formatErrorRes(req,res, error, cntxtDtls, '', {});
+        });
+}
+
+
+/**************************************************************************************
+* Controller     : dlte_<%= fileNmPrx %>Ctrl
+* Parameters     : req,res()
+* Description    : Delete existing  <%= obj_nm %>
+* Change History :
+* <%= dt %>    -  SCRIPT DENERATED  - Initial Function
+*
+***************************************************************************************/
+exports.dlte_<%= fileNmPrx %>Ctrl = function (req, res) {
+
+    <%= fileNmPrx %>Mdl.dlte<%= fileNmPrx %>Mdl(req.params.id,req.user)
+        .then(function (results) {
+            df.formatSucessRes(req,res, results, cntxtDtls, 'dlte_<%= fileNmPrx %>Ctrl', {});
+        }).catch(function (error) {
+            df.formatErrorRes(req,res, error, cntxtDtls, 'dlte_<%= fileNmPrx %>Ctrl', {});
+        });
+}

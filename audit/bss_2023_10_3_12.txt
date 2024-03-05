@@ -1,0 +1,5 @@
+|bbnlbss.apsfl.co.in|GET|/apiv1/logout|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf_operations/ivr_logoutuser|{"data":{"action":"LOGOUTUSER","update_break":"lunch","refno":101090446}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/auth/prpd_login|{"app":"app","fcm_id":"cUDHYx_YQJKJucHHh72gHb:APA91bGw4-CGEXbz3FcoWJKznuh8BN4yNoND7jyW4RgNVEg2RWVUNO41eikbGHeGL6NaPcMPLos11NkRYj-jlthO4pwDSOCuD8R9uvzU6bFZIWckoikuRfKJ7A8YrpmBcfLFAKHW52le","password":"1234567890","username":"lmo2000825"}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}

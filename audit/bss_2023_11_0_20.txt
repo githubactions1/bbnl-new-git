@@ -1,0 +1,661 @@
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Enterprise%20CAF%20Creation|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/143143/2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/143143/4|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Enterprise%20CAF%20Creation|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Ims%20Modification|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getdtfrIms|{"data":{"CAf":"200079827","trmnd_cond":true}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/dashbrd/getCpeConuts|{"data":{"dstrct_fltr":true,"slctdDstrct":12}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/dashbrd/getAgentsConuts|{"data":{"dstrct_fltr":true,"slctdDstrct":12}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/dashbrd/getCafConuts|{"data":{"dstrct_fltr":true,"slctdDstrct":12}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/dashbrd/agent/monthly/operational/summary|{"data":{"year":2023,"mnth":12,"dstrt":12}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/dashbrd/current/previous/month/caf/operations|{"data":{"dstrt":12}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckges|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getMyApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getMyApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getRcntApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getMyApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getRcntApprovalPckges/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckgeslvl2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getMyApprovalPckges/2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getRcntApprovalPckges/2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payments/today/month|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payments/monthly|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payments/month/daywise/12|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/agent/payment/balance|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/payment/apsflshare/details/month|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/AgntPymntMode|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/payments/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/customer/customertype|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getdstrcts/1|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/user_generated_invoices|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesfrPdf|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/billing/bank/statement/payments/user|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/batch/jobHistory|{"data":{"todate":"2023-12-03","frmdate":"2023-12-03"}}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/OLT%20Sbstn%20Addition|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/olts|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getDstrcts/0|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getSubstationsType|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getIllApprovalPckgeslvl2|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":10,"bv":"119.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/6/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/37/6|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":6,"mndl_id":37,"vlge_id":9334,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":6,"mndl_id":37,"vlge_id":9342,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":6,"mndl_id":37,"vlge_id":9343,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":6,"mndl_id":37,"vlge_id":1900001950,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28001062|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28001062|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/6/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/37/6|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52001054|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53008448|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53008448,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53008448,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7CA9B|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021046|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59167524|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000113|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000113|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175742}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":9440714858}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/admin/inventory/set-top-box/transfer|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C596/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/admin|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/login/capcha|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/dashbrd/enterprise/cafs/counts/4|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/dashbrd/enterprise/top/cafs/4|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/dashbrd/enterprise/cafs/last6months/provisions/4|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/portoltdetails/undefined/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/48000058|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":48000058,"prt_id":49000457,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":48000058,"prt_id":49000457,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/admin/caf/goi-new-caf|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/10/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":10,"vlge_id":9465,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/24000058|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/24000058|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/10/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/24000057|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/24000057|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/48000058|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/49000457|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":49000457,"level1":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":49000457,"level1":1,"level2":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C596|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956006185|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C596|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59167628|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956006185|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/11/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/10/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":10,"vlge_id":9465,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/24000057|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/24000057|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/10/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":9000000,"pckge_id":10000000}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/48000058|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/49000457|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":49000457,"level1":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":49000457,"level1":3,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":49000457,"level1":3,"level2":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B683/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7B683/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Stock|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/admin/inventory/set-top-boxs|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/alert/usrRcntNtfctn|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/profile|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/lmoprepaid/walletamountfrlmo|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Stock|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/product/modls/1|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/setupboxPrefix|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/agent/getAgentBySearch/si|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/agent/getAgentBySearch/si0006|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/4/100001809|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/inventory/setupboxupload|{"data":[{"Cpe Serial No":"ZTEGCFA7B683","Cpe Mac Address":"54:CE:82:2D:57:2C","Formula":"54::C:E::82::2:D:","sno":1,"Cpe_Mac_Address":"54:CE:82:2D:57:2C","Cpe_Serial_No":"ZTEGCFA7B683","Batch_Id":1703429109892,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGcfab683/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|PUT|/apiv1/inventory/deleteCpeToAgent|{"data":[{"stpbx_id":956006190}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGcfab683/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/inventory/setupboxupload|{"data":[{"Cpe Serial No":"ZTEGCFA7B683","Cpe Mac Address":"54:CE:82:2D:57:2C","Formula":"54::C:E::82::2:D:","sno":1,"Cpe_Mac_Address":"54:CE:82:2D:57:2C","Cpe_Serial_No":"ZTEGCFA7B683","Batch_Id":1703429195221,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/4/100001809|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021047|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7B683|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021047|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59167690|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/portoltdetails/undefined/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000338|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":52000338,"prt_id":53002712,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/17/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/12/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/7/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9031,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9031,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9033,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9034,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9051,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9031,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9032,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9033,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/16/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":16,"vlge_id":9033,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":16,"vlge_id":9034,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":16,"vlge_id":9816,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/5/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":5,"vlge_id":9816,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":5,"vlge_id":8970,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000363|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000363|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/7/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":22,"mndl_id":7,"vlge_id":9792,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000340|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000340|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/7/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000338|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53002712|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53002712,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53002712,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C711|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C711|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C711|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C711/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7C711/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/inventory/setupboxupload|{"data":[{"Cpe Serial No":"ZTEGCFA7C711","Cpe Mac Address":"54:CE:82:2D:BA:80","Formula":"54::C:E::82::2:D:","sno":1,"Cpe_Mac_Address":"54:CE:82:2D:BA:80","Cpe_Serial_No":"ZTEGCFA7C711","Batch_Id":1703429628173,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/4/100001809|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C711|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C711|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7C711|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021048|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021048|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021048|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59167780|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Stock|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/portoltdetails/undefined/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7CAAA/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000904|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/BBNL%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/BBNL%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/6/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/38/6|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":6,"mndl_id":38,"vlge_id":9157,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000912|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000912|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/6/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/38/6|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000904|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53007248|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53007248,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53007248,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7CAAA|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Stock|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/product/modls/1|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/setupboxPrefix|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/agent/getAgentBySearch/si|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/agent/getAgentBySearch/si000|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/agent/getAgentBySearch/si0006|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/4/100001809|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/inventory/setupboxupload|{"data":[{"Cpe Serial No":"ZTEGCFA7CAAA","Cpe Mac Address":"54:CE:82:2D:D0:16","Formula":"54::C:E::82::2:D:","sno":1,"Cpe_Mac_Address":"54:CE:82:2D:D0:16","Cpe_Serial_No":"ZTEGCFA7CAAA","Batch_Id":1703430091233,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/4/100001809|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7CAAA|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021049|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59165220|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000114|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000114|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175743}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":9441820912}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGCFA7F1A8/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getgoidt|{"data":{"Caf_type":2,"dstrc_id":"","mso_id":"","mobileno":"","CAf":"300000080","adhar":"","str_dt":null,"end_dt":null,"org_nm":"","Apsf_id":"","Reg_no":"","Caf_sts":"","mndl_id":"","ent_dprtmnt_id":"","apsfl_bbnl":5}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/BBNL%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getbbnldt|{"data":{"Caf_type":2,"dstrc_id":"","mso_id":"","mobileno":"","CAf":"300000080","adhar":"","str_dt":null,"end_dt":null,"org_nm":"","Apsf_id":"","Reg_no":"","Caf_sts":"","mndl_id":"","ent_dprtmnt_id":"","apsfl_bbnl":3}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000080|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000080|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000080|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000080|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175712}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":7702750424}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175712}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":7702750424}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/portoltdetails/undefined/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000984|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/22/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/15/22|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/CPE%20Allocation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/erp/erpprtnrslstt|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/productList|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/null/null/null/null/ZTEGcfd95aa4/null|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getgoidt|{"data":{"Caf_type":2,"dstrc_id":"","mso_id":"","mobileno":"","CAf":"300000085","adhar":"","str_dt":null,"end_dt":null,"org_nm":"","Apsf_id":"","Reg_no":"","Caf_sts":"","mndl_id":"","ent_dprtmnt_id":"","apsfl_bbnl":5}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000085|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000085|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000085|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000085|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175716}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":9908874899}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175716}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":9908874899}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/6/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/40/6|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/inventory/setupboxupload|{"data":[{"Cpe Serial No":"ZTEGCFA7E33F","Cpe Mac Address":"54:CE:82:2E:63:94","Formula":"54::C:E::82::2:E:","sno":1,"Cpe_Mac_Address":"54:CE:82:2E:63:94","Cpe_Serial_No":"ZTEGCFA7E33F","Batch_Id":1703430899152,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/inventory/getAgentCpeStock/4/100001809|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/18/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/25/18|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getPop|{"data":[{"dstrct_id":18,"mndl_id":25,"vlge_id":8505,"agnt_id":100001809,"apsfl_bbnl":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/getOltdtls/28000972|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/poploc/28000972|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts/18/mandals|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states/1/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/getvlgs/25/18|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/getpckgeProperties|{"data":[{"srvcpk_id":3,"pckge_id":54}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000964|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDtls/53007728|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slottwoDetailsForPort/|{"data":[{"olt_prt_id":53007728,"level1":2}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53007728,"level1":2,"level2":1}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotthreeDetailsForPort/|{"data":[{"olt_prt_id":53007728,"level1":2,"level2":3}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/ZTEGCFA7E33F|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxallocated/956021050|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/splt/59163027|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/Addon%20packages|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/addons/packages/addons/channels|{"data":{"srch_txt":"","srch_ldng":false,"lmt_pstn":1,"pcge_mde":"1","agntId":""}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/customer/profile/300000115|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/ont/details/300000115|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"mble_nu":7989661457}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/caf/relatedcafs|{"data":{"cstmr_id":200175744}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/portoltdetails/undefined/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52001060|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/inventory/setupboxupload|{"data":[{"Cpe Serial No":"ZTEGCFA7B1E7","Cpe Mac Address":"54:CE:82:2D:3B:84","Formula":"54::C:E::82::2:D:","sno":1,"Cpe_Mac_Address":"54:CE:82:2D:3B:84","Cpe_Serial_No":"ZTEGCFA7B1E7","Batch_Id":1703431668591,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910},{"Cpe Serial No":"ZTEGCFA7BC59","Cpe Mac Address":"54:CE:82:2D:7A:30","Formula":"54::C:E::82::2:D:","sno":2,"Cpe_Mac_Address":"54:CE:82:2D:7A:30","Cpe_Serial_No":"ZTEGCFA7BC59","Batch_Id":1703431668591,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910},{"Cpe Serial No":"ZTEGCFA7F368","Cpe Mac Address":"54:CE:82:2E:C4:8A","Formula":"54::C:E::82::2:E:","sno":3,"Cpe_Mac_Address":"54:CE:82:2E:C4:8A","Cpe_Serial_No":"ZTEGCFA7F368","Batch_Id":1703431668591,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910},{"Cpe Serial No":"ZTEGCFA7BCE8","Cpe Mac Address":"54:CE:82:2D:7D:8A","Formula":"54::C:E::82::2:D:","sno":4,"Cpe_Mac_Address":"54:CE:82:2D:7D:8A","Cpe_Serial_No":"ZTEGCFA7BCE8","Batch_Id":1703431668591,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910},{"Cpe Serial No":"ZTEGCFA7BE34","Cpe Mac Address":"54:CE:82:2D:85:52","Formula":"54::C:E::82::2:D:","sno":5,"Cpe_Mac_Address":"54:CE:82:2D:85:52","Cpe_Serial_No":"ZTEGCFA7BE34","Batch_Id":1703431668591,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910},{"Cpe Serial No":"ZTEGCFA7BE1E","Cpe Mac Address":"54:CE:82:2D:84:CE","Formula":"54::C:E::82::2:D:","sno":6,"Cpe_Mac_Address":"54:CE:82:2D:84:CE","Cpe_Serial_No":"ZTEGCFA7BE1E","Batch_Id":1703431668591,"prfx_id":3000016,"Batch_Date":"2023-12-24","lmo_agnt_id":100001809,"mso_agnt_id":0,"prdct_id":1,"vndr_id":1,"splr_id":1,"mdle_id":910}]}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/olt/slotDetails/52000646|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|POST|/apiv1/olt/slotDetails|{"data":{"olt_id":52000646,"prt_id":53005176,"splitsdata":"1-4-8,2-4-8,3-4-8,4-4-8"}}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/districts|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-type|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/caf-status|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/permissions/GOI%20Enterprise%20CAF%20Creation|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/entDepartmentNames|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrillibbTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/EntrpeCstmrTyp|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/user/gender|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/crm/billingFrequency|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/package/getPckgesByAgntId/100001809/2|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/boxdtls/|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/admin/states|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/apiv1/caf/getPopByAgntId/100001809/3|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|bbnlbss.apsfl.co.in|GET|/assets/images/logos/glits_D.png|{}|{}|{"b":17,"bv":"120.0.0.0","o":"","ov":"10","d":"","v":"","c":2,"i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV VENKATESWARANAGAR SS","mobile_num":"9704149489,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.242.119"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"Thurlapadu -LMO 11334","mobile_num":"9573372001,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.193.143"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11KV Varikuntapadu Sub Stat","mobile_num":"9491272731,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.247.21"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Bommalapuram SS","mobile_num":"7396951955,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.246.123"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV VENKATESWARANAGAR SS","mobile_num":"9704149489,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.242.119"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11KV Iskapally SS","mobile_num":"9533343532,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.247.229"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212935-UDDANGI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.17"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200004-KANKATAPALEM GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.133"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200068-GODAVARRU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.227"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235252-SATYANARAYANA PURAM  GP","mobile_num":"9395144391,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.211.235"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200073-SEKURU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.119"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199453-VELAGATHODU GP","mobile_num":"9989211433,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.241"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"214400-CHALLACHINTALAPUDI GP","mobile_num":"9121106815,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.219.143"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"196678-TANAKAL GP","mobile_num":"9154143286,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.207.239"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212979-PUTHIKAPETA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.137"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"212970-Kondagumpam GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.133"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212448-KOTHAPALEM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.17.129.109"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"234982-Millampalli GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.5"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212466-METTAPALLI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.5"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212458-ALAJANGI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.3"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"234737-ALOOR GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.45"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"33/11 KV AC GARDENS SS","mobile_num":"9704149489,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.242.135"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199254-Vakalapudi GP","mobile_num":"9121106817,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.9"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200528-AGARTHAVARAPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.107"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199135-LAKKONDA GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.41"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199131-GANGAVARAM GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.39"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199132-JAGGAMPALEM GP","mobile_num":"9154892561,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.57"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"234986-TAMMADAPALLI GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.203.21"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200850-MUNNANGIVARIPALEM DASAN","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.123"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"211707-TSUNDUR DASAN OLT BBNL","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.129"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":" 234889-TANGUTUR DASAN OLT BBN","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.216.67"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"199200-DULLA GP","mobile_num":"9154840792,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.223"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200538-VENIGANDLA GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.109"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"213204-RAJAYYAPETA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.187"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"213185-GANGANNAPADU GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.183"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"213208-THERLAM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.181"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200074-SRIRANGAPURAM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.69"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200010-Narasayapalem GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.139"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212464-KARAKAM GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.41"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212461-GOLLALAMULAGA GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.227"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"215118-Tallapuram GP","mobile_num":"9121106815,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.219.35"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212472-PERIPI GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.167"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200008- MURUKONDAPADU GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.137"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212471-PEDANADIPALLE GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.211"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212463-ITIKARLAPALLE GP","mobile_num":"7995054948,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.217.193"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200015-VEDULLAPALLI GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.141"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"289609-KAASIKUNTA THANDA GP","mobile_num":"9121106816,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.206.47"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235250-SAMPATHIPURAM GP","mobile_num":"9395144391,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.220.73"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200014-CHUNDURUPALLI GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.221"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200389-MANDAPADU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.241"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"245314-Kondubhotlavaripalem GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.245"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"199998-East.bapatla GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.139"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"235898-Mulukuduru GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.219"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200068-GODAVARRU GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.215.227"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"199453-VELAGATHODU GP","mobile_num":"9989211433,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.212.241"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Palthuru SS","mobile_num":"9959233115,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.239.41"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"214375-MARKONDAPADU GP","mobile_num":"9154840792,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.219.249"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212630-DALAIVALASA GP","mobile_num":"9000505845,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.210.173"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"33/11 KV Palthuru SS","mobile_num":"9121296011,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.239.41"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200840-ALAPADU GP","mobile_num":"8523064793,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.65"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200239-KOTHIVANIPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.193"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"200231-BODIPALEM GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.187"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":" 200076-THOTLAPALEM DASAN OLT ","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.71"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/inventory/updatebbnlboxinvntrydtls|{"data":{"adhr_nu":520382295418,"actvn_dt":null,"agnt_id":100000443,"apsf_unq_id":0,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_cycle_id":0,"blng_dstrct_id":10,"blng_eml1_tx":"","blng_house_flat_no":"00","blng_lnd_nu":null,"blng_lcly_tx":"Nalagamapalli","blng_mndl_id":65,"blng_buildingname":"Nalagamapalli","blng_pn_cd":517425,"blng_ste_id":0,"blng_std_cd":8570,"blng_streetname":"Nalagamapalli ","blng_vlge_id":14320,"blble_caf_in":0,"caf_type_id":1,"cnctn_sts_id":1,"cst_at":"291.00","cpe_pop_id":471,"crnt_caf_sts_id":1,"crnt_pckge_id":"79","custInfo":{"adhr_nu":520382295418,"actvn_dt":null,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_dstrct_id":10,"blng_eml1_tx":"","blng_house_flat_no":"00","blng_lnd_nu":null,"blng_lcly_tx":"Nalagamapalli","blng_mndl_id":65,"blng_buildingname":"Nalagamapalli","blng_pn_cd":517425,"blng_ste_id":1,"blng_std_cd":8570,"blng_streetname":"Nalagamapalli ","blng_vlge_id":14320,"custmrTyp":"","dob_dt":"1984-01-28","frst_nm":"Rajendra ","frqncy_id":1,"gndr_id":1,"instl_buildingname":"Nalagamapalli","instl_chk_ind":false,"instl_house_flat_no":"00","instl_pincode":517425,"instl_state":1,"instl_streetname":"Nalagamapalli ","lst_nm":"M","loc_dstrct_id":10,"loc_eml1_tx":"","loc_lnd_nu":null,"loc_lmdle1_nu":"9989398346","loc_lcly_tx":"Nalagamapalli","loc_mndl_id":65,"loc_std_cd":8570,"loc_vlge_id":14320,"mdlr_nm":"","mbl_nu":9989398346,"pan_nu":"","pop_id":471,"rltve_nm":"","tle_nm":"Mr"},"custmrTyp":"","dob_dt":"1984-01-28","dprmnt_id":0,"efcte_dt":"2016-10-18","enty_sts_id":1,"expry_dt":"9999-12-31","frst_nm":"Rajendra ","frqncy_id":1,"gndr_id":1,"inst_amt":"","instl_buildingname":"Nalagamapalli","instl_chk_ind":true,"instl_house_flat_no":"00","instl_pincode":517425,"instl_state":1,"instl_streetname":"Nalagamapalli ","iptv_bx_amt":null,"iptv_bx_emi":"0","iptv_bx_own":"No","iptv_bx_srl_num":"MK4RRRG431M2468","iptv_bx_up_amt":"0","iptv_mac_addr_tx":"9C:65:EE:4C:2B:D2","iptv_mdl":"IPTV Basic Box-UPF:0","iptv_stpbx_id":956014250,"lst_nm":"M","lat":0,"lvl1_slt":1,"lvl2_slt":2,"lvl3_slt":8,"lg_id":"lag::","loc_eml1_tx":"","loc_lmdle1_nu":"9989398346","loc_lcly_tx":"Nalagamapalli","loc_dstrct_id":10,"loc_lnd_nu":null,"loc_mndl_id":65,"loc_std_cd":8570,"loc_vlge_id":14320,"lng":0,"mdlr_nm":"","mbl_nu":"9989398346","olt_acs_nde_id":"237199","olt_crd_nu":1,"olt_id":327,"olt_ip_addr_tx":"172.16.237.199","olt_prt_nm":3,"olt_prt_id":2028,"olt_prt_splt_tx":"1-2-8","olt_srl_nu":"9111101375","onu_amt":"50","onu_emi":"50","onu_id":13,"onu_mac_addr_tx":"9C:65:EE:57:3E:51","onu_mdl":"DSN-COMBO","onu_own":0,"onu_srl_nu":"DSNW26573e50","onu_stpbx_id":956014249,"onu_up_frmt_amt":"0","orgsn_cd":"","pan_nu":"","pop_id":471,"prnt_cstmr_id":0,"prv_Dtls":{"accessId":"9c65.ee57.3e519c65.ee57.3e51","address":"00,Nalagamapalli ,Nalagamapalli","admin":"1","card":1,"contactno":"9989398346","countryCode":"INDIA","countryISO2":"IN","districtCode":"Chittoor","downstreamTrafficProfileName":" ","emailid":"","fec":"true","firstname":"Rajendra ","fup":"7Mbps_UP_20Mbps_DOWN","identityProofId":0,"ipAddress":"172.16.237.199","lastname":"M","mandal":"GUDI PALLE","name":"","nativeVlan":false,"networkServiceName":"HSI","olt_srl_nu":"9111101375","onuId":13,"partnerCode":"LMO13893","profileName":"DSN-COMBO","registerType":"1","serialNumber":"44534E5726573E50","srvcs":[{"chrge_at":0,"cre_srvce_id":2,"gst_at":0,"srvcpk_id":62,"srvcpk_nm":"Free To Air"},{"chrge_at":0,"cre_srvce_id":3,"gst_at":0,"srvcpk_id":31,"srvcpk_nm":"Basic VOIP Services"},{"chrge_at":246.61,"cre_srvce_id":1,"gst_at":44.39,"srvcpk_id":12,"srvcpk_nm":"20Mbps-150GB-2Mbps"}],"stateCode":"AP","swUpgradeMode":"2","tp":3,"tps":["2"],"upstreamTrafficProfileName":"APSFL_7mbps 4474","village":"GUDUPALLE","aghra_cd":"172.16.237.199-1-11-13-HSI","adjstdPrt":11,"aaa_cd":"lag:237199:1:3:13","crps_mdlwr_in":1,"ds_mdlwr_in":0,"vndr":3,"ztevlan":null,"iptv_crnt_pckge_id":"79","newFup":"7Mbps_UP_20Mbps_DOWN","servicepacks":[{"servicepack":"Free To Air","expirydate":"29991231"}],"ZTEstatus":false,"adhr_nu":520382295418,"actvn_dt":null,"agnt_id":100000443,"apsf_unq_id":0,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_cycle_id":0,"blng_dstrct_id":10,"blng_eml1_tx":"","blng_house_flat_no":"00","blng_lnd_nu":null,"blng_lcly_tx":"Nalagamapalli","blng_mndl_id":65,"blng_buildingname":"Nalagamapalli","blng_pn_cd":517425,"blng_ste_id":0,"blng_std_cd":8570,"blng_streetname":"Nalagamapalli ","blng_vlge_id":14320,"blble_caf_in":0,"caf_type_id":1,"cnctn_sts_id":1,"cst_at":"291.00","cpe_pop_id":471,"crnt_caf_sts_id":1,"crnt_pckge_id":"79","custInfo":{"adhr_nu":520382295418,"actvn_dt":null,"apsfl_bbnl":4,"blng_cntct_nm":"","blng_dstrct_id":10,"blng_eml1_tx":"","blng_house_flat_no":"00","blng_lnd_nu":null,"blng_lcly_tx":"Nalagamapalli","blng_mndl_id":65,"blng_buildingname":"Nalagamapalli","blng_pn_cd":517425,"blng_ste_id":1,"blng_std_cd":8570,"blng_streetname":"Nalagamapalli ","blng_vlge_id":14320,"custmrTyp":"","dob_dt":"1984-01-28","frst_nm":"Rajendra ","frqncy_id":1,"gndr_id":1,"instl_buildingname":"Nalagamapalli","instl_chk_ind":false,"instl_house_flat_no":"00","instl_pincode":517425,"instl_state":1,"instl_streetname":"Nalagamapalli ","lst_nm":"M","loc_dstrct_id":10,"loc_eml1_tx":"","loc_lnd_nu":null,"loc_lmdle1_nu":"9989398346","loc_lcly_tx":"Nalagamapalli","loc_mndl_id":65,"loc_std_cd":8570,"loc_vlge_id":14320,"mdlr_nm":"","mbl_nu":9989398346,"pan_nu":"","pop_id":471,"rltve_nm":"","tle_nm":"Mr"},"custmrTyp":"","dob_dt":"1984-01-28","dprmnt_id":0,"efcte_dt":"2016-10-18","enty_sts_id":1,"expry_dt":"9999-12-31","frst_nm":"Rajendra ","frqncy_id":1,"gndr_id":1,"inst_amt":"","instl_buildingname":"Nalagamapalli","instl_chk_ind":true,"instl_house_flat_no":"00","instl_pincode":517425,"instl_state":1,"instl_streetname":"Nalagamapalli ","iptv_bx_amt":null,"iptv_bx_emi":"0","iptv_bx_own":"No","iptv_bx_srl_num":"MK4RRRG431M2468","iptv_bx_up_amt":"0","iptv_mac_addr_tx":"9C:65:EE:4C:2B:D2","iptv_mdl":"IPTV Basic Box-UPF:0","iptv_stpbx_id":956014250,"lst_nm":"M","lat":0,"lvl1_slt":1,"lvl2_slt":2,"lvl3_slt":8,"lg_id":"lag::","loc_eml1_tx":"","loc_lmdle1_nu":"9989398346","loc_lcly_tx":"Nalagamapalli","loc_dstrct_id":10,"loc_lnd_nu":null,"loc_mndl_id":65,"loc_std_cd":8570,"loc_vlge_id":14320,"lng":0,"mdlr_nm":"","mbl_nu":"9989398346","olt_acs_nde_id":"237199","olt_crd_nu":1,"olt_id":327,"olt_ip_addr_tx":"172.16.237.199","olt_prt_nm":3,"olt_prt_id":2028,"olt_prt_splt_tx":"1-2-8","onu_amt":"50","onu_emi":"50","onu_id":13,"onu_mac_addr_tx":"9C:65:EE:57:3E:51","onu_mdl":"DSN-COMBO","onu_own":0,"onu_srl_nu":"DSNW26573e50","onu_stpbx_id":956014249,"onu_up_frmt_amt":"0","orgsn_cd":"","pan_nu":"","pop_id":471,"prnt_cstmr_id":0,"prv_Dtls":"[Circular ~.data.prv_Dtls]","rltve_nm":"","splt_id":1583377,"status":1,"tel_cns":"0","tle_nm":"Mr","aghora_cd":"172.16.237.199-1-11-13","prpd_in":0,"hsi_prfl_tx":"7Mbps_UP_20Mbps_DOWN","ott_pckge_nm":null,"ott_price":null,"cafNumber":200267200},"rltve_nm":"","splt_id":1583377,"status":1,"tel_cns":1,"tle_nm":"Mr","aghra_cd":"172.16.237.199-1-11-13-HSI","aghora_cd":"172.16.237.199-1-11-13","aaa_cd":"lag:237199:1:3:13","prpd_in":0,"hsi_prfl_tx":"7Mbps_UP_20Mbps_DOWN"},"caf_id":200267200,"user":{"frst_nm":"V Suresh","pswrd_encrd_tx":"0a03407d814fc4a85359c00a184c21fc79b94444","wallet_flag":1,"prpd_flag":1,"lst_nm":null,"mrcht_id":1,"mrcht_nm":"Dreamstep Software Innovations","mrcht_usr_id":22181,"pwd_chngd_in":0,"chng_lg_in":0,"hyrchy_id":null,"hyrchy_grp_id":null,"admn_in":0,"mrcht_usr_nm":"LMO13893","mbl_nu":8367522845,"orgn_id":null,"dprts_id":null,"dsgn_id":null,"usr_ctgry_nm":"LMO","usr_ctgry_id":8,"usr_ctgry_ky":100000443,"sde_mnu_prfl_id":2000001,"mnu_prfle_id":5,"rpt_prfle_id":41,"stp_prfle_id":23,"lmo_org_nm":"Sri Ambika Cable Network","lmo_cd":"LMO13893","mso_cd":"MSO1829","app":"app","cmpnt_id":2,"user_id":22181,"aud":"http://dreamstep.com","iss":"Dreamstep","sub":"22181_user","iat":1704035675,"exp":1704046475,"jti":"9"}}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"down","olt_name":"212313-BATAJAGALAPALEM GP","mobile_num":"9395144391,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.211.119"},"down":0}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}
+|localhost:4500|POST|/apiv1/extApi/updateoltupdownFrmBss|{"aaa_cd":{"status":"up","olt_name":"200538-VENIGANDLA GP","mobile_num":"9121101448,9121101451,7569689696,9154349168,9100042123","olt_ip":"172.16.202.109"},"down":1}|{}|{"b":"","o":"","d":"","v":"","c":"","i":""}

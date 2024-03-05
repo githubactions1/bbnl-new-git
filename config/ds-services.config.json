@@ -1,0 +1,35 @@
+
+{
+	"ds-services":{
+				"version": { 
+					"CURRENT_VERSION": "1.0",
+					"VERSION_RELEATE_DT":"",
+					"LAST_SUPPORTED_VERSION":"",
+					"UPGRADE_MESSAGE":"",
+					"FORCE_UPGRADE_INDICATOR":false,
+					"WARNING_MESSAGE":""
+
+				},
+				"alerts": {
+					"DISABLE_ALERTS":false,
+					"ALERT_ON_MAINTANACE": true
+				},
+				"audit": {},
+				"auth": {},
+				"core": {},
+				"monitor": {
+					"MONITORING_HOST_URL":"",
+					"MONITOR_DB_POOL":false,
+					"MONITOR_DB_POOL_FREQUENCY":false,
+					"MONITOR_HEARTBEAT":false,
+					"MONITOR_HEARTBEAT_FREQUENCY":3600,
+					"MONITOR_APP_START":true,
+					"REGISTER_ON_START":false
+
+				},
+				"maintanance":{
+					
+				}
+			}
+
+}

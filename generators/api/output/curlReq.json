@@ -1,0 +1,14 @@
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'{"aid":{"ipAddress":"172.16.239.79","card":"1","tp":"13","onuId":"96"},"admin":"1","fec":"true","swUpgradeMode":"2","serialNumber":"44534E572035F8C8","profileName":"DSNH662V","registerType":"1","name":"Narayanaswamy200002269"}' 'http://172.16.0.44:8080/agorang/rest/v1/eml/onu'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'{"aid":{"ipAddress":"172.16.239.79","card":"1","tp":"13","onuId":"96"},"tps":[{"card":"1","tps":["2"]}],"admin":"1","name":"HSI","networkServiceName":"HSI","upstreamTrafficProfileName":"APSFL_7mbps 4474","downstreamTrafficProfileName":" ","l2DhcpRelay":{"remoteId":"ID","useGlobalDhcp":false,"op82":true,"op18":false,"op37":false},"igmpOptions":{"useGlobal":false,"enable":true},"nativeVlan":"false"}' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+curl -XGET -H "Content-type: application/json" 'http://172.16.4.107/prov4serv/prov_if?oper=insert&client=lag:239079:1:5:96&avp=Filter-Id<>nonblock<>check&avp=accessId<>18d0.7135.f8c9<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=7Mbps_UP_15Mbps_DOWN<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply'
+
+curl -XPUT -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d '{"admin":0,"name":"IPTV"}' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/172.16.239.79-1-13-96-HSI/multicastpackage'
+
+curl -XPOST -H 'Authorization: Basic YnNzOkJzc0AxMjM=' -H "Content-type: application/json" -d'{"aid":{"ipAddress":"172.16.239.79","card":"1","tp":"13","onuId":"96"},"tps":[{"card":"1","tps":["2"]}],"admin":"1","networkServiceName":"IPTV","name":"IPTV","nativeVlan":"false"}' 'http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon'
+
+
+curl -XPOST -H 'username: teraadmin' -H 'apikey: 6ed73c1a-7817-49ab-b185-981f97cf5fd8' -H "Content-type:application/json" -d '{"deviceid":"00:02:5B:C7:17:70","devicecategory":"OTHER_DEVICE","partnerCode":"LMO12333","subscriber":{"title":"Mr.","firstname":"Narayanaswamy ","lastname":"Peravali","contactno":"9989013704","emailid":"test@mail.com","identityProofId":"932498355654","address":"kk,kk,RACHEPALLI","village":"RACHEPALLE","mandal":"SINGANAMALA","districtCode":"ANANTAPUR","stateCode":"AP","countryCode":"INDIA","countryISO2":"IN","remarks":"","cafNumber":"200002269","billingStartDate":"10"}}' 'http://iptv.apsfl.co.in:8080/appserver/rest/iptv/registersubscriber'
+
+curl -XPOST -H 'username: teraadmin' -H 'apikey: 6ed73c1a-7817-49ab-b185-981f97cf5fd8' -H "Content-type:application/json" -d '{"subscribercode":"ANA1027494","servicepacks":[{"servicepack":"Free To Air","expirydate":"29991231"}]}' 'http://iptv.apsfl.co.in:8080/appserver/rest/iptv/addservicepack'

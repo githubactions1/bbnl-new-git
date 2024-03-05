@@ -1,0 +1,190 @@
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { CrudService } from 'app/main/apps/crud.service';
+import { DsSidebarService } from '@glits/components/sidebar/sidebar.service';
+import { AtomService } from 'app/main/services/atom.service';
+
+@Component({
+  selector: 'app-<%= clntFleNmPrx %>',
+  templateUrl: './<%= clntFleNmPrx %>.component.html',
+  styleUrls: ['./<%= clntFleNmPrx %>.component.scss']
+})
+export class <%= compName %>Component implements OnInit {
+  columnDefs:any;
+  gridData:any;
+  initdata:any;
+  gridApi;
+  permissions;
+  permMessage="You do not have permissions to do this operation. Please contact Administrator to get permissions."
+   getRowHeight = function () {return 40; }
+   getHeaderDtls = function() { return {"title": this.formDetails.stngs.form_title+" List","icon":"receipt"}}
+  public fields: any[] = [<% for(var i=0; i < bfld_dtls.length; i++) { if(! (bfld_dtls[i].COL_FLD_TYPE == 'infra')) { if(bfld_dtls[i].COL_FLD_TYPE == 'textarea') {%>  
+    { type: '<%=bfld_dtls[i].COL_FLD_TYPE %>',name: '<%= bfld_dtls[i].COLUMN_NAME %>',label: '<%= bfld_dtls[i].COLUMN_COMMENT %>',isCustom:<%= bfld_dtls[i].IS_CUSTOM %>,customData:<%- JSON.stringify(bfld_dtls[i].CUSTOM_DATA) %>,multiline:true,rowcount:6,value: '',required: false,hidden:true },<% } else { %>
+    { type: '<%=bfld_dtls[i].COL_FLD_TYPE %>',name: '<%= bfld_dtls[i].COLUMN_NAME %>',label: '<% if (bfld_dtls[i].IS_CUSTOM) {%><%=bfld_dtls[i].CUSTOM_DATA.label%><%} else {%><%=bfld_dtls[i].COLUMN_COMMENT%><% } %>',isCustom:<%= bfld_dtls[i].IS_CUSTOM %>,customData:<%- JSON.stringify(bfld_dtls[i].CUSTOM_DATA) %>,value: '',required: false,hidden:true },<% }} } %>
+  ];
+  public formDetails : any ={ 
+                            fnctns  :{},
+                            apis    :{ "sel_url":"<%=module_nm %>/<%=url %>",
+                                       "upd_url":"<%=module_nm %>/<%=url %>/:<%=pk %>",
+                                       "ins_url":"<%=module_nm %>/<%=url %>",
+                                       "del_url":"<%=module_nm %>/<%=url %>/:<%=pk %>"},
+                            initdata:{ },
+                            fields  :this.fields,
+                            key_field:["<%=pk %>"],
+                            stngs   :{ "style" :"mat",
+                                        "saveBtn":true,
+                                        "saveAsBtn":false,
+                                        "closeBtn":true,
+                                        "model_style":"right",
+                                        "form_title":"<%= obj_nm %>",
+                                        "deleteBtn":false,
+                                        "show_lables":false,
+                                        "oper_mode":"new"
+
+                            }
+                          } 
+  constructor(private _dsSidebarService: DsSidebarService, public crdsrv: CrudService,private atmSrv: AtomService ) {
+    this.initdata= {} 
+    this.permissions={ "slct_in": 1, "insrt_in": 0, "updt_in": 0, "dlte_in": 0, "exprt_in": 0 }
+  }
+  ngOnInit() {
+    this.atmSrv.dropDownData.subscribe((data) => {
+      this.getDependedFieldsData(data);
+    });
+    this.getGridData();
+    this.getFieldsCustomData();
+  }
+  getFieldsCustomData() {
+    this.fields.forEach(element => {
+      if (element.isCustom) {
+        let eleData = this.getCustomData(element.customData)
+        element['options'] = eleData;
+      }
+    });
+    console.log(this.fields)
+  }
+  getCustomData(customData) {
+    let options = [];
+    if (customData.input_key == null) {
+      this.crdsrv.get(customData.route).subscribe((res) => {
+        let data = res['data']
+        data.forEach(element => {
+          options.push({
+            key: element[customData.key],
+            label: element[customData.label_key]
+          })
+        });
+      })
+      return options;
+    } else {
+      return options;
+    }
+
+  }
+  getGridData() {
+    this.crdsrv.get(this.formDetails.apis.sel_url).subscribe((res) => {
+      if (res['status'] == 200) {
+        this.permissions=(res['perm']===undefined) ? this.permissions:res['perm'];
+        this.gridData = res['data'];
+        this.columnDefs = [
+          { headerName: 'Sno', field: 'sno', cellStyle: { 'text-align': "center" }, cellClass: "pm-grid-number-cell", width: 100,sortable: true,filter: false },
+          { headerName: '<%=pknm %>', field:'<%=pk %>', hide:true, cellStyle: { 'text-align': "center" }, cellClass: "pm-grid-number-cell", width: 100 }, <% for(var i=0; i < bfld_dtls.length; i++) { if(! (bfld_dtls[i].COL_FLD_TYPE == 'infra')) { %>
+          { headerName: '<%= bfld_dtls[i].COLUMN_COMMENT %>', field: '<%= bfld_dtls[i].COLUMN_NAME %>', cellStyle: { 'text-align': "left" }, cellClass: "pm-grid-number-cell", width: 265, sortable: true,filter:true },<%} } %>
+          { headerName: 'Edit',cellStyle: { textAlign: 'center' },width: 100,
+                cellRenderer: function (param) {
+                  const eDiv = document.createElement('div');
+                  eDiv.innerHTML = `<button class="btn-simple editBtn-color edtBtnstls" >
+                                          <mat-icon class="s-20 mat-icon material-icons">edit</mat-icon>
+                                    </button>`;
+                  return eDiv;
+                },hide:(this.permissions.updt_in==1)?false:true
+          }, 
+          { headerName: 'Delete',cellStyle: { textAlign: 'center' },width: 100,
+                cellRenderer: function (param) {
+                  const eDiv = document.createElement('div');
+                  eDiv.innerHTML = `<button class="btn-simple dlteBtnStyls" >
+                                      <mat-icon  class="s-20 mat-icon material-icons deleteBtn-icon-color" >delete</mat-icon>
+                                    </button>`;
+                  return eDiv;
+                },hide:(this.permissions.dlte_in==1)?false:true
+          }];
+      }else if (res['status'] == 404) {
+        this.permissions={ "slct_in": 0, "insrt_in": 0, "updt_in": 0, "dlte_in": 0, "exprt_in": 0 }
+      }
+    })
+  }
+  onGridReady(params): void {
+    params.api.sizeColumnsToFit();
+    params.api.setHeaderHeight(35);
+    params.api.showLoadingOverlay();
+      this.gridApi = params.api;
+    //  this.gridColumnApi = params.columnApi;
+  }
+formEventTriggered(evetData){
+  if(evetData.dataUpdated)
+    this.getGridData();
+  if(evetData.closeForm){
+      this._dsSidebarService.getSidebar('addFormPanel').toggleOpen();
+  }   
+}
+  addNewEntry() {
+    this.formDetails.stngs.oper_mode="new";
+    this.formDetails.initdata={}
+    this.formDetails.stngs.deleteBtn=false;
+    this.formDetails.stngs.saveBtn=true;
+    this.initdata={}
+    this.openSideBar();
+  }
+
+  onCellClick(event) {
+    this.formDetails.initdata=event.data;
+    this.initdata=event.data;
+    if (event.colDef.headerName == 'Edit') {
+      this.getDependedFieldsData(this.initdata)
+      this.formDetails.stngs.deleteBtn=false;
+      this.formDetails.stngs.saveBtn=true;
+      this.formDetails.stngs.oper_mode="edit"
+      this.openSideBar();
+    } else if (event.colDef.headerName == 'Delete') {
+      this.getDependedFieldsData(this.initdata)
+      this.formDetails.stngs.deleteBtn=true;
+      this.formDetails.stngs.saveBtn=false;
+      this.formDetails.stngs.oper_mode="delete"
+      this.openSideBar();
+    }
+  }
+  getDependedFieldsData(data: any) {
+    this.fields.forEach(element => {
+      if (element.isCustom) {
+        if (data.hasOwnProperty(element.customData.input_key)) {
+          element['options'] = [];
+          let rte = element.customData.route.replace(element.customData.input_key, data[element.customData.input_key])
+          this.crdsrv.get(rte).subscribe((res) => {
+            let data = res['data'];
+            console.log(data)
+            data.forEach(d => {
+              element['options'].push({
+                key: d[element.customData.key],
+                label: d[element.customData.label_key]
+              })
+            })
+          })
+        }
+      }
+    });
+
+  }
+  openSideBar =function() {
+    this._dsSidebarService.getSidebar('addFormPanel').toggleOpen();
+  }
+  closeSideBar =function() {
+    this._dsSidebarService.getSidebar('addFormPanel').toggleOpen();
+  }
+  onBtnExport(): void {
+    const params = {
+      columnGroups: true,
+      columnKeys: ['sno',<% for(var i=0; i < bfld_dtls.length; i++) { if(! (bfld_dtls[i].COL_FLD_TYPE == 'infra')) { %> '<%= bfld_dtls[i].COLUMN_NAME %>', <% } } %>],
+      fileName: "ds_"+this.formDetails.stngs.form_title.replace(" ","_")
+    };
+    this.gridApi.exportDataAsCsv(params);
+  }
+}

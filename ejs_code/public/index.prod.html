@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Site information -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>We Track On By APSFL</title>
+    <meta name="WeTrackOn" content="WeTrackOn GPS Tracking for Personal vehicles, School Buses, trucks etc">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="client/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="client/public/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="client/public/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="client/public/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="client/public/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="client/public/assets/css/owl.transitions.css">
+    <link rel="stylesheet" href="client/public/assets/css/plyr.css">
+    <link rel="stylesheet" href="client/public/assets/css/swiper.min.css">
+    <link rel="stylesheet" href="client/public/assets/css/slick.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="client/public/assets/css/scheme/blue-green.css">
+    <link rel="stylesheet" href="client/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="client/public/assets/css/style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans%7CLato:400,600,900" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="client/public/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="client/public/assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="client/public/assets/images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="client/public/assets/images/icon-114x114.png">
+
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="blue-green">
+
+    <!-- Header -->
+    <nav class="navbar navbar-default style-10" data-spy="affix" data-offset-top="60">
+        <div class="container-fluid" style="padding-left:1px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <!-- <a class="navbar-brand"> -->
+                        <div class="row">
+                                <!-- <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"> -->
+                                        <img src="client/public/assets/images/logo/icon.png" alt="Wetrackon Logo" class="weTrckWebSteIcn" style="width: 60px; margin-left: 35px; margin-bottom: 8px;margin-top: 8px;">
+                                <!-- </div> -->
+                                <!-- <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9"> -->
+                                        <img src="client/public/assets/images/logo/wetrackon.png" alt="Wetrackon Logo" class="weTrckWebSteLgo" style="width: 24%; margin-left: 0%; width: 160px; margin-bottom: 8px; margin-top: 8px;">
+                                <!-- </div> -->
+                            </div>
+                            
+                        <!-- </a> -->
+                </div>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right onepage-nav">
+                    <li>
+                        <a href="#banner">Home</a>
+                    </li>
+                    <li>
+                        <a href="#cps-why">Use Cases</a>
+                    </li>
+                    <li>
+                        <a href="#cps-features">Features</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#cps-pricing">Pricing</a>
+                    </li> -->
+                    <li>
+                        <a href="#cps-support">Support</a>
+                    </li>
+                    <li>
+                        <a href="client/public/faq.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="#cps-about">About Us</a>
+                    </li>
+                    <li class="signup-item" data-toggle="modal" data-target="#myModal">
+                        <a href="">Contact Us</a>
+                    </li>
+                    <li class="login-item">
+                        <a href="" id="goTologin">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header End -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Contact Us Today!</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="cps-contact-form style-2" action="" method="post" name="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="first">First Name</label>
+                                    <input type="text" class="form-control cstmInpBrdr" placeholder="" id="firstname">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="last">Last Name</label>
+                                    <input type="text" class="form-control cstmInpBrdr" placeholder="" id="lastname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control cstmInpBrdr" id="email" placeholder="email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" class="form-control cstmInpBrdr" id="phone" placeholder="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="message">Your Message</label>
+                                    <textarea id="message" class="cstmInpBrdr" name="messge" placeholder="message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                        <button id="contactFormSubmit" type="button" class="btn btn-default" data-dismiss="modal">Send</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Banner -->
+    <div class="cps-banner style-13" id="banner">
+        <div class="cps-banner-item cps-banner-item-14">
+            <div class="cps-banner-content">
+                <div class="container">
+                    <div class="rowccontainerText">
+                        <div class="col-xs-12 sm-text-center">
+                            <h1 class="cps-banner-title">Simple way to
+                                <br/>add Intelligence to
+                                <br/> The Freight</h1>
+                            <form class="cps-banner-form" action="#" method="post">
+                                <input type="email" name="email" placeholder="9133313567" required="">
+                                <!-- <a href="client/public/tel:9010583587">Call Us</a> -->
+                                <button type="submit">Call Me</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cps-banner-image hidden-sm hidden-xs">
+            <div class="double-mock">
+                <img class="back-mock" src="client/public/assets/images/banner/wt_web.png" alt="Laptop">
+                <img class="front-mock" src="client/public/assets/images/banner/wt_mbl.png" alt="Mobile">
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+    <div class="cps-main-wrap">
+
+        <!-- Connect everyone on rightime -->
+        <!--<div class="cps-section cps-section-padding cps-bottom-0" id="cps-why">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 sm-bottom-30">
+                         <img class="img-responsive" src="client/public/assets/images/misc/connection.svg" alt="Connection"> 
+                    </div>
+                     <div class="col-md-8">
+                        <div class="connection-content">
+                            <div class="cps-section-header text-left style-3">
+                                <div class="icon">
+                                    <i class="fa fa-connectdevelop"></i>
+                                </div>
+                                <h3 class="cps-section-title cps-theme-color">How "WeTrackOn"" can help you</h3>
+                                <p class="cps-section-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea</p>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-2 sm-bottom-30">
+                         <img class="img-responsive" src="client/public/assets/images/misc/connection.svg" alt="Connection"> 
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- Connect everyone on rightime end -->
+
+        <!-- Services -->
+        <div class="cps-section cps-section-padding cps-bottom-0  ucase-ln1" id="cps-service">
+            <div class="container">
+                    <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                                <div class="cps-section-header text-center">
+                                    <h3 class="cps-section-title">Use Cases</h3>
+                                    <!-- <p class="cps-section-text">If you are looking for any other user case please contact us</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+                <div class="row">
+                    <div class="cps-services">
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-layers-alt"></span>
+                                </div>
+                                <h4 class="cps-service-title">Public Transportation</h4>
+                                <p class="cps-service-text">The Transporation users can track the services and get ETAs to the upcoming stops.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="fa fa-bus"></span>
+                                    <!-- <span class="ti-ruler-pencil"></span> -->
+                                </div>
+                                <h4 class="cps-service-title">School Bus Tracking</h4>
+                                <p class="cps-service-text">We Track On 'In Smart Schools', App cam be used to send real time alerts tp Parents when the bus is aproaching their designated stop. </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-user"></span>
+                                </div>
+                                <h4 class="cps-service-title">Car Dealers</h4>
+                                <p class="cps-service-text">Car dealers can track the Test Drive vehicles and give tracking an option their customers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+        <!-- Services -->
+        <div class="cps-section cps-section-padding cps-bottom-0 ucase-ln2" id="cps-service">
+            <div class="container">
+                <div class="row">
+                    <div class="cps-services">
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-car"></span>
+                                </div>
+                                <h4 class="cps-service-title">Personal Cars</h4>
+                                <p class="cps-service-text">Personal Vehicles Owners can get alerts when the vehicle enters a unsafe area/designated area.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-truck"></span>
+                                </div>
+                                <h4 class="cps-service-title">Commercial Trucks</h4>
+                                <p class="cps-service-text">Business Owners can track their trips, Drivers Performance, Delays, Speed Violations, Un authorized Stops etc.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-comments"></span>
+                                </div>
+                                <h4 class="cps-service-title">Delivery Serices</h4>
+                                <p class="cps-service-text">Status of the delivery items like Parcels/ Home delivery of Food etc can be tracked.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+        <!-- Services -->
+        <div class="cps-section cps-section-padding cps-bottom-0 ucase-ln3" id="cps-service">
+            <div class="container">
+                <div class="row">
+                    <div class="cps-services">
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-car"></span>
+                                </div>
+                                <h4 class="cps-service-title">Sanitation Management</h4>
+                                <p class="cps-service-text">Personal Vehicles Owners can get alerts when the vehicle enters a unsafe area/designated area.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-truck"></span>
+                                </div>
+                                <h4 class="cps-service-title">Police Vehicle Management</h4>
+                                <p class="cps-service-text">Complete Central Command Center(CCC) application with emergency services, BEATs route tracking and photo upload options.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cps-service style-6">
+                                <div class="cps-service-icon">
+                                    <span class="ti-comments"></span>
+                                </div>
+                                <h4 class="cps-service-title">Water Tankers Tracking</h4>
+                                <p class="cps-service-text">Municpal Vehicles/ Police Vehicles/ Emergency Services vehicles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+
+        <!-- Features -->
+        <div class="cps-section cps-section-padding cps-bottom-0" id="cps-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-xs-12">
+                        <div class="cps-section-header text-center">
+                            <h3 class="cps-section-title">WeTrackOn Features</h3>
+                            <p class="cps-section-text">Need NO Engineering to Operate this. Simple and Easy Navigation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mocked-features">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <span class="ti-panel"></span>
+                                </div>
+                                <h4 class="feature-title">Route Optimization</h4>
+                                <p>Our Route Optimization techniques can help you to minimize travel time, fuel costs and get more work done.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <span class="ti-panel"></span>
+                                </div>
+                                <h4 class="feature-title">Custom ETA Caliculation</h4>
+                                <p>Out Cutom ETA Logic will take the preious history of the vehicle/ simillar vehicles in that route.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <span class="ti-panel"></span>
+                                </div>
+                                <h4 class="feature-title">Vehicle/Driver/Freight Performance</h4>
+                                <p>The application lets you see , how your Driver or Vehicle is performing in comparision to the industry beanch marks.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 text-center hidden-sm hidden-xs">
+                            <img class="featured-mock" src="client/public/assets/images/mocks/weTrckFtrs.png" alt="Apps Mock">
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <span class="ti-panel"></span>
+                                </div>
+                                <h4 class="feature-title">Analytical Insights</h4>
+                                <p>Our specialized Analytical dashboards will give better view of the Freight in realtime.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <span class="ti-panel"></span>
+                                </div>
+                                <h4 class="feature-title">Realitime Alerting</h4>
+                                <p>Out subscription based alerting model lets users to enable or diable alerting any time in each category.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <span class="ti-panel"></span>
+                                </div>
+                                <h4 class="feature-title">Realtime Tracking</h4>
+                                <p>The Users can see the live location of the entire freight in real time with proper alerting in place.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Features End -->
+
+
+
+
+
+        <!-- Client Logo -->
+        <div class="cps-section cps-section-highlights cps-third-bg" id="cps-integrated-with">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-xs-3">
+                        <div class="cps-section-header text-center">
+                            <h5 class="cps-section-subtitle">
+                                <span class="fct-nu">1.5+ Million</span><br><span> Trips tracked Monthly.</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <div class="cps-section-header text-center">
+                            <h5 class="cps-section-subtitle">
+                                <span class="fct-nu">12000+</span><br><span>Active Vehciles being tracked right now.</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <div class="cps-section-header text-center">
+                            <h5 class="cps-section-subtitle">
+                                <span class="fct-nu">1.2 Billion+</span><br><span>Kms Tracked Monthly.</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <div class="cps-section-header text-center">
+                            <h5 class="cps-section-subtitle">
+                                <span class="fct-nu">7,33,000+</span><br><span>Downloaded our Tracking Mobile Apps.</span>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Client Logo End -->
+
+
+
+    </div>
+
+    <!-- Pricing Table -->
+    <!-- <div class="cps-section cps-section-padding" id="cps-pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12">
+                    <div class="cps-section-header text-center style-2">
+                        <h3 class="cps-section-title">Our Simple Pricing Model</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cps-packages">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="cps-package style-5 special">
+                            <div class="cps-package-header">
+                                <h4 class="cps-pack-name">Basic</h4>
+                            </div>
+                            <div class="cps-package-body">
+                                <p class="cps-pack-price">
+                                    <span>&#8377; 1500</span>
+                                    <span style="font-size: 14px;padding-left:10px;">vehicle / year</span>
+
+                                </p>
+                                <ul class="cps-pack-feature-list">
+                                    <li>Unlimited Trips</li>
+                                    <li>Live Tracking</li>
+                                    <li>3 Months Playback</li>
+                                    <li>Reports and Dashboards</li>
+                                    <li>Mobie And Web Access</li>
+                                </ul>
+                            </div>
+                            <div class="cps-pack-footer">
+                                <a class="btn" href="#">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="cps-package style-5 special">
+                            <div class="cps-package-header">
+                                <h4 class="cps-pack-name">Standard</h4>
+                            </div>
+                            <div class="cps-package-body">
+                                <p class="cps-pack-price">
+                                    <span>&#8377; 2000</span>
+                                    <span style="font-size: 14px;padding-left:10px;">vehicle / year</span>
+                                </p>
+                                <ul class="cps-pack-feature-list">
+                                    <li>All Basic Features</li>
+                                    <li>Driver Assignment</li>
+                                    <li>Push Notifications</li>
+                                    <li>100 SMS Alerts a Month</li>
+                                    <li>Route Deviation Detection</li>
+                                </ul>
+                            </div>
+                            <div class="cps-pack-footer">
+                                <a class="btn" href="#">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="cps-package style-5 special">
+                            <div class="cps-package-header">
+                                <h2 class="cps-pack-name">Premium</h2>
+                            </div>
+                            <div class="cps-package-body">
+                                <p class="cps-pack-price">
+                                        <span>&#8377; 2500</span>
+                                        <span style="font-size: 14px;padding-left:10px;">vehicle / year</span>
+                                </p>
+                                <ul class="cps-pack-feature-list">
+                                    <li>All Standard Features</li>
+                                    <li>ETA Caliculation</li>
+                                    <li>ETA Based Alerts</li>
+                                    <li>6 Months of Playback</li>
+                                    <li>Fuel based reports</li>
+                                </ul>
+                            </div>
+                            <div class="cps-pack-footer">
+                                <a class="btn" href="#">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Pricing Table End -->
+
+    <!-- Subscription -->
+    <div class="cps-section cps-section-padding subscription-style-4 cps-curve-bg-2" id="cps-support">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12">
+                    <div class="cps-section-header text-center">
+                        <h3 class="cps-section-title">Get Support Stright from Mobile App.</h3>
+                        <p class="cps-section-text">Users can submit support tickets and check status stright from their application. Our support enginners will help you out to gain maximum benifit out of 'We Track On' options.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row big-mock-padding">
+                <div class="col-xs-12 text-center">
+                    <img class="img-responsive" src="client/public/assets/images/bg/weTrck.png" alt="Asana big Screenshot">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h4 class="cps-subsection-title">Want to know More? Call +91-9133313567</h4>
+                    <div class="btn"   data-toggle="modal" data-target="#myModal" >Request a Call Back</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subscription End -->
+
+    <footer class="style-5">
+        <div class="cps-footer-upper">
+            <div class="container">
+                <div class="cps-footer-widget-area">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="cps-widget about-widget">
+                                <a class="cps-footer-logo" href="client/public/home-agency.html">
+                                    <img src="client/public/assets/images/logo-footer.png" alt="...">
+                                </a>
+                                <p>Andhra Pradesh State FiberNet Ltd.</p>
+                                <div class="cps-socials">
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="cps-widget custom-menu-widget">
+                                <h4 class="cps-widget-title">Useful Links</h4>
+                                <ul class="widget-menu">
+                                    <li>
+                                        <a href="#">About us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Services</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Team</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Testimonials</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Clients</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cps-footer-lower">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 xs-text-center">
+                        <p class="copyright">Copyright 2018,
+                            <a href="client/public/www.glits.in">Andhra Pradesh State FiberNet Ltd.</a>. All Rights Reserved</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 text-right xs-text-center">
+                        <ul class="footer-menu">
+                            <li>
+                                <a href="#">Legal</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms &amp; Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script: refer grunt file -->
+   <script src="client/assets/lib/index-lib.js"></script> 
+ 
+</body>
+
+</html>

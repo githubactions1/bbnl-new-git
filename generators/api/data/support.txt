@@ -1,0 +1,9 @@
+sprt_srvce_lst_t|services|support services
+sprt_env_lst_t|environment|support Environments
+sprt_prty_lst_t|tickets/priority|Ticket priority
+sprt_svrty_lst_t|tickets/severity|Ticket severity
+sprt_tckt_type_lst_t|tickets/type|Ticket type
+sprt_aplctn_lst_t|tickets/application|applications
+sprt_tckt_srce_lst_t|tickets/source|Ticket soruces
+sprt_tm_lst_t|supportTeam|Support team
+sprt_ctlge_lst_t|supportCatalogue|Support ticket Catalogue

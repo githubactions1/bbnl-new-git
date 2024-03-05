@@ -1,0 +1,1400 @@
+{
+	"bssapi": {
+		"aaa": {
+			"un": "",
+			"pwd": "",
+			"aplcn_id": 1,
+			"errCodes": [
+				"01",
+				"02",
+				"03",
+				"04",
+				"05"
+			],
+			"retryCodes": [],
+			"successCodes": [
+				"00"
+			],
+			"caf": {
+				"prov": [
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=insert&client=$$aaa_cd$$&avp=Filter-Id<>nonblock<>check&avp=accessId<>$$accessId$$<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=$$fup$$<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"ponchange": [
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=delete&client=$$aaa_cd$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=insert&client=$$aaa_cd_nw$$&avp=Filter-Id<>nonblock<>check&avp=accessId<>$$accessId$$<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=$$fup$$<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 5,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"suspend": [],
+				"resume": [
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=insert&client=$$aaa_cd$$&avp=Filter-Id<>nonblock<>check&avp=accessId<>$$accessId$$<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=$$fup$$<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"terminate": [
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=delete&client=$$aaa_cd$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 4,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"boxchange": [
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=update&client=$$aaa_cd$$&avp=Filter-Id<>nonblock<>check&avp=accessId<>$$accessId$$<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=$$fup$$<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1,
+						"type": "onu"
+					}
+				],
+				"allocated": [
+					{
+						"method": 3,
+						"url": "http://172.16.4.107/prov4serv/prov_if?oper=insert&client=$$aaa_cd_nw$$&avp=Filter-Id<>nonblock<>check&avp=accessId<>$$accessId$$<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=7Mbps_UP_15Mbps_DOWN<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					}
+				]
+			}
+		},
+		"agora": {
+			"un": "bss",
+			"pwd": "Bss@123",
+			"aplcn_id": 4,
+			"auth": "Basic",
+			"errCodes": [
+				4116,
+				3250,
+				2,
+				4184,
+				4115,
+				4039,
+				3522,
+				4057,
+				3696,
+				3494,
+				3397,
+				3694,
+				3632
+			],
+			"retryCodes": [
+				5
+			],
+			"successCodes": [],
+			"caf": {
+				"prov": [
+					{
+						"method": 2,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"admin": 0,
+							"name": "IPTV"
+						},
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd$$/multicastpackage",
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon",
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"networkServiceName": "IPTV",
+							"name": "IPTV",
+							"nativeVlan": "$$nativeVlan$$"
+						},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"admin": "1",
+							"fec": "true",
+							"swUpgradeMode": "2",
+							"serialNumber": "$$serialNumber$$",
+							"profileName": "$$profileName$$",
+							"registerType": "1",
+							"name": "$$name$$"
+						},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"name": "HSI",
+							"networkServiceName": "HSI",
+							"upstreamTrafficProfileName": "$$upstreamTrafficProfileName$$",
+							"downstreamTrafficProfileName": "$$downstreamTrafficProfileName$$",
+							"l2DhcpRelay": {
+								"remoteId": "ID",
+								"useGlobalDhcp": false,
+								"op82": true,
+								"op18": false,
+								"op37": false
+							},
+							"igmpOptions": {
+								"useGlobal": false,
+								"enable": true
+							},
+							"nativeVlan": "$$nativeVlan$$"
+						},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"ponchange": [
+					{
+						"method": 4,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd_iptv$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 4,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd_hsi$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 4,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu/$$aghra_cd$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 4,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"fec": "true",
+							"swUpgradeMode": "2",
+							"serialNumber": "$$serialNumber$$",
+							"profileName": "$$profileName$$",
+							"registerType": "1",
+							"name": "$$name$$"
+						},
+						"sqnce_nu": 6,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"networkServiceName": "HSI",
+							"name": "HSI",
+							"upstreamTrafficProfileName": "$$upstreamTrafficProfileName$$",
+							"downstreamTrafficProfileName": "$$downstreamTrafficProfileName$$",
+							"l2DhcpRelay": {
+								"remoteId": "ID",
+								"useGlobalDhcp": false,
+								"op82": true,
+								"op18": false,
+								"op37": false
+							},
+							"igmpOptions": {
+								"useGlobal": false,
+								"enable": true
+							},
+							"nativeVlan": "false"
+						},
+						"sqnce_nu": 7,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"networkServiceName": "IPTV",
+							"name": "IPTV",
+							"nativeVlan": "false"
+						},
+						"sqnce_nu": 8,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 2,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd_nw$$/multicastpackage",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"admin": 0,
+							"name": "IPTV"
+						},
+						"sqnce_nu": 9,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/reboot/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"ipAddress": "$$ipAddress$$",
+							"card": "$$card$$",
+							"tp": "$$tp$$",
+							"onuId": "$$onuId$$"
+						},
+						"sqnce_nu": 10,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"suspend": [
+					{
+						"method": 2,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu/$$aghora_cd$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"id": "$$aghora_cd$$",
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"type": 10023,
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"admin": "2"
+						},
+						"sqnce_nu": 6,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"resume": [
+					{
+						"method": 2,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu/$$aghora_cd$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"id": "$$aghora_cd$$",
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"type": 10023,
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"admin": "1"
+						},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/reboot/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"ipAddress": "$$ipAddress$$",
+							"card": "$$card$$",
+							"tp": "$$tp$$",
+							"onuId": "$$onuId$$"
+						},
+						"sqnce_nu": 6,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"terminate": [
+					{
+						"method": 4,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu/$$aghra_cd$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 4,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd$$-HSI",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 4,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd$$-IPTV",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"boxchange": [
+					{
+						"method": 2,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu/$$id$$",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"serialNumber": "$$serialNumber$$",
+							"registerType": "1",
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$",
+								"type": 10023
+							},
+							"id": "$$id$$"
+						},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1,
+						"type": "onu"
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/reboot/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"ipAddress": "$$ipAddress$$",
+							"card": "$$card$$",
+							"tp": "$$tp$$",
+							"onuId": "$$onuId$$"
+						},
+						"sqnce_nu": 4,
+						"api_rqst_cl_type_id": 1,
+						"type": "onu"
+					}
+				],
+				"status": [
+					{
+						"method": 3,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu/$$aghra_cd$$/status",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"restart": [
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/reboot/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"ipAddress": "$$ipAddress$$",
+							"card": "$$card$$",
+							"tp": "$$tp$$",
+							"onuId": "$$onuId$$"
+						},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"allocated": [
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/onu",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"admin": "1",
+							"fec": "true",
+							"swUpgradeMode": "2",
+							"serialNumber": "$$serialNumber$$",
+							"profileName": "$$profileName$$",
+							"registerType": "1",
+							"name": "$$name$$"
+						},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"networkServiceName": "HSI",
+							"name": "HSI",
+							"upstreamTrafficProfileName": "APSFL_7mbps 4474",
+							"downstreamTrafficProfileName": "",
+							"l2DhcpRelay": {
+								"remoteId": "ID",
+								"useGlobalDhcp": false,
+								"op82": true,
+								"op18": false,
+								"op37": false
+							},
+							"igmpOptions": {
+								"useGlobal": false,
+								"enable": true
+							},
+							"nativeVlan": "false"
+						},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"aid": {
+								"ipAddress": "$$ipAddress$$",
+								"card": "$$card$$",
+								"tp": "$$tp$$",
+								"onuId": "$$onuId$$"
+							},
+							"tps": [
+								{
+									"card": "1",
+									"tps": [
+										"2"
+									]
+								}
+							],
+							"admin": "1",
+							"networkServiceName": "IPTV",
+							"name": "IPTV",
+							"nativeVlan": "false"
+						},
+						"sqnce_nu": 8,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 2,
+						"url": "http://172.16.0.44:8080/agorang/rest/v1/eml/clientservicegpon/$$aghra_cd_nw$$/multicastpackage",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"admin": 0,
+							"name": "IPTV"
+						},
+						"sqnce_nu": 4,
+						"api_rqst_cl_type_id": 1
+					}
+				]
+			}
+		},
+		"mdle": {
+			"un": "teraadmin",
+			"pwd": "",
+			"apikey": "6ed73c1a-7817-49ab-b185-981f97cf5fd8",
+			"aplcn_id": 3,
+			"errCodes": [
+				604,
+				101,
+				503,
+				102,
+				103,
+				893,
+				521,
+				810,
+				892,
+				923,
+				872,
+				603,
+				946,
+				782,
+				929,
+				928,
+				930,
+				953,
+				954,
+				917,
+				919,
+				920,
+				921,
+				527,
+				524,
+				525,
+				573,
+				545,
+				550,
+				549,
+				546,
+				547,
+				916,
+				960,
+				526,
+				952,
+				551,
+				501,
+				554,
+				722,
+				728,
+				721,
+				725,
+				726,
+				560,
+				561,
+				567,
+				570,
+				976,
+				609,
+				608,
+				606,
+				605,
+				607,
+				623,
+				740,
+				559,
+				961,
+				738,
+				737,
+				562,
+				563,
+				564,
+				565,
+				566,
+				568,
+				569,
+				932,
+				510,
+				514,
+				515,
+				533,
+				519,
+				520,
+				522,
+				523,
+				543,
+				900,
+				539,
+				541,
+				934,
+				939,
+				933,
+				941,
+				504,
+				502,
+				506,
+				516,
+				518,
+				508,
+				517,
+				513,
+				511,
+				552,
+				553,
+				571,
+				572,
+				512,
+				505,
+				938,
+				544,
+				935,
+				937,
+				983,
+				936,
+				548,
+				507
+			],
+			"retryCodes": [],
+			"successCodes": [
+				202,
+				200
+			],
+			"caf": {
+				"prov": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/registersubscriber",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"deviceid": "$$iptv_mac_addr_tx$$",
+							"devicecategory": "OTHER_DEVICE",
+							"partnerCode": "$$partnerCode$$",
+							"subscriber": {
+								"title": "Mr.",
+								"firstname": "$$firstname$$",
+								"lastname": "$$lastname$$",
+								"contactno": "$$contactno$$",
+								"emailid": "$$emailid$$",
+								"identityProofId": "$$identityProofId$$",
+								"address": "$$address$$",
+								"village": "$$village$$",
+								"mandal": "$$mandal$$",
+								"districtCode": "$$districtCode$$",
+								"stateCode": "AP",
+								"countryCode": "INDIA",
+								"countryISO2": "IN",
+								"remarks": "",
+								"cafNumber": "$$cafNumber$$",
+								"billingStartDate": "10"
+							}
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 3,
+						"outpt_kys": "subscribercode"
+					},
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/addservicepack",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"subscribercode": "$$mdlwe_sbscr_id$$",
+							"servicepacks": [
+								{
+									"servicepack": "Free To Air",
+									"expirydate": "29991231"
+								}
+							]
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 4,
+						"dpndnt_sqnce_nu": 3,
+						"dpndnt_kys": "subscribercode"
+					}
+				],
+				"suspend": [],
+				"resume": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/addservicepack",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"subscribercode": "$$subscribercode$$",
+							"servicepacks": "$$servicepacks$$",
+							"expirydate": "29991231"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 2
+					}
+				],
+				"terminate": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/terminatesubscriber",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"subscriberCodes": [
+								"$$subscriberCodes$$"
+							]
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 5
+					}
+				],
+				"boxchange": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/replaceDevice",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"subscriberCode": "$$subscriberCode$$",
+							"oldDevice": "$$oldDevice$$",
+							"newDevice": "$$newDevice$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 3,
+						"type": "iptv"
+					}
+				],
+				"modify": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/modifysubscriber",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"subscribercode": "$$subscribercode$$",
+							"subscriber": {
+								"contactno": "$$contactno$$",
+								"emailid": "$$emailid$$",
+								"address": "$$address$$",
+								"village": "$$village$$",
+								"mandal": "$$mandal$$",
+								"districtCode": "$$districtCode$$",
+								"stateCode": "$$stateCode$$",
+								"countryCode": "INDIA",
+								"cafNumber": "$$cafNumber$$"
+							}
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 4
+					}
+				],
+				"addSrvcPck": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/addservicepack",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"subscribercode": "$$subscribercode$$",
+							"servicepacks": "$$servicepacks$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 4
+					}
+				],
+				"removeSrvcPck": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/disconnectservicepack",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"subscribercode": "$$subscribercode$$",
+							"servicepacks": "$$servicepacks$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 4
+					}
+				],
+				"postNotification": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/postnotification",
+						"method": 1,
+						"headerDtls": "",
+						"cre_srvce_id": 2,
+						"input": {
+							"subscribercode": "$$subscribercode$$",
+							"subject": "$$subject$$",
+							"message": "$$message$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 4
+					}
+				],
+				"fingerPrint": {
+					"url": "http://172.16.0.129/apiv2/ext/wrapper/cmdManager/command",
+					"method": 1,
+					"content_type": "applicaiton/json"
+				}
+			},
+			"Agent": {
+				"create": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/createPartner",
+						"method": 1,
+						"input": {
+							"franchiseCode": "$$franchiseCode$$",
+							"franchiseName": "$$franchiseName$$",
+							"franchiseNetworkName": "$$franchiseNetworkName$$",
+							"parentPartnerCode": "$$parentPartnerCode$$",
+							"emailId": "$$emailId$$",
+							"phoneno": "$$phoneno$$",
+							"address1": "$$address1$$",
+							"areaCode": "$$areaCode$$",
+							"cityCode": "$$cityCode$$",
+							"stateCode": "$$stateCode$$",
+							"countryCode": "$$countryCode$$",
+							"currencyCode": "$$currencyCode$$",
+							"zipcode": "$$zipcode$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 1,
+						"aplcn_id": 3
+					}
+				]
+			},
+			"package": {
+				"create": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/createPackage",
+						"method": 1,
+						"cre_srvce_id": 2,
+						"input": {
+							"packageCode": "$$packageCode$$",
+							"packageName": "$$packageName$$",
+							"serviceType": "$$serviceType$$",
+							"gst": "$$gst$$",
+							"packagePrice": "$$packagePrice$$",
+							"ltvIds": "$$ltvIds$$",
+							"serviceIds": "$$serviceIds$$",
+							"isGlobal": "$$isGlobal$$",
+							"packageSubscriptionType": "$$packageSubscriptionType$$",
+							"devicePlatForm": "$$devicePlatForm$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 1,
+						"aplcn_id": 3
+					}
+				],
+				"modify": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/modifyPackage",
+						"method": 1,
+						"cre_srvce_id": 2,
+						"input": {
+							"packageCode": "$$packageCode$$",
+							"serviceType": "$$serviceType$$",
+							"ltvIdsAdd": "$$ltvIdsAdd$$",
+							"ltvIdsRemove": "$$ltvIdsRemove$$",
+							"gst": "$$gst$$",
+							"packagePrice": "$$packagePrice$$",
+							"packageSubscriptionType": "$$packageSubscriptionType$$",
+							"isGlobal": "$$isGlobal$$",
+							"devicePlatForm": "$$devicePlatForm$$"
+						},
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 1,
+						"aplcn_id": 3
+					}
+				]
+			},
+			"channels": {
+				"getchnls": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/getServicesLTV",
+						"method": 3,
+						"input": {},
+						"cre_srvce_id": 2,
+						"api_rqst_cl_type_id": 1,
+						"sqnce_nu": 1,
+						"aplcn_id": 3,
+						"mthd_id": 3,
+						"outpt_kys" : 1
+					}
+				]
+			},
+			"fingerPrint": {
+				"sndMsg": {
+					"fingerprint": [
+						{
+							"url": "http://172.16.0.129/apiv2/ext/wrapper/cmdManager/command",
+							"method": "POST",
+							"input": {
+								"module": "DRM",
+								"command": "$$command$$",
+								"subscriberCodes": [
+									"$$subscriberCodes$$"
+								],
+								"franchiseCodes": [
+									
+								],
+								"expiryDate": "$$expiryDate$$",
+								"dataMap": {
+									"position": "$$position$$",
+									"fontType": "$$fontName$$",
+									"fontSize": "$$fontSize$$",
+									"fontColor": "$$fontColornm$$",
+									"duration": "$$duration$$",
+									"bgColor": "$$bgColornm$$",
+									"fingerPrintType": "$$Fingertype$$",
+									"fpPrintType": "OVERT",
+									"channel": "$$channel$$"
+								}
+							},
+							"api_rqst_cl_type_id": 1,
+							"sqnce_nu": 1,
+							"aplcn_id": 3
+						}
+					],
+					"OSD": [
+						{
+							"url": "http://172.16.0.129/apiv2/ext/wrapper/cmdManager/command",
+							"method": 1,
+							"input": {
+								"module": "DRM",
+								"command": "$$command$$",
+								"subscriberCodes": [
+									"$$subscriberCodes$$"
+								],
+								"franchiseCodes": [
+									
+								],
+								"expiryDate": "$$expiryDate$$",
+								"dataMap": {
+									"position": "$$position$$",
+									"fontType": "$$fontType$$",
+									"fontSize": "$$fontSize$$",
+									"fontColor": "$$fontColor$$",
+									"duration": "$$duration$$",
+									"bgColor": "$$bgColor$$",
+									"message": "$$message$$",
+									"userCanCloseMessage": "$$userCanCloseMessage$$"
+								}
+							},
+							"api_rqst_cl_type_id": 1,
+							"sqnce_nu": 1,
+							"aplcn_id": 3
+						}
+					],
+					"scroltext": [
+						{
+							"url": "http://172.16.0.129/apiv2/ext/wrapper/cmdManager/command",
+							"method": "POST",
+							"input": {
+								"module": "DRM",
+								"command": "$$command$$",
+								"subscriberCodes": [
+									"$$subscriberCodes$$"
+								],
+								"franchiseCodes": [
+									
+								],
+								"expiryDate": "$$expiryDate$$",
+								"dataMap": {
+									"duration": "$$duration$$",
+									"message": "$$message$$"
+								}
+							},
+							"api_rqst_cl_type_id": 1,
+							"sqnce_nu": 1,
+							"aplcn_id": 3
+						}
+					]
+				},
+				"cnclmsg": [
+					{
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/cmdManager/command",
+						"method": "POST",
+						"input": {
+							"module": "DRM",
+							"command": "CANCEL_DRM_COMMANDS",
+							"subscriberCodes": [
+								"$$subscriberCodes$$"
+							],
+							"franchiseCodes": [
+								
+							],
+							"expiryDate": "$$expiryDate$$",
+							"dataMap": {}
+						}
+					}
+				]
+			}
+		},
+		"zteims": {
+			"un": "admin",
+			"pwd": "Zte$007",
+			"aplcn_id": 2,
+			"errCodes": [
+				1,
+				2
+			],
+			"retryCodes": [
+				1,
+				2
+			],
+			"successCodes": [
+				1,
+				2
+			],
+			"caf": {
+				"prov": [
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>172.17.4.116</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400001</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriberPVIProfile\"><HSSMethod Name=\"CreatePVI\"><PVI>+91$$telNu$$@vskp.apsflims.in</PVI><SECVER>30</SECVER><USERNAME>+91$$telNu$$@vskp.apsflims.in</USERNAME><PASSWORD>$$tel_pwd$$</PASSWORD><REALM>vskp.apsflims.in</REALM><PECFN>cg31.vskp.apsflims.in</PECFN><SECFN>cg31.vskp.apsflims.in</SECFN><PCCFN>cg31.vskp.apsflims.in</PCCFN><SCCFN>cg31.vskp.apsflims.in</SCCFN></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400002</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400002</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriberPUIProfile\"><HSSMethod Name=\"CreatePUI\"><PUI>sip:+91$$telNu$$@vskp.apsflims.in</PUI><PVILIST>+91$$telNu$$@vskp.apsflims.in</PVILIST><IDENTITYTYPE>0</IDENTITYTYPE><LOCALINFO>AP</LOCALINFO><BARFLAG>0</BARFLAG><REGAUTHFG>1</REGAUTHFG><SPID>1</SPID><ROAMSCHEMEID>2</ROAMSCHEMEID><SCSCFNAMELIST>sip:scscf102.vskp.apsflims.in</SCSCFNAMELIST><CAPSIDLIST>1</CAPSIDLIST><CAPSTYPELIST>0</CAPSTYPELIST><SIFCIDLIST>100$101$102$103$104</SIFCIDLIST></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400003</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400003</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriberPUIProfile\"><HSSMethod Name=\"CreatePUI\"><PUI>tel:+91$$telNu$$</PUI><PVILIST>+91$$telNu$$@vskp.apsflims.in</PVILIST><IDENTITYTYPE>0</IDENTITYTYPE><LOCALINFO>AP</LOCALINFO><BARFLAG>0</BARFLAG><REGAUTHFG>1</REGAUTHFG><SPID>1</SPID><ROAMSCHEMEID>2</ROAMSCHEMEID><SCSCFNAMELIST>sip:scscf102.vskp.apsflims.in</SCSCFNAMELIST><CAPSIDLIST>1</CAPSIDLIST><CAPSTYPELIST>0</CAPSTYPELIST><SIFCIDLIST>100$101$102$103$104</SIFCIDLIST></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400009</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400009</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriber\"><HSSMethod Name=\"SetImpRegSet\"><PUILIST>$$pui_lst$$</PUILIST><DEFAULTPUI>sip:+91$$telNu$$@vskp.apsflims.in</DEFAULTPUI></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 4,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http: //schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400010</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400010</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriber\"><HSSMethod Name=\"SetAliaseGrp\"><PUILIST>sip:+91$$telNu$$@vskp.apsflims.in$tel:+91$$telNu$$</PUILIST><ALIASGROUPID>$$telNu$$</ALIASGROUPID></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 5,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.74:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"xmlns:m=\"http://www.operator.com/IMS/MMTelAS/\"><SOAP-ENV:Header><m:Authentication><m:Username>admin</m:Username><m:Password>Zte$007</m:Password></m:Authentication><m:MEName>MMTelAS_1</m:MEName><m:MessageID>2000001</m:MessageID></SOAP-ENV:Header><SOAP-ENV:Body><m:ADD_SBR><m:IMPU>tel:+91$$telNu$$</m:IMPU><m:LATA>$$lata$$</m:LATA><m:AUCCODE>$$lata$$</m:AUCCODE><m:CALLERAS>1$$lata$$</m:CALLERAS><m:CALLEDAS>2$$lata$$</m:CALLEDAS><m:NSCFU>1</m:NSCFU><m:NSCFB>1</m:NSCFB><m:NSCFNR>1</m:NSCFNR><m:NSCFNL>1</m:NSCFNL><m:NSCW>1</m:NSCW><m:NSHOLD>1</m:NSHOLD><m:NSOIP>1</m:NSOIP><m:NSTIP>1</m:NSTIP><m:LC>1</m:LC><m:LCT>1</m:LCT><m:NTT>1</m:NTT><m:ITT>0</m:ITT><m:INTT>1</m:INTT><m:IITT>0</m:IITT><m:IOLT>1</m:IOLT><m:SPCS>1</m:SPCS><m:HR>1</m:HR><m:HKMACAOTW>1</m:HKMACAOTW><m:CILC>1</m:CILC><m:CILCT>1</m:CILCT><m:CINTT>1</m:CINTT><m:CIITT>1</m:CIITT><m:CIHMT>1</m:CIHMT><m:CISPCS>1</m:CISPCS><m:CIHR>1</m:CIHR><m:OWELC>1</m:OWELC><m:OWELCT>1</m:OWELCT><m:OWENTT>1</m:OWENTT><m:OWEITT>0</m:OWEITT><m:OWESPCS>1</m:OWESPCS><m:OWEHR>1</m:OWEHR><m:OWEHMT>1</m:OWEHMT><m:CIOWELC>1</m:CIOWELC><m:CIOWELCT>1</m:CIOWELCT><m:CIOWENTT>1</m:CIOWENTT><m:CIOWEITT>1</m:CIOWEITT><m:CIOWESPCS>1</m:CIOWESPCS><m:CIOWEHR>1</m:CIOWEHR><m:CIOWEHMT>1</m:CIOWEHMT></m:ADD_SBR></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 6,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.74:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:m=\"http://www.operator.com/IMS/MMTelAS/\"><SOAP-ENV:Header><m:Authentication><m:Username>admin</m:Username><m:Password>Zte$007</m:Password></m:Authentication><m:MEName>MMTelAS_1</m:MEName><m:MessageID>2000001</m:MessageID></SOAP-ENV:Header><SOAP-ENV:Body><m:ADD_OIP><m:IMPU>sip:+91$$telNu$$@vskp.apsflims.in</m:IMPU><m:NUMFMT>1</m:NUMFMT></m:ADD_OIP></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 7,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.74:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"xmlns:m=\"http://www.operator.com/IMS/MMTelAS/\"><SOAP-ENV:Header><m:Authentication><m:Username>admin</m:Username><m:Password>Zte$007</m:Password></m:Authentication><m:MEName>MMTelAS_1</m:MEName><m:MessageID>2000001</m:MessageID></SOAP-ENV:Header><SOAP-ENV:Body><m:ADD_USRPWD><m:IMPU>sip:+91$$telNu$$@vskp.apsflims.in</m:IMPU></m:ADD_USRPWD></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 8,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.74:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"xmlns:m=\"http://www.operator.com/IMS/MMTelAS/\"><SOAP-ENV:Header><m:Authentication><m:Username>admin</m:Username><m:Password>Zte$007</m:Password></m:Authentication><m:MEName>MMTelAS_1</m:MEName><m:MessageID>2000001</m:MessageID></SOAP-ENV:Header><SOAP-ENV:Body><m:MOD_SS xmlns:m=\"http://www.operatordomain.com/IMS/MMTelAS/\"><m:IMPU>tel:+91$$telNu$$</m:IMPU><m:NSCBA>1</m:NSCBA></m:MOD_SS></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 9,
+						"api_rqst_cl_type_id": 1
+					}
+				],
+				"suspend": [],
+				"resume": [],
+				"terminate": [
+					{
+						"method": 1,
+						"url": "http://172.18.4.74:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:m=\"http://www.operator.com/IMS/MMTelAS/\"><SOAP-ENV:Header><m:Authentication><m:Username>admin</m:Username><m:Password>Zte$007</m:Password></m:Authentication><m:MEName>MMTelAS_1</m:MEName><m:MessageID>2000001</m:MessageID></SOAP-ENV:Header><SOAP-ENV:Body><m:RMV_SBR xmlns:m=\"http://www.operatordomain.com/IMS/MMTelAS/\"><m:IMPU>tel:+91$$telNu$$</m:IMPU></m:RMV_SBR></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400010</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400010</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriber\"><HSSMethod Name=\"DeleteAliaseGrp\"><PUI>sip:+91$$telNu$$@vskp.apsflims.in</PUI></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 2,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400009</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400009</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriber\"><HSSMethod Name=\"DelImpRegSet\"><PUI>tel:+91$$telNu$$</PUI></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 3,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400003</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400003</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriberPUIProfile\"><HSSMethod Name=\"DeletePUI\"><PUI>tel:+91$$telNu$$</PUI></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 4,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400002</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400002</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriberPUIProfile\"><HSSMethod Name=\"DeletePUI\"><PUI>sip:+91$$telNu$$@vskp.apsflims.in</PUI></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 5,
+						"api_rqst_cl_type_id": 1
+					},
+					{
+						"method": 1,
+						"url": "http://172.18.4.12:3001",
+						"headerDtls": "",
+						"cre_srvce_id": 3,
+						"input": {
+							"input": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns1=\"http://ngbcn.net/IMS/HSS/\"><SOAP-ENV:Header><ns1:Username>admin</ns1:Username><m:Password>Zte$007</m:Password><ns1:MessageID>2016090400001</ns1:MessageID><ns1:Address>http://172.18.4.12:3001</ns1:Address><ns1:VHLRID/><ns1:HLRNUMBER/><ns1:MARKID/><ns1:SWITCHNUM/><ns1:HLRIN/></SOAP-ENV:Header><SOAP-ENV:Body><ns1:root><msg_head><time>$$ts$$</time><from/><to/><msg_type/><serial>2016090400001</serial></msg_head><interface_msg><directive><HSSClass Name=\"HSSSubscriberPVIProfile\"><HSSMethod Name=\"DeletePVI\"><PVI>+91$$telNu$$@vskp.apsflims.in</PVI></HSSMethod></HSSClass></directive></interface_msg></ns1:root></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+						},
+						"sqnce_nu": 6,
+						"api_rqst_cl_type_id": 1
+					}
+				]
+			}
+		},
+		"huaweims": {
+			"audit": true,
+			"aplcn_id": 5
+		},
+		"sms": {
+			"audit": true
+		},
+		"adhar": {
+			"audit": true,
+			"un": "APSFL",
+			"pwd": "46b1afd1661851d158c62c0b0fed7e1b",
+			"aplcn_id": 7,
+			"prov": [
+				{
+					"sqnce_nu": 1,
+					"url": "http://172.16.0.140:443/apiv1/aadhaar/$$u_id$$",
+					"input": "",
+					"method": 3,
+					"api_rqst_cl_type_id": 1
+				}
+			]
+		},
+		"dasan": {
+			"aplcn_id": 10,
+			"caf": {
+				"restart": [
+					{
+						"method": 1,
+						"url": "http://172.16.0.129/apiv2/ext/wrapper/dasanonureboot",
+						"headerDtls": "",
+						"cre_srvce_id": 1,
+						"input": {
+							"ipAddress": "$$ipAddress$$",
+							"ctp": {
+								"slotIndex": "$$card$$",
+								"portIndex": "$$tp$$",
+								"onuId": "$$onuId$$",
+								"status": "reset"
+							}
+						},
+						"sqnce_nu": 1,
+						"api_rqst_cl_type_id": 1
+					}
+				]
+			}
+		}
+	},
+	"bssconf": {
+		"caf_spns_per_month": 1,
+		"lmo_initial_wallet_value": 4000,
+		"ztc": {
+			"dsn": {
+				"tmplt": "/glits/web/code/nodejs/APSFLWEB/server/app/templates/ztc/dsn_ztc.xml.template",
+				"path": "/glits/web/code/nodejs/APSFLWEB/glits/DSN"
+			},
+			"dsnw": {
+				"tmplt": "/glits/web/code/nodejs/APSFLWEB/server/app/templates/ztc/dsnw_ztc.xml.template",
+				"path": "/glits/web/code/nodejs/APSFLWEB/glits/DSN"
+			},
+			"zte": {
+				"tmplt": "/glits/web/code/nodejs/APSFLWEB/server/app/templates/ztc/zte_ztc.template",
+				"path": "/glits/web/code/nodejs/APSFLWEB/glits/ZTC"
+			},
+			"agora": {
+				"USER": "testuser",
+				"PWD": "admin123",
+				"HOST_NAME": "172.16.0.45"
+			}
+		},
+		"pdf": {
+			"tmplt": "/glits/web/code/nodejs/APSFLWEB/server/app/templates/invoice_html.ejs",
+			"path": "/glits/web/code/nodejs/APSFLWEB/pdf_invoice"
+		}
+	},
+	"routescofig": {
+		"routes": {
+			"tms": {
+				"path": "routes"
+			}
+		}
+	}
+}
