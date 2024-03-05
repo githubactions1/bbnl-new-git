@@ -18,34 +18,34 @@ jobs:
           node-version: '12.x'  # Specify the desired Node.js version
 
       - name: Build client app
-        working-directory: /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/client
+        working-directory: /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
         run: |
           pwd
           npm ci
           npm run build
 
       - name: Deploy client app
-        working-directory: /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/client
+        working-directory: /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
         run: |
-          rm -rf /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/apsfl
-          mkdir /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/apsfl
-          cp -rf /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/dist/* /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/apsfl
+          rm -rf /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
+          mkdir /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
+          cp -rf /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/dist/* /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
 
       - name: Deploy config files
         run: |
-          rm -f /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/config/bss.config.json
-          rm -f /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/config/db.config.js
-          cp /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/config/bss.config.uat.json /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/config/bss.config.json
-          cp /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/config/db.config.uat.js /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/config/db.config.js
+          rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
+          rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
+          cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
+          cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
 
       - name: Stop forever
         continue-on-error: true
         run: |
-          forever stop /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/nodeapp.js
+          forever stop /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           
       - name: reStart forever
         run: |
           pwd
-          forever restart /home/test/actions-runner/_work/BBNL_GIT_SONARQUBE/BBNL_GIT_SONARQUBE/nodeapp.js
+          forever restart /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           forever list
           
