@@ -1,0 +1,135 @@
+.container{
+    background-color: white;
+}
+.bdlngCss{
+    margin-left: 0%;
+    margin-top: 1%;
+    font-size: 18px;
+    color: #1563bb;
+    border-bottom: 1px solid #a2c6ef;
+    line-height: 0.1em;
+    // / margin: 10px 0 20px; /
+    width: 100%;
+    text-align: center;
+    b{
+        background-color: #fff;
+        font-weight: 500;
+        padding-right: 15px;
+        .mat-icon{
+            font-size: 23px;
+            margin-right: 6px;
+        }
+    }
+  }
+  .form-input{
+    font-size: 12px;
+    font-weight: 600;
+    padding: 18px 0px 18px 5px;
+    border-radius: 6px;
+  }
+  .form-label{
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+
+  }
+
+  .pageBackground{
+    background-color: #fffcf7 !important;
+  }
+  
+  .nav-tree-itm{
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    
+    border: 1px solid #ced4da;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  .nav-lbl{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px;
+
+    height: 32px;
+   
+    color: white;
+    margin: 0px;
+ 
+  }
+  .nav-cntnr{
+    height: 400px;
+    position: relative;
+   
+  }
+  .nav-hdr{
+    background: #3a97da;
+    justify-content: space-between;
+    padding: 5px 10px;
+
+  }
+  .nav-cntnt{
+    padding: 5px;
+    overflow: auto;
+    margin-top: 25px;
+  }
+  .srch-fltr{
+    // padding: 4px !important;
+    // border-radius: 4px !important;
+    // border: 1px solid #ced4da !important;
+    // font-size: 14px;
+    // font-weight: 400;
+    // top: 50px;
+    // position: absolute;
+    // width: 90%;
+    // background: white;
+    padding: 6px !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #ced4da !important;
+    font-size: 14px;
+    font-weight: 400;
+    top: 48px;
+    position: absolute;
+    width: 99.6%;
+    background: white;
+    box-shadow: 0 2px 10px 0 rgba(115, 143, 147, 0.24);
+  }
+  .ulb-ttl{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3a97da;
+    text-decoration: underline;
+
+  }
+  .spinner-div{
+    margin-top: 50%;
+    margin-left: 45%;
+  }
+  mat-spinner {
+    
+    width: 20px !important; 
+    height: 20px !important; 
+  
+  }
+.scrll-cntnt{
+    height: 100%;
+    overflow: scroll;
+}
+.chk-box{
+  p{
+    height: 20px;
+  }
+}
+
+.chk-box-cntnt{
+  height: 100%;
+  overflow: scroll;
+  
+}
+
+.chckbxBrdr.mat-checkbox-frame {
+  border-color: rgb(255, 252, 247)!important;
+}

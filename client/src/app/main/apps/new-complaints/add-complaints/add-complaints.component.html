@@ -1,0 +1,590 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <ds-loading *ngIf=""></ds-loading>
+    <div fxLayout="row">
+        <div fxFlex="80"></div>
+        <div *ngIf="" fxFlex="16">
+            <div class="text-right mt-24">
+                <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/home'"
+                    class="mat-raised-button font-weight-bold addTextColor" type="button">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <ng-container>
+        <div class="ds-card m-12" id="scrollTop">
+            <div fxLayout="row wrap" fxLayout.sm="column">
+                <div fxFlex.lg="70%" fxFlex.md="50%" fxFlex.lt-sm="100%">
+                    <form fxLayout="column" [formGroup]="cafdetails">
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Customer Details
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput formControlName="Cafid" required />
+                                    <mat-error>Customer Details is Required </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8 mt-5" >
+                                <button mat-flat-button [disabled]="cafdetails.invalid" class="
+                                        mat-raised-button
+                                        saveBtn-color
+                                        btnWdth
+                                        gtDtls
+                                    " (click)="getDetail()">
+                                    Get Details
+                                </button>
+                            </div>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8 mt-5" *ngFor="let data of rowData">
+                                <p *ngIf="data.caf_type_nm=='ENTERPRISE'"><span class="reqSgnColor">
+                                        <h5 style="color:rgb(255, 0, 21);font-weight: 900;">This Caf is Enterprise</h5>
+                                        <!-- <marquee width="100%" height="auto"><b> </b></marquee> -->
+                                    </span></p>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div style="text-align: center;" *ngFor="let data of rowData">
+                        <p *ngIf="data.sts_nm=='Active'">
+                            <b>
+                                <h5 style="color:green;font-weight: 900;">This Caf is Active</h5>
+                            </b>
+                        </p>
+                    </div>
+                    <div style="text-align: center;" *ngFor="let data of rowData">
+                        <p *ngIf="data.sts_nm=='Suspended'">
+                            <b>
+                                <h5 style="color:orange;font-weight: 900;">This Caf is Suspended</h5>
+                            </b>
+                        </p>
+                    </div>
+                    <div style="text-align: center;" *ngFor="let data of rowData">
+                        <p *ngIf="data.sts_nm=='Terminated'"><span class="reqSgnColor">
+                                <h5 style="color:rgb(255, 0, 21);font-weight: 900;">This Caf is Terminated</h5>
+                                <!-- <marquee width="100%" height="auto"><b></b></marquee> -->
+                            </span></p>
+                    </div>
+
+
+
+                    <ds-loading *ngIf="shwLdr"></ds-loading>
+					<div style="text-align: center;" *ngIf="opentcktcaf">
+                        <h5 style="color:rgb(255, 0, 21);font-weight: 900;">Already Ticket No : {{chckdtacaf.comp_ticketno}} is Opened For This CAF/BOX.</h5>
+                    </div>
+					<div *ngIf="!opentcktcaf">
+						<div *ngFor="let data of rowData">
+							<!-- <router-outlet _ngcontent-pby-c0></router-outlet> -->
+							<form fxLayout="column" [formGroup]="complaintform" (ngSubmit)="addComplaints()">
+
+								<div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                    <div fxFlex="50" fxFlex.xs="100" fxFlex.lx="50" class="px-8" *ngIf="enterprise">
+                                        <div class="form-label">
+                                            CC/OCC<span class="reqSgnColor">*</span>
+                                        </div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-select matNativeControl required formControlName="occcctype"
+                                                (valueChange)="occcc($event)">
+                                                <mat-option value="1">
+                                                    CC</mat-option>
+                                                <mat-option value="2">
+                                                    OCC</mat-option>
+												<mat-option value="8">
+                                                    GRIEVANCE</mat-option>
+                                            </mat-select>
+                                            <mat-error>Please Select Ticket type</mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+									<div fxFlex="50" fxFlex.xs="100" fxFlex.lx="50" class="px-8">
+										<div class="form-label">
+											Request type<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required formControlName="select_ticket_type"
+												(valueChange)="ticketType($event)">
+
+												<mat-option *ngIf="enterprise" value="Customer Complaints">
+													Customer Complaint</mat-option>
+												<mat-option *ngIf="enterprise" value="Service Request">
+													Service Request</mat-option>
+												<mat-option *ngIf="enterprise" value="Enquiry">
+													Enquiry</mat-option>
+												<mat-option *ngIf="!enterprise" value="Enterprise">
+													Enterprise Caf</mat-option>
+												<mat-option *ngIf="enterprise" value="Lmo Complaint">
+                                                    LMO Complaint</mat-option>
+											</mat-select>
+											<mat-error>Please Select Ticket type</mat-error>
+										</mat-form-field>
+									</div>
+
+									<div *ngIf="showMecustomer" fxFlex="50" fxFlex.xs="100" class="px-8" filter="true">
+										<div class="form-label">Issue Type<span class="reqSgnColor">*</span></div>
+
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required #singleSelect
+												formControlName="select_category" placeholder="IssueType" name="list"
+												
+												 [(ngModel)]="reqstCategory">
+												<!-- <mat-option>
+											<ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+										  </mat-option> -->
+												<!-- <mat-option>None</mat-option> -->
+												<mat-option *ngFor="let catlist of customercategory " [value]="catlist.id">
+													{{catlist.category}}
+												</mat-option>
+											</mat-select>
+											<mat-error>Issue Type is
+												Required</mat-error>
+										</mat-form-field>
+									</div>
+									<div *ngIf="showMeenterprise || showMerequest" fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Service Request Type
+											<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required formControlName="select_category"
+												placeholder="Issue Type" name="list" [(ngModel)]="reqstCategory">
+												<mat-option *ngFor="let servicelist of servicescategory"
+													[value]="servicelist.id">
+													{{servicelist.category}}
+												</mat-option>
+											</mat-select>
+											<mat-error>
+												Service Request Type</mat-error>
+										</mat-form-field>
+									</div>
+									<div *ngIf="showMeenquiry" fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Enquiry Type
+											<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required formControlName="select_category"
+												placeholder="Issue Type" name="list" 
+												[(ngModel)]="reqstCategory">
+												<mat-option *ngFor="let enquirylist of enquirycategory"
+													[value]="enquirylist.id">
+													{{enquirylist.category}}
+												</mat-option>
+											</mat-select>
+											<mat-error>
+												Enquiry Request Type</mat-error>
+										</mat-form-field>
+									</div>
+									<div *ngIf="showMeenterprise" fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Organization Name
+											<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required formControlName="select_orgnname"
+												placeholder="Issue Type" name="list" (click)="enterprisecategoryList()"
+												[(ngModel)]="reqstorgCategory">
+												<mat-option *ngFor="let enterpriselist of enterprisecategory"
+													[value]="enterpriselist.id">
+													{{enterpriselist.category}}
+												</mat-option>
+											</mat-select>
+											<mat-error>
+												Organization Name Required</mat-error>
+										</mat-form-field>
+									</div>
+								</div>
+								<div fxLayout="row" *ngIf="occ!=2" fxLayout.xs="column" fxFlexFill >
+									<div fxFlex="25" fxFlex.xs="100" class="px-8">
+										<div class="form-label" >Caller Mobile Number <span class="reqSgnColor">*</span></div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="alternate_number" required />
+											<mat-error>Caller Mobile Number is Required </mat-error>
+										</mat-form-field>
+									</div>
+
+									<div fxFlex="50" fxFlex.xs="50" class="px-8">
+										<div class="form-label">Caller Details<span class="reqSgnColor">*</span></div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="caller_name" required />
+											<mat-error>Caller Details required</mat-error>
+										</mat-form-field>
+									</div>
+									<div fxFlex="50" fxFlex.xs="50" class="px-8">
+										<div class="form-label">Call Attended By</div>
+										<mat-form-field appearance="outline">
+											<input matInput readonly formControlName="cllattndby"
+														value="{{selfData.mrcht_usr_nm}}" />
+											<!-- <mat-select matNativeControl required formControlName="cllattndby">
+												<mat-option *ngFor="let cat of selfData" [value]="cat.mrcht_usr_id">
+													{{cat.mrcht_usr_nm}}
+												</mat-option>
+											</mat-select> 
+											<mat-error>Please select Caller Attended By</mat-error>-->
+										</mat-form-field>
+									</div>
+									<div *ngIf="showMeenterprise" fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Location<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="location" />
+											<mat-error>Location is Required</mat-error>
+										</mat-form-field>
+									</div>
+								</div>
+								<div fxLayout="row" fxLayout.xs="column" *ngIf="occ==2" fxFlexFill>
+									<div fxFlex="25" fxFlex.xs="100" class="px-8">
+										<div class="form-label">LMO Mobile Number <span class="reqSgnColor">*</span></div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="alternate_number" required />
+											<mat-error>LMO Mobile Number is Required </mat-error>
+										</mat-form-field>
+									</div>
+
+									<div fxFlex="50" fxFlex.xs="50" class="px-8">
+										<div class="form-label">LMO Details<span class="reqSgnColor">*</span></div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="caller_name" required />
+											<mat-error>LMO Details required</mat-error>
+										</mat-form-field>
+									</div>
+									<div fxFlex="50" fxFlex.xs="50" class="px-8">
+										<div class="form-label">Call Attended By</div>
+										<mat-form-field appearance="outline">
+											<input matInput readonly formControlName="cllattndby"
+														value="{{selfData.mrcht_usr_nm}}" />
+											<!-- <mat-select matNativeControl required formControlName="cllattndby">
+												<mat-option *ngFor="let cat of selfData" [value]="cat.mrcht_usr_id">
+													{{cat.mrcht_usr_nm}}
+												</mat-option>
+											</mat-select> 
+											<mat-error>Please select Caller Attended By</mat-error>-->
+										</mat-form-field>
+									</div>
+									<div *ngIf="showMeenterprise" fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Location<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="location" />
+											<mat-error>Location is Required</mat-error>
+										</mat-form-field>
+									</div>
+								</div>
+								<div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+									<div fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">Caller Type<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required formControlName="cllrtyp">
+												<mat-option *ngFor="let ctp of cllrtype" [value]="ctp.id">
+													{{ctp.category}}
+												</mat-option>   
+											</mat-select>
+
+											<mat-error> Caller Type is Required</mat-error>
+										</mat-form-field>
+									</div>
+									<div fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">Priority<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field appearance="outline">
+											<mat-select matNativeControl required formControlName="priority">
+												<mat-option *ngFor="let prty of priority" [value]="prty.value">
+													{{prty.viewValue}}
+												</mat-option>
+											</mat-select>
+
+											<mat-error> Select Priority is Required</mat-error>
+										</mat-form-field>
+									</div>
+									<div fxFlex="50" fxFlex.xs="50" class="px-8">
+										<div class="form-label">New District<span class="reqSgnColor">*</span></div>
+										<mat-form-field appearance="outline">
+											<mat-select formControlName="new_dstrt" required>
+												<mat-option *ngFor="let d of newdstrct" [value]="d.dstrt_id">
+													{{d.dstrt_nm}}
+												</mat-option>
+											</mat-select>
+											<mat-error>Please select New District</mat-error>
+										</mat-form-field>
+									</div>
+									<div *ngIf="showMeenterprise" fxFlex="50" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Email
+										</div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="entemail" />
+										</mat-form-field>
+									</div>
+								</div>
+
+
+								<div fxLayout="row" fxLayout.xs="column" *ngFor="let data of rowData" fxFlexFill>
+
+									<div fxFlex="100" fxFlex.xs="100" class="px-8" formGroupName="employeeInfo"
+										style="width:100%">
+										<div fxFlex="75" fxFlex.xs="100" class="px-8">
+											<div class="form-label">Issue Owner<span class="reqSgnColor">*</span></div>
+											<mat-form-field appearance="outline">
+												<mat-select (selectionChange)="getsubemployee()" (click)="reset()"
+													formControlName="owner_typ" required>
+													<mat-option *ngFor="let o of org" [value]="o.complaint_owner_id">
+														{{o.complaint_owner_name}}
+													</mat-option>
+												</mat-select>
+												<mat-error>Please select issue Owner</mat-error>
+											</mat-form-field>
+										</div>
+										<div *ngIf="assigneddropdown" fxFlex="100" fxFlex.xs="100" class="px-8">
+											<div class="form-label">Assigned To <span class="reqSgnColor">*</span></div>
+											<mat-form-field appearance="outline">
+												<mat-select formControlName="assigned_emply" required
+													[(ngModel)]="employeeDetails">
+													<mat-option *ngFor="let o of suborg" [value]="o.complaint_sub_emp_id">
+														{{o.name_count}}
+													</mat-option>
+												</mat-select>
+												<mat-error>Assigned To is required</mat-error>
+											</mat-form-field>
+										</div>
+
+										<div *ngIf="lmoinput">
+											<div *ngFor="let data of rowData" fxFlex="100" fxFlex.xs="100" class="px-8">
+												<div class="form-label">Assigned To</div>
+												<mat-form-field appearance="outline">
+													<input matInput readonly formControlName="assigned_emply"
+														value="{{data.agnt_cd}}" />
+												</mat-form-field>
+											</div>
+										</div>
+									</div>
+									<div *ngIf="showMeenterprise" fxFlex="25" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Department Code
+										</div>
+										<mat-form-field appearance="outline">
+											<input matInput formControlName="dprtmntcde" />
+										</mat-form-field>
+									</div>
+									<div fxFlex="25" fxFlex.xs="100" class="px-8">
+										<div class="form-label"> Upload File
+										</div>
+										<input #imageInput formControlName="Updfile" type="file" class="form-control"
+											accept="image/*,application/pdf" (change)="screenshotsFile(1,$event)"
+											style="height: 43px;background: #F9F9F9;padding: 10px;">
+									</div>
+
+								</div>
+
+
+
+								<div *ngIf="imgsizemessage">
+									<p class="reqSgnColor" style="text-align: center;font-weight: bold;">Please reduce the
+										file size to less than 500kb then upload</p>
+								</div>
+								<div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+									<div fxFlex="100" fxFlex.xs="100" class="px-8">
+										<div class="form-label">
+											Complaint/Enquiry/Service request Description<span class="reqSgnColor">*</span>
+										</div>
+										<mat-form-field class="example-full-width" appearance="outline">
+											<mat-label>Description</mat-label>
+											<textarea matInput class="form-control" formControlName="complaint_remarks"
+												placeholder="Complaint Description" required></textarea>
+											<mat-error>Comment is
+												Required</mat-error>
+										</mat-form-field>
+
+									</div>
+								</div>
+								<div fxFlex="100" fxFlex.xs="100" class="px-8">
+									<button *ngIf="imagesize" mat-flat-button type="submit" [disabled]="complaintform.invalid"
+										class="mat-raised-button saveBtn-color btnWdth" aria-label="SAVE">
+										Submit
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+                </div>
+                <ds-loading *ngIf="searchLoader"></ds-loading>
+
+				<div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="nodata">{{nodataMsg}}</div>
+                <div *ngIf="showcustomerdetails" fxFlex.lg="30%" fxFlex.md="50%" fxFlex.lt-sm="100%">
+                    <div *ngFor="let data of rowData" ng-app="app" ng-controller="Controller as vm" class="container"
+                        style="margin: auto">
+                        <table>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Caf Status</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.sts_nm}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Caf Id</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{ data.caf_id }}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Subcriber Code</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{ data.mdlwe_sbscr_id }}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">ONU Serial Number</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.onu_srl_nu == null ? 'NA': data.onu_srl_nu}} </td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">ONU Mac ID</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.onu_mac_addr_tx == null ? 'NA': data.onu_mac_addr_tx}} </td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">IPTV Serial Number</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.iptv_srl_nu == null ? 'NA': data.iptv_srl_nu}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">IPTV Mac ID </td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.iptv_mac_addr_tx == null ? 'NA': data.iptv_mac_addr_tx}} </td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Pon Status</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.ste_nm == null ? 'NA': data.ste_nm}} </td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Pop ID</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.pop_id == 0 ? 'NA': data.pop_id}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">OLT Substation Name</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.sbstn_nm == null ? 'NA': data.sbstn_nm}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Customer Name</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{ data.cstmr_nm }} {{ data.lst_nm }}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Customer Mobile Number</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{ data.mbl_nu}}</td>
+                            </tr>
+
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Caf Type</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.caf_type_nm}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Package Name</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{ data.pckge_nm }}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Billing Frequency</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{ data.frqncy_nm }}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Activation Date</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.actvn_dts}}</td>
+                            </tr>
+
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Suspended On</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.spnd_ts == null ? 'NA': data.spnd_ts}}</td>
+
+                            </tr>
+
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">District Name</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.dstrt_nm == null ? 'NA': data.dstrt_nm}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">LMO Code</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.agnt_cd}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">LMO Mobile No</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.ofce_mbl_nu}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">Network Manager</td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.netwrk_cntct_nm}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">
+                                    Network Manager Mobile No
+                                </td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.netwrk_mbl_nu}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">
+                                    Marketing Manager Name
+                                </td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.sales_cntct_nm}}</td>
+                            </tr>
+                            <tr ng-repeat="row in vm.tableData">
+                                <td class="td_head">
+                                    Marketing Manager Mobile No
+                                </td>
+                                <td
+                                    [ngClass]="{'active':  data.sts_nm == 'Active' , 'terminate': data.sts_nm == 'Terminated', 'suspend': data.sts_nm == 'Suspended' }">
+                                    {{data.sales_mbl_nu}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+				
+                <!-- <button (click)='toogleTag()'>Toggle h2 tag</button>
+            <h2 *ngIf="showMe">Toogle me on button click</h2> -->
+                <!-- <div fxFlex.lg="50%" fxFlex.md="50%" fxFlex.lt-sm="100%">
+                    
+                </div> -->
+            </div>
+        </div>
+		
+    </ng-container>
+
+</div>

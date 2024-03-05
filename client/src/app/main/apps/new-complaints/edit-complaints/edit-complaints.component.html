@@ -1,0 +1,559 @@
+<div class="page-layout blank usrEmplye cstmrPrflePageBackground cusAcntCmpnt">
+    <!-- HEADER -->
+    <div *ngIf="clsbtn">
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+            <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="50" fxFlex.xs="100" class="px-8"></div>
+            <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="cursor-pointer tblPrfleBtn" style="text-align: center" (click)="close()">
+                    close
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header pt-8 pl-12" *ngFor="let s of cafDtlsData">
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+            <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="px-8">
+                <div class="user-info" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="start center">
+                    <div class="name">{{s.lst_nm?s.lst_nm:cafDtls.lst_nm}} {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} -
+                        <span>{{s.caf_nu}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+            <!-- <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="50" class="px-8"> -->
+            <div fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div>
+                    <!-- <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">LMO: </span>{{s.agnt_nm}} - <span>{{s.agnt_cd}}</span></p> -->
+                    <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.mbl_nu"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No: </span>{{s.mbl_nu}}</p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.email"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Email: </span>{{s.email == null ?
+                        'NA': s.email}}
+                    </p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.instl_eml1_tx"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Email:
+                        </span>{{s.instl_eml1_tx == null ? 'NA': s.instl_eml1_tx}}</p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.phne_nu"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Allocated Phoneno:
+                        </span>{{s.phne_nu == null ? 'No Number Assigned': s.phne_nu}}</p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.adhr_nu"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Aadhaar No: </span>{{s.adhr_nu}}</p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.sts_nm"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Status: </span>{{s.sts_nm}}</p>
+
+
+
+                </div>
+
+            </div>
+            <div fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Activated On: </span>{{s.actvn_dts}}
+                </p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Terminated On: </span>{{s.trmnd_ts}}
+                </p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.caf_type_nm"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Type: </span>{{s.caf_type_nm}}</p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.pckge_nm"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Package Name: </span>{{s.pckge_nm}}</p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Suspended On: </span>{{s.spnd_ts}}
+                </p>
+
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.frqncy_nm"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Billing Frequency: </span>{{s.frqncy_nm}}
+                </p>
+            </div>
+
+
+            <div fxFlex.xl="30" fxFlex.lg="48" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.instl_addr1_tx"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Address: </span>{{s.instl_addr1_tx}},
+                    {{s.instl_addr2_tx}} {{s.instl_ara_tx}}</p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.dstrt_nm"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr"></span>{{s.dstrt_nm}}, {{s.mndl_nm}}
+                    {{s.vlge_nm}}
+                </p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Resumed On: </span>{{s.rsme_dts}}</p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">LMO: </span>{{s.agnt_nm}} -
+                    <span>{{s.agnt_cd}}</span>
+                </p>
+                <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span
+                        class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No: </span>{{s.ofce_mbl_nu}}
+                </p>
+            </div>
+            <div fxFlex.xl="30" fxFlex.lg="48" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div>
+
+                    <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Network Manager:
+                        </span>{{s.netwrk_cntct_nm == null ? 'NA' : s.netwrk_cntct_nm}}</p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No:
+                        </span>{{s.netwrk_mbl_nu == null ? 'NA' : s.netwrk_mbl_nu}}</p>
+
+                    <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Sales Manager:
+                        </span>{{s.sales_cntct_nm == null ? 'NA' : s.sales_cntct_nm}}</p>
+                    <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No:
+                        </span>{{s.sales_mbl_nu == null ? 'NA' : s.sales_mbl_nu}}</p>
+                </div>
+            </div>
+            <!-- <div fxFlex.xl="33" fxFlex.lg="33" fxFlex.md="50" fxFlex.xs="100" class="px-8"></div> -->
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <!-- CONTENT -->
+    <div class="content">
+        <mat-tab-group (selectedTabChange)="tabChangeFn($event)" [(selectedIndex)]="selectedIndex">
+            <mat-tab>
+                <div *ngFor="let c of ontDtls1" class="mt-2">
+
+                    <ng-template mat-tab-label>
+                        {{c.comp_ticket_type}}
+                    </ng-template>
+                    <ds-loading *ngIf="shwLdr"></ds-loading>
+                    <!-- <app-top-header [headrIcon] = "'account_box'" [headrName]="'Edit Complaints '"></app-top-header> -->
+
+                    <form fxLayout="column" [formGroup]="complaintcafdata">
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Request type<span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <!-- <mat-label>Aadhaar No</mat-label> -->
+                                    <input matInput type='text' matNativeControl required
+                                        formControlName="complt_ticket_type" value="{{c.comp_ticket_type}}" readonly>
+                                    <mat-error>Select Complaint type is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div *ngIf="c.comp_ticket_type=='Customer Complaints'" fxFlex="25" fxFlex.xs="100"
+                                class="px-8">
+                                <div class="form-label">
+                                    Customer Complaint Type
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <!-- <label class="form-label" for="select_category">  Complaint Category 
+                                    <span class="reqSgnColor">*</span></label> -->
+                                <mat-form-field appearance="outline">
+                                    <mat-select matNativeControl required filter="true" id="comp_cat" name="comp_cat"
+                                        formControlName="select_category" placeholder="Category List" name="list"
+                                        (selectionChange)="customercategoryList($event.value)"
+                                        *ngIf="c.comp_status == '1'">
+                                        <mat-option *ngFor="let catlist of customercategory" [value]="catlist.id">
+                                            {{catlist.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-select matNativeControl required filter="true" id="comp_cat" name="comp_cat"
+                                        formControlName="select_category" placeholder="Category List" name="list"
+                                        (selectionChange)="customercategoryList($event.value)"
+                                        *ngIf="c.comp_status != 1">
+                                        <mat-option *ngFor="let catlist of customercategory" [value]="catlist.id"
+                                            [disabled]="catlist.id">
+                                            {{catlist.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>Select Complaints Category is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="c.comp_ticket_type=='Service Request'" fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Services Request Type
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <mat-select matNativeControl required filter="true" id="comp_cat" name="comp_cat"
+                                        formControlName="select_category" placeholder="Issue Type" name="list"
+                                        (selectionChange)="servicescategoryList($event.value)"
+                                        *ngIf="c.comp_status == '1'">
+                                        <mat-option *ngFor="let servicelist of servicescategory"
+                                            [value]="servicelist.id">
+                                            {{servicelist.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-select matNativeControl required filter="true" id="comp_cat" name="comp_cat"
+                                        formControlName="select_category" placeholder="Issue Type" name="list"
+                                        (selectionChange)="servicescategoryList($event.value)"
+                                        *ngIf="c.comp_status == '2' || c.comp_status == '3'">
+                                        <mat-option *ngFor="let servicelist of servicescategory"
+                                            [value]="servicelist.id" [disabled]="servicelist.id">
+                                            {{servicelist.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>Select Complaints Category is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div *ngIf="c.comp_ticket_type=='Enquiry'" fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Enquiry Type
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <mat-select matNativeControl required filter="true" id="comp_cat" name="comp_cat"
+                                        formControlName="select_category" placeholder="Issue Type" name="list"
+                                        (selectionChange)="enquirycategoryList($event.value)"
+                                        *ngIf="c.comp_status == '1'">
+                                        <mat-option *ngFor="let enquirylist of enquirycategory"
+                                            [value]="enquirylist.id">
+                                            {{enquirylist.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-select matNativeControl required filter="true" id="comp_cat" name="comp_cat"
+                                        formControlName="select_category" placeholder="Issue Type" name="list"
+                                        (selectionChange)="enquirycategoryList($event.value)"
+                                        *ngIf="c.comp_status == '2' || c.comp_status == '3'">
+                                        <mat-option *ngFor="let enquirylist of enquirycategory" [value]="enquirylist.id"
+                                            [disabled]="enquirylist.id">
+                                            {{enquirylist.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>Complaints Category is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div formGroupName="employeeInfo" style="width:100%">
+                                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                    <div class="form-label">Issue Owner<span class="reqSgnColor">*</span></div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-select matNativeControl *ngIf="openholdinprogress" required filter="true"
+                                            id="complaint_owner" name="complaint_owner" formControlName="owner_typ"
+                                            (selectionChange)="getsubemployee($event.value)" (click)="reset()">
+                                            <mat-option *ngFor="let o of org" [value]="o.complaint_owner_id">
+                                                {{o.complaint_owner_name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-select matNativeControl required filter="true" id="complaint_owner"
+                                            name="complaint_owner" formControlName="owner_typ"
+                                            (selectionChange)="getsubemployee($event.value)"
+                                            *ngIf="resolveclose">
+                                            <mat-option *ngFor="let o of org" [disabled]="o.complaint_owner_id"
+                                                [value]="o.complaint_owner_id">
+                                                {{o.complaint_owner_name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>Issue Owner is Required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div *ngIf="assigneddropdown" fxFlex="50" fxFlex.xs="100" class="px-8">
+                                    <div class="form-label">Assigned To<span class="reqSgnColor">*</span>
+                                    </div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-select formControlName="assigned_emply" *ngIf="openholdinprogress"
+                                            required [(ngModel)]="employeeDetails">
+                                            <mat-option *ngFor="let o of suborg" [value]="o.complaint_sub_emp_id"
+                                                [disabled]="o.emp_active==='0'">
+                                                {{o.name_count}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-select formControlName="assigned_emply" required
+                                            *ngIf="resolveclose">
+                                            <mat-option *ngFor="let o of suborg" [disabled]="o.complaint_sub_emp_id"
+                                                [value]="o.complaint_sub_emp_id">
+                                                {{o.complaint_sub_emp_name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>Assigned employee is Required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div *ngIf="lmoinput">
+                                    <div *ngFor="let s of cafDtlsData" fxFlex="100" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Assigned To</div>
+                                        <mat-form-field appearance="outline">
+                                            <input matInput readonly formControlName="assigned_emply"
+                                                value="{{s.agnt_cd}}" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">Priority<span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <mat-select matNativeControl required formControlName="priority"
+                                        *ngIf="c.comp_status == '1'">
+                                        <mat-option *ngFor="let prty of priority"
+                                            [value]="prty.value">{{prty.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-select matNativeControl required formControlName="priority"
+                                        *ngIf="c.comp_status != '1'">
+                                        <mat-option *ngFor="let prty of priority" [disabled]="prty.value"
+                                            [value]="prty.value">{{prty.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error> Select Priority is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">Ticket Status <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <mat-select matNativeControl required formControlName="complaint_status"
+                                        filter="true" id="comp_status" name="comp_status"
+                                        (valueChange)="closed_over_by($event)">
+                                        <!-- <mat-option *ngFor="let status of complnt_status" [value]="status.value">{{status.viewValue}}
+                                        </mat-option> -->
+                                        <div *ngIf="c.comp_status != '3'">
+                                            <mat-option *ngFor="let status_open of chckcomplnt_status"
+                                                [value]="status_open.value">{{status_open.viewValue}}
+                                            </mat-option>
+                                        </div>
+                                        <!-- <div *ngIf="openrsle">
+                                            <mat-option  *ngFor="let status_open of complnt_status_open" [value]="status_open.value">{{status_open.viewValue}}
+                                            </mat-option>
+                                        </div>
+                                        <div *ngIf="rsleclse">
+                                            <mat-option  *ngFor="let status_rslve of complnt_status_resolve" [value]="status_rslve.value">{{status_rslve.viewValue}}
+                                            </mat-option>
+                                        </div>
+                                        <div *ngIf="clse" >
+                                            <mat-option *ngFor="let status_close of complnt_status_close" [value]="status_close.value">{{status_close.viewValue}}
+                                            </mat-option>
+                                        </div>
+                                        <div *ngIf="autorslve">
+                                            <mat-option  *ngFor="let status_atorslve of complnt_status_autorslve" [value]="status_atorslve.value">{{status_atorslve.viewValue}}
+                                            </mat-option>
+                                        </div>
+                                        <div *ngIf="inprogresssts">
+                                            <mat-option  *ngFor="let status_atorslve of complnt_status_inprogresssts" [value]="status_atorslve.value">{{status_atorslve.viewValue}}
+                                            </mat-option>
+                                        </div>
+                                        <div *ngIf="holdsts">
+                                            <mat-option  *ngFor="let status_atorslve of complnt_status_holdsts" [value]="status_atorslve.value">{{status_atorslve.viewValue}}
+                                            </mat-option>
+                                        </div> -->
+
+                                    </mat-select>
+                                    <mat-error> Select Status is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Alternate Number
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <!-- <mat-label>Aadhaar No</mat-label> -->
+                                    <input matInput type='text' matNativeControl formControlName="alternate_number"
+                                        value="{{c.alternate_mobile}}" readonly>
+                                    <mat-error>Alternate Number is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="closedfileby || c.comp_status=='3'">
+                                <div class="form-label"> Upload File
+                                </div>
+                                <input #imageInput formControlName="Updfile" type="file" class="form-control"
+                                    accept="image/*,application/pdf" (change)="screenshotsFile(1,$event)"
+                                    style="height: 43px;background: #F9F9F9;padding: 10px;">
+                            </div>
+                            <div *ngIf="c.comp_image == '1'" fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                fxFlex.xs="100" class="px-8 m-24">
+                                <div class="form-label"></div>
+                                <button mat-flat-button type="submit" aria-label="Areas"
+                                    class="mat-raised-button font-weight-bold addTextColor" (click)="downloadImage()"
+                                    type="button">
+                                    <mat-icon matTooltip="Add Areas">cloud_download</mat-icon> Download Image
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <!-- <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Re-Assigned To
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+
+                                    <input matInput formControlName="re-assign" required />
+
+                                    <mat-error> </mat-error>
+                                </mat-form-field>
+                            </div> -->
+                            <div fxLayout="row" *ngIf="closeOverby || c.comp_status=='2' || c.comp_status=='3'" fxLayout.xs="column" fxFlexFill>
+                                <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                    <div class="form-label">Resolved Over<span class="reqSgnColor">*</span>  
+                                    </div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-select matNativeControl  required formControlName="closed_over_by" *ngIf="c.comp_status == '1' || c.comp_status == '2' || c.comp_status == '4' || c.comp_status == '5' || c.comp_status == '6'" filter="true" id="closed_over_by" name="closed_by" required>
+                                            <mat-option *ngFor="let closeby of closed_by" [value]="closeby.value">{{closeby.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-select matNativeControl  required formControlName="closed_over_by" *ngIf="c.comp_status == '3'" filter="true" id="closed_over_by" name="closed_by" required>
+                                            <mat-option *ngFor="let closeby of closed_by" [disabled]="closeby.value" [value]="closeby.value">{{closeby.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>Select Status is Required</mat-error>
+                                    </mat-form-field>
+                                </div> 
+                                <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                    <div class="form-label">Issue Found
+                                        <span class="reqSgnColor">*</span>  
+                                    </div>
+                                    <mat-form-field appearance="outline">
+                                        <!-- <mat-select matNativeControl  required formControlName="issue_found" *ngIf="c.comp_status == '1'" filter="true" id="issue_found" name="issue_found" required>
+                                            <mat-option *ngFor="let issuefound of issue_found" [value]="issuefound.value">{{issuefound.viewValue}}
+                                            </mat-option>
+                                        </mat-select> -->
+                                        <!-- <mat-select formControlName="issue_found" *ngIf="c.comp_status == '2' || c.comp_status == '3'" >
+                                            <mat-option *ngFor="let issuefound of issue_found" [value]="issuefound.value"
+                                                [disabled]="issuefound.value">
+                                                {{issuefound.viewValue}}
+                                            </mat-option>
+                                        </mat-select> -->
+                                        <mat-select matNativeControl required filter="true" 
+                                        formControlName="issue_found" placeholder="Category List" name="list" required
+                                        (selectionChange)="categoryList($event.value)" *ngIf="c.comp_status == '1' || c.comp_status == '4' || c.comp_status == '5' || c.comp_status == '6'">
+                                        <mat-option *ngFor="let catlists of categorylist" [value]="catlists.id">
+                                            {{catlists.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-select matNativeControl required filter="true" 
+                                        formControlName="issue_found" placeholder="Category List" name="list" required
+                                        (selectionChange)="categoryList($event.value)" *ngIf="c.comp_status == '2' || c.comp_status == '3'">
+                                        <mat-option *ngFor="let catlists of categorylist" [value]="catlists.id" [disabled]="catlists.id">
+                                            {{catlists.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                        <mat-error>Select Issue Found is Required</mat-error>
+                                    </mat-form-field>
+                                </div> 
+                                <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                                    <div class="form-label">Action Taken <span class="reqSgnColor">*</span>  
+                                    </div>
+                                    <mat-form-field appearance="outline">
+                                        <input matInput type='text' matNativeControl required
+                                        formControlName="action_taken" required >
+                                        <mat-error>Action Taken is Required </mat-error>
+                                    </mat-form-field>
+                                </div> 
+                                <div *ngIf="c.close_image == '1'" fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 m-24">
+                                    <div class="form-label"></div>
+                                    <button mat-flat-button type="submit" aria-label="Areas"
+                                      class="mat-raised-button font-weight-bold addTextColor" (click)="closedownloadImage()" type="button" >
+                                      <mat-icon matTooltip="Add Areas">cloud_download</mat-icon> Download Image
+                                    </button>
+                                  </div>
+                            </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Complaint Subject
+                                </div>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <!-- <mat-label>Leave a comment</mat-label> -->
+                                    <textarea matInput class="form-control" placeholder="Complaint Description"
+                                        [value]="c.complaint" readonly></textarea>
+                                </mat-form-field>
+                                <!-- value="{{c.complaint}}" -->
+                            </div>
+                        </div>
+                        <div fxLayout="row" *ngIf="btnenable" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Complaint Description<span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <!-- <mat-label>Leave a comment</mat-label> -->
+                                    <textarea matInput class="form-control" formControlName="complaint_remarks"
+                                        placeholder="Complaint Description" required></textarea>
+                                    <mat-error>Complaint Description is Required</mat-error>
+                                </mat-form-field>
+                                <!-- value="{{c.complaint}}" -->
+                            </div>
+                        </div>
+                        <div fxLayout="row" *ngIf="btnenable" fxLayout.xs="column" style="text-align:end;" fxFlexFill>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8 mt-5">
+                                <button (click)="complaintedit()" mat-flat-button type="submit"
+                                    [disabled]="!complaintcafdata.valid" class="mat-raised-button saveBtn-color btnWdth"
+                                    aria-label="SAVE">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    Events
+                </ng-template>
+                <ds-loading *ngIf="shwLdr"></ds-loading>
+                <app-top-header [headrIcon]="'account_box'" [headrName]="'Complaint Logs'"></app-top-header>
+                <!-- <div class="timeline">
+              
+                  <div class="container2 right" *ngFor="let cmpllg of complmtlogData">
+                    <div class="content">
+                      <p class="logDate red-800-fg">{{cmpllg.dateCreated}}</p>
+                      <div class="cardBrdr">
+                        <div class="changelog">
+                          <div>
+                              <div class="stus_bck">
+                                  <span> <h5>Ticket Status : </h5></span>
+                                <button class="ctgryNm">{{cmpllg.comp_stas}}</button>
+                              </div>
+                            
+
+                            <ul>
+                                <li>Edit By : {{cmpllg.mrcht_usr_nm}}</li>
+                                <li>Technology : {{cmpllg.complaint_owner_name}}</li>
+                              </ul>
+                            
+                           
+                            <h4 class= "vrsnNumbr"> <span class = "vrsnltr">Complaint Description : </span>{{cmpllg.comments}}</h4>
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="container" *ngFor="let cmpllg of complmtlogData">
+                    <div class="timeline">
+                        <div class="timeline-year" id="section2">Caf ID : {{cmpllg.caf_id}}
+                            <!-- <span></span> -->
+                        </div>
+                        <!-- <div class="timeline-section">
+                        <div class="timeline-month">Month Unknown</div></div> -->
+                        <div class="timeline-section">
+                            <div class="timeline-date">{{cmpllg.dateCreated}}</div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="timeline-box">
+                                        <div class="box-title">
+                                            <button class="ctgryNm">{{cmpllg.comp_stas}}</button>
+                                        </div>
+                                        <div class="box-content">
+                                            <div class="box-item"><strong>Updated By : {{cmpllg.mrcht_usr_nm}}</strong>
+                                            </div>
+                                            <div class="box-item"><strong>Department :
+                                                    {{cmpllg.complaint_owner_name}}</strong></div>
+                                            <!-- <div class="box-item"><strong>Start Date</strong>: 08/22/2018</div> -->
+                                        </div>
+                                        <div class="box-footer">{{cmpllg.comments}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

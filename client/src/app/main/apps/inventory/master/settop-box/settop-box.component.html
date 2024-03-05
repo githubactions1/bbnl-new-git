@@ -1,0 +1,207 @@
+<div class="container">
+  <div class="page-layout simple tabbed pageBackground">
+    <div *ngIf="loader">
+      <div class="loading-indicator">
+          <div class="spinner-2">
+            <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+          </div>
+        </div>
+  </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">You do not have permissions to do this operation. Please contact Administrator to get permissions.</div>
+    <mat-tab-group (selectedTabChange)="tabClick($event)" *ngIf="permissions">
+      <mat-tab label="ADD STOCK" *ngIf="(permissions.insrt_in==1)?true:false">
+        <form class=" p-8" fxLayout="column" [formGroup]='cpeForm'>
+          <!-- <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div  fxFlex="100" fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%" fxFlex.gt-xs="85%" class="px-8" fxLayout="column" fxLayoutAlign="start start"></div>
+            <div fxFlex="100"  fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+
+                <span (click)="downloadtemplate()" style="cursor: pointer;" class ="dwmldTmplteBtn"><mat-icon>arrow_downward</mat-icon><span></span>Download
+                Template</span>
+            </div>
+          </div> -->
+
+          <div class="ds-card">
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+              <div class="form-label">Cpe Type*</div>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Cpe" formControlName="prdttype" required
+                  (selectionChange)="getCpeTypeModels($event.value);selectCpePrefixes()">
+                  <mat-option *ngFor='let prd of prdct_type' [value]="prd">{{prd.prdct_nm}}</mat-option>
+                </mat-select>
+                <mat-error>Cpe is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%"  class="px-8" fxLayout="column" fxLayoutAlign="start start">
+              <div class="form-label">Select Model*</div>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Model" formControlName="mdltype" required>
+                  <mat-option *ngFor='let m of prdct_mdls' [value]="m.mdle_id">{{m.mdle_nm}}</mat-option>
+                </mat-select>
+                <mat-error>Cpe is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%"  fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+              <div class="form-label">Enter LMO Code*</div>
+              <mat-form-field appearance="outline" fxFlex>
+                <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto"
+                  formControlName="agnt_id">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='getAgentCpes($event.option.value)'>
+                  <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                  <ng-container *ngIf="!isLoading">
+                    <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                      <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                    </mat-option>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-error>LMO Code is required!</mat-error>
+              </mat-form-field>
+              <br>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%"  class="px-8">
+              <div class="form-label">Select Cpe Prefixes*</div>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Prefix" formControlName="cpe_prex" multiple required>
+                  <mat-option *ngFor='let d of cpePrefix' [value]="d">{{d.prfx_cd}}</mat-option>
+                </mat-select>
+                <mat-error>Cpe Prefix is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="11%" fxFlex.gt-md="14%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  class="px-8">
+              <button type="button" mat-flat-button class="mat-raised-button mt-32 w-100-p gtDtls" id="link4" [matMenuTriggerFor]="menu">New Prefix</button>
+              <mat-menu #menu="matMenu">
+                <div (click)="$event.stopPropagation()">
+                <div fxLayout="column" fxLayoutAlign="start start">
+                  <div class="form-label">Enter Prefix Value</div>
+                  <mat-form-field appearance="outline" class="px-8" fxFlex>
+                    <input name="name" matInput formControlName="addnewPrix"/>
+                </mat-form-field>
+                </div>
+              </div>
+                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                  <div fxFlex="60" fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+                  <button type="button" mat-flat-button class="mat-raised-button mt-32 w-100-p saveBtn-color">Cancel</button>
+                  </div>
+                  <div fxFlex="60" fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+                  <button type="button" mat-flat-button class="mat-raised-button mt-32 w-100-p saveBtn-color" (click)="addprefix()">Ok</button>
+                  </div>
+                </div>
+              </mat-menu>
+            </div>
+         
+            <!-- <div fxFlex="10" fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+              <button type="button" mat-flat-button class="mat-raised-button mt-32 w-100-p saveBtn-color" (click)="delete()">Delete</button>
+            </div> -->
+            <div fxFlex="100" fxFlex.gt-lg="11%" fxFlex.gt-md="14%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  class="px-8" class = "mt-32">
+              <!-- <input type="file" class="mat-raised-button mt-32 w-100-p" formControlName="excl"
+                (change)="uploadedFile($event)" required> -->
+
+                <input type="file" id="file" formControlName="excl" (change)="uploadedFile($event)" accept=".xlsx, .xls, .csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.ods, application/vnd.ms-excel" required >
+                <label for="file">CHOOSE A FILE</label>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  *ngIf='shwrcds'>
+                <div class = "mt-40 pl-4">
+                  <mat-error *ngIf="cpeForm.get('excl').hasError('required') && cpeForm.submitted">Excel is required!</mat-error>
+              <span class='ttlRcds' *ngIf="exclGrid">Total Records({{ttlRcds}})</span>
+              <span class='vldecxl' *ngIf='isValid==false' style="color: red;">&nbsp;Please Upload Valid Excel</span>
+              <span class='vldecxl' *ngIf='isValid==false' style="color: red;">&nbsp;{{mess}}</span>
+              </div>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  class="px-8">
+            <button type="button" mat-raised-button (click)="downloadtemplate()" class ="mt-32 ">
+              <mat-icon class = "mr-4">cloud_download</mat-icon>Download Template</button>
+          </div>
+
+          </div>
+
+        </div>
+            <div class="ds-card m-12" *ngIf="exclGrid">
+              <div fxLayout="row" fxLayout.xs="column">
+                <div fxFlex.xl="85" fxFlex.lg="85" fxFlex.md="50" fxFlex.xs="100">
+                  <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                    Uploaded Data Records
+                  </div>
+                </div>
+                <div fxFlex.xl="12" fxFlex.lg="12" fxFlex.md="50" fxFlex.xs="100" class="text-right p-12">
+                  <div><span class='font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg ttlRcds'>Total Records
+                      ({{ttlRcds}})</span></div>
+                </div>
+              </div>
+              <dx-data-grid id="gridContainer" [allowColumnResizing]="true" [dataSource]="ExclDta" [showBorders]="true" [remoteOperations]="true" [allowColumnReordering]="true"
+              [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true"
+              style="width:100%" (onSelectionChanged)="onSelectionChanged($event)">
+                <dxi-column  [allowResizing]="true"  *ngFor="let f of columnDefsRcrd" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                alignment="f.cellStyle.text-align" [width]="f.width" [alignment] = "f.algnmnt"></dxi-column>
+                <dxo-selection showCheckBoxesMode="always" mode="multiple" allowSelectAll="false" ></dxo-selection>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select">
+                  <!-- or "select" -->
+                </dxo-column-chooser>
+              </dx-data-grid>
+            </div>
+            <ds-loading *ngIf="showLdr"></ds-loading>
+            <div class="ds-card m-12" *ngIf="cpeAgntGrid">
+              <!-- <div>{{cpeAgentStock[0].lmo_code}} Cpe Stock</div> -->
+              <dx-data-grid id="gridContainer" [allowColumnResizing]="true" [dataSource]="cpeAgentStock" [showBorders]="true" [remoteOperations]="true" [allowColumnReordering]="true"
+              [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" 
+              style="width:100%">
+                <dxi-column  [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                alignment="f.cellStyle" [width]="f.width"  [alignment] = "f.algnmnt"></dxi-column>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                <dxo-column-chooser [enabled]="true" mode="select">
+                  <!-- or "select" -->
+                </dxo-column-chooser>
+              </dx-data-grid>
+            </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="60" fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start"></div>
+            <div fxFlex="30" fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start"></div>
+            <div fxFlex="10" fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+              <button type="submit" mat-flat-button class="mat-raised-button mt-32 w-100-p gtDtls" (click)="submit()">Submit</button>
+            </div>
+          </div>
+
+        </form>
+      </mat-tab>
+      <mat-tab label="MY UPLOADS"> 
+        <div class="p-8">
+          <div>
+            <dx-data-grid id="gridContainer" [allowColumnResizing]="true" [dataSource]="uploadCpeStock" [showBorders]="true" [columnAutoWidth]="true" [remoteOperations]="true">
+              <dxi-column [allowResizing]="true"  *ngFor="let f of columnDefsUpdl" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName" 
+              alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+            </dx-data-grid>
+          </div>
+        </div>
+         </mat-tab>
+         <mat-tab label="RECENT UPLOADS"> 
+          <div class="p-8">
+            <div>
+              <dx-data-grid id="gridContainer"  [allowColumnResizing]="true" [dataSource]="recentCpeStock" [showBorders]="true" [remoteOperations]="true" [columnAutoWidth]="true">
+                <dxi-column [allowResizing]="true"  *ngFor="let f of columnDefsRecnt" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+              </dx-data-grid>
+            </div>
+          </div>
+         </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

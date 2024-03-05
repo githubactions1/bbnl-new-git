@@ -1,0 +1,484 @@
+.custmRprtBldrCmpnt{
+.ds-card {
+    min-width: 97%;
+  }
+  }
+
+.usrcrteCrd
+{
+  margin:24px;
+}
+
+@media only screen and (min-width:320px) and (max-width:480px)
+{
+  .usrcrteCrd
+  {
+    margin:8px;
+  } 
+}
+
+// .width-max{
+//     width:100%;
+// }
+// .wdth-hgt-mg{
+//     width: 400%;
+//     height: 100px;
+//     margin-left: 2%;
+// }
+
+
+.c-form{
+    // background: #fff;
+    padding: 3%;
+    // margin: 3%;
+    width: 100%;
+    height: fit-content;
+    .devider_row{
+        padding: 1% 0%;
+    }
+// .mat-form-field-appearance-outline .mat-form-field-outline {
+    
+//     color: rgb(245, 245, 245);
+//     background: rgba(245, 245, 245, 0.55);
+// }
+// .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    
+//     color: rgb(227, 235, 251) !important;
+//     background: rgb(243, 247, 255) !important;
+//     border-radius: 8px;
+// }
+.mat-pseudo-checkbox-checked::after {
+    top: 1.4px;
+    left: 0px;
+    width: 11px !important;
+    height: 6px !important;
+    }
+// .align_items{
+//     margin: 2% 0% 0% 0%;
+//     label{
+//         padding-right: 2%;
+//         font-size: 1.6rem;
+//     }
+// }
+.mat-button-toggle-group-appearance-standard {
+    width: 100%;
+}
+
+.mat-button-toggle-appearance-standard
+{
+    width: 100%;
+}
+// .mat-button-toggle-appearance-standard {
+//     color: rgba(0, 0, 0, 0.87);
+//     background: white;
+//     width: 100%;
+// }
+// .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+//     font-size: 15px !important;
+//     font-weight: 400 !important;
+// }
+.mat-button-toggle-checked {
+    background-color: #0d5fa5;
+    color: #fff !important;
+}
+.mat-raised-button-checked {
+    background-color: #0d5fa5;
+    color: #fff !important;
+}
+// h3{
+//     font-size: 20px;
+//     font-weight: 500;
+// }
+
+// .table thead th {
+//     // padding: 1%;
+//     // background: #dfeef9;
+//     // color: #03355f;
+//     // text-transform: capitalize;
+//     // font-weight: 500;
+//     padding: 1%;
+//     background: #1d79bb;
+//     color: #ffffff;
+//     text-transform: capitalize;
+//     font-weight: 500;
+// }
+// .custm_hdr{
+//     border-bottom: 4px solid #b3d7f1;
+// }
+// .table-bordered th, .table-bordered td {
+//     border: 1px solid rgba(210, 209, 209, 0.14);
+//     padding: 0.8%;
+// }
+// .table-striped tbody tr:nth-of-type(odd) {
+//     // background-color: rgba(210, 209, 209, 0.14);
+//     background-color: #f0f5fb;
+// }
+
+}
+// .frm-css{
+//     width: 100%;
+// }
+// .ipt-css{
+//     box-sizing: border-box;
+//     outline: auto;
+//     margin-left: 10%;
+//     height: 38px;
+// }
+// .rpt-nm-css{
+//     font-size: 18px;
+//     margin-left: 1%;
+//     font-weight: 600;
+//     color: #0d5fa5
+// }
+// ::ng-deep.btn-css{
+//     height: 41px !important;
+//     background-color: #0d5fa5 !important;
+//     color: white !important;
+//     // border-color: #0d5fa5;
+// }
+// .bdngdtaO{
+//     width: 280%;
+//     margin-left: 50%;
+//     }
+    // .dp_ad{
+    //     margin-left: 36%;
+    // }
+    .lblcs{
+//  margin-top: 24% !important;
+    color: #1d79bb;
+    font-weight: 500;
+    }
+    // .plscs{
+    //     font-size: 30px;
+    // }
+//    ::ng-deep.plscss{
+//         background-color:green !important;
+//         color: white !important;
+//         height: 35px !important;
+//          margin-top: 20% !important;
+//           margin-left:2% !important;
+//           min-width: 3% !important;
+//     }
+    ::ng-deep.fltrscss{
+        color: white !important;
+        height: 35px !important;
+         margin-top: 2% !important;
+    }
+    // .mrgnlft{
+    //     margin-left: 5%;
+    // }
+    .lbtvlue{
+        font-weight: 700;
+    color: #ada6a6;
+    }
+    // .lhdr{
+    //     font-size: 15px;
+    // font-weight: 700;
+    // }
+    // .labelbrdfx{
+        
+    //     height: 48px;
+    //     margin-top: 0.6%;
+    //     // width: 20%;
+    // }
+    .bdlngCss{
+        margin-left: 0%;
+        margin-top: 1%;
+        font-size: 18px;
+        color: #1563bb;
+        border-bottom: 1px solid #a2c6ef;
+        line-height: 0.1em;
+        // / margin: 10px 0 20px; /
+        width: 100%;
+        b{
+            background-color: #fff;
+            font-weight: 500;
+            padding-right: 15px;
+            .mat-icon{
+                font-size: 23px;
+                margin-right: 6px;
+            }
+        }
+      }
+      .psbtn{
+        font-size: 30px;
+        // margin-top: 7%;
+        margin-left: 0%;
+        color: green !important;
+        font-weight: 700;
+      }
+      .psbtn:hover {
+       cursor: pointer !important;
+      }
+      .sqvlcs{
+        margin-left: 4%;
+        font-size: 20px;
+      }
+    //   .sqlbcs{
+    //     margin-left: 10%;
+    //   }
+    
+    //   .uparwcs:hover {
+    //     cursor: pointer !important;
+    //    }
+    
+    //   .dwarwcs:hover {
+    //     cursor: pointer !important;
+    //    }
+    //    .mgThrn{
+    //     margin-left: 13%;
+    //    }
+    //    .mgTn{
+    //     margin-left: 10%;
+    //    }
+    //    .tblhdr{
+    //     font-size: 14px;
+    //     text-transform: uppercase;
+    //     font-weight: 700;
+    //     margin-left: 6%;
+    //     color: #104a86;
+    //    }
+    //    .tblhdrlst{
+    //     font-size: 14px;
+    //     text-transform: uppercase;
+    //     font-weight: 700;
+    //     margin-left: 3%;
+    //     color: #104a86;
+    //    }
+    //    .swap{
+    //     font-size: 14px;
+    //     text-transform: uppercase;
+    //     font-weight: 700;
+    //     margin-left: 23%;
+    //     color: #104a86;
+    //    }
+       .clumnscss{
+        // width: 140px;
+        // height: 42px;
+        // font-size: 13px;
+        // background-color: #ffffff;
+        // font-weight: 600;
+        // border-color: #d6d8da;
+        // color: black;
+        float:right;
+       }
+    //    .clmhdrwdth{
+    //     width: 150% !important;
+    //    }
+    //    .bdrfrclumns{
+    //     border: 1px solid rgba(224, 224, 224, 0.87);
+    //     border-radius: 5px;
+    //     margin-top: 0.5%;
+    //    }
+    //    .clumnhdrcss{
+    //     color: #f53e3e;
+    //     font-weight: 500;
+    //     text-transform: capitalize;
+    
+    //    }
+
+//               .custom_ds_table table {
+//  margin: auto;
+//   border-collapse: collapse;
+//   overflow-x: auto;
+//   display: block;
+//   width: fit-content;
+//   max-width: 100%;
+//   box-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
+// }
+
+// .custom_ds_table td, .custom_ds_table th {
+//   border-bottom: solid rgba(200, 200, 200, 0.11) 1px !important;
+//   padding: .5rem;
+// }
+
+// .custom_ds_table th {
+//   text-align: center;
+//     background-color: rgba(190, 220, 250, 0.19);
+//     text-transform: uppercase;
+//     padding-top: 1.5rem;
+//     padding-bottom: 1.5rem;
+//     border-bottom: #dfeefb solid 4px !important;
+//     border-top: none;
+// }
+
+// .custom_ds_table td {
+//   white-space: nowrap;
+//   border-bottom: none;
+//   color: rgb(20, 20, 20);
+//   text-align: center;
+//   padding: 6px;
+// }
+// .custom_ds_table td ::ng-deep .mat-form-field-wrapper {
+//     padding-bottom: 0px;
+// }
+
+
+// .custom_ds_table td ::ng-deep .mat-checkbox-frame {
+//     border-width: 1px;
+//     }
+// .custom_ds_table td:first-of-type, .custom_ds_table th:first-of-type {
+//   border-left: none;
+// }
+
+// .custom_ds_table td:last-of-type, .custom_ds_table th:last-of-type {
+//   border-right: none;
+// }
+
+.custom_ds_table{
+
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0 0px 8px 0 rgba(115, 143, 147, 0.4);
+    // border: 1px solid #e0e0e0;
+    /* padding: 0px 10px; */
+    height: 300px;
+    table{
+        width: 100%;
+        thead
+        {
+            background: #f9f2e9;
+            th
+            {
+                text-align: center;
+                text-transform: capitalize;
+                font-weight: 600;
+                padding: 12px 8px;
+
+            }
+      
+        }
+
+        .mat-form-field-wrapper {
+            padding-bottom: 0.34375em !important;
+        }
+
+        // tr td:nth-child(4){
+        //     padding-left:14px;
+        // }
+        // tr td:nth-child(5){
+        //     padding-left:8px;
+        // }
+        .vsbleRprt
+        {
+            margin: 0px auto;
+            display: table;
+        }
+    }
+
+
+    table, th, td {
+        border: 1px solid #e0e0e0;
+        border-collapse: collapse;
+      }
+}
+
+
+
+.tBle table{
+    width:100%
+    
+}
+
+.tBle{
+    table, th, td { 
+        border: 1px solid #e0e0e0;
+        border-collapse: collapse; 
+    } 
+      
+    th, td { 
+        // padding: 10px; 
+        text-align:center;
+        padding-top:8px;
+        padding-bottom:8px;
+
+    } 
+    .arrws{
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width:320px)  and (max-width:480px)
+{
+    .c-form {
+        margin:0px!important;
+        width: 100%!important;
+    } 
+
+
+    .tBle{
+        width: auto!important;
+        overflow-x: scroll!important;
+    }
+
+
+}
+
+.customBtnCss{
+    width: 140px;
+    height: 42px;
+    font-size: 13px;
+    background-color: #1fbb90;
+    font-weight: 600;
+    border-color: #d6d8da;
+    color: white;
+    margin-top: 5%;
+}   
+.nmCss{
+    color: #0d5487;
+}
+.sCss{
+    color: #d02518;
+    border: 1px solid #c7ccce;
+    padding: 0px 5px;
+    border-radius: 100%;
+    font-size: 13px;
+}
+.rpnmCs{
+    margin-left: 4%;
+
+}
+.rpdescCs{
+    margin-left: 5%;
+
+}
+.titlebrderTwo
+{
+    border-right: 1px solid #e8e8e8;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 3px solid #0d5fa5;
+    border-bottom: 1px solid #dbeeff !important;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(115, 143, 147, 0.4);
+    padding: 10px;
+}
+.cstmRprtBtn{
+    float:right
+}
+.bckbthCss{
+    width: 140px;
+    height: 42px;
+    font-size: 13px;
+    background-color: #475c97;
+    font-weight: 600;
+    border-color: #9293b3;
+    color: #ffffff;
+}
+.sbmtBtn,.updtBtn
+{
+    color: #1a1a79!important;
+//     width:30%;
+}
+
+.cnclBtn{
+    color: red!important;
+    // width:30%;
+}
+::ng-deep .dx-datagrid-content .dx-datagrid-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    cursor: pointer;
+    max-width: 10px;
+}

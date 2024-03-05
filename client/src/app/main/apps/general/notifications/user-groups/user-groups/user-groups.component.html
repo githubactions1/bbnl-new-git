@@ -1,0 +1,226 @@
+<div class="page-layout blank pageBackground">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div class="container custom_strip p-16 hdr-l" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <div fxFlex="0 1 calc(100% - 0.5%)" fxFlex.lt-md="0 1 calc(100% - 0.5%)" fxFlex.lt-sm="100%" class="cardcontainer">
+
+      <!-- <div fxLayout="row">
+        <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%" class="l-h">
+          <h1>User Groups</h1>
+        </div>
+        <div fxFlex fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%" fxFlex.gt-xs="70%" class="r-h">
+          <span class="newNotification" (click)="opensideBar('','addNew_group',null,'')">
+            <i class="material-icons">add_circle_outline</i>&nbsp;&nbsp;Add New Group</span>
+        </div>
+      </div> -->
+      <!-- {{permissions | json}} -->
+      <div class="ds-card m-12" *ngIf="(user.permissions.slct_in==1)?true:false">
+        <div class="web_note" *ngIf="!grpLst">
+          <img src="../../../../../../../assets/images/webnotes/no_notifications.png">
+          <p>No groups found ..!</p>
+        </div>
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="grpLst" [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+          [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+          (onToolbarPreparing)="(user.permissions.insrt_in==1)?onToolbarPreparing($event):false">
+          <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select">
+          </dxo-column-chooser>
+          <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="User Group"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName" [alignment]="f.alignment"
+            [width]="f.width" [allowResizing]="true"></dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.updt_in==1)?true:false" type="buttons" [width]="100" caption="Edit"
+            cellTemplate="editTemplate">
+            <div *dxTemplate="let data of 'editTemplate'">
+              <div class="tblEdtBtn cursor-pointer" (click)="onCellClick(data)">
+                Edit
+              </div>
+            </div>
+          </dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.dlte_in==1)?true:false" type="buttons" [width]="100" caption="Delete"
+            cellTemplate="delTemplate">
+            <div *dxTemplate="let data of 'delTemplate'">
+              <div class="tblDelBtn cursor-pointer" (click)="onCellClick(data)">
+                Delete
+              </div>
+            </div>
+          </dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.updt_in==1)?true:false" type="buttons" [width]="100" caption="Assign User"
+            cellTemplate="assignTemplate">
+            <div *dxTemplate="let data of 'assignTemplate'">
+              <div class="tblVwBtn cursor-pointer" (click)="onCellClick(data)">
+                Assign User
+              </div>
+            </div>
+          </dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.dlte_in==1)?true:false" type="buttons" [width]="100" caption="UnAssign User"
+            cellTemplate="unassignTemplate">
+            <div *dxTemplate="let data of 'unassignTemplate'">
+              <div class="tblDelBtn cursor-pointer" (click)="onCellClick(data)">
+                UnAssign User
+              </div>
+            </div>
+          </dxi-column>
+        </dx-data-grid>
+
+      </div>
+      <div *ngIf="(user.permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Table Format End -->
+
+
+    </div>
+  </div>
+
+</div>
+<!-- sidebar -->
+
+<ds-sidebar class="form-panel myPrfleSidebar" name="addNew_group" position="right" [invisibleOverlay]="false">
+  <ng-container>
+
+
+    <section fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-card fxFlex fxFlex.xs="100%">
+        <mat-card-title *ngIf="crtBtn">Create a new Group</mat-card-title>
+        <mat-card-title *ngIf="editBtn">Update Group</mat-card-title>
+        <form [formGroup]="newGrpForm" autocomplete="off" novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+          <!-- {{newGrpForm.value | json}} -->
+
+          <mat-card-content>
+            <div class="form-label">Enter Group Name</div>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Group Name" formControlName="grp_nm">
+              <mat-error *ngIf="hasError('grp_nm', 'required')">Group name is required</mat-error>
+            </mat-form-field>
+            <div class="form-label">Enter Group Description</div>
+            <mat-form-field appearance="outline">
+              <textarea matInput placeholder="Group Description" formControlName="grp_dscn_tx"></textarea>
+              <mat-error *ngIf="hasError('grp_dscn_tx', 'required')">Group Description is required</mat-error>
+            </mat-form-field>
+            <div class="form-label">Enter Group Category</div>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Group Category" [(value)]="selectedoptions" formControlName="grpCtgryControl" required multiple>
+                <mat-option *ngFor="let g of grpCtgryLst" [value]="g.grp_ctry_id">
+                  <span>{{g.grp_ctry_nm}}</span>
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError('grpCtgryControl','required')">Please choose a category</mat-error>
+            </mat-form-field>
+
+          </mat-card-content>
+          <mat-card-actions align="center">
+            <button mat-raised-button color="primary" [disabled]="!newGrpForm.valid" *ngIf="crtBtn" (click)="createGrp()">Save</button>
+            <button mat-raised-button color="primary" [disabled]="!newGrpForm.valid" *ngIf="editBtn" (click)="createGrp()">Update</button>
+            <button type="button" mat-raised-button color="warn" (click)="opensideBar('','addNew_group',null,'')">Cancel</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </section>
+
+  </ng-container>
+</ds-sidebar>
+<ds-sidebar class="form-panel myPrfleSidebar" name="assign_user" position="right" [invisibleOverlay]="false">
+  <ng-container>
+
+
+    <div class="ds-card grid" >
+        <div class="web_note" *ngIf="!usrsLst">
+          <img src="../../../../../../../assets/images/webnotes/no_notifications.png">
+          <p>No users found ..!</p>
+        </div>
+        <dx-data-grid id="gridContainer" [dataSource]="usrsLst" [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+          [showColumnLines]="true" [showRowLines]="true" [allowColumnResizing]="true" [showBorders]="true" style="width:100%">
+          <dxo-selection mode="multiple"></dxo-selection>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select">
+          </dxo-column-chooser>
+          <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of user_columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName" alignment="f.cellStyle.text-align"
+            [width]="f.width" [allowResizing]="true"></dxi-column>
+        </dx-data-grid>
+
+      </div>
+      <div *ngIf="(user.permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+
+
+
+
+    <mat-card fxFlex fxFlex.xs="100%">
+      <mat-card-actions align="center">
+        <button mat-raised-button color="primary" (click)="saveUsr()" *ngIf="crtBtn">Save</button>
+        <button mat-raised-button color="primary" (click)="rmvUsr()" *ngIf="editBtn">Upadte</button>
+        <button type="button" mat-raised-button color="warn" (click)="opensideBar('','assign_user',null,'')">Cancel</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+
+
+    <!-- <section fxLayout="row wrap" fxLayoutAlign="center center">
+          <mat-card fxFlex="500px" fxFlex.xs="100%">
+            <mat-card-title>Assign users to group</mat-card-title>
+            <form [formGroup]="asgnUsrForm" autocomplete="off" novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <mat-card-content>
+                  <h1 *ngIf="gNm">{{gNm}}</h1>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="Assign User" [(value)]="selectedUsroptions" formControlName="usrControl" required multiple>
+                    <mat-option *ngFor="let u of usrsLst" [value]="u.mrcht_usr_id">
+                      <span>{{u.nm}}</span>
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="hasUsrError('usrControl','required')">Please assign a user</mat-error>
+                </mat-form-field>
+  
+              </mat-card-content>
+              <mat-card-actions align="center">
+                <button mat-raised-button color="primary" [disabled]="!asgnUsrForm.valid" (click)="assignUser()">Save</button>
+                <button type="button" mat-raised-button color="warn"
+                  (click)="opensideBar('addNew_group',null)">Cancel</button>
+              </mat-card-actions>
+            </form>
+          </mat-card>
+        </section> -->
+
+  </ng-container>
+</ds-sidebar>
+
+
+
+
+<!-- sidebar -->

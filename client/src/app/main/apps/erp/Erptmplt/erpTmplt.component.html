@@ -1,0 +1,198 @@
+<div class="page-layout simple pageBackground">
+    <div *ngIf="loader">
+        <div class="loading-indicator">
+            <div class="spinner-2">
+              <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+            </div>
+          </div>
+    </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <!-- <div class="text-right gridBtns">
+        <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle *ngIf="(permissions.insrt_in==1)?true:false" id="addGridBtn" (click)="addNewEntry()">Add
+                New {{formDetails.stngs.form_title}}</mat-button-toggle>
+        </mat-button-toggle-group>
+
+    </div> -->
+
+    <!-- <button mat-raised-button (click)="openSideBar('addFormPanel')"
+    class="mat-raised-button mb-4 tempBtncss"><span>+</span>New Template</button> -->
+
+<!-- <div class="ds-card rvnueshrLst m-8"> -->
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+    <div class="m-12 p-4"  *ngIf="permissions">
+        <dx-data-grid *ngIf="(permissions.slct_in==1)?true:false" class="rvnueshrLst " id="gridContainer" [dataSource]="gridData" [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false"
+        [masterDetail]="{ enabled: true, template: 'detail' }" [allowColumnResizing]="true" [columnAutoWidth]="true" style="width: 100%;">
+        <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+          <!-- or "select" -->
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName=" Revenue Sharing Template List"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [alignment]="f.cellStyle" [width]="f.width" [allowResizing]="true"  [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="135" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer tblEdtBtn" (click)="editData(data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="135" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="cursor-pointer tblDelBtn" (click)="deleteData(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column>
+        <div *dxTemplate="let employee of 'detail'" style="margin-left:27%">
+          <dx-data-grid [dataSource]="employee.data.regions" [showBorders]="true" [columnAutoWidth]="true"
+          [allowColumnResizing]="true" [allowColumnReordering]="true" [allowColumnResizing]="true"
+          [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true">
+          <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+            <dxi-column dataField="s_no" alignment="center" width="100"></dxi-column>
+            <dxi-column dataField="Regions" alignment="center" width="280"></dxi-column>
+            <dxi-column dataField="Partners" alignment="center" width="280"></dxi-column>
+            <dxi-column dataField="Percentage" alignment="center" width="280"></dxi-column>
+          </dx-data-grid>
+        </div>
+      </dx-data-grid>
+    </div>
+<!-- </div> -->
+</div>
+
+<!-- sidebar -->
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false" *ngIf="permissions">
+    <ng-container>
+        <div fxLayout="column">
+
+            <div class="card">
+                <div class="card-header crdHdng">ADD New Template
+                    <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+                        cancel</mat-icon>
+                </div>
+                <div class="card-body">
+                    <div fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Template Code</div>
+                            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                                <input matInput placeholder="Placeholder" type="text" [(ngModel)]="tmpCode"
+                                    [ngModelOptions]="{standalone: true}" required>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Template Name</div>
+                            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                                <input matInput placeholder="Placeholder" type="text" [(ngModel)]="tmpName"
+                                    [ngModelOptions]="{standalone: true}" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Template Decription</div>
+                            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                                <input matInput placeholder="Placeholder" type="text" [(ngModel)]="tmpDescription"
+                                    [ngModelOptions]="{standalone: true}" required>
+                            </mat-form-field> 
+                        </div>
+                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Template Type</div>
+                            <mat-form-field appearance="outline">
+                                <mat-select [(value)]="tmpType" required>
+                                    <mat-option *ngFor="let typ of tmpTypeData" [value]="typ.tmple_type_id">
+                                    {{typ.tmple_type_nm}}
+                                </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <!-- <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">No. of Partners</div>
+                            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                                <input matInput placeholder="Placeholder" type="number" [(ngModel)]="ptnrsCount"
+                                    [ngModelOptions]="{standalone: true}" (change)="valuechange($event)" required>
+                            </mat-form-field>
+                        </div> -->
+
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="80" fxFlex.xs="100" class="px-8"></div>
+                        <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                            <button mat-raised-button (click)="AddPartners()"
+                                class="mat-raised-button mb-4 addBtncss"><span>+</span>ADD</button>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" *ngFor="let data of rgnTntPrcData let i=index">
+                        <div fxFlex="7" fxFlex.xs="100" class="px-8 mr-tp-4">
+                            <p>{{i+1}}</p>
+                        </div>
+                        <div fxFlex="29" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Regions</div>
+                            <mat-form-field appearance="outline">
+                                <mat-select [(value)]="data.regions" required>
+                                    <mat-option *ngFor="let rgn of regionsData" [value]="rgn.ara_type_id">
+                                        {{rgn.ara_type_nm}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="29" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Tenants</div>
+                            <mat-form-field appearance="outline">
+                                <mat-select [(value)]="data.tenants" required>
+                                    <mat-option *ngFor="let prtnrs of partnersData" [value]="prtnrs.prtnr_id">
+                                        {{prtnrs.prtnr_nm}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="29" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">PercenTage</div>
+                            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                                <input matInput placeholder="Placeholder" type="text" [(ngModel)]="data.percentage"
+                                    [ngModelOptions]="{standalone: true}" required>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="6" fxFlex.xs="100" class="px-8 mr-tp-4" (click)="delete(rgnTntPrcData,i)">
+                            <mat-icon style="font-size: 28px;cursor: pointer; color: red;">delete_outline</mat-icon>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column">
+                        <div fxFlex="40" fxFlex.xs="100" class="px-8"></div>
+                        <div fxFlex="10" fxFlex.xs="100" class="px-8">
+                            <button mat-flat-button type="submit" class="mat-raised-button gtDtls"
+                                aria-label="SAVE" (click)="saveTmpl()" style="width: 100%;"*ngIf="saveButton == true">
+                                SAVE
+                            </button>
+                            <button mat-flat-button type="submit" class="mat-raised-button gtDtls"
+                            aria-label="SAVE" (click)="updtTmpl()" *ngIf="updateButton == true">
+                            UPDATE
+                        </button>
+                            <!-- <button mat-raised-button (click)="saveTmpl()"class="mat-raised-button mb-4 tempBtncss" style="width: 100%;">Save</button> -->
+                        </div>
+                        <div fxFlex="10" fxFlex.xs="100" class="px-8">
+                            <button mat-flat-button type="close" class="mat-raised-button  cnclBtn-color ml-8"
+                                aria-label="CANCEL" (click)="closeSideBar()">
+                                CANCEL
+                            </button>
+                            <!-- <button mat-raised-button (click)="canclTmpl()"class="mat-raised-button mb-4 tempBtncss" style="width: 100%;">Cancel</button> -->
+                        </div>
+                        <div fxFlex="40" fxFlex.xs="100" class="px-8"></div>
+                    </div>
+                    <!-- <ds-form-builder (formEvent)="formEventTriggered($event)" [formDetails]="formDetails" [initData2]="initdata"></ds-form-builder> -->
+                </div>
+            </div>
+
+        </div>
+    </ng-container>
+</ds-sidebar>
+<!-- sidebar -->

@@ -1,0 +1,47 @@
+<style>
+    .del-icon {
+    padding-top: 17px;
+    width: 75px;
+    height: 75px;
+    font-size: 40px;
+    background: antiquewhite;
+    border-radius: 100px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 6px -6px #fff0ee;
+        }
+</style>
+
+
+<div class="text-center" >
+    <div [hidden]="flag2" >
+        <div  mat-dialog-content>
+            <!-- <mat-icon color="warn" class="del-icon">highlight_off</mat-icon> -->
+            <mat-icon color="warn" class="del-icon">delete_outline</mat-icon>
+                 <h3><b>{{deldata.message}}</b></h3>
+                    <p style="margin-bottom: 10px;"> {{deldata.entityname}}:{{deldata.nm}}</p>
+                
+        </div>   
+        <div mat-dialog-actions class="pb-20" fxLayout="row" fxLayoutAlign="center center">
+                <button class="accent" mat-button (click)="matDialogRef.close()">NO</button>
+                <button class="warn" mat-button cdkFocusInitial  (click)="delete()">YES</button>
+        </div> 
+         
+    </div>  
+</div>
+
+<div class="text-center">
+    <div [hidden]="!flag" >
+        <mat-icon color="accent" class="del-icon">check_circle</mat-icon>
+        <h1>Your item was successfully deleted !</h1>
+        <button class="accent" mat-button (click)="matDialogRef.close(results)">OK</button>
+    </div>
+
+</div>
+<div class="text-center">
+    <div [hidden]="!flag1" >
+        <mat-icon color="warn" class="del-icon">highlight_off</mat-icon>
+        <h1>Unsuccessfully deleted !</h1>
+        <button class="accent" mat-button (click)="close()">OK</button>
+    </div>
+
+</div>

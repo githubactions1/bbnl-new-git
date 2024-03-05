@@ -1,0 +1,103 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <ds-loading *ngIf="loader"></ds-loading>
+  <div fxLayout="row">
+    <div fxFlex="80"></div>
+    <div fxFlex="16">
+
+
+
+      <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        *ngIf="showBckBtn" (click)="bckBtn()">
+
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+  </div>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+    <div class="ds-card m-12" *ngIf="permissions">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+        (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false" style="width: 100%;"
+      
+        >
+        <!-- [masterDetail]="{ enabled: true, template: 'detail' }"   -->
+        <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+          <!-- or "select" -->
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Enterprise Customers"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [alignment]="f.algnmnt" [width]="f.width" [allowFiltering]="f.filter"  [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+        <!-- <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column> -->
+        <!-- <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="100" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column> -->
+        <dxi-column [showInColumnChooser]="false" type="buttons"
+          [width]="100" caption="View" cellTemplate="ViewTemplate">
+          <div *dxTemplate="let data of 'ViewTemplate'">
+            <div class="cursor-pointer tblVwBtn" (click)="onCellClick(data)">
+              View
+            </div>
+          </div>
+        </dxi-column>
+        <div *dxTemplate="let entCust of 'detail'">
+          <!-- <div class="master-detail-caption" style="font-size: 18px;margin-bottom: 2%;font-weight: 500;">TASKS:</div> -->
+          <dx-data-grid [dataSource]="entCust.data.cafs" [showBorders]="true" [columnAutoWidth]="true"
+            style="max-height: 420px;">
+            <dxo-column-chooser [enabled]="true" mode="select">
+              <!-- or "select" -->
+            </dxo-column-chooser>
+            <dxi-column *ngFor="let f of columnDefs2" [hidingPriority] ="f.hidingPriority" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+              [alignment]="f.algnmnt" [width]="f.width"></dxi-column>
+              <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+              [width]="100" caption="Edit" cellTemplate="editTemplate">
+              <div *dxTemplate="let data of 'editTemplate'">
+                <div class="cursor-pointer" (click)="onCafClicked(data)">
+                  Edit
+                </div>
+              </div>
+            </dxi-column>
+            <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+              [width]="100" caption="Delete" cellTemplate="delTemplate">
+              <div *dxTemplate="let data of 'delTemplate'">
+                <div class="cursor-pointer" (click)="onCafClicked(data)">
+                  Delete
+                </div>
+              </div>
+            </dxi-column>
+            <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+              [width]="100" caption="View" cellTemplate="ViewTemplate">
+              <div *dxTemplate="let data of 'ViewTemplate'">
+                <div class="cursor-pointer" (click)="onCafClicked(data)">
+                  View
+                </div>
+              </div>
+            </dxi-column>
+          </dx-data-grid>
+          
+        </div>
+      </dx-data-grid>
+
+    </div>
+</div>

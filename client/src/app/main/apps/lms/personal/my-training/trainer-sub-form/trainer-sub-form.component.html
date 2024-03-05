@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="page-layout simple tabbed">
+
+    <div class="container header accent pghdrStyle text-center pt-16">
+      <div class="row">
+        <div style='margin-left: 674px;'>
+          <h2 style="text-transform: uppercase">Training Submission Form</h2>
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <form class=" p-8" fxLayout="column" name="courseForm" [formGroup]="courseForm">
+
+        <div fxLayout="row" class="ptb-20">
+          <p class="bdlngCss"><b>
+              <mat-icon>assignment</mat-icon>Training Submission Form
+            </b> </p>
+        </div>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Training Name</mat-label>
+          <input matInput name="Course Name" [disabled]="true">{{sublst[0].trng_nm}}
+          <mat-error>Course name is required!</mat-error>
+        </mat-form-field>
+        <div fxFlex="1 0 auto" fxLayout="row" fxLayout.gt-xs="row" class="w-50-p">
+
+          <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" name="start" formControlName="SchDatestart">
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error>Start Date is required!</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="pr-sm-8 no-errors-spacer endmrgn " fxFlex="50">
+            <mat-label class="ml-16">End Date</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" name="end" formControlName="SchDateend">
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+            <mat-error>End Date is required!</mat-error>
+          </mat-form-field>
+
+        </div>
+        <div fxLayout="row" >
+          <ag-grid-angular #agGrid style="width: 100%; height:368px;" class="ag-theme-balham p-12" [pagination]="pagination"
+          [paginationPageSize]="paginationPageSize" [rowData]="rowData" [columnDefs]="columnDefs"
+          (cellClicked)="onCellClick($event)"  [enableFilter]="true" [getRowHeight]="getRowHeight"
+          [floatingFilter]="true" [rowSelection]="rowSelection"  [loadingCellRenderer]="loadingCellRenderer"  
+          [suppressRowClickSelection]="true"  (rowSelected)="onRowSelected($event)"
+          [loadingCellRendererParams]="loadingCellRendererParams" (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+         
+        </div>
+        <div fxLayout="row" class="mb-16">
+          <div  class="upload"><button type="button" mat-raised-button color="accent" (click)="fileInput.click()">image upload</button>&nbsp;&nbsp;</div>
+        
+          <input hidden accept="image/*" #fileInput (change)="preview(fileInput.files)" type="file" id="file">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto"*ngIf="shwImgView">
+            <img [src]="shwsrcimg" height="80" width="100" class="view-img" />&nbsp;&nbsp;
+          </div>
+         
+        </div>
+        <!-- <div fxLayout="row" class="mb-16">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center">
+             <button mat-flat-button class="scdl-btn" (click)="assignTraining()" type="button">Submit </button> 
+            <button mat-raised-button color="accent" >Submit</button>
+          </div>
+        </div> -->
+        <button mat-raised-button color="accent" type="button"(click)="trngsub()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

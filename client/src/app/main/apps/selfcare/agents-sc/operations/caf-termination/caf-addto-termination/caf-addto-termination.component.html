@@ -1,0 +1,136 @@
+<div class="page-layout simple pageBackground prtAsgnCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="m-24">
+    <div class="text-right mb-16">
+      <button mat-raised-button class="submit-button lgnBtnClr" aria-label="LOGIN" (click)="goBack()">
+        <mat-icon matTooltip="Go Back">arrow_back_ios</mat-icon> Back
+      </button>
+    </div>
+    <ds-loading *ngIf="shwLdr"></ds-loading>
+
+    <div class="ds-card m-12 p-16" *ngIf="shwFltrDiv">
+      <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+        <div class="form-label">CAF Aadhar Number</div>
+        <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+          <input matInput type="text" [(ngModel)]="aadharnumber" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+        <p class="orTxtColor mt-36">-OR-</p>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+        <div class="form-label">CAF Mobile Number</div>
+        <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+          <input matInput type="text" [(ngModel)]="mobilenumber" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+        <p class="orTxtColor mt-36">-OR-</p>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="20%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+        <div class="form-label">Caf Number</div>
+        <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+          <input matInput type="text" [(ngModel)]="cafnumber" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+        <p class="orTxtColor mt-36">-OR-</p>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+        <form fxLayout="column" [formGroup]='lmoTrmndCafForm'>
+          <div class="form-label">LMO Code</div>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto"
+              formControlName="lmoCode">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+              <ng-container *ngIf="!isLoading">
+                <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                  <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+      <div fxFlex="17" fxFlex.xs="100" class="px-8 m-28">
+        <button mat-raised-button color="primary" (click)="getCafsOnSrch();" class="gtDtls">GET DETAILS</button>
+      </div>
+    </div>
+
+    <div class="ds-card" fxLayout="column">
+      <mat-vertical-stepper  #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Select CAFs for termination</ng-template>
+          <dx-data-grid #dataGridRef id="gridContainer" [dataSource]="agntCafLst" [remoteOperations]="true"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" (onSelectionChanged)="onRowSelected($event)" style="width:100%">
+            <dxo-selection mode="multiple"></dxo-selection>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true" [showInfo]="true"
+              [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="false"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+            <dxi-column *ngFor="let f of agntCafLstColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width"></dxi-column>
+          </dx-data-grid>
+          <div>
+            <button mat-button matStepperNext class="submit-button primary mat-raised-button">Next</button>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="cafTrmndFormGroup">
+          <form [formGroup]="cafTrmndFormGroup">
+            <ng-template matStepLabel>Fill out details</ng-template>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="column" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Comment</div>
+                <mat-form-field appearance="outline">
+                  <textarea placeholder="Write a Comment" matInput formControlName="trmnd_desc_tx" required></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <div>
+              <button mat-button class="submit-button primary mat-raised-button m-4" matStepperNext (click)="getSummaryDtls()">Next</button>
+              <button mat-button class="submit-button lgnBtnClr mat-raised-button m-4" matStepperPrevious>Back</button>
+              <button mat-button class="submit-button secondary mat-raised-button m-4" (click)="stepper.reset()">Reset</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Selected CAFs details</ng-template>
+          <dx-data-grid #dataGridRef id="gridContainer" [dataSource]="fnlPostCstmrCafData" [remoteOperations]="true"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" style="width:100%">
+            <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+              [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="false"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+            <dxi-column *ngFor="let f of fnlPostCstmrCafDataColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+          </dx-data-grid>
+          <div class="text-right m-8">
+            <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color"
+              (click)="saveCafTrmndData();stepper.reset()">Submit</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

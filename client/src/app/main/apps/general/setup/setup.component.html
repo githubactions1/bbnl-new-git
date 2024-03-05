@@ -1,0 +1,25 @@
+<div class="page-layout simple tabbed pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div class="mtcrd">
+    <div class="form-label">Enter Group Category</div>
+    <mat-form-field class="w-100-p" appearance="outline">
+      <input matInput placeholder="Search an option" [(ngModel)]="searchText">
+    </mat-form-field>
+  </div>
+  <div class="cnt">
+    <mat-card class="mtcrd" *ngFor="let stpGrps of setup | filterGrp:searchText ; let i = index">
+      <mat-card-content class="totContent">
+        <p class="ptxt">{{stpGrps.grp_nm}}</p>
+        <mat-grid-list [cols]="breakpoint" rowHeight="60" gutterSize="6px" (window:resize)="onResize($event)"
+          class="totList">
+          <mat-grid-tile *ngFor="let stpOpt of stpGrps.opts | filter:searchText; let i = index"
+            (click)="btnClick(stpOpt.stp_opt_url_tx);">
+            <img src="{{stpOpt.stp_opt_icn_tx}}" width="33">
+            <span class="hmtxt setupItms">{{stpOpt.opt_nm}}</span>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

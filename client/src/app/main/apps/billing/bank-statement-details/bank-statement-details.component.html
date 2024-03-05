@@ -1,0 +1,84 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column"  class="fltrbg m-8 ds-card" *ngIf="permissions">
+    <!-- <div fxFlex="3" fxFlex.xs="100" class="px-8"></div> -->
+    <div  fxFlex="100" fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100"  class="px-8">
+      <div class="form-label">Select From Date</div>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="fromdate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Select To Date</div>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="todate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxFlex="10" fxFlex.xs="100" class="px-8">
+      <button mat-raised-button (click)="getbnkdtlsdata()" class="gtDtls gtBTn">Get Data</button>
+    </div>
+    <!-- <div fxFlex="37" fxFlex.xs="100" class="px-8"></div> -->
+  </div>
+
+  <div class="card m-8" *ngIf="permissions">
+    <div *ngIf="!showTbl" class="m-8 text-center font-size-16 slctGtDta font-weight-500">{{showTxt}}</div>
+    <div *ngIf="showTbl">
+      <ds-loading *ngIf="showLdr"></ds-loading>
+      <div fxLayout="row" fxLayout.xs="column" class="p-16">
+        <form [formGroup]="lmoPymntsForm" class="mt-12 w-100-p" fxLayout="column">
+          <div formArrayName="lmoCode">
+            <table class="portSplitng mt-16 customers" style="width: 100%;">
+              <tr>
+                <th>Sno</th>
+                <th>Agent Name</th>
+                <th>Mobile Number</th>
+                <th>Transaction Date</th>
+                <th>Total Amount</th>
+                <th>LMO Code</th>
+              </tr>
+              <tr *ngFor="let h of agntFm.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                <td>{{pointIndex + 1}} </td>
+                <td>{{h.value.lmo_nm}}</td>
+                <td>{{h.value.mble_nu}}</td>
+                <td>{{h.value.Date}}</td>
+                <td>{{h.value.tot_amt}}</td>
+                <td>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto"
+                      formControlName="lmo_cd">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                      <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                      <ng-container *ngIf="!isLoading">
+                        <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                          <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+                    <mat-error>LMO is required!</mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="text-right m-8">
+        <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  gtDtls w-10-p"
+          (click)="saveBulkUploadWthOutLmo()">Submit</button>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

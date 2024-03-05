@@ -1,0 +1,612 @@
+<div class="page-layout simple pageBackground">
+
+    <!-- <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header> -->
+    <!-- <div class="row">
+        <p class="hdngtitle">Package Agreement</p>
+    </div> -->
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <ds-loading *ngIf="loader == true"></ds-loading>
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+    <div *ngIf="permissions">
+        <div class="ds-card m-12">
+            <div class="p-4">
+                <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="gridRowData"
+                    [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                    (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false"
+                    (onSelectionChanged)="packagesandTmplate($event)" (onRowExpanding)="onRowExpanding($event)"
+                    style="max-width: 100% !important;" [masterDetail]="{ enabled: true, template: 'detail' }">
+                    <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                    </dxo-pager>
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                    <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                    <dxo-column-chooser [enabled]="true" mode="select">
+                    </dxo-column-chooser>
+                    <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                        fileName="Package Agreement">
+                    </dxo-export>
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                    <dxi-column [allowResizing]="true" *ngFor="let g of gridColumnDefs" [visible]="!g.hide"
+                        [dataField]="g.field" [caption]="g.headerName" [alignment]="g.cellStyle" [width]="g.width"
+                        [allowFiltering]="g.filter" [allowHeaderFiltering]="g.filter"></dxi-column>
+                    <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false"
+                        type="buttons" [width]="100" caption="Delete" cellTemplate="delTemplate" [allowResizing]="true">
+                        <div *dxTemplate="let data of 'delTemplate'">
+                            <div class="tblDelBtn " (click)="onDelete(data)">
+                                Delete
+                            </div>
+                        </div>
+                    </dxi-column>
+
+                    <div *dxTemplate="let agrmtData of 'detail'" style="margin-left:18%">
+                        <dx-data-grid [allowColumnResizing]="true" [dataSource]="agrmntDtls" [showBorders]="true"
+                            [columnAutoWidth]="true" [allowColumnResizing]="true" [allowColumnReordering]="true"
+                            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+                            (onRowExpanding)="onRowExpandingtwo($event)"
+                            [masterDetail]="{ enabled: true, template: 'details' }">
+                            <dxi-column [allowResizing]="true" dataField="sno" alignment="center" width="130">
+                            </dxi-column>
+                            <dxi-column [allowResizing]="true" dataField="Package Name" alignment="left" width="260">
+                            </dxi-column>
+                            <dxi-column [allowResizing]="true" dataField="Package Type" alignment="left" width="260">
+                            </dxi-column>
+                            <dxi-column [allowResizing]="true" dataField="Template Name" alignment="left" width="260">
+                            </dxi-column>
+                            <dxi-column [allowResizing]="true" dataField="agents" alignment="left" width="270">
+                            </dxi-column>
+                            <!-- <dxi-column [allowResizing]="true"dataField="Percentage"></dxi-column> -->
+                            <div *dxTemplate="let agrmtData of 'details'" style="margin-left:6%">
+                                <dx-data-grid [allowColumnResizing]="true" [dataSource]="partnersDtls"
+                                    [showBorders]="true" [columnAutoWidth]="true" [allowColumnResizing]="true"
+                                    [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                                    [showColumnLines]="true" [showRowLines]="true">
+                                    <dxi-column [allowResizing]="true" dataField="sno" alignment="center" width="110">
+                                    </dxi-column>
+                                    <dxi-column [allowResizing]="true" dataField="Agent" alignment="center" width="190">
+                                    </dxi-column>
+                                    <dxi-column [allowResizing]="true" dataField="Area" alignment="center" width="190">
+                                    </dxi-column>
+                                    <dxi-column [allowResizing]="true" dataField="APSFL Percentage" alignment="right"
+                                        width="170"></dxi-column>
+                                    <dxi-column [allowResizing]="true" dataField="MSO Percentage" alignment="right"
+                                        width="170"></dxi-column>
+                                    <dxi-column [allowResizing]="true" dataField="LMO Percentage" alignment="right"
+                                        width="180"></dxi-column>
+                                </dx-data-grid>
+                            </div>
+                        </dx-data-grid>
+                    </div>
+                </dx-data-grid>
+            </div>
+        </div>
+        <div class="row" *ngIf="subtable == true">
+            <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                <p class="hdngtitle">Package Service Information</p>
+            </div>
+            <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                <p class="hdngtitle">Template Partners Information</p>
+            </div>
+        </div>
+        <div class="row" *ngIf="subtable == true">
+            <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                <div class="ds-card grid">
+                    <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="packageServices"
+                        [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                        [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                        [masterDetail]="{ enabled: true, template: 'detail' }">
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                            [showInfo]="true"></dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                        <dxo-column-chooser [enabled]="true" mode="select">
+                        </dxo-column-chooser>
+                        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                        </dxo-export>
+                        <dxo-filter-row [visible]="true"></dxo-filter-row>
+                        <dxi-column [allowResizing]="true" *ngFor="let g of servicecolumndefs" [visible]="!g.hide"
+                            [dataField]="g.field" [caption]="g.headerName" alignment="g.cellStyle.text-align"
+                            [width]="g.width"></dxi-column>
+                    </dx-data-grid>
+                </div>
+
+            </div>
+            <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                <div class="ds-card grid">
+                    <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="templatePartners"
+                        [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                        [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                        [masterDetail]="{ enabled: true, template: 'detail' }">
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                            [showInfo]="true"></dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                        <dxo-column-chooser [enabled]="true" mode="select">
+                        </dxo-column-chooser>
+                        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                        </dxo-export>
+                        <dxo-filter-row [visible]="true"></dxo-filter-row>
+                        <dxi-column [allowResizing]="true" *ngFor="let g of partnerscolumndefs" [visible]="!g.hide"
+                            [dataField]="g.field" [caption]="g.headerName" alignment="g.cellStyle.text-align"
+                            [width]="g.width"></dxi-column>
+                    </dx-data-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- sidebar -->
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false"
+    *ngIf="permissions">
+    <ng-container>
+        <div fxLayout="column">
+            <div class="card">
+                <div class="card-header crdHdng">ADD Package Agreement
+                    <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+                        cancel</mat-icon>
+                </div>
+
+                <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Select Packages</ng-template>
+
+                            <div class="ds-card grid" *ngIf="permissions">
+                                <dx-data-grid [allowColumnResizing]="true" id="gridContainer"
+                                    [dataSource]="packageLstData" [remoteOperations]="false"
+                                    [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                                    (onSelectionChanged)="packageSelection($event)"
+                                    (onRowExpanding)="onRowExpandingpckgs($event)" style="width:100%"
+                                    [masterDetail]="{ enabled: true, template: 'detail' }">
+                                    <dxo-selection mode="multiple"></dxo-selection>
+                                    <dxo-paging [pageSize]="10"></dxo-paging>
+                                    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]">
+                                    </dxo-pager>
+                                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true">
+                                    </dxo-search-panel>
+                                    <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                                    <dxo-column-chooser [enabled]="true" mode="select">
+                                        <!-- or "select" -->
+                                    </dxo-column-chooser>
+                                    <dxo-export [enabled]="(permissions.exprt_in==1)?true:false"
+                                        [allowExportSelectedData]="true">
+                                    </dxo-export>
+                                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                                    <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide"
+                                        [dataField]="f.field" [caption]="f.headerName"
+                                        alignment="f.cellStyle.text-align" [width]="f.width">
+                                    </dxi-column>
+                                    <div *dxTemplate="let employee of 'detail'">
+                                        <dx-data-grid [allowColumnResizing]="true" [dataSource]="serviceslst"
+                                            [showBorders]="true" [columnAutoWidth]="true">
+                                            <dxi-column [allowResizing]="true" dataField="sno"></dxi-column>
+                                            <dxi-column [allowResizing]="true" dataField="Service Name"></dxi-column>
+                                            <dxi-column [allowResizing]="true" dataField="Service Type"></dxi-column>
+                                            <dxi-column [allowResizing]="true" dataField="Charge Code"></dxi-column>
+                                            <dxi-column [allowResizing]="true" dataField="Charge Amount"></dxi-column>
+                                            <dxi-column [allowResizing]="true" dataField="Gst Amount"></dxi-column>
+                                            <dxi-column [allowResizing]="true" dataField="Total Amount"></dxi-column>
+                                        </dx-data-grid>
+                                    </div>
+                                </dx-data-grid>
+                            </div>
+                            <div *ngIf="permissions" class="permMsg">{{mainMessage}}</div>
+                            <!-- <div class="row">
+                                <div class="col-xl-11 col-lg-11 col-md-11 col-sm-12 col-12"></div>
+                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
+                                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                                </div>
+              
+                            </div> -->
+                            <div fxLayout="row">
+                                <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%"
+                                    fxFlex.gt-xs="90%"></div>
+                                <div fxFlex="100%" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                                    fxFlex.gt-xs="10%"><button mat-raised-button color="primary" matStepperNext
+                                        class="gtDtls">Next</button></div>
+                            </div>
+
+
+
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" *ngIf="chkBoxesView == true">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Select Required Option</ng-template>
+                            <div fxLayout="row">
+                                <mat-label class="packNmHdr">Selected Packages:</mat-label>
+                                <div fxFlex="20" fxFlex.xs="100" class="px-8" class="pkgnm"
+                                    *ngFor="let m of packagesData let i=index">
+                                    <span class="lbtvlue sqvlcs">{{i+1}})</span> {{m.pckge_nm}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <mat-radio-group aria-label="Select an option" class="RdoTwo"
+                                    [(ngModel)]="selectTemplates" [ngModelOptions]="{standalone: true}" required>
+                                    <mat-radio-button [value]="1" class="pckgebtns">Same Template For Selected Packages
+                                    </mat-radio-button> <br>
+                                    <mat-radio-button [value]="2" class="pckgebtns">Different Template For Selected
+                                        Packages</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12"></div>
+                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
+                                    <button mat-button matStepperPrevious>Back</button>
+                                </div>
+                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
+                                    <button mat-raised-button color="primary" matStepperNext (click)="secondNext()">Next</button>
+                                </div>
+                            </div> -->
+
+                            <div fxLayout="row">
+                                <div fxFlex="100%" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%"
+                                    fxFlex.gt-xs="80%"></div>
+                                <div fxFlex="100%" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                                    fxFlex.gt-xs="10%"> <button mat-raised-button matStepperPrevious>Back</button></div>
+                                <div fxFlex="100%" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                                    fxFlex.gt-xs="10%"> <button mat-raised-button color="primary" matStepperNext
+                                        (click)="secondNext()" class="gtDtls">Next</button></div>
+                            </div>
+
+
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="thirdFormGroup">
+                        <form [formGroup]="thirdFormGroup">
+                            <ng-template matStepLabel>Select Your Template</ng-template>
+                            <div fxLayout="row" *ngIf="SingleTemplate == true">
+                                <mat-label class="packNmHdr">Selected Packages:</mat-label>
+                                <div fxFlex="20" fxFlex.xs="100" class="px-8" class="pkgnm"
+                                    *ngFor="let m of packagesData let i=index">
+                                    <span class="lbtvlue sqvlcs">{{i+1}})</span> {{m.pckge_nm}}
+                                </div>
+                            </div>
+                            <div *ngIf="SingleTemplate == true" style="margin-top: 3%;">
+                                <div fxLayout="row">
+                                    <div fxFlex="30" fxFlex.xs="30" class="px-8">
+                                        <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+                                            <div class="form-label">LMO Code</div>
+                                            <mat-form-field appearance="outline">
+                                                <input matInput placeholder="Search LMO Code" aria-label="State"
+                                                    [matAutocomplete]="auto1" formControlName="lmoCode">
+                                                <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn">
+                                                    <mat-option *ngIf="isLoading" class="is-loading">Loading...
+                                                    </mat-option>
+                                                    <ng-container *ngIf="!isLoading">
+                                                        <mat-option
+                                                            *ngFor="let agent of filteredAgents;trackBy:trackByfunction"
+                                                            [value]="agent">
+                                                            <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                                                        </mat-option>
+                                                    </ng-container>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </form>
+                                    </div>
+                                    <div fxFlex="30" fxFlex.xs="30" class="px-8">
+                                        <form fxLayout="column" [formGroup]='msoPymntsForm'>
+                                            <div class="form-label">MSO Code</div>
+                                            <mat-form-field appearance="outline">
+                                                <input matInput placeholder="Search MSO Code" aria-label="State"
+                                                    [matAutocomplete]="auto" formControlName="msocode">
+                                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                                    <mat-option *ngIf="isLoading" class="is-loading">Loading...
+                                                    </mat-option>
+                                                    <ng-container *ngIf="!isLoading">
+                                                        <mat-option
+                                                            *ngFor="let agent of filteredmsoAgents;trackBy:trackByfunction"
+                                                            [value]="agent">
+                                                            <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                                                        </mat-option>
+                                                    </ng-container>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </form>
+                                    </div>
+                                    <div fxFlex="30" fxFlex.xs="30" class="px-8">
+                                        <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+                                            <mat-label>
+                                                <div class="lbl mndlTitle">APSFL</div>
+                                                <div class="lbl_cntnt mndalName">APSFL</div>
+                                            </mat-label><br>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div fxLayout="row">
+                                    <div fxFlex="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+                                        fxFlex.gt-xs="50%" class="px-8">
+                                        <div class="form-label">Template Name</div>
+                                        <mat-form-field appearance="outline" class="px-8">
+                                            <mat-select [(value)]="template"
+                                                (selectionChange)="getTenantsLst(1,template)" required>
+                                                <mat-option *ngFor="let tmp of templeLstData" [value]="tmp.tmple_id">
+                                                    {{tmp.tmple_nm}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="viewtntData == true && SingleTemplate == true">
+                                <div fxFlex="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+                                    fxFlex.gt-xs="50%" class="px-8" *ngFor="let p of tenantsData">
+                                    <div>
+                                        <div class="form-label">
+                                            {{p.tenants[0].prtnr_nm}}<span>-({{p.tenants[0].prcnt_ct}}%)</span></div>
+                                        <!-- <mat-form-field appearance="outline">
+                                            <mat-select [(value)]="p.agentsData" required>
+                                                <mat-option *ngFor="let tnts of p.tenants" [value]="tnts.agnt_id">
+                                                    {{tnts.fst_nm}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field> -->
+                                        <mat-form-field appearance="outline">
+                                            <mat-select [(value)]="p.agentsData" required>
+                                                <mat-option [value]="p.agentsData">
+                                                    {{p.agnt_nm}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <!-- <input type="text" placeholder="Enter Name" aria-label="Assignee" matInput
+                                             [matAutocomplete]="auto"  (input)="onSearchChange($event.target.value, p.tenants)" [(ngModel)]="p.agentsData" [ngModelOptions]="{standalone: true}">
+                                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+                                                <mat-option *ngFor="let tnts of filteredOptions" [value]="tnts.agnt_id">
+                                                    {{tnts.agnt_nm}}
+                                                </mat-option>
+                                            </mat-autocomplete> -->
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row" *ngIf="MultiTemplate == true">
+                                <div class="row" *ngFor="let k of packagesData">
+                                  <div class="col-xl-4 col-lg-4 col-md-12 col-12" style="min-width: 100%;">{{k.package_Name}}</div>
+                                  <div class="col-xl-4 col-lg-4 col-md-12 col-12" style="min-width: 100%;">
+                                    <div class="form-label">Template Name</div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-select [(value)]="k.tmpID" required>
+                                            <mat-option *ngFor="let tp of templeLstData" [value]="tp.tmple_id">
+                                                {{tp.tmple_nm}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-xl-4 col-lg-4 col-md-12 col-12" style="min-width: 100%;" >
+                                  <button mat-raised-button (click)="assign(k.tmpID,k.pckge_id,k.shwAgnts,k)"
+                                  class="mat-raised-button mb-4 tempBtncss">Assign</button>
+                                </div>
+                                  <div class="row" *ngIf="k.shwAgnts== true">
+                                    <div *ngFor="let m of k.tntAGntData">
+                                      <div class="form-label">{{m.tenants[0].prtnr_nm}}</div>
+                                      <mat-form-field appearance="outline">
+                                        <mat-select [(value)]="m.agnt_id" required>
+                                            <mat-option *ngFor="let ast of m.tenants" [value]="ast.agnt_id">
+                                                {{ast.fst_nm}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div> -->
+
+                            <div *ngIf="MultiTemplate == true">
+                                <div fxLayout="row" fxLayout.xs="column">
+                                    <div fxFlex="30" fxFlex.xs="30" class="px-8">
+                                        <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+                                            <div class="form-label">LMO Code</div>
+                                            <mat-form-field appearance="outline">
+                                                <input matInput placeholder="Search LMO Code" aria-label="State"
+                                                    [matAutocomplete]="auto1" formControlName="lmoCode">
+                                                <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn">
+                                                    <mat-option *ngIf="isLoading" class="is-loading">Loading...
+                                                    </mat-option>
+                                                    <ng-container *ngIf="!isLoading">
+                                                        <mat-option
+                                                            *ngFor="let agent of filteredAgents;trackBy:trackByfunction"
+                                                            [value]="agent">
+                                                            <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                                                        </mat-option>
+                                                    </ng-container>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </form>
+                                    </div>
+                                    <div fxFlex="30" fxFlex.xs="30" class="px-8">
+                                        <form fxLayout="column" [formGroup]='msoPymntsForm'>
+                                            <div class="form-label">MSO Code</div>
+                                            <mat-form-field appearance="outline">
+                                                <input matInput placeholder="Search MSO Code" aria-label="State"
+                                                    [matAutocomplete]="auto" formControlName="msocode">
+                                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                                    <mat-option *ngIf="isLoading" class="is-loading">Loading...
+                                                    </mat-option>
+                                                    <ng-container *ngIf="!isLoading">
+                                                        <mat-option
+                                                            *ngFor="let agent of filteredmsoAgents;trackBy:trackByfunction"
+                                                            [value]="agent">
+                                                            <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                                                        </mat-option>
+                                                    </ng-container>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                        </form>
+                                    </div>
+                                    <div fxFlex="30" fxFlex.xs="30" class="px-8">
+                                        <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+                                            <mat-label>
+                                                <div class="lbl mndlTitle">APSFL</div>
+                                                <div class="lbl_cntnt mndalName">APSFL</div>
+                                            </mat-label><br>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div *ngFor="let k of packagesData">
+                                    <!-- <div fxLayout="row">
+                                    <div fxFlex="35" fxFlex.xs="100" class="px-8"  class = "pkgnm">
+                                        {{k.package_Name}}
+                                    </div>
+                                </div> -->
+                                    <div fxLayout="row" fxLayout.xs="column" style="margin-top: 4%;">
+                                        <div fxFlex="40" fxFlex.xs="40" class="px-8">
+                                            <mat-label>
+                                                <div class="lbl mndlTitle">Package Name</div>
+                                                <div class="lbl_cntnt mndalName">{{k.pckge_nm}}</div>
+                                            </mat-label><br>
+                                        </div>
+                                        <div fxFlex="40" fxFlex.xs="40" class="px-8">
+                                            <div class="form-label">Template Name</div>
+                                            <mat-form-field appearance="outline">
+                                                <mat-select [(value)]="k.tmpID"
+                                                    (selectionChange)="assign(k.tmpID,k.pckge_id,k.shwAgnts,k)"
+                                                    required>
+                                                    <mat-option *ngFor="let tp of templeLstData" [value]="tp.tmple_id">
+                                                        {{tp.tmple_nm}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <!-- <div fxFlex="20" fxFlex.xs="20" class="px-8" style="margin-top: 2%;">
+                                            <button mat-raised-button (click)="assign(k.tmpID,k.pckge_id,k.shwAgnts,k)"
+                                                class="asgnBtn asgnBtnCs"><span class="asgn">Assign</span></button>
+                                        </div> -->
+                                    </div>
+                                    <!-- <div fxLayout="row">
+                                    <div  fxFlex="100"   class = "mt-12">
+                                    <div fxFlex="100" fxFlex.xs="100" class="px-8" >
+                                        <div class="form-label">Template Name</div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-select [(value)]="k.tmpID" required>
+                                            <mat-option *ngFor="let tp of templeLstData" [value]="tp.tmple_id">
+                                                {{tp.tmple_nm}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    </div>
+                                <button mat-raised-button (click)="assign(k.tmpID,k.pckge_id,k.shwAgnts,k)" class = "asgnBtn">Assign</button>
+            
+            
+                                   </div>
+                               
+                                    </div> -->
+                                    <div fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxFlexFill
+                                        *ngIf="k.shwAgnts== true">
+                                        <div fxFlex="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+                                            fxFlex.gt-xs="30%" class="px-8" *ngFor="let m of k.tntAGntData"
+                                            style="max-width: 30% !important;">
+                                            <div>
+                                                <div class="form-label">
+                                                    {{m.tenants[0].prtnr_nm}}<span>-({{m.tenants[0].prcnt_ct}}%)</span>
+                                                </div>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select [(value)]="m.agnt_id" required>
+                                                        <mat-option [value]="m.agnt_id">
+                                                            {{m.agnt_nm}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <!-- <input type="text" placeholder="Enter Name" aria-label="Assignee" matInput
+                                                     [matAutocomplete]="auto" [(ngModel)]="m.agnt_id" [ngModelOptions]="{standalone: true}">
+                                                    <mat-autocomplete #auto="matAutocomplete">
+                                                        <mat-option *ngFor="let ast of filteredOptions" [value]="ast.agnt_id">
+                                                            {{ast.agnt_nm}}
+                                                        </mat-option>
+                                                    </mat-autocomplete> -->
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <!-- <div class="row" ngIf="viewtntData" ngFor="let p of tenantsData">
+                                <p>{{p.prtnr_nm}}</p>
+                            </div> -->
+                            <!-- <div class="row">
+                                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9"></div>
+                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
+                                    <button mat-button matStepperPrevious>Back</button>
+                                </div>
+                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
+                                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                                </div>
+                            </div> -->
+                            <div fxLayout="row" style="margin-top: 4%;">
+                                <div fxFlex="100%" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%"
+                                    fxFlex.gt-xs="80%"></div>
+                                <div fxFlex="100%" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                                    fxFlex.gt-xs="10%"> <button mat-raised-button matStepperPrevious>Back</button></div>
+                                <div fxFlex="100%" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                                    fxFlex.gt-xs="10%"><button mat-raised-button color="primary" matStepperNext
+                                        class="gtDtls" (click)="LastNext()">Next</button></div>
+                            </div>
+
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <div class="row">
+                            <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="fltrids"
+                                [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                                [masterDetail]="{ enabled: true, template: 'detail' }">
+                                <dxo-paging [pageSize]="10"></dxo-paging>
+                                <dxo-pager [visible]="true" [showPageSizeSelector]="true"
+                                    [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                                <dxo-column-chooser [enabled]="true" mode="select">
+                                </dxo-column-chooser>
+                                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false"
+                                    [allowExportSelectedData]="true">
+                                </dxo-export>
+                                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                                <dxi-column [allowResizing]="true" *ngFor="let g of shocolumnDefs" [visible]="!g.hide"
+                                    [dataField]="g.field" [caption]="g.headerName" alignment="g.cellStyle.text-align"
+                                    [width]="g.width"></dxi-column>
+                            </dx-data-grid>
+                        </div>
+                        <div class="row">
+                            <div fxFlex="5%" fxFlex.xs="5%" class="px-8"></div>
+                            <div fxFlex="100%" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%"
+                                fxFlex.gt-xs="20%">
+                                <div class="form-label">Comment</div>
+                                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                                    <textarea placeholder="Write a Comment" matInput [(ngModel)]="comment"
+                                        [ngModelOptions]="{standalone: true}" required></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-raised-button matStepperPrevious class="m-2">Back</button>
+                            <!-- <button mat-raised-button color="warn" (click)="stepper.reset()" class = "m-2">Reset</button> -->
+                            <button mat-raised-button color="primary" (click)="save()" class=" gtDtls m-2">
+                                Save</button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </div>
+        </div>
+    </ng-container>
+</ds-sidebar>
+<!-- sidebar -->

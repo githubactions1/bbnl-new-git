@@ -1,0 +1,362 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div fxLayout="row wrap" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardOne">
+        <div>
+          <div class="totlCnt inrSctnOne">
+            <div class="cntDtls">
+              <div fxLayout="row">
+              <div fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgOne">
+                <mat-icon  class = "dwnldIcn">call</mat-icon>
+            </div>
+            <div fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipphnenumcnts[0].ct}}</div>
+              <div class="h4 nme">Total Phone Numbers</div>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div>
+          <div class="totlCnt inrSctnTwo">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgTwo">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipphnenumcnts[0].asgnd_cnt}}</div>
+              <div class="h4 nme">Total Allocated Phone Numbers</div>
+</div>
+</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div>
+          <div class="totlCnt inrSctnSvn">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgThree">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div  fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%">
+              <div class="h1 cnt">{{voipphnenumcnts[0].ind_cntt}}</div>
+              <div class="h4 nme">Domestic Allocated Phone Numbers</div>
+</div>
+</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div>
+          <div  class="totlCnt inrSctnEght">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div  fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgFour">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div  fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipphnenumcnts[0].ent_cntt}}</div>
+              <div class="h4 nme">Enterprise Allocated Phone Numbers</div>
+</div>
+</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  <!-- </div> -->
+  <!-- <div fxLayout="row" fxLayoutAlign="start top"> -->
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div>
+          <div  class="totlCnt inrSctnThree">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div  fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgOne">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div  fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipphnenumcnts[0].fncy_cnt}}</div>
+              <div class="h4 nme">Total Reserved Phone Numbers</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div>
+          <div class="totlCnt inrSctnThree">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div  fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgTwo">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div  fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipTotalCallscnts[0].usd_cnt}}</div>
+              <div class="h4 nme">VOIP Phone Numbers used till now</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div>
+          <div  class="totlCnt inrSctnThree">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div  fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgThree">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div  fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipTotalCallscnts[1].usd_cnt_crr_mnth}}</div>
+              <div class="h4 nme">VOIP Current Month Used Numbers</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div>
+          <div  class="totlCnt inrSctnThree">
+            <div class="cntDtls">
+              <div fxLayout="row">
+                <div  fxFlex="20" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="34%" fxFlex.gt-xs="34%" class = "cardBgFour">
+                  <mat-icon  class = "dwnldIcn">call</mat-icon>
+              </div>
+              <div  fxFlex="80" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="66%" fxFlex.gt-xs="66%" >
+              <div class="h1 cnt">{{voipCurrntCallscnts[0].ct}}</div>
+              <div class="h4 nme">Current Month Calls</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row m-16 mt-0" style="margin-top:1%!important">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear2" (selectionChange)="selectyear2()">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div> -->
+
+<div class="ds-card m-16 mt-0">
+
+  <div fxLayout="row" fxLayout.xs = "column">
+    <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="0%"></div>
+  <div fxFlex = "100" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle">VOIP MONTHLY CHARGE DETAILS</div>
+  <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+        [(value)]="selectedYear2" (selectionChange)="selectyear2()">
+        <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    </div>
+
+
+<dx-chart id="chart" [dataSource]="voipchrgs">
+  <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+    <dxi-series valueField="ltn_100" name="Up to 100₨"></dxi-series>
+    <dxi-series valueField="100_to_300" name="100 to 300₨"></dxi-series>
+    <dxi-series valueField="300_to_500" name="300 to 500₨"></dxi-series>
+    <dxi-series valueField="500_to_1000" name="500 to 1000₨"></dxi-series>
+    <dxi-series valueField="1000_to_2000" name="1000 to 2000₨"></dxi-series>
+    <dxi-series valueField="gt_2000" name=">2000₨"></dxi-series>
+    <dxi-value-axis>
+      <dxo-title text="Total CAFS"></dxo-title>
+      <dxo-grid [visible]="true"></dxo-grid>       
+    </dxi-value-axis>
+    <dxo-common-series-settings
+        argumentField="mnth_nm"
+        type="spline">
+    </dxo-common-series-settings>
+    <dxo-argument-axis [valueMarginsEnabled]="false" [axisDivisionFactor]="35"
+    discreteAxisDivisionMode="crossLabels">
+    <dxo-grid [visible]="true"></dxo-grid>
+  </dxo-argument-axis>
+    <dxo-legend
+        verticalAlignment="top"
+        horizontalAlignment="center"
+        itemTextPosition="right">
+    </dxo-legend>
+    <dxo-title >
+        <!-- <dxo-subtitle text="(Millions of Tons, Oil Equivalent)"></dxo-subtitle> -->
+    </dxo-title>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000" width=100%>
+    </dxo-tooltip>
+</dx-chart>
+</div>
+<!-- <div class="row m-16 mt-0" style="margin-top:1%!important">
+  <div class="col-8"></div>
+  <div class="col-2">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+        [(value)]="selectedYear">
+        <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-2">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedMonth"
+        placeholder="Select Month" (selectionChange)="selectmnth()">
+        <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div> -->
+<div class="ds-card m-16 mt-0">
+  <div fxLayout="row" fxLayout.xs = "column">
+    <div fxFlex = "100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="60%" class = "pt-8 chrtTiTle">
+      VOIP DAYWISE CALLS DETAILS
+    </div>
+  <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%" >
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+        [(value)]="selectedYear" (selectionChange)="selectmnth()">
+        <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedMonth"
+        placeholder="Select Month" (selectionChange)="selectmnth()">
+        <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  </div>
+  <dx-chart id="chart" [dataSource]="voipdaymnthlycalls">
+    <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+      <dxi-series *ngFor="let energy of voipdaymnthlydata" [valueField]="energy.value" [name]="energy.name" [color]="energy.color">
+      </dxi-series>
+      <dxi-value-axis>
+        <dxo-title text="Total Calls"></dxo-title> 
+        <dxo-grid [visible]="true"></dxo-grid>     
+      </dxi-value-axis>
+      <dxo-argument-axis [valueMarginsEnabled]="false" [allowDecimals]="true" [axisDivisionFactor]="35" discreteAxisDivisionMode="crossLabels">
+        <dxo-grid [visible]="true"></dxo-grid>
+      </dxo-argument-axis>
+      <dxo-common-series-settings
+          argumentField="day"
+          type="line">
+      </dxo-common-series-settings>
+      <dxo-legend
+          verticalAlignment="top"
+          horizontalAlignment="center"
+          itemTextPosition="right">
+      </dxo-legend>
+      <dxo-title>
+          <!-- <dxo-subtitle text="(Millions of Tons, Oil Equivalent)"></dxo-subtitle> -->
+      </dxo-title>
+      <dxo-export [enabled]="true"></dxo-export>
+      <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip1" [zIndex]="5000">
+      </dxo-tooltip>
+  </dx-chart>
+  </div>
+  <!-- <div class="row m-16 mt-0">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" readonly placeholder="Select Date" (dateChange)="addEvent('change', $event)" [(value)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>  
+    </div>
+    
+  </div> -->
+  <div class="ds-card m-16 mt-0">
+    <div fxLayout="row" fxLayout.xs = "column">
+      <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="0%"></div>
+    <div fxFlex = "100" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle">VOIP HOUR WISE CALLS DETAILS</div>
+    <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" readonly placeholder="Select Date" (dateChange)="addEvent('change', $event)" [(value)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> 
+      </div>
+      </div>
+
+
+    <dx-chart id="chart" [dataSource]="voiphrlycalls">
+      <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+        <dxi-series *ngFor="let energy of voiphrlydata" [valueField]="energy.value" [name]="energy.name" [color]="energy.color">
+        </dxi-series>
+        <dxi-value-axis>
+          <dxo-title text="Total Calls"></dxo-title>      
+        </dxi-value-axis>
+        <dxo-argument-axis [valueMarginsEnabled]="false"  [axisDivisionFactor]="35" discreteAxisDivisionMode="crossLabels">
+          <dxo-grid [visible]="true"></dxo-grid>
+        </dxo-argument-axis>
+        <dxo-common-series-settings
+            argumentField="hrly_nm"
+            type="spline">
+        </dxo-common-series-settings>
+        <dxo-legend
+            verticalAlignment="top"
+            horizontalAlignment="center"
+            itemTextPosition="right">
+        </dxo-legend>
+        <dxo-title >
+            <!-- <dxo-subtitle text="(Millions of Tons, Oil Equivalent)"></dxo-subtitle> -->
+        </dxo-title>
+        <dxo-export [enabled]="true"></dxo-export>
+        <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip1" [zIndex]="5000">
+        </dxo-tooltip>
+    </dx-chart>
+    </div>
+</div>

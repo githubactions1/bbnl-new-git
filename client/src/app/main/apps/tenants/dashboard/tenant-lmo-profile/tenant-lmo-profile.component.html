@@ -1,0 +1,706 @@
+<div class="page-layout blank usrEmplye pageBackground usrAcntCmpnt">
+  <!-- <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header> -->
+
+  <!-- HEADER -->
+  <div class="header" *ngFor="let s of agntDtls">
+    <div fxLayout="row">
+      <!-- <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="3" fxFlex.sm="3" fxFlex.xs="100" class="px-8"></div> -->
+      <!-- <div fxFlex.xl="65" fxFlex.lg="65" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="px-8"> -->
+      <div style="padding-left: 28px;">
+        <div class="user-info mt-6prcnt"
+          [style.margin-top]="s.ofce_addr1_tx || s.ofce_lclty_nm || s.ofce_ara_nm ? '2%' : '4%' " fxLayout="column"
+          fxLayoutAlign="start center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center">
+          <!-- <img class="profile-image avatar huge" src="https://s.cdpn.io/profiles/user/1696394/80.jpg?1551703005"> -->
+          <div class="name">{{s.agnt_nm}} - <span>{{s.agnt_cd}}</span></div>
+        </div>
+
+        <div fxLayout="row">
+          <!-- <div fxFlex.xl="6" fxFlex.lg="6" fxFlex.md="23" fxFlex.sm="25" fxFlex.xs="0" class="px-8"></div>
+        <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="75" fxFlex.sm="28" fxFlex.xs="100" class="px-8"> -->
+          <div>
+            <h3 class="fuse-white--fg">
+              <mat-icon class="font-size-16" style="vertical-align: sub;">person_outline</mat-icon>
+              {{s.ofce_cntct_nm ? s.ofce_cntct_nm : 'NA'}}
+            </h3>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <!-- <div fxFlex.xl="6" fxFlex.lg="6" fxFlex.md="23" fxFlex.sm="23" fxFlex.xs="0" class="px-8"></div>
+        <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="75" fxFlex.sm="28" fxFlex.xs="100" class="px-8"> -->
+          <div>
+            <h3 class="fuse-white--fg">
+              <mat-icon class="font-size-16" style="vertical-align: sub;">phone_iphone</mat-icon>
+              {{s.ofce_mbl_nu ? s.ofce_mbl_nu : 'NA'}}
+            </h3>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <!-- <div fxFlex.xl="6" fxFlex.lg="6" fxFlex.md="23" fxFlex.sm="26" fxFlex.xs="0" class="px-8"></div>
+        <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="75" fxFlex.sm="30" fxFlex.xs="100" class="px-8"> -->
+          <div>
+            <h5 class="fuse-white--fg">
+              <mat-icon class="font-size-16" style="vertical-align: sub;">mail_outline</mat-icon>
+              {{s.ofce_eml_tx ? s.ofce_eml_tx : 'NA'}}
+            </h5>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <!-- <div fxFlex.xl="6" fxFlex.lg="6" fxFlex.md="23" fxFlex.sm="23" fxFlex.xs="0" class="px-8"></div>
+        <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="75" fxFlex.sm="40" fxFlex.xs="100" class="px-8"> -->
+          <div>
+            <h6 class="fuse-white--fg">
+              <mat-icon *ngIf="s.ofce_addr1_tx || s.ofce_lclty_nm || s.ofce_ara_nm" class="font-size-16"
+                style="vertical-align: sub;">place</mat-icon>
+              <span *ngIf="s.ofce_addr1_tx || s.ofce_lclty_nm || s.ofce_ara_nm">{{s.ofce_addr1_tx}}, {{s.ofce_lclty_nm}}
+                {{s.ofce_ara_nm}}</span>
+            </h6>
+          </div>
+        </div>
+        <!-- <div fxLayout="row" class="text-center"> <h5 class="fuse-white--fg" *ngIf="s.ofce_eml_tx">{{s.ofce_eml_tx}}</h5></div> -->
+        <!-- <div fxLayout="row" class="text-center"><h6 class="fuse-white--fg" *ngIf="s.ofce_addr1_tx || s.ofce_lclty_nm || s.ofce_ara_nm">
+        {{s.ofce_addr1_tx}},
+        {{s.ofce_lclty_nm}} {{s.ofce_ara_nm}}</h6></div> -->
+      </div>
+      <!-- <div fxFlex.xl="60" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8">
+        
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column"
+          fxLayoutAlign.gt-md="start center" style="margin-left: 48px;">
+          <div fxFlex.xl="6" fxFlex.lg="8" fxFlex.md="11" fxFlex.xs="6" class="px-8"></div>
+          <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="50" class="px-8">
+            <div>
+              <h3 class="fuse-white--fg" *ngIf="s.ofce_cntct_nm">{{s.ofce_cntct_nm}}</h3>
+              <h4 class="fuse-white--fg" *ngIf="s.ofce_mbl_nu">{{s.ofce_mbl_nu}}</h4>
+              <h5 class="fuse-white--fg" *ngIf="s.ofce_eml_tx">{{s.ofce_eml_tx}}</h5>
+              <h6 class="fuse-white--fg" *ngIf="s.ofce_addr1_tx || s.ofce_lclty_nm || s.ofce_ara_nm">
+                {{s.ofce_addr1_tx}},
+                {{s.ofce_lclty_nm}} {{s.ofce_ara_nm}}</h6>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div fxFlex.xl="20" fxFlex.lg="20" fxFlex.md="100" fxFlex.xs="100" class="px-8"></div> -->
+      <!-- <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="100" fxFlex.xs="100" class="px-8">
+          <div>
+            <div fxLayout="row">
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  >
+                  <div class="agntCaf">
+
+                      <div class="h1 cnt">{{s.ttl_caf_cnt}}</div>
+                      <div class="h4 nme">Total CAF</div>
+                  </div>
+              </div>
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  >
+                  <div class = "agntCaf">
+
+                      <div class="h1 cnt">{{s.last30days}}</div>
+                      <div class="h4 nme">Last Month Connected CAF</div>
+                  </div>
+              </div>
+          </div>
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                >
+                <div class="agntCaf">
+
+                    <div class="h1 cnt">{{s.cpe_cnt}}</div>
+                    <div class="h4 nme">Total CPE Stock</div>
+                </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                >
+                <div class = "agntCaf">
+
+                    <div class="h1 cnt">{{s.rmng_caf}}</div>
+                    <div class="h4 nme">Available CPE Stock</div>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+              >
+              <div class="agntCaf">
+
+                  <div class="h1 cnt">{{s.ttl_amnt}}</div>
+                  <div class="h4 nme">Last Month Paid To APSFL</div>
+              </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+              >
+              <div class = "agntCaf">
+
+                  <div class="h1 cnt">0</div>
+                  <div class="h4 nme">This Month</div>
+              </div>
+          </div>
+      </div>
+          </div>
+
+      </div> -->
+    </div>
+    <div fxLayout="row" class="mt-16 prfleCntsDiv">
+      <div fxFlex.xl="25" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8 p-4">
+        <div class="h1 cnt">{{s.ttl_caf_cnt}}</div>
+        <div class="h4 nme">Total CAF</div>
+      </div>
+      <div fxFlex.xl="25" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8 p-4">
+        <div class="h1 cnt">{{s.last30days}}</div>
+        <div class="h4 nme">Last Month Connected CAF</div>
+      </div>
+      <div fxFlex.xl="25" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8 p-4">
+        <div class="h1 cnt">{{s.cpe_cnt}}</div>
+        <div class="h4 nme">Total CPE Stock</div>
+      </div>
+      <div fxFlex.xl="25" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8 p-4">
+        <div class="h1 cnt">{{s.rmng_caf}}</div>
+        <div class="h4 nme">Available CPE Stock</div>
+      </div>
+      <div fxFlex.xl="25" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8 p-4">
+        <div class="h1 cnt" *ngIf="s.ttl_amnt">{{s.ttl_amnt}}</div>
+        <div class="h1 cnt" *ngIf="!s.ttl_amnt">0</div>
+        <div class="h4 nme">Last Month Paid To APSFL</div>
+      </div>
+      <div fxFlex.xl="25" fxFlex.lg="60" fxFlex.md="100" fxFlex.xs="100" class="px-8 p-4">
+        <div class="h1 cnt">0</div>
+        <div class="h4 nme">This Month</div>
+      </div>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content">
+    <ds-loading *ngIf="shwLdr"></ds-loading>
+    <mat-tab-group (selectedTabChange)="tabChangeFn($event)" class="mt-53">
+      <mat-tab *ngFor="let t of Company" [label]="t.tab_nm">
+        <mat-expansion-panel class="m-24" *ngIf="t.tab_id == 4">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Filter Transactions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form class="p-8" fxLayout="column" [formGroup]='agntPymntsForm'>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select From Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker1" placeholder="Payment Date" formControlName="pymntFrmDt">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select To Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker2" placeholder="Payment Date" formControlName="pymntToDt">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 m-24">
+                <div class="form-label"></div>
+                <button mat-flat-button type="submit" aria-label="Get Payments" class="mat-raised-button  saveBtn-color"
+                  (click)="getUsrPymnts()">Get Transactions</button>
+              </div>
+            </div>
+          </form>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="m-24" *ngIf="t.tab_id == 7">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Filter Transactions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row fltrcrd m-24">
+            <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+              <div class="form-label">Select Year</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="slctdyear" matInput required>
+                  <mat-option *ngFor="let yr of year" [value]="yr.yr_id">
+                    {{yr.yr_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn" style="margin-top: 33px;">
+              <button mat-raised-button color="primary" (click)="getdetails();" class="gtDtls">GET DETAILS</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <div class="ds-card m-12">
+          <div class="p-16" *ngIf="t.tab_id == 7">
+            <dx-data-grid id="gridContainer" [dataSource]="monThWiseData" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" (onCellClick)="onCelClick($event)" class="max-width-100"
+              >
+              <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+              </dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let g of gridColumnDefs" [visible]="!g.hide" [dataField]="g.field"
+                [caption]="g.headerName" [alignment]="g.alignment" [width]="g.width" [format]="g.format"></dxi-column>
+              <div *dxTemplate="let agrmtData of 'detail'">
+                <dx-data-grid [dataSource]="custmerWiseData" [showBorders]="true" [columnAutoWidth]="true"
+                  [remoteOperations]="false" class="max-width-100" [allowColumnReordering]="true"
+                  [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+                  (onCellClick)="onScdCellClick($event)" [masterDetail]="{ enabled: true, template: 'details' }">
+                  <dxo-paging [pageSize]="10"></dxo-paging>
+                  <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                  </dxo-pager>
+                  <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                  <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                  <dxo-group-panel [visible]="true"></dxo-group-panel>
+                  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                  <dxo-column-chooser [enabled]="true" mode="select">
+                  </dxo-column-chooser>
+                  <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                  </dxo-export>
+                  <dxo-filter-row [visible]="true"></dxo-filter-row>
+                  <dxi-column dataField="Sno" [width]="120" alignment="center"></dxi-column>
+                  <dxi-column dataField="Invoice Id" alignment="center"></dxi-column>
+                  <dxi-column caption="Invoice Year" dataField="invce_yr" alignment="center"></dxi-column>
+                  <dxi-column caption="Invoice Month" dataField="monthname" alignment="center"></dxi-column>
+                  <dxi-column caption="CAF Number" dataField="Caf No" alignment="center"></dxi-column>
+                  <dxi-column caption="CAF Activation Date" dataField="Caf Date" alignment="center"></dxi-column>
+                  <dxi-column dataField="Customer Name" alignment="center"></dxi-column>
+                  <dxi-column dataField="Mobile Number" alignment="center"></dxi-column>
+                  <dxi-column dataField="APSFL Share" alignment="right"></dxi-column>
+                  <dxi-column dataField="MSO Share" alignment="right"></dxi-column>
+                  <dxi-column dataField="LMO Share" alignment="right"></dxi-column>
+                  <dxi-column dataField="Total" alignment="right"></dxi-column>
+                  <dxi-column dataField="Payment Status" alignment="center"></dxi-column>
+                  <div *dxTemplate="let agrmtData of 'details'">
+                    <dx-data-grid [dataSource]="custmerWisedetailsData" [showBorders]="true"
+                      [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+                      [columnAutoWidth]="true">
+                      <dxo-paging [pageSize]="10"></dxo-paging>
+                      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                      </dxo-pager>
+                      <dxi-column dataField="Sno" alignment="center"></dxi-column>
+                      <dxi-column dataField="Package Name" alignment="center"></dxi-column>
+                      <dxi-column dataField="Charge Code" alignment="center"></dxi-column>
+                      <dxi-column dataField="APSFL Share" alignment="right"></dxi-column>
+                      <dxi-column dataField="MSO Share" alignment="right"></dxi-column>
+                      <dxi-column dataField="LMO Share" alignment="right"></dxi-column>
+                      <dxi-column dataField="Total" alignment="right"></dxi-column>
+                      <dxi-column dataField="Charge From Date" alignment="center"></dxi-column>
+                      <dxi-column dataField="Charge To Date" alignment="center"></dxi-column>
+                      <dxi-column dataField="Pro rated" alignment="center"></dxi-column>
+                    </dx-data-grid>
+                  </div>
+                </dx-data-grid>
+              </div>
+            </dx-data-grid>
+          </div>
+
+          <dx-data-grid class="p-8 prflLSt" *ngIf="t.tab_id != 3 && t.tab_id != 7" id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" style="width:100%"
+            [masterDetail]="{ enabled: masterDetailTxt==true?true:false, template: 'detail' }"
+            (onCellClick)="onCellClick($event)" (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <div>button</div>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+              [alignment]="f.alignment" [width]="f.width" [format]="f.format"
+              [allowHeaderFiltering]="f.columnFiltering" [allowFiltering]="f.filter"></dxi-column>
+            <!-- <dxi-column [showInColumnChooser]="false" [visible]="t.tab_id==5" type="buttons" [width]="100"
+              caption="profile" cellTemplate="editTemplate">
+              <div *dxTemplate="let data of 'editTemplate'">
+                <div class="cursor-pointer tblPrfleBtn" (click)="onVoewCellClick(data)">
+                  Profile
+                </div>
+              </div>
+            </dxi-column> -->
+            <div *ngIf="t.tab_id==1">
+              <div *dxTemplate="let agrmtData of 'detail'">
+                <dx-data-grid [dataSource]="agrmntDtls" [showBorders]="true" [rowAlternationEnabled]="true"
+                  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true"
+                  class="max-width-100" (onCellClick)="onpkgCellClick($event)"
+                  [masterDetail]="{ enabled: true, template: 'details' }">
+                  <dxi-column dataField="sno" [width]="100" alignment="center"></dxi-column>
+                  <dxi-column dataField="Package Name" [width]="150" alignment="center"></dxi-column>
+                  <dxi-column dataField="Package Type" [width]="150" alignment="center"></dxi-column>
+                  <dxi-column dataField="Template Name" [width]="150" alignment="center"></dxi-column>
+                  <dxi-column dataField="agents" [width]="120" alignment="center"></dxi-column>
+                  <div *dxTemplate="let agrmtData of 'details'">
+                    <dx-data-grid [dataSource]="partnersDtls" [showBorders]="true" [columnAutoWidth]="true">
+                      <dxi-column dataField="sno" [width]="100" alignment="center"></dxi-column>
+                      <dxi-column dataField="Partner Name" [width]="200" alignment="center"></dxi-column>
+                      <dxi-column dataField="Area" [width]="200" alignment="center"></dxi-column>
+                      <dxi-column dataField="Partner Percentage" [width]="200" alignment="right"></dxi-column>
+                    </dx-data-grid>
+                  </div>
+                </dx-data-grid>
+              </div>
+            </div>
+          </dx-data-grid>
+
+          <div class=" m-12" *ngIf="t.tab_id==3">
+            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="pkgeData" [remoteOperations]="false" (onToolbarPreparing)="(shwPckgeAddBtn == true)?onPackge($event):false"
+              [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+              [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%;">
+              <dxo-export [enabled]="true" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="false"></dxo-filter-row>
+              <dxi-column *ngFor="let f of packagecolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                [allowFiltering]="f.filter"></dxi-column>
+                <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="Status" cellTemplate="editTemplate" [visible]="activeLbl">
+                  <div *dxTemplate="let data of 'editTemplate'">
+                    <div class="tblActvBtn">
+                      Active
+                    </div>
+                  </div>
+                </dxi-column>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+            </dx-data-grid>
+  
+          </div>
+        </div>
+        <!-- <mat-expansion-panel class="m-24" *ngIf="t.tab_id == 9">
+          <p>hiii</p>
+        </mat-expansion-panel> -->
+      </mat-tab>
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          Package Details
+        </ng-template>
+        <div class=" m-12" *ngIf="pckgeDtls == true">
+          <dx-data-grid class="p-8" id="gridContainer" [dataSource]="pkgeData" [remoteOperations]="false" (onToolbarPreparing)="onPackge($event)"
+            [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+            [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:80%;margin-left: 10%;">
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxi-column *ngFor="let f of packagecolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+              [allowFiltering]="f.filter"></dxi-column>
+              <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="Status" cellTemplate="editTemplate" [visible]="activeLbl">
+                <div *dxTemplate="let data of 'editTemplate'">
+                  <div class="tblActvBtn">
+                    Active
+                  </div>
+                </div>
+              </dxi-column>
+          </dx-data-grid>
+
+        </div>
+      </mat-tab> -->
+    </mat-tab-group>
+  </div>
+  <!-- / CONTENT -->
+
+  <!-- <div fxLayout="row wrap" class="p-16" fxLayoutAlign="start top" style="width:100%;padding-left: 16px;">
+    <div class="ds-card">
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+
+      <mat-tab-group style="height: 500px;" (selectedTabChange)="tabChangeFn($event)">
+        <mat-tab *ngFor="let t of Company" [label]="t.tab_nm">
+          <mat-expansion-panel class="m-24" *ngIf="t.tab_id == 4">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Filter Transactions
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form class="p-8" fxLayout="column" [formGroup]='agntPymntsForm'>
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                  <div class="form-label">Select From Date<span class="reqSgnColor">*</span></div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="picker1" placeholder="Payment Date" formControlName="pymntFrmDt">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                  <div class="form-label">Select To Date<span class="reqSgnColor">*</span></div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="picker2" placeholder="Payment Date" formControlName="pymntToDt">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 m-24">
+                  <div class="form-label"></div>
+                  <button mat-flat-button type="submit" aria-label="Get Payments"
+                    class="mat-raised-button  saveBtn-color" (click)="getUsrPymnts()">Get Transactions</button>
+                </div>
+              </div>
+            </form>
+          </mat-expansion-panel>
+          <div class="m-24">
+            <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" style="width:100%"
+              [masterDetail]="{ enabled: masterDetailTxt==true?true:false, template: 'detail' }" (onCellClick)="onCellClick($event)">
+              <dxo-paging [pageSize]="8"></dxo-paging>
+              <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-group-panel [visible]="false"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+              </dxo-export>
+              <div>button</div>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+              <dxi-column [showInColumnChooser]="false" [visible]="t.tab_id==5" type="buttons" [width]="100" caption=""
+                cellTemplate="editTemplate">
+                <div *dxTemplate="let data of 'editTemplate'">
+                  <div class="cursor-pointer" (click)="onCellClick(data)">
+                    View
+                  </div>
+                </div>
+              </dxi-column>
+              <div *ngIf="t.tab_id==1">
+                <div *dxTemplate="let agrmtData of 'detail'">
+                  <dx-data-grid [dataSource]="agrmntDtls" [showBorders]="true" [rowAlternationEnabled]="true"
+                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true">
+                    <dxi-column dataField="Package Name"></dxi-column>
+                    <dxi-column dataField="Package Type"></dxi-column>
+                    <dxi-column dataField="Template Name"></dxi-column>
+                    <dxi-column dataField="Percentage"></dxi-column>
+                  </dx-data-grid>
+                </div>
+              </div>
+            </dx-data-grid>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div> -->
+</div>
+<!-- sidebar -->
+<ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div class="card">
+        <div class="card-body" *ngIf="cstmrData">
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle"
+            style="float:right">cancel </mat-icon>
+          <ds-customer-profile [cstmrData]="cstmrData"></ds-customer-profile>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>
+<!-- sidebar -->
+
+<!-- sidebar -->
+
+<ds-sidebar class="form-panel ds-form-sidebar" name="addPckgeFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div>
+        <div>
+          <mat-icon matTooltip="close" (click)="closePckgeSideBar();stepper.reset()" class="closeSidebar closePckgeSidebarPrfle m-12"
+            style="float:right">cancel </mat-icon>
+            <mat-horizontal-stepper #stepper>
+              <mat-step>
+                <!-- <form [formGroup]="thirdFormGroup"></form> -->
+                <ng-template matStepLabel>Enter CAF NO</ng-template>
+                <div class="row">
+                  <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+                    <div class="form-label">CAF NO</div>
+                    <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                      <input matInput type="text" [(ngModel)]="cafnumbr" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn" style="margin-top: 1.8%;">
+                    <button mat-raised-button color="primary" (click)="getcafdetails();" class="gtDtls getCafBtn-transform">GET CAF</button>
+                  </div>
+                </div>
+                <div class="row" *ngIf="cstmrDtlsTbl">
+                  <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="pckgeCstmrData"
+                    [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="max-width:100%">
+                    <!-- <dxo-paging [pageSize]="10"></dxo-paging> -->
+                    <!-- <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                      [showInfo]="true"></dxo-pager> -->
+                    <!-- <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel> -->
+                    <!-- <dxo-filter-panel [visible]="true"></dxo-filter-panel> -->
+                    <!-- <dxo-group-panel [visible]="true"></dxo-group-panel> -->
+                    <!-- <dxo-grouping [autoExpandAll]="false"></dxo-grouping> -->
+                    <!-- <dxo-column-chooser [enabled]="true" mode="select">
+                    </dxo-column-chooser> -->
+                    <!-- <dxo-export [enabled]="true" [allowExportSelectedData]="true">
+                    </dxo-export> -->
+                    <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+                    <dxi-column [allowResizing]="true" *ngFor="let g of customerDefs" [visible]="!g.hide"
+                      [dataField]="g.field" [caption]="g.headerName" [alignment]="g.alignment" [width]="g.width">
+                    </dxi-column>
+                  </dx-data-grid>
+                </div>
+                <div fxLayout="row" *ngIf="cstmrDtlsTbl">
+                  <div fxFlex="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="text-right mt-8"> <button
+                      mat-raised-button color="primary" matStepperNext class="gtDtls">Next</button></div>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Select Addon Packages</ng-template>
+                <mat-tab-group (selectedTabChange)="tabChangePckgeFn($event)" [(selectedIndex)]="selectedPckgeIndex">
+                  <mat-tab>
+                    <ng-template mat-tab-label class="pckge-mat-tab-label">
+                      IPTV
+                    </ng-template>
+                    <div class="m-12">
+                      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="addOnStandardPckgsLst"
+                        [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+                        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                        style="width:100%"
+                        (onSelectionChanged)="addOnPckgsSlctd($event)" (onRowExpanding)="getChanneslList($event)"
+                        [masterDetail]="{ enabled: true, template: 'detail' }">
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                        </dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <!-- <dxo-filter-panel [visible]="true"></dxo-filter-panel> -->
+                        <dxo-selection mode="multiple"></dxo-selection>
+                        <!-- <dxo-group-panel [visible]="true"></dxo-group-panel> -->
+                        <!-- <dxo-grouping [autoExpandAll]="false"></dxo-grouping> -->
+                        <!-- <dxo-column-chooser [enabled]="true" mode="select"> -->
+                        <!-- </dxo-column-chooser> -->
+                        <!-- <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                          fileName="Package Agreement"> -->
+                        <!-- </dxo-export> -->
+                        <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+                        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                          [caption]="f.headerName" [alignment]="f.alignment" [allowFiltering]="f.filter"
+                          [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+                        <div *dxTemplate="let agrmtData of 'detail'">
+                          <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [remoteOperations]="false" [allowColumnReordering]="true" 
+                          [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                            *ngIf="view == true" [columnAutoWidth]="true">
+                            <dxi-column [allowResizing]="true" caption="Sno" alignment="center" dataField="s_no"></dxi-column>
+                            <dxi-column [allowResizing]="true" caption="Channel Name" alignment="left" dataField="chnle_nm"></dxi-column>
+                          </dx-data-grid>
+                        </div>
+                      </dx-data-grid>
+                      <div class="text-right m-8" *ngIf="shwSveBtn">
+                        <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                          (click)="saveAddonPckgs()">Save</button>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab>
+                    <ng-template mat-tab-label class="pckge-mat-tab-label">
+                      HSI
+                    </ng-template>
+                    <ds-loading *ngIf="shwPckgeLdr"></ds-loading>
+                    <div class="text-center font-weight-600 m-12" *ngIf="hsiPckgsData && hsiPckgsData.length==0">No HSI addons available</div>
+                    <div *ngIf="hsiPckgsData && hsiPckgsData.length!=0">
+                    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start" class="mt-8">
+                      <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="45" fxFlex.xs="50" class="px-8" *ngFor="let h of hsiPckgsData; let i=index">
+                        <div class="ds-card hsi-card">
+                          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                            <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="30" fxFlex.xs="100" class="px-8 mt-28">
+                              <mat-checkbox [(ngModel)]="hsiPckgsData[i].checked"
+                              id="hsiPckgsData[{{i}}]" 
+                              name="hsiPckgsData[{{i}}]" (change)="updateSelection(i, h)"></mat-checkbox>
+                            </div>
+                            <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="70" fxFlex.xs="100" class="px-8 text-center">
+                              <div class="font-weight-600 p-12 font-size-14 hsi-card-header-color">{{h.pckge_nm}} - ({{h.vle_tx}}GB)</div>
+                              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                                <div fxFlex.xl="40" fxFlex.lg="30" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                                  <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.ttl_cst}}</div>
+                                  <div class="font-size-12">Total Cost</div>
+                                </div>
+                                <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                                  <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.chrge_at}}</div>
+                                  <div class="font-size-12">Charges</div>
+                                </div>
+                                <div fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                                  <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.gst_at}}</div>
+                                  <div class="font-size-12">GST</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-right m-8">
+                      <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                        (click)="saveAddonHsiPckgs()">Save</button>
+                    </div>
+                  </div>
+                  </mat-tab>
+                  <mat-tab>
+                    <ng-template mat-tab-label class="pckge-mat-tab-label">
+                      Remove IPTV Addons
+                    </ng-template>
+                    <div class="m-12">
+                      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="removeAddonPckgs" [remoteOperations]="false"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+                        [showRowLines]="true" [showBorders]="true" (onSelectionChanged)="addOnPckgsSlctdFrDlt($event)"
+                        (onRowExpanding)="getChanneslList($event)" [masterDetail]="{ enabled: true, template: 'detail' }">
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                        </dxo-pager>
+                        <!-- <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel> -->
+                        <!-- <dxo-filter-panel [visible]="true"></dxo-filter-panel> -->
+                        <dxo-selection mode="multiple"></dxo-selection>
+                        <!-- <dxo-group-panel [visible]="true"></dxo-group-panel> -->
+                        <!-- <dxo-grouping [autoExpandAll]="false"></dxo-grouping> -->
+                        <!-- <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser> -->
+                        <!-- <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                          fileName="Package Agreement"> -->
+                        <!-- </dxo-export> -->
+                        <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+                        <dxi-column *ngFor="let f of rmvAddonscolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                          [caption]="f.headerName" [alignment]="f.alignment" [allowFiltering]="f.filter"
+                          [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+                        <div *dxTemplate="let agrmtData of 'detail'">
+                          <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [showBorders]="true"
+                            *ngIf="view == true" [columnAutoWidth]="true">
+                            <dxi-column [allowResizing]="true" caption="Sno" dataField="indx"></dxi-column>
+                            <dxi-column [allowResizing]="true" caption="Channel Name" dataField="chnle_nm"></dxi-column>
+                          </dx-data-grid>
+                        </div>
+                      </dx-data-grid>
+                    </div>
+                    <div fxFlex="100%" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="ml-24">
+                      <div class="form-label">Reason For Remove</div>
+                      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl comment-width" appearance="outline">
+                        <textarea placeholder="Write a Comment" matInput [(ngModel)]="comment"
+                          [ngModelOptions]="{standalone: true}" required></textarea>
+                      </mat-form-field>
+                    </div>
+                    <div class="text-right m-8" *ngIf="shwRmBtn">
+                      <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button saveBtn-color mr-8"
+                        (click)="removeAddonPckgsFn()">Remove Package</button>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-step>
+              
+            </mat-horizontal-stepper>
+          
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

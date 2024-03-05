@@ -1,0 +1,312 @@
+<!-- <p>
+  ticket-noc-edit works!
+</p> -->
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <div class="row">
+    <div fxFlex="100" fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%" fxFlex.gt-xs="85%"></div>
+    <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%">
+      <button mat-raised-button color="primary" class="m-16 mr-40 bkgrdclr" style="float:right" (click)="backBtn()">
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%">
+    </div>
+  </div>
+  <div class="row">
+    <div fxFlex="100" fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%" fxFlex.gt-xs="85%"></div>
+    <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%">
+      <ngx-qrcode qrc-element-type="url" [qrc-value]="guillaumeNery"></ngx-qrcode>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%">
+    </div>
+  </div>
+  <ds-loading *ngIf="searchLoader"></ds-loading>
+  <div class="row headtxt frstRw">
+    Ticket Information
+  </div>
+  <div class="ds-card m-12" fxLayout.lt-md="column" fxLayout.xs="column">
+    <div class="rowCs" fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100" fxFlex.gt-lg="12%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%"></div>
+      <div fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="px-8">
+        <p class="fntwghtS">Ticket Id</p>
+        <p class="fntwghtS">Ticket Created On</p>
+        <p class="fntwghtS">Ticket Created By</p>
+        <p class="fntwghtS">Ticket Age</p>
+        <p class="fntwghtS">Ticket Status</p>
+        <p class="fntwghtS">Ticket Accept By</p>
+      </div>
+      <div fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%" class="px-8">
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+      </div>
+      <div fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="px-8">
+        <p>{{reqData.tckt_type_cd}}{{reqData.tckt_id || '~'}}</p>
+        <p>{{reqData.tckt_dt || '~'}}</p>
+        <p>{{reqData.createuser || '~'}}</p>
+        <p>{{reqData.age || '~'}}</p>
+        <p>{{reqData.tckt_sts_nm || '~'}}</p>
+        <p>{{reqData.assignuser || '~'}}</p>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%"></div>
+      <div fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="px-8">
+        <p class="fntwghtS">Ticket Type</p>
+        <p class="fntwghtS">Ticket Priority</p>
+        <p class="fntwghtS">Ticket description</p>
+        <p class="fntwghtS">Ticket Assign Team</p>
+        <p class="fntwghtS">Ticket Approval Team</p>
+      </div>
+      <div fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%" class="px-8">
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+        <p>:</p>
+      </div>
+      <div fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="px-8">
+        <p>{{reqData.tckt_type_nm || '~'}}</p>
+        <p>{{reqData.prty_nm || '~'}}</p>
+        <p>{{reqData.dscn_tx || '~'}}</p>
+        <p>{{reqData.assignTeam || '~'}}</p>
+        <p>{{reqData.approvalTeam || '~'}}</p>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="12%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%"></div>
+    </div>
+  </div>
+  <div class="row headtxt">
+    Ticket Edit Form
+  </div>
+  <div class="widget" fxflex="100" fxflex.gt-sm="95"
+  style="max-width: 95%; margin: auto; flex: 1 1 100%; box-sizing: border-box;" class="content-start">
+  <div class="m-8 ds-card p-4 mt-4">
+    <div class="mb-24" style="padding-top: 20px;">
+      <div fxLayout="row">
+        <div fxFlex="25" fxFlex.xs="25" class="px-8">
+          <mat-label>
+            <div class="lbl mndlTitle">Type</div>
+            <div class="lbl_cntnt typeName">Privilege Request</div>
+          </mat-label><br>
+          <!-- <div class="form-label">Select Type</div>
+          <mat-form-field appearance="outline">
+            <mat-select [(value)]="TypeID" (selectionChange)="ForCategory()" required>
+              <mat-option *ngFor="let d of CreateTicketDtls" [value]="d.tckt_type_id">
+                {{d.tckt_type_nm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        </div>
+         <!-- //application// -->
+         <div fxFlex="25" fxFlex.xs="25" class="px-8">
+          <div class="form-label">Select Application</div>
+          <mat-form-field appearance="outline">
+            <mat-select [(value)]="applicationID" (selectionChange)="ForApprovalTeam()" required>
+              <mat-option *ngFor="let d of applicationDtls" [value]="d.aplcn_id">
+                {{d.aplcn_nm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+           <!-- //approvalTeam// -->
+           <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="approvalDtls && approvalDtls.length>1">
+            <div class="form-label">Select ApprovalTeam</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="approvalID" required>
+                <mat-option *ngFor="let d of approvalDtls" [value]="d.tm_id">
+                  {{d.tm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div fxFlex="20" fxFlex.xs="20" class="px-8" *ngIf="approvalDtls && approvalDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">ApprovalTeam</div>
+              <div class="lbl_cntnt typeName">{{approvalDtls[0].tm_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="20" fxFlex.xs="20" class="px-8"
+            *ngIf="!approvalDtls || approvalDtls.length<1 || !approvalDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">ApprovalTeam</div>
+              <div class="lbl_cntnt typeName">Please Select Application</div>
+            </mat-label><br>
+          </div> -->
+           <!-- //assignTeam// -->
+           <div fxFlex="25" fxFlex.xs="25" class="px-8">
+            <div class="form-label">Select AssignTeam</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="assignID" required>
+                <mat-option *ngFor="let d of assignTeamDtls" [value]="d.tm_id">
+                  {{d.tm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- //status// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8">
+            <!-- <mat-label>
+              <div class="lbl mndlTitle">Status</div>
+              <div class="lbl_cntnt typeName">New</div>
+            </mat-label><br> -->
+            <div class="form-label">Status</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="statusID" required>
+                <mat-option *ngFor="let d of stsDtls" [value]="d.tckt_sts_id">
+                  {{d.tckt_sts_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row">
+      <!-- //Priority// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8">
+            <!-- <mat-label>
+              <div class="lbl mndlTitle">Priority</div>
+              <div class="lbl_cntnt typeName">Low</div>
+            </mat-label><br> -->
+            <div class="form-label">Priority</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="prortyID" required>
+                <mat-option *ngFor="let d of prtyDtls" [value]="d.prty_id">
+                  {{d.prty_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+     <!-- //short desc// -->
+          <div  fxFlex="25" fxFlex.xs="25" class="px-8">
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Short Note<span class="reqSgnColor">*</span></div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <textarea matInput [(ngModel)]="descrptn" required></textarea>
+              <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+          </div>
+          </div>
+          <div fxLayout="row">
+             <!-- //Long desc// -->
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+              <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Description<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                <textarea matInput [(ngModel)]="lngdescrptn" required></textarea>
+                <!-- <input type="text" matInput formControlName="comment" required> -->
+                <mat-error>Description is required!</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+             <!-- ////ATTACHMENTT//////-->
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <label class="form-label">Upload Image/Document
+            </label>
+            <div class="ds-plcholder">
+              <div *ngIf="imageUrl">
+                <button type="submit" class="close" (click)="removeImg();">
+                  <span>-</span>
+                </button>
+                <img [src]="imageUrl">
+                <div *ngIf="imageUrl">{{imgfilename}}</div>
+              </div>
+              <div *ngIf="!imageUrl">
+                <label>
+                  <input (change)="uploadedFile($event)" type='file' id="imageUpload" [(ngModel)]="app_icon"
+                    accept=".xlsx, .xls, .csv, .png, .jpg, .jpeg" style="display:none">
+
+                  <mat-icon _ngcontent-qri-c39=""
+                    class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color ds-plchdlr-icon"
+                    role="img" aria-hidden="true">add_a_photo</mat-icon>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
+  <div class="row headtxt">
+    Add Comment
+  </div>
+
+
+  <div class="input-row m-12" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <div fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
+        <textarea matInput placeholder="Textarea" [(ngModel)]="comment" name="comment"
+          style="height: 300px;"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+      style="text-align: right;">
+      <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE" (click)="update()">
+        Save
+      </button>
+    </div>
+    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <!-- <button mat-raised-button type="close" aria-label="Reset" (click)="reset()"
+        style="margin-left: 4%;">
+        Reset
+      </button> -->
+    </div>
+  </div>
+  <div class="headtxt">
+    Ticket Attachments
+  </div>
+  <div class="ds-card m-12" *ngIf="searchLoader == false">
+    <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true" [dataSource]="attchData"
+      [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+      [showRowLines]="true" [showBorders]="true" style="width:100%">
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+        [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="history"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column [allowResizing]="true" *ngFor="let f of columnDefss" [visible]="!f.hide" [dataField]="f.field"
+        [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter"
+        [allowHeaderFiltering]="f.filter"></dxi-column>
+        <dxi-column [allowResizing]="true" [showInColumnChooser]="false" type="buttons"
+        [width]="100" caption="Download" cellTemplate="DownloadTemplate">
+        <div *dxTemplate="let data of 'DownloadTemplate'">
+          <div class="cursor-pointer">
+            <a [href]="data.row.data.atcht_url_tx" download>Download</a>
+            <!-- Download -->
+          </div> 
+        </div>
+      </dxi-column>
+    </dx-data-grid>
+  </div>
+  <div class="headtxt">
+    Ticket History
+  </div>
+  <div class="ds-card m-12" *ngIf="searchLoader == false">
+    <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true" [dataSource]="rowData"
+      [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+      [showRowLines]="true" [showBorders]="true" style="width:100%">
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+        [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="history"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+        [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter"
+        [allowHeaderFiltering]="f.filter"></dxi-column>
+    </dx-data-grid>
+  </div>
+</div>

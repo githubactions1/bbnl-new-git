@@ -1,0 +1,196 @@
+<mat-toolbar class="p-0 mat-elevation-z1" style="background: white !important;">
+
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center" class="mnu">
+
+        <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-icon-button class="navbar-toggle-button" *ngIf="!hiddenNavbar && !rightNavbar"
+                (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" *ngIf="!hiddenNavbar && !rightNavbar" fxHide.gt-md></div>
+
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNavbar">
+                <div class="logo ml-16">
+                    <img class="logo-icon" src="../../../../assets/images/{{userData?.mrcht_usr_imge_url_tx}}">
+                </div>
+            </div>
+
+            <div class="px-8 px-md-16">
+                <ds-shortcuts [navigation]="navigation"></ds-shortcuts>
+                <!-- <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMjuaQxvUxo98A5YOboKA0ssjXOQ5y5fSn_qYTDEJaAQKWnj_2&amp;s" style="width: 200px;height: 65px;"> -->
+                <img src="/assets/images/logo.png" class="hdrlogo">             
+            </div>
+            <div class="px-8 px-md-16">                
+               <img src="assets/images/cm2.png"  class="hdrlogo">                
+            </div>
+
+            <!-- <div class="px-8 px-md-16">                
+                <img src="assets/imgs/scsandhrafavicon.png"  class="hdrlogo">                
+             </div> -->
+
+        </div>
+        <!-- <button *ngIf="bellicon" mat-button [matMenuTriggerFor]="compliantpopup" class="user-button">
+            <span class="bell-icon">
+                <mat-icon>notifications_none</mat-icon>
+            </span>
+        </button>
+        <mat-menu  #compliantpopup="matMenu" [overlapTrigger]="false" class="mnu_itm1" >
+            <div class="subject"> Escalation Tickets Notifications</div>
+            <div *ngFor="let slainfo of sladatainfo">
+                <div class="notification_card">
+                    <div class="content" (click)="slatickets()">
+                        <p style="border-bottom: 2px solid #17A20B;text-align: center;">Ticket Level : <b>{{slainfo.Escltn_data_time}}</b></p>
+                        <h6>Ticket Number : <b>{{slainfo.Escltn_tckt}}</b></h6>
+                        <h6>CAF ID : <b>{{slainfo.caf_id}}</b></h6>
+                        <h6>Employee Name : <b>{{slainfo.complaint_sub_emp_name}}</b></h6>
+                        <h6>Created Date : <b>{{slainfo.datecreate}}</b></h6>     
+                    </div>
+                </div> -->
+                <!-- <div class="notification_card">
+                    <div class="content">Sina: Thanks </div>
+                </div>
+                <div class="notification_card">
+                    <div class="content">Component Ready for Review</div>
+                </div> -->
+            <!-- </div>
+        </mat-menu> -->
+
+            <!-- <button  class="user-button">  -->
+            <span *ngIf="walletcount"  class="bell-icon new">
+                <mat-icon>account_balance_wallet  </mat-icon>  
+            </span>
+            <!-- </button> -->
+            <!-- <div class="wallet" *ngIf="walletcount" [routerLink]="'/admin/prepaid/wallet_payment'" >
+                <div  *ngFor="let wltinf of walletinfo" class="user-button">
+                    <p class="balance">Rs. {{wltinf.balance}} </p> 
+                </div>
+            </div> -->
+
+            <div class="wallet" *ngIf="walletcount"  >
+                <div  *ngFor="let wltinf of walletinfo" class="user-button">
+                    <p class="balance">Rs {{wltinf.balance}} </p> 
+                </div>
+            </div>
+
+           <div mat-dialog-actions style="margin-bottom: 0px;" *ngIf="show">
+                <button mat-raised-button [ngClass]="showThree == true ? 'mutebtn': 'cardThree'" (click)="mute()"><mat-icon>volume_off</mat-icon> Mute</button>
+                <button mat-raised-button [ngClass]="showFour == true ? 'unmutebtn': 'cardFour'" (click)="unMute()"><mat-icon>volume_up</mat-icon> UnMute</button>
+                <button mat-raised-button [ngClass]="showFive == true ? 'holdbtn': 'cardFive'" (click)="hold()"><mat-icon>pause_circle_outline</mat-icon> Hold</button>
+                <button mat-raised-button [ngClass]="showSix == true ? 'unholdbtn': 'cardSix'" (click)="unHold()"><mat-icon>pause_circle_filled</mat-icon> UnHold</button>
+                <button mat-raised-button (click)="closeCall()" color="warn" style="margin-right: 5px;">Close Call</button>
+            </div> 
+
+            
+            <button mat-raised-button *ngIf="agntshow" [ngClass]="showOne == true ? 'breakbtn': 'cardOne'" (click)="break()" [disabled]="breaks" style="margin-right: 10px;">Break</button>              
+            <button mat-raised-button *ngIf="agntshow" [ngClass]="showTwo == true ? 'readybtn': 'cardTwo'" (click)="readyDetail()" [disabled]="ready">I am Ready</button>
+
+            
+
+
+       
+        <!-- <mat-menu  #walletcountpopup="matMenu" [overlapTrigger]="false" class="mnu_itm1" >
+            <div class="subject"> Wallet Balance</div>
+            <div *ngFor="let wltinf of walletinfo">
+                <div class="notification_card">
+                    <p>{{wltinf.balance}} </p> 
+                </div>
+            </div>
+        </mat-menu> -->
+        
+        <!-- <span *ngIf="empinactive" ><p style="font-size: 12px;color: red;font-weight: bold;">InActive Mode</p></span><mat-slide-toggle   style="margin-left: 20px;" (change)="employeeToggleactv($event.source.checked)"></mat-slide-toggle><span *ngIf="empactive" ><p style="font-size: 12px;color:green;font-weight: bold;">Active Mode</p> </span>   -->
+
+        <!-- <span *ngIf="empinactive" ><p style="font-size: 12px;color: red;font-weight: bold;">InActive Mode</p></span> <label class="switch">
+            <input type="checkbox" [checked]="swithbtn" (change)="employeeToggleactv($event.target.checked)">
+            <span class="slider round"></span>
+          </label> <span *ngIf="empactive" ><p style="font-size: 12px;color:green;font-weight: bold;padding-left:5px">Active Mode</p> </span>   -->
+
+
+        <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img class="avatar mr-0 mr-sm-16" *ngIf="!userData?.mrcht_usr_imge_url_tx"
+                        src="assets/images/modi.png">
+                    <img class="avatar mr-0 mr-sm-16" *ngIf="userData?.mrcht_usr_imge_url_tx"
+                        src="assets/images/{{userData?.mrcht_usr_imge_url_tx}}">
+                    <!-- <span class="username mr-12" fxHide fxShow.gt-sm>Sunil Mulagada</span> -->
+
+                    <span class="username mr-12" fxHide fxShow.gt-sm style="text-align: left;">{{top_line1}}
+                        <p style="font-size: 10px;margin: 0px;">{{top_line2}}</p>
+                        <p style="font-size: 10px;margin: 0px;">{{top_line3}}</p>
+                        <p style="font-size: 10px;margin: 0px;">Last Login : {{top_line4}}</p>
+                    </span>
+                    <mat-icon class="s-16 menu" fxHide.xs>keyboard_arrow_down</mat-icon>
+                </div>
+            </button>
+
+            <mat-menu #userMenu="matMenu" [overlapTrigger]="false" class="mnu_itm">
+
+                <button mat-menu-item [routerLink]="'/admin/userprofile'">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>My Profile</span>
+                </button>
+
+                <!--<button mat-menu-item class="">
+                    <mat-icon>mail</mat-icon>
+                    <span>Inbox</span>
+                </button>-->
+
+                <button mat-menu-item class="" (click)="doLogout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Logout</span>
+                </button>
+
+            </mat-menu>
+
+            <!-- <div class="toolbar-separator"></div> -->
+
+            <!-- <ds-search-bar (input)="search($event)"></ds-search-bar> -->
+            <!-- <img class="avatar mr-0 mr-sm-16" src="assets/images/logos/qr-code.png" (click)="openQr('1234567890')"> -->
+
+            <!-- <div class="toolbar-separator"></div> -->
+
+            <!--
+            <button mat-button fxHide fxShow.gt-xs
+                    class="language-button"
+                    [matMenuTriggerFor]="languageMenu">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img class="flag mr-8" [src]="'assets/icons/flags/'+selectedLanguage.flag+'.png'">
+                    <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
+                </div>
+            </button>
+
+             <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
+
+                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
+                    <span fxLayout="row" fxLayoutAlign="start center">
+                        <img class="flag mr-16" [src]="'assets/icons/flags/'+lang.flag+'.png'">
+                        <span class="iso">{{lang.title}}</span>
+                    </span>
+                </button>
+
+            </mat-menu> -->
+
+            <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
+
+            <!--<button mat-icon-button
+                    class="quick-panel-toggle-button"
+                    (click)="toggleSidebarOpen('quickPanel')"
+                    aria-label="Toggle quick panel">
+                <mat-icon class="secondary-text">format_list_bulleted</mat-icon>
+            </button>-->
+
+            <!--<div class="toolbar-separator" *ngIf="!hiddenNavbar && rightNavbar" fxHide fxShow.gt-xs></div>-->
+
+            <!--<button mat-icon-button class="navbar-toggle-button"
+                    *ngIf="!hiddenNavbar && rightNavbar" (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>-->
+
+        </div>
+
+    </div>
+
+</mat-toolbar>

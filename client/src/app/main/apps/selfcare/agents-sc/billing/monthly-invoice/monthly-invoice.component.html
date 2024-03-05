@@ -1,0 +1,79 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  
+  <div class="row fltrcrd p-4 m-8">
+    <div fxFlex="25" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Select Year</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="slctdyear" matInput required>
+          <mat-option *ngFor="let yr of year" [value]="yr.yr_id">
+            {{yr.yr_nm}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Year is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="25" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Select Month</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="slctdmnth" matInput required>
+          <mat-option [value]="0">ALL</mat-option>
+          <mat-option *ngFor="let mn of months" [value]="mn.mnth_id">
+            {{mn.mnth_nm}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Month is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+      <button mat-raised-button (click)="getAgntInvceRpt(slctdmnth,slctdyear);" class="gtDtls">GET DETAILS</button>
+    </div>
+  </div>
+
+  <ds-loading *ngIf="shwLdr == true"></ds-loading>
+  
+  <div class="ds-card m-12">
+    <dx-data-grid class="p-8" id="gridContainer" [dataSource]="lmoMnthlyData" [remoteOperations]="false"
+        [allowColumnReordering]="true" [allowColumnResizing]="true"  [rowAlternationEnabled]="true" [showColumnLines]="true"
+        [showRowLines]="true" [showBorders]="true" style="width: 100%;">
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="Monthly Invoice">
+        </dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column [allowResizing]="true" *ngFor="let g of lmoMnthlyDataColumnDefs" [visible]="!g.hide" [dataField]="g.field"
+            [caption]="g.headerName" [alignment]="g.alignment" [width]="g.width" [allowFiltering]="g.filter" [allowHeaderFiltering]="g.filter"
+            [format]="g.formatcurrency == true? {type:g.type,currency:g.currency, precision:g.precision}:false"></dxi-column>
+        <dxo-summary>
+          <dxi-total-item
+              column="APSFLShare"
+              summaryType="sum"
+              valueFormat="₹#,##,##0" displayFormat="{0}">
+         </dxi-total-item>
+          <dxi-total-item
+              column="MSOShare"
+              summaryType="sum"
+              valueFormat="₹#,##,##0" displayFormat="{0}">
+          </dxi-total-item>
+          <dxi-total-item
+              column="LMOShare"
+              summaryType="sum"
+              valueFormat="₹#,##,##0" displayFormat="{0}">
+          </dxi-total-item>
+          <dxi-total-item
+              column="Total"
+              summaryType="sum"
+              valueFormat="₹#,##,##0" displayFormat="{0}">
+          </dxi-total-item>
+        </dxo-summary>
+        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+    </dx-data-grid>
+</div>
+</div>

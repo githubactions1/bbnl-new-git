@@ -1,0 +1,39 @@
+<!-- <mat-sidenav-container class="example-container">
+    <mat-sidenav opened mode="side"> -->
+        <!-- <mat-list class="sidemenuOptns"> -->
+            <mat-list class="sidemenuOptnsWthoutScroll">
+            <div *ngFor="let p of menulst">
+                <mat-list-item *ngIf="p.prnt_mnu_itm_id == 0" class="menu_item">
+                    <h4 mat-line>{{ p.mnu_itm_nm }}</h4>
+                </mat-list-item>
+                <div *ngIf="p.prnt_mnu_itm_id != 0" class="parent_menu_item">
+                    <div class="mt-18" *ngIf="p.prnt_mnu_itm_nm != 'MY TICKETS'">
+                        <h4 mat-line class="ticket-sidemenu-prnt-item"> {{p.prnt_mnu_itm_nm}}</h4>
+                    </div>
+                    <div *ngIf="p.prnt_mnu_itm_nm == 'MY TICKETS'">
+                        <h4 mat-line class="ticket-sidemenu-prnt-item"> {{p.prnt_mnu_itm_nm}}</h4>
+                    </div>
+                    <mat-list-item matRipple *ngFor="let a of p.submnus[0]" class="child_menu_item mb_M9">
+                        <h4 mat-line (click)="item(a)"> 
+                            <mat-icon class="ticket-sidemenu-icon-style"
+                            [ngStyle]="{'background-color': a.mnu_icn_tx_bg, 'color': a.mnu_icn_tx_clr}">{{a.mnu_icn_tx}}</mat-icon>
+                            {{ a.mnu_itm_nm }}</h4>
+                    </mat-list-item>
+                    <!-- <mat-form-field>
+                        <mat-select [formControl]="sidemenuslctd" [multiple]="true">
+                          <mat-option *ngFor="let items of p.submnus[0]" [value]="items">
+                            {{items.mnu_itm_nm}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field> -->
+                </div>
+            </div>
+        </mat-list>
+    <!-- </mat-sidenav> -->
+    <!--
+    *ngIf="true" hack is required here for router-outlet to work
+    correctly. Otherwise, it won't register the changes on the
+    layout and won't update the view.
+ -->
+    <!-- <router-outlet *ngIf="true"></router-outlet> -->
+<!-- </mat-sidenav-container> -->

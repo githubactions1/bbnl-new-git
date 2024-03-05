@@ -1,0 +1,133 @@
+<div class="container custom_strip p-16 hdr-l" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxFlex="0 1 calc(100% - 0.5%)" fxFlex.lt-md="0 1 calc(100% - 0.5%)" fxFlex.lt-sm="100%" class="cardcontainer">
+
+
+    <div fxLayout="row">
+      <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%" class="l-h">
+        <h1>Notifications</h1>
+      </div>
+      <div fxFlex fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%" fxFlex.gt-xs="70%" class="r-h">
+        <span class="newNotification"  (click)="opensideBar('addNotfctn',null)"><i class="material-icons">add_alert</i>&nbsp;&nbsp;Create Notification</span>
+      </div>
+    </div>
+
+    <br>
+    <div class="custom-card">
+      <div *ngIf="loader == true">
+        <div class="loading-indicator">
+          <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+          <p>Loading</p>
+        </div>
+      </div>
+
+        <div fxLayout="row">
+
+
+          <div fxFlex fxFlex.gt-lg="15%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="custom_strip p-10">
+            <ul class="custom-list">
+              <li *ngFor="let n of ntfnCatLst" (click)="getNotfctnLSt(n)" [ngClass]="n.chkId == 1 ? 'lft-li activeList' : 'lft-li'">{{n.alert_cat_nm}}</li>
+            </ul>
+          </div>
+
+          <div fxFlex fxFlex.gt-lg="85%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%" class="custom_strip p-10">
+            <ul class="custom-list" *ngIf="ntfctnLst">
+              <li *ngFor="let n of ntfctnLst">
+                <div class="custom_strip p-10" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                  <div fxFlex="0 1 calc(80% - 0.5%)" fxFlex.lt-md="0 1 calc(70% - 0.5%)" fxFlex.lt-sm="70%" [ngClass]="{
+                          'l-b':n.read_sts === 'READ', 'l-o':n.read_sts === 'UN-READ'}">{{n.read_sts}}</div>
+                  <div fxFlex="0 1 calc(20% - 0.5%)" fxFlex.lt-md="0 1 calc(30% - 0.5%)" fxFlex.lt-sm="30%" class="l-r">{{n.i_ts}}</div>
+                </div>
+                <div class="custom_strip pb-0" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                  <div fxFlex="0 1 calc(100% - 0.5%)" fxFlex.lt-md="0 1 calc(100% - 0.5%)" fxFlex.lt-sm="100%">
+                    <p class="l-ct">{{n.alert_cat_nm}}</p>
+                  </div>
+                </div>
+                <div class="custom_strip pb-0" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                  <div fxFlex="0 1 calc(100% - 0.5%)" fxFlex.lt-md="0 1 calc(100% - 0.5%)" fxFlex.lt-sm="100%">
+                    <p class="l-d">{{n.alert_tx}}</p>
+                  </div>
+                </div>
+                <div class="custom_strip pt-0" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                  <div fxFlex="0 1 calc(100% - 0.5%)" fxFlex.lt-md="0 1 calc(100% - 0.5%)" fxFlex.lt-sm="100%">
+                    <p class="l-n">{{n.fst_nm}} {{n.lst_nm}}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="web_note" *ngIf="webNt == true">
+              <img src="../../../../../../../assets/images/webnotes/no_notifications.png">
+              <p>No notification found ..!</p>
+            </div>
+          </div>
+         
+        </div>
+    </div>
+  </div>
+
+
+  <!-- sidebar -->
+
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addNotfctn" position="right" [invisibleOverlay]="false">
+    <ng-container>
+
+
+      <section fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-card fxFlex fxFlex.xs="100%">
+          <mat-card-title style="font-size: 18px; color: #1f145d;">Create a new Notification</mat-card-title>
+          <form [formGroup]="newNtfctnForm" autocomplete="off" novalidate (ngSubmit)="createNtfctn(newNtfctnForm.value)" fxLayout="column wrap"
+            fxLayoutAlign="center center" fxLayoutGap="10px">
+            <mat-card-content>
+              <label class="lbl">Enter notification Message</label>
+              <mat-form-field appearance="outline">
+                <textarea matInput placeholder="Message" formControlName="ntfnMsg"></textarea>
+                <mat-error *ngIf="hasError('ntfnMsg', 'required')">Message is required</mat-error>
+              </mat-form-field>
+
+              <label class="lbl">Choose notification type</label>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Notification Type" formControlName="catgryId" required restrictKeywordValidator="Cat">
+                  <mat-option>--</mat-option>
+                  <!-- <mat-option *ngFor="let icn of icnsLst" [value]="icn.icn_id">
+                    <span><img src="{{icn.icn_img}}" class="l-img"></span>&nbsp;&nbsp;&nbsp;<span>{{icn.icn_nm_alias}}</span>
+                  </mat-option> -->
+                  <mat-option *ngFor="let n of ntfnCatLst" [value]="n.alert_cat_id">
+                    <span>{{n.alert_cat_nm}}</span>
+                  </mat-option>
+
+                </mat-select>
+                <mat-error *ngIf="hasError('catgryId','required')">Please choose an icn</mat-error>
+                <mat-error *ngIf="hasError('catgryId','invalidValue')">Please choose any other
+                </mat-error>
+              </mat-form-field>
+
+              <label class="lbl">Choose notification group</label>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Group" [(value)]="selectedoptions" formControlName="grpControl" required multiple>
+                  <mat-option *ngFor="let g of grpLst" [value]="g.grp_id">
+                    <span>{{g.grp_nm}}</span>
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('grpControl','required')">Please choose a group</mat-error>
+              </mat-form-field>
+            </mat-card-content>
+
+
+
+
+
+
+
+            <mat-card-actions align="center">
+              <button mat-raised-button color="primary" [disabled]="!newNtfctnForm.valid">Create</button>
+              <button type="button" mat-raised-button color="warn" (click)="opensideBar('addNotfctn',null)">Cancel</button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </section>
+
+    </ng-container>
+  </ds-sidebar>
+
+
+  <!-- sidebar -->
+</div>

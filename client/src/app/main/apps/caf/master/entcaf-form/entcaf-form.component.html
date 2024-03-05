@@ -1,0 +1,459 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div fxLayout="row" class="mt-24">
+    <div fxFlex="80"></div>
+    <div fxFlex="16">
+
+      <!-- <button class="addBtn-color mb-8 mt-8 mat-raised-button mat-primary" color="primary" mat-raised-button=""
+        style="float:right" (click)="opensideBar('addFormPanel',null)">
+        <span class="mat-button-wrapper">
+          <mat-icon class="addfld-icon-color mat-icon material-icons mat-icon-no-color" role="img" aria-hidden="true">
+            person</mat-icon>
+          <span class="pt-2">&nbsp;Add New Customer</span>
+        </span>
+      </button> -->
+
+      <!-- <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        *ngIf="showBckBtn" (click)="bckBtn()">
+
+        <span class="pt-2">Back</span>
+      </button> -->
+      <div  *ngIf="!siusr"class="text-right">
+        <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/caf/entcustomers'"
+            class="mat-raised-button font-weight-bold addTextColor" type="button" >
+            <mat-icon matTooltip="Go Back">chevron_left</mat-icon> Back
+        </button>
+    </div>
+    <div  *ngIf="siusr"class="text-right">
+      <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/caf/enterprice/organization'"
+          class="mat-raised-button font-weight-bold addTextColor" type="button" >
+          <mat-icon matTooltip="Go Back">chevron_left</mat-icon> Back
+      </button>
+  </div>
+  </div>
+  </div>
+
+  
+
+  
+    <ng-container>
+      <div class="ds-card m-12" id="scrollTop">
+        <!-- <div class="card"> -->
+        <!-- <div class="card-header crdHdng">Customers
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel
+          </mat-icon>
+        </div> -->
+        
+        <form fxLayout="column" [formGroup]="firstFormGroup" class="p-16">
+          <ng-template matStepLabel>Add Customer</ng-template>
+          <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Customer Information</div>
+          <mat-divider style="margin-bottom: 13px;"></mat-divider>
+          
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select Organization type<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Contact Person Name</mat-label> -->
+                <mat-select (selectionChange)="getsuborg()" formControlName="org_typ" required>
+                  <mat-option *ngFor="let o of org" [value]="o.entrpe_type_id">
+                    {{o.entrpe_type_nm}}
+                  </mat-option>
+                </mat-select>
+                <!-- <input type="number" matInput formControlName="lvl2_slt" > -->
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select SUB Organization type<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Contact Person Name</mat-label> -->
+                <mat-select  formControlName="sub_org_typ" required>
+                  <mat-option *ngFor="let o of suborg" [value]="o.entrpe_sub_type_id">
+                    {{o.entrpe_sub_type_nm}}
+                  </mat-option>
+                </mat-select>
+                <!-- <input type="number" matInput formControlName="lvl2_slt" > -->
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+              
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter TAN No</div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Pan Card No</mat-label> -->
+                <input matInput formControlName="pan_card_no">
+                <!-- <mat-error>Last Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+            
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Organization Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>First Name</mat-label> -->
+                <input matInput formControlName="orgName" required>
+                <mat-error>Organization Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Contact person Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Middle Name</mat-label> -->
+                <input matInput formControlName="cntprsnName"required>
+                <!-- <mat-error>Last Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Contact Person Designation<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Last Name</mat-label> -->
+                <input matInput formControlName="cntprsndis" required>
+                <!-- <mat-error>Last Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+
+          </div>
+         
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Contact Person Mobile Number<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Mobile Number</mat-label> -->
+                <input type="number" matInput formControlName="cntct_prsn_mobileNumber" required
+                  onKeyPress="if(this.value.length==10) return false;">
+                <mat-error>Mobile Number is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select Date of Incorporation<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <input matInput [matDatepicker]="picker1" formControlName="activationdate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error>Date Of Birth is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Email <span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Email</mat-label> -->
+                <input matInput formControlName="email" required>
+                <mat-error>Email is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select Billing Frequency<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Billing Frequency</mat-label> -->
+                <mat-select formControlName="frqncy_id" required>
+                  <mat-option *ngFor="let b of blng_frqncy_lst" [value]="b.frqncy_id">
+                    {{b.frqncy_nm}}
+                  </mat-option>
+                </mat-select>
+                <!-- <input matInput formControlName="frqncy_id" required> -->
+                <mat-error>Billing Frequency is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <!-- <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select Gender Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <mat-label>Billing Frequency</mat-label>
+                <mat-select formControlName="gender" required>
+                  <mat-option *ngFor="let g of gndrLst" [value]="g.gndr_id">
+                    {{g.gndr_nm}}
+                  </mat-option>
+                </mat-select>
+                <input matInput formControlName="frqncy_id" required>
+                <mat-error>Billing Frequency is required!</mat-error>
+              </mat-form-field>
+            </div> -->
+            
+
+          </div>
+          <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Organization Location Address</div>
+          <mat-divider style="margin-bottom: 13px;"></mat-divider>
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter House/Flat No<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>House/Flat No</mat-label> -->
+                <input matInput formControlName="instl_house_flat_no" required>
+                <mat-error> House/Flat No is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Building Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Building Name</mat-label> -->
+                <input matInput formControlName="instl_buildingname">
+                <!-- <mat-error>Building Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Street Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Street Name</mat-label> -->
+                <input matInput formControlName="instl_streetname" required>
+                <mat-error>Street Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+         
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Area/Locality Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Area/Locality Name</mat-label> -->
+                <input matInput formControlName="instl_Area_Localityname" required>
+                <mat-error>Area/Locality Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Pin Code<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Pin Code</mat-label> -->
+                <input type="number" matInput formControlName="instl_pincode" required>
+                <mat-error>Pin Code is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select State Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>State</mat-label> -->
+                <mat-select formControlName="instl_state" required>
+                  <mat-option *ngFor="let st of ste_lst" [value]="st.ste_id">
+                    {{st.ste_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>State is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+         
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select District Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>District</mat-label> -->
+                <mat-select formControlName="instl_district" required>
+                  <mat-option *ngFor="let ds of instl_dstrt_lst" [value]="ds.dstrt_id">
+                    {{ds.dstrt_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>District is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select Mandal Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Mandal</mat-label>{{instl_mandal}} -->
+                <mat-select formControlName="instl_mandal" required>
+                  <mat-option *ngFor="let m of instl_mndl_lst" [value]="m.mndl_nu">
+                    {{m.mndl_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Mandal is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select City/Village Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>City/Village</mat-label> -->
+                <mat-select formControlName="instl_city_villagename" required>
+                  <mat-option *ngFor="let v of instl_vlge_lst" [value]="v.vlge_nu">
+                    {{v.vlge_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>City/Village is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+       
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter FAX no </div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Enter FAX</mat-label> -->
+              <input matInput formControlName="instl_fax_no">
+            </mat-form-field>
+            </div>
+            <!-- <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Longitude</div>
+              <mat-form-field appearance="outline">
+                <mat-label>Longitude</mat-label>
+                <input matInput formControlName="instl_longitude">
+                <mat-error>Mobile Number is required!</mat-error>
+              </mat-form-field>
+            </div> -->
+
+          </div>
+          <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Organization Billing Address</div>
+          <mat-divider style="margin-bottom: 13px;"></mat-divider>
+          <mat-checkbox formControlName="instl_chk_ind" (change)="checkValue(isChecked?'false':'true')">Same As Organization Location Address </mat-checkbox>
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter House/Flat No<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>House/Flat No</mat-label> -->
+                <input matInput formControlName="blng_house_flat_no" required>
+                <mat-error> House/Flat No is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Building Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Building Name</mat-label> -->
+                <input matInput formControlName="blng_buildingname">
+                <!-- <mat-error>Building Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Street Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Street Name</mat-label> -->
+                <input matInput formControlName="blng_streetname" required>
+                <mat-error>Street Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+         
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Area/Locality Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Area/Locality Name</mat-label> -->
+                <input matInput formControlName="blng_Area_Localityname" required>
+                <mat-error>Area/Locality Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Pin Code<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Pin Code</mat-label> -->
+                <input type="number" matInput formControlName="blng_pincode" required>
+                <mat-error>Pin Code is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select State Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>State</mat-label> -->
+                <mat-select  formControlName="blng_state" required>
+                  <mat-option *ngFor="let st of ste_lst" [value]="st.ste_id">
+                    {{st.ste_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>State is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+         
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select District Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>District</mat-label> -->
+                <mat-select  formControlName="blng_district" required>
+                  <mat-option *ngFor="let ds of blng_dstrt_lst" [value]="ds.dstrt_id">
+                    {{ds.dstrt_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>District is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select Mandal Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Mandal</mat-label>{{instl_mandal}} -->
+                <mat-select  formControlName="blng_mandal" required>
+                  <mat-option *ngFor="let m of blng_mndl_lst" [value]="m.mndl_nu">
+                    {{m.mndl_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Mandal is required!</mat-error>
+              </mat-form-field>
+            </div>
+            
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Select City/Village Name<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>City/Village</mat-label> -->
+                <mat-select formControlName="blng_city_villagename" required>
+                  <mat-option *ngFor="let v of blng_vlge_lst" [value]="v.vlge_nu">
+                    {{v.vlge_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>City/Village is required!</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="33" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter FAX no </div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Latitude</mat-label> -->
+              <input matInput formControlName="blng_fax_no">
+            </mat-form-field>
+            </div>
+
+
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+
+            </div>
+
+
+          </div>
+
+
+        
+
+
+          <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+               style="text-align: right;">
+              <button mat-flat-button   class="mat-raised-button gtDtls"
+               aria-label="SAVE"(click)="save()"  style="width: 20%;">
+                SUBMIT
+              </button>
+            </div>
+
+            <div *ngIf="!siusr"fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color btnWdth ml-8" aria-label="SAVE"
+              [routerLink]="'/admin/caf/entcustomers'">
+              Cancel
+              </button>
+            </div>
+            <div *ngIf="siusr"fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color btnWdth ml-8" aria-label="SAVE"
+              [routerLink]="'/admin/caf/enterprice/organization'">
+              Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- </div> -->
+    </ng-container>
+  
+
+</div>

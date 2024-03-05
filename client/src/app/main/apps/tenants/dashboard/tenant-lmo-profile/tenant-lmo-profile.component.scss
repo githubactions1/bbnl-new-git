@@ -1,0 +1,208 @@
+// .ds-card {
+//     max-width: 100%;
+//     border-radius: 8px;
+//     border: 1px solid;
+//     margin-right: 3%;
+//     min-width: 100%;
+// }
+.dscrdtxt{
+    padding-left: 16px;
+    font-size: 15px;
+    font-weight: 400;
+}
+::ng-deep .dx-tabpanel .dx-tab {
+    width: 189px !important;
+}
+::ng-deep .ds-card .mat-tab-label{
+    min-width: 210px !important;
+}
+.header {
+    height: 241px;
+    min-height: 241px;
+    max-height: 241px;
+    background: url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat 0 45%;
+    background-size: cover;
+
+    .profile-image {
+        margin-right: 24px;
+
+        // @include media-breakpoint('sm') {
+        //     margin: 0 0 16px 0;
+        // }
+    }
+
+    .name {
+        font-size: 25px;
+        color: #FFFFFF;
+
+        // @include media-breakpoint('sm') {
+        //     margin-bottom: 32px;
+        // }
+    }
+
+    .actions {
+
+        button {
+            text-transform: none;
+            padding: 0 16px;
+            margin: 0 0 0 8px;
+        }
+    }
+}
+
+.content {
+    flex: 1;
+
+    mat-tab-group {
+        height: 100%;
+
+        .mat-tab-body-wrapper {
+            flex-grow: 1;
+        }
+    }
+}
+.mt-6prcnt{
+    margin-top: 4%;
+}
+.fuse-white--fg{
+    color: white;
+}
+
+.dsbbrdcrds{
+    max-width: 93%;
+    min-width: 40%;
+    margin: 2% 5%;
+    border-radius: 6px;
+    // box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+    // box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+    color: black;
+}
+
+
+    .nme{
+        font-size: 14px;
+        text-align: center;
+        // padding-top: 5px;
+        }
+        
+        .cnt{
+        font-size: 19px;
+        font-weight: bold;
+        text-align: center;
+        }
+        .lmocrds{
+            max-width: 80%;
+            min-width: 40%;
+            margin: 1% 10%;
+            border-radius: 6px;
+            // box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+            // box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+            color: black;
+        }
+    
+        .agntCaf {
+        color: white;
+        // float: right;
+        margin-right: 54px;
+        margin-top: 50px;
+        font-weight: 500;
+    }
+
+
+        .agntCaf td{
+            padding:10px;
+        }
+
+.prfleCntsDiv{
+    background-color: #ababab1f;color: white;
+}
+
+        @media only screen   
+and (min-device-width : 504px)   
+and (max-device-width : 768px)  
+{    
+  .mt-44 {
+    margin-top: 0px !important;
+} 
+} 
+@media only screen   
+and (min-device-width : 320px)   
+and (max-device-width : 500px)  
+{    
+  .mt-44 {
+    margin-top: 0px !important;
+}
+.mt-53 {
+    margin-top: 53px !important;
+}
+.prfleCntsDiv{
+    display: none !important;
+} } 
+.mat-expansion-panel-header {
+    height: 35px!important;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 0rem;
+}
+.closeSidebarPrfle{
+    z-index: 999;
+    position: relative;
+    color: white;
+}
+@media only screen and (min-width:1100px) and (max-width:3500px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 1050px !important;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1100px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 1000px !important;
+    }
+}
+@media only screen and (min-width:500px) and (max-width:768px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width:750px !important;
+    }
+}
+@media only screen and (min-width:320px) and (max-width:500px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 250px !important;
+    }
+}
+@media only screen and (min-width:1500px) and (max-width:2500px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 1150px !important;
+    }
+}
+
+::ng-deep .dx-datagrid-nowrap .dx-header-row > td > .dx-datagrid-text-content {
+    white-space: nowrap;
+    color: white !important;
+}
+.closePckgeSidebarPrfle{
+    z-index: 999;
+    position: relative;
+    color: black;
+}
+.hsi-card{
+    border-radius: 6px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58,59,69,.15);
+    border-color: rgba(0,0,0,.12);
+  }
+  .hsi-card-header-color{
+    color: #7b0e2d;
+    text-transform: capitalize;
+  }
+  .hsi-card-value-color{
+    color: #0b4b93;
+  }
+  .getCafBtn-transform{
+    transform: translateY(27%)
+  }

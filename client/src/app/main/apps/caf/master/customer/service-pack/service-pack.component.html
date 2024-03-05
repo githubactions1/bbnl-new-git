@@ -1,0 +1,262 @@
+<div class="page-layout simple pageBackground p-20 sbstnRqstCmpnt">
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label><p>Purchase IPTV Addons</p></ng-template>
+      <mat-horizontal-stepper #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup"></form>
+          <ng-template matStepLabel>Select Standard Channels</ng-template>
+          <!-- <p class="hdngtitle hdrCs">Standard Channels</p> -->
+          <ds-loading *ngIf="loader == true"></ds-loading>
+          <div class="m-12" *ngIf="(permissions.slct_in==1)?true:false">
+            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="addOnStandardPckgsLst" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" (onSelectionChanged)="selectionStandard($event)"
+              (onRowExpanding)="getChanneslList($event)" [masterDetail]="{ enabled: true, template: 'detail' }">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+              </dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-selection mode="multiple"></dxo-selection>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                fileName="Package Agreement">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" [alignment]="f.algnmnt" [allowFiltering]="f.filter"
+                [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+              <div *dxTemplate="let agrmtData of 'detail'">
+                <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [showBorders]="true"
+                  *ngIf="view == true" [columnAutoWidth]="true">
+                  <dxi-column [allowResizing]="true" caption="Sno" dataField="indx"></dxi-column>
+                  <dxi-column [allowResizing]="true" caption="Channel Name" dataField="chnle_nm"></dxi-column>
+                </dx-data-grid>
+              </div>
+
+            </dx-data-grid>
+          </div>
+          <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+          <div fxLayout="row">
+            <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button matStepperPrevious>Back</button></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button color="primary" matStepperNext class="gtDtls">Next</button></div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup"></form>
+          <ng-template matStepLabel>Select Local Channels</ng-template>
+          <!-- <p class="hdngtitle hdrCs">Local Channels</p> -->
+          <ds-loading *ngIf="loader == true"></ds-loading>
+          <div class="m-12" *ngIf="(permissions.slct_in==1)?true:false">
+            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="addOnLocalPckgsLst" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" (onSelectionChanged)="selectionLocal($event)"
+              (onRowExpanding)="getChanneslList($event)" [masterDetail]="{ enabled: true, template: 'detail' }">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+              </dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-selection mode="multiple"></dxo-selection>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                fileName="Package Agreement">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" [alignment]="f.algnmnt" [allowFiltering]="f.filter"
+                [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+              <div *dxTemplate="let agrmtData of 'detail'">
+                <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [showBorders]="true"
+                  *ngIf="view == true" [columnAutoWidth]="true">
+                  <dxi-column [allowResizing]="true" caption="Sno" dataField="indx"></dxi-column>
+                  <dxi-column [allowResizing]="true" caption="Channel Name" dataField="chnle_nm"></dxi-column>
+                </dx-data-grid>
+              </div>
+            </dx-data-grid>
+          </div>
+          <div fxLayout="row">
+            <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button matStepperPrevious>Back</button></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button color="primary" matStepperNext (click)="secondNext()" class="gtDtls">Next</button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup"></form>
+          <ng-template matStepLabel>Enter CAF NO</ng-template>
+          <div class="row">
+            <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+              <div class="form-label">CAF NO</div>
+              <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                <input matInput type="text" [(ngModel)]="cafnumbr" [ngModelOptions]="{standalone: true}" required>
+              </mat-form-field>
+            </div>
+            <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn" style="margin-top: 1.8%;">
+              <button mat-raised-button color="primary" (click)="getcafdetails();" class="gtDtls">GET CAF</button>
+            </div>
+          </div>
+          <div class="row" *ngIf="lastTableView == true">
+            <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="cstmrData"
+              [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+              [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+              [masterDetail]="{ enabled: true, template: 'detail' }">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                [showInfo]="true"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="true" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column [allowResizing]="true" *ngFor="let g of customerDefs" [visible]="!g.hide"
+                [dataField]="g.field" [caption]="g.headerName" alignment="g.cellStyle.text-align" [width]="g.width">
+              </dxi-column>
+            </dx-data-grid>
+          </div>
+          <div class="row" *ngIf="lastTableView == true">
+            <div fxFlex="100%" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="13%" fxFlex.gt-md="13%" fxFlex.gt-sm="13%" fxFlex.gt-xs="14%"> </div>
+            <div fxFlex="100%" fxFlex.gt-lg="7%" fxFlex.gt-md="7%" fxFlex.gt-sm="7%" fxFlex.gt-xs="7%"> <button
+                mat-raised-button color="primary" matStepperNext (click)="save()" class="gtDtls">ADD TO CAF</button>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>Remove IPTV Addons</ng-template>
+      <mat-horizontal-stepper #stepper>
+        <mat-step [stepControl]="fourthFormGroup">
+          <form [formGroup]="fourthFormGroup"></form>
+          <ng-template matStepLabel>Enter CAF NO</ng-template>
+          <div class="row">
+            <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+              <div class="form-label">CAF NO</div>
+              <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                <input matInput type="text" [(ngModel)]="delcafnumbr" [ngModelOptions]="{standalone: true}" required>
+              </mat-form-field>
+            </div>
+            <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn" style="margin-top: 1.8%;">
+              <button mat-raised-button color="primary" (click)="RmvCafDtls();" class="gtDtls">GET CAF</button>
+            </div>
+          </div>
+          <div class="row" *ngIf="firstOne">
+            <p class="hdngtitle hdrCs">Customer Details</p>
+          </div>
+          <div class="row" *ngIf="firstOne">
+            <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="dtlsOfRmvCaf"
+              [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+              [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+              [masterDetail]="{ enabled: true, template: 'detail' }">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                [showInfo]="true"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="true" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column [allowResizing]="true" *ngFor="let g of customerRemovDefs" [visible]="!g.hide"
+                [dataField]="g.field" [caption]="g.headerName" alignment="g.cellStyle.text-align" [width]="g.width">
+              </dxi-column>
+            </dx-data-grid>
+          </div>
+          <div class="row" *ngIf="secondOne">
+            <p class="hdngtitle hdrCs">CAF Addons Details</p>
+          </div>
+          <div class="m-12" *ngIf="secondOne">
+            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="removeAddonPckgs" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" (onSelectionChanged)="selectionPckge($event)"
+              (onRowExpanding)="getChanneslList($event)" [masterDetail]="{ enabled: true, template: 'detail' }">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+              </dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-selection mode="multiple"></dxo-selection>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                fileName="Package Agreement">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of RmvAddonscolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" [alignment]="f.algnmnt" [allowFiltering]="f.filter"
+                [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+              <div *dxTemplate="let agrmtData of 'detail'">
+                <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [showBorders]="true"
+                  *ngIf="view == true" [columnAutoWidth]="true">
+                  <dxi-column [allowResizing]="true" caption="Sno" dataField="indx"></dxi-column>
+                  <dxi-column [allowResizing]="true" caption="Channel Name" dataField="chnle_nm"></dxi-column>
+                </dx-data-grid>
+              </div>
+
+            </dx-data-grid>
+          </div>
+          <div fxLayout="row">
+            <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button matStepperPrevious>Back</button></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button color="primary" matStepperNext (click)="lstNext()" class="gtDtls">Next</button></div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="fifthFormGroup">
+          <form [formGroup]="fifthFormGroup"></form>
+          <ng-template matStepLabel>Reason For Remove</ng-template>
+          <div class="row" *ngIf="nextView == true">
+            <div fxFlex="5%" fxFlex.xs="5%" class="px-8"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+              <div class="form-label">Reason For Remove</div>
+              <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                <textarea placeholder="Write a Comment" matInput [(ngModel)]="comment"
+                  [ngModelOptions]="{standalone: true}" required></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" *ngIf="nextView == true">
+            <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button matStepperPrevious>Back</button></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"
+              class="px-8 gtDtlsBtn">
+              <button mat-raised-button color="primary" (click)="deletePackge();" class="gtDtls" style="background-color: red !important;">Remove</button>
+            </div>
+          </div>
+          <div fxLayout="row" *ngIf="nextView == false"><p style="color: red;">Please Select Anything  to get Remove</p></div>
+          <div fxLayout="row" *ngIf="nextView == false">
+            <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%"></div>
+            <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"> <button
+                mat-raised-button matStepperPrevious>Back</button></div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

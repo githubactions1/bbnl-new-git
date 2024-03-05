@@ -1,0 +1,413 @@
+@import "src/@glits/scss/ds";
+@import "node_modules/angular-calendar/scss/angular-calendar";
+
+.cal-month-view {
+
+    .cal-header {
+
+        .cal-cell {
+            font-weight: 600;
+        }
+    }
+
+    .cal-day-cell {
+
+        @include media-breakpoint(lg) {
+            min-height: 150px;
+        }
+
+        @include media-breakpoint(gt-lg) {
+            min-height: 200px;
+        }
+
+        &.cal-selected {
+            border: none;
+            @include mat-elevation(9);
+        }
+    }
+
+    .cal-open-day-events {
+        box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.54);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+
+        > div {
+            padding: 0 16px;
+            margin: 8px 16px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            @include mat-elevation(1);
+            transition: box-shadow 300ms ease;
+
+            &:first-of-type {
+                margin-top: 16px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 16px;
+            }
+
+            &:hover {
+                @include mat-elevation(3);
+            }
+
+            .cal-event {
+                top: 0;
+                margin: 0;
+            }
+
+            mwl-calendar-event-title {
+                flex: 1;
+
+                .cal-event-title {
+                    display: block;
+                    padding: 21px 24px;
+                    line-height: 1;
+                    text-decoration: none;
+                }
+            }
+
+            mwl-calendar-event-actions {
+
+                .cal-event-actions {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .cal-event-action {
+                        display: block;
+                        line-height: 1;
+                        padding: 8px;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.cal-week-view {
+
+    .cal-header > b {
+        font-weight: 600;
+    }
+
+    .cal-event {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        mwl-calendar-event-title {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+            order: 0;
+
+            .cal-event-title {
+                display: block;
+                line-height: 1;
+                text-decoration: none;
+            }
+        }
+
+        mwl-calendar-event-actions {
+            order: 1;
+
+            .cal-event-actions {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .cal-event-action {
+                    display: block;
+                    line-height: 1;
+                    padding: 8px;
+                }
+            }
+        }
+    }
+}
+
+.cal-day-view {
+
+    .cal-time {
+        font-weight: 600;
+    }
+
+    .cal-event {
+        display: flex;
+        flex-direction: row;
+
+        mwl-calendar-event-title {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+            order: 0;
+
+            .cal-event-title {
+                display: block;
+                height: 26px;
+                line-height: 26px;
+                text-decoration: none;
+            }
+        }
+
+        mwl-calendar-event-actions {
+            order: 1;
+
+            .cal-event-actions {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .cal-event-action {
+                    display: block;
+                    line-height: 1;
+                    padding: 4px;
+                }
+            }
+        }
+    }
+
+    .cal-hour-segment {
+
+        &:after,
+        &::after {
+            content: '' !important;
+        }
+    }
+}
+
+#calendar {
+
+    .header {
+        height: 200px;
+        min-height: 200px;
+        max-height: 200px;
+        position: relative;
+        background-size: 100% auto;
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+        background-color: #FAFAFA;
+        color: #FFFFFF;
+
+        @include media-breakpoint(xs) {
+            height: 164px;
+            min-height: 164px;
+            max-height: 164px;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        &.Jan {
+            background-image: url('/assets/images/calendar/winter.jpg');
+            background-position: 0 85%;
+        }
+        &.Feb {
+            background-image: url('/assets/images/calendar/winter.jpg');
+            background-position: 0 85%;
+        }
+        &.Mar {
+            background-image: url('/assets/images/calendar/spring.jpg');
+            background-position: 0 40%;
+        }
+        &.Apr {
+            background-image: url('/assets/images/calendar/spring.jpg');
+            background-position: 0 40%;
+        }
+        &.May {
+            background-image: url('/assets/images/calendar/spring.jpg');
+            background-position: 0 40%;
+        }
+        &.Jun {
+            background-image: url('/assets/images/calendar/summer.jpg');
+            background-position: 0 80%;
+        }
+        &.Jul {
+            background-image: url('/assets/images/calendar/summer.jpg');
+            background-position: 0 80%;
+        }
+        &.Aug {
+            background-image: url('/assets/images/calendar/summer.jpg');
+            background-position: 0 80%;
+        }
+        &.Sep {
+            background-image: url('/assets/images/calendar/autumn.jpg');
+            background-position: 0 40%;
+        }
+        &.Oct {
+            background-image: url('/assets/images/calendar/autumn.jpg');
+            background-position: 0 40%;
+        }
+        &.Nov {
+            background-image: url('/assets/images/calendar/autumn.jpg');
+            background-position: 0 40%;
+        }
+        &.Dec {
+            background-image: url('/assets/images/calendar/winter.jpg');
+            background-position: 0 85%;
+        }
+
+        .header-content {
+            height: 100%;
+
+            .header-top {
+                position: relative;
+                z-index: 2;
+
+                .logo {
+
+                    .logo-icon {
+                        margin-right: 16px;
+                    }
+
+                    .logo-text {
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            .header-bottom {
+                position: relative;
+                z-index: 2;
+
+               
+            }
+        }
+
+      
+    }
+
+    .content {
+        padding: 24px;
+    }
+
+}
+.title {
+    font-size: 20px;
+    min-width: 160px;
+    text-align: center;
+    font-weight: 600;
+}
+.cal-days{
+    background: white;
+}
+.cal-month-view .cal-day-cell.cal-today {
+    background-color: #3a97da6b;
+    color: black;
+    font-size: 12px;
+}
+.cal-month-view .cal-day-cell {
+    min-height: 80px;
+    max-height: 80px;
+}
+.scdl-crd{
+
+    max-width: 25%;
+    min-width: 25%;
+    border-radius: 0px !important;
+}
+.scdl-lst{
+    padding: 0px 50px 0px 50px;
+    margin-top: 20px;
+    
+    overflow: scroll;
+}
+.scdl-cntnt{
+    align-content: center;
+}
+.pghdrStyle{
+position: relative;
+}
+.add-event-button {
+    position: absolute;
+    right: 18px;
+    bottom: 750px;
+    z-index: 10;
+}
+.cal-month-view .cal-open-day-events{
+    display: none;
+}
+.scdl-dte{
+    font-size: 12px;
+    font-weight: 500;
+}
+.scdl-crd:not(:last-child) {
+    margin-right: 10px;;
+}
+.scdl-ttl{
+    background: #3a97da;
+    width: 100%;
+    color: white;
+    height: 25px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.scdl-desc{
+    font-size: 12px;
+    font-weight: 700;
+}
+.scdl-span{
+    font-size: 11px;
+    font-weight: 800;
+}
+.cal-month-view .cal-day-badge {
+    margin-top: 18px;
+    margin-left: 10px;
+    background-color: #3a97da;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    height: 20px;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.cal-month-view .cal-events {
+    -webkit-box-flex: 1;
+    flex: 1;
+    -webkit-box-align: end;
+    align-items: flex-end;
+    margin: 3px;
+    line-height: 10px;
+   display: none;
+    flex-wrap: wrap;
+}
+.view-btn{
+    width: 100%;
+    text-align: end;
+}
+.btn-view{
+    font-size: 12px;
+    font-weight: 800;
+}
+.scdl-calendar{
+    width: 65%;
+}
+
+.pageBackground{
+    background-color: #fffcf7 !important;
+}
+  

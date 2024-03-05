@@ -1,0 +1,541 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt" style="display: none;">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div fxLayout="row" class="mt-24">
+    <div fxFlex="80"></div>
+    <div fxFlex="16">
+      <div class="text-right">
+        <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/ILL/caf'"
+          class="mat-raised-button font-weight-bold addTextColor" type="button">
+          <!-- <mat-icon matTooltip="Go Back">chevron_left</mat-icon> -->
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div id="full" class="pg" style="display:none">
+  <button (click)="downloadPdf()"></button>
+  <div id="contentToConvert">
+     <!-- <table>
+       <tr>
+         <th *ngFor="let i of ItmLst" style="margin:5%;border-left:1px solid black;border-bottom: 1px solid black;border-right: 1px solid black;">{{i}}</th>
+
+       </tr>
+
+     </table> -->
+     <div class="row">
+       <div class="4">
+         name of Organization
+       </div>
+       <div class="8">
+        <table>
+          <tr>
+            <th *ngFor="let i of ItmLst" style="margin:5%;border-left:1px solid black;border-bottom: 1px solid black;border-right: 1px solid black;">{{i}}</th>
+   
+          </tr>
+   
+        </table>
+       </div>
+     </div>
+  </div>
+
+  <!-- <div id="contentToConvert">
+    <div style="align-items:center;justify-content: center;margin-left: 1%;">
+      <div class="row">
+        <h1>Customer Application Form</h1>
+      </div>
+      <hr>
+      <div class="frmCls">
+        <div class="row">
+          <h2>to be filled in black ink only</h2>
+        </div>
+        <div class="row">
+          <h3>customer information</h3>
+        </div>
+        <div class="row bb-2">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <h2>name of organisation</h2>
+            <p>(Pls. leave space after each word)</p>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <div class="row">
+              <input type="text" *ngFor="let i of [].constructor(32)">
+            </div>
+            <div class="row">
+              <input type="text" *ngFor="let i of [].constructor(32)">
+            </div>
+          </div>
+          <h2></h2>
+          <h3></h3>
+        </div>
+
+        <div class="bb-n">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-n">
+              <h2>Customer Phone Number</h2>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <div class="row">
+                <input type="text" *ngFor="let i of [].constructor(5)">
+              </div>
+              <p>(STD Code)</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div class="row">
+                <input type="text" *ngFor="let i of [].constructor(10)">
+              </div>
+              <p>(Phone Number)</p>
+            </div>
+            <h2></h2>
+            <h3></h3>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-n">
+              <h2>PAN/GIR Number</h2>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+              <div class="row">
+                <input type="text" *ngFor="let i of [].constructor(10)"><p style="padding-top: 3px;
+                padding-left: 10px;">(If you do not have PAN/GIR number, please write 'Not allotted')</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-n">
+              <h2>Proof of Identity Attached</h2>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+              <div class="row">
+                <input type="text" class="inptAuto">
+              </div>
+              <p>(Please see instuction No. 14 for the applicable document. Please attach a self-attested copy)</p>
+            </div>
+          </div>
+
+          <div class="row">
+              <h2 style="font-weight: 700;padding-bottom: 5px;width: 100%;">Service Ordering Address</h2>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+              <input type="text" *ngFor="let i of [].constructor(44)">
+              <input type="text" *ngFor="let i of [].constructor(44)">
+            </div>
+            </div>
+          </div>
+         
+
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+              <div class="row">
+                <h2 style="">City</h2>&nbsp;&nbsp;&nbsp;<input type="text" *ngFor="let i of [].constructor(30)">
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+              <div class="row"><h2 style="padding-right: 10px;
+                padding-top: 7px;">Pin Code</h2><input type="text" *ngFor="let i of [].constructor(6)"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              <div class="row">
+                <h2 style="">State</h2>&nbsp;&nbsp;<input type="text" *ngFor="let i of [].constructor(27)">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div class="row"><h2 style="padding-right: 10px;
+                padding-top: 7px;">Country</h2><input type="text" *ngFor="let i of [].constructor(11)"></div>
+            </div>
+          </div>
+
+          <br><br><br><br><br><br><br>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="row">
+                <h2 style="padding-right: 10px;
+                padding-top: 7px;font-weight: 700;">GST Number</h2><input type="text" *ngFor="let i of [].constructor(15)">
+              </div>
+              <p>(If you do not have GSTN, please write 'Not allotted')</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="row">
+                <h2 style="padding-right: 10px;
+                padding-top: 7px;font-weight: 700;">Billing Address</h2>
+                &nbsp;&nbsp;&nbsp;<span>
+                  <div class="row rdoSec">
+                    <div class="radio">
+                      <input id="radio-1" name="radio" type="radio" checked>
+                      <label for="radio-1" class="radio-label">Checked</label>
+                    </div>
+                  
+                    <div class="radio">
+                      <input id="radio-2" name="radio" type="radio">
+                      <label  for="radio-2" class="radio-label">Unchecked</label>
+                    </div>
+                  
+                    <div class="radio">
+                      <input id="radio-3" name="radio" type="radio">
+                      <label for="radio-3" class="radio-label">Disabled</label>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+          <input type="text" *ngFor="let i of [].constructor(44)">
+          <input type="text" *ngFor="let i of [].constructor(44)">
+        </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <div class="row">
+              <h2 style="">City</h2>&nbsp;&nbsp;&nbsp;<input type="text" *ngFor="let i of [].constructor(30)">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="row"><h2 style="padding-right: 10px;
+              padding-top: 7px;">Pin Code</h2><input type="text" *ngFor="let i of [].constructor(6)"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="row">
+              <h2 style="">State</h2>&nbsp;&nbsp;<input type="text" *ngFor="let i of [].constructor(27)">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="row"><h2 style="padding-right: 10px;
+              padding-top: 7px;">Country</h2><input type="text" *ngFor="let i of [].constructor(11)"></div>
+          </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-n">
+            <h2>Proof of Billing Address Attached</h2>
+          </div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div class="row">
+              <input type="text" class="inptAuto">
+            </div>
+            <p>(Please see instuction No. 15 for the applicable document. Please attach a self-attested copy)</p>
+          </div>
+        </div>
+        <div class="row">
+        <div><strong>Contact Person(s)</strong></div>
+        </div>
+        <div class="row">
+        <table style="border: 1px solid black;width:100%">
+          <tr style="border: 1px solid black;">
+            <th style="border-right: 1px solid black;">Function/Department</th>
+            <th style="border-right: 1px solid black;">First Name</th>
+            <th style="border-right: 1px solid black;">Last Name</th>
+            <th style="border-right: 1px solid black;">Mobile</th>
+            <th style="border-right: 1px solid black;">*Email</th>
+          </tr>
+          <tr style="border: 1px solid black;">
+            <td style="margin-left:1%;border-right: 1px solid black;">General</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">satya</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">ram</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">8500642370</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">machina.sravani@gmail.com</td>
+          </tr>
+
+        </table>
+      </div>
+        </div>
+        
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div style="margin-left:3%;margin-right: 3%;">
+      <div style="display: flex;flex-direction: column;">
+        <h3>CUSTOMER INFORMATION</h3>
+        <div style="display: flex;flex-direction: row;">
+          <p style="flex: 29;flex-grow: 1;"><strong>Name of Organisation</strong></p>
+          <p>: &nbsp;</p>
+          <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">Devi Raj Cable
+            Network</p>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+          <p style="flex: 29;flex-grow: 1;">Customer Phone Number</p>
+          <p>: &nbsp;</p>
+          <div style="flex: 70;flex-grow: 2;line-height: 1.5em;display: flex;flex-direction: row;">
+            <p style="padding-left:1%;flex:2; border: 1px solid black;">
+              8500642370</p>
+          </div>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+          <p style="flex: 29;flex-grow: 1;">PAN/GIR Number</p>
+          <p>: &nbsp;</p>
+          <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">BYDPM4686g</p>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+          <p style="flex: 29;flex-grow: 1;">Proof of Identity attached</p>
+          <p>: &nbsp;</p>
+          <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">Voter Id</p>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+          <p style="flex: 29;flex-grow: 1;"><strong>Service Ordering Address :</strong></p>
+        </div>
+        <div style="padding:1px">
+          <div>8-34, Ramalayam street,keerthi nilayam,venkatesh nagar</div>
+          <div>Vadisaleru, Rangampeta mandal, East Godavari district, pincode: 33294, Andhra Pradesh</div>
+        </div>
+        <div style="display: flex;flex-direction: row;margin-top:1.5%">
+          <p style="flex: 29;flex-grow: 1;"><strong>GST Number </strong></p>
+          <p>: &nbsp;</p>
+          <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">54846232653265
+          </p>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+          <p style="flex: 29;flex-grow: 1;"><strong>Billing Address :</strong></p>
+        </div>
+        <div style="padding:1px">
+          <div>8-34, Ramalayam street,keerthi nilayam,venkatesh nagar</div>
+          <div>Vadisaleru, Rangampeta mandal, East Godavari district, pincode: 33294, Andhra Pradesh</div>
+        </div>
+        <div style="display: flex;flex-direction: row;margin-top:1.5%">
+          <p style="flex: 29;flex-grow: 1;"><strong>Proof of billing Address Attached </strong></p>
+          <p>: &nbsp;</p>
+          <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">Voter Id</p>
+        </div>
+        <div><strong>Contact Person(s)</strong></div>
+        <table style="border: 1px solid black;">
+          <tr style="border: 1px solid black;">
+            <th style="border-right: 1px solid black;">Function/Department</th>
+            <th style="border-right: 1px solid black;">First Name</th>
+            <th style="border-right: 1px solid black;">Last Name</th>
+            <th style="border-right: 1px solid black;">Mobile</th>
+            <th style="border-right: 1px solid black;">*Email</th>
+          </tr>
+          <tr style="border: 1px solid black;">
+            <td style="margin-left:1%;border-right: 1px solid black;">General</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">satya</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">ram</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">8500642370</td>
+            <td style="margin-left:1%;border-right: 1px solid black;">machina.sravani@gmail.com</td>
+          </tr>
+
+        </table>
+        <div style="display: flex;flex-direction: row;margin-top:1%">
+          <p style="flex: 29;flex-grow: 1;"><strong>Service Requirement </strong></p>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">IP Address Scheme</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">Ipv6</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Product Selection</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">100mbs_350
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Number of Connections</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">5</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Internet Port Speed</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">100mbs</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Price</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">500</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Apsfl Share</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">100</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">LMO Share</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">5</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">MSO Share</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">100mbs</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 0px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">GST</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">5</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Billing frequency</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">Monthly</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Contract Period</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">2 years</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">Billing Periodicity</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">3 months</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">LMO Code</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">LMO18966</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">LMO Name</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">k.chandra
+                shekar</p>
+            </div>
+          </div>
+          <div style=" float: left;width: 50%;padding: 1px;">
+            <div style="display: flex;flex-direction: row;">
+              <p style="flex: 29;flex-grow: 1;">LMO Mobile</p>
+              <p>: &nbsp;</p>
+              <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">8500642370
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div id="contentToConvert" style="display: none;">
+      <h2 style="text-align: center;font-size:20px;margin-bottom:  6%;font-family: 'Times New Roman', Times, serif;">Customer Application Form</h2>
+      <div style="margin: 2%;">
+      <div style="border: 0.5px solid #aaaaaa;"></div>
+      <div style="margin-left:2%">
+      <h6 style="font-weight:700;margin-top:2%">*CUSTOMER INFORMATION</h6>
+      <div style="border: 1px solid black;">
+        <table style="margin-bottom: 1%;">
+          <tr>
+            <th>*&nbsp;<b>Name of Organization</b></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th style="font-weight: 400">sravani cable network</th>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr style="margin-bottom: 1%;">
+            <th style="font-weight: 400;">*&nbsp;Customer Phone Number</th>
+            <th></th>
+            <th></th>
+            <th></th>          
+            <th style="font-weight: 400">8500642370</th>
+          </tr>
+          <tr style="margin-bottom: 1%;">
+            <th style="font-weight: 400;">*&nbsp;PAN/GIR Number</th>
+            <th></th>
+            <th></th>
+            <th></th>          
+            <th style="color:#aaaa;font-weight: 400">8500642370</th>
+          </tr>
+          <tr style="margin-bottom: 1%;">
+            <th style="font-weight: 400;">*&nbsp;Proof Identity Attached</th>
+            <th></th>
+            <th></th>
+            <th></th>          
+            <th style="font-weight: 400">Voter Id</th>
+          </tr>
+          <tr style="margin-bottom: 1%;">
+            <th style="font-weight: 600;">*&nbsp;Service ordering address</th>
+            <th></th>
+            <th></th>
+            <th></th>          
+            <th style="font-weight: 400">
+              drno:8-34,Ramalayam strret,Vadisaleru,rangampeta mandal,east godavari district,Andhra pradesh,533294          
+            </th>
+          </tr>
+          <tr style="margin-bottom: 1%;">
+            <th style="font-weight: 600;">*&nbsp;Billing address</th>
+            <th></th>
+            <th></th>
+            <th></th>          
+            <th style="font-weight: 400">
+              drno:8-34,Ramalayam strret,Vadisaleru,rangampeta mandal,east godavari district,Andhra pradesh,533294          
+            </th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div> -->
+</div>

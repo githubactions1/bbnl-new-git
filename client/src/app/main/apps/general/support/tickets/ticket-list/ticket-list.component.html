@@ -1,0 +1,731 @@
+<div class="row">
+  <mat-spinner diameter="14" style="margin-left: 50%;" *ngIf="spnrIn"></mat-spinner>
+  <ds-loading *ngIf="searchLoader"></ds-loading>
+  <!-- <p class="tpHdr">
+    <button (click)="openPrivForm()" class="prvrstBtn">privilege Request</button>
+    <button (click)="openRqstForm()" class="RqstBtn">Regular Service Request</button>
+    <button (click)="openForm()" class="CrtBtn">&#43;&nbsp;Create Ticket</button>
+  </p> -->
+  <!-- <div fxLayout="row"> -->
+  <div fxFlex="70" fxFlex.xs="70" class="px-8">
+  </div>
+  <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="CreateTicketDtls.length>1">
+    <mat-form-field appearance="fill">
+      <mat-label>Create Ticket</mat-label>
+      <mat-select [(value)]="selectedrequest" (selectionChange)="getrequest()">
+        <mat-option *ngFor="let d of CreateTicketDtls" [value]="d.tckt_type_id">
+          {{d.tckt_type_nm}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="CreateTicketDtls[0].tm_id == 5">
+    <mat-form-field appearance="fill">
+      <mat-label>Create Ticket</mat-label>
+      <mat-select [(value)]="selectedrequest" (selectionChange)="getrequest()">
+        <mat-option value="option1">Privilege Request</mat-option>
+        <mat-option value="option2">Service Request</mat-option>
+        <mat-option value="option3">Change Request</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="CreateTicketDtls[0].tm_id == 2">
+    <mat-form-field appearance="fill">
+      <mat-label>Create Ticket</mat-label>
+      <mat-select [(value)]="selectedrequest" (selectionChange)="getrequest()">
+        <mat-option value="option1">Privilege Request</mat-option>
+        <mat-option value="option2">Service Request</mat-option>
+        <mat-option value="option3">Subscriber Request</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="CreateTicketDtls[0].tm_id == 7">
+    <mat-form-field appearance="fill">
+      <mat-label>Create Ticket</mat-label>
+      <mat-select [(value)]="selectedrequest" (selectionChange)="getrequest()">
+        <mat-option value="option1">Privilege Request</mat-option>
+        <mat-option value="option2">Service Request</mat-option>
+        <mat-option value="option3">Occ Request</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxFlex="25" fxFlex.xs="25" class="px-8"
+    *ngIf="CreateTicketDtls[0].tm_id != 7 && CreateTicketDtls[0].tm_id != 2 && CreateTicketDtls[0].tm_id != 5">
+    <mat-form-field appearance="fill">
+      <mat-label>Create Ticket</mat-label>
+      <mat-select [(value)]="selectedrequest" (selectionChange)="getrequest()">
+        <mat-option value="option1">Privilege Request</mat-option>
+        <mat-option value="option2">Service Request</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
+  <!-- <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf ="CreateTicketDtls[0].tm_id != 5 && 2">
+  <mat-form-field appearance="fill">
+    <mat-label>Create Ticket</mat-label>
+    <mat-select [(value)]="selectedrequest" (selectionChange)="getrequest()">
+      <mat-option value="option1">Previlage Request</mat-option>
+      <mat-option value="option2">Service Request</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div> -->
+  <div fxFlex="5" fxFlex.xs="5" class="px-8"></div>
+  <!-- </div> -->
+</div>
+<div class="row" style="margin-left: 25px" *ngIf=notetext>
+  <div fxFlex="70" fxFlex.xs="70" class="px-8">
+    <p>Note: The Tickets Which Are Aged Greater Than 6 Days Will Be Auto Escalated.</p>
+  </div>
+</div>
+<div class="headtxt">
+  Add Filters
+</div>
+<div fxLayout="row" fxLayout.xs="column" style="margin-left: 25px">
+  <!-- <div fxFlex="33" fxFlex.xs="100" class="px-8"> -->
+
+  <div class="ds-card" style="width: 98%">
+    <!-- <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%" style="max-width: 20%"> -->
+    <!-- <mat-label>Status</mat-label> -->
+    <div fxFlex="25" fxFlex.xs="25" class="px-8">
+      <div class="form-label textOverflowStyle">Status
+      </div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="stsitmnms" [multiple]="true" placeholder="Choose your option">
+          <!-- <mat-option #allS  [value]="-1">All</mat-option> -->
+          <!-- <mat-checkbox class="mat-option" [disableRipple]="true" [indeterminate]="isIndeterminate()"
+            [checked]="isChecked()" (click)="$event.stopPropagation()" (change)="toggleSelection($event)">
+            Select ALl
+          </mat-checkbox> -->
+          <!-- <mat-label>All</mat-label> -->
+          <!-- <mat-option selected value="All">ALL</mat-option> -->
+          <mat-option *ngFor="let stsitems of stsrslts" [value]="stsitems">
+            {{stsitems.mnu_itm_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- </div> -->
+    <!-- </div> -->
+    <div fxFlex="25" fxFlex.xs="25" class="px-8">
+      <div class="form-label textOverflowStyle">Type
+      </div>
+      <!-- <div class="ds-card"> -->
+      <!-- <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%" style="max-width: 100%"> -->
+      <!-- <mat-label>Type</mat-label> -->
+      <mat-form-field>
+        <mat-select [(ngModel)]="typitmnms" [multiple]="true" placeholder="Choose your option">
+          <mat-option *ngFor="let typitems of typrslts" [value]="typitems">
+            {{typitems.mnu_itm_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- </div> -->
+    </div>
+
+    <div fxFlex="25" fxFlex.xs="25" class="px-8">
+      <div class="form-label textOverflowStyle">Category
+      </div>
+      <!-- <div class="ds-card"> -->
+      <!-- <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%" style="max-width: 100%">
+        <mat-label>Cateogory</mat-label> -->
+      <mat-form-field>
+        <mat-select [(ngModel)]="ctgryitmnms" [multiple]="true" placeholder="Choose your option">
+
+          <mat-option *ngFor="let ctgryitems of ctgryrslts" [value]="ctgryitems">
+            {{ctgryitems.mnu_itm_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- </div> -->
+    </div>
+
+    <div fxFlex="25" fxFlex.xs="25" class="px-8">
+      <div class="form-label textOverflowStyle">Priority
+      </div>
+      <!-- <div class="ds-card"> -->
+      <!-- <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%" style="max-width: 20%"> -->
+
+      <!-- <mat-label>Priority</mat-label> -->
+      <mat-form-field>
+        <mat-select [(ngModel)]="prtyitmnms" [multiple]="true" placeholder="Choose your option">
+          <mat-option *ngFor="let pritems of prirslts" [value]="pritems">
+            {{pritems.mnu_itm_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- </div> -->
+    </div>
+
+
+    <div fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="example-button-row">
+      <button (click)="filterdetails()" mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE"
+        style="margin-top: 25px;padding: 0px 6px !important">Get Details</button>
+    </div>
+  </div>
+</div>
+
+
+<div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-left: 25px;margin-top: 10px" *ngIf="countdata">
+  <div fxFlex="100" fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 0%;">
+      <div class="ds-card today-card" style="border-left: 2px solid #f6b7a6;">
+        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+          fxFlex.gt-xs="100%" class="text-center" style="max-width: 100%">
+          <h2 class="h1 cnt">{{ticketsDta.count[0].tickets_cnt || 0}}</h2>
+          <div class="h4 nme" style="color:#f5b3a0">Total Tickets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100" fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 0%;">
+      <div class="ds-card today-card" style="border-left: 2px solid #a993ff;">
+        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+          fxFlex.gt-xs="100%" class="text-center" style="max-width: 100%">
+          <h2 class="h1 cnt">{{ticketsDta.count[0].toady_tckts || 0}}</h2>
+          <div class="h4 nme" style="color: #a993ff">Today Created</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100" fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 0%;">
+      <div class="ds-card today-card" style="border-left: 2px solid #fdacbc;">
+        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+          fxFlex.gt-xs="100%" class="text-center" style="max-width: 100%">
+          <h2 class="h1 cnt">{{ticketsDta.count[0].closed || 0}}</h2>
+          <div class="h4 nme" style="color:#fdacbc">Overall Closed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100" fxFlex.gt-lg="18%" fxFlex.gt-md="20%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 0%;">
+      <div class="ds-card today-card" style="border-left: 2px solid #ffa722;">
+        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+          fxFlex.gt-xs="100%" class="text-center" style="max-width: 100%">
+          <h2 class="h1 cnt">{{ticketsDta.count[0].wait_t_accpt || 0}}</h2>
+          <div class="h4 nme" style="color:#ffa722">Waiting To Accept </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100" fxFlex.gt-lg="18%" fxFlex.gt-md="15%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 0%;">
+      <div class="ds-card today-card" style="border-left: 2px solid #4a9a4f;">
+        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+          fxFlex.gt-xs="100%" class="text-center" style="max-width: 100%">
+          <h2 class="h1 cnt">{{ticketsDta.count[0].on_hold || 0}}</h2>
+          <div class="h4 nme" style="color:#4a9a4f">On-Hold</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100" fxFlex.gt-lg="18%" fxFlex.gt-md="15%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 0%;">
+      <div class="ds-card today-card" style="border-left: 2px solid #2bd1e6;">
+        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+          fxFlex.gt-xs="100%" class="text-center" style="max-width: 100%">
+          <h2 class="h1 cnt">{{ticketsDta.count[0].in_prgss || 0}}</h2>
+          <div class="h4 nme" style="color:#2bd1e6">In Progress</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="datdiv">
+  <div fxFlex="40" fxFlex.xs="40" class="px-8">
+  </div>
+  <div fxFlex="20" fxFlex.xs="20" class="px-8">
+    <div style="margin-top: 141px;color: #d63505">
+      <h3>
+        No Data Available.
+      </h3>
+    </div>
+  </div>
+  <div fxFlex="40" fxFlex.xs="40" class="px-8">
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12" style="padding: 0% 2% 5% 2%;">
+    <div class="card-list m-24" *ngFor="let n of tickets">
+      <div class="ds-ticket-card" (click)="onClickMe(n)">
+        <div [ngClass]="(n.border == true)?'crdbdr':'crdbdy'">
+          <span style="margin-left: -2%;" *ngIf="n.indicator == 'APPROVAL'">
+            <input type="checkbox" [(ngModel)]="n.approvngChkBox">
+          </span>
+          <div class="row crd_frw" [ngClass]="(n.indicator == 'APPROVAL')?'mtm2':''">
+            <div class="colAlgn col-lg-9 col-md-9">
+              <div class="font-weight-500">#{{n.tckt_type_cd}}{{n.tckt_id}}- ({{n.tckt_dt}}) Ticket Age:
+                {{n.age || '~'}}</div>
+              <div *ngIf="n.tckt_status_id == 1"
+                class="status_text new text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div *ngIf="n.tckt_status_id == 2"
+                class="status_text open text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div *ngIf="n.tckt_status_id == 3"
+                class="status_text onHold text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div *ngIf="n.tckt_status_id == 4"
+                class="status_text sloved text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div *ngIf="n.tckt_status_id == 5"
+                class="status_text closed text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div *ngIf="n.tckt_status_id == 6"
+                class="status_text slabreached text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div *ngIf="n.tckt_status_id == 7"
+                class="status_text slabreached text-center p-4 mb-12 border-bottom-right-radius-5 border-top-right-radius-5 maxwdt">
+                <span class="StSp">{{n.tckt_sts_nm}}</span></div>
+              <div class="font-size-14 font-weight-500 ">{{n.dscn_tx}}</div>
+            </div>
+            <!-- <div class="colAlgn col-lg-6 col-md-6">
+              <div class="font-size-14 font-weight-400 ">{{n.dscn_tx}}</div>
+            </div> -->
+            <div class="colAlgn col-lg-2 col-md-2" style="margin-left: 7%;">
+              <!-- <button mat-raised-button type="submit" class="view-color" aria-label="View" style="width: auto !important; margin-left: 27%;"
+              (click)="viewDtls(n)">
+              View
+            </button> -->
+              <button mat-button style="font-size:13px;" (click)="viewDtls(n)">
+                <mat-icon aria-hidden="false" style="color: #3eb3e8;">edit</mat-icon>
+                <p style="font-size: 12px;color: #3eb3e8;">Edit</p>
+              </button>
+              <button mat-button style="font-size:13px;margin-left: 15%;" (click)="accept(n)" *ngIf="!n.sprt_usr_id">
+                <!-- <mat-icon aria-hidden="false" style="color:#239086;">font_download</mat-icon> -->
+                <mat-icon aria-hidden="false" style="color:hsl(174, 61%, 35%);">done</mat-icon>
+                <p style="font-size: 12px;color:#239086;">Accept</p>
+              </button>
+              <button mat-button style="font-size:13px;margin-left: 10%;" [matMenuTriggerFor]="linkaction"
+                (click)="link(n)" *ngIf="n.prefix == 'BSR'">
+                <!-- <mat-icon aria-hidden="false" style="color: #4b62e0;">content_copy</mat-icon> -->
+                <!-- <mat-icon aria-hidden="false" style="color: #4b62e0;">dynamic_feed</mat-icon> -->
+                <mat-icon aria-hidden="false" style="color: #4b62e0;">link</mat-icon>
+                <p style="font-size: 12px;color: #4b62e0;">Link</p>
+              </button>
+              <mat-menu #linkaction="matMenu">
+                <div class="row pdng_mnu">
+                  <p class="popHdrTxt">Ticket Actions<span class="ml-3"
+                      *ngIf="actnsClkme">({{n.tckt_type_cd}}{{tckId}})</span></p>
+                  <mat-icon class="PopcnclTck">highlight_off</mat-icon>
+                </div>
+                <div class="row PopPdng" (click)="$event.stopPropagation()">
+                  <div fxFlex="50" fxFlex.xs="50" class="px-8">
+                    <div class="form-label">Enter Ticket Id</div>
+                    <mat-form-field appearance="outline">
+                      <input type="number" name="name" matInput [(ngModel)]="linkTicketID">
+                      <!-- <mat-error>Contact Name is required!</mat-error> -->
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row SvCncl" (click)="$event.stopPropagation()">
+                  <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE"
+                    (click)="savelinkTicket(n)">
+                    Save
+                  </button>
+                  <button mat-raised-button type="close" aria-label="Reset" (click)="resetLinkTicket()"
+                    style="margin-left: 4%;">
+                    Reset
+                  </button>
+                </div>
+              </mat-menu>
+            </div>
+            <!-- <div class="colAlgn col-lg-1 col-md-1" *ngIf="!n.sprt_usr_id"  style="padding: 0px; margin-right: 10px;">
+               <button mat-raised-button type="submit" class="accptBtn-color" aria-label="View" style="width: auto !important;"
+                (click)="accept(n)">
+                Accept
+              </button>
+            </div> -->
+
+          </div>
+
+
+
+          <div class="row crd_frw">
+            <div class="colAlgn col-lg-1 col-md-1">
+              <ul class="l_ul">
+                <li>
+                  <button mat-button style="font-size:13px;">
+                    <i class="ds-star-empty font-size-18"></i>
+                  </button>
+                </li>
+                <li>
+                  <button mat-button style="font-size:13px;" [matMenuTriggerFor]="allactions">
+                    <mat-icon aria-hidden="false">more_horiz</mat-icon>
+                  </button>
+                  <mat-menu #allactions="matMenu">
+                    <div class="row pdng_mnu">
+                      <p class="popHdrTxt">Ticket Actions<span class="ml-3"
+                          *ngIf="actnsClkme">({{n.tckt_type_cd}}{{tckId}})</span></p>
+                      <mat-icon class="PopcnclTck">highlight_off</mat-icon>
+                    </div>
+                    <div class="row PopPdng" (click)="$event.stopPropagation()">
+                      <!-- //type// -->
+                      <!-- <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="CreateTicketDtls.length>1">
+                        <div class="form-label">Select Type</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="TypeID" (selectionChange)="ForCategory()" required>
+                            <mat-option *ngFor="let d of CreateTicketDtls" [value]="d.tckt_type_id">
+                              {{d.tckt_type_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div> -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Type</div>
+                          <div class="lbl_cntnt typeName">{{n.tckt_type_nm}}</div>
+                        </mat-label><br>
+                      </div>
+
+                      <!-- //Category// -->
+
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="CategoryDtls && CategoryDtls.length>1">
+                        <div class="form-label">Select Category</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="categryID" (selectionChange)="ForSubCategory()" required>
+                            <mat-option *ngFor="let d of CategoryDtls" [value]="d.tckt_ctgry_id">
+                              {{d.tckt_ctgry_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="CategoryDtls && CategoryDtls.length == 1">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Category</div>
+                          <div class="lbl_cntnt typeName">{{CategoryDtls[0].tckt_ctgry_nm}}</div>
+                        </mat-label><br>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8"
+                        *ngIf="!CategoryDtls || CategoryDtls.length<1 || !CategoryDtls.length">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Category</div>
+                          <div class="lbl_cntnt typeName">Select Type</div>
+                        </mat-label><br>
+                      </div>
+                    </div>
+
+                    <div class="row PopMtFld" (click)="$event.stopPropagation()" *ngIf="n.if == true">
+                      <!-- //Sub-Category// -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="subCategoryDtls && subCategoryDtls.length>1">
+                        <div class="form-label">Select Sub-Category</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="subcategryID" (selectionChange)="ForIssueType()" required>
+                            <mat-option *ngFor="let d of subCategoryDtls" [value]="d.tckt_sb_ctgry_id">
+                              {{d.tckt_sb_ctgry_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="subCategoryDtls && subCategoryDtls.length == 1">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Sub-Category</div>
+                          <div class="lbl_cntnt typeName">{{subCategoryDtls[0].tckt_sb_ctgry_nm}}</div>
+                        </mat-label><br>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8"
+                        *ngIf="!subCategoryDtls || subCategoryDtls.length<1 || !subCategoryDtls.length">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Sub-Category</div>
+                          <div class="lbl_cntnt typeName">Select Category</div>
+                        </mat-label><br>
+                      </div>
+                      <!-- //ISSUE-TYPE// -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="issueTypesDtls && issueTypesDtls.length>1">
+                        <div class="form-label">Select Issue-Type</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="issueTypeID" (selectionChange)="ForIssueIndefiers()" required>
+                            <mat-option *ngFor="let d of issueTypesDtls" [value]="d.ise_type_id">
+                              {{d.ise_type_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="issueTypesDtls && issueTypesDtls.length == 1">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Issue-Type</div>
+                          <div class="lbl_cntnt typeName">{{issueTypesDtls[0].ise_type_nm}}</div>
+                        </mat-label><br>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8"
+                        *ngIf="!issueTypesDtls || issueTypesDtls.length<1 || !issueTypesDtls.length">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Issue-Type</div>
+                          <div class="lbl_cntnt typeName">Select Category/Sub-Category</div>
+                        </mat-label><br>
+                      </div>
+                    </div>
+                    <div class="row PopMtFld" (click)="$event.stopPropagation()" *ngIf="n.if == true">
+                      <!-- //ISSUE-Idenfiers// -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="issueIndefierDtls && issueIndefierDtls.length>1">
+                        <div class="form-label">Select Issue-Identifiers</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="issueIndefierID" (selectionChange)="ForTeams()" required>
+                            <mat-option *ngFor="let d of issueIndefierDtls" [value]="d.ise_idnfr_id">
+                              {{d.ise_idnfr_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="issueIndefierDtls && issueIndefierDtls.length == 1">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Issue-Identifiers</div>
+                          <div class="lbl_cntnt typeName">{{issueIndefierDtls[0].ise_idnfr_nm}}</div>
+                        </mat-label><br>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8"
+                        *ngIf="!issueIndefierDtls || issueIndefierDtls.length<1 || !issueIndefierDtls.length">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Issue-Identifiers</div>
+                          <div class="lbl_cntnt typeName">Select Issue-Type</div>
+                        </mat-label><br>
+                      </div>
+                      <!-- //TEAMS// -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="teamsDtls && teamsDtls.length>1">
+                        <div class="form-label">Select Team</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="teamID" required>
+                            <mat-option *ngFor="let d of teamsDtls" [value]="d.tm_id">
+                              {{d.tm_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="teamsDtls && teamsDtls.length == 1">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Team</div>
+                          <div class="lbl_cntnt typeName">{{teamsDtls[0].tm_nm}}</div>
+                        </mat-label><br>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8" *ngIf="!teamsDtls || teamsDtls.length<1 || !teamsDtls.length">
+                        <mat-label>
+                          <div class="lbl mndlTitle">Team</div>
+                          <div class="lbl_cntnt typeName">Select Type&Category</div>
+                        </mat-label><br>
+                      </div>
+                    </div>
+                    <div class="row PopMtFld" (click)="$event.stopPropagation()" *ngIf="n.if == false">
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <div class="form-label">Vendor</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="VendorID" (selectionChange)="ForElement()" required>
+                            <mat-option *ngFor="let v of VendorDtls" [value]="v.vndr_id">
+                              {{v.vndr_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <div class="form-label">Elements</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="ElementID" required>
+                            <mat-option *ngFor="let e of ElementDtls" [value]="e.elmnt_id">
+                              {{e.elmnt_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row PopMtFld" (click)="$event.stopPropagation()" *ngIf="n.if == false">
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <div class="form-label">Schedule Start</div>
+                        <mat-form-field appearance="outline">
+                          <input matInput [matDatepicker]="picker1" placeholder="Schedule Start" [(ngModel)]="schestrt">
+                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                          <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <div class="form-label">Schedule End</div>
+                        <mat-form-field appearance="outline">
+                          <input matInput [matDatepicker]="picker2" placeholder="Schedule End" [(ngModel)]="scheend">
+                          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row PopMtFld" (click)="$event.stopPropagation()">
+                      <!-- //STATUS// -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <div class="form-label">Status</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="statusID" required>
+                            <mat-option *ngFor="let d of stsDtls" [value]="d.tckt_sts_id">
+                              {{d.tckt_sts_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <!-- //PRIORITY// -->
+                      <div fxFlex="50" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                        fxFlex.gt-xs="50%" class="px-8">
+                        <div class="form-label">Select Priority</div>
+                        <mat-form-field appearance="outline">
+                          <mat-select [(value)]="prortyID" required>
+                            <mat-option *ngFor="let d of prtyDtls" [value]="d.prty_id">
+                              {{d.prty_nm}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row PopMtFld" (click)="$event.stopPropagation()">
+                      <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Comment</div>
+                      <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                        <textarea matInput [(ngModel)]="comment" required></textarea>
+                        <!-- <input type="text" matInput formControlName="comment" required> -->
+                      </mat-form-field>
+                    </div>
+                    <div class="row SvCncl" (click)="$event.stopPropagation()">
+                      <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE"
+                        (click)="saveactions(n)">
+                        Save
+                      </button>
+                      <button mat-raised-button type="close" aria-label="Reset" (click)="reset()"
+                        style="margin-left: 4%;">
+                        Reset
+                      </button>
+                    </div>
+                  </mat-menu>
+                </li>
+              </ul>
+            </div>
+            <div class="colAlgn col-lg-11 col-md-11">
+              <ul class="f_ul">
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400">Team Created</div>
+                  <div class="font-size-14 font-weight-600">{{n.createTeam}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == true || n.basicRequest == true">
+                    Team assigneed</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == true || n.basicRequest == true">
+                    {{n.assignTeam}}</div>
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == false && n.basicRequest == false">
+                    Vendor</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == false && n.basicRequest == false">
+                    {{n.vndr_nm}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400">raised by</div>
+                  <div class="font-size-14 font-weight-600">{{n.createuser || '~'}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400">Accept by</div>
+                  <div class="font-size-14 font-weight-600">{{n.assignuser || '~'}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400">priority</div>
+                  <div class="font-size-14 font-weight-600">{{n.prty_nm || '~'}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400">Type</div>
+                  <div class="font-size-14 font-weight-600">{{n.tckt_type_nm || '~'}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400">category</div>
+                  <div class="font-size-14 font-weight-600">{{n.tckt_ctgry_nm || '~'}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == true || n.basicRequest == true">
+                    Sub-Category</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == true || n.basicRequest == true">
+                    {{n.tckt_sb_ctgry_nm || '~'}}</div>
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == false && n.basicRequest == false">
+                    Elements</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == false">{{n.elmnt_nm}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == true">Issue-Type</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == true">{{n.ise_type_nm || '~'}}</div>
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == false && n.basicRequest == false">
+                    Sechedule Start</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == false && n.basicRequest == false">
+                    {{n.schdle_strt_ts}}</div>
+                </li>
+                <li style="border-right: 1px solid #dde0f1">
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == true">Issue-Indefier</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == true">{{n.ise_idnfr_nm || '~'}}</div>
+                  <div class="color-time font-size-12 font-weight-400" *ngIf="n.if == false && n.basicRequest == false">
+                    Sechedule End</div>
+                  <div class="font-size-14 font-weight-600" *ngIf="n.if == false && n.basicRequest == false">
+                    {{n.schdle_end_ts}}</div>
+                </li>
+                <!-- <li>
+                  <div class="color-time font-size-12 font-weight-400">Ticket Age</div>
+                  <div class="font-size-14 font-weight-600">{{n.age || '~'}}</div>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="tickets[0]">
+  <div class="p-16 mtm4" fxLayout="row" *ngIf="tickets[0].indicator == 'APPROVAL'">
+    <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Add Comment
+      </div>
+      <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+        <textarea matInput [(ngModel)]="aprvecomment"></textarea>
+      </mat-form-field>
+    </div>
+    <!-- <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+      style="text-align: right;">
+      <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Assign User
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="assignUserID">
+          <mat-option *ngFor="let a of AssignDtls" [value]="a.usr_id">
+            {{a.usr_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+    <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+      style="text-align: right;margin-top: 3%;">
+      <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE" (click)="approve()">
+        Approve
+      </button>
+    </div>
+    <!-- <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+    </div> -->
+  </div>
+</div>

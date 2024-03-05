@@ -1,0 +1,233 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+
+    <div *ngIf="loader">
+      <div class="loading-indicator">
+        <div class="spinner-1">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+    </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div class="text-right gridBtns">
+      <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button   " (click)="addNewNode()">Add Node</button>
+      <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button   ml-4" (click)="addNewCaf()">Add CAF</button>
+      <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  ml-4" (click)="saveBulkUpload()">Bulk Upload</button>
+      
+  
+    </div>
+    <div>
+      <p class="ent-ttl">{{cafDtls.frst_nm}} </p>
+      <p class="ent-addrs">{{cafDtls.officeloc}}</p>
+      <p class="ent-cntct"><span>Email:{{cafDtls.loc_eml1_tx}}</span> &nbsp;&nbsp; <span>Mobile:{{cafDtls.cntct_mble1_nu}}</span></p>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+  
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h4 nme">Total Nodes</div>
+                <div class="h1 cnt msocnt">{{cafDtls.nodes.length}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+  
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h4 nme">Total Connections</div>
+                <div class="h1 cnt msocnt">{{cafDtls.cafs.length}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+  
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h4 nme">Amount Due as on 19-2-2020</div>
+                <div class="h1 cnt msocnt">₹320</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+  
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h4 nme">Connection Status</div>
+                <div class="h1 cnt msocnt">Active</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+  <div fxLayout="row" class="ml-24 mr-24">
+    <mat-card class="matcard" style="height: 500px;">
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            Connections(CAF's)
+          </ng-template>
+          <!-- <div class="space">
+          </div> -->
+
+          <div class="ds-card grid" style="background-color: white !important;">
+            <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" style="width:100%">
+
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+              <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+                [width]="100" caption="Action" cellTemplate="editTemplate">
+                <div *dxTemplate="let data of 'editTemplate'">
+                  <div class="cursor-pointer" (click)="onviewClick(data)">
+                    VIEW
+                  </div>
+                </div>
+              </dxi-column>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+            </dx-data-grid>
+
+          </div>
+
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            Invoice
+          </ng-template>
+          <!-- <div class="space">
+          </div> -->
+          <div class="ds-card grid" style="background-color: white !important;">
+            <dx-data-grid id="gridContainer" [dataSource]="invoiceData" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" style="width:100%"
+              [masterDetail]="{ enabled: true, template: 'detail' }">
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDef" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+              <div *dxTemplate="let employee of 'detail'">
+                <!-- <div *ngFor="let i of invoiceData.dtls"> -->
+                <!-- <dx-data-grid  [showBorders]="true" [columnAutoWidth]="true"> -->
+                <div layout="row" layout-wrap="">
+                  <div class="w-100-p" fxLayout="row">
+                    <span class="w-30-p font-weight">Telephone Charges:</span>
+                    <span class="w-70-p">{{employee.data.dtls[0].Telephone_Charges}}</span>
+                  </div>
+                  <div class="w-100-p" fxLayout="row">
+                    <span class="w-30-p font-weight">Package Cost : </span>
+                    <span class="w-70-p">{{employee.data.dtls[0].Package_Cost}}</span>
+                  </div>
+                  <div class="w-100-p" fxLayout="row">
+                    <span class="w-30-p font-weight">Box Rent :</span>
+                    <span class="w-70-p">{{employee.data.dtls[0].Box_Rent}}</span>
+                  </div>
+                  <div class="w-100-p" fxLayout="row">
+                    <span class="w-30-p font-weight">Add On Package Cost :</span>
+                    <span class="w-70-p">{{employee.data.dtls[0].Add_On_Package_Cost}}</span>
+                  </div>
+                  <div class="w-100-p" fxLayout="row">
+                    <span class="w-30-p font-weight">Boost Package Cost :</span>
+                    <span class="w-70-p">{{employee.data.dtls[0].Boost_Package_Cost}}</span>
+                  </div>
+                  <div class="w-100-p" fxLayout="row">
+                    <span class="w-30-p font-weight">GST Charges :</span>
+                    <span class="w-70-p">{{employee.data.dtls[0].GST_Charges}}</span>
+                  </div>
+                </div>
+              </div>
+
+            </dx-data-grid>
+
+          </div>
+
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            Events
+          </ng-template>
+          <div class="space">
+          </div>
+          <div>
+            <div style="text-decoration-line: underline;">
+              Base Package
+            </div>
+            <div>
+              Home Mini : 550
+            </div>
+          </div>
+          <div class="space">
+          </div>
+          <div>
+            <div style="text-decoration-line: underline;">
+              Add On Packages
+            </div>
+            <div>
+              Sports : 50
+            </div>
+            <div>
+              Comedy : 30
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            Support Tickets
+          </ng-template>
+          <div class="space">
+          </div>
+          <div>
+            <div style="text-decoration-line: underline;">
+              Base Package
+            </div>
+            <div>
+              Home Mini : 550
+            </div>
+          </div>
+          <div class="space">
+          </div>
+          <div>
+            <div style="text-decoration-line: underline;">
+              Add On Packages
+            </div>
+            <div>
+              Sports : 50
+            </div>
+            <div>
+              Comedy : 30
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>

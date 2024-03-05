@@ -1,0 +1,153 @@
+<div class="page-layout simple pageBackground p-20 sbstnRqstCmpnt">
+  <!-- <div class="row">
+    <button mat-raised-button (click)="openSideBar('addFormPanel')"
+      class="mat-raised-button mb-4 tempBtncss"><span>+</span>New Substations Mapping</button>
+  </div> -->
+  <!-- <div class="row"> -->
+      <p class="hdngtitle">Requested Sub-Stations for Operation</p>
+    <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="TableOneData" [remoteOperations]="false" [allowColumnReordering]="true"
+      [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)" style="width: 100%;">
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [alignment]="f.algnmnt" [allowFiltering] = "f.filter" [allowHeaderFiltering]= "f.filter" [width]="f.width"></dxi-column>
+    </dx-data-grid>
+  </div>
+  <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+  <!-- </div> -->
+  <!-- <div class="row"> -->
+    <p class="hdngtitle">OLT Port Allocated for {{lmocd}}</p>
+    <!-- <hr class = "style-two"> -->
+    <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="agentPortData" [remoteOperations]="false" [allowColumnReordering]="true"
+      [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width: 100%;">
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column *ngFor="let f of portcolumnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [alignment]="f.algnmnt" [allowFiltering] = "f.filter" [allowHeaderFiltering]= "f.filter" [width]="f.width"></dxi-column>
+    </dx-data-grid>
+  </div>
+  <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+  <!-- </div> -->
+</div>
+  <ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right"
+    [invisibleOverlay]="false">
+    <ng-container>
+      <div fxLayout="column">
+        <div>
+          <div class="card-header crdHdng">ADD Substations Request
+            <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+              cancel</mat-icon>
+          </div>
+          <div class="card-body" fxLayout.lt-md="column" fxLayout.xs="column">
+            <!-- <div fxLayout="row" fxLayout.xs="column"> -->
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select District</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="districtID" (selectionChange)="getSubStnLst(districtID)" required>
+                    <mat-option *ngFor="let d of distrctLst" [value]="d.dstrt_id">
+                      {{d.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Substation</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="substationID" (selectionChange)="getMandalsVillages(substationID)" required>
+                    <mat-option *ngFor="let s of substationLst" [value]="s.sbstn_id">
+                      {{s.sbstn_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- <div fxLayout="row" fxLayout.xs="column" *ngIf="mandalData"> -->
+            <div fxLayout="row" fxLayout.xs="column" *ngIf="mandalData">
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <mat-label>
+                  <div class="lbl mndlTitle">Mandal</div>
+                  <div class="lbl_cntnt mndalName">{{mandalData[0].mndl_nm}}</div>
+                </mat-label><br>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Village</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="villageIDS" multiple required>
+                    <mat-option *ngFor="let v of villagesData" [value]="v.vlge_id">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Estimated CAF Count</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput  type="number" [(ngModel)]="count"
+                    [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- <div fxLayout="row" fxLayout.xs="column">
+                <button mat-flat-button type="submit" class="mat-raised-button saveBtn-color"
+                aria-label="SAVE" (click)="saveSubstations()" style="width: 100%;">
+                SAVE
+            </button>
+            <button mat-flat-button type="close" class="mat-raised-button  cnclBtn-color ml-8"
+            aria-label="CANCEL" (click)="closeSideBar()">
+            CANCEL
+        </button>
+                </div> -->
+
+
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="20" fxFlex.xs="100" class="px-8"></div>
+              <div fxFlex="30" fxFlex.xs="100" class="px-8">
+                <button mat-raised-button type="submit" class="gtDtls" aria-label="SAVE"
+                  (click)="saveSubstations()" style= "width: 100%;">
+                  SAVE
+                </button>
+              </div>
+              <div fxFlex="30" fxFlex.xs="100" class="px-8">
+                <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBar()">
+                  CANCEL
+                </button>
+              </div>
+              <div fxFlex="20" fxFlex.xs="100" class="px-8"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ds-sidebar>
+

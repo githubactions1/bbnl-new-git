@@ -1,0 +1,136 @@
+<div class="page-layout simple pageBackground prtAsgnCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div *ngIf="permissions">
+  <div fxLayout="row" fxLayout.xs="column" class = "ds-card p-12 m-8">
+    <!-- <div fxFlex="5" fxFlex.xs="5" class="px-6"></div> -->
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Select District</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="districtID" (selectionChange)="getMandalLst(districtID)" required>
+          <mat-option *ngFor="let d of distrctLst" [value]="d.dstrt_id">
+            {{d.dstrt_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div fxFlex="5" fxFlex.xs="5" class="px-6"></div> -->
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Select Mandal</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="mandalID" (selectionChange)="getdetails(mandalID)" required>
+          <mat-option *ngFor="let m of mandalLst" [value]="m.mndl_nu">
+            {{m.mndl_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div fxFlex="5" fxFlex.xs="5" class="px-6"></div> -->
+    <!-- <div fxFlex="15" fxFlex.xs="15" class="px-8">
+      <button mat-raised-button (click)="getData()" class="mat-raised-button mb-4 gtDtls mt-32" >GET DATA</button>
+      </div> -->
+      <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+        <button mat-raised-button color="primary" (click)="getData()" class="gtDtls">GET DETAILS</button>
+      </div>
+  </div>
+  <ds-loading *ngIf="tableview === false && permissions"></ds-loading>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="tableview === false && !permissions">{{shwPermMsg}}</div>
+  <div class="ds-card m-12"  *ngIf="tableview == true && permissions">
+      <dx-data-grid class="p-4 max-width-100" *ngIf="(permissions.slct_in==1)?true:false" id="gridContainer" [allowColumnResizing]="true" [dataSource]="oltDetails" [remoteOperations]="false" [allowColumnReordering]="true"
+      [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" (onSelectionChanged)="oltSlctn($event)">
+      <dxo-selection mode="single"></dxo-selection>
+      <!-- <dx-select-box [dataSource]="oltDetails"></dx-select-box> -->
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true"  [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"  fileName="Port Allocation" ></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [allowFiltering] = "f.filter" [allowHeaderFiltering]= "f.filter" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [alignment]="f.cellStyle" [width]="f.width"></dxi-column>
+    </dx-data-grid>
+  <!-- </div> -->
+  <!-- <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div> -->
+    </div>
+    <div *ngIf="portsView && (permissions.updt_in==1)?true:false" class = "p-16">
+    <table class="portAlctn">
+<thead>
+     <p class = "title"> Port Information</p>
+</thead>
+      <tr>
+        <th>Port No</th>
+        <th>Tenant Details</th>
+        <!-- <th>Select Tenant</th> -->
+        <th style="width: 150px;">CAF Count</th>
+        <th style="width: 150px;">Assigned On</th>
+        <th style="width: 150px;">Assigned By</th>
+        <th style="width: 150px;">Updated On</th>
+        <th style="width: 150px;">Updated By</th>
+      </tr>
+      <tr *ngFor="let p of portData">
+        <td>{{p.olt_prt_nm}}</td>
+        <td *ngIf="p.agnt_id > 0 && p.cafct > 0" style="width:30%;">{{p.agnt_nm}}({{p.agnt_cd}})</td>
+        <td *ngIf="p.agnt_id > 0 && p.cafct == 0 && p.chngto == false" style="width:30%;">
+          <!-- {{p.agnt_nm}}({{p.agnt_cd}}) -->
+          <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+            <input matInput type="text" [(ngModel)]="p.agentnmcd" [ngModelOptions]="{standalone: true}" (input)="onCfChange(p)" #myInput>
+          </mat-form-field>
+        </td>
+        <td  *ngIf="p.agnt_id == null || p.chngto == true " style="width:30%;">
+          <!-- <td> -->
+          <!-- <div class="form-label">Select Tenant</div> -->
+          <!-- <mat-form-field appearance="outline">
+            <mat-select [(value)]="p.agntId" placeholder="Select Tenant" required>
+              <mat-option *ngFor="let t of tenantsData  let i=index" [value]="t.agnt_id">
+                {{i+1}}) {{t.agnt_nm}}({{t.agnt_cd}})
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto1" (input)="onSearchChange($event.target.value)"
+              formControlName="lmoCode">
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn.bind(this)">
+              <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+              <ng-container *ngIf="!isLoading">
+
+                <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent.agnt_id" (click)="addlmoid(agent,p)">
+                  <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </mat-form-field>
+          </form>
+         
+         
+        </td>
+        <td>{{p.cafct}}</td>
+        <td>{{p.dt}}</td>
+        <td>{{p.crtdBy}}</td>
+        <td>{{p.udt}}</td>
+        <td>{{p.updBy}}</td>
+      </tr>
+    </table>
+
+
+    <div class="row endBtn" *ngIf="(permissions.insrt_in==1)?true:false">
+      <button mat-raised-button type="submit" class="saveBtn-color " aria-label="SAVE"
+      (click)="savePortDetails()">
+      SAVE
+    </button>
+
+
+
+
+  </div>
+
+
+
+
+  </div>
+
+</div>

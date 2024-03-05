@@ -1,0 +1,51 @@
+<div class="page-layout simple pageBackground pkgesrvceLstCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div class="text-right gridBtns" *ngIf="permissions">
+      <div class="ds-card">
+        <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row">
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%"
+                fxFlex.gt-xs="20%" class="px-8">
+                <div class="form-label">Enter CAF Number</div>
+                <mat-form-field appearance="outline">
+                    <input matInput type="text" [(ngModel)]="caf_num">
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%"
+              fxFlex.gt-xs="20%" class="px-8 mt-32">
+              <button mat-flat-button type="submit" class="mat-raised-button  gtDtls"
+                  aria-label="SAVE" (click)="getDtls()">
+                  Get Details
+              </button>
+            </div>
+        </div>
+      </div>
+      <ds-loading *ngIf="loader"></ds-loading>
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+      [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+      [showBorders]="true" [allowColumnResizing]="true" >
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+        fileName="Complaints List"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+        [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+      <dxi-column [showInColumnChooser]="false" type="buttons" [width]="150" caption="Suspend" cellTemplate="EditTemplate"
+        *ngIf="(permissions.updt_in==1)?true:false">
+        <div *dxTemplate="let data of 'EditTemplate'">
+          <div class="cursor-pointer tblEdtBtn" (click)="onCelleditClick(data)">
+            suspend
+          </div>
+        </div>
+      </dxi-column>
+    </dx-data-grid>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <ds-loading *ngIf="shwLdr"></ds-loading>
+  <ng-container>
+  <div class="mt-5">
+      <div fxFlex="25" fxFlex.xs="100" class="px-10">
+          <mat-card>
+              <mat-card-content>
+                  <h3 class="text-center"><b>Total LMO's</b> </h3>
+                  <h4 class="text-center">{{totallmocount}}</h4>
+              </mat-card-content>
+          </mat-card>
+      </div>
+      <div fxFlex="25" fxFlex.xs="100" class="px-8 cursor-pointer">
+        <mat-card (click)="kyc_completed()">
+            <mat-card-content >
+                <h3 class="text-center"><b>KYC's Completed</b></h3>
+                <h4 class="text-center">{{kycdonecount}}</h4>
+            </mat-card-content>
+        </mat-card>
+    </div>
+      <div fxFlex="25" fxFlex.xs="100" class="px-8 cursor-pointer">
+          <mat-card  (click)="kyc_notcompleted()">
+              <mat-card-content >
+                  <h3 class="text-center"><b>KYC's Pending</b> </h3>
+                  <h4 class="text-center">{{kycnotdonecount}}</h4>
+              </mat-card-content>
+          </mat-card>
+      </div>
+      <div fxFlex="25" fxFlex.xs="100" class="px-8 cursor-pointer">
+          <mat-card  (click)="total_done_today()">
+              <mat-card-content>
+                  <h3 class="text-center"><b>KYC's Done Today</b></h3>
+                  <h4 class="text-center">{{kycdonetodaycount}}</h4>
+              </mat-card-content>
+          </mat-card>
+      </div>
+      
+  </div>
+  <div class="mt-5">
+      <div fxFlex="25" fxFlex.xs="100" class="px-8 cursor-pointer">
+          <mat-card (click)="total_done_yest()">
+              <mat-card-content>
+                  <h3 class="text-center"><b>KYC's Done Yesterday</b></h3>
+                  <h4 class="text-center">{{kycdoneyestcount}}</h4>
+              </mat-card-content>
+          </mat-card>
+      </div>
+  </div>
+
+        <div *ngIf="kyccompleteddata" class="mt-5">
+          <mat-divider style="margin-top: 20px"></mat-divider>
+          <div class="font-size-20 font-weight-500 pt-20 mb-0 pl-80 pb-8 red-800-fg">KYC's Completed List</div>
+          <mat-divider style="margin-bottom: 13px"></mat-divider>
+          <dx-data-grid class="p-8" id="gridContainer" [dataSource]="kyccomplete" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" [allowColumnResizing]="true" 
+          (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)" style="width: 100%;">
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+            fileName="{{fileNamekycdone}}"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+            [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+        </dx-data-grid>
+        </div>
+
+        <div *ngIf="kycnotcompletedata" class="mt-5">
+          <mat-divider style="margin-top: 20px"></mat-divider>
+          <div class="font-size-20 font-weight-500 pt-20 mb-0 pl-80 pb-8 red-800-fg">KYC's Pending List</div>
+          <mat-divider style="margin-bottom: 13px"></mat-divider>
+          <dx-data-grid class="p-8" id="gridContainer" [dataSource]="kycnotcomplete" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" [allowColumnResizing]="true" 
+          (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)" style="width: 100%;">
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+            fileName="{{fileNamekycnotdone}}"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+            [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+        </dx-data-grid>
+        </div>
+
+        <div *ngIf="totaltodaydata" class="mt-5">
+          <mat-divider style="margin-top: 20px"></mat-divider>
+          <div class="font-size-20 font-weight-500 pt-20 mb-0 pl-80 pb-8 red-800-fg">KYC's Done Today List</div>
+          <mat-divider style="margin-bottom: 13px"></mat-divider>
+          <dx-data-grid class="p-8" id="gridContainer" [dataSource]="totaltoday" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" [allowColumnResizing]="true" 
+          (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)" style="width: 100%;">
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+            fileName="{{filekyctodaydone}}"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+            [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+        </dx-data-grid>
+        </div>
+
+        <div *ngIf="totalyestdata" class="mt-5">
+          <mat-divider style="margin-top: 20px"></mat-divider>
+          <div class="font-size-20 font-weight-500 pt-20 mb-0 pl-80 pb-8 red-800-fg">KYC's Done Yesterday List</div>
+          <mat-divider style="margin-bottom: 13px"></mat-divider>
+          <dx-data-grid class="p-8" id="gridContainer" [dataSource]="totalyest" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" [allowColumnResizing]="true" 
+          (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)" style="width: 100%;">
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+            fileName="{{filekycyestdone}}"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+            [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+        </dx-data-grid>
+        </div>
+
+  </ng-container>
+  </div>

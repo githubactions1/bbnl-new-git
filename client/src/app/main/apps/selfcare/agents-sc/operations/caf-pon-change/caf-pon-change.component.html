@@ -1,0 +1,351 @@
+<div class="page-layout simple pageBackground cfpnchngeCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="row fltrcrd p-4 m-8">
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8" >
+      <div class="form-label">Aadhaar Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="aadharnumber" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </div>
+    
+    <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+      <p class = "orcls">(OR)</p>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+      <div class="form-label">Mobile Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="mobilenumber" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </div>
+    <div  fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+      <p class = "orcls">(OR)</p>
+    </div>
+   
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+      <div class="form-label">CAF Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="cafnumber" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </div>
+    <div  fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8" *ngIf="agentDropDwnView == true">
+      <p class = "orcls">(OR)</p>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8" *ngIf="agentDropDwnView == true">
+      <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+      <div class="form-label">LMO Code</div>
+      <!-- <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="cafnumber" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field> -->
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto"
+          formControlName="lmoCode">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+          <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+              <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+        <!-- <mat-error>LMO is required!</mat-error> -->
+      </mat-form-field>
+    </form>
+    </div>
+ 
+    <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+      <button mat-raised-button color="primary" (click)="getDetails();" class="gtDtls">GET DETAILS</button>
+    </div>
+  </div>
+  <!-- <div class="row p-20" *ngIf="tableView == false">
+    <p>Please Select the Above to get Data</p>
+  </div> -->
+  <!-- <div class="row p-20" *ngIf="tableView == false">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12"></div>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12 fltrcrd">
+      <p class="textCss">Please Select the Above to get Data</p>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12"></div>
+   
+  </div> -->
+
+  <div class="ds-card m-12 p-4 font-weight-600 text-center slctGtDta"*ngIf="tableView == false">Please Select the Above to
+    get Data</div>
+  <!-- <div class="row p-20"> -->
+    <!-- <p class="hdngtitle">PON Change</p> -->
+    <div class="ds-card m-12" *ngIf="tableView == true">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="TableData" [remoteOperations]="false"
+        [allowColumnReordering]="true" [allowColumnResizing]="true"  [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+        [showBorders]="true" style="max-width:100%">
+        <dxo-selection *ngIf="(permissions.slct_in==1)?true:false" mode="single"></dxo-selection>
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="PON Change"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column  [allowResizing]="true"dataField="sno" headerCellTemplate="SNO" width="80" alignment ="center"
+        [allowFiltering]="false" [allowHeaderFiltering]="false">
+        </dxi-column>
+        <dxi-column  [allowResizing]="true"dataField="agnt_cd" headerCellTemplate="LMO Code" width="150">
+        </dxi-column>
+        <dxi-column  [allowResizing]="true"caption="CAF Details">
+          <dxi-column  [allowResizing]="true"caption="Caf Number" dataField="caf_nu" width="180"  alignment ="center">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Installation Address1" dataField="instl_addr1_tx" width="250">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Installation Address2" dataField="instl_addr2_tx" width="250">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Locality" dataField="instl_lcly_tx" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Area" dataField="instl_ara_tx" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Caf Mac Address" dataField="caf_mac_addr_tx" width="200">
+          </dxi-column>
+        </dxi-column>
+        <dxi-column  [allowResizing]="true"caption="OLT Details">
+          <dxi-column  [allowResizing]="true"caption="OLT Name" dataField="olt_nm" width="180">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="OLT Sr No" dataField="olt_srl_nu" width="250"  alignment ="center">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="OLT Ip Address" dataField="olt_ip_addr_tx" width="250">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="OLT Port No" dataField="olt_prt_nm" width="200"  alignment ="center">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="OLT Port Splits" dataField="olt_prt_splt_tx" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Device" dataField="aghra_cd" width="200">
+          </dxi-column>
+        </dxi-column>
+        <dxi-column  [allowResizing]="true"caption="CUSTOMER Details">
+          <dxi-column  [allowResizing]="true"caption="Customer Id" dataField="cstmr_id" width="180"  alignment ="center">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Customer Name" dataField="frst_nm" width="250">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Billing Address1" dataField="loc_addr1_tx" width="250">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Billing Address2" dataField="loc_addr2_tx" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Locality" dataField="loc_lcly_tx" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Area" dataField="loc_ara_tx" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="District" dataField="dstrt_nm" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Mandal" dataField="mndl_nm" width="200">
+          </dxi-column>
+          <dxi-column  [allowResizing]="true"caption="Village" dataField="vlge_nm" width="200">
+          </dxi-column>
+        </dxi-column>
+        <dxi-column  [allowResizing]="true"caption="">
+          <dxi-column  [allowResizing]="true"caption="Status" dataField="sts_nm" width="200">
+          </dxi-column>
+        </dxi-column>
+         <dxi-column  [allowResizing]="true"[showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              <button class="slctBtn">Pon Change</button>
+            </div>
+          </div>
+        </dxi-column>
+        <!-- <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling> -->
+
+
+        <!-- <dxi-column  [allowResizing]="true"*ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column> -->
+       
+      </dx-data-grid>
+    </div>
+    <!-- <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div> -->
+  <!-- </div> -->
+</div>
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div>
+        <div class="card-header crdHdng">PON Change
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+            cancel</mat-icon>
+        </div>
+     
+        <div class="card-body" fxLayout.lt-md="column" fxLayout.xs="column">
+          <div>
+            <div fxLayout="row" fxLayout.xs="column" style="margin-top: -1%;">
+              <p class="sdbrCss">Customer Details</p>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Select District</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="districtID" (selectionChange)="getMandalLst(districtID,1)" required>
+                    <mat-option *ngFor="let d of dstrctLst" [value]="d.dstrt_id">
+                      {{d.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Select Mandal</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="mandalID" (selectionChange)="getVillageLst(mandalID)" required>
+                    <mat-option *ngFor="let m of mandalLst" [value]="m.mndl_id">
+                      {{m.mndl_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Select Villages</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="villageID" required>
+                    <mat-option *ngFor="let v of villageLst" [value]="v.vlge_id">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Billing Address1</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="addressOne" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Billing Address2</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="addressTwo" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Locality</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="locality" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Area</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="area" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <p class="sdbrCss">CAF Details</p>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Installation Address1</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="cafAdressOne" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Installation Address2</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="cafAdressTwo" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Locality</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="caftLocality" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Area</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                  <input matInput type="text" [(ngModel)]="cafArea" [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8"></div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8"></div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <p class="sdbrCss">OLT Details</p>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">OLT Name</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="oltID" (selectionChange)="getPortsSltsCount(oltID)" required>
+                    <mat-option *ngFor="let o of oltList" [value]="o.olt_id">
+                      {{o.olt_nm}} - {{o.olt_lble_nu}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">OLT Port No</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="portID" (selectionChange)="getslots(portID)" required>
+                    <mat-option *ngFor="let p of portList" [value]="p.olt_prt_id">
+                      {{p.olt_prt_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8"></div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Level-1 Slot</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="slotOneID" (selectionChange)="slotOneSlctn(slotOneID)" required>
+                    <mat-option *ngFor="let s of slotList" [value]="s.olt_slt_id">
+                      {{s.slt1_id}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Level-2 Slot</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="slotTwo" required (selectionChange)="slotTwoSelection(slotTwo)">
+                    <mat-option *ngFor="let b of bindoriginaltwo" [value]="b.spltstwo">
+                      {{b.spltstwo}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="33" class="px-8">
+                <div class="form-label">Level-3 Slot</div>
+                <mat-form-field appearance="outline">
+                  <mat-select [(value)]="slotThree" (selectionChange)="forSplitId(slotThree)" required>
+                    <mat-option *ngFor="let t of bindoriginalthree" [value]="t.spltsthree">
+                      {{t.spltsthree}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="30" fxFlex.xs="100" class="px-8"></div>
+              <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE" (click)="update()">
+                  UPDATE
+                </button>
+              </div>
+              <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBar()">
+                  CANCEL
+                </button>
+              </div>
+              <div fxFlex="30" fxFlex.xs="100" class="px-8"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

@@ -1,0 +1,32 @@
+<div class="page-layout simple pageBackground">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+  <app-top-header [headrIcon] = "'account_box'" [headrName]="'Change Log'"></app-top-header>
+    <div class="timeline">
+  
+      <div class="container2 right" *ngFor="let c of chnglogData">
+        <div class="content">
+          <p class="logDate red-800-fg">{{c.chng_lg_dt}}</p>
+          <div class="cardBrdr">
+            <div class="changelog">
+              <div *ngFor="let d of c.chng_lg_txt">
+                <h1 class= "vrsnNumbr"> <span class = "vrsnltr">V</span>{{d.vrsn_nu}}</h1>
+                <button class ="ctgryNm">{{d.ctgry_nm}}</button>
+               <div *ngFor="let t of d.chng_lg_txt">
+               
+                <ul>
+                  <li>{{t.chng_lg_txt}}</li>
+                </ul>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,315 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <!-- <div fxLayout="row">
+    <div fxFlex="100">
+      <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+      <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        (click)="backBtn()">
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+  </div> -->
+  <div class="header" fxLayout="row">
+    <div fxFlex="90" fxFlex.xs="90" class="px-8">
+      <h1>
+    <mat-icon class="logo-icon">people_outline</mat-icon>&nbsp;New Subscriber Request Ticket
+  </h1>
+  </div>
+  <div fxFlex="10" fxFlex.xs="10" class="px-8">
+    <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+    (click)="backBtn()">
+    <span class="pt-2">Back</span>
+  </button>
+  </div>
+</div>
+  <div class="widget" fxflex="100" fxflex.gt-sm="95"
+    style="max-width: 95%; margin: auto; flex: 1 1 100%; box-sizing: border-box;" class="content-start">
+    <div class="m-8 ds-card p-4 mt-4">
+      <div class="mb-24" style="padding-top: 20px;">
+        <div class="row fltrcrd p-4 m-8">
+          <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+            <div class="form-label">CAF</div>
+            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+              <input matInput type="text" [(ngModel)]="cafnumbr" [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+          <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+            <button mat-raised-button color="primary" (click)="getDetails();" class="gtDtls">GET DETAILS</button>
+          </div>
+        </div>
+        <ds-loading *ngIf="searchLoader"></ds-loading>
+        <div *ngIf="showTble" class="pt-0">
+
+          <div class="ds-card m-12" style="padding: 16px;">
+            <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" style="width:100%" (onCellClick)="onCellClick($event)"
+              (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-search-panel [visible]="false" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+              <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="Customers List"></dxo-export>
+              <dxo-filter-row [visible]="false"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" [alignment]="f.algnmnt" [width]="f.width"
+                [filterOperations]="f.filterOperations" [allowFiltering]="f.filter"></dxi-column>
+            </dx-data-grid>
+          </div>
+        </div>
+        <div class="m-12" *ngIf="shwPrflePge">
+          <ng-container>
+            <div fxLayout="column">
+              <div class="card">
+                <div class="card-body" *ngIf="cstmrData">
+                  <!-- <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle" style="float:right">cancel</mat-icon> -->
+                  <ds-customer-profile [cstmrData]="cstmrData"></ds-customer-profile>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row">
+          <!-- //type// -->
+          <div *ngIf="!tktParamsDta"></div>
+          <!-- <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="tktParamsDta.length>1">
+            <div class="form-label">Select Type</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="TypeID" (selectionChange)="ForCategory()" required>
+                <mat-option *ngFor="let d of tktParamsDta" [value]="d.tckt_type_id">
+                  {{d.tckt_type_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8">
+            <mat-label>
+              <div class="lbl mndlTitle">Type</div>
+              <div class="lbl_cntnt typeName">Subscriber Request</div>
+            </mat-label><br>
+          </div>
+          <!-- //Category// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="CategoryDtls && CategoryDtls.length>1">
+            <div class="form-label">Select Category</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="categryID" (selectionChange)="ForSubCategory()" required>
+                <mat-option *ngFor="let d of CategoryDtls" [value]="d.tckt_ctgry_id">
+                  {{d.tckt_ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="CategoryDtls && CategoryDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">Category</div>
+              <div class="lbl_cntnt typeName">{{CategoryDtls[0].tckt_ctgry_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8"
+            *ngIf="!CategoryDtls || CategoryDtls.length<1 || !CategoryDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">Category</div>
+              <div class="lbl_cntnt typeName">Please Select Type</div>
+            </mat-label><br>
+          </div>
+          <!-- //Sub-Category// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="subCategoryDtls && subCategoryDtls.length>1">
+            <div class="form-label">Select Sub-Category</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="subcategryID" (selectionChange)="ForIssueType()" required>
+                <mat-option *ngFor="let d of subCategoryDtls" [value]="d.tckt_sb_ctgry_id">
+                  {{d.tckt_sb_ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="subCategoryDtls && subCategoryDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">Sub-Category</div>
+              <div class="lbl_cntnt typeName">{{subCategoryDtls[0].tckt_sb_ctgry_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8"
+            *ngIf="!subCategoryDtls || subCategoryDtls.length<1 || !subCategoryDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">Sub-Category</div>
+              <div class="lbl_cntnt typeName">Please Select Category</div>
+            </mat-label><br>
+          </div>
+          <!-- //ISSUE-TYPE// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="issueTypesDtls && issueTypesDtls.length>1">
+            <div class="form-label">Select Issue-Type</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="issueTypeID" (selectionChange)="ForIssueIndefiers()" required>
+                <mat-option *ngFor="let d of issueTypesDtls" [value]="d.ise_type_id">
+                  {{d.ise_type_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="issueTypesDtls && issueTypesDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">Issue-Type</div>
+              <div class="lbl_cntnt typeName">{{issueTypesDtls[0].ise_type_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8"
+            *ngIf="!issueTypesDtls || issueTypesDtls.length<1 || !issueTypesDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">Issue-Type</div>
+              <div class="lbl_cntnt typeName">Please Select Category/Sub-Category</div>
+            </mat-label><br>
+          </div>
+
+        </div>
+        <div fxLayout="row">
+          <!-- //ISSUE-Idenfiers// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="issueIndefierDtls && issueIndefierDtls.length>1">
+            <div class="form-label">Select Issue-Identifiers</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="issueIndefierID" (selectionChange)="ForTeams()" required>
+                <mat-option *ngFor="let d of issueIndefierDtls" [value]="d.ise_idnfr_id">
+                  {{d.ise_idnfr_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="issueIndefierDtls && issueIndefierDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">Issue-Identifiers</div>
+              <div class="lbl_cntnt typeName">{{issueIndefierDtls[0].ise_idnfr_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8"
+            *ngIf="!issueIndefierDtls || issueIndefierDtls.length<1 || !issueIndefierDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">Issue-Identifiers</div>
+              <div class="lbl_cntnt typeName">Please Select Issue-Type</div>
+            </mat-label><br>
+          </div>
+          <!-- //TEAMS// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="teamsDtls && teamsDtls.length>1">
+            <div class="form-label">Select Team</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="teamID" required>
+                <mat-option *ngFor="let d of teamsDtls" [value]="d.tm_id">
+                  {{d.tm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="teamsDtls && teamsDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">Team</div>
+              <div class="lbl_cntnt typeName">{{teamsDtls[0].tm_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="25" fxFlex.xs="25" class="px-8" *ngIf="!teamsDtls || teamsDtls.length<1 || !teamsDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">Team</div>
+              <div class="lbl_cntnt typeName">Please Select Type&Category</div>
+            </mat-label><br>
+          </div>
+          <!-- //AssignUser// -->
+
+          <!-- //STATUS// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8">
+            <mat-label>
+              <div class="lbl mndlTitle">Status</div>
+              <!-- <div class="lbl_cntnt typeName">{{stsDtls[0].tckt_sts_nm}}</div> -->
+              <div class="lbl_cntnt typeName">New</div>
+            </mat-label><br>
+          </div>
+          <!-- //PRIORITY// -->
+          <div fxFlex="25" fxFlex.xs="25" class="px-8">
+            <!-- <div class="form-label">Select Priority</div> -->
+            <!-- <mat-form-field appearance="outline">
+              <mat-select [(value)]="prortyID" required>
+                <mat-option *ngFor="let d of prtyDtls" [value]="d.prty_id">
+                  {{d.prty_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-label>
+              <div class="lbl mndlTitle">Priority</div>
+              <div class="lbl_cntnt typeName">Low</div>
+            </mat-label><br>
+          </div>
+
+        </div>
+        <div fxLayout="row">
+          <div  fxFlex="25" fxFlex.xs="25" class="px-8">
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Short Note<span class="reqSgnColor">*</span></div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <textarea matInput [(ngModel)]="descrptn" required></textarea>
+              <!-- <input type="text" matInput formControlName="comment" required> -->
+              <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Description<span class="reqSgnColor">*</span></div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <textarea matInput [(ngModel)]="lngdescrptn" required></textarea>
+              <!-- <input type="text" matInput formControlName="comment" required> -->
+              <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- ////ATTACHMENTT//////-->
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <label class="form-label">Upload Image/Document
+              <!-- <span class="star" *ngIf="ticketFormGroup.get('app_icon').hasError('required')">*</span>
+      <span class="star_grn" *ngIf="!ticketFormGroup.get('app_icon').hasError('required')">*</span> -->
+            </label>
+            <div class="ds-plcholder">
+              <div *ngIf="imageUrl">
+                <button type="submit" class="close" (click)="removeImg();">
+                  <span>-</span>
+                </button>
+                <img [src]="imageUrl">
+                <div *ngIf="imageUrl">{{imgfilename}}</div>
+                <!-- <img src="assets/images/settopbox/appstore/2020-07-21 (7).png"> -->
+              </div>
+              <div *ngIf="!imageUrl">
+                <label>
+                  <input (change)="uploadedFile($event)" type='file' id="imageUpload" [(ngModel)]="app_icon"
+                    accept=".xlsx, .xls, .csv, .png, .jpg, .jpeg" style="display:none">
+
+                  <mat-icon _ngcontent-qri-c39=""
+                    class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color ds-plchdlr-icon"
+                    role="img" aria-hidden="true">add_a_photo</mat-icon>
+                </label>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- <div class="row SvCncl">
+          <div fxFlex="43" fxFlex.xs="43" class="px-8"></div>
+          <div fxFlex="13" fxFlex.xs="13" class="px-8"> -->
+            <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="text-align: right;">
+            <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE" (click)="saveTckInfrmtn()">
+              Save
+            </button>
+              </div>
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+            <button mat-raised-button type="close" aria-label="Reset" (click)="resetTckInfrmtn()"
+              style="margin-left: 4%;">
+              Reset
+            </button>
+            </div>
+          </div>
+          <!-- <div fxFlex="43" fxFlex.xs="43" class="px-8"></div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

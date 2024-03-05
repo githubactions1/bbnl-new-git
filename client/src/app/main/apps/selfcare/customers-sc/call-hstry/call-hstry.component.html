@@ -1,0 +1,64 @@
+<div class="page-layout simple pageBackground">
+  <div id="scrolledtabs" class="tbs" *ngIf="cafsData.length>1"> 
+    <dx-tabs
+        [dataSource]="longtabs"
+        [width]="300"
+        [scrollByContent]="true"
+        [showNavButtons]="true" [selectedIndex]="0" (onItemClick)="selectTab($event)"
+    ></dx-tabs>
+</div>
+<div class="ds-card  dsbbrdcrds1" style="padding: 1%;">
+  <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap">
+      <div class="col-6">
+      <h1 class="hdr">VOIP Charge Details</h1>
+      </div>
+      <div class="col-4">
+
+      <div class="">Year</div>
+      <mat-form-field class="cssdrp" appearance="outline">
+          <mat-select class="simplified" fxLayoutAlign="space-between center"
+              [(value)]="selectedYear" (selectionChange)="selectyear()">
+              <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      </div>
+    </div>
+    <ds-loading *ngIf="shwLdr"></ds-loading>
+    <div style="overflow-x:auto;height: 400px;
+    overflow-y: scroll;padding-top:3%">
+      <div>
+        <table style="width:100%">
+          <tr>
+            <th>Sno</th>
+            <th>CAF number</th>
+            <th>Call Start Time</th>
+            <th>Call End Time</th>
+            <th>Call Duration In Mins</th>
+            <th>Call Charges In Rs.</th>
+            <th>Caller Phone Number</th>
+            <th>Called Phone Number</th>
+            <th>Operator Name</th>
+            <th>Incoming/OutGoing</th>
+            <th>Call Status</th>
+
+          </tr>
+          <tr *ngFor="let c of voipData">
+            <td style="text-align:center">{{c.sno}}</td>
+            <td style="text-align:center">{{c.caf_nu}}</td>
+            <td style="text-align:center">{{c.strt_ts}}</td>
+            <td>{{c.end_ts}}</td>
+            <td>{{c.mins}}</td>
+            <td>{{c.cals_chrge_at}}</td>
+            <td>{{c.clr_phne_nu}}</td>
+            <td>{{c.cld_phne_nu}}</td>
+            <td>{{c.voip_oprtr_nm}}</td>
+            <td>{{c.call_ststus}}</td>
+            <td>{{c.intr_cal_sts}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

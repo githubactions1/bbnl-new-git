@@ -1,0 +1,15 @@
+<div class="text-center">
+<div [hidden]="flag2" >
+  <div  mat-dialog-content>
+      <mat-icon color="warn" class="del-icon" *ngIf="data.icon">{{data.icon}}</mat-icon>
+      <div class="font-weight-600 font-size-18">{{data.title}}</div>
+      <p class="mb-12 font-weight-600 font-size-14"> {{data.msg}}</p>
+          
+  </div>   
+  <div mat-dialog-actions class="pb-20" fxLayout="row" fxLayoutAlign="center center">
+    <button *ngFor="let b of data.btnLst" class="primary" mat-button cdkFocusInitial
+      (click)="onBtnClick(b.res)">{{b.label}}</button>
+  </div>
+   
+</div>  
+</div>

@@ -1,0 +1,57 @@
+
+  .adhrInpt {
+    border-color: #8e7f7f;
+    margin-top: 37px;
+    background-color: #8e7f7f;
+    font-size:0px;
+  }
+
+  .panInpt {
+    border-color: #8e7f7f;
+    margin-top: 57px;
+    background-color: #8e7f7f;
+    font-size:0px;
+  }
+
+  .gstInpt {
+    border-color: #8e7f7f;
+    margin-top: 57px;
+    background-color: #8e7f7f;
+    font-size:0px;
+  }
+  .entrPrceCstmrFrm
+  {
+    margin:24px;
+  }
+  
+  .pl-8 {
+    padding-left: 0px !important;
+  }
+
+  .pb-8 {
+    padding-bottom: 4px !important;
+  }
+
+  .pt-8 {
+    padding-top: 4px !important;
+  }
+  .mat-form-field {
+    width: 100%;
+    font-size: 10px;
+  }
+  .mb-0 {
+    margin-bottom: 0px !important;
+  }
+
+  .red-800-fg {
+    color: #8e7f7f !important;
+    background: #fffbf4;
+    text-align: center;
+    width: 100%;
+  }
+  @media only screen and (min-width:320px) and (max-width:480px){
+    .entrPrceCstmrFrm
+  {
+    margin:0px;
+  }
+  }

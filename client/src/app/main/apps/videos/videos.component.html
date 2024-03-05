@@ -1,0 +1,79 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div class="mtcrd">
+    <div class="form-label">Search Video</div>
+    <mat-form-field class="w-100-p" appearance="outline">
+            <input matInput placeholder="Search a report..." (input)="searchName($event)">
+    </mat-form-field>
+</div>
+
+
+  <div fxLayout="row wrap" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%"  *ngFor="let v of vdeosList let idx = index; let len = count;">
+
+      <div class="ds-card  dsbbrdcrds  cardOne">
+        <iframe  class = "vdoAlgnmnt" [src]="v.safeURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+     <p class = "vdoTitle"> {{v.vdeo_hdr_txt}}</p>
+      </div>
+
+    </div>
+    <!-- <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <iframe  class = "vdoAlgnmnt" src="https://www.youtube.com/embed/mB0wGR_EjGA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p class = "vdoTitle"> Package Agreement</p>
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <iframe  class = "vdoAlgnmnt " src="https://www.youtube.com/embed/eR0kxx3dLI4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds  cardFive">
+        <iframe  class = "vdoAlgnmnt" src="https://www.youtube.com/embed/lgQDiVSkZ0k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds">
+        <iframe  class = "vdoAlgnmnt" src="https://www.youtube.com/embed/o5pFZ-euBlM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds">
+        <iframe  class = "vdoAlgnmnt"src="https://www.youtube.com/embed/ohtlhSOGIDQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds">
+        <iframe  class = "vdoAlgnmnt" src="https://www.youtube.com/embed/QViTdn2pI7g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds">
+        <iframe class = "vdoAlgnmnt" src="https://www.youtube.com/embed/1iDA5PdK-wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds">
+        <iframe class = "vdoAlgnmnt" src="https://www.youtube.com/embed/1iDA5PdK-wQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+      <div class="ds-card  dsbbrdcrds">
+    <iframe class = "vdoAlgnmnt" src="https://www.youtube.com/embed/xqFA7I0bnEY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div> -->
+
+
+  </div>
+
+
+  </div>

@@ -1,0 +1,693 @@
+<div class="page-layout simple tabbed pageBackground cstmrprtcmpnt">
+
+  <div *ngIf="acessUser==true">
+    <ds-loading *ngIf="loader == true"></ds-loading>
+    <div *ngIf="hdrView == true">
+      <pg-top-header [headerDtls]="getHeaderDtls()" *ngIf="shwpgHdr"></pg-top-header>
+    </div>
+
+
+    <div class="cstmRprt" *ngIf="drpDwndata == true">
+      <div fxLayout="row" class="fltrsRw"
+        *ngIf="columnDefs[0] && columnDefs[0].filters == 0 && rpt_id != '3000020' && rpt_id != '3000022' && rpt_id != '3000064' && (fltrsdata[0].fltr_id >= 1 || rpt_id == '3000043')">
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="fltrbg">
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="(fltrsdata[0] && fltrsdata[0].fltr_id == 8 ) || fltrsdata[2] && fltrsdata[2].fltr_id == 8 || fltrsdata[1] && fltrsdata[1].fltr_id == 8">
+            <div class="form-label">District</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctdDstrctId" placeholder="select"
+                (selectionChange)="getMndlLst(slctdDstrctId);getStdCode(slctdDstrctId)" required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option [disabled]="crddta.dsbl_in" *ngFor="let crddta of dstlst" [value]="crddta.dstrt_id">
+                  {{crddta.dstrt_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[2] && fltrsdata[2].fltr_id == 32">
+            <div class="form-label">STD Code</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="std_code" placeholder="select" (selectionChange)="getstdCdMndlLst(std_code)"
+                required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let stdCd of stdCds" [value]="stdCd">
+                  {{stdCd.std_cd}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="(fltrsdata[1] && fltrsdata[1].fltr_id == 16 && rpt_id != 4 && rpt_id != 5 && rpt_id != 6 && rpt_id != 2000005) || (rpt_id == 3000056) || (rpt_id == 3000075) || (fltrsdata[3] && fltrsdata[3].fltr_id == 16) || (fltrsdata[2] && fltrsdata[2].fltr_id == 16)">
+            <div class="form-label">Mandal</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctdMndlId" placeholder="select" (selectionChange)="getVillagsLst(slctdMndlId)"
+                required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option [disabled]="mndl.dsbl_in" *ngFor="let mndl of mndlst" [value]="mndl.mndl_nu">
+                  {{mndl.mndl_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 10">
+            <div class="form-label">Village</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctVlgId" placeholder="select" required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let v of vlLst" [value]="v.vlge_id">
+                  {{v.vlge_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="packagefilter">
+            <div class="form-label">Package</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctpckId" placeholder="select" required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let p of pckgelst" [value]="p.srvcpk_id">
+                  {{p.srvcpk_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="fltrsdata[2]  && ((fltrsdata[2].fltr_id==17) || (fltrsdata[3] && fltrsdata[3].fltr_id==17))">
+            <div class="form-label">Status</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctdStatusId" placeholder="select" required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let sts of statusList" [value]="sts.enty_sts_id">
+                  {{sts.sts_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[3] && fltrsdata[3].fltr_id == 38">
+            <div class="form-label">Port Card Id</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="crd_id" placeholder="select" required>
+                <mat-option [value]="1">8 Port(card 1)</mat-option>
+                <mat-option [value]="2">32 Port(Card 2)</mat-option>
+                <mat-option [value]="3">32 Port(Card 3)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="((fltrsdata[0] && (fltrsdata[0].fltr_id == 4) || ((fltrsdata[1] && fltrsdata[1].fltr_id == 4) || (fltrsdata[2] && fltrsdata[2].fltr_id == 4)) || ((fltrsdata[1] && fltrsdata[0].fltr_id == 1 && rpt_id != 3000104))) && (rpt_id != 3000043)) || (rpt_id == 3000063)">
+            <div class="form-label">From Date<span class="required-color">*</span></div>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="frmDt" [(ngModel)]="fromDate">
+              <mat-datepicker-toggle matSuffix [for]="frmDt"></mat-datepicker-toggle>
+              <mat-datepicker #frmDt></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="(fltrsdata[1] && (fltrsdata[1].fltr_id == 4) || ((fltrsdata[1] && fltrsdata[1].fltr_id == 4) || (fltrsdata[2] && fltrsdata[2].fltr_id == 4)) || ((fltrsdata[1] && fltrsdata[1].fltr_id == 1 && rpt_id != 3000104))) || (rpt_id == 3000063) || (rpt_id == 3000051)">
+            <div class="form-label">To Date<span class="required-color">*</span></div>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="toDt" [(ngModel)]="toDate">
+              <mat-datepicker-toggle matSuffix [for]="toDt"></mat-datepicker-toggle>
+              <mat-datepicker #toDt></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="fltrsdata[1]  && ((fltrsdata[1].fltr_id == 4) && (fltrsdata[2] && fltrsdata[2].fltr_id == 21))">
+            <div class="form-label">Network Subscriber Code<span class="required-color">*</span></div>
+            <mat-form-field appearance="outline">
+              <input matInput [(ngModel)]="sbscbr_cd" placeholder="Network Subscriber Code">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[2]  && fltrsdata[2].fltr_id == 35">
+            <div class="form-label">Enter Called Minutes<span class="required-color">*</span></div>
+            <mat-form-field appearance="outline">
+              <input matInput [(ngModel)]="cal_mnts" placeholder="Enter Called Minutes">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[0] && fltrsdata[0].fltr_id == 2">
+            <div class="form-label">Select Year</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctdyear" matInput required>
+                <mat-option *ngFor="let yr of year" [value]="yr.yr_id">
+                  {{yr.yr_nm}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Year is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 3">
+            <div class="form-label">Select Month</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctdmnth" matInput required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let mn of months" [value]="mn.mnth_id">
+                  {{mn.mnth_nm}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Month is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 40">
+            <div class="form-label">Select Ticket Status</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="slctdstatus" matInput required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let s of tktstsDtls" [value]="s.tckt_sts_id">
+                  {{s.tckt_sts_nm}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Status is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 44">
+            <div class="form-label">Select Team</div>
+            <!-- <div class="form-label">Select Sub-Category</div> -->
+            <mat-form-field appearance="outline">
+              <mat-select  [(ngModel)]="slctdteam" required>
+                <mat-option *ngFor="let t of tcktTeamDtls" [value]="t.tm_id">
+                  {{t.tm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 43">
+            <div class="form-label">Select Ticket Type</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="TypeID" (selectionChange)="ForCategory()" required>
+                <mat-option *ngFor="let d of tkttypDtls" [value]="d.id">
+                  {{d.mnu_itm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 41">
+            <div class="form-label">Select Category</div>
+            <!-- <div class="form-label">Select Category</div> -->
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="categryID" (selectionChange)="ForSubCategory()" required>
+                <mat-option *ngFor="let d of CategoryDtls" [value]="d.tckt_ctgry_id">
+                  {{d.tckt_ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[1] && fltrsdata[1].fltr_id == 42">
+            <div class="form-label">Select Sub-Category</div>
+            <!-- <div class="form-label">Select Sub-Category</div> -->
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="subcategryID" required>
+                <mat-option *ngFor="let d of subCategoryDtls" [value]="d.tckt_sb_ctgry_id">
+                  {{d.tckt_sb_ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="fltrsdata[2] && fltrsdata[2].fltr_id == 25 || fltrsdata[3] && fltrsdata[3].fltr_id == 25">
+            <div class="form-label">CAF TYPE</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="caf_type" placeholder="select" required>
+                <mat-option [value]="0">ALL</mat-option>
+                <div *ngIf="fltrsdata[2].rpt_nm == 'Invoice Report'">
+                  <mat-option [value]="1">INDIVIDUAL</mat-option>
+                  <mat-option [value]="2">ENTERPRISE</mat-option>
+                 </div>
+                 <div *ngIf="fltrsdata[2].rpt_nm != 'Invoice Report'">
+                  <mat-option *ngFor="let ctype of cf_typ" [value]="ctype.caf_type_id">
+                    {{ctype.caf_type_nm}}
+                  </mat-option>
+                 </div>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="fltrsdata[3] && fltrsdata[3].fltr_id == 36">
+            <div class="form-label">FREQUENCY</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="frqncy" placeholder="select" required>
+                <mat-option [value]="0">ALL</mat-option>
+                <mat-option *ngFor="let frqncy of frqncy_lst" [value]="frqncy.frqncy_id">
+                  {{frqncy.frqncy_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="(fltrsdata[2] && fltrsdata[2].fltr_id == 31) || (fltrsdata[1] && fltrsdata[1].fltr_id == 31)">
+            <div class="form-label">CAF Number</div>
+            <mat-form-field appearance="outline">
+              <input matInput [(ngModel)]="caf_nu" placeholder="CAF Number">
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="(fltrsdata[0] && fltrsdata[0].fltr_id == 1 && fltrsdata.length == 1 && rpt_id != 6) || rpt_id == 3000043 ||  (fltrsdata[0] && fltrsdata[0].fltr_id == 1 && rpt_id > 3000100)">
+            <div class="form-label">Date</div>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="frmDt" [(ngModel)]="fltrDate">
+              <mat-datepicker-toggle matSuffix [for]="frmDt"></mat-datepicker-toggle>
+              <mat-datepicker #frmDt></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8"
+            *ngIf="fltrsdata[0] && (fltrsdata[0].fltr_id == 19 || fltrsdata[2] && fltrsdata[2].fltr_id == 19 || fltrsdata[4] && fltrsdata[4].fltr_id == 19  || fltrsdata[3] && fltrsdata[3].fltr_id == 19) && rpt_id != '114841790497947677' &&  rpt_id != '3000020'">
+            <div class=" form-label">MSO/LMO Code<span class="required-color"> &nbsp;*</span></div>
+            <mat-form-field appearance="outline">
+              <input matInput [(ngModel)]="slctdpartner" placeholder="MSO/LMO Code">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="5" fxFlex.xs="100" class="px-8" *ngIf="rpt_id == '114841790497947677'">
+            <div>OR</div>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8" *ngIf="rpt_id == '114841790497947677'">
+            <div class=" form-label">LMO Code<span class="required-color"> &nbsp;*</span></div>
+            <mat-form-field appearance="outline">
+              <input matInput [(ngModel)]="slctdpartner" placeholder="Enter LMO Code">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.xs="100" class="px-8"
+            *ngIf="(fltrsdata[0].fltr_id == 1 || fltrsdata[0].fltr_id == 35) || (fltrsdata[0].fltr_id == 8) || fltrsdata[0].fltr_id == 4 || fltrsdata[0].fltr_id == 19 || fltrsdata[0].fltr_id == 2 || rpt_id != '3000020'">
+            <button mat-raised-button (click)="empDtls();" class="gtDtls">GET DETAILS</button>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div *ngIf="shwMnthlyInvceRptCrds">
+        <div class="ds-card counts-card-style card-border-left-blue mt-8 p-16">
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{ovrall_tot_caf_ct}}</div>
+              <div class="  crdTxt">Total CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{ovrall_new_caf_ct}}</div>
+              <div class="  crdTxt">Total New CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{ovrall_trmnd_caf_ct}}</div>
+              <div class="  crdTxt">Total Terminated CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{ovrall_spnd_caf_ct}}</div>
+              <div class="  crdTxt">Total Suspended CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{ovrall_spnd_rsmd_caf_ct}}</div>
+              <div class="  crdTxt">Total Partially Suspended CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center">
+              <div class="font-size-20 font-weight-500">{{ovrall_blbe_caf_ct}}</div>
+              <div class="  crdTxt">Total Billed CAFs</div>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+          <div fxFlex fxFlex.gt-xl="26.6%" fxFlex.gt-lg="50%" fxFlex.gt-md="50.6%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="ds-card counts-card-style card-border-left-green mt-8 p-4">
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+                <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                  class="text-center">
+                  <div class="font-size-20 font-weight-500">{{ovrall_add_on_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">Total IPTV Addon Charges</div>
+                </div>
+              </div>
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" class="border-top">
+                <div fxFlex fxFlex.gt-xl="35.6%" fxFlex.gt-lg="35.6%" fxFlex.gt-md="36.6%" fxFlex.gt-sm="100%"
+                  fxFlex.gt-xs="100%" class="text-center border-right p-4">
+                  <div class="font-size-20 font-weight-500">{{ovrall_add_on_apsfl_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">APSFL Share</div>
+                </div>
+                <div fxFlex fxFlex.gt-xl="35.6%" fxFlex.gt-lg="35.6%" fxFlex.gt-md="36.6%" fxFlex.gt-sm="100%"
+                  fxFlex.gt-xs="100%" class="text-center border-right p-4">
+                  <div class="font-size-20 font-weight-500">{{ovrall_add_on_mso_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">MSO Share</div>
+                </div>
+                <div fxFlex fxFlex.gt-xl="35.6%" fxFlex.gt-lg="35.6%" fxFlex.gt-md="36.6%" fxFlex.gt-sm="100%"
+                  fxFlex.gt-xs="100%" class="text-center p-4">
+                  <div class="font-size-20 font-weight-500">{{ovrall_add_on_lmo_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">LMO Share</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-xl="26.6%" fxFlex.gt-lg="50.6%" fxFlex.gt-md="50.6%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="ds-card counts-card-style card-border-left-yellow m-8 p-4">
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+                <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                  class="text-center">
+                  <div class="font-size-20 font-weight-500">{{ovrall_voip_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">Total VOIP Charges</div>
+                </div>
+              </div>
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" class="border-top">
+                <div fxFlex fxFlex.gt-xl="35.6%" fxFlex.gt-lg="35.6%" fxFlex.gt-md="36.6%" fxFlex.gt-sm="100%"
+                  fxFlex.gt-xs="100%" class="text-center border-right p-4">
+                  <div class="font-size-20 font-weight-500">{{ovrall_voip_apsfl_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">APSFL Share</div>
+                </div>
+                <div fxFlex fxFlex.gt-xl="35.6%" fxFlex.gt-lg="35.6%" fxFlex.gt-md="36.6%" fxFlex.gt-sm="100%"
+                  fxFlex.gt-xs="100%" class="text-center border-right p-4">
+                  <div class="font-size-20 font-weight-500">{{ovrall_voip_mso_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">MSO Share</div>
+                </div>
+                <div fxFlex fxFlex.gt-xl="35.6%" fxFlex.gt-lg="35.6%" fxFlex.gt-md="36.6%" fxFlex.gt-sm="100%"
+                  fxFlex.gt-xs="100%" class="text-center p-4">
+                  <div class="font-size-20 font-weight-500">{{ovrall_voip_lmo_amt | currency:'INR'}}</div>
+                  <div class="  crdTxt">LMO Share</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="shwMnthlyrvnueRptCrds">
+        <div class="ds-card counts-card-style card-border-left-blue m-24 p-16">
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_caf_ct}}</div>
+              <div class="  crdTxt">Total CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_nw_caf_ct}}</div>
+              <div class="  crdTxt">Total New CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_trmnd_caf_ct}}</div>
+              <div class="  crdTxt">Total Terminated CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_spnd_caf_ct}}</div>
+              <div class="  crdTxt">Total Suspended CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_rsmed_caf_ct}}</div>
+              <div class="  crdTxt">Total Resumed CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center">
+              <div class="font-size-20 font-weight-500">{{tot_prtd_caf_ct}}</div>
+              <div class="  crdTxt">Total Prorated CAFs</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card counts-card-style card-border-left-blue m-24 p-16">
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_pd_caf_ct}}</div>
+              <div class="  crdTxt">Paid CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_nt_pd_caf_ct}}</div>
+              <div class="  crdTxt">Not Paid CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_box_chnge_ct}}</div>
+              <div class="  crdTxt">Box Change CAFs</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{tot_pon_chnge_ct}}</div>
+              <div class="  crdTxt">PON Change CAFs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="shwponwthZeroCrd">
+        <div class="ds-card counts-card-style card-border-left-blue mt-8 p-16">
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{lmo_cnt}}</div>
+              <div class="  crdTxt">LMO Count</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{pop_cnt}}</div>
+              <div class="  crdTxt">POP Count</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="16.6%" fxFlex.gt-md="16.6%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center border-right">
+              <div class="font-size-20 font-weight-500">{{prt_cnt}}</div>
+              <div class="  crdTxt">Port Count</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" *ngIf="jsondata == true">
+        <div fxFlex fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"
+          *ngIf="fltrsdata[0].pdf_in == 1">
+          <app-pdf-download class="excelIcn mrgnlft" (pdfEvent)="downloadPdf($event)" [pdfPagesize]="pdfPagesize"
+            [PdfpageOrientation]="PdfpageOrientation" [ReportHeader]="ReportHeader" [pdftableData]="rowexceldata"
+            [tableHeadersWthDataValues]="tableHeadersWthDataValues" [fileName]="fileName" [isPdfDwnLd]="isPdfDwnLd">
+          </app-pdf-download>
+        </div>
+      </div>
+
+      <div class="breadcrumb flat">
+        <a class="active" *ngFor="let item of clickArray; let i = index" [class.active]="i===clickArray.length-1"
+          (click)="backtoLevel(item)">{{ item.label }}</a>
+      </div>
+
+      <div class="font-size-16 font-weight-600 ml-24">{{shwRptHdng}}</div>
+      <div fxLayout="row" class="gridTop" *ngIf="jsondata == true && rpt_id != 4 && rpt_id != 5">
+        <div class="ds-card grid">
+          <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+            [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true"
+            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+            (onCellClick)="devCellclk(columnDefs,$event)" style="width:100%"
+            (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+            <dxo-paging [pageSize]="fltrsdata[0].pagination"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+            </dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="false"></dxo-search-panel>
+            <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+            <dxo-column-chooser [enabled]="true" mode="select">
+            </dxo-column-chooser>
+			<dxo-selection mode="multiple"></dxo-selection>
+            <dx-load-panel [closeOnOutsideClick]="true" [(visible)]="isLoadPanelVisible" [indicatorSrc]="indicatorUrl">
+            </dx-load-panel>
+            <dx-button text="Show the Load Panel" (onClick)="isLoadPanelVisible = true">
+            </dx-button>
+            <dxo-export [enabled]="fltrsdata[0].excel_in ==  1 ? true : false" [allowExportSelectedData]="true"
+              [fileName]="fltrsdata[0].excel_nm"></dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column *ngFor="let f of columnDefs" [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"
+              [allowHiding]="true" [visible]="f.visible == 'true'" [dataField]="f.field" [caption]="f.headerName"
+              format="fixedPoint" [width]="f.width"
+              [format]="f.smryValueFormat == 'true' ? {type:'currency',currency:'INR', precision:'2'} : ''"
+              [groupIndex]="f.groupIndex" [alignment]="f.algnmnt" [dataType]="f.datatype" [allowResizing]="true">
+            </dxi-column>
+            <dxi-column type="buttons" *ngFor="let f of columnDefs" [visible]="f.field == 'invce_pdf_url_tx'"[showInColumnChooser]="false"
+              [width]="100" caption="Invoice(pdf)" cellTemplate="rowData"></dxi-column>
+
+            <dxi-column type="buttons" *ngFor="let f of columnDefs" [visible]="f.field == 'profile'" [showInColumnChooser]="false" [width]="100"
+              caption="Profile" cellTemplate="rowData"></dxi-column>
+
+
+            <div *dxTemplate="let data of 'rowData'">
+              <div class="tblEdtBtn cursor-pointer" *ngIf="data.row.data.invce_pdf_url_tx">
+                <a target="blank" [href]="sanitize('bbnlbss.apsfl.co.in/billing/file/download',data.row.data.invce_pdf_url_tx)"
+                  download>download</a>
+              </div>
+              <div class="tblEdtBtn cursor-pointer" *ngIf="data.row.data.profile">
+                <div class="cursor-pointer tblPrfleBtn" (click)="gotoLMO(data)">
+                  Profile
+                </div>
+              </div>
+            </div>
+            <dxo-summary>
+              <div *ngFor="let f of columnDefs">
+                <dxi-group-item *ngIf="f.groupsummaryType" [column]="f.field" [summaryType]="f.groupsummaryType"
+                  [displayFormat]="f.groupdisplayFormat" [showInGroupFooter]="f.showInGroupFooter"
+                  [valueFormat]="f.smryValueFormat == 'true' ? {type:'currency',currency:'INR', precision:'2'} : ''"
+                  [alignment]="f.algnmnt" [dataType]="f.datatype">
+                </dxi-group-item>
+                <dxi-total-item *ngIf="f.summaryType" [column]="f.field" [summaryType]="f.summaryType"
+                  [displayFormat]="f.displayFormat" [showInGroupFooter]="f.showInGroupFooter"
+                  [valueFormat]="f.smryValueFormat == 'true' ? {type:'currency',currency:'INR', precision:'2'} : ''"
+                  [alignment]="f.algnmnt" [dataType]="f.datatype">
+                </dxi-total-item>
+              </div>
+            </dxo-summary>
+            <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+          </dx-data-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="acessUser==false">
+    <div class="c-form">
+      <div style="padding: 170px !important;">
+        <div class="  crdTxt text-center"></div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" class="gridTop" *ngIf="rpt_id == 4 || rpt_id == 5">
+    <div class="ds-card grid">
+      <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true"
+        [allowColumnResizing]="true" [columnAutoWidth]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+        [showRowLines]="true" [showBorders]="true" (onCellClick)="devCellclk(columnDefs,$event)" style="width:100%"
+        [allowSorting]=true (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+        <dxo-paging [pageSize]="fltrsdata.length > 0 && fltrsdata[0].pagination"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+        </dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="false"></dxo-search-panel>
+        <dxo-export [enabled]="fltrsdata.excel_in == 1 ? true : false" [allowExportSelectedData]="true"
+          [fileName]="fltrsdata.excel_nm"></dxo-export>
+        <dxi-column caption="S.No" dataField="s_no" sortOrder="asc" [allowResizing]="true">
+        </dxi-column>
+        <dxi-column caption="District" dataField="dstrt_nm" [allowResizing]="true">
+        </dxi-column>
+        <dxi-column caption="Mandal" dataField="mndl_nm" *ngIf="rpt_id == 5" [allowResizing]="true">
+        </dxi-column>
+        <!-- No.Of CAF Up To 08-Apr-2020 -->
+        <dxi-column caption="{{prev_date}}" [allowResizing]="true">
+          <dxi-column caption="House Hold CAF's" dataField="House_Hold_CAF" format="fixedPoint" alignment="center"
+            [allowResizing]="true" sortOrder="desc">
+          </dxi-column>
+          <dxi-column caption="No. Of Enterprise CAF's" [allowResizing]="true">
+            <dxi-column caption="Private" [width]="70" dataField="govt" [allowResizing]="true">
+              <dxo-format type="percent" [precision]="1">
+              </dxo-format>
+              <dxi-column caption="Active" dataField="gvt_avtve" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+              <dxi-column caption="DeActive" dataField="deactv" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+
+            </dxi-column>
+            <dxi-column caption="Govt" [width]="70" dataField="Private" [allowResizing]="true">
+              <dxo-format type="percent" [precision]="1">
+              </dxo-format>
+              <dxi-column caption="Active" dataField="prvt_act" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+              <dxi-column caption="DeActive" dataField="prvt_deact" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+
+            </dxi-column>
+
+          </dxi-column>
+        </dxi-column>
+        <dxi-column caption="{{caption}}" [allowResizing]="true">
+          <dxi-column caption="House Hold CAF's" dataField="cur_House_Hold_CAF" format="fixedPoint" alignment="center"
+            [allowResizing]="true" sortOrder="desc">
+          </dxi-column>
+          <dxi-column caption="No. Of Enterprise CAF's" [allowResizing]="true">
+            <dxi-column caption="Private" [width]="70" dataField="cur_govt" [allowResizing]="true">
+              <dxo-format type="percent" [precision]="1">
+              </dxo-format>
+              <dxi-column caption="Active" dataField="cur_govt_act" alignment="center" [allowResizing]="true">
+              </dxi-column>
+              <dxi-column caption="DeActive" dataField="cur_govt_deact" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+            </dxi-column>
+            <dxi-column caption="Govt" [width]="70" dataField="cur_Private" [allowResizing]="true">
+              <dxo-format type="percent" [precision]="1">
+              </dxo-format>
+              <dxi-column caption="Active" dataField="cur_Prvt_act" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+              <dxi-column caption="DeActive" dataField="cur_prvt_deact" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+
+            </dxi-column>
+
+          </dxi-column>
+        </dxi-column>
+        <dxi-column caption="Total" [allowResizing]="true">
+          <dxi-column caption="House Hold CAF's" dataField="total_hse_hld" format="fixedPoint" alignment="center"
+            [allowResizing]="true" sortOrder="desc" alignment="center" [allowResizing]="true">
+          </dxi-column>
+          <dxi-column caption="No. Of Enterprise CAF's" [allowResizing]="true">
+            <dxi-column caption="Private" [width]="70" dataField="total_enter_prse" [allowResizing]="true">
+              <dxo-format type="percent" [precision]="1">
+              </dxo-format>
+              <dxi-column caption="Active" dataField="tot_govt_actv" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+              <dxi-column caption="DeActive" dataField="tot_govt_deactv" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+
+            </dxi-column>
+            <dxi-column caption="Govt" [width]="70" dataField="GDP_Industry" [allowResizing]="true">
+              <dxo-format type="percent" [precision]="1">
+              </dxo-format>
+              <dxi-column caption="Active" dataField="tot_prvt_actvn" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+              <dxi-column caption="DeActive" dataField="tot_prvt_dect" alignment="center" [allowResizing]="true">
+              </dxi-column>
+
+
+            </dxi-column>
+
+          </dxi-column>
+        </dxi-column>
+        <dxi-column dataField="cumulative" alignment="center" [allowResizing]="true">
+        </dxi-column>
+
+        <dxo-summary>
+          <div *ngFor="let f of columnDefs">
+            <dxi-total-item *ngIf="f.summaryType" [column]="f.field" [summaryType]="f.summaryType"
+              [displayFormat]="f.displayFormat" [showInGroupFooter]="f.showInGroupFooter"
+              [valueFormat]="f.smryValueFormat == 'true' ? {type:'currency',currency:'INR', precision:'2'} : ''"
+              [alignment]="f.algnmnt">
+            </dxi-total-item>
+          </div>
+        </dxo-summary>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Log Data </h1>
+<div mat-dialog-content>
+    <p>{{data.logdata}}</p>
+    <!-- <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field> -->
+</div>
+<div mat-dialog-actions>
+    <div fxFlex="40" fxFlex.xs="100" class="px-8"></div>
+    <div fxFlex="60" fxFlex.xs="100" class="px-8">
+        <button mat-raised-button mat-button (click)="onNoClick()">Close</button>
+    </div>
+    <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</div>

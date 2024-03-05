@@ -1,0 +1,114 @@
+<div class="page-layout simple pageBackground pkgesrvceLstCmpnt">
+  <div *ngIf="loader == true">
+    <div class="loading-indicator">
+      <div class="spinner-2">
+        <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+      </div>
+    </div>
+  </div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="p-16">
+    <ng-container>
+      <div>
+        <div class="ds-card">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row">
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">Box Change</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline" fxFlex>
+                      <mat-select placeholder="Select Box Change Type" [(ngModel)]="chngtyp" (ngModelChange)="boxchngtype()" matInput>
+                        <mat-option *ngFor="let t of boxchngtyp" [value]="t.id">
+                          {{t.type}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </span>
+                </div> 
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" *ngIf="chngtyp==1">
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8" *ngIf="chngtyp==1">
+                  <div class="form-label">Enter CAF Number</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=caf_nm (blur)="onCAFBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Enter IPTV Mac Address</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=iptv_mac_adr (blur)="onIPTVBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"
+                    (click)="Updtboxdtls()">
+                    Update
+                  </button>
+                </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" *ngIf="chngtyp==2">
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8" *ngIf="chngtyp==2">
+                  <div class="form-label">Enter CAF Number</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=caf_nm (blur)="onCAFBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Enter ONU Serial Number</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=onu_srl_nu (blur)="onONUBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"
+                    (click)="Updtboxdtls()">
+                    Update
+                  </button>
+                </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" *ngIf="chngtyp==3">
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Enter CAF Number</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=caf_nm (blur)="onCAFBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Enter IPTV Mac Address</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=iptv_mac_adr (blur)="onIPTVBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Enter ONU Serial Number</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]=onu_srl_nu (blur)="onONUBlur()">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"(click)="Updtboxdtls()">
+                    Update
+                  </button>
+                </div>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+  </div>
+</div>

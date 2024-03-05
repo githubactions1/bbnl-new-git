@@ -1,0 +1,72 @@
+<div class="page-layout blank usrEmplye pageBackground usrAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <ds-loading *ngIf="loading"></ds-loading>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div class="ds-card m-12" *ngIf="permissions">
+    <div class="p-4" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+      fxLayoutAlign.gt-xs="space-between start">
+      <dx-data-grid id="gridContainer" [dataSource]="rowData" [masterDetail]="{ enabled: true, template: 'detail' }"
+        (onRowExpanding)="onRowExpanding($event)" [remoteOperations]="false" [allowColumnReordering]="true"
+        [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+        [showBorders]="true" style="max-width:100%">
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+          fileName="MSO Details"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [width]="f.width" [allowResizing]="true" dataType="f.dataType" [alignment]="f.alignment"></dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="tblEdtBtn cursor-pointer" (click)="onCellClick('edit',data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="100" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="cursor-pointer tblDelBtn" (click)="deleteMso(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column>
+        <div *dxTemplate="let employee of 'detail'">
+          <!-- <div class="master-detail-caption">LMO Details</div> -->
+          <dx-data-grid [dataSource]="msoLmoDtls" [remoteOperations]="false" [allowColumnReordering]="true"
+            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+            [allowColumnResizing]="true">
+            <dxi-column caption="Sno" dataField="s_no" [allowResizing]="true" alignment='center'></dxi-column>
+            <dxi-column caption="LMO Name" dataField="lmo_nm" alignment='left' [allowResizing]="true"></dxi-column>
+            <dxi-column caption="LMO Code" dataField="lmo_cd" alignment='left' [allowResizing]="true"></dxi-column>
+            <dxi-column caption="Enrollement No" dataField="lmo_enrlt_nu" alignment='center' [allowResizing]="true">
+            </dxi-column>
+            <dxi-column caption="Office Contact Name" dataField="lmo_cntct_nm" alignment='left' [allowResizing]="true">
+            </dxi-column>
+            <dxi-column caption="Office Mobile Number" dataField="lmo_mbl_nu" alignment='center' [allowResizing]="true">
+            </dxi-column>
+            <dxi-column caption="Office State Name" dataField="lmo_ofc_ste_nm" alignment='left' [allowResizing]="true">
+            </dxi-column>
+            <dxi-column caption="Office District Name" dataField="lmo_ofc_dstrct_nm" alignment='left'
+              [allowResizing]="true"></dxi-column>
+            <dxi-column caption="Office Mandal Name" dataField="lmo_ofc_mndl_nm" alignment='left'
+              [allowResizing]="true"></dxi-column>
+            <dxi-column caption="Office Village Name" dataField="lmo_ofc_vlg_nm" alignment='left'
+              [allowResizing]="true"></dxi-column>
+            <dxi-column caption="Onboard Date" dataField="lmo_onbrd_dt" alignment='left' [allowResizing]="true">
+            </dxi-column>
+          </dx-data-grid>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+            fileName="LMO Details"></dxo-export>
+        </div>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>

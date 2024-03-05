@@ -1,0 +1,66 @@
+@import "src/@glits/scss/ds";
+.container
+{
+    width:100%;
+}
+
+.mtcrd{
+    // margin-top: 4%;
+    // margin-left: 4%;
+    // margin-right: 4%;
+
+    margin-top: 2%;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-bottom: 0%;
+    padding:0px
+
+}
+.cnt{
+    width: 100%;
+}
+// .btmlne{
+//     border-bottom: 1px solid #00000017;
+// }
+.ptxt{
+    // font-weight: bold;
+    font-size: 18px;
+    /* padding-top: 5px; */
+    font-weight: 600;
+    color: #40548f;
+    // padding: 0px;
+    background: #ffffff;
+    margin: 0px;
+    padding: 10px;
+    box-shadow: 0 2px 0px 0 rgba(115, 143, 147, 0.12);
+    text-shadow: 1px 1px 0px #ccc;
+}
+.hmtxt{
+    
+
+    color: black;
+    margin: 7px 8px;
+    // margin: 0px 8px;
+    font-size: 16px;
+    font-weight: 600;
+    vertical-align:middle;
+}
+
+.totList
+{
+    padding-top:20px;
+    margin: 24px;
+}
+
+mat-card {
+    
+    box-shadow: 0 1px 2px 0 rgba(115,143,147,.4)!important;
+}
+
+.setupItms:hover{
+    color: #b61b1b;
+    cursor: pointer;
+}
+.mat-card-content>:last-child:not(.mat-card-footer), .mat-card>:last-child:not(.mat-card-footer) {
+    margin-bottom: 40px;
+}

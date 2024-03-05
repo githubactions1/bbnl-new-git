@@ -1,0 +1,921 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <ds-loading *ngIf="loader"></ds-loading>
+  <div fxLayout="column" fxLayout.xs="column" fxFlexFill>
+    <ds-loading *ngIf="loader"></ds-loading>
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+    <div class="ds-card m-12" *ngIf="permissions">
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="illpckgeDtls" [remoteOperations]="false"
+            [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+            [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" (onCellPrepared)="onCellPrepared(columnDefs,$event)"
+            (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false" (onCellClick)="onCellClick($event)" style="width: 100%;">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="true" mode="select">
+            </dxo-column-chooser>
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                fileName="Enterprise Customers"></dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                [alignment]="f.algnmnt" [width]="f.width" [allowFiltering]="f.filter"
+                [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true" [format]="(f.format == true) ? {type:f.type,currency:f.currency, precision:f.precision}: false" [allowHeaderFiltering]="f.filter"></dxi-column>
+                <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="Agreement"
+                cellTemplate="DownTemplate">
+                <div *dxTemplate="let data of 'DownTemplate'">
+                    <div class="cursor-pointer tblVwBtn" *ngIf="data.key.ill_enty_sts_id==1" (click)="downloadAgremnt(data)">
+                       Download
+                    </div>
+                    <div class="cursor-pointer tblVwBtn" *ngIf="data.key.ill_enty_sts_id==2 || data.key.ill_enty_sts_id==3 || data.key.ill_enty_sts_id==5">
+                      <a href="{{data.key.ill_pckge_agrmnt_url}}" target="self">Download</a>
+                   </div>
+                </div>
+            </dxi-column>
+                <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="Actions"
+                cellTemplate="ViewTemplate">
+                <div *dxTemplate="let data of 'ViewTemplate'">
+                    <div class="cursor-pointer tblVwBtn" *ngIf="data.key.ill_enty_sts_id==1">
+                      <input type="file" id="upload" accept="image/*,application/pdf"
+                      (click)="uploadClick($event)" value=""
+                      (change)="processFile(data,$event)" hidden/>
+                      <label for="upload">Upload agreement</label>          
+                       <!-- Upload -->
+                    </div>
+                    <div class="cursor-pointer tblVwBtn" *ngIf="data.key.ill_enty_sts_id==5"  (click)="addcaf(data)">
+                      Add CAF
+                  </div>
+                </div>
+            </dxi-column>
+    
+        </dx-data-grid>
+
+    </div>
+
+  </div>
+</div>
+
+
+          <!-- PDF Agreement Html -->
+
+          <div id="full">
+                <div id="contentToConvert" style="display: none;" class="subpage">
+                  <div class="row">
+                    <div class="col-4">
+                      <img src="assets/images/APSFL.png" style="width: 80%">
+                    </div>
+                    <div class="col-5">
+                      <h2 style="text-align: center;
+                      font-size: 18px;
+                      margin-top: 6%;
+                      text-transform: uppercase;
+                      margin-bottom: 0px;
+                      font-weight: 700;
+                      color: #383737;font-family: Times New Roman">Customer Application Form</h2>
+                      <p style="font-size: 10px;
+                      text-align: center;
+                      font-weight: 600;
+                      margin: 0px;
+                      color: #212121;
+                      margin-top: 5px;font-family: 'Times New Roman', Times, serif;">3rd Floor, NTR Administrative Block, Pandit Nehru Bus Station, NH – 65, Vijayawada – 520001</p>
+                    </div>
+                    <div class="col-3">
+                    </div>
+                  </div>
+                  <div style="border: 1px solid black;
+                  margin: 25px 10px 1px 10px;"></div>
+                  <div style="font-weight: 800;font-size:16px;margin-top: 1%;margin-left: 3%;font-family: 'Times New Roman', Times, serif;">*CUSTOMER INFORMATION</div>
+                  <div class="row" style="margin-top: 1%;margin-left: 3%;margin-right: 3%;
+                  border: 1px solid black;">
+                    <div class="col-3" style="font-size: 1.2em;
+                    font-weight: 700;
+                    padding: 0.5%;"><p style="margin-top: 2%;font-size: 15px;font-family: 'Times New Roman', Times, serif;">*&nbsp;Name Of Organization</p><p style="font-weight: 400;
+                  margin-top: -2%;
+                  font-size: 12px;
+                  margin-left: 2%;font-family: 'Times New Roman', Times, serif;">(pls. leave space after each word)</p></div>
+                    <div class="col-9" style="padding: 0.5%;">
+                      <table>
+                        <tr>
+                          <th *ngFor="let i of ItmLst" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                          width: 75px !important;
+                     text-align: center;
+                          font-size: 1.2em;
+                          height:22px;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        </tr>
+                      </table>
+                      <table style="margin-top: 1%;">
+                        <tr>
+                          <th *ngFor="let i of ItmLst1" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                          width: 75px !important;
+                          height:22px;
+                          text-align: center;
+                          font-size: 1.2em;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        </tr>
+                      </table>
+                    </div>
+                    
+              
+                  </div>
+                  <div class="row" style="margin-top: 1%;margin-left: 2%;margin-right: 3%;">
+                    <div class="col-4" style="font-size: 15px;
+                    font-weight: 700;
+                    "><p style="margin-top: 2%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Customer Phone Number</p></div>
+                    <div class="col-2">
+                      <div class="row" style="align-items: center;">
+                        <table>
+                          <tr>
+                            <th *ngFor="let i of StdCd" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                            width: 25px;
+                       text-align: center;
+                            font-size: 1.2em;
+                            height:22px;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="row" style="align-items:center;font-size: 14px;
+                      font-weight: 400;font-family: 'Times New Roman', Times, serif;"><p>(STD Code)</p></div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                      <div class="row">
+                        <table>
+                          <tr>
+                            <th *ngFor="let i of PhnNum" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                            width: 25px;
+                       text-align: center;
+                            font-size: 1.2em;
+                            height:22px;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="row" style="text-align:center;font-size: 14px;
+                      font-weight: 400;font-family: 'Times New Roman', Times, serif;">(Phone Number)</div>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 1%;margin-left: 2%;margin-right: 3%;">
+                    <div class="col-3" style="font-size: 15px;
+                    font-weight: 700;
+                    "><p style="margin-top: 2%;font-family: 'Times New Roman', Times, serif;">*&nbsp;PAN/GIR Number</p></div>
+                    <div class="col-4">
+                      <div class="row" style="align-items: center;">
+                        <table>
+                          <tr>
+                            <th *ngFor="let i of PanrGir" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                            width: 25px;
+                       text-align: center;
+                            font-size: 1.2em;
+                            height:22px;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: 1%;margin-left: 2%;margin-right: 3%;">
+                    <div class="col-4" style="font-size: 15px;
+                    font-weight: 700;
+                    "><p style="margin-top: 4%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Proof of Identity Attached</p></div>
+                    <div class="col-8" style="text-transform: uppercase;border-bottom: 1px solid black;
+                    margin-top: 1%;
+                    width: 100%;font-family: 'Times New Roman', Times, serif;">{{ProofOfId}}
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 1%;margin-left: 2%;margin-right: 3%;
+                    font-size: 15px;
+                    font-weight: 700;">
+                    <div class="col-12"><p style="font-family: 'Times New Roman', Times, serif;">
+                      *&nbsp;Service Ordering Address</p>
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: 0.5%;margin-left: 2%;margin-right: 3%;" >
+                  <div class="col-12">
+                    <table>
+                      <tr>
+                        <th *ngFor="let i of SrvdOrdAddLn1" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                        width: 30px;
+                   text-align: center;
+                        font-size: 1.2em;
+                        height:22px;
+                        font-weight: 700;
+                        font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                      </tr>
+                    </table>
+                    <table style="margin-top: 0.5%">
+                      <tr>
+                        <th *ngFor="let i of SrvdOrdAddLn2" style="margin:5%;border: 1px solid black;
+                        width: 30px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 1.2em;
+                        font-weight: 700;
+                        font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                      </tr>
+                    </table>
+                  </div>
+              
+                  </div>
+                  <div class="row" style="margin-top: 0.5%;margin-left: 2%;margin-right: 3%;" >
+                    <div class="col-1">
+                     <p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">City</p> 
+                    </div>
+                    <div class="col-6">
+                      <table style="margin-top: 0.5%">
+                        <tr>
+                          <th *ngFor="let i of SoCtyNm" style="margin:5%;border: 1px solid black;
+                          width: 25px;
+                          height:22px;
+                          text-align: center;
+                          font-size: 1.2em;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        </tr>
+                      </table>
+              
+                    </div>
+                    <div class="col-2"><p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">Pin Code</p></div>
+                    <div clas="col-2">
+                      <table style="margin-top: 0.5%">
+                        <tr>
+                          <th *ngFor="let i of SoPnCd" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                          width: 25px;
+                          height:22px;
+                          text-align: center;
+                          font-size: 1.2em;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 0.5%;margin-left: 2%;margin-right: 3%;" >
+                    <div class="col-1">
+                      <p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">State</p>
+                    </div>
+                    <div class="col-6">
+                      <table style="margin-top: 0.5%">
+                        <tr>
+                          <th *ngFor="let i of SoStNm" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                          width: 25px;
+                          height:22px;
+                          text-align: center;
+                          font-size: 1.2em;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        </tr>
+                      </table>
+              
+                    </div>
+                    <div class="col-2"><p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">Country</p></div>
+                    <div clas="col-3">
+                      <table style="margin-top: 0.5%">
+                        <tr>
+                          <th *ngFor="let i of SoCntryNm" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;margin: none;
+                          width: 25px;
+                          height:22px;
+                          text-align: center;
+                          font-size: 1.2em;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-left: 2%;margin-top: 5%;margin-right: 2%;">
+                    <div class="col-3" style="font-size: 15px;
+                    font-weight: 700;
+                    "><p style="margin-top: 2%;font-family: 'Times New Roman', Times, serif;">*&nbsp;GST Number</p></div>
+                    <div class="col-9">
+                      <div class="row" style="align-items: center;">
+                        <table>
+                          <tr>
+                            <th *ngFor="let i of GstNum" style="margin:5%;border: 1px solid black;margin: none;padding: none;border-spacing: 0;
+                            width: 25px;
+                       text-align: center;
+                            font-size: 1.2em;
+                            height:22px;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="row" style="margin-left: 2%;margin-right: 3%;margin-top: 1%;font-size: 15px;
+                  font-weight: 700;">
+                    <div class="col-3" style="font-size: 15px;
+                    font-weight: 700;
+                    "><p style="margin-top: 2%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Billing Address</p></div>
+                    <div class="col-9">
+                    <img src="assets/images/checked.png" *ngIf="sameblng == 1">&nbsp;<span *ngIf="sameblng == 1" style="font-weight:700;font-size:13px;font-family: 'Times New Roman', Times, serif;">A. Same as Diapatch Address above</span>&nbsp;&nbsp;
+                    <img src="assets/images/unchecked.png" *ngIf="sameblng != 1"/>&nbsp;<span *ngIf="sameblng != 1" style="font-weight:700;font-size:13px;font-family: 'Times New Roman', Times, serif;">A. Same as Diapatch Address above</span>&nbsp;&nbsp;
+                    <img src="assets/images/checked.png" *ngIf="sameblng == 2">&nbsp;<span *ngIf="sameblng == 2" style="font-weight:700;font-size:13px;font-family: 'Times New Roman', Times, serif;">B. Central Billing address</span>&nbsp;&nbsp;
+                    <img src="assets/images/unchecked.png" *ngIf="sameblng != 2"/>&nbsp;<span *ngIf="sameblng != 2" style="font-weight:700;font-size:13px;font-family: 'Times New Roman', Times, serif;">B. Central Billing address</span>&nbsp;&nbsp;
+                    <!-- <img src="assets/images/checked.png" *ngIf="sameblng == 3">&nbsp;<span *ngIf="sameblng == 3">B. As per Below</span>&nbsp;&nbsp;
+                    <img src="assets/images/unchecked.png" *ngIf="sameblng != 3"/>&nbsp;<span *ngIf="sameblng != 3">B. As per Below</span>&nbsp;&nbsp; -->
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;font-family: 'Times New Roman', Times, serif;" >
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-1"> C/O</div>
+                        <div class="col-11">
+                      <table style="float:right;">
+                        <tr>
+                          <th *ngFor="let i of BilAddLn1" style="margin:5%;border: 1px solid black;
+                          width: 30px;
+                     text-align: center;
+                          font-size: 1.2em;
+                          height:22px;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                        </tr>
+                      </table>
+                    </div>
+                    </div>
+                      <table style="margin-top: 0.5%;float:right;">
+                        <tr>
+                          <th *ngFor="let i of BilAddLn2" style="margin:5%;border: 1px solid black;
+                          width: 30px;
+                          height:22px;
+                          text-align: center;
+                          font-size: 1.2em;
+                          font-weight: 700;
+                          font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                        </tr>
+                      </table>
+                    </div>
+                
+                    </div>
+                    <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+                      <div class="col-1">
+                        <p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">City</p>
+                      </div>
+                      <div class="col-6">
+                        <table style="margin-top: 0.5%">
+                          <tr>
+                            <th *ngFor="let i of BilCtyNm" style="margin:5%;border: 1px solid black;
+                            width: 25px;
+                            height:22px;
+                            text-align: center;
+                            font-size: 1.2em;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                          </tr>
+                        </table>
+                
+                      </div>
+                      <div class="col-2" style="float:right;">
+                        <p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">Pin Code</p></div>
+                      <div clas="col-2">
+                        <table style="margin-top: 0.5%;float:left">
+                          <tr>
+                            <th *ngFor="let i of BilPnCd" style="margin:5%;border: 1px solid black;
+                            width: 25px;
+                            height:22px;
+                            text-align: center;
+                            font-size: 1.2em;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+                      <div class="col-1">
+                        <p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">State</p>
+                      </div>
+                      <div class="col-6">
+                        <table style="margin-top: 0.5%">
+                          <tr>
+                            <th *ngFor="let i of BilStNm" style="margin:5%;border: 1px solid black;
+                            width: 25px;
+                            height:22px;
+                            text-align: center;
+                            font-size: 1.2em;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                          </tr>
+                        </table>
+                
+                      </div>
+                      <div class="col-2"><p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">Country</p></div>
+                      <div clas="col-3">
+                        <table style="margin-top: 0.5%">
+                          <tr>
+                            <th *ngFor="let i of BilCntryNm" style="margin:5%;border: 1px solid black;
+                            width: 25px;
+                            height:22px;
+                            text-align: center;
+                            font-size: 1.2em;
+                            font-weight: 700;
+                            font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;">
+                      <div class="col-6" style="font-size: 15px;
+                      font-weight: 700;
+                      "><p style="margin-top: 2%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Proof of Billing Address Attached</p></div>
+                      <div class="col-6" style="text-transform: uppercase;border-bottom: 1px solid black;
+                      margin-top: 1%;
+                      width: 100%;font-family: 'Times New Roman', Times, serif;">{{ProofOfBil}}
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;font-size: 15px;font-weight: 700;font-family: 'Times New Roman', Times, serif;"><div class="col-12">*&nbsp;Contact Person(s)</div></div>
+                      <div class="row" style="margin-top: 0.5%;font-size: 15px;margin-left: 3%;margin-right: 3%;">
+                        <div class="col-12">
+                        <table style="border: 1px solid black;width:100%;text-transform: uppercase;">
+                        <tr style="border: 1px solid black;">
+                          <th style="border-right: 1px solid black;font-size:15px;font-family: 'Times New Roman', Times, serif;">Function/Department</th>
+                          <th style="border-right: 1px solid rgb(207, 183, 183);font-size:15px;font-family: 'Times New Roman', Times, serif;">Name</th>
+                          <th style="border-right: 1px solid black;font-size:15px;font-family: 'Times New Roman', Times, serif;">Mobile</th>
+                          <th style="border-right: 1px solid black;font-size:15px;font-family: 'Times New Roman', Times, serif;">Email</th>
+                        </tr>
+                        <tr style="border: 1px solid black;">
+                          <td style="margin-left:1%;border-right: 1px solid black;margin-left: 1%;
+                          border-right: 1px solid black;
+                          font-size: 14px;font-family: 'Times New Roman', Times, serif;">Customer Contact</td>
+                          <td style="margin-left:1%;border-right: 1px solid black;font-family: 'Times New Roman', Times, serif;">{{pdfBindDat[0].cntct_nm}}</td>
+                          <td style="margin-left:1%;border-right: 1px solid black;font-family: 'Times New Roman', Times, serif;">{{pdfBindDat[0].cntct_mble1_nu}}</td>
+                          <td style="margin-left:1%;border-right: 1px solid black;font-family: 'Times New Roman', Times, serif;">{{pdfBindDat[0].loc_eml1_tx}}</td>
+                        </tr>
+                        <tr style="border: 1px solid black;">
+                          <td style="margin-left:1%;border-right: 1px solid black;margin-left: 1%;
+                          border-right: 1px solid black;
+                          font-size: 14px;font-family: 'Times New Roman', Times, serif;">APSFL Contact</td>
+                          <td style="margin-left:1%;border-right: 1px solid black;font-family: 'Times New Roman', Times, serif;">{{pdfBindDat[0].cntct_prsn_nm}}</td>
+                          <td style="margin-left:1%;border-right: 1px solid black;font-family: 'Times New Roman', Times, serif;">{{pdfBindDat[0].cntct_prsn_phne_num}}</td>
+                          <td style="margin-left:1%;border-right: 1px solid black;font-family: 'Times New Roman', Times, serif;">{{pdfBindDat[0].cntct_prsn_eml}}</td>
+                        </tr>
+              
+                      </table>
+                      </div>
+                      </div>
+                      <div class="row" style="margin-top: 1%;margin-left: 3%;font-size: 15px;margin-right: 3%;font-weight: 700;font-family: 'Times New Roman', Times, serif;"><div class="col-12">*&nbsp;Service requirement</div></div>
+                      
+                      <!-- <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                          ">
+                            <div class="col-4" style="font-size: 15px;
+                            font-weight: 500;width:18%"
+                            ><p style="margin-top: 0.5%;">*&nbsp;Ip Address Scheme</p></div>
+                            <div class="col-8">
+                            <img src="assets/images/checked.png" *ngIf="ipaddrss == 1">&nbsp;<span *ngIf="ipaddrss == 1">Ipv4</span>&nbsp;&nbsp;
+                            <img src="assets/images/unchecked.png" *ngIf="ipaddrss != 1"/>&nbsp;<span *ngIf="ipaddrss != 1">Ipv4</span>&nbsp;&nbsp;
+                            <img src="assets/images/checked.png" *ngIf="ipaddrss == 2">&nbsp;<span *ngIf="ipaddrss == 2">Ipv6</span>&nbsp;&nbsp;
+                            <img src="assets/images/unchecked.png" *ngIf="ipaddrss != 2"/>&nbsp;<span *ngIf="ipaddrss != 2">Ipv6</span>&nbsp;&nbsp;
+                            <img src="assets/images/checked.png" *ngIf="ipaddrss == 3">&nbsp;<span *ngIf="ipaddrss == 3">Both</span>&nbsp;&nbsp;
+                            <img src="assets/images/unchecked.png" *ngIf="ipaddrss != 3"/>&nbsp;<span *ngIf="ipaddrss != 3">Both</span>&nbsp;&nbsp;
+                            </div>
+                      </div> -->
+                      <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;">
+                        <div class="col-3" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 2%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Package Name</p></div>
+                        <div class="col-4" style="border: 1px solid black;
+                        width: 100%;
+                        text-align: center;
+                        height: 32px;font-family: 'Times New Roman', Times, serif;">
+              {{PrdctSlc}}          
+              </div>
+                        <div class="col-4" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Number of Connections</p></div>
+                        <div class="col-1">
+                          <table style="margin-top: 0.5%">
+                            <tr>
+                              <th *ngFor="let i of NumOfCon" style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1.5%;font-size: 15px;
+                          ">
+                            <div class="col-2" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Fee Model</p></div>
+                            <div class="col-10">
+                              <table style="margin-top: 0.5%">
+                                <tr>
+                                  <th *ngFor="let i of FeeMdl" style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                                </tr>
+                              </table>
+                            </div>
+                      </div>
+                      <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;page-break-after:always; clear:both
+                      ">
+                        <div class="col-3" style="font-size: 15px;
+                            font-weight: 500;width:13%
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Contract Period</p></div>
+                            <div class="col-1" style="margin-top: 1%;">
+                              <table style="margin-top: 0.5%">
+                                <tr>
+                                  <th *ngFor="let i of CntrcyPd" style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                                  
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="col-8" style="margin-top: 1%;font-family: 'Times New Roman', Times, serif;">
+                            <img src="assets/images/checked.png" *ngIf="cnctprdtyp == 1">&nbsp;<span *ngIf="cnctprdtyp == 1">Months</span>&nbsp;&nbsp;
+                            <img src="assets/images/unchecked.png" *ngIf="cnctprdtyp != 1"/>&nbsp;<span *ngIf="cnctprdtyp != 1">Months</span>&nbsp;&nbsp;
+                            <img src="assets/images/checked.png" *ngIf="cnctprdtyp == 2">&nbsp;<span *ngIf="cnctprdtyp == 2">Years</span>&nbsp;&nbsp;
+                            <img src="assets/images/unchecked.png" *ngIf="cnctprdtyp != 2"/>&nbsp;<span *ngIf="cnctprdtyp != 2">Years</span>&nbsp;&nbsp;
+          
+                        </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">
+                      <img src="assets/images/APSFL.png" style="width: 80%">
+                    </div>
+                    <div class="col-5">
+                      <h2 style="text-align: center;
+                      font-size: 18px;
+                      margin-top: 6%;
+                      text-transform: uppercase;
+                      margin-bottom: 0px;
+                      font-weight: 700;
+                      color: #383737;font-family: Times New Roman">Customer Application Form</h2>
+                      <p style="font-size: 10px;
+                      text-align: center;
+                      font-weight: 600;
+                      margin: 0px;
+                      color: #212121;
+                      margin-top: 5px;font-family: 'Times New Roman', Times, serif;">3rd Floor, NTR Administrative Block, Pandit Nehru Bus Station, NH – 65, Vijayawada – 520001</p>
+                    </div>
+                    <div class="col-3">
+                    </div>
+                  </div>
+                  <div style="border: 1px solid black;
+                  margin: 25px 10px 1px 10px;"></div>
+                  <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;">
+                            <div class="col-3" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;One Time Charges</p></div>
+                            <div class="col-2">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{one_tme_chrge_at}}</th>
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="col-4" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Recurring Charges Per Month</p></div>
+                            <div class="col-2">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{price}}</th>
+                                </tr>
+                              </table>
+                            </div>
+                            <!-- <div class="col-4" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;APSFL One Time Share</p></div>
+                            <div class="col-2">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{one_tme_apsfl_chrge_at}}</th>
+                                </tr>
+                              </table>
+                            </div> -->
+                            <!-- <div class="col-2" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;">*&nbsp;MSO Share</p></div>
+                            <div class="col-1">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{msoshre}}</th>
+                                </tr>
+                              </table>
+                            </div> -->
+                      </div>
+                  <!-- <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;">
+                    <div class="col-4" style="font-size: 15px;
+                    font-weight: 500;
+                    "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;LMO One Time share</p></div>
+                    <div class="col-2">
+                      <table style="margin-top: 0.5%;width:100%">
+                        <tr>
+                          <th style="margin:5%;border: 1px solid black;
+                          width: 25px;
+                          height:22px;
+                          text-align: center;
+                          font-size: 18px;
+                          font-weight: 500;
+                          font-family: 'Times New Roman', Times, serif;">{{one_tme_lmo_chrge_at}}</th>
+                        </tr>
+                      </table>
+                    </div>
+                  </div> -->
+                  <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;
+                          ">
+                            <div class="col-3" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;GST</p></div>
+                            <div class="col-2">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{gst}}</th>
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="col-5" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;Total Recurring Charges Per Month</p></div>
+                            <div class="col-2">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{apsflshre}}</th>
+                                </tr>
+                              </table>
+                            </div>
+                        
+                            <!-- <div class="col-2" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;">*&nbsp;MSO Share</p></div>
+                            <div class="col-1">
+                              <table style="margin-top: 0.5%;width:100%">
+                                <tr>
+                                  <th style="margin:5%;border: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{msoshre}}</th>
+                                </tr>
+                              </table>
+                            </div> -->
+                      </div>
+                      <!-- <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;
+                      ">
+                        <div class="col-4" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;APSFL Share</p></div>
+                        <div class="col-2">
+                          <table style="margin-top: 0.5%;width:100%">
+                            <tr>
+                              <th style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{apsflshre}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-4" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;LMO share</p></div>
+                        <div class="col-2">
+                          <table style="margin-top: 0.5%;width:100%">
+                            <tr>
+                              <th style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{lmoshre}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                      </div> -->
+                  <!-- <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                          ">
+                            <div class="col-2" style="font-size: 15px;
+                            font-weight: 500;
+                            "><p style="margin-top: 0.5%;">*&nbsp;Billing Periodicity</p></div>
+                            <div class="col-10">
+                              <table style="margin-top: 0.5%">
+                                <tr>
+                                  <th *ngFor="let i of BilPrdct" style="margin:5%;border-left: 1px solid black;
+                                  border-bottom: 1px solid black;
+                                  border-right: 1px solid black;
+                                  width: 25px;
+                                  height:22px;
+                                  text-align: center;
+                                  font-size: 18px;
+                                  font-weight: 500;
+                                  font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                                </tr>
+                              </table>
+                            </div>
+                      </div> -->
+                      <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;">
+                        <div class="col-3">
+                         <p style="font-size:15px;font-weight: 500;font-family: 'Times New Roman', Times, serif;">*&nbsp;Selected Plan</p>
+                        </div>
+                        <div class="col-3">
+                          <table style="margin-top: 0.5%;width:100%">
+                            <tr>
+                              <th *ngFor="let i of selectedPlan" style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-3">
+                          <p style="font-size:15px;font-weight: 500;font-family: 'Times New Roman', Times, serif;">*&nbsp;Selected Service</p>
+                         </div>
+                         <div class="col-3">
+                          <table style="margin-top: 0.5%;width:100%">
+                            <tr>
+                              <th *ngFor="let i of selectedservice" style="margin:5%;border: 1px solid black;
+                              width: 20px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                            </tr>
+                          </table>
+                         </div>
+                      </div>
+
+                      <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                      ">
+                        <div class="col-2" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;LMO Name</p></div>
+                        <div class="col-10">
+                          <table style="margin-top: 0.5%">
+                            <tr>
+                              <th *ngFor="let i of LmoNm" style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                      ">
+                        <div class="col-2" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;LMO Code</p></div>
+                        <div class="col-3">
+                          <table style="margin-top: 0.5%">
+                            <tr>
+                              <th *ngFor="let i of LmoCd" style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-3" style="font-size: 15px;
+                        font-weight: 500;
+                        "><p style="margin-top: 0.5%;font-family: 'Times New Roman', Times, serif;">*&nbsp;LMO Mobile</p></div>
+                        <div class="col-3">
+                          <table style="margin-top: 0.5%">
+                            <tr>
+                              <th *ngFor="let i of LmoMbl" style="margin:5%;border: 1px solid black;
+                              width: 25px;
+                              height:22px;
+                              text-align: center;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                
+                <div class="row"  style="margin-left: 3%;margin-right: 3%;margin-top: 5.5%;font-size: 15px;">
+                  <p></p>
+                  <div class="col-6" style="float:left;margin-top:3.5%">
+                    <div class="row">
+                      <div class="col-3">
+                        <p style="font-size: 15px;font-weight: 500;">Name:</p>
+                      </div>
+                      <div class="col-9" style="margin-top: 5%;">
+                        <div style="text-transform: uppercase;border-bottom: 1px solid black;
+                        margin-top: 1%;
+                        width: 100%;font-family: 'Times New Roman', Times, serif;">
+                      
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-3">
+                        <p style="font-size: 15px;font-weight: 500;">Date</p>
+                      </div>
+                      <div class="col-9" style="margin-top: 5%;">
+                        <div style="text-transform: uppercase;border-bottom: 1px solid black;
+                        margin-top: 1%;
+                        width: 100%;font-family: 'Times New Roman', Times, serif;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6" style="float:right">
+                    <p style="font-size:15px;font-weight:500;font-family: 'Times New Roman', Times, serif;">(Customer Stamp & Signature)</p>
+                    <div class="row">
+                      <div class="col-3">
+                        <p style="font-size: 15px;font-weight: 500;">Name:</p>
+                      </div>
+                      <div class="col-9" style="margin-top: 5%;">
+                        <div style="text-transform: uppercase;border-bottom: 1px solid black;
+                        margin-top: 1%;
+                        width: 100%;font-family: 'Times New Roman', Times, serif;">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-3">
+                        <p style="font-size: 15px;font-weight: 500;">Date</p>
+                      </div>
+                      <div class="col-9" style="margin-top: 5%;">
+                        <div style="text-transform: uppercase;border-bottom: 1px solid black;
+                        margin-top: 1%;
+                        width: 100%;font-family: 'Times New Roman', Times, serif;">
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+                
+                
+                
+                
+                    </div>
+            </div>

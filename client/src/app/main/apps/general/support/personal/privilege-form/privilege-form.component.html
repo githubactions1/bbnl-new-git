@@ -1,0 +1,161 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <!-- <div fxLayout="row">
+    <div fxFlex="100">
+      <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+      <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        (click)="backBtn()">
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+  </div> -->
+  <div class="header" fxLayout="row">
+    <div fxFlex="90" fxFlex.xs="90" class="px-8">
+      <h1>
+    <mat-icon class="logo-icon">people_outline</mat-icon>&nbsp;New Privilege Request Ticket
+  </h1>
+  </div>
+  <div fxFlex="10" fxFlex.xs="10" class="px-8">
+    <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+    (click)="backBtn()">
+    <span class="pt-2">Back</span>
+  </button>
+  </div>
+</div>
+  <ds-loading *ngIf="searchLoader"></ds-loading>
+  <div class="widget" fxflex="100" fxflex.gt-sm="95"
+  style="max-width: 95%; margin: auto; flex: 1 1 100%; box-sizing: border-box;" class="content-start">
+  <div class="m-8 ds-card p-4 mt-4">
+    <div class="mb-24" style="padding-top: 20px;">
+      <div fxLayout="row">
+        <div fxFlex="20" fxFlex.xs="20" class="px-8">
+          <mat-label>
+            <div class="lbl mndlTitle">Type</div>
+            <div class="lbl_cntnt typeName">Privilege Request</div>
+          </mat-label><br>
+        </div>
+         <!-- //application// -->
+         <div fxFlex="20" fxFlex.xs="20" class="px-8">
+          <div class="form-label">Select Application</div>
+          <mat-form-field appearance="outline">
+            <mat-select [(value)]="applicationID" (selectionChange)="ForApprovalTeam()" required>
+              <mat-option *ngFor="let d of applicationDtls" [value]="d.aplcn_id">
+                {{d.aplcn_nm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+           <!-- //approvalTeam// -->
+           <div fxFlex="20" fxFlex.xs="20" class="px-8" *ngIf="approvalDtls && approvalDtls.length>1">
+            <div class="form-label">Select ApprovalTeam</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="approvalID" required>
+                <mat-option *ngFor="let d of approvalDtls" [value]="d.tm_id">
+                  {{d.tm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="20" class="px-8" *ngIf="approvalDtls && approvalDtls.length == 1">
+            <mat-label>
+              <div class="lbl mndlTitle">ApprovalTeam</div>
+              <div class="lbl_cntnt typeName">{{approvalDtls[0].tm_nm}}</div>
+            </mat-label><br>
+          </div>
+          <div fxFlex="20" fxFlex.xs="20" class="px-8"
+            *ngIf="!approvalDtls || approvalDtls.length<1 || !approvalDtls.length">
+            <mat-label>
+              <div class="lbl mndlTitle">ApprovalTeam</div>
+              <div class="lbl_cntnt typeName">Please Select Application</div>
+            </mat-label><br>
+          </div>
+           <!-- //assignTeam// -->
+           <div fxFlex="20" fxFlex.xs="20" class="px-8">
+            <div class="form-label">Select AssignTeam</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="assignID" required>
+                <mat-option *ngFor="let d of assignTeamDtls" [value]="d.tm_id">
+                  {{d.tm_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- //status// -->
+          <div fxFlex="20" fxFlex.xs="20" class="px-8">
+            <mat-label>
+              <div class="lbl mndlTitle">Status</div>
+              <div class="lbl_cntnt typeName">New</div>
+            </mat-label><br>
+          </div>
+        </div>
+        <div fxLayout="row">
+      <!-- //Priority// -->
+          <div fxFlex="20" fxFlex.xs="20" class="px-8">
+            <mat-label>
+              <div class="lbl mndlTitle">Priority</div>
+              <div class="lbl_cntnt typeName">Low</div>
+            </mat-label><br>
+          </div>
+     <!-- //short desc// -->
+          <div  fxFlex="25" fxFlex.xs="25" class="px-8">
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Short Note<span class="reqSgnColor">*</span></div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <textarea matInput [(ngModel)]="descrptn" required></textarea>
+              <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+          </div>
+          </div>
+          <div fxLayout="row">
+             <!-- //Long desc// -->
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+              <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Description<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                <textarea matInput [(ngModel)]="lngdescrptn" required></textarea>
+                <!-- <input type="text" matInput formControlName="comment" required> -->
+                <mat-error>Description is required!</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        <div fxLayout="row">
+          <!-- ////ATTACHMENTT//////-->
+          <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <label class="form-label">Upload Image/Document
+            </label>
+            <div class="ds-plcholder">
+              <div *ngIf="imageUrl">
+                <button type="submit" class="close" (click)="removeImg();">
+                  <span>-</span>
+                </button>
+                <img [src]="imageUrl">
+                <div *ngIf="imageUrl">{{imgfilename}}</div>
+              </div>
+              <div *ngIf="!imageUrl">
+                <label>
+                  <input (change)="uploadedFile($event)" type='file' id="imageUpload" [(ngModel)]="app_icon"
+                    accept=".xlsx, .xls, .csv, .png, .jpg, .jpeg" style="display:none">
+
+                  <mat-icon _ngcontent-qri-c39=""
+                    class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color ds-plchdlr-icon"
+                    role="img" aria-hidden="true">add_a_photo</mat-icon>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            style="text-align: right;">
+        <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE" (click)="saveTckInfrmtn()">
+          Save
+        </button>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+        <button mat-raised-button type="close" aria-label="Reset" (click)="resetTckInfrmtn()"
+          style="margin-left: 4%;">
+          Reset
+        </button>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+  </div>

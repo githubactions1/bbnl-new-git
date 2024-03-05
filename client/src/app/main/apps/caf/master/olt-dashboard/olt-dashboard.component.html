@@ -1,0 +1,49 @@
+<!-- <p>
+  olt-dashboard works!
+</p> -->
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="ds-card m-12" *ngIf="tableView == true">
+    <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true"   [dataSource]="oltLst" [remoteOperations]="false" [allowColumnReordering]="true"
+      [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+      <dxo-selection mode="single"></dxo-selection>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="BOX Change"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+      <dxi-column [showInColumnChooser]="false"  type="buttons" [width]="130" caption="" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">  
+             <div class="tblEdtBtn" (click)="onClickNodes(data)">Add Nodes</div>  
+         </div>
+     </dxi-column>
+     <!-- <dxi-column [showInColumnChooser]="false"  type="buttons" [width]="120" caption="" cellTemplate="editTemplate">
+      <div *dxTemplate="let data of 'editTemplate'">  
+         <div class="tblEdtBtn" (click)="refresh(data)">Refresh</div>  
+     </div>
+ </dxi-column> -->
+    </dx-data-grid>
+  </div>
+</div>
+
+
+
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div>
+        <div class="card-header crdHdng">Nodes
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+            cancel</mat-icon>
+        </div>
+        </div>
+        </div>
+  </ng-container>
+</ds-sidebar>

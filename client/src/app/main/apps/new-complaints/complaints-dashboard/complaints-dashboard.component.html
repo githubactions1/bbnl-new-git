@@ -1,0 +1,422 @@
+<div class="page-layout simple pageBackground tabbed">
+    <div class="page-layout simple pageBackground">
+        <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+        <ng-container>
+            <div fxLayout="row wrap" fxLayoutAlign="start top">
+                <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <div class="ds-card  dsbbrdcrds  cardOne">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgThree">
+                                <!-- <mat-icon class="dwnldIcn">backup</mat-icon> -->
+                                <h1 class="Headingh1">Current Month Tickets Count</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthtotltckts}}</div>
+                                    <div class="h4 nme"> Total Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthopentckts}}</div>
+                                    <div class="h4 nme"> Open Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthresolvetckts}}</div>
+                                    <div class="h4 nme"> Resolved Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthclsetckts}}</div>
+                                    <div class="h4 nme"> Closed Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <div class="ds-card  dsbbrdcrds  cardTwo">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgFour">
+                                <h1 class="Headingh1">Previous Month Tickets Count</h1>
+                                <!-- <mat-icon class="dwnldIcn">backup</mat-icon> -->
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmnthtotltckts}}</div>
+                                    <div class="h4 nme"> Total Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmntopentckts}}</div>
+                                    <div class="h4 nme"> Open Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmntresolvetckts}}</div>
+                                    <div class="h4 nme"> Resolved Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmntclsetckts}}</div>
+                                    <div class="h4 nme"> Closed Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="50%" *ngIf="indivudualcard" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                    fxFlex.gt-xs="50%">
+                    <div class="ds-card  dsbbrdcrds  cardTwo">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgFive">
+                                <h1 class="Headingh1">Individual Tickets Count</h1>
+                                <!-- <mat-icon class="dwnldIcn">backup</mat-icon> -->
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{individualtotltckts}}</div>
+                                    <div class="h4 nme"> Total Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{individualopentckts}}</div>
+                                    <div class="h4 nme"> Open Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{individualrelvetckts}}</div>
+                                    <div class="h4 nme"> Resolved Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{individualclsetckts}}</div>
+                                    <div class="h4 nme"> Closed Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <div class="ds-card  dsbbrdcrds  cardTwo">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgSix">
+                                <h1 class="Headingh1">General Enquiry Tickets Count</h1>
+                                <!-- <mat-icon class="dwnldIcn">backup</mat-icon> -->
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{generalenquirytotltckts}}</div>
+                                    <div class="h4 nme"> Total General Enquiry Tickets Count</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnTwo">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{generalenquirynewconctn}}</div>
+                                    <div class="h4 nme">New Connection Tickets Count</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnTwo">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{generalenquirycalldrop}} </div>
+                                    <div class="h4 nme">Call Drop Tickets Count</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="70%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+
+                    <div class="ds-card  dsbbrdcrds  cardOne">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgOne">
+                                <!-- <mat-icon  class = "dwnldIcn">backup</mat-icon> -->
+                                <h1 class="Headingh1">WEB & APP Tickets List View</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="total_ticket()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{totalcompData}}</div>
+                                    <div class="h4 nme">Total Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="open_ticket()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{opencompData}}</div>
+                                    <div class="h4 nme">Open Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="resolve_ticket()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{resolvecompData}}</div>
+                                    <div class="h4 nme">Resolved Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="close_ticket()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{closecompData}}</div>
+                                    <div class="h4 nme">Closed Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" *ngIf="BSSWebPortalcard" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%"
+                    fxFlex.gt-xs="20%">
+
+                    <div class="ds-card  dsbbrdcrds  cardOne">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgOne">
+                                <!-- <mat-icon  class = "dwnldIcn">backup</mat-icon> -->
+                                <h1 class="Headingh1">Subcriber App Tickets List View</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctnTwo" (click)="subcribe_ticket()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{subscribeappData}}</div>
+                                    <div class="h4 nme">Subscribe App Total Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%">
+                    <div class="ds-card  dsbbrdcrds  cardTwo">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgTwo">
+                                <!-- <mat-icon  class = "dwnldIcn">cloud_download</mat-icon> -->
+                                <h1 class="Headingh1">Total General Enquiry Tickets List View</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctnTwo" (click)="general_ticket()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{generalenquiryData}}</div>
+                                    <div class="h4 nme">General Enquiry Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+                    <div class="ds-card  dsbbrdcrds  cardTwo">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgSeven">
+                                <!-- <mat-icon  class = "dwnldIcn">cloud_download</mat-icon> -->
+                                <h1 class="Headingh1">Today Created Tickets List View</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctnTwo" (click)="todaycomplaints_listview()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{todayTotalTckts}}</div>
+                                    <div class="h4 nme">Today Created Tickets </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%">
+                    <div class="ds-card  dsbbrdcrds  cardTwo">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgEight">
+                                <!-- <mat-icon  class = "dwnldIcn">cloud_download</mat-icon> -->
+                                <h1 class="Headingh1">Previous Day Created Tickets List View</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctnTwo" (click)="previousdaycomplaints_listview()">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{previousdayTotalTckts}}</div>
+                                    <div class="h4 nme">Previous Day Created Tickets </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <div class="ds-card  dsbbrdcrds  cardOne">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgThree">
+                                <!-- <mat-icon class="dwnldIcn">backup</mat-icon> -->
+                                <h1 class="Headingh1">Enterprise Current Month Tickets Count</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="thismnthentcomplaints_listview(0)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthenttckts[0]['Total_Tickets']}}</div>
+                                    <div class="h4 nme"> Total Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="thismnthentcomplaints_listview(1)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthenttckts[0]['Open']}}</div>
+                                    <div class="h4 nme"> Open Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="thismnthentcomplaints_listview(2)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthenttckts[0]['Resolved']}}</div>
+                                    <div class="h4 nme"> Resolved Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="thismnthentcomplaints_listview(3)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{thismnthenttckts[0]['Close']}}</div>
+                                    <div class="h4 nme"> Closed Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <div class="ds-card  dsbbrdcrds  cardOne">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="cardBgThree">
+                                <!-- <mat-icon class="dwnldIcn">backup</mat-icon> -->
+                                <h1 class="Headingh1">Enterprise Previous Month Tickets Count</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="prvsmnthentcomplaints_listview(0)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmnthenttckts[0]['Total_Tickets']}}</div>
+                                    <div class="h4 nme"> Total Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="prvsmnthentcomplaints_listview(1)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmnthenttckts[0]['Open']}}</div>
+                                    <div class="h4 nme"> Open Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="prvsmnthentcomplaints_listview(2)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmnthenttckts[0]['Resolved']}}</div>
+                                    <div class="h4 nme"> Resolved Tickets</div>
+                                </div>
+                            </div>
+                            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                                class="totlCnt inrSctnOne" (click)="prvsmnthentcomplaints_listview(3)">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">{{prvsmnthenttckts[0]['Close']}}</div>
+                                    <div class="h4 nme"> Closed Tickets</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="slaincmplnt">
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="prvsmnthenttcktslist"
+                    [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [allowColumnResizing]="true"
+                    (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)"
+                    style="width: 100%;">
+                    <dxo-header-filter [visible]="true"></dxo-header-filter>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]">
+                    </dxo-pager>
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                    <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                    <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+                    <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                        fileName="in sla tickets"></dxo-export>
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                    <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                        [caption]="f.headerName" [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width"
+                        [filterOperations]="f.filterOperations" [allowHeaderFiltering]="f.columnFiltering"
+                        [allowResizing]="true"></dxi-column>
+                </dx-data-grid>
+            </div>
+            <div *ngIf="slaoutcmplnt">
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="thismnthenttcktslist"
+                    [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [allowColumnResizing]="true"
+                    (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)"
+                    style="width: 100%;">
+                    <dxo-header-filter [visible]="true"></dxo-header-filter>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]">
+                    </dxo-pager>
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                    <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                    <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+                    <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                        fileName="sla crossed tickets"></dxo-export>
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                    <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                        [caption]="f.headerName" [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width"
+                        [filterOperations]="f.filterOperations" [allowHeaderFiltering]="f.columnFiltering"
+                        [allowResizing]="true"></dxi-column>
+                </dx-data-grid>
+            </div>
+        </ng-container>
+    </div>
+</div>

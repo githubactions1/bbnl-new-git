@@ -1,0 +1,718 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+
+
+    <div *ngIf="loader">
+      <div class="loading-indicator">
+        <div class="spinner-1">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+    </div>
+    <div class="row" style="background: rgb(233,83,13);
+    background: linear-gradient(90deg, rgb(249 242 233) 0%, rgb(244 216 179) 50%, rgba(252,176,69,0) 100%);">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="margin:auto;text-align: center;padding-right: 0px;" *ngIf="cafDtls.entrpe_type_nm=='GOVT'">
+            <img src="../../../../../../../assets/imgs/scsandhrafavicon.png" style="padding: 5px 0px;
+            max-width: 45%;">
+          </div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="padding-left: 0px;margin: auto;">
+
+            <h1 style="margin: 0px;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;">{{cafDtls.cstmr_nm}}</h1>
+            <p style="margin: 0px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-transform: capitalize;">{{cafDtls.officeloc}}<span>{{cafDtls.mndl_nm}}&nbsp;Mandal</span> ,
+              <span>{{cafDtls.dstrt_nm}}&nbsp;District</span></p>
+            <p><span><strong>
+                  <mat-icon class="transform-text">email</mat-icon>
+                </strong>{{cafDtls.loc_eml1_tx}}</span> &nbsp;&nbsp;
+              <span><strong>
+                  <mat-icon class="transform-text">phone</mat-icon>
+                </strong>{{cafDtls.cntct_mble1_nu}}</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="margin: auto;">
+        <div class="text-right gridBtns">
+          <mat-button-toggle-group class="topbtnClor mr-8 border-radius-5" appearance="legacy" name="fontStyle"
+            aria-label="Font Style">
+            <mat-button-toggle id="addGridBtn" *ngIf="(permissions.insrt_in==1)?true:false" (click)="addNewNode()"
+              style="color: #795548 !important;">
+              <mat-icon class="logo-icon mat-icon material-icons mat-icon-no-color" style="font-size: 21px;">
+                person_outline</mat-icon>
+              Add Node
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          <!--<mat-button-toggle-group class="topbtnClor mr-8 border-radius-5" appearance="legacy" name="fontStyle"
+            aria-label="Font Style">
+            <mat-button-toggle id="addGridBtn" *ngIf="(permissions.insrt_in==1)?true:false" (click)="addNewCaf()"
+              style="color: #795548 !important;">
+              <mat-icon class="logo-icon mat-icon material-icons mat-icon-no-color" style="font-size: 21px;">
+                person_outline</mat-icon>
+              Add APSFL CAF
+            </mat-button-toggle>
+          </mat-button-toggle-group>-->
+          <mat-button-toggle-group class="topbtnClor mr-8 border-radius-5" appearance="legacy" name="fontStyle"
+            aria-label="Font Style">
+            <mat-button-toggle id="addGridBtn" *ngIf="(permissions.insrt_in==1)?true:false" (click)="addBbnlNewCaf()"
+              style="color: #795548 !important;">
+              <mat-icon class="logo-icon mat-icon material-icons mat-icon-no-color" style="font-size: 21px;">
+                person_outline</mat-icon>
+              Add BBNL CAF
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          <mat-button-toggle-group class="topbtnClor mr-8 border-radius-5" appearance="legacy" name="fontStyle"
+            aria-label="Font Style">
+            <mat-button-toggle id="addGridBtn" *ngIf="(permissions.insrt_in==1)?true:false" (click)="saveBulkUpload()"
+              style="color: #795548 !important;">
+              <mat-icon class="logo-icon mat-icon material-icons mat-icon-no-color" style="font-size: 21px;">
+                person_outline</mat-icon>
+              Bulk Upload
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 25px;">
+      <div fxFlex="100" fxFlex.gt-xl="40%" fxFlex.gt-lg="40%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%">
+        <div fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8" style="margin: 0px 8px !important">
+          <div class="ds-card today-card">
+            <div fxLayout="row wrap" fxLayoutAlign="start top">
+              <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%"
+                fxFlex.gt-xs="15%" class="bg-c-blue border-today-card" style="margin-top: 0px !important;
+            padding: 17px 10px !important;">
+                <mat-icon>supervisor_account</mat-icon>
+                <div>CAFs</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="15%" class="text-center p-24 mt-24" style="margin-top: 0px !important;
+            padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{cafcount == undefined ? 0 : cafcount.tot_cafs}}</h2>
+                <div class="h4 nme">Total <br> CAFs<br>(A)</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="15%" class="text-center p-24 mt-24" style="margin-top: 0px !important;
+            padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{nodcount == undefined ? 0 : nodcount.count}}</h2>
+                <div class="h4 nme">Total <br> Nodes</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="14%" class="text-center p-24 mt-24" style="margin-top: 0px !important;
+            padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{cafcount == undefined ? 0 : cafcount.tot_actv_cafs}}</h2>
+                <div class="h4 nme">Total <br> Active<br>(B=A-C-D-E)</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="14%" class="text-center p-24 mt-24" style="margin-top: 0px !important;
+            padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{cafcount == undefined ? 0 : cafcount.tot_spnd_cafs}}</h2>
+                <div class="h4 nme">Total <br> Suspended<br>(C)</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="14%" class="text-center p-24 mt-24" style="margin-top: 0px !important;
+            padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{cafcount == undefined ? 0 : cafcount.tot_trmnd_cafs}}</h2>
+                <div class="h4 nme">Total <br> Terminated<br>(D)</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="14%" class="text-center p-24 mt-24" style="margin-top: 0px !important;
+            padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{cafcount == undefined ? 0 : cafcount.others}}</h2>
+                <div class="h4 nme">CAFs<br>in Pending Status<br>(E)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="25%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+        <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 1%;">
+          <div class="ds-card dsbbrdcrds" style="margin: 0px;">
+            <div fxLayout="row" class="inrSctn">
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt">{{onudatacounts[0].active}}</div>
+                  <div class="h4 nme">Onilne ONU's</div>
+                </div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt">{{onudatacounts[0].inactive}}</div>
+                  <div class="h4 nme">ONUs currently down(Offline) ONU'S</div>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt">{{onudatacounts[0].total}}</div>
+                  <div class="h4 nme">Total ONU's</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="25%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+        <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 1%;">
+
+          <div class="ds-card dsbbrdcrds" style="margin: 0px;">
+            <div fxLayout="row" class="inrSctn">
+              <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                class="txt" style="padding: 2.6% 2%;">
+                ONUs currently down
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt1">{{hourlyOnuCounts[0].three_hr}}</div>
+                  <div class="h4 nme1">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" style="vertical-align: text-top;">
+                      keyboard_arrow_left
+                    </mat-icon>
+                    <span class="tmehr">3hr</span>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt1">{{hourlyOnuCounts[0].les_twelve_hr}}</div>
+                  <div class="h4 nme1">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" style="vertical-align: text-top;">
+                      keyboard_arrow_left
+                    </mat-icon>
+                    <span class="tmehr">12hr</span>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt1">{{hourlyOnuCounts[0].twelve_hr}}</div>
+                  <div class="h4 nme1">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" style="vertical-align: text-top;">
+                      keyboard_arrow_right
+                    </mat-icon>
+                    <span class="tmehr">12hr</span>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+
+                  <div class="h1 cnt1">{{hourlyOnuCounts[0].twntfur_hr}}</div>
+                  <div class="h4 nme1">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" style="vertical-align: text-top;">
+                      keyboard_arrow_right
+                    </mat-icon>
+                    <span class="tmehr">24hr</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-top: 25px;">
+      <div fxFlex="100" fxFlex.gt-xl="40%" fxFlex.gt-lg="40%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%">
+        <div fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8">
+          <div class="ds-card today-card">
+            <div fxLayout="row wrap" fxLayoutAlign="start top">
+              <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%"
+                fxFlex.gt-xs="15%" class="bg-c-pink border-today-card" style="margin-top: 0px !important;
+                padding: 17px 10px !important;">
+                <mat-icon>how_to_reg</mat-icon>
+                <div>CAFs Provisioned</div>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="14%" fxFlex.gt-lg="14%" fxFlex.gt-md="14%" fxFlex.gt-sm="14%"
+                fxFlex.gt-xs="15%" class="text-center p-24 mt-24" *ngFor="let p of allPrvMnthCnts" style="margin-top: 0px !important;
+                padding: 22px 10px !important;">
+                <h2 class="h1 cnt">{{allPrvMnthCnts == undefined ? 0 : p.mnth_prvd}}</h2>
+                <div class="h4 nme">{{p.mnth}} {{p.yr}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="16%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card dsbbrdcrds widget-statstic-card" style="max-width: 97%;
+        min-width: 97%;
+        margin: 3% 0%;
+        border-radius: 4px;">
+          <div class="card-block" style="padding: 0px;">
+            <div class="icofont icofont-presentation-alt st-icon bg-icon-violet">
+              <mat-icon>group_add</mat-icon>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16"
+              style="padding: 10px 6px !important;">
+              <div fxFlex="100" fxFlex.gt-xl="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+                fxFlex.gt-xs="50%" class="text-center ">
+                <div class="h1 cnt">
+                  {{crntMnthCnts == undefined || crntMnthCnts.crnt_mnth_prvd == null ? 0 : crntMnthCnts.crnt_mnth_prvd}}
+                </div>
+              </div>
+            </div>
+            <div class="text-center font-weight-500 fg-icon-violet">
+              <div>CAFs Provisioned <div class="font-size-12 font-weight-400" style="    padding-bottom: 15px;">This
+                  Month</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="16%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card dsbbrdcrds widget-statstic-card" style="max-width: 97%;
+        min-width: 97%;
+        margin: 3% 0%;
+        border-radius: 4px;">
+          <div class="card-block" style="padding: 0px;">
+            <div class="icofont icofont-presentation-alt st-icon bg-icon-blue-light">
+              <mat-icon>priority_high</mat-icon>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16"
+              style="padding: 10px 6px !important;">
+              <div fxFlex="100" fxFlex.gt-xl="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+                fxFlex.gt-xs="100%" class="text-center ">
+                <div class="h1 cnt">
+                  {{crntMnthCnts == undefined || crntMnthCnts.crnt_mnth_spnd_cafs == null ? 0 : crntMnthCnts.crnt_mnth_spnd_cafs}}
+                </div>
+              </div>
+            </div>
+            <div class="text-center font-weight-500 fg-icon-blue-light">
+              <div>CAFs Suspended <div class="font-size-12 font-weight-400" style="    padding-bottom: 15px;">This Month
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="16%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card dsbbrdcrds widget-statstic-card" style="max-width: 97%;
+        min-width: 97%;
+        margin: 3% 0%;
+        border-radius: 4px;">
+          <div class="card-block" style="padding: 0px;">
+            <div class="icofont icofont-presentation-alt st-icon bg-icon-pink">
+              <mat-icon>format_size</mat-icon>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16"
+              style="padding: 10px 6px !important;">
+              <div fxFlex="100" fxFlex.gt-xl="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+                fxFlex.gt-xs="100%" class="text-center ">
+                <div class="h1 cnt">
+                  {{crntMnthCnts == undefined || crntMnthCnts.crnt_mnth_trmnd_cafs == null ? 0 : crntMnthCnts.crnt_mnth_trmnd_cafs}}
+                </div>
+              </div>
+            </div>
+            <div class="text-center font-weight-500 fg-icon-pink">
+              <div>CAFs Terminated <div class="font-size-12 font-weight-400" style="    padding-bottom: 15px;">This
+                  Month</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-tab-group (selectedTabChange)="onTabChanged($event);">
+      <mat-tab label="District Wise Summary">
+        <div fxLayout="row wrap" fxLayoutAlign="start top">
+          <div fxFlex="100" fxFlex.gt-xl="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="ds-card m-12" style="height: 619px;">
+              <dx-data-grid class="p-8" id="gridContainer" [dataSource]="dstrctSummryCnts" [remoteOperations]="false"
+                [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                (onCellClick)="onCellClick($event)" (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+              
+                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                </dxo-export>
+               
+                <dxo-grouping [contextMenuEnabled]="true">
+                </dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+              
+                <dxo-summary>
+                  <dxi-total-item column="ttl_caf_count" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="act_caf_count" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="sus_caf_count" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="ter_caf_count" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="others" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="ttl_onus" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="online_onus" summaryType="sum"></dxi-total-item>
+                  <dxi-total-item column="offline_onus" summaryType="sum"></dxi-total-item>
+                </dxo-summary>
+             
+                <dxo-header-filter [visible]="true"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of dstrctSummryCntscolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName" [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [groupIndex]="f.groupIndex">
+                </dxi-column>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                  [showInfo]="true"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+
+              </dx-data-grid>
+            </div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8">
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="40%" fxFlex.gt-lg="40%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+              fxFlex.gt-xs="100%">
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="CAF Status">
+
+        <div fxLayout="row wrap" fxLayoutAlign="start top">
+          <div fxFlex="100" fxFlex.gt-xl="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="ds-card m-12" style="height: 619px;">
+              <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+                [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                (onCellClick)="onCellClick($event)" (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                </dxo-export>
+             
+                <dxo-grouping [contextMenuEnabled]="true">
+                </dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+              
+                <dxo-header-filter [visible]="true"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName"  [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [groupIndex]="f.groupIndex">
+                </dxi-column>
+                <dxo-summary>
+                  <dxi-total-item column="caf_nu" summaryType="count"></dxi-total-item>
+                  <dxi-total-item column="ste_nm" name="Active Onus" summaryType="count"></dxi-total-item>
+                  <dxi-group-item column="caf_nu" name="Total Cafs" summaryType="count" [alignByColumn]="true"
+                    [showInGroupFooter]="true"></dxi-group-item>
+                  <dxi-group-item column="sts_nm" name="Active Cafs" summaryType="count" [alignByColumn]="true"
+                    [showInGroupFooter]="true">
+                  </dxi-group-item>
+                  <dxi-group-item column="ste_nm" name="Active Onus" summaryType="count" [alignByColumn]="true"
+                    [showInGroupFooter]="true">
+                  </dxi-group-item>
+                </dxo-summary>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                  [showInfo]="true"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              </dx-data-grid>
+            </div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8">
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="40%" fxFlex.gt-lg="40%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+              fxFlex.gt-xs="100%">
+            </div>
+          </div>
+
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.sm="row wrap" fxLayout.xs="column"
+            class="w-100-p m-8">
+            <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top">
+              <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="16%" fxFlex.gt-sm="33%"
+                fxFlex.gt-xs="50%">
+
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="16%" fxFlex.gt-sm="33%"
+                fxFlex.gt-xs="50%">
+
+              </div>
+              <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="16%" fxFlex.gt-sm="33%"
+                fxFlex.gt-xs="50%">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="BandWidth">
+        <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-bottom: 1em">
+          <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%">
+
+            <div class="ds-card  dsbbrdcrds  entrpisecrd">
+              <div class="row" class="inscrtentp">
+                <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%">
+                  <p class="ptagcss">{{entpCstmrBnd.mnthupld}}/{{entpCstmrBnd.mnthdld}}</p>
+                  <p class="p2tagcss">Current Month Usage Band Width</p>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%">
+                  <p class="ptagcss icncss" style="float: right;">
+                    <mat-icon>swap_vert</mat-icon>
+                  </p>
+                </div>
+              </div>
+              <div class="row" style="border-top: 1px solid black;
+                margin-left: 2%;
+                margin-right: 2%;"></div>
+              <div class="row" class="seclst">
+                <p>Upload/Download&nbsp;(GB)</p>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%">
+
+            <div class="ds-card  dsbbrdcrds  entrpisecrd">
+              <div class="row" class="inscrtentp">
+                <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%">
+                  <p class="ptagcss">{{entpCstmrPrvsBnd.mnthupld}}/{{entpCstmrPrvsBnd.mnthdld}}</p>
+                  <p class="p2tagcss">Previous Month Usage Band Width</p>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%">
+                  <p class="ptagcss icncss">
+                    <mat-icon>swap_vert</mat-icon>
+                  </p>
+                </div>
+              </div>
+              <div class="row" style="border-top: 1px solid black;
+                margin-left: 2%;
+                margin-right: 2%;"></div>
+              <div class="row" class="seclst">
+                <p>Upload/Download&nbsp;(GB)</p>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="100%">
+
+            <div class="ds-card  dsbbrdcrds  entrpisecrd">
+              <div class="row" class="inscrtentp">
+                <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%">
+                  <p class="ptagcss">{{entpCstmrTdyBnd.tdy_up}}/{{entpCstmrTdyBnd.tdy_dwn}}</p>
+                  <p class="p2tagcss">Today Usage Band Width</p>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%">
+                  <p class="ptagcss icncss">
+                    <mat-icon>swap_vert</mat-icon>
+                  </p>
+                </div>
+              </div>
+              <div class="row" style="border-top: 1px solid black;
+                margin-left: 2%;
+                margin-right: 2%;"></div>
+              <div class="row" class="seclst">
+                <p>Upload/Download&nbsp;(GB)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </mat-tab>
+    </mat-tab-group>
+
+   
+
+    <div *ngIf="shwHsiGrph == true">
+
+      <div fxLayout="row wrap" fxLayout.xs = "column" fxLayoutAlign="start top" style="margin-bottom: 1em">
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+              fxFlex.gt-xs="100%" class="text-center ">
+        <div class="ds-card m-12">
+          <dx-data-grid class="p-8" id="gridContainer" [dataSource]="cafWseDtls" [remoteOperations]="false"
+            [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+            [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%;max-width: 100%;" (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+         
+            <dxo-grouping [contextMenuEnabled]="true">
+            </dxo-grouping>
+            
+            <dxo-summary>
+              <dxi-group-item column="caf_id" name="Total Cafs" summaryType="count" [alignByColumn]="true"
+                [showInGroupFooter]="true"></dxi-group-item>
+                <dxi-group-item column="upd" name="Total Upload" summaryType="sum" [alignByColumn]="true"
+                [showInGroupFooter]="true"></dxi-group-item>
+                <dxi-group-item column="dwn" name="Total Downlaod" summaryType="sum" [alignByColumn]="true"
+                [showInGroupFooter]="true"></dxi-group-item>
+                <dxi-group-item column="ttl_limit" name="Total Limit" summaryType="sum" [alignByColumn]="true"
+                [showInGroupFooter]="true"></dxi-group-item>
+            </dxo-summary>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column *ngFor="let f of cafWseDtlscolumnDefs" [allowFiltering]="f.filter" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width" [groupIndex]="f.groupIndex">
+            </dxi-column>
+            <dxi-column [showInColumnChooser]="false" type="buttons"
+            [width]="100" caption="View" cellTemplate="ViewTemplate">
+            <div *dxTemplate="let data of 'ViewTemplate'">
+              <div class="cursor-pointer tblVwBtn" (click)="onCellClick1(data)">
+                View Hsi Usage
+              </div>
+            </div>
+          </dxi-column>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          </dx-data-grid>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+              fxFlex.gt-xs="100%" class="text-center">
+              <div class="ds-card m-16 mt-0" style="height: 617px;
+              margin-top: 1% !important;">
+                <div fxLayout="row" fxLayout.xs="column">
+  
+                  <div fxFlex="100" fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+                    class="pt-8 chrtTiTle">
+                    <p style="padding: 2%;text-align: center;color: #337ab7;font-weight: 700;"><span>CAF ID:{{daycafdt}}</span><br><span style="text-transform: uppercase;">{{mnthName}}</span> DAY WISE DATA USAGE</p>
+                  </div>
+                  <div fxFlex = "100"  fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%">
+                    <span style=" padding-right: 1.5%;">Select Year</span>
+                    <mat-form-field class="cssdrp" appearance="outline">
+                      <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+                        [(value)]="selectedYear1" (selectionChange)="selectmnth()">
+                        <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    </div>
+                
+                    <div fxFlex = "100"  fxFlex.gt-lg="40%" fxFlex.gt-md="100%" fxFlex.gt-sm="40%" fxFlex.gt-xs="100%">
+                      <span  style=" padding-right: 1.5%;">Select Month</span>
+                    <mat-form-field class="cssdrp" appearance="outline">
+                      <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedMonth1"
+                        placeholder="Select Month" (selectionChange)="selectmnth()">
+                        <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    </div>
+                </div>
+              <div id="chart-demo">
+                <dx-chart id="chart" [dataSource]="cafhsiDayWise">
+                  <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+                  <dxi-series *ngFor="let energy of cafhsiDayWisearchitecturesInfo" [valueField]="energy.value" [name]="energy.name"
+                    [color]="energy.color">
+                  </dxi-series>
+                  <dxi-value-axis>
+                    <dxo-label [customizeText]="customizeText"></dxo-label>
+                    <dxo-title text="Usage In Giga Bytes"></dxo-title>
+                  </dxi-value-axis>
+                  <dxo-common-series-settings argumentField="day" type="spline">
+                    <dxo-title text="Days in month"></dxo-title>
+                    <dxo-label [visible]="false">
+                      <dxo-format type="decimal"></dxo-format>
+                    </dxo-label>
+                  </dxo-common-series-settings>
+                  <dxo-argument-axis [valueMarginsEnabled]="false" [axisDivisionFactor]="20"
+                    discreteAxisDivisionMode="crossLabels">
+                    <dxo-grid [visible]="true"></dxo-grid>
+                    <dxo-title text="Days in month"></dxo-title>
+                  </dxo-argument-axis>
+                  <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+                    <dxo-label [visible]="true" backgroundColor="#949494">
+                      <dxo-font color="#fff" [size]="12">
+                      </dxo-font>
+                    </dxo-label>
+                  </dxo-crosshair>
+                  <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+                  </dxo-legend>
+    
+                  <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000"></dxo-tooltip>
+                  <dxo-export [enabled]="false"></dxo-export>
+                </dx-chart>
+    
+              </div>
+            </div>
+          
+          </div>
+      </div>
+
+
+
+  <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="column" fxLayout.xs="column" fxFlexFill>
+    <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+        <div class="ds-card mb-40 chrtDSCrd" style="margin-right: 0%;">
+          <div fxLayout="row" fxLayout.xs="column">
+
+            <div fxFlex="100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="0%"
+              class="pt-8 chrtTiTle">
+              <p style="padding: 2%;text-align: center;color: #337ab7;font-weight: 700;">TOTAL CAFs CURRENT MONTH DAY WISE DATA USAGE</p>
+            </div>
+          </div>
+            <dx-chart id="chart" class ="hmechrt" [dataSource]="hsiDayWise">
+                <dxi-series *ngFor="let energy of architecturesInfo" [valueField]="energy.value" [name]="energy.name"
+                [color]="energy.color">
+              </dxi-series>
+                <dxi-value-axis name="TOTAL_INVOICE_AMOUNT" position="left">
+                    <dxo-grid [visible]="true"></dxo-grid>
+                    <dxo-title text="Usage In Giga Bytes"></dxo-title>
+                </dxi-value-axis>
+               <dxo-common-series-settings argumentField="day" type="spline">
+                  <dxo-title text="Days in month"></dxo-title>
+                    <dxo-label [visible]="true" [format]="{ type:'decimal'}"
+                        backgroundColor="none">
+                    </dxo-label>
+                </dxo-common-series-settings>
+                <dxo-argument-axis [valueMarginsEnabled]="false" [axisDivisionFactor]="45"
+                discreteAxisDivisionMode="crossLabels">
+                <dxo-grid [visible]="true"></dxo-grid>
+                <dxo-title text="Days in month"></dxo-title>
+              </dxo-argument-axis>
+              <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+                <dxo-label [visible]="true" backgroundColor="#949494">
+                  <dxo-font color="#fff" [size]="12">
+                  </dxo-font>
+                </dxo-label>
+              </dxo-crosshair>
+              <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+              </dxo-legend>
+                
+                <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000"></dxo-tooltip>
+                <dxo-export [enabled]="false"></dxo-export>
+            </dx-chart>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+
+    <ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+      <ng-container>
+        <div fxLayout="column">
+          <div class="card">
+            <div class="card-body" *ngIf="cstmrData">
+              <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle"
+                style="float:right">cancel </mat-icon>
+              <ds-customer-profile [cstmrData]="cstmrData"></ds-customer-profile>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ds-sidebar>
+    </div>

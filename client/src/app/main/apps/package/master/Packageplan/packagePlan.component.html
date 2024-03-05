@@ -1,0 +1,283 @@
+<div class="page-layout simple pageBackground" *ngIf="permissions">
+  <div *ngIf="loader == true">
+    <div class="loading-indicator">
+      <div class="spinner-2">
+        <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+      </div>
+    </div>
+  </div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <!-- <div class="text-right gridBtns">
+    <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle *ngIf="(permissions.insrt_in==1)?true:false" id="addGridBtn" style="background-color: #795548 !important;"
+        (click)="opensideBar('addFormPanel','new',null)">Add New {{formDetails.stngs.form_title}}</mat-button-toggle>
+    </mat-button-toggle-group>
+
+  </div> -->
+
+
+
+  <div class="ds-card m-12" *ngIf="permissions">
+    <ds-loading *ngIf="shwLdr"></ds-loading>
+    <dx-data-grid class="p-8" id="gridContainer" [dataSource]="grdLst" [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+      [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true"
+      style="width:100%" [masterDetail]="{ enabled: true, template: 'detail' }" (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false">
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Package Plan"></dxo-export>
+      <dxo-filter-row [visible]="false"></dxo-filter-row>
+      <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+         [width]="f.width" [allowResizing]="true" [alignment]="f.alignment" [allowFiltering]="f.filter" 
+         [format]="{type:f.type,currency:f.currency, precision:f.precision}" [allowHeaderFiltering]="f.columnFiltering" ></dxi-column>
+      <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+        [width]="100" caption="Edit" cellTemplate="editTemplate">
+        <div *dxTemplate="let data of 'editTemplate'">
+          <div class="tblEdtBtn "(click)="onEdit2(data)">
+            Edit
+          </div>
+        </div>
+      </dxi-column>
+      <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+        [width]="100" caption="Delete" cellTemplate="delTemplate" [allowResizing]="true">
+        <div *dxTemplate="let data of 'delTemplate'">
+          <div class="tblDelBtn "(click)="onDelete2(data)">
+            Delete
+          </div>
+        </div>
+      </dxi-column>
+      <div *dxTemplate="let entCust of 'detail'">
+        <dx-data-grid [dataSource]="entCust.data.srvcpcks" [showBorders]="true" [columnAutoWidth]="true" [rowAlternationEnabled]="true" [showColumnLines]="true">
+          <dxi-column *ngFor="let f of pckgeColumns" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName" [format]="{type:f.type,currency:f.currency, precision:f.precision}"
+             [width]="f.width" [allowResizing]="true" 
+[alignment]="f.alignment"></dxi-column>
+        </dx-data-grid>
+        
+      </div>
+    </dx-data-grid>
+
+  </div>
+  <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+
+</div>
+<ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div>
+      <mat-toolbar class="side-bar-header-color">
+        <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+          class="w-100-p">
+          <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+            <span>{{leftsidebarHdng}}</span>
+          </div>
+          <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="text-right">
+            <span>
+              <mat-icon matTooltip="close" (click)="openSideBar1('addFormPanel',null,null)" class="closeSidebar">cancel
+              </mat-icon>
+            </span>
+          </div>
+        </div>
+      </mat-toolbar>
+      <form [formGroup]="packageForm" style="width:100%" class="p-12" fxLayout="column">
+
+        <div class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+          Package Information
+          <mat-divider></mat-divider>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter Plan Name</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="pckge_nm" required>
+              <mat-error>Plan Name is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Select Effective Date*</div>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="picker" formControlName="efcte_dt" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error>Effective Date is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Select Expiration Date*</div>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="picker1" formControlName="expre_dt" required>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error>Expiration Date is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Lock Days Count</div>
+            <mat-form-field appearance="outline">
+              <input type="number" matInput formControlName="lckn_dys_ct" required>
+              <mat-error>Lock Days Count!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Customer Type</div>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Customer Type" formControlName="caf_type_id" required>
+                <mat-option *ngFor="let c of caftypeLst" [value]="c.caf_type_id">
+                  {{c.caf_type_nm}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Caf Type is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <span>
+              <div class="form-label">Core Service</div>
+            </span>
+            <span>
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-select placeholder="Select Core Service" (selectionChange)="selectedcresrvc()"
+                  formControlName="cre_srvce_id" matInput required>
+                  <mat-option *ngFor="let c of cresrvcslst" [value]="c">
+                    {{c.cre_srvce_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Core Service is required!</mat-error>
+              </mat-form-field>
+            </span>
+          </div>
+
+          <div fxFlex="25" fxFlex.xs="100" class="px-8">
+            <span>
+              <div class="form-label">Package Type</div>
+            </span>
+            <span>
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-select placeholder="Select Package Type" (selectionChange)="getSrvcs()" formControlName="srvcpk_type_id"
+                  matInput required>
+                  <mat-option *ngFor="let s of srvcpcktypelst" [value]="s.srvcpk_type_id">
+                    {{s.srvcpk_type_nm}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Package Type is required!</mat-error>
+              </mat-form-field>
+            </span>
+          </div>
+          <div fxFlex="25" fxFlex.xs="100" class="px-8 chkbxStles">
+            <mat-checkbox [(ngModel)]="isChecked" formControlName="glbl_in" >Globally
+              Available</mat-checkbox>
+          </div>
+        </div>
+        <div class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+          Add Service Packs
+          <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <span>
+              <div class="form-label">Service Packs</div>
+            </span>
+            <span>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Services" formControlName="srvcpk_id">
+                  <mat-option *ngFor="let s of srvcpcklst" [value]="s">
+                    {{s.srvcpk_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <span>
+              <div class="form-label">Charge Type</div>
+            </span>
+            <span>
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-select placeholder="Select Charge Type" formControlName="chrge_cde_id" matInput>
+                  <mat-option *ngFor="let c of chrgeTypLst" [value]="c">
+                    {{c.chrge_cde_dscn_tx}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Charge Amount</div>
+            <mat-form-field appearance="outline">
+              <input type="number" matInput formControlName="chrge_at">
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Tax Percentage </div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="tx_prcnt"required style="color: black;">
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8 addBTnStl">
+            <button mat-flat-button class="mat-raised-button gtDtls" aria-label="SAVE" (click)="addService()">
+              Add
+            </button>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill *ngIf="shwslctdsrvcs" class="nwPlnTble">
+          <table class="portSplitng mt-16">
+            <tr>
+              <th>Service Name</th>
+              <th>Charge Type</th>
+              <th>Core Service</th>
+              <th>Service Amount</th>
+              <th>Tax Amount</th>
+              <th>Total Amount</th>
+
+            </tr>
+            <tr *ngFor="let srv of srvcsLst let i=index">
+              <td *ngIf="srv.isActive">
+                {{srv.srvcpk_nm}}
+              </td>
+              <td *ngIf="srv.isActive">
+                {{srv.chrgTyp}}
+              </td>
+              <td *ngIf="srv.isActive">
+                {{srv.cre_srvce_nm}}
+              </td>
+              <td *ngIf="srv.isActive">
+                {{srv.chrge_at}}
+              </td>
+              <td *ngIf="srv.isActive">
+                {{srv.gst_at}}
+              </td>
+              <td *ngIf="srv.isActive">
+                {{srv.totamnt}}
+              </td>
+              <td *ngIf="srv.isActive">
+                <mat-icon class="logo-icon delbtncls" (click)="delbtn(srv)">delete_outline</mat-icon>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+      <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="center">
+          <button mat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"  *ngIf="editpckge"
+            (click)="savePackage()">
+            SAVE
+          </button>
+          <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE" *ngIf="!editpckge" [disabled]="!packageForm.valid"
+            (click)="savePackage()">
+            SAVE
+          </button>
+          <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8" aria-label="SAVE"
+            (click)="openSideBar1('addFormPanel',null,null)">
+            CANCEL
+          </button>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

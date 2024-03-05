@@ -1,0 +1,146 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <mat-tab-group (selectedTabChange)="firstChane($event)" class="remove-border-bottom">
+    <mat-tab>
+       <ng-template mat-tab-label>Customer Details3</ng-template>
+       <div class="m-24 ds-card p-16 mt-4">
+        <form class="form-horizontal" [formGroup]="cafFRm">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Mobile No</div>
+              <mat-form-field appearance="outline">
+                <input matInput formControlName="mobileno">
+              </mat-form-field>
+            </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">CAF</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="CAf">
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Aadhar</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="adhar">
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">IPTV</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="iptv">
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">ONU</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="onu">
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" style="justify-content: center;" fxLayout.xs="row" fxFlexFill>
+          <div>
+            <button mat-raised-button color='primary' class = "gtDtls" (click)="getDetails()">Get Details</button>
+          </div>
+          <div style="margin-left: 8px;">
+            <button mat-raised-button color='primary' class = "gtRsetDtls" (click)="Reset(cafFRm)">Reset</button>
+          </div>
+    
+        </div>
+       </form>
+    </div>
+    <ds-loading *ngIf="searchLoader"></ds-loading>
+    <div *ngIf="showTble" class="pt-0">
+     
+      <div class="ds-card m-12" style="padding: 16px;">
+        <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true"
+          [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+           style="width:100%" (onCellClick)="onCellClick($event)"  (onCellPrepared)="onCellPrepared(columnDefs,$event)">
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-search-panel [visible]="false" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Customers List"></dxo-export>
+          <dxo-filter-row [visible]="false"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [alignment]="f.algnmnt" [width]="f.width"  [filterOperations]="f.filterOperations" [allowFiltering]="f.filter"></dxi-column>
+          <!-- <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="profile"
+            cellTemplate="ViewTemplate">
+            <div *dxTemplate="let data of 'ViewTemplate'">
+              <div class="cursor-pointer tblPrfleBtn" (click)="onviewClick(data)">
+                Profile
+              </div>
+            </div>
+          </dxi-column> -->
+          <!-- <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="edit"
+            cellTemplate="EditTemplate" *ngIf="(permissions.updt_in==1)?true:false">
+            <div *dxTemplate="let data of 'EditTemplate'">
+              <div class="cursor-pointer tblEdtBtn" (click)="onCelleditClick(data)">
+                Edit
+              </div>
+            </div>
+          </dxi-column> -->
+        </dx-data-grid>
+    
+      </div>
+    </div>
+
+    <div class="m-12" *ngIf="shwPrflePge">
+      <ng-container>
+        <div fxLayout="column">
+          <div class="card">
+              <div class="card-body" *ngIf="cstmrData">
+                <!-- <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle" style="float:right">cancel</mat-icon> -->
+                <ds-customer-profile [cstmrData]="cstmrData"></ds-customer-profile>
+              </div>
+          </div>
+      </div>
+    </ng-container>
+    </div>
+  </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>Previous Search Customer Details</ng-template>
+      <div class="ds-card m-12" *ngIf="tableview == true">
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="frontJsonData" [remoteOperations]="false"
+          [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+          [showRowLines]="true" [showBorders]="true" style="width:100%">
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+          </dxo-export>
+          <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+          <dxi-column *ngFor="let f of previousSearchData" [visible]="!f.hide" [dataField]="f.field"
+            [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+          <!-- <dxo-paging [pageSize]="10"></dxo-paging>
+           <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager> -->
+
+        </dx-data-grid>
+      </div>
+      <!-- <div *ngIf="tableview == false" class="permMsg">
+        NO DATA
+      </div> -->
+      
+  <div class="ds-card m-12 p-4 font-weight-600 text-center slctGtDta" *ngIf="tableview == false"> 
+    NO DATA</div>
+
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+
+
+<!-- <************SIDEBAR*********> -->
+<!-- sidebar -->
+<!-- <ds-sidebar  class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+      <div fxLayout="column">
+        <div class="card">
+            <div class="card-body" *ngIf="cstmrData">
+              <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle" style="float:right">cancel</mat-icon>
+              <ds-customer-profile [cstmrData]="cstmrData"></ds-customer-profile>
+            </div>
+        </div>
+    </div>
+  </ng-container>
+</ds-sidebar> -->
+<!-- sidebar -->

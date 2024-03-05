@@ -1,0 +1,229 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <!-- <div fxLayout="row">
+    <div fxFlex="100">
+      <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+      <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        (click)="bckBtn()">
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+  </div> -->
+  <div class="header" fxLayout="row">
+    <div fxFlex="90" fxFlex.xs="90" class="px-8">
+      <h1>
+    <mat-icon class="logo-icon">people_outline</mat-icon>&nbsp;New Ticket
+  </h1>
+  </div>
+  <div fxFlex="10" fxFlex.xs="10" class="px-8">
+    <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+    (click)="backBtn()">
+    <span class="pt-2">Back</span>
+  </button>
+  </div>
+</div>
+  <div fxlayout="column" fxlayout.gt-sm="row" fxlayoutalign="start" fxlayoutalign.gt-sm="start start"
+    class="respRw devider-Horz">
+    <div class="widget" fxflex="100" fxflex.gt-sm="10" style="max-width: 10%; flex: 1 1 100%; box-sizing: border-box;"
+      class="content-start">
+    </div>
+
+    <div class="widget" fxflex="100" fxflex.gt-sm="80"
+      style="max-width: 80%; margin: auto; flex: 1 1 100%; box-sizing: border-box;" class="content-start">
+      <div class="m-8 ds-card p-4 mt-4">
+        <div class="mb-24" style="padding-top: 20px;">
+          <form fxLayout="column" [formGroup]="ticketFormGroup">
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex="50" fxFlex.xs="100" class="px-8" style="display: block !important;">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Customer Name<span
+                    class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <input type="text" matInput formControlName="cstmr_nm" required>
+                  <mat-error>Customer Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8" style="display: block !important;">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Customer Mobile<span
+                    class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <!-- <mat-label>Phone Number</mat-label> -->
+                  <input type="number" onKeyPress="if(this.value.length==10) return false;" matInput
+                    formControlName="req_usr_mbl" required>
+                  <mat-error>Mobile Number is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Category<span
+                    class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <mat-select formControlName="ctgry" required>
+                    <mat-option *ngFor="let c of cateogryLst" [value]="c.tckt_ctgry_id">
+                      {{c.tckt_ctgry_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Category is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Priority<span
+                    class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <mat-select formControlName="prty" required>
+                    <mat-option *ngFor="let p of priorityLst" [value]="p.prty_id">
+                      {{p.prty_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Priority is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- <div class="form-label textOverflowStyle form-sub-heading">Look up existing details</div> -->
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Team<span class="reqSgnColor">*</span>
+                </div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <mat-select formControlName="team" (selectionChange)="getUserByTeamId()" required>
+                    <mat-option *ngFor="let t of teamLst" [value]="t.tm_id">
+                      {{t.tm_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Team is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Assign To</div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <mat-select formControlName="asgn_usr">
+                    <mat-option *ngFor="let u of userLst" [value]="u.usr_id">
+                      {{u.usr_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- <div class="form-label textOverflowStyle form-sub-heading">Contact Details</div> -->
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Type<span class="reqSgnColor">*</span>
+                </div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <mat-select formControlName="type" required>
+                    <mat-option *ngFor="let t of typeLst" [value]="t.tckt_type_id">
+                      {{t.tckt_type_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Type is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <!-- <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Status<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <mat-select formControlName="status" required>
+                    <mat-option *ngFor="let s of statusLst" [value]="s.id">
+                      {{s.mnu_itm_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Status is required!</mat-error>
+                </mat-form-field> -->
+                <mat-label>
+                  <div class="lbl mndlTitle fw-500">Status<span class="reqSgnColor">*</span></div>
+                  <div class="lbl_cntnt mndalName" fxLayout="row" fxLayout.xs="column">
+                    <div fxFlex="90" fxFlex.xs="100" class="px-8" style="display: block !important;">
+                      <div>New</div>
+                    </div>
+                    <div fxFlex="10" fxFlex.xs="100" class="px-8" style="display: block !important;">
+                      <div>
+                        <span class="material-icons">
+                          lock
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+                </mat-label>
+              </div>
+              <!-- <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Email</div>
+        <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+          <input name="name" matInput formControlName="name">
+        </mat-form-field> -->
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">CAF</div>
+                <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+                  <input name="number" matInput formControlName="caf_id">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Description<span class="reqSgnColor">*</span>
+            </div>
+            <mat-form-field appearance="outline" fxFlex="100" style="background-color: white;">
+              <!-- <mat-label>Description</mat-label> -->
+              <textarea matInput formControlName="desc" required></textarea>
+              <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+            <!-- <div class="ds-card m-12 p-12"> -->
+            <!-- <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+              <div class="chsefle">
+                <div class="form-label">Add attachment</div>
+                <input type="file" id="file" accept=".xlsx, .xls, .csv, .png, .jpg, .jpeg"
+                  (change)="uploadedFile($event)" formControlName="app_icon" required>
+                <label for="file">Choose a file</label>
+              </div>
+            </div> -->
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+              <label class="form-label">Upload Image/Document
+                <!-- <span class="star" *ngIf="ticketFormGroup.get('app_icon').hasError('required')">*</span>
+                <span class="star_grn" *ngIf="!ticketFormGroup.get('app_icon').hasError('required')">*</span> -->
+              </label>
+              <div class="ds-plcholder">
+                <div *ngIf="imageUrl">
+                  <button type="submit" class="close" (click)="removeImg();">
+                    <span>-</span>
+                  </button>
+                  <img [src]="imageUrl">
+                  <div *ngIf="imageUrl">{{imgfilename}}</div>
+                  <!-- <img src="assets/images/settopbox/appstore/2020-07-21 (7).png"> -->
+                </div>
+               
+                <div *ngIf="!imageUrl">
+                  <label>
+                      <input (change)="uploadedFile($event)" type='file' id="imageUpload"  formControlName="app_icon" accept=".xlsx, .xls, .csv, .png, .jpg, .jpeg" style="display:none">
+
+                    <mat-icon _ngcontent-qri-c39=""
+                      class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color ds-plchdlr-icon"
+                      role="img" aria-hidden="true">add_a_photo</mat-icon>
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="text-align: right;">
+                <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color"
+                  [disabled]="ticketFormGroup.invalid" (click)="saveTicket()">Save</button>
+              </div>
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8" aria-label="SAVE"
+                  (click)="bckBtn()">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="widget" fxflex="100" fxflex.gt-sm="10" style="max-width: 10%; flex: 1 1 100%; box-sizing: border-box;"
+      class="content-start">
+
+    </div>
+  </div>
+
+  <!--</div> -->
+
+</div>

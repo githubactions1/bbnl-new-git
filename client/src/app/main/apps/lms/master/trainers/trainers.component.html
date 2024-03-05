@@ -1,0 +1,130 @@
+<div id="courses" class="page-layout simple fullwidth pageBackground">
+  <!-- HEADER -->
+  <!-- <div class="container header accent pghdrStyle text-center pt-16">
+    <h2 style="text-transform: uppercase">Trainers</h2>
+    
+    <button (click)='test()' mat-fab class="add-event-button mat-accent" aria-label="Add event" [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+      <mat-icon>add</mat-icon>
+    </button>
+    
+  </div> -->
+  <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+    <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt-10 font-size-16">
+      <div class="logo">
+        <mat-icon class="logo-icon mr-16">person</mat-icon>
+        <span class="logo-text h1 font-weight-600">
+          Trainers
+        </span>
+      </div>
+    </div>
+    <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%" class="mt-10 font-size-16">
+      <div class="header-top-line"></div>
+    </div>
+    <!-- ADD EVENT BUTTON -->
+    <button mat-fab class="add-event-button mat-accent" aria-label="Add event" (click)='addTrainer()' [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+      <mat-icon>add</mat-icon>
+    </button>
+    <!-- / ADD EVENT BUTTON -->
+  </div>
+
+  <div class="content">
+    <div fxLayout="column" fxLayoutAlign="center">
+      <div class="ds-card">
+        <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs"
+          [getRowHeight]="getRowHeight" (cellClicked)="onCellClick($event)" [pagination]="true"
+          [paginationPageSize]="15" [floatingFilter]="true" [suppressHorizontalScroll]="false"
+          (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </div>
+      <!-- <div class="row" style="margin: 40px;">
+      <div>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Select District</mat-label>
+          <mat-select placeholder="Select District" (selectionChange)="ulbLst($event)">
+            <mat-option *ngFor="let dst of distlst" [value]="dst.dstrt_id">{{dst.dstrt_nm}}</mat-option>
+          </mat-select>
+          <mat-error>District is required!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Select ULB's</mat-label>
+          <mat-select [formControl]="ulbs" placeholder="Select ULB" required>
+            <mat-option *ngFor="let ulb of ulbL" [value]="ulb.mndl_id">
+              {{ulb.mndl_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Ulb is required!</mat-error>
+        </mat-form-field>
+      </div>
+    </div> -->
+      <!-- <div fxLayout="row">
+      <div class="content  p-24 pb-56">
+        <ds-sidebar class="sidebar" name="contacts-main-sidebar" position="left" lockedOpen="gt-sm">
+          <div class="content" dsPerfectScrollbar>
+
+            <div class="content py-16" dsPerfectScrollbar>
+
+              <div class="nav material2">
+
+                <div class="nav-item trningLst" aria-label="inbox">
+                  <a class="nav-link" matRipple (click)="changeFilter(1)" [ngClass]="{'active accent':filterBy == 1}">
+                    <span class="title">Master Trainer</span>
+                  </a>
+                </div>
+                <div class="nav-item trningLst" aria-label="frequently contacted">
+                  <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy == 0}" (click)="changeFilter(0)">
+                    <div class="title">Trainer</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ds-sidebar>
+      </div>
+
+
+      <div class="content ">
+        <div class="row p-20">
+
+          <div class="row p-7"*ngFor="let trnr of  catTrngs"style="margin: 5px;">
+            
+              <mat-card class="example-card cardShadw">
+
+                <img src={{trnr.trnr_img_url}}
+                  alt="author" class="crd-img">
+                <div>
+                  <p class="pt-0 line-height-1.75 trnr-ttl-onl text-center font-weight-700 font-size-16">
+                    {{trnr.trnr_nm}}</p>
+                    <p class="pt-0 line-height-1.75 trnr-ttl-onl-desc text-center font-weight-500 font-size-12">
+                        {{trnr.trnr_mbl_num}}</p>
+                        <p class="pt-0 line-height-1.75 trnr-ttl-onl-desc text-center font-weight-500 font-size-12">
+                            {{trnr.trnr_email_id}}</p>
+                
+                  <div>
+                    
+
+                    <div class="trnr-actns-cntnr">
+
+                   
+
+                        <button class="btn" (click)="openstatus(trnr)">
+                          
+                          View</button>
+                        <button class="btn" (click)="edit(trnr)">
+                          
+                          Edit</button>
+                        <button  class="btn"
+                                (click)="delete(trnr)">
+                                delete</button>
+
+                      
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+            
+          </div>
+        </div>
+      </div>
+    </div> -->
+    </div>
+  </div>

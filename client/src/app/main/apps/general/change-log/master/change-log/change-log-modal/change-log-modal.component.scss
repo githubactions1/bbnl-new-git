@@ -1,0 +1,33 @@
+.log-mdl-hdr {
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+    padding-top: 0px;
+    font-size: 14px
+}
+
+.tbleHdr
+{
+    padding:8px;
+}
+
+// td:nth-child(odd) {
+//     color: red;
+//   }
+  
+//   td:nth-child(even) {
+//     color: blue;
+//   }
+
+  
+// tr:nth-child(odd) {
+//     background: red;
+//   }
+  
+  tr:nth-child(even) {
+    background: #f3fdff;
+  }
+
+  table
+  {
+      width:100%;
+  }

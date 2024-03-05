@@ -1,0 +1,517 @@
+.rw-css{
+    width: 96%;
+    margin-left: 2%;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x:scroll
+    // margin-top: 2%;
+}
+
+
+.cstmRprt
+{
+    margin:24px;
+}
+
+
+@media only screen and (min-width:320px) and (max-width:480px){
+    .cstmRprt
+{
+    margin:8px;
+}
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f0f5fb;
+}
+.tble-hdr{
+    font-size: 16px;
+    background-color: #1b75b6;
+    color: white;
+}
+.tbl-bdy{
+    font-size: 16px;
+}
+.mnhdr-cs{
+    font-size: 18px;
+    margin-bottom: 1%;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #d02518;
+    margin-left: 2%;
+    margin-top: 1%;
+
+}
+.hDRcS{
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 8px;
+    color: midnightblue;
+}
+
+.sbHdR
+{
+   text-align: center;;
+}
+
+.excelIcn{
+    width: 35px;
+    box-shadow: 2px 4px 36px 3px #f5f0f0;
+    cursor: pointer;
+ }
+ .c-form{
+    background: #fff;
+    padding: 1% 0.5%;
+    margin: 1%;
+    .input-row{
+        // padding: 2% 0% !important;
+        margin: auto !important;
+    }
+// .mat-form-field-appearance-outline .mat-form-field-outline {
+    
+//     color: rgb(245, 245, 245);
+//     background: rgba(245, 245, 245, 0.55);
+// }
+// .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    
+//     color: rgb(227, 235, 251) !important;
+//     background: rgb(243, 247, 255) !important;
+//     border-radius: 8px;
+// }
+}
+.loading-indicator {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .subHDRcS{
+    margin-top: 1%;
+    text-transform: capitalize;
+    font-size: 17px;
+    font-weight: 500;
+   // margin-left: 25%;
+    color: #de9941;
+}
+
+
+// fltrstyles
+
+
+// .mat-form-field
+// {
+//     width: 100%;
+//     padding: 2px 10px;
+// }
+
+.mat-form-field-underline {
+    height: 0px!important;
+}
+
+.fltrbrdr
+{
+    border: 1px solid #282a73;
+    background: white;
+    width: 50%;
+    margin: 0px auto;
+    box-shadow: 0 2px 9px 0 rgba(115, 143, 147, 0.4);
+
+}
+
+.fltrghtbrdr
+{
+    border-right: 1px solid #282a73;
+}
+
+
+.gtDtls
+{
+    // position: absolute;
+    transform: translateY(85%);
+    // background: midnightblue!important;
+    color: white!important;
+}
+.altrnte
+{
+    transform: translateY(100%);
+    // font-size: 20px;
+    font-weight: 500;
+    color: midnightblue;
+    position: relative; 
+    text-align: center;
+    padding-top: 10px;
+}
+
+@media only screen and (min-width:320px) and (max-width:480px){
+    .gtDtls
+{
+    transform: translateY(15%);
+}
+.altrnte
+{
+    transform: translateY(25%);
+    left:50%
+}
+}
+
+// .gtDtls{
+//     margin: auto;
+//     display: block;
+//     box-shadow: none!important;
+//     color: rgb(255, 255, 255)!important;
+//     background-color: transparent!important;
+//     padding-top: 6px;
+// }
+// .btnBg
+// {
+//     background: #282a73;
+// }
+
+.fltrbg
+{
+    background: white;
+    padding: 10px;
+    border-radius: 6px 6px 0px 0px;
+    // border: 1px solid #f1f1f1;
+    // border-radius: 0px 0px 35px 35px;
+    
+}
+.fltrsRw{
+    
+    background-image: linear-gradient(to bottom right, #f7c675, #b0dec8, #191970, #191970);
+// padding: 0px 0px 1px 0px;
+    padding: 1px 0px 0px 0px;
+    box-shadow: 0 0px 8px 0 rgba(178, 208, 212, 0.4);
+    border-radius: 4px;
+}
+
+.gridTop{
+    // background-image: linear-gradient(to bottom right, #f16136, #b7c2f9, #ef643c, #f35a2e);
+    // background-image: linear-gradient(to bottom right, #f7c675, #b0dec8, #191970, #191970);
+    padding: 1px 0px 0px 0px;
+    box-shadow: 0 0px 8px 0 rgba(178, 208, 212, 0.4);
+    border-radius: 4px;
+    margin: 24px;
+}
+.grid{
+    border-radius: 6px 6px 0px 0px;
+    background: white!important;
+}
+
+@media only screen and (min-width:320px) and (max-width:480px){
+    .gridTop{
+        margin: 0px;
+    }
+}
+
+// /* Spinner 2 */
+// .spinner-2:before {
+//     // content:"";
+//     // box-sizing: border-box;
+//     // position: absolute;
+//     // top: 50%;
+//     // left: 50%;
+//     // height: 80px;
+//     // width: 80px;
+//     // margin-top: -40px;
+//     // margin-left: -40px;
+//     // border-radius: 50%;
+//     // border: 3px solid transparent;
+//     // border-top-color: #009688;
+//     // border-bottom-color: #009688;
+//     // animation: spinner 0.7s ease infinite;
+
+
+//     content: "";
+//     box-sizing: border-box;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     height: 80px;
+//     width: 80px;
+//     margin-top: -35px;
+//     margin-left: -35px;
+//     border-radius: 50%;
+//     border: 5px solid #d2d2d2;
+//     border-top-color: #212684;
+//     border-bottom-color: #009688;
+//     -webkit-animation: spinner 0.7s ease infinite;
+//     animation: spinner 0.9s ease infinite;
+
+//   }
+
+//   @keyframes spinner {
+//     to {
+//       transform: rotate(360deg);
+//     }
+//   }
+//   Layer_1 {
+//     width: 100px;
+//       height: 100px;
+//   }
+  
+  .breadcrumb {
+	list-style-type: none;
+	padding: 0;
+}
+
+// li {
+// 	display: inline-block;
+// 	position: relative;
+// 		// Last child
+// 	&:last-child {
+// 		a {
+// 			cursor: default;
+// 		}
+		
+// 		&::before,
+// 		&::after {
+// 			background: #ffffc0;
+// 		}
+// 	}
+	
+// 	// :Hover
+// 	&:not(:last-child):hover {
+// 		&::before,
+// 		&::after {
+// 			background: lightsalmon;
+// 		}
+// 	}
+	
+// 	&::before,
+// 	&::after{
+// 		content: '';
+// 		position: absolute;
+// 		left: 0;
+// 		height: 50%;
+// 		width: 100%;
+// 		background: white;
+// 		border-left: 2px solid #666;
+// 		border-right: 2px solid #666;
+// 		z-index: -2;
+// 	}
+	
+// 	&::before {
+// 		top: -2px;
+// 		transform: skew(30deg);
+// 		border-top: 2px solid #666;
+// 	}
+	
+// 	&::after {
+// 		bottom: -2px;
+// 		transform: skew(-30deg);
+// 		border-bottom: 2px solid #666;
+// 	}
+// }
+
+// a {
+// 	display: inline-block;
+// 	position: relative;
+// 	line-height: 2.5;
+// 	padding: 0 20px;
+// 	color: #666;
+// 	text-decoration: none;
+// }
+
+// li {
+// 	&:first-child {
+// 		background-color: white;
+// 		border-left: 2px solid #666;
+// 		left: -5px;
+// 		box-sizing: content-box;
+
+// 		&:hover {
+//  			background-color: lightsalmon;			
+// 		}
+
+// 		&::before,
+// 		&::after {
+// 				left: 5px;
+
+
+// 			}
+// 		}
+// }
+
+
+
+
+
+// .breadcrumb styles
+.breadcrumb {
+	/*centering*/
+	display: inline-block;
+    // box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0px 14px 0 rgba(115, 143, 147, 0.23);
+	overflow: hidden;
+	border-radius: 5px;
+	/*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+    counter-reset: flag; 
+    // margin-left: 12px;
+    margin-bottom: 0px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.breadcrumb a {
+	text-decoration: none;
+	outline: none;
+	display: block;
+    float: left;
+    letter-spacing: .5px;
+	font-size: 12px;
+	line-height: 36px;
+	color: white;
+	/*need more margin on the left of links to accomodate the numbers*/
+	padding: 0 10px 0 60px;
+	background: #666;
+	background: linear-gradient(#666, #333);
+	position: relative;
+}
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.breadcrumb a:first-child {
+	padding-left: 46px;
+	border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+}
+.breadcrumb a:first-child:before {
+    left: 14px;
+    text-align: center;
+}
+.breadcrumb a:last-child {
+	border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+	padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumb a.active, .breadcrumb a:hover{
+	background: #333;
+	background: linear-gradient(#333, #000);
+}
+.breadcrumb a.active:after, .breadcrumb a:hover:after {
+	background: #333;
+	background: linear-gradient(135deg, #333, #000);
+}
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.breadcrumb a:after {
+	content: '';
+	position: absolute;
+	top: 0; 
+	right: -18px; /*half of square's length*/
+	/*same dimension as the line-height of .breadcrumb a */
+	width: 36px; 
+	height: 36px;
+	/*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+	length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+	if diagonal required = 1; length = 1/1.414 = 0.707*/
+	transform: scale(0.707) rotate(45deg);
+	/*we need to prevent the arrows from getting buried under the next link*/
+	z-index: 1;
+	/*background same as links but the gradient will be rotated to compensate with the transform applied*/
+	background: #666;
+	background: linear-gradient(135deg, #666, #333);
+	/*stylish arrow design using box shadow*/
+    
+    // box-shadow: 
+	// 	2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+    //     3px -3px 0 2px rgba(255, 255, 255, 0.1);
+        
+    box-shadow: 2px -2px 0 0px #f3daba, 3px -3px 0 2px rgba(255, 255, 255, 0.1);
+
+
+
+	/*
+		5px - for rounded arrows and 
+		50px - to prevent hover glitches on the border created using shadows*/
+	border-radius: 0 5px 0 50px;
+}
+/*we dont need an arrow after the last link*/
+.breadcrumb a:last-child:after {
+	content: none;
+}
+/*we will use the :before element to show numbers*/
+.breadcrumb a:before {
+	content: counter(flag);
+	counter-increment: flag;
+	/*some styles now*/
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	margin: 8px 0;
+	position: absolute;
+	top: 0;
+	left: 30px;
+	background: #444;
+	background: linear-gradient(#444, #222);
+	font-weight: bold;
+}
+
+
+.flat a, .flat a:after {
+	background: white;
+	color: black;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.flat a:before {
+	background: white;
+    box-shadow: 0 0 0 1px #ccc;
+    text-align: center;
+    color: #f16136;
+}
+.flat a:hover, .flat a.active, 
+.flat a:hover:after, .flat a.active:after{
+    // background: #9EEB62;
+    background: #f3daba;
+    color: #363779;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-decoration: none!important;
+    transition: none;
+}
+.rpt-nm-desc {
+    height: 60px; min-height: 60px; max-height: 60px;
+}
+.row-color {
+    color:blue;
+}
+.required-color {
+    color: red;;
+}
+
+// ::ng-deep .dx-datagrid-summary-item {
+//     color: rgba(51, 51, 51, 0.7);
+//     text-align: left !important;
+// }
+.counts-card-style{
+    // margin: 4% 5%;
+    border-radius: 6px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58,59,69,.15);
+}
+.card-border-left-green{
+    // border-left: .25rem solid #1cc88a!important;
+    border-top: 2px solid #a2ccc0!important;
+}
+.card-border-left-yellow{
+    // border-left: .25rem solid #f6c23e!important;
+    border-top: 2px solid #a2ccc0!important;
+}
+.card-border-left-blue{
+    // border-left: .25rem solid #4e73df!important;
+    border-top: 2px solid #a2ccc0!important;
+}
+.crdTxt{
+    font-size:13px ;
+    color: #735043;
+    padding-bottom:5px;
+}

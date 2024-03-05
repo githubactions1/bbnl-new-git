@@ -1,0 +1,183 @@
+<div class="page-layout blank infrastrectre pageBackground rlsPrmsnsCmpnt">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div class="p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between start">
+    <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" fxLayoutGap="20px"
+    class="mt-10 font-size-16">
+    <!-- <div fxLayout="row">
+      <div fxFlex="80"></div>
+      <div fxFlex="20">
+    <button mat-raised-button color="primary" (click)="opensideBar('addFormPanel',null)" style="float:right;" class = "addBtn-color mb-8">
+      <mat-icon class ="addfld-icon-color">business</mat-icon>
+      <span class="pt-2">&nbsp;Add Role</span>
+    </button>
+    </div>
+    </div> -->
+  <!-- <ag-grid-angular #agGrid style="width: 100%; height: 500px;margin-left: 1%;"
+    class="ag-theme-balham" [columnDefs]="columnDefs" [rowData]="roledta" [floatingFilter]="true"
+    [pagination]="true"[paginationPageSize]="10" [rowSelection]="rowSelection" (cellClicked)="onCellClick($event)" [paginationPageSize]="paginationPageSize"
+    [suppressHorizontalScroll]="false" [getRowHeight]="getRowHeight">
+  </ag-grid-angular> -->
+  <div class="ds-card m-12" *ngIf="(user.permissions.slct_in==1)?true:false">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="roledta" [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+        style="width:100%" (onToolbarPreparing)="(user.permissions.insrt_in==1)?onToolbarPreparing($event):false">
+        <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+          <!-- or "select" -->
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Roles And Permessions"></dxo-export>
+        <div>button</div>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [alignment]="f.alignment" [width]="f.width" [allowResizing]="true" ></dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="tblEdtBtn cursor-pointer" (click)="onCellClick(data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit Permissions" cellTemplate="editPrmTemplate">
+          <div *dxTemplate="let data of 'editPrmTemplate'">
+            <div class="tblEdtBtn cursor-pointer" (click)="onCellClick(data)">
+              Edit Permissions
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="100" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="tblDelBtn cursor-pointer" (click)="onCellClick(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column>
+      </dx-data-grid>
+</div>
+
+    </div>
+</div>
+<ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container *ngIf="!permismdl">
+    <div fxLayout="column" fxLayoutAlign="space-between center">
+      <mat-toolbar class="side-bar-header-color">
+        <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+          class="w-100-p">
+          <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+            <span> Add New Role</span>
+          </div>
+          <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class = "text-right">
+            <span>
+              <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null)" class="closeSidebar">cancel
+              </mat-icon>
+            </span>
+          </div>
+        </div>
+      </mat-toolbar>
+      <form [formGroup]="RolesForm" style="width:80%" class = "mt-12">
+            
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div class="form-label">Enter Role Name</div>
+          <mat-form-field appearance="outline" [hideRequiredMarker]="RolesForm.value.hideRequired" fxFlex>
+            <!-- <mat-label>Role Name</mat-label> -->
+            <input name="name" formControlName="rle_nm" matInput required/>
+            <mat-error *ngFor="let validation of account_validation_messages.rolename">
+              <mat-error *ngIf="RolesForm.get('rle_nm').hasError(validation.type) && (RolesForm.get('rle_nm').dirty || RolesForm.get('rle_nm').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+        </div>
+        <p style="color: red;">{{this.err_msg}}</p>
+
+        <div fxLayout="column" fxLayoutAlign="start start">
+            <div class="form-label">Enter Role Description</div>
+          <mat-form-field appearance="outline" fxFlex [hideRequiredMarker]="RolesForm.value.hideRequired">
+                <!-- <mat-label>Role Description</mat-label> -->
+                <textarea matInput placeholder="Role Description" formControlName="rle_dscn_nm"></textarea>
+            </mat-form-field>
+        </div>
+      </form>
+    <div class="m-0 p-16" fxLayout="row"  fxLayoutAlign="end center">
+
+      <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="deleteRle">  
+      <button  mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete" matTooltip="Delete" (click)="saveRole()">
+        DELETE
+      </button>
+      </div>
+
+      <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="!deleteRle">  
+      <button  mat-flat-button type="submit" class="mat-raised-button w-100-p saveBtn-color" [disabled]="RolesForm.invalid"
+         aria-label="SAVE" (click)="saveRole()">
+        SAVE
+      </button>
+      </div>
+
+
+      <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">       
+        <button  mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8"
+        aria-label="SAVE" (click)="opensideBar('addFormPanel',null)">
+       CANCEL
+      </button>
+      </div>
+
+  </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="permismdl">
+  <mat-toolbar class="side-bar-header-color">
+    <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+      class="w-100-p">
+      <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+        <span>Permessions</span>
+      </div>
+      <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+        <span>
+          <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null)" class="closeSidebar">cancel
+          </mat-icon>
+        </span>
+      </div>
+    </div>
+  </mat-toolbar>
+      <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Standard Permessions</div>
+<table>
+  <tr><th></th><th>Read</th><th>Write</th><th>Update</th><th>Delete</th><th>Export</th></tr>
+  <tr *ngFor="let obj of rlepermdta">
+    <td><p class="pmdlcs">{{obj.objct_nm}}</p></td>
+    <td><mat-checkbox [(ngModel)]="obj.slct_in"></mat-checkbox></td>
+    <td><mat-checkbox [(ngModel)]="obj.insrt_in"></mat-checkbox></td>
+    <td><mat-checkbox [(ngModel)]="obj.updt_in"></mat-checkbox></td>
+    <td><mat-checkbox [(ngModel)]="obj.dlte_in"></mat-checkbox></td>
+    <td><mat-checkbox [(ngModel)]="obj.exprt_in"></mat-checkbox></td>
+  </tr>
+</table>
+
+  <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Special Permessions</div>
+  <mat-list>
+    <mat-list-item *ngFor="let spl of splpermdta"> 
+      <p>{{spl.objct_nm}}</p>&nbsp;&nbsp;&nbsp;&nbsp;<mat-checkbox [(ngModel)]="spl.spcl_prmsns_in"></mat-checkbox>
+      </mat-list-item>
+      </mat-list>
+      <div class="m-0 p-16" fxLayout="row"  fxLayoutAlign="end center">
+        <button *ngIf="!deleteRle" mat-flat-button type="submit" class="mat-raised-button w-30-p saveBtn-color" aria-label="SAVE" (click)="createPermson()">
+        SAVE
+        </button>
+          </div>
+</ng-container>
+</ds-sidebar>
+
+</div>

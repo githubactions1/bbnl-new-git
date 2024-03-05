@@ -1,0 +1,184 @@
+<div class="page-layout blank usrEmplye pageBackground usrAcntCmpnt">
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <ds-loading *ngIf="loading"></ds-loading>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div class="ds-card m-12" *ngIf="permissions">
+    <div class="p-4" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+      fxLayoutAlign.gt-xs="space-between start">
+        <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" style="max-width:100%" [allowColumnResizing]="true">
+          <!-- <dxo-selection mode="single"></dxo-selection> -->
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select">
+            <!-- or "select" -->
+          </dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="LMO Details"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [width]="f.width" [alignment]="f.alignment" [allowResizing]="true"
+            [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+            <dxi-column [showInColumnChooser]="false" type="buttons"
+            [width]="100" caption="Profile" cellTemplate="prfleTemplate">
+            <div *dxTemplate="let data of 'prfleTemplate'">
+              <div class="cursor-pointer tblPrfleBtn" (click)="onCellViewClick(data)">
+                Profile
+              </div>
+            </div>
+          </dxi-column>
+            <dxi-column [showInColumnChooser]="false" type="buttons"
+            [width]="100" caption="View" cellTemplate="viewTemplate">
+            <div *dxTemplate="let data of 'viewTemplate'">
+              <div class="cursor-pointer tblVwBtn" (click)="onCellClick('view',data)">
+                View
+              </div>
+            </div>
+          </dxi-column>
+          <dxi-column [showInColumnChooser]="false" type="buttons"
+          [width]="100" caption="ADD Substation" cellTemplate="ADDSubstation">
+          <div *dxTemplate="let data of 'ADDSubstation'">
+            <div class="cursor-pointer tblVwBtn" (click)="onADD(data)">
+              add Substation
+            </div>
+          </div>
+        </dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+            [width]="100" caption="Edit" cellTemplate="editTemplate">
+            <div *dxTemplate="let data of 'editTemplate'">
+              <div class="cursor-pointer tblEdtBtn" (click)="onCellClick('edit',data)">
+                Edit
+              </div>
+            </div>
+          </dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+            [width]="100" caption="Delete" cellTemplate="delTemplate">
+            <div *dxTemplate="let data of 'delTemplate'">
+              <div class="cursor-pointer tblDelBtn" (click)="deleteLmo(data)">
+                Delete
+              </div>
+            </div>
+          </dxi-column>
+        </dx-data-grid>
+    </div>
+  </div>
+</div>
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container  *ngIf="sidebar">
+    <ds-loading *ngIf="pageLdr"></ds-loading>
+    <div fxLayout="column">
+      <div>
+        <div class="card-header crdHdng">ADD Substation
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+            cancel</mat-icon>
+        </div>
+        <div class="card-body" fxLayout.lt-md="column" fxLayout.xs="column">
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+              <p class="sdHdrTxt">ADD Substation</p>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">state Name</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(value)]="steID" (selectionChange)="getDistricts(steID)" required>
+                  <mat-option *ngFor="let s of ste_lst" [value]="s.ste_id">
+                    {{s.ste_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+           
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">District Name</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(value)]="distId" (selectionChange)="getMandals(distId)" required>
+                  <mat-option *ngFor="let d of dstrt_lst" [value]="d.dstrt_id">
+                    {{d.dstrt_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">Mandal Name</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(value)]="mndlID" (selectionChange)="getVillages(mndlID)" required>
+                  <mat-option *ngFor="let m of mndl_lst" [value]="m.mndl_nu">
+                    {{m.mndl_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">Village Name</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(value)]="VlgeID" (selectionChange)="getpop(VlgeID)" required>
+                  <mat-option *ngFor="let v of vlge_lst" [value]="v.vlge_id">
+                    {{v.vlge_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">sub-station Name</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(value)]="subID"  required>
+                  <mat-option *ngFor="let p of pop_lst" [value]="p.sbstn_id">
+                    {{p.sbstn_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+           
+          </div>
+          <div fxLayout="row" fxLayout.xs="row"  class ="btnStles">
+            <div fxFlex.gt-lg="20%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%"  fxFlex.xs="0"></div>
+          <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"  fxFlex.xs="50" class="px-8" >
+            <button mat-raised-button type="submit" class="saveBtn-color updtClseBtn" aria-label="SAVE"
+              (click)="update()"*ngIf="this.subID > 1 " >
+              UPDATE
+            </button>
+            <button mat-raised-button type="submit" class="updtClseBtn" aria-label="SAVE" [disabled]="true"
+            *ngIf="this.subID <1 ">
+            UPDATE
+          </button>
+          </div>
+          <!-- <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"  fxFlex.xs="50" class="px-8" *ngIf="iptvView != true">
+            <button mat-raised-button type="submit" class="saveBtn-color updtClseBtn" aria-label="SAVE"
+            (click)="update()"  *ngIf="this.reason.length>0 && this.comment.length>0 && this.onuData.length>0">
+            UPDATE
+          </button>
+          <button mat-raised-button type="submit" class="updtClseBtn" aria-label="SAVE" [disabled]="true"
+           *ngIf="this.reason.length==0 || this.comment.length==0 || this.onuData.length==0">
+          UPDATE
+        </button>
+          </div> -->
+        
+         
+          <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"  fxFlex.xs="50" class="px-8">
+            <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBar()" class="updtClseBtn" >
+              CANCEL
+            </button>
+          </div>
+          <div fxFlex.gt-lg="20%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%"  fxFlex.xs="0"></div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

@@ -1,0 +1,91 @@
+<div class="page-layout simple tabbed">
+<div class="header accent p-16" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-xs="row"
+fxLayoutAlign.gt-xs="space-between center">
+<div fxLayout="row" fxLayoutAlign="start center">
+  <button mat-icon-button class="sidebar-toggle mr-12" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon class="logo-icon mr-16">settings
+    </mat-icon>
+    <span class="logo-text h1">
+    Profiles
+    </span>
+  </div>
+</div>
+<div class="ml-sm-32" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+  <div class="search-wrapper mt-16 mt-sm-0">
+    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>search</mat-icon>
+      <input (keyup)="applyFilter($event.target.value)" placeholder="Search Filter">
+    </div>
+  </div>
+</div>
+</div>
+<!-- <mat-grid-list cols="3" style="margin-top:9%;height:auto">
+  <mat-grid-tile *ngFor="let p of finalPrfledata">
+      <mat-grid-list cols="12">
+          <mat-grid-tile [colspan]="10" class="pfnm">{{p.prfle_nm}}</mat-grid-tile>
+          <mat-grid-tile [colspan]="2"><button mat-raised-button color="primary" class="addbtn" (click)="add(p)">+</button>
+          </mat-grid-tile>
+      </mat-grid-list>
+  <mat-list role="list" style="margin-top: 10%;width: 100%;">
+      <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let m of p.mnu_itms">
+    <mat-list-item role="listitem"   class="example-box" *ngIf="m.dsble_in == 0" cdkDrag>{{m.mnu_itm_nm}}
+    </mat-list-item>
+  </div>
+  </div>
+  <div class="example-button-row">
+  </div>
+  </mat-list>
+</mat-grid-tile>
+</mat-grid-list> -->
+
+    <div fxLayout="row" fxLayoutAlign="left center" class="row-example m-24">
+        <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="33%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" *ngFor="let p of prfledata; let i = index">
+          <div fxLayout="row" fxLayoutAlign="left center" class="message-box info">
+            <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%">
+                <div class="font-size-18 font-weight-700 ds-black--fg">{{p.mnu_prfle_nm}}</div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="text-right">
+                <mat-icon _ngcontent-ynp-c46="" class="s-24 mat-icon notranslate material-icons mat-icon-no-color accent-900-fg" 
+                role="img" aria-hidden="true" (click)="openDialog()">add_box</mat-icon>
+            </div>
+        </div>
+            <mat-list role="list">
+                <div class="example-list">
+                <div *ngFor="let m of p.mnu_itms">
+                    <mat-list-item role="listitem"   class="example-box" *ngIf="m.dsble_in == 0">{{m.mnu_itm_nm}}
+                    </mat-list-item>
+                </div>
+                </div>
+            </mat-list>
+        </div>
+    </div>
+
+
+<!-- <mat-card class="mtcrd" *ngFor="let p of prfledata; let i = index">
+  <mat-card-content class="totContent">
+    <p class="ptxt">{{p.mnu_prfle_nm}}</p>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of p.mnu_itms; let i = index">{{item.mnu_itm_nm}}</mat-list-item>
+    </mat-list> -->
+
+
+    <!-- <mat-grid-list cols="4" rowHeight="3:1" class="totList">
+      <mat-grid-tile *ngFor="let item of p.mnu_itms; let i = index">
+        <div class="icontxt">
+          <span class="hmtxt">{{item.mnu_itm_nm}}</span>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list> -->
+  <!-- </mat-card-content>
+</mat-card> -->
+</div>

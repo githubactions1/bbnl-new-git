@@ -1,0 +1,15 @@
+<div id="overlay" *ngIf="showNtf ==true">
+
+  <div class="container custom_strip p-16 hdr-l" fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+      <div fxFlex="0 1 calc(10% - 0.5%)" fxFlex.lt-md="0 1 calc(10% - 0.5%)" fxFlex.lt-sm="10%"  class="hdr-r">
+        </div>
+    <div fxFlex="0 1 calc(70% - 0.5%)" fxFlex.lt-md="0 1 calc(60% - 0.5%)" fxFlex.lt-sm="60%"  class="hdr-l">
+      <h1><span><img *ngIf="!ntfctn.icn_img" src="https://img.icons8.com/plasticine/80/000000/error.png" class="l-img"><img *ngIf="ntfctn.icn_img" src="{{ntfctn.icn_img}}" class="l-img"></span>&nbsp;&nbsp;{{ntfctn.alert_tx}}</h1>
+    </div>
+    <div fxFlex="0 1 calc(10% - 0.5%)" fxFlex.lt-md="0 1 calc(20% - 0.5%)" fxFlex.lt-sm="20%"  class="hdr-r">
+      <p (click)="close('1')"><i class="material-icons">close</i></p>
+    </div>
+    <div fxFlex="0 1 calc(10% - 0.5%)" fxFlex.lt-md="0 1 calc(10% - 0.5%)" fxFlex.lt-sm="10%"  class="hdr-r">
+      </div>
+    </div>
+</div>

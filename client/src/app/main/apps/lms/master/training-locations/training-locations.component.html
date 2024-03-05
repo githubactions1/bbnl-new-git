@@ -1,0 +1,168 @@
+<div id="courses" class="page-layout simple fullwidth pageBackground">
+    <!-- HEADER -->
+    <!-- <div class="container header accent pghdrStyle text-center pt-16">
+        <h2 style="text-transform: uppercase"> Training Venue Locations </h2>
+        
+        <button mat-fab class="add-event-button mat-accent" aria-label="Add event"
+            [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+            <mat-icon>add</mat-icon>
+        </button>
+        
+    </div> -->
+    <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+        <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt-10 font-size-16">
+          <div class="logo">
+            <mat-icon class="logo-icon mr-16">location_on</mat-icon>
+            <span class="logo-text h1 font-weight-600">
+                Training Venue Locations
+            </span>
+          </div>
+        </div>
+        <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%" class="mt-10 font-size-16">
+          <div class="header-top-line"></div>
+        </div>
+        <!-- ADD EVENT BUTTON -->
+        <button mat-fab class="add-event-button mat-accent" aria-label="Add event" (click)='addVenue()' [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+          <mat-icon>add</mat-icon>
+        </button>
+        <!-- / ADD EVENT BUTTON -->
+      </div>
+    <!-- <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+    fxLayoutAlign.gt-xs="space-between center">
+    <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="mt-10 font-size-16">
+      <div class="logo">
+        <mat-icon class="logo-icon mr-16">location_on</mat-icon>
+        <span class="logo-text h1 font-weight-600">
+            Training Venue Locations
+        </span>
+      </div>
+    </div>
+    <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%" class="mt-10 font-size-16">
+      <div class="header-top-line"></div>
+    </div>
+    ADD EVENT BUTTON
+    <button mat-fab class="add-event-button mat-accent" aria-label="Add event" (click)='addVenue()' [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+        <mat-icon>add</mat-icon>
+      </button>
+   
+/ ADD EVENT BUTTON
+  </div>
+   -->
+<!-- <div class="content p-24">
+
+    <div fxLayout="column" fxLayoutAlign="center">
+
+        <div class="filters" fxLayout="column" fxLayoutAlign="flex-end" fxLayout.gt-xs="row"
+            fxLayoutAlign.gt-xs="flex-end center">
+
+            <mat-form-field appearance="outline" floatLabel="always" class="course-search">
+                <mat-label>Select District</mat-label>
+                <mat-select [(ngModel)]="dstrct" (selectionChange)="dstrChangd(dstrct)">
+                    <mat-option [value]="'all'">
+                        All
+                    </mat-option>
+                    <mat-option *ngFor='let drt of dstLst' [value]="drt.dstrt_id">
+                        {{ drt.dstrt_nm }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="category-selector ml-8">
+                <mat-label>Select Mandal/UlB</mat-label>
+                <mat-select [(ngModel)]="mndal" (selectionChange)="mndalchgd(mndal)">
+                    <mat-option [value]="'all'">
+                        All
+                    </mat-option>
+                    <mat-option *ngFor='let mndl of mndLst' [value]="mndl.mndl_id">
+                        {{ mndl.mndl_nm }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <div *ngIf="NoDtFound==true">No Data Found</div>
+        <div class="content  w-100-p ">
+          <div fxLayout="row wrap" class="p-12">
+            
+
+              <div fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="ebt m-4"
+                  *ngFor="let vnu of  VnsLst">
+                  <mat-card class="example-card cls-trng cardShadw">
+
+
+                      <div fxLayout="column">
+                          <p class="pt-8   m-0 crs-ttl text-center font-weight-700 font-size-16">
+                              {{vnu.trng_vnu_nm}}</p>
+                      
+                          <div class="divider">
+                              <p class="divider-cntnt"></p>
+                          </div>
+                          <div fxLayout="row" class="mt-12">
+                              <p fxLayout="row" class="pt-0 pl-8 cnt-txt   m-0 font-size-12">
+                                  <mat-icon class="mr-4 font-size-16">calendar_today</mat-icon>
+                                  Total VenueCapacity :
+                              </p>
+                              <p class="pt-0   m-0  font-size-12">
+                                  {{vnu.trng_vnu_cpsty_ct}}</p>
+                          </div>
+                          <div fxLayout="row">
+                              <p fxLayout="row" class="pt-0 pl-8 cnt-txt  m-0 font-size-12">
+                                  <mat-icon class="mr-4 font-size-16">supervisor_account</mat-icon>
+                                 Venue Mobile No:
+                              </p>
+                              <p class="pt-0   m-0 font-size-12">
+                                 {{vnu.trng_vnu_mble_nu}}</p>
+                          </div>
+                          <div fxLayout="row" class="text-center">
+                              <div fxLayout="column" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                                  fxFlex.gt-xs="50%" class="ebt m-4">
+                                  <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">District Name</p>
+                                  <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">{{vnu.dstrt_nm}}</p>
+                              </div>
+                              <div fxFlex.gt-md="50%" fxLayout="column" fxFlex.gt-sm="50%"
+                                  fxFlex.gt-xs="50%" class="ebt m-4">
+                                  <p class="pt-0 pl-8 m-0   font-size-12">Mandal Name</p>
+                                  <p class="pt-0 pl-8 m-0 font-size-12">{{vnu.mndl_nm}}</p>
+                              </div>
+                          </div>
+                          <div>
+
+
+                              <div class="crs-actns-cntnr">
+
+                                  <div class="crs-actns">
+                                      <button class="btn" ><i
+                                          class="fa fa-play-circle"></i>Edit</button>
+                                     
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </mat-card>
+              </div>
+
+
+          </div>
+
+      </div>
+
+    </div>
+
+</div> -->
+<div class="content">
+    <div fxLayout="column" fxLayoutAlign="center">
+        <div class="ds-card">
+            <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs"
+                [getRowHeight]="getRowHeight" (cellClicked)="onCellClick($event)" [pagination]="true" 
+                [paginationPageSize]="15" [floatingFilter]="true" [suppressHorizontalScroll]="false"
+                (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
+        </div>
+    </div>
+    <button mat-fab class="add-event-button mat-accent" aria-label="Add event" (click)='addVenue()' [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+        <mat-icon>add</mat-icon>
+      </button>
+</div>
+</div>

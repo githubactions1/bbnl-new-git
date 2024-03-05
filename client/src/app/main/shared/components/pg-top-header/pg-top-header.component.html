@@ -1,0 +1,37 @@
+<!-- <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+        fxLayoutAlign.gt-xs="space-between center">
+        <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="mt-10 font-size-16">
+          <div class="logo">
+            <mat-icon class="logo-icon mr-16">{{headerDtls.icon}}</mat-icon>
+            <span class="logo-text h1 font-weight-600">
+              {{headerDtls.title}}
+            </span>
+          </div>
+        </div>
+        <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%" class="mt-10 font-size-16">
+          <div class="header-top-line"></div>
+        </div>
+</div> -->
+
+
+<div class="header p-8" fxLayout="row" *ngIf="!shwreport">
+  <div fxFlex.xl="95" fxFlex.lg="90" fxFlex.md="90" fxFlex.sm="90" fxFlex.xs="90" class="l-h">
+    <h1>
+      <mat-icon class="logo-icon">{{headerDtls.icon}}</mat-icon>&nbsp;{{headerDtls.title}}
+    </h1>
+  </div>
+</div>
+
+<div class="header p-16" fxLayout="row" *ngIf="shwreport" style="padding: 7px 19px !important;">
+  <div fxFlex.xl="95" fxFlex.lg="90" fxFlex.md="90" fxFlex.sm="90" fxFlex.xs="90" class="l-h">
+    <h1>
+      <mat-icon class="logo-icon">{{headerDtls.icon}}</mat-icon>&nbsp;{{headerDtls.title}}
+    </h1>
+    <span style="padding-left:40px;font-weight: 400;" >{{headerDtls.desc}}</span>
+  </div>
+  <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="10" fxFlex.sm="10" fxFlex.xs="10" class="l-h" style="        padding-top: 14px;" >
+    <button (click)="gotoReports()" mat-mini-fab class="reports topbtnClor" matTooltip="Back to reports!"
+    matTooltipClass="example-tooltip-red"style = "font-size: 18px;"><i class="fas fa-chart-line"></i></button>
+  </div>
+
+</div>

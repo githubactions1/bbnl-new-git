@@ -1,0 +1,182 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="ds-card m-12" *ngIf="permissions">
+    <ds-loading *ngIf="shwLdr"></ds-loading>
+    <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+      [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+      [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" style="width:100%">
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+      </dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+        fileName="Package Plan"></dxo-export>
+      <dxo-filter-row [visible]="false"></dxo-filter-row>
+      <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [width]="f.width" [allowResizing]="true" [alignment]="f.alignment" [allowFiltering]="f.filter"
+        [format]="{type:f.type,currency:f.currency, precision:f.precision}" [allowHeaderFiltering]="f.columnFiltering">
+      </dxi-column>
+      <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+        [width]="100" caption="Edit" cellTemplate="editTemplate">
+        <div *dxTemplate="let data of 'editTemplate'">
+          <div class="tblEdtBtn " (click)="onCellClick(data)">
+            Edit
+          </div>
+        </div>
+      </dxi-column>
+      <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+        [width]="100" caption="Delete" cellTemplate="delTemplate" [allowResizing]="true">
+        <div *dxTemplate="let data of 'delTemplate'">
+          <div class="tblDelBtn " (click)="onCellClick(data)">
+            Delete
+          </div>
+        </div>
+      </dxi-column>
+
+    </dx-data-grid>
+
+  </div>
+</div>
+<ds-sidebar class="form-panel myPrfleSidebar ds-form-sidebar" name="addFormPanel" position="right"
+  [invisibleOverlay]="false">
+  <ng-container>
+    <div class="fuse-card usrcrteCrd" id="scrollTop">
+      <!-- <div class="card"> -->
+      <div class="card-header crdHdng">Customers
+        <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel
+        </mat-icon>
+      </div>
+
+      <form fxLayout="column" [formGroup]="firstFormGroup" class="m-24">
+        <ng-template matStepLabel>Add Customer</ng-template>
+        <mat-divider></mat-divider>
+        <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Customer Information</div>
+        <mat-divider style="margin-bottom: 13px;"></mat-divider>
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter first Name</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Latitude</mat-label> -->
+              <input matInput formControlName="firstName">
+              <!-- <mat-error>Last Name is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">contact Person Name</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Longitude</mat-label> -->
+              <input matInput formControlName="cnt_nm">
+              <!-- <mat-error>Mobile Number is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+
+        </div>
+
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter Mobile Number*</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Mobile Number</mat-label> -->
+              <input type="number" matInput formControlName="mobileNumber" required
+                onKeyPress="if(this.value.length==10) return false;">
+              <!-- <mat-error>Mobile Number is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter Email</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Email</mat-label> -->
+              <input matInput formControlName="email">
+              <!-- <mat-error>Last Name is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter District Name</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Aadhaar No</mat-label> -->
+              <input matInput formControlName="dstrt_nm" required>
+              <!-- <mat-error>District Name is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Mandal Name</div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Aadhaar No</mat-label> -->
+                <input matInput formControlName="mndl_nm" required>
+                <!-- <mat-error>District Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter Village Name</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Aadhaar No</mat-label> -->
+              <input matInput formControlName="vlge_nm" required>
+              <!-- <mat-error>District Name is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Lmo code</div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Aadhaar No</mat-label> -->
+                <input matInput formControlName="lmo_cd" required>
+                <!-- <mat-error>District Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Enter OLT Location</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Aadhaar No</mat-label> -->
+              <input matInput formControlName="olt_loc" required>
+              <!-- <mat-error>District Name is required!</mat-error> -->
+            </mat-form-field>
+          </div>
+
+        </div>
+
+
+
+        <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="deleteCstmr"
+            style="text-align: right;">
+            <button mat-button class="mat-raised-button deleteBtn-color" aria-label="Delete" matTooltip="Delete"
+              (click)="saveCustomer()">
+              DELETE
+            </button>
+          </div>
+
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="!deleteCstmr"
+            style="text-align: right;">
+            <button mat-flat-button type="submit" class="mat-raised-button saveBtn-color"
+              [disabled]="firstFormGroup.invalid" aria-label="SAVE" (click)="saveCustomer()" style="width: 20%;">
+              SAVE
+            </button>
+          </div>
+
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+            <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8" aria-label="SAVE"
+              (click)="opensideBar('addFormPanel',null)">
+              CANCEL
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- </div> -->
+  </ng-container>
+</ds-sidebar>

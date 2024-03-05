@@ -1,0 +1,77 @@
+<div class="page-layout simple pageBackground prtAsgnCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <!-- <div class="ds-card m-12 p-16" *ngIf="shwFltrDiv">
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+      <div class="form-label">CAF Aadhaar Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="reaadharnumber" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+      <p class="orTxtColor mt-36">-OR-</p>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+      <div class="form-label">CAF Mobile Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="remobilenumber" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+      <p class="orTxtColor mt-36">-OR-</p>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%" fxFlex.gt-xs="17%" class="px-8">
+      <form fxLayout="column" [formGroup]='lmoPymntsForm'>
+        <div class="form-label">LMO Code</div>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto"
+            formControlName="lmoCode">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+            <ng-container *ngIf="!isLoading">
+              <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+              </mat-option>
+            </ng-container>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <div fxFlex="17" fxFlex.xs="100" class="px-8 m-28">
+      <button mat-raised-button color="primary" (click)="getCafTrmndDtls();" class="gtDtls">GET DETAILS</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="ds-card m-12 p-16 font-weight-600 text-center" *ngIf="!shwTbl && shwFltrDiv">Please Select the Above to get Data</div> -->
+  <ds-loading *ngIf="shwLdr"></ds-loading>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div class="ds-card m-12">
+    <div class="p-16" *ngIf="permissions">
+      <dx-data-grid id="gridContainer" [dataSource]="agntTrmndCafLst" [remoteOperations]="false"
+        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+        [showBorders]="true" style="width:100%" (onToolbarPreparing)="onToolbarPreparing($event)">
+        <dxo-selection mode="single"></dxo-selection>
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName=" CAF Termination" ></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of agntTrmndCafLstColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+          [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter"></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>
+
+
+<!-- sidebar -->
+<!-- <ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    
+  </ng-container>
+</ds-sidebar> -->
+<!-- sidebar -->

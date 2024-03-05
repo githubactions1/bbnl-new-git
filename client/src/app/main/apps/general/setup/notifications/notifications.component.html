@@ -1,0 +1,111 @@
+<div class="page-layout blank infrastrectre pageBackground ntfctnCmpnt">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+      <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+<div fxLayout="row">
+        <div fxFlex="70"></div>
+        <div fxFlex="30" style="width: 28%!important">
+    <button mat-raised-button color="primary" (click)="opensideBar('addFormPanel',null)" style="float:right;" class = "addBtn-color mb-8">
+      <mat-icon class ="addfld-icon-color">business</mat-icon>
+      <span class="pt-2">&nbsp;Alert Subscribe</span>
+    </button>
+    </div>
+    </div>
+    <div class="p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between start">
+      <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" fxLayoutGap="20px"
+      class="mt-10 font-size-16">
+    <ag-grid-angular #agGrid style="width: 100%; height: 500px;margin-left: 1%;"
+      class="ag-theme-balham" [columnDefs]="columnDefs" [rowData]="usersubdt" [floatingFilter]="true"
+      [pagination]="true"[paginationPageSize]="10" [rowSelection]="rowSelection" (cellClicked)="onCellClick($event)" [paginationPageSize]="paginationPageSize"
+      [suppressHorizontalScroll]="false" [getRowHeight]="getRowHeight">
+    </ag-grid-angular>
+  
+      </div>
+  </div>
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+    <ng-container>
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-toolbar class="side-bar-header-color">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+            class="w-100-p">
+            <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <span>Alerts Subscriptions</span>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="text-right">
+              <span>
+                <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null)" class="closeSidebar">cancel
+                </mat-icon>
+              </span>
+            </div>
+          </div>
+        </mat-toolbar>
+
+          <form [formGroup]="formnoft" style="width:80%" class = "mt-12">
+            
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Select Alert Category</mat-label>
+                <mat-select placeholder="Select Alert Category" formControlName="alert_cat_id" [disabled]="this.selectBar" matInput required>
+                    <mat-option *ngFor="let ds of alertCtgry" [value]="ds.alert_cat_id">
+                        {{ds.alert_cat_nm}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Select Merchant</mat-label>
+                <mat-select placeholder="Select Merchant" formControlName="mrcht_id" [disabled]="this.selectBar" matInput required>
+                    <mat-option *ngFor="let dm of mrchnts" [value]="dm.mrcht_id">
+                        {{dm.mrcht_dsply_nm}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+            <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Select Subscription Type</mat-label>
+            <mat-select placeholder="Select Subscription Type"  [(value)]="selectedoptions" formControlName="alert_sub_type" multiple>
+              <mat-option *ngFor="let dn of subcribetype" [value]="dn.id" >
+                {{dn.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          </div>
+          </form>
+        <div class="m-0 p-16" fxLayout="row"  fxLayoutAlign="end center">
+    
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="deleteRle">
+          <button  mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete" matTooltip="Delete" (click)="saveRole()">
+            DELETE
+          </button>
+        </div>
+
+         <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="!deleteRle">
+          <button  mat-flat-button type="submit" class="mat-raised-button w-100-p saveBtn-color" [disabled]="formnoft.invalid"
+             aria-label="SAVE" (click)="saveSub()">
+            SUBSCRIBE
+          </button>
+         </div>
+
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+          <button  mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8"
+          aria-label="SAVE" (click)="opensideBar('addFormPanel',null)">
+         CANCEL
+        </button>
+        </div>
+    
+      </div>
+        </div>
+        </ng-container>
+  </ds-sidebar>
+      </div>
+  <!-- </mat-drawer-content> -->
+  <!-- <mat-drawer mode="side" opened position="end">Drawer content</mat-drawer> -->
+<!-- </mat-drawer-container> -->

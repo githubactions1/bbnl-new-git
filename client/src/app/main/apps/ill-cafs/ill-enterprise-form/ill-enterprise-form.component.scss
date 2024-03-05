@@ -1,0 +1,274 @@
+
+::ng-deep{
+.mat-horizontal-stepper-header{
+    pointer-events: none;
+}
+}
+// .inpuBx{
+//     // width: 1%;
+//     // height: 23px;
+//     // padding: 0px;
+//     // background: white;
+//     // border: 1px solid red;
+//     // margin: 3px 2px;
+//     // text-align: center;
+//     width: 1.8vw;
+//     height: 1.8vw;
+//     padding: 0px;
+//     background: white;
+//     border: 1px solid black;
+//     margin: 0.3% 0.2%;
+// }
+// .inptAuto{
+//     height: 25px !important;
+//     width: 100% !important;
+//     border: 0px solid black !important;
+//     border-bottom: 1px solid black !important;
+//     text-align: center;
+// }
+// .pg{
+//     padding: 0% 2%;
+//     width: 100%;
+//     margin: 2% 2%;
+// }
+// .p-n{
+//     padding: 0px;
+// }
+// .frmCls{
+//     h2{
+//         margin: 0px;
+//         text-transform: uppercase;
+//         font-size: 12px;
+//         font-weight: 700;
+//     }
+//     h3{
+//         margin: 0px;
+//         text-transform: uppercase;
+//         font-size: 14px;
+//         font-weight: 700;
+//         padding-top: 8px;
+//     }
+//     .bb-2{
+//         border: 2px solid #c8c8c8;
+//         margin-top: 8px;
+//         h2{
+//             margin: 0px;
+//             text-transform: capitalize;
+//             font-size: 12px;
+//             font-weight: 700;
+//             padding-top: 10px;
+//         }
+//         p{
+//             margin: 0px;
+//             padding-top: 8px;
+//         }
+//         input{
+//             // width: 23px;
+//             // height: 23px;
+//             // padding: 0px;
+//             // background: white;
+//             // border: 1px solid red;
+//             // margin: 3px 2px;  
+//             width: 1.8vw;
+//             height: 1.8vw;
+//             padding: 0px;
+//             background: white;
+//             border: 1px solid black;
+//             margin: 0.3% 0.2%;
+              
+//         }
+//     }
+//     .bb-n{
+//         margin-top: 20px;
+//         h2{
+//             margin: 0px;
+//             text-transform: capitalize;
+//             font-size: 12px;
+//             font-weight: 500;
+//             padding-top: 10px;
+//         }
+//         input{
+//             // width: 23px;
+//             // height: 23px;
+//             // padding: 0px;
+//             // background: white;
+//             // border: 1px solid red;
+//             // margin: 3px 2px;        
+//             width: 1.8vw;
+//             height: 1.8vw;
+//             padding: 0px;
+//             background: white;
+//             border: 1px solid black;
+//             margin: 0.3% 0.2%;
+//         }
+//         p{
+//             margin: 0px;
+//         }
+//     }
+// }
+// .rdoSec{
+//     $color1: #f4f4f4;
+// $color2: #3197EE;
+//     .radio {
+//         margin: 0.5rem;
+//         input[type="radio"] {
+//           position: absolute;
+//           opacity: 0;
+//           + .radio-label {
+//             &:before {
+//               content: '';
+//               background: $color1;
+//               border-radius: 100%;
+//               border: 1px solid darken($color1, 25%);
+//               display: inline-block;
+//               width: 1.4em;
+//               height: 1.4em;
+//               position: relative;
+//               top: -0.2em;
+//               margin-right: 1em; 
+//               vertical-align: top;
+//               cursor: pointer;
+//               text-align: center;
+//               transition: all 250ms ease;
+//             }
+//           }
+//           &:checked {
+//             + .radio-label {
+//               &:before {
+//                 background-color: $color2;
+//                 box-shadow: inset 0 0 0 4px $color1;
+//               }
+//             }
+//           }
+//           &:focus {
+//             + .radio-label {
+//               &:before {
+//                 outline: none;
+//                 border-color: $color2;
+//               }
+//             }
+//           }
+//           &:disabled {
+//             + .radio-label {
+//               &:before {
+//                 box-shadow: inset 0 0 0 4px $color1;
+//                 border-color: darken($color1, 25%);
+//                 background: darken($color1, 25%);
+//               }
+//             }
+//           }
+//           + .radio-label {
+//             &:empty {
+//               &:before {
+//                 margin-right: 0;
+//               }
+//             }
+//           }
+//         }
+//       }
+    
+// }
+
+
+// @media screen and (max-width: 480px) {
+//     .pg {
+//         padding: 0% 6%;
+//         width: 100%;
+//         margin: 2% 0%;
+//     }
+// }
+
+// @media screen and (max-width: 648px) {
+//     .pg {
+//         padding: 0% 6%;
+//         width: 100%;
+//         margin: 2% 0%;
+//     }
+// }
+
+
+// @media screen and (max-width: 768px) {
+//     .pg {
+//         padding: 0% 6% !important;
+//         width: 100%  !important;
+//         margin: 2% 0%  !important;
+//     }
+// }
+// input[type="radio"] {
+//   -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+//   -moz-appearance: checkbox;    /* Firefox */
+//   -ms-appearance: checkbox;     /* not currently supported */
+// }
+
+// .input-wrapper {
+//   position: relative;
+//   font-size: 2rem;
+//   font-family: monospace;
+// }
+
+// .lines {
+//   display: block;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   pointer-events: none;
+  
+//   /* create lines */
+//   background-image: linear-gradient(
+//   to right, 
+//   black 1px, 
+//   transparent 1px);
+//   background-size: 2ch;
+// }
+
+// input {
+//   display: block;
+//   box-sizing: border-box;
+//   border-width: 0 1px 1px;
+//   border-color: black;
+//   border-style: solid;
+//   font: inherit;
+  
+//   padding: .25ch .5ch;
+//   letter-spacing: 1ch;
+//   max-width: 20ch;
+// }
+
+@media print {
+    html, body {
+        width: 210mm;
+        height: 297mm;        
+    }
+    .page {
+        margin: 0;
+        width: 510mm;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+.page {
+    border: none;
+			border-radius: none;
+			width: initial;
+			min-height: initial;
+			padding: 2%;
+			background-color: white !important;
+}
+.subpage {
+    padding: 1cm;
+    outline: 2cm #FFEAEA solid;
+    
+}
+
+@page {
+    //size: A4;
+    margin: 0;
+}

@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="page-layout simple tabbed">
+
+    <div class="container header accent pghdrStyle text-center pt-16">
+      <div class="row">
+        <!-- <div style='margin-left: 30px;'><mat-icon (click)='back()'>arrow_back</mat-icon></div> -->
+        <div style='margin-left: 674px;'>
+          <h2 style="text-transform: uppercase">Submition Form</h2>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start" class=" mat-card mat-elevation-z4 frmcnt content" dsPerfectScrollbar>
+
+      <form class=" p-8" fxLayout="column" name="ScheduleForm" [formGroup]="ScheduleForm">
+
+        <div fxLayout="row" class="ptb-20">
+          <p class="bdlngCss"><b>
+              <mat-icon>business</mat-icon> Submition Form
+            </b> </p>
+        </div>
+
+
+
+        <div>
+          <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+            <mat-label>Course Name</mat-label>
+            <input matInput name="Course Name" [disabled]="true">{{schdistLst[0].trng_nm}}
+            <mat-error>Course name is required!</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+            <mat-label>batch Name</mat-label>
+            <input matInput name="Course Name" [disabled]="true">{{schdistLst[0].schdl_batch_nm}}
+            <mat-error>Course name is required!</mat-error>
+          </mat-form-field>
+
+        </div>
+
+
+
+
+
+
+        <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+          <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+            <mat-label>Start date</mat-label>
+            <input matInput  name="start"[disabled]="true" >{{schdistLst[0].trng_st_dt | date}}
+            
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+              <mat-label>Start date</mat-label>
+              <input matInput [matDatepicker]="startDatePicker" name="start" formControlName="SchDatestart">
+              <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #startDatePicker></mat-datepicker>
+              <mat-error>Start Date is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+            <mat-form-field appearance="outline" class="pr-sm-8 no-errors-spacer endmrgn " fxFlex="50">
+                <mat-label class="ml-16">End Date</mat-label>
+                <input matInput name="end" [disabled]="true">{{schdistLst[0].trng_end_dt | date}}
+                
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="pr-sm-8 no-errors-spacer endmrgn " fxFlex="50">
+                  <mat-label class="ml-16">End Date</mat-label>
+                  <input matInput [matDatepicker]="endDatePicker" name="end" formControlName="SchDateend">
+                  <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatePicker></mat-datepicker>
+                  <mat-error>End Date is required!</mat-error>
+                </mat-form-field>
+
+
+        </div>
+        <div>
+            <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+              <mat-label>total Members</mat-label>
+              <input matInput name="total Members" [disabled]="true">{{schdistLst[0].no_usrs}}
+              
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+              <mat-label>total Attended</mat-label>
+              <input matInput name="total Attended" type="number" formControlName="atn_mbrs" required>
+              <mat-error>total Attended is required!</mat-error>
+            </mat-form-field>
+  
+          </div>
+      
+
+        <div fxLayout="row" class="mb-16">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center">
+            <button mat-flat-button class="scdl-btn" (click)="schdlTrng()" type="button">Submit </button>
+            <!-- <button mat-raised-button color="primary" class='ml-8' (click)="saveDtls()">SAVE</button> -->
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

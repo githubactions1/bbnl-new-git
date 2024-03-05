@@ -1,0 +1,347 @@
+<div class="page-layout simple pageBackground tabbed">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div fxLayout="row">
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+        <div class="form-label">Select District</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="districtID" (selectionChange)="getMandalLst()" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let d of districts" [value]="d.dstrt_id">
+              {{d.dstrt_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxFlex.xs="20" class="px-8">
+        <div class="form-label">Select Mandal</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="mandalID" (selectionChange)="getOltLst()" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let m of mndlst" [value]="m.mndl_nu">
+              {{m.mndl_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxFlex.xs="20" class="px-8">
+        <div class="form-label">Select OLT</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="oltID" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let o of oltLst" [value]="o.olt_id">
+              {{o.olt_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+        <button mat-raised-button color="primary" (click)="getOLtsByDistrict()" class="gtDtls">GET DETAILS</button>
+      </div>
+</div>
+  <div class="ds-card m-12">
+    <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="notoperatindata"
+            (onSelectionChanged)="oltSelection($event)"
+            [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+            [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+            <dxo-selection mode="multiple"></dxo-selection>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="true" [showPageSizeSelector]="false" [allowedPageSizes]="[10, 25, 50, 100]"
+                [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="true" mode="select">
+            </dxo-column-chooser>
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column [allowResizing]="true" *ngFor="let g of allcolumndefs" [visible]="!g.hide"
+                [allowFiltering]="g.filter" [allowHeaderFiltering]="g.headfilter" [dataField]="g.field"
+                [caption]="g.headerName" alignment="g.cellStyle.text-align" [width]="g.width"></dxi-column>
+                <dxi-column *ngIf="buttonHide == false" [showInColumnChooser]="false" [visible]="true" type="buttons"
+                [width]="100" caption="" cellTemplate="editTemplate">
+                <div *dxTemplate="let data of 'editTemplate'">
+                    <div class="tblEdtBtn " (click)="onAddn(data)">
+                        Add Remarks
+                    </div>
+                </div>
+            </dxi-column>
+            <dxi-column [showInColumnChooser]="false" [visible]="true" type="buttons" [width]="100" caption=""
+                cellTemplate="delTemplate" [allowResizing]="true">
+                <div *dxTemplate="let data of 'delTemplate'">
+                    <div class="tblDelBtn " (click)="refresh(data)">
+                        Refresh
+                    </div>
+                </div>
+            </dxi-column>
+        </dx-data-grid>
+  </div>
+  <div fxLayout="row" class="sltOlt" *ngIf="buttonHide == true">
+    <button mat-raised-button color="primary" (click)="slctdolt()" class="gtDtls m-2 sltOltBtn">ADD Remarks</button>
+</div>
+</div>
+
+
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container *ngIf="sdbar">
+      <div fxLayout="column">
+          <div>
+              <div class="card-header crdHdng">OLT Details
+                  <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+                      cancel</mat-icon>
+              </div>
+              <div class="card-body" fxLayout.lt-md="column" fxLayout.xs="column">
+                  <div fxLayout="row" fxLayout.xs="column">
+                      <div fxFlex="43" fxFlex.xs="43" class="px-8">
+                          <p>OLT Name</p>
+                          <p>OLT Ip Address</p>
+                          <p>OLT Serial Number</p>
+                          <p>OLT Type</p>
+                          <p>Substion</p>
+                          <p>Operational State</p>
+                          <!-- <p>Status</p> -->
+                          <p>Operational State From</p>
+                          <p>District</p>
+                          <p>Network Engineer</p>
+                          <p>Phone Number</p>
+                      </div>
+                      <div fxFlex="4" fxFlex.xs="4" class="px-8">
+                          <p>:</p>
+                          <p>:</p>
+                          <p>:</p>
+                          <p>:</p>
+                          <p>:</p>
+                          <p>:</p>
+                          <!-- <p>:</p> -->
+                          <p>:</p>
+                          <p>:</p>
+                          <p>:</p>
+                          <p>:</p>
+                      </div>
+                      <div fxFlex="53" fxFlex.xs="53" class="px-8">
+                          <p>{{this.sdbarData.olt_nm}}</p>
+                          <p>{{this.sdbarData.olt_ip_addr_tx}}</p>
+                          <p>{{this.sdbarData.olt_srl_nu}}</p>
+                          <p>{{this.sdbarData.olt_type_nm}}</p>
+                          <p>{{this.sdbarData.sbstn_nm}}</p>
+                          <p>{{this.sdbarData.ste_nm}}</p>
+                          <!-- <p>{{this.sdbarData.sts_nm}}</p> -->
+                          <p>{{this.sdbarData.oprtnl_ste_chnge_ts}}</p>
+                          <p>{{this.sdbarData.dstrt_nm}}</p>
+                          <p>{{this.sdbarData.cntct_nm}}</p>
+                          <p>{{this.sdbarData.mble1_ph}}</p>
+                      </div>
+                  </div>
+                  <div fxLayout="row" fxLayout.xs="column" style="margin-top: 8%;">
+                      <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                          <div class="form-label">OLT Issue Category</div>
+                          <mat-form-field appearance="outline">
+                              <mat-select [(value)]="ctgryID" (selectionChange)="getSubCategory(ctgryID)" required>
+                                  <mat-option *ngFor="let i of isueCtgryLst" [value]="i.olt_iss_ctgry_id">
+                                      {{i.olt_iss_ctgry_nm}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+                      <div fxFlex="100" fxFlex.xs="100" class="px-8" *ngIf="subCat == false">
+                          <mat-label>
+                              <div class="form-label">OLT Issue Sub-Category</div>
+                              <div class="lbl_cntnt mndalName">Please Select Category</div>
+                          </mat-label><br>
+                      </div>
+                      <div fxFlex="100" fxFlex.xs="100" class="px-8" *ngIf="subCat == true">
+                          <div class="form-label">OLT Issue Sub-Category</div>
+                          <mat-form-field appearance="outline">
+                              <mat-select [(value)]="subctgryID" (selectionChange)="getSubCategory(ctgryID)" required>
+                                  <mat-option *ngFor="let i of isueSubCtgryLst" [value]="i.olt_iss_sub_ctgry_id">
+                                      {{i.olt_iss_sub_ctgry_nm}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+
+                  </div>
+
+
+                  <div fxLayout="row" fxLayout.xs="column" *ngFor="let cmnt of cmntTxBx">
+                      <div fxFlex="100" fxFlex.xs="100" class="px-8" *ngIf="insrt">
+
+                          <!-- <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline" >
+                              <ul class="timelineTwo">
+                                  <li class="tmlninrCntn">
+                                      <textarea placeholder="Write a Comment" matInput [(ngModel)]="cmnt.cmntext"
+                                      [ngModelOptions]="{standalone: true}" required ></textarea>
+                                  </li>
+                                
+                                </ul>
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                              <textarea placeholder="Write a Comment" matInput [(ngModel)]="cmnt.cmntext"
+                                  [ngModelOptions]="{standalone: true}" required></textarea>
+                          </mat-form-field>
+                      </div>
+                  </div>
+                  <div fxLayout="row" fxLayout.xs="column" *ngIf="insrt">
+                      <div fxFlex.gt-lg="20%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%" fxFlex.xs="0"></div>
+                      <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.xs="50" class="px-8">
+                          <button mat-raised-button color="primary" (click)="save(1)" class="gtDtls m-2">Save</button>
+                      </div>
+                      <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.xs="50" class="px-8">
+                          <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBar()"
+                              class="updtClseBtn">
+                              CANCEL
+                          </button>
+                      </div>
+                      <div fxFlex.gt-lg="20%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%" fxFlex.xs="0"></div>
+                  </div>
+
+                  <div fxLayout="row" fxLayout.xs="column" *ngFor="let cmnt of cmntFrLp">
+                      <div fxFlex="100" fxFlex.xs="100" class="px-8" *ngIf="updte">
+
+                          <ul class="timelineTwo">
+                              <li class="tmlninrCntn">
+                                  <p class="tmCs">{{cmnt.i_ts}}</p>
+                                  <p class="cmntCs">{{cmnt.cmnt_tx}}</p>
+                              </li>
+
+                          </ul>
+
+                      </div>
+                  </div>
+
+
+                  <div fxLayout="row" fxLayout.xs="column" *ngFor="let cmnt of updtcmtBx" style="padding-top: 20px;">
+                      <div fxFlex="100" fxFlex.xs="100" class="px-8" *ngIf="updte">
+                          <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                              <textarea placeholder="Write a Comment" matInput [(ngModel)]="cmnt.cmntext"
+                                  [ngModelOptions]="{standalone: true}" required></textarea>
+                          </mat-form-field>
+                      </div>
+                  </div>
+                  <div fxLayout="row" fxLayout.xs="column" *ngIf="updte">
+                      <div fxFlex.gt-lg="20%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%" fxFlex.xs="0"></div>
+                      <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.xs="50" class="px-8">
+                          <button mat-raised-button color="primary" (click)="save(2)" class="gtDtls m-2">Save</button>
+                      </div>
+                      <div fxFlex.gt-lg="30%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.xs="50" class="px-8">
+                          <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBar()"
+                              class="updtClseBtn">
+                              CANCEL
+                          </button>
+                      </div>
+                      <div fxFlex.gt-lg="20%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%" fxFlex.xs="0"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </ng-container>
+</ds-sidebar>
+
+
+<ds-sidebar class="form-panel allOltsSdBar" name="addFormPanelTwo" position="right" [invisibleOverlay]="false">
+  <ng-container>
+      <div fxLayout="column">
+          <div>
+              <div class="card-header crdHdng">OLT Details
+                  <mat-icon matTooltip="close" (click)="closeSideBarTwo()" class="closeSidebar" style="float:right">
+                      cancel</mat-icon>
+              </div>
+              <div class="ds-card grid">
+                  <dx-data-grid [allowColumnResizing]="true" id="gridContainer" [dataSource]="manyOlts"
+                      [remoteOperations]="false" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                      [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                      [masterDetail]="{ enabled: true, template: 'detail' }">
+                      <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+                      <dxo-paging [pageSize]="10"></dxo-paging>
+                      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]">
+                      </dxo-pager>
+                      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true">
+                      </dxo-search-panel>
+                      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                      <!-- <dxo-group-panel [visible]="true"></dxo-group-panel>
+                      <dxo-grouping [autoExpandAll]="false"></dxo-grouping> -->
+                      <!-- <dxo-column-chooser [enabled]="true" mode="select">
+                      </dxo-column-chooser> -->
+                      <!-- <dxo-export [enabled]="true"
+                          [allowExportSelectedData]="true">
+                      </dxo-export> -->
+                      <dxo-filter-row [visible]="true"></dxo-filter-row>
+                      <dxi-column [allowResizing]="true" *ngFor="let f of slctdOltscolumnDefs" [visible]="!f.hide"
+                          [dataField]="f.field" [caption]="f.headerName" alignment="f.cellStyle.text-align"
+                          [width]="f.width">
+                      </dxi-column>
+                  </dx-data-grid>
+              </div>
+              <!-- <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                  <mat-step [stepControl]="firstFormGroup">
+                      <ng-template matStepLabel>Selected Olts</ng-template>
+                  </mat-step>
+                  </mat-horizontal-stepper> -->
+              <div fxLayout="row" fxLayout.xs="column" style="margin-top: 1%;">
+                  <div fxFlex="10%" fxFlex.xs="10%"></div>
+                  <div fxFlex="20%" fxFlex.xs="100" class="px-8">
+                      <div class="form-label">OLT Issue Category</div>
+                      <mat-form-field appearance="outline">
+                          <mat-select [(value)]="ctgryID" (selectionChange)="getSubCategory(ctgryID)" required>
+                              <mat-option *ngFor="let i of isueCtgryLst" [value]="i.olt_iss_ctgry_id">
+                                  {{i.olt_iss_ctgry_nm}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex="20%" fxFlex.xs="100" *ngIf="subCat == false" class="px-8">
+                      <mat-label>
+                          <div class="form-label">OLT Issue Sub-Category</div>
+                          <div class="lbl_cntnt mndalName">Please Select Category</div>
+                      </mat-label><br>
+                  </div>
+                  <div fxFlex="20%" fxFlex.xs="100" *ngIf="subCat == true" class="px-8">
+                      <div class="form-label">OLT Issue Sub-Category</div>
+                      <mat-form-field appearance="outline">
+                          <mat-select [(value)]="subctgryID" (selectionChange)="getSubCategory(ctgryID)" required>
+                              <mat-option *ngFor="let i of isueSubCtgryLst" [value]="i.olt_iss_sub_ctgry_id">
+                                  {{i.olt_iss_sub_ctgry_nm}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex="40%" fxFlex.xs="40%" class="px-8">
+                      <div class="form-label">Comment</div>
+                      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                          <textarea placeholder="Write a Comment" matInput [(ngModel)]="mutltiOltComments"
+                              [ngModelOptions]="{standalone: true}" required></textarea>
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex="10%" fxFlex.xs="10%"></div>
+              </div>
+              <!-- <div fxLayout="row" fxLayout.xs="column">
+                      <div fxFlex="3" fxFlex.xs="3" class="px-4"></div>
+                      <div fxFlex="40" fxFlex.xs="40" class="px-4">
+                          <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                              <textarea placeholder="Write a Comment" matInput [(ngModel)]="mutltiOltComments"
+                                  [ngModelOptions]="{standalone: true}" required></textarea>
+                          </mat-form-field>
+                      </div>
+                      <div fxFlex="57" fxFlex.xs="57" class="px-4"></div>
+                  </div> -->
+              <div fxLayout="row" fxLayout.xs="column">
+                  <div fxFlex.gt-lg="44%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%" fxFlex.xs="0"></div>
+                  <div fxFlex.gt-lg="6%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.xs="15">
+                      <button mat-raised-button color="primary" (click)="saveMultpleOlts()"
+                          class="gtDtls m-2">Save</button>
+                  </div>
+                  <div fxFlex.gt-lg="6%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.xs="15"
+                      style="margin-top: 0.2%;">
+                      <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBarTwo()"
+                          class="updtClseBtn">
+                          CANCEL
+                      </button>
+                  </div>
+                  <div fxFlex.gt-lg="44%" fxFlex.gt-md="0%" fxFlex.gt-sm="0%" fxFlex.xs="0"></div>
+              </div>
+          </div>
+      </div>
+  </ng-container>
+</ds-sidebar>

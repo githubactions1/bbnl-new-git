@@ -1,0 +1,72 @@
+@import "src/@glits/scss/ds";
+
+:host {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+
+    .theme-options-button {
+        position: absolute;
+        top: 160px;
+        right: 0;
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0;
+        margin: 0;
+        pointer-events: auto;
+        opacity: .90;
+        z-index: 998;
+       display:none!important;
+        &.right-side-panel {
+
+            @include media-breakpoint('gt-md') {
+                right: 70px;
+            }
+        }
+
+        &.side-panel-hidden {
+            right: 0 !important;
+        }
+
+        mat-icon {
+            animation: rotating 3s linear infinite;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .theme-options-sidebar {
+        width: 360px;
+        min-width: 360px;
+        max-width: 360px;
+    }
+
+}
+
+::ng-deep body.theme-default .accent {
+    // color: white !important;
+    // background-color: #3a97da !important;
+    color: #282a73 !important;
+    background-color: #f9f5ee !important;
+    // font-weight:500!important;
+    i{
+        color: #282a73 !important;
+    }
+}
+::ng-deep .light-blue-900-bg {
+    background-color: #126e84 !important;
+}
+::ng-deep .ds-navy-600 {
+    // background-color: #1d79bb !important;
+    // color: #ffffff !important;
+    background-color: #f3daba !important;
+    color: #3c3c3c !important;
+}

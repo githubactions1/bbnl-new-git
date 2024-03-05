@@ -1,0 +1,225 @@
+.scdl-btn{
+    background: #3a97da !important;
+    color: white !important;
+   
+  }
+  .hrzntlLneCss {
+    overflow: visible;
+    border-style: solid;
+    border-color: #9c9c9c;
+    border-width: 2px 0 0 0;
+    width: 74%;
+
+}
+
+.pageBackground{
+    background-color: #fffcf7 !important;
+}
+  
+
+
+:host {
+
+    .content {
+
+        // form {
+        //     width: 80%;
+        //     max-width: 80% !important;
+        //     background-color: white;
+        // }
+
+        .form-errors-model {
+            flex: 1;
+
+            code {
+                background: none !important;
+            }
+        }
+
+        .horizontal-stepper-wrapper,
+        .vertical-stepper-wrapper {
+            max-width: 800px;
+        }
+    }
+}
+.hDRcS{
+    margin-top: 1%;
+}
+.mat-form-field-outline {
+    color: rgba(0, 0, 0, 0.12);
+    background-color: white !important;
+}
+.ptb-20{
+    padding: 0% 0px;
+    padding-bottom: 10px;
+} 
+.bdlngCss{
+    margin-left: 0%;
+    margin-top: 1%;
+    font-size: 18px;
+    color: #1563bb;
+    border-bottom: 1px solid #a2c6ef;
+    line-height: 0.1em;
+    // / margin: 10px 0 20px; /
+    width: 100%;
+    b{
+        background-color: #fff;
+        font-weight: 500;
+        padding-right: 15px;
+        .mat-icon{
+            font-size: 23px;
+            margin-right: 6px;
+        }
+    }
+  }
+
+  .CnClbtns {
+    background-color: red;
+    border: red;
+  }
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgba(0, 0, 0, 0.12);
+    background-color: rgba(245, 245, 245, 0.52);
+}
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    margin: 0px 5px;
+}
+.lbl{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+.lbl_cntnt{
+    font-size: 14px;
+        font-weight: bold;
+        color: #6d6767;
+        padding-left: 7%;
+}
+
+.icnclr{
+    color: #004a80;
+}
+
+.mnBtnCls {
+    min-width: 25%;
+}
+.btnCs{
+    margin-left: 27%;
+    width: 46%;
+    height: 37px;
+    background-color: #1563bb;
+    border-color: #1563bb;
+ }
+ .CnClbtns{
+    margin-left: 27%;
+    width: 46%;
+    height: 37px;
+    background-color: orangered;
+    border-color: orangered;
+ }
+ .scrt-nm {
+    padding-top: 11px;
+    padding-bottom: 17px;
+ }
+ .icntxt {
+     cursor : pointer;
+ }
+ .ag-header-container {
+    background: #1b75b6;
+    color: white;
+    width: auto;
+}
+.add-new-btn {
+    margin-left: 0px;
+    margin-top: 14px;
+}
+.radio{
+    margin-right: 10px
+}
+.radiop{
+    font-weight: 700;
+    
+}
+.frmcnt{
+    margin: 24px 148px;
+}
+
+.form-controll {
+    display: block;
+    width: 75%;
+    height: calc(1.5em + 0.75rem + 2px);
+    /* padding: 0.375rem 0.75rem; */
+    /* font-size: 1rem; */
+    /* font-weight: 400; */
+    /* line-height: 1.5; */
+    /* color: #495057; */
+    /* background-color: #fff; */
+    /* background-clip: padding-box; */
+    /* border: 1px solid #ced4da; */
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.int{
+    width: max-content;
+    flex-flow: row;
+    display: inline-flex;
+    margin-top: 40px;
+}
+.vldecxl{
+    font: status-bar;
+    color: orangered;
+    margin-left: 15px;
+}
+.ttlRcds{
+    margin-right: -70px;
+}
+.hide-autocomplete { display: none; }
+
+
+
+.drop-container {
+    background: #fff;
+    border-radius: 6px;
+    height: 150px;
+    width: 100%;
+    box-shadow: 1px 2px 20px hsla(0,0%,4%,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #c0c4c7;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #c0c4c7; 
+  }
+  .upload-button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #5754a3;
+  }
+  .upload-button input {
+    display: none;
+  }
+  .dropzone { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    border-radius: 5px;
+    background: white;
+    margin: 10px 0;
+  }
+  .dropzone.hovering {
+      border: 2px solid #f16624;
+      color: #dadada !important;
+  }
+  progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+  }

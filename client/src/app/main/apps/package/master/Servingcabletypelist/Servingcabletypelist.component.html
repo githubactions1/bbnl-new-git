@@ -1,0 +1,82 @@
+<div class="page-layout simple pageBackground">
+    <div *ngIf="loader">
+        <div class="loading-indicator">
+            <div class="spinner-2">
+              <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+            </div>
+          </div>
+    </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <!-- <div class="text-right gridBtns" >
+        <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle *ngIf="(user.permissions.insrt_in==1)?true:false" id="addGridBtn" (click)="addNewEntry()">Add New {{formDetails.stngs.form_title}}</mat-button-toggle>
+        </mat-button-toggle-group> 
+      
+    </div> -->
+
+  
+
+    <div class="ds-card m-12" *ngIf="(user.permissions.slct_in==1)?true:false">
+        <dx-data-grid class="p-8" id="gridContainer"
+                [dataSource]="gridData"
+                [remoteOperations]="false"
+                [allowColumnReordering]="true"
+                [allowColumnResizing]="true"
+                [rowAlternationEnabled]="true"
+                [showColumnLines]="true"
+                [columnAutoWidth]="true"
+                [showRowLines]="true"
+                [showBorders]="true"
+                style="width:100%" (onToolbarPreparing)="(user.permissions.insrt_in==1)?onToolbarPreparing($event):false">
+                <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true" ></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <dxo-group-panel [visible]="true" ></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false" ></dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select"> <!-- or "select" -->
+                </dxo-column-chooser>
+                <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" 
+                fileName="Serving Cable Type"></dxo-export>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column [allowResizing]="true"  *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+                    <dxi-column [allowResizing]="true"  [showInColumnChooser]="false"  [visible]="(user.permissions.updt_in==1)?true:false" type="buttons" [width]="100" caption="Edit" cellTemplate="editTemplate">
+                         <div *dxTemplate="let data of 'editTemplate'">  
+                            <div class="tblEdtBtn" (click)="onEdit2(data)">  
+                                Edit  
+                            </div>  
+                        </div>
+                    </dxi-column>
+                    <dxi-column [allowResizing]="true"  [showInColumnChooser]="false" [visible]="(user.permissions.dlte_in==1)?true:false"  type="buttons" [width]="100" caption="Delete" cellTemplate="delTemplate" >
+                         <div *dxTemplate="let data of 'delTemplate'">  
+                            <div class="tblDelBtn" (click)="onDelete2(data)">  
+                                Delete  
+                            </div>  
+                        </div>
+                    </dxi-column>
+         </dx-data-grid>
+
+    </div>
+    <div *ngIf="(user.permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+    
+ </div>
+
+<!-- sidebar -->
+<ds-sidebar  class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+    <ng-container>
+        <div fxLayout="column">
+
+          <div class="card">
+              <div class="card-header crdHdng">{{formDetails.stngs.form_title}}
+                  <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel </mat-icon>
+              </div>
+              <div class="card-body">
+                  <ds-form-builder (formEvent)="formEventTriggered($event)" [formDetails]="formDetails" [initData2]="initdata"></ds-form-builder>
+              </div>
+          </div>
+
+      </div>
+    </ng-container>
+  </ds-sidebar>
+<!-- sidebar -->

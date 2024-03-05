@@ -1,0 +1,168 @@
+<div class="page-layout simple pageBackground">
+      <div *ngIf="loader">
+        <div class="loading-indicator">
+            <div class="spinner-2">
+              <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+            </div>
+          </div>
+    </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <!-- <app-top-header [headrIcon]="'file_copy'" [headrName]="'Menu Profile'"></app-top-header> -->
+  <!-- <div class="text-right"><button class="mat-raised-button mt-4 mb-4 addBtn ds-white--fg addBtn-color m-24"
+  
+
+  <div class="text-right"><button class="mat-raised-button mt-4 mb-4 addBtn ds-white--fg addBtn-color m-24"
+      matTooltip="Add New Profile" (click)="opensideBar('addFormPanel','new',null)">
+      <mat-icon _ngcontent-qri-c39=""
+        class="secondary-text font-size-24 line-height-34 mat-icon notranslate vertical-align-text-bottom material-icons addfld-icon-color"
+        role="img" aria-hidden="true">add_to_photos</mat-icon>
+      Add Menu Profile
+    </button></div> -->
+
+  <!-- <div class="m-12" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between start"> -->
+    <div class="ds-card m-12" *ngIf="permissions">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true"
+[allowColumnResizing]="true"
+        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false"
+        style="width:100%">
+        <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+          <!-- or "select" -->
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Menu Profile"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+           [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="tblEdtBtn cursor-pointer" (click)="onCellClick(data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="100" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="tblDelBtn cursor-pointer" (click)="onCellClick(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column>
+      </dx-data-grid>
+
+    </div>
+    <!-- <div fxFlex fxFlex.gt-lg="96%" fxFlex.gt-md="96%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" fxLayoutGap="20px"
+      class="mt-10 font-size-16">
+      <div class="ds-card m-12">
+        <ag-grid-angular #agGrid style="width: 100%; height: 500px;" id="myGrid" class="ag-theme-balham p-12 mb-24"
+          [columnDefs]="columnDefs" [rowData]="rowData" [floatingFilter]="true" (cellClicked)="onCellClick($event)"
+          [suppressHorizontalScroll]="false" [getRowHeight]="getRowHeight" [pagination]="pagination"
+          [paginationPageSize]="paginationPageSize">
+        </ag-grid-angular>
+      </div>
+    </div> -->
+  </div>
+
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+    <ng-container>
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-toolbar class="side-bar-header-color">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+            class="w-100-p">
+            <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <span *ngIf="fnlMnuOptLst"> {{editClicked==false?sideBarHeading:fnlMnuOptLst.mnu_prfle_nm}} Profile</span>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-right">
+              <span>
+                <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null,null)" class="closeSidebar">cancel
+                </mat-icon>
+              </span>
+            </div>
+          </div>
+        </mat-toolbar>
+        <mat-card-content class="mt-24 w-100-p p-20">
+          <form [formGroup]="mnuForm">
+            <div>
+              <div class="form-label">Enter Profile Name</div>
+              <mat-form-field appearance="outline" class="w-100-p">
+                <!-- <mat-label>Enter Profile Name</mat-label> -->
+                <input matInput novalidation placeholder="Profile Name" type="text"
+                  [attr.disabled]="editClicked || mnuoptions || deleteClicked == true ? true : null"
+                  formControlName="prfle_nm" required>
+                <mat-error>Profile Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <div class="form-label">Enter Description Text</div>
+              <mat-form-field appearance="outline" class="w-100-p">
+                <!-- <mat-label>Enter Description Text</mat-label> -->
+                <input matInput novalidation placeholder="Description Text" type="text"
+                  [attr.disabled]="editClicked || mnuoptions || deleteClicked == true ? true : null"
+                  formControlName="prfle_dscrn_tx">
+                <!-- <mat-error>Profile Name is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+            <div>
+              <div class="form-label">Select Component Name</div>
+              <mat-form-field appearance="outline" class="w-100-p">
+                <!-- <mat-label>Component Name</mat-label> -->
+                <mat-select [disabled]="cmpntdisable" (selectionChange)="getMenuItmsData(fnlMnuOptLst.menuItms,$event)"
+                  formControlName="cmpnt_nm">
+                  <mat-option *ngFor="let c of cmpnt_lst" [value]="c.cmpnt_id">
+                    {{c.cmpnt_nm}}
+                  </mat-option>
+                  <!-- <mat-error>Component Name is required!</mat-error> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </form>
+
+          <div class="ds-card edit-ds-card mt-12" *ngIf="fnlMnuOptLst">
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Menu Options</div>
+            <mat-divider></mat-divider>
+            <div class="edit-rptOptsLst">
+              <mat-selection-list #shoes [(ngModel)]="mnuSelectedOptions" (selectionChange)="onSelection($event)">
+                <div *ngFor="let m of (editClicked==false?mnuLst:fnlMnuOptLst.menuItms)">
+                  <h3 mat-subheader class="listHeaderStyle" *ngIf="editClicked==true || mnuoptions == true">
+                    {{m.prnt_mnu_itm_nm == undefined || null ? 'Others':m.prnt_mnu_itm_nm}}</h3>
+                  <mat-list-option *ngFor="let a of m.mnuitemList" [value]="a.mnu_itm_nm"
+                    (click)="mnuOptsToggle($event,a,fnlMnuOptLst)">
+                    {{a.mnu_itm_nm}}
+                    <span style="font-size: 12px">{{a.mnu_dscn_tx}}</span>
+                    <mat-divider></mat-divider>
+                  </mat-list-option>
+                </div>
+              </mat-selection-list>
+            </div>
+          </div>
+          <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+            <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              *ngIf="!deleteClicked">
+              <button mat-flat-button type="submit" class="mat-raised-button w-100-p saveBtn-color"
+                (click)="saveMnuPrfle()">SAVE</button>
+            </div>
+            <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              *ngIf="deleteClicked">
+              <button matTooltip="Delete Profile" mat-flat-button type="button" (click)="deleteProfile()" color=""
+                class="mat-raised-button   deleteBtn-color">DELETE</button>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8" aria-label="SAVE"
+                (click)="opensideBar('addFormPanel',null,null)">
+                CANCEL
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+    </ng-container>
+  </ds-sidebar>
+<!-- </div> -->

@@ -1,0 +1,208 @@
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { CrudService } from 'app/main/apps/crud.service';
+import { DsSidebarService } from '@glits/components/sidebar/sidebar.service';
+import { AtomService } from 'app/main/services/atom.service';
+
+@Component({
+  selector: 'app-districts',
+  templateUrl: './districts.component.html',
+  styleUrls: ['./districts.component.scss']
+})
+export class DistrictsComponent implements OnInit {
+  columnDefs:any;
+  gridData:any;
+  initdata:any;
+  gridApi;
+  permissions;
+  loader:boolean;
+   mainMessage;
+   getRowHeight = function () {return 40; }
+   getHeaderDtls = function() { return {"title": this.formDetails.stngs.form_title+" List","icon":"receipt"}}
+   public fields: any[] = [
+   { type: 'pk',name: 'dstrt_id',label: 'District Identifier',isCustom:false,customData:{},required: false,hidden:true },
+   
+    { type: 'dropdown',name: 'ste_id',label: '',isCustom:true,customData:{"route":"admin/states","input_key":null,"key":"ste_id","label_key":"ste_nm","label":null,"table":"ste_lst_t"},value: '',required: false,hidden:false },
+    { type: 'text',name: 'dstrt_nm',label: 'District Name',isCustom:false,customData:{"route":null,"input_key":null,"key":null,"label_key":null,"label":null,"table":null},value: '',required: false,hidden:false },
+    { type: 'text',name: 'dstrt_cd',label: 'District Code',isCustom:false,customData:{"route":null,"input_key":null,"key":null,"label_key":null,"label":null,"table":null},value: '',required: false,hidden:false },
+  ];
+  public formDetails : any ={ 
+    fnctns  :{},
+    apis    :{ "sel_url":"admin/districts",
+               "upd_url":"admin/districts/:dstrt_id",
+               "ins_url":"admin/districts",
+               "del_url":"admin/districts/:dstrt_id"},
+    initdata:{ },
+    fields  :this.fields,
+    key_field:["dstrt_id"],
+    stngs   :{ "style" :"mat",
+                "saveBtn":true,
+                "saveAsBtn":false,
+                "closeBtn":true,
+                "model_style":"right",
+                "form_title":" District",
+                "deleteBtn":false,
+                "show_lables":false,
+                "oper_mode":"new"
+
+    }
+  } 
+  constructor(private _dsSidebarService: DsSidebarService, public crdsrv: CrudService,public atmSrv:AtomService) {
+    this.initdata= {} 
+    this.permissions={ "slct_in": 1, "insrt_in": 0, "updt_in": 0, "dlte_in": 0, "exprt_in": 0 }
+  }
+  ngOnInit() {
+    this.atmSrv.dropDownData.subscribe((data) => {
+      this.getDependedFieldsData(data);
+    });
+    this.getUsrPermissions();
+    this.getFieldsCustomData();
+  }
+  getFieldsCustomData() {
+    this.fields.forEach(element => {
+      if (element.isCustom) {
+        let eleData = this.getCustomData(element.customData)
+        element['options'] = eleData;
+      }
+    });
+    console.log(this.fields)
+  }
+  getCustomData(customData) {
+    let options = [];
+    if (customData.input_key == null) {
+      this.crdsrv.get(customData.route).subscribe((res) => {
+        let data = res['data']
+        data.forEach(element => {
+          options.push({
+            key: element[customData.key],
+            label: element[customData.label_key]
+          })
+        });
+      })
+      return options;
+    } else {
+      return options;
+    }
+
+  }
+
+  user: any = {
+    permissions: { 'slct_in': 0, 'insrt_in': 0, 'updt_in': 0, 'dlte_in': 0, 'exprt_in': 0 },
+    'perm_url': 'user/permissions/Districts Creation'
+  }
+  getUsrPermissions(): any {
+    this.mainMessage = null;
+    this.crdsrv.get(this.user.perm_url).subscribe((res) => {
+      console.log(res['data']);
+     if (res['status'] == 200) {
+        if (res['data'].length)
+        this.user.permissions = res['data'][0];
+        if (this.user.permissions.slct_in === 1) {
+          this.getGridData();
+        } else
+          this.mainMessage = 'You do not have permissions to do this operation. Please contact Administrator to get permissions.';
+      }
+    });
+  }
+  getGridData() {
+    this.loader=true;
+    this.crdsrv.get(this.formDetails.apis.sel_url).subscribe((res) => {
+      if (res['status'] == 200) {
+        this.loader=false;
+        this.permissions=(res['perm']===undefined) ? this.permissions:res['perm'][0];
+        if(this.user.permissions.slct_in==0) this.mainMessage="You do not have permissions to do this operation. Please contact Administrator to get user.permissions."
+        if(res['data'].length==0)       this.mainMessage="No entries found in the database."
+        
+        this.gridData = res['data'];
+          this.columnDefs = [
+          { headerName: 'Sno', field: 'sno', cellStyle: { 'text-align': "center" }, cellClass: "pm-grid-number-cell", width: 100,sortable: true,filter: false },
+          { headerName: 'District Identifier', field:'dstrt_id', hide:true, cellStyle: { 'text-align': "center" }, cellClass: "pm-grid-number-cell", width: 100 }, 
+          { headerName: 'State',field: 'ste_nm' , cellStyle: { 'text-align': "left" }, cellClass: "pm-grid-number-cell", width: 265, sortable: true,filter:true },
+          { headerName: 'District Name',field: 'dstrt_nm' , cellStyle: { 'text-align': "left" }, cellClass: "pm-grid-number-cell", width: 265, sortable: true,filter:true },
+          { headerName: 'District Code',field: 'dstrt_cd' , cellStyle: { 'text-align': "left" }, cellClass: "pm-grid-number-cell", width: 265, sortable: true,filter:true },
+     ];
+
+      }else if (res['status'] == 404) {
+        this.permissions={ "slct_in": 0, "insrt_in": 0, "updt_in": 0, "dlte_in": 0, "exprt_in": 0 }
+      }
+    })
+  }
+formEventTriggered(evetData){
+  if(evetData.dataUpdated)
+    this.getGridData();
+  if(evetData.closeForm){
+      this._dsSidebarService.getSidebar('addFormPanel').toggleOpen();
+  }   
+}
+  addNewEntry() {
+    this.formDetails.stngs.oper_mode="new";
+    this.formDetails.initdata={}
+    this.formDetails.stngs.deleteBtn=false;
+    this.formDetails.stngs.saveBtn=true;
+    this.initdata={}
+    this.openSideBar();
+  }
+  onEdit2(event){
+       
+        this.formDetails.initdata=event.data;
+        this.initdata=event.data; 
+        this.getDependedFieldsData(this.initdata)
+        this.formDetails.stngs.deleteBtn=false;
+        this.formDetails.stngs.saveBtn=true;
+        this.formDetails.stngs.oper_mode="edit"
+        this.openSideBar();
+  }
+  onDelete2(event){
+        this.formDetails.initdata=event.data;
+        this.initdata=event.data; 
+        this.getDependedFieldsData(this.initdata)
+        this.formDetails.stngs.deleteBtn=true;
+        this.formDetails.stngs.saveBtn=false;
+        this.formDetails.stngs.oper_mode="delete"
+        this.openSideBar();
+  }
+  
+  openSideBar =function() {
+    this._dsSidebarService.getSidebar('addFormPanel').toggleOpen();
+  }
+  closeSideBar =function() {
+    this._dsSidebarService.getSidebar('addFormPanel').toggleOpen();
+  }
+  getDependedFieldsData(data: any) {
+    this.fields.forEach(element => {
+      if (element.isCustom) {
+        if (data.hasOwnProperty(element.customData.input_key)) {
+          element['options'] = [];
+          let rte = element.customData.route.replace(element.customData.input_key, data[element.customData.input_key])
+          this.crdsrv.get(rte).subscribe((res) => {
+            let data = res['data'];
+            console.log(data)
+            data.forEach(d => {
+              element['options'].push({
+                key: d[element.customData.key],
+                label: d[element.customData.label_key]
+              })
+            })
+          })
+        }
+      }
+    });
+
+  }
+
+  onToolbarPreparing(e) {
+    // console.log(e);
+    e.toolbarOptions.items.unshift({
+      location: 'after',
+      widget: 'dxButton',
+      options: {
+        icon: 'plus',
+        text: 'Add New' + this.formDetails.stngs.form_title,
+        onClick: this.addNewEntry.bind(this, 'new'),
+        bindingOptions: {
+          'disabled': 'isEmailButtonDisabled'
+        }
+      }
+    });
+  }
+
+}

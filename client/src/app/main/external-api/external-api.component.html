@@ -1,0 +1,188 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+<div class="card p-16">
+ 
+  <form class="form-horizontal" [formGroup]="extapifrm">
+
+    <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="50" fxFlex.xs="100" class="px-8">
+        <div class="form-label">Select Entity</div>
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>Gender</mat-label> -->
+          <!-- (selectionChange)="getLmo($event.value)"  -->
+          <mat-select (selectionChange)="onentityselect()"  formControlName="entity" required>
+            <mat-option *ngFor="let e of entitylst" [value]="e.enty_id">
+              {{e.enty_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>District is required!</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="50" fxFlex.xs="100" class="px-8">
+        <div class="form-label">Enter Entity id</div>
+        <mat-form-field appearance="outline">
+        
+          <input matInput formControlName="entyid">
+          <!-- <mat-error>mandal is required!</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div fxFlex="50" fxFlex.xs="100" class="px-8">
+        <div class="form-label">Select Action</div>
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>Gender</mat-label> -->
+          <!-- (selectionChange)="getLmo($event.value)"  -->
+          <mat-select  formControlName="action" >
+            <mat-option *ngFor="let a of actionlst" [value]="a.actn_id">
+              {{a.actn_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="50" fxFlex.xs="100" class="px-8">
+        <div class="form-label">Status</div>
+        <mat-form-field appearance="outline">
+            <mat-select  formControlName="status" >
+                <mat-option *ngFor="let s of statuslst" [value]="s.enty_sts_id">
+                  {{s.sts_nm}}
+                </mat-option>
+              </mat-select>         
+        </mat-form-field>
+      </div>
+
+
+    </div>
+
+
+    
+    <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+      <!-- <div fxFlex="50" fxFlex.xs="100" class="px-8">
+
+        <div class="form-label">Select Status</div>
+        <mat-form-field appearance="outline">
+        
+          <mat-select formControlName="Caf_sts">
+            <mat-option *ngFor="let cs of Cafstus" [value]="cs.caf_sts_id">
+              {{cs.caf_sts_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>CafStatus is required!</mat-error>
+        </mat-form-field>
+      </div> -->
+      <!-- <div fxFlex="50" fxFlex.xs="100" class="px-8">
+        <div class="form-label">Aadhaar</div>
+        <mat-form-field appearance="outline">
+          <mat-label>Father/Husband Name</mat-label>
+          <input matInput formControlName="adhar">
+          <mat-error>Last Name is required!</mat-error>
+        </mat-form-field>
+      </div> -->
+      <div fxFlex="33" fxFlex.xs="100" class="px-8">
+        <div class="form-label">Start Date</div>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="picker1" formControlName="str_dt">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error>Start Date is required!</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxFlex="33" fxFlex.xs="100" class="px-8">
+        <div class="form-label">END Date</div>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="picker" formControlName="end_dt">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>End Date is required!</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxFlex="50" fxFlex.xs="100" class="pt-32">
+        <div class="form-label"></div>
+        <!-- <mat-form-field appearance="outline"> -->
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <mat-checkbox formControlName="till_dt">Till Date</mat-checkbox>
+        <!-- <mat-error>Last Name is required!</mat-error> -->
+        <!-- </mat-form-field> -->
+      </div>
+    </div>
+    <div fxLayout="row" style="justify-content: center;" fxLayout.xs="column" fxFlexFill>
+      <div>
+        <button mat-raised-button color='primary' class = "gtDtls" (click)="getDetails()">Get Details</button>
+      </div>
+      <div style="margin-left: 8px;">
+        <button mat-raised-button color='primary' class = "gtDtls" >Reset</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+<div *ngIf="showTble" class="p-40 pt-0">
+    <div class="ds-card grid" *ngIf="(permissions.slct_in==1)?true:false">
+      <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true"
+        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+         style="width:100%" 
+        
+         >
+        <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+          <!-- or "select" -->
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+        <!-- <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column> -->
+        <!-- <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="100" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column> -->
+        <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="View"
+          cellTemplate="ViewTemplate">
+          <div *dxTemplate="let data of 'ViewTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              View
+            </div>
+          </div>
+        </dxi-column>
+        <!-- <div *dxTemplate="let employee of 'detail'">
+          <div class="master-detail-caption" style="font-size: 18px;margin-bottom: 2%;font-weight: 500;">TASKS:</div>
+          <dx-data-grid [dataSource]="employee.data.apicls" [showBorders]="true" [columnAutoWidth]="true">
+              <dxo-column-chooser [enabled]="true" mode="select">
+                  or "select"
+                </dxo-column-chooser>
+            <dxi-column *ngFor="let f of columnDefs2" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+            <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="View"
+          cellTemplate="ViewTemplate">
+          <div *dxTemplate="let data of 'ViewTemplate'">
+            <div class="cursor-pointer" (click)="onretryClick(data)">
+              Retry
+            </div>
+          </div>
+        </dxi-column>
+            
+          </dx-data-grid>
+        </div> -->
+      </dx-data-grid>
+
+    </div>
+
+  </div>
+</div>

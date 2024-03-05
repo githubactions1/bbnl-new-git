@@ -1,0 +1,22 @@
+.header.p-16 {
+    // background: repeating-linear-gradient(-55deg, #f6ba5236, #f6ba522e 10px, #ffd18012 10px, #ffd1803d 20px);
+    background: repeating-linear-gradient(-55deg, rgba(246, 186, 82, 0.21176470588235294), rgba(246, 186, 82, 0.1803921568627451) 10px, rgba(255, 209, 128, 0.07058823529411765) 10px, rgba(255, 209, 128, 0.23921568627450981) 20px);
+}
+.card-header {
+    color: #272a73;
+    // background: repeating-linear-gradient(-55deg, #f6ba5236, #f6ba522e 10px, #ffd18012 10px, #ffd1803d 20px);
+    background: repeating-linear-gradient(-55deg, rgba(246, 186, 82, 0.21176470588235294), rgba(246, 186, 82, 0.1803921568627451) 10px, rgba(255, 209, 128, 0.07058823529411765) 10px, rgba(255, 209, 128, 0.23921568627450981) 20px);
+    font-weight: 700;
+}
+
+.myPrfleSidebar{
+    width: 450px;
+    min-width: 450px !important;
+  }
+  .crdHdng
+  {
+    height: 55px;
+    padding-top: 15px;
+    font-size: 18px;
+
+  }

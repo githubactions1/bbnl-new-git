@@ -1,0 +1,80 @@
+tr.dx-row.dx-header-row {
+    color:red;
+}
+
+.my-class{
+    background-color: green;
+}
+
+
+.tmpSdBar{
+    min-width: 70%!important;
+    // min-width: 1000px!important;
+    }
+    .RdoTwo
+    {
+        margin:10px;
+       .pckgebtns{
+        margin:10px;
+       } 
+    }
+    .asgnBtn
+    {
+    height: 36px;
+    margin-top: 4%;
+    width: 15%; 
+    }
+    .pkgnm
+    {
+        color: #272a73;
+        padding-left: 10px;
+        font-weight: 600;
+    }
+
+    @media only screen and (min-width:320px) and (max-width:480px)
+    {
+    .tmpSdBar
+    {
+        min-width: 350px!important;
+    }
+
+    .asgnBtn[_ngcontent-c25] {
+        height: 36px;
+        margin-top: 11%;
+        width: 32%;
+    }
+    }
+
+    .packNmHdr{
+        color: red;
+        font-weight: 600;
+    }
+    .mndalName
+{
+    border: 1px solid #dbdbdb;
+    padding: 9px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    background: #f9f9f9;
+}
+   
+
+.asgn{
+    font-weight: 900;
+    margin-left: -15%;
+}
+
+.asgnBtnCs{
+    color: rgb(255, 255, 255) !important;
+    background-color: #ff3838 !important;
+}
+
+.hdngtitle
+{
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    color: #282a73;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}

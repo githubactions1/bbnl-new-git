@@ -1,0 +1,48 @@
+.ds-card{
+    // width: 100%;
+    // min-width: 100%;
+    // max-width: 100%;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+::ng-deep .mat-tab-body {
+    margin: 8px;
+}
+.reqSgnColor{
+    color: #fa1d1d;
+}
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    display:none;
+  }
+  [type="file"] + label {
+    background: #22aef1;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: inherit;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    width:100%;
+    text-align:center;
+    outline: none;
+    padding: 0.8rem 25px;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    vertical-align: middle;
+    
+    &:hover {
+      background-color: darken(#f15d22, 10%);
+    }
+    }
+    .vldecxl{
+        color: red;
+    }
+    ::ng-deep .mat-expansion-panel-header {
+        height: 35px !important;
+    }

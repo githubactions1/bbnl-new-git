@@ -1,0 +1,137 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <!-- <div> <app-custom-report rvnueShrng="114841790497947682" shwRptHeader="false" shwRptDesc="false"></app-custom-report></div> -->
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div fxLayout="row" fxLayout.xs="column" class="ds-card p-12 m-8" *ngIf="permissions">
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Select District</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="districtID" required>
+          <mat-option [value]="0">ALL</mat-option>
+          <mat-option *ngFor="let d of districts" [value]="d.dstrt_id">
+            {{d.dstrt_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Select Year</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="yearID" required>
+          <mat-option *ngFor="let y of year" [value]="y.yr_id">
+            {{y.yr_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Select Month</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="monthID" required>
+          <mat-option *ngFor="let m of months" [value]="m.mnth_id">
+            {{m.mnth_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Caf Type</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="cafTypeID" required>
+          <mat-option *ngFor="let c of cafTypeLst" [value]="c.caf_type_id">
+            {{c.caf_type_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+      <button mat-raised-button color="primary" (click)="getDetails();" class="gtDtls">GET DETAILS</button>
+    </div>
+  </div>
+  <ds-loading *ngIf="loader == true"></ds-loading>
+  <div class="ds-card m-12" *ngIf="result">
+    <div class="p-16" *ngIf="permissions">
+      <dx-data-grid id="gridContainer" [dataSource]="lmoWiseData" [remoteOperations]="false"
+        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+        [showBorders]="true" (onSelectionChanged)="oltSlctn($event)" (onCellClick)="onCellClick($event)"
+        (onRowExpanding)="onRowExpanding($event)" class="max-width-100"
+        [masterDetail]="{ enabled: true, template: 'detail' }">
+        <!-- <dxo-selection *ngIf="(permissions.slct_in==1)?true:false" mode="multiple"></dxo-selection> -->
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+          [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+        fileName="revenueSharing"></dxo-export>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let g of columnDefs" [visible]="!g.hide" [dataField]="g.field" [caption]="g.headerName"
+          alignment="g.alignment" [width]="g.width" [allowFiltering]="g.filter" [allowHeaderFiltering]="g.filter">
+        </dxi-column>
+        <div *dxTemplate="let agrmtData of 'detail'">
+          <dx-data-grid id="gridContainer" [dataSource]="cafcountData" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" (onCellClick)="onScdCellClick($event)" class="max-width-100 customScroll"
+            [masterDetail]="{ enabled: true, template: 'details' }">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true"
+            fileName="revnuSharngCafDtls"></dxo-export>
+            <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+            <dxi-column dataField="Sno" width="50"></dxi-column>
+            <dxi-column dataField="CAF Invoice Id" width="110"></dxi-column>
+            <dxi-column dataField="LMO Code" width="120"></dxi-column>
+            <dxi-column dataField="CAF Number" width="130"></dxi-column>
+            <dxi-column dataField="Customer Name" width="160"></dxi-column>
+            <dxi-column dataField="Customer Mobile No" width="135"></dxi-column>
+            <dxi-column dataField="Invoice Year" width="110"></dxi-column>
+            <dxi-column dataField="Invoice Month" width="115"></dxi-column>
+            <dxi-column dataField="Invoice From Date" width="135"></dxi-column>
+            <dxi-column dataField="Invoice To Date" width="135"></dxi-column>
+            <dxi-column dataField="Activation Date" width="135"></dxi-column>
+            <dxi-column dataField="Frequency Name" width="140"></dxi-column>
+            <dxi-column dataField="Base Package" width="140"></dxi-column>
+            <dxi-column dataField="Status" width="140"></dxi-column>
+            <dxi-column dataField="Paid Time Stamp" width="140"></dxi-column>
+            <dxi-column dataField="LMO Share" width="120"></dxi-column>
+            <dxi-column dataField="MSO Share" width="120"></dxi-column>
+            <dxi-column dataField="APSFL Share" width="120"></dxi-column>
+			<dxi-column dataField="Suspend Date" [width]="150"></dxi-column>
+			<dxi-column dataField="Termination Date" [width]="150"></dxi-column>
+			<dxi-column dataField="ActiveDays" width="120"></dxi-column>
+			<dxi-column dataField="HSI USAGE (GB)" width="120"></dxi-column>
+			<dxi-column dataField="caf_type_nm" width="120"></dxi-column>
+            <dxi-column dataField="Invoice Amount" width="130"></dxi-column>
+            <dxi-column dataField="VOIP Charge Amount" width="160"></dxi-column>
+            <dxi-column dataField="Add on Charge Amount" width="160"></dxi-column>
+            <dxi-column dataField="Box Rent" width="140"></dxi-column>
+            <dxi-column dataField="Base Packages Charge Amount" width="170"></dxi-column>
+
+
+            <div *dxTemplate="let agrmtData of 'details'">
+              <dx-data-grid  [dataSource]="invoiceData" [showBorders]="true"  class="max-width-100 customTwo">
+                <dxo-export [enabled]="true" [allowExportSelectedData]="true"
+                fileName="revnuPackges"></dxo-export>
+                <dxi-column dataField="Sno"></dxi-column>
+                <dxi-column dataField="Package name"></dxi-column>
+                <dxi-column dataField="Package Type"></dxi-column>
+                <dxi-column dataField="Charge Description Text"></dxi-column>
+                <dxi-column dataField="Charge Code" ></dxi-column>
+                <dxi-column dataField="Charge Amount"></dxi-column>
+                <dxi-column dataField="Tax Amount"></dxi-column>
+                <dxi-column dataField="Total Amount"></dxi-column>
+              </dx-data-grid>
+            </div>
+          </dx-data-grid>
+        </div>
+      </dx-data-grid>
+    </div>
+  </div>
+  <div *ngIf="result==false && permissions" class="ds-card m-12 p-4 font-weight-600 text-center slctGtDta">No Data</div>
+</div>

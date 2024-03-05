@@ -1,0 +1,279 @@
+<div class="page-layout simple pageBackground tabbed">
+  <div class="dbcrdsbgrnd">
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card dsbbrdcrds" *ngIf="agntCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-blue border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.tot_ent_ct}}</div>
+                <div class="h4 nme">Total CAFs</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.ent_gov_ct}}</div>
+                <div class="h4 nme">Government</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.ent_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-pink border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.tot_actv_ent_ct}}</div>
+                <div class="h4 nme">Active CAFS</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.ent_actv_gov_ct}}</div>
+                <div class="h4 nme">Enterprise</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.ent_actv_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-green border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.tot_spnd_ent_ct}}</div>
+                <div class="h4 nme">Suspended CAFS</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.ent_spnd_gov_ct}}</div>
+                <div class="h4 nme">Government</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.ent_spnd_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="stpBxsCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-yellow border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount.tot_trmnd_ent_ct}}</div>
+                <div class="h4 nme">Terminated CAFs</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount.ent_trmnd_gov_ct}}</div>
+                <div class="h4 nme">Government</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount.ent_trmnd_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+      <div fxFlex="100" fxFlex.gt-lg="12%" fxFlex.gt-md="12%" fxFlex.gt-sm="14%" fxFlex.gt-xs="0%"></div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-green border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount.crnt_mnth_ent_actv_ct}}</div>
+                <div class="h4 nme">Active CAFs <div class="font-style">This Month</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount.crnt_mnth_ent_actv_gov_ct}}</div>
+                <div class="h4 nme">Government</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount.crnt_mnth_ent_actv_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-yellow border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.crnt_mnth_ent_spnd_ct}}</div>
+                <div class="h4 nme">Suspended CAFS <div class="font-style">This Month</div></div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.crnt_mnth_ent_spnd_gov_ct}}</div>
+                <div class="h4 nme">Government</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount.crnt_mnth_ent_spnd_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafTrmndCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-pink border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafTrmndCount.crnt_mnth_ent_trmnd_ent_ct}}</div>
+                <div class="h4 nme">Terminated CAFS <div class="font-style">This Month</div></div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafTrmndCount.crnt_mnth_ent_trmnd_gov_ct}}</div>
+                <div class="h4 nme">Enterprise</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafTrmndCount.crnt_mnth_ent_trmnd_prv_ct}}</div>
+                <div class="h4 nme">Private</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="50%"></div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+      <div fxFlex="100" fxFlex.gt-xl="65%" fxFlex.gt-lg="65%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%">
+        <div class="ds-card m-12">
+          <div class="px-16 table-Header-border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+              fxFlex.gt-xs="100%">
+              <div class="font-weight-500 font-size-18 p-8" style="color:#4c3730;">Customers With Top 10 CAFs</div>
+            </div>
+          </div>
+          <div class="p-4" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+          fxLayoutAlign.gt-xs="space-between start">
+          <dx-data-grid id="gridContainer" [dataSource]="cafTopTenLst" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" style="max-width:100%" [allowColumnResizing]="true">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+            </dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="false"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="LMO Details"></dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+              alignment="f.cellStyle.text-align" [width]="f.width" [alignment]="f.alignment" [allowResizing]="true"
+              [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter" ></dxi-column>
+          </dx-data-grid>
+        </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%">
+        <div class="ds-card m-12">
+          <div class="p-24 mt-40" id="chart-demo">
+              <dx-chart palette="Violet" [dataSource]="cafLst6MnthDtls">
+                  <dxi-series *ngFor="let c of cafProvsn" [valueField]="c.value" [name]="c.name" color="#a13d73">
+                  </dxi-series>
+                  <dxi-value-axis position="left">
+                      <dxo-grid [visible]="true"></dxo-grid>
+                      <dxo-title text="Total CAF Provisions"></dxo-title>
+                  </dxi-value-axis>
+                  <dxo-common-series-settings #seriesSettings argumentField="yr" [type]="types[0]">
+                      <dxo-label [visible]="true" backgroundColor="none" color="black">
+                      </dxo-label>
+                  </dxo-common-series-settings>
+                  <dxo-margin [bottom]="20"></dxo-margin>
+                  <dxo-argument-axis [valueMarginsEnabled]="false" discreteAxisDivisionMode="crossLabels">
+                      <dxo-grid [visible]="true"></dxo-grid>
+                      <dxo-title text="Date"></dxo-title>
+                  </dxo-argument-axis>
+                  <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+                  </dxo-legend>
+                  <dxo-title text="CAF Provisions">
+                      <dxo-subtitle text="(Last 6 Months)">
+                      </dxo-subtitle>
+                  </dxo-title>
+                  <dxo-export [enabled]="true"></dxo-export>
+                  <dxo-tooltip [enabled]="true"  [zIndex]="5000"></dxo-tooltip>
+              </dx-chart>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

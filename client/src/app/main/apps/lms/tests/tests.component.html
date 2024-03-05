@@ -1,0 +1,62 @@
+<div class="frm">
+  <div fxLayout="column" class="w-100-p text-center">
+    <div fxLayout="row" class="marks-hdr">
+      <div fxLayout="column" class="w-100-p">
+        <p class="font-size-24 font-weight-700">{{testItem.name}}</p>
+        <p class="font-size-13 font-weight-400 m-0">{{testItem.testDesc}}</p>
+      </div>
+      <div class="marks-div" *ngIf="isSubmitted">
+        <img class="w-50-p" src="assets/images/marks.png">
+        <div class="marks-ttl">
+          <p class="font-size-28 font-weight-600 ">{{score}}</p>
+          <div class="divider">
+            <p class="divider-cntnt"></p>
+          </div>
+          <p class="font-size-28 font-weight-600 ">{{testArray.length}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider">
+      <p class="divider-cntnt"></p>
+    </div>
+  </div>
+
+<div class='form-scrl'>
+  <form [formGroup]="testform">
+    <div class="column" *ngFor="let q of t.controls; let i = index">
+      <div [formGroup]="q">
+        <div fxLayout="row">
+          <p class="qn">{{i+1}}.&nbsp;{{q.controls.qstn_nm.value}}</p> <span>
+            <mat-icon class="icon crct" *ngIf="q.controls.crct_ans.value && isSubmitted">check</mat-icon>
+            <mat-icon class="icon wrng" *ngIf="!q.controls.crct_ans.value && isSubmitted">close</mat-icon>
+          </span>
+        </div>
+        <mat-radio-group formControlName="ans" [disabled]="isSubmitted" fxLayout="column">
+
+          <mat-radio-button class="example-margin" style="margin: 4px;" value=1 type="radio">
+            {{q.controls.opt_1.value}}
+          </mat-radio-button>
+
+
+          <mat-radio-button class="example-margin" style="margin: 4px;" value=2 type="radio">
+            {{q.controls.opt_2.value}}
+          </mat-radio-button>
+          <mat-radio-button class="example-margin" style="margin: 4px;" value=3 type="radio">
+            {{q.controls.opt_3.value}}
+          </mat-radio-button>
+          <mat-radio-button class="example-margin" style="margin: 4px;" value=4 type="radio">
+            {{q.controls.opt_4.value}}
+          </mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+    </div>
+
+  </form>
+</div>
+
+</div>
+<div class="text-center">
+  <button mat-flat-button class="scdl-btn" type="submit" (click)="submit()">Submit</button>
+    <button  *ngIf='rtrybtn' mat-flat-button class="scdl-btn" type="submit" (click)="retry()">Retry</button>
+  </div>

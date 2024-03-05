@@ -1,0 +1,128 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <ds-loading *ngIf=""></ds-loading>
+    <div fxLayout="row">
+        <div fxFlex="80"></div>
+        <div *ngIf="" fxFlex="16">
+            <div class="text-right mt-24">
+                <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/home'"
+                    class="mat-raised-button font-weight-bold addTextColor" type="button">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <ng-container>
+        <ds-loading *ngIf="searchLoader"></ds-loading>
+        <div class="ds-card m-12" id="scrollTop">
+            <div fxLayout="row wrap" fxLayout.sm="column">
+                <div fxFlex.lg="100%" fxFlex.md="50%" fxFlex.lt-sm="100%">
+                    <form fxLayout="column" [formGroup]="addsla" style="margin: auto;">
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            
+                            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">Issue Owner<span class="reqSgnColor">*</span></div>
+                                <mat-form-field appearance="outline">
+                                    <mat-select   formControlName="owner_typ" required>
+                                        <mat-option *ngFor="let o of org" [value]="o.complaint_owner_id">
+                                            {{o.complaint_owner_name}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>Please select issue Owner</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">Level One Time (Mins)<span class="reqSgnColor">*</span>  
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type='text' matNativeControl required
+                                    formControlName="level_one_time" value="" >
+                                    <mat-error> Escalation Level Time is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">Level Two Time (Mins) <span class="reqSgnColor">*</span>  
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type='text' matNativeControl required
+                                    formControlName="level_two_time" value="" >
+                                    <mat-error> Escalation Level Time is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                                <div class="form-label"> Level Three Time (Mins)   
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type='text' matNativeControl 
+                                    formControlName="level_three_time" value="" >
+                                </mat-form-field>
+                            </div>
+                           
+                            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                                <div class="form-label"> Level Four Time (Mins)   
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type='text' matNativeControl 
+                                    formControlName="level_four_time" value="" >
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">Other Emails   
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type='email' matNativeControl 
+                                    formControlName="Other_emails" value="" >
+                                    <mat-error> Other Emails is Required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            </div>
+                        <div fxLayout="row" fxLayout.xs="column"  fxFlexFill>
+                            <div style="text-align: center;" fxFlex="100" fxFlex.xs="100" class="px-8 mt-5">
+                                <button (click)="addslainfo()" mat-flat-button type="submit"
+                                    class="mat-raised-button saveBtn-color btnWdth" aria-label="SAVE">ADD</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" [allowColumnResizing]="true" style="width:100%"
+            (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)">
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]">
+            </dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                fileName="SLA List"></dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width"
+                [filterOperations]="f.filterOperations" [allowHeaderFiltering]="f.columnFiltering"
+                [allowResizing]="true"></dxi-column>
+
+        </dx-data-grid>
+    </ng-container>
+
+    <ds-sidebar  class="form-panel ds-form-sidebar" name="addFormPanel1" position="right" [invisibleOverlay]="false">
+        <ng-container>
+            <div fxLayout="column">
+              <div class="card">
+                <ds-loading *ngIf=""></ds-loading>
+                  <div class="card-body" *ngIf="sladata">
+                    <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle" style="float:right">cancel </mat-icon>
+                    <ds-edit-sla [sladata]="sladata"></ds-edit-sla>
+                  </div>
+              </div>
+          </div>
+        </ng-container>
+      </ds-sidebar>
+</div>

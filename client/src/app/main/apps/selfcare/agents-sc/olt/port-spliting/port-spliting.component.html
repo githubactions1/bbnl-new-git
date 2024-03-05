@@ -1,0 +1,260 @@
+<div class="page-layout simple pageBackground prtSpltngCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="row p-4 m-8 ds-card" *ngIf="oltDrpDwn">
+   <div fxFlex="20" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Select BBNL</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-select [(value)]="oltID" (selectionChange)="getPortsSltsCount(oltID)" required> -->
+          <mat-select [(value)]="apsflBbnl"  required>
+          <mat-option *ngFor="let ab of apsflbbnlflag" [value]="ab.value" (click)="getoltdtls(ab)">
+            {{ab.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Select OLT</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-select [(value)]="oltID" (selectionChange)="getPortsSltsCount(oltID)" required> -->
+          <mat-select [(value)]="oltID" required>
+          <mat-option *ngFor="let o of oltList" [value]="o.olt_id">
+            {{o.olt_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div fxFlex="17" fxFlex.xs="100"></div> -->
+    <div fxFlex="17" fxFlex.xs="100" class="px-8 gtDtlsBtn mrgTpOPS">
+      <button mat-raised-button color="primary" (click)="getPortsSltsCount();" class="gtDtls">GET DETAILS</button>
+    </div>
+  </div>
+  <div class="ds-card m-12 p-4 font-weight-600 text-center slctGtDta" *ngIf="viewMsg">Please Select OLT to get Data</div>
+  <ds-loading *ngIf="pageLdr"></ds-loading>
+  <div class="p-20" *ngIf="pageLdr == false">
+    <div class="ds-card m-12" *ngIf="permissions">
+      <dx-data-grid class = "p-16" [allowColumnResizing]="true" id="gridContainer" [dataSource]="TableData" [remoteOperations]="false"
+        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+        [showBorders]="true" style="width: 100%;">
+        <dxo-selection mode="single"></dxo-selection>
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+          [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [alignment]="f.algnmnt" [width]="f.width" [allowResizing]="true" [allowFiltering]="f.filter"></dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)" *ngIf="data.row.data.sltsct==0">
+              <button class="slctBtn">Select</button>
+            </div>
+          </div>
+        </dxi-column>
+      </dx-data-grid>
+    </div>
+    <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+  </div>
+  <!-- <div class="row" >
+    <div fxFlex="20" fxFlex.xs="20" class="px-8" *ngIf="showResults">
+      <mat-label>
+        <div class="form-label">Port No</div>
+        <div class="lbl_cntnt mndalName px-8">{{selectedData[0].olt_prt_nm}}</div>
+      </mat-label><br>
+    </div>
+
+    <div fxFlex="20" fxFlex.xs="20" class="px-8" *ngIf="showResults">
+      <div class="form-label">Select No.Of L1 Slots</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="fstNumber" (selectionChange)="getSltsFrst(fstNumber)" required>
+          <mat-option *ngFor="let f of dataOne" [value]="f.id">
+            {{f.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div> -->
+  <!-- <div class="row" *ngIf="showResults">
+    <div fxFlex="20" fxFlex.xs="20" class="px-8">
+      <div class="form-label">Select No.Of L1 Slots</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="fstNumber" (selectionChange)="getSltsFrst(fstNumber)" required>
+          <mat-option *ngFor="let f of dataOne" [value]="f.id">
+            {{f.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div> -->
+  <div *ngIf="showResults">
+    <div class="spltsCrd">
+      <p class="portTitle">Port Splitting</p>
+      <div class="row cardPdng">
+        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%"></div>
+        <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="50%" class="px-8"
+          *ngIf="showResults">
+          <mat-label>
+            <div class="form-label">Port No</div>
+            <div class="lbl_cntnt mndalName px-8">{{selectedData.olt_prt_nm}}</div>
+          </mat-label><br>
+        </div>
+
+        <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="50%" class="px-8"
+          *ngIf="showResults">
+          <div class="form-label">Select No.Of L1 Slots</div>
+          <mat-form-field appearance="outline">
+            <mat-select [(value)]="fstNumber" (selectionChange)="getSltsFrst(fstNumber)" required>
+              <mat-option *ngFor="let f of dataOne" [value]="f.id">
+                {{f.id}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%"></div>
+      </div>
+
+
+      <table *ngIf="showResults" class="portSplitng mt-16">
+        <tr>
+          <th>Sno</th>
+          <th>slots Selected</th>
+          <th>Select No.Of L2 Slots</th>
+          <th>No.Of L3 Slots</th>
+        </tr>
+        <tr *ngFor="let m of jsonData[0].value let i=index">
+          <td>{{i+1}}</td>
+          <td>
+            {{m.l_id1}}
+          </td>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="m.l_id2" (selectionChange)="getSltsScnd(m.l_id2)"
+                placeholder="Select No.Of L2 Slots" required>
+                <mat-option *ngFor="let s of jsonData[0].slotTdata" [value]="s.s_id">
+                  {{s.s_id}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            {{m.l_id3}}
+          </td>
+        </tr>
+
+      </table>
+
+
+      <div class="row">
+        <div fxFlex="100" fxFlex.gt-lg="92%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="50%"></div>
+        <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="50%" class="mb-20">
+          <button mat-raised-button type="submit" class="saveBtn-color " aria-label="SAVE" (click)="save()">
+            SAVE
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- <mat-divider></mat-divider> -->
+
+  <!-- <div class ="spltsCrd" *ngIf="showResults">
+    <div class="row cardPdng" *ngFor="let m of jsonData[0].value">
+      <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%" class="px-8">
+        <mat-label>
+          <div class="form-label">slots Selected</div>
+          <div class="lbl_cntnt mndalName px-8">{{m.l_id1}}</div>
+        </mat-label><br>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%" class="px-8">
+        <div class="form-label">Select No.Of L2 Slots</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="m.l_id2" (selectionChange)="getSltsScnd(m.l_id2)" required>
+            <mat-option *ngFor="let s of jsonData[0].slotTdata" [value]="s.s_id">
+              {{s.s_id}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%" class="px-8" *ngIf="m.s_data == true">
+        <mat-label>
+          <div class="form-label">No.Of L3 Slots</div>
+          <div class="lbl_cntnt mndalName px-8">{{m.l_id3}}</div>
+        </mat-label><br>
+      </div>
+    </div>
+    <div class="row endBtn">
+      <button mat-raised-button type="submit" class="saveBtn-color " aria-label="SAVE" (click)="save()">
+        SAVE
+      </button>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+  <!-- <table *ngIf="showResults" class="portSplitng mt-16">
+  <tr>
+    <th>Sno</th>
+    <th>slots Selected</th>
+    <th>Select No.Of L2 Slots</th>
+    <th>No.Of L3 Slots</th>
+  </tr>
+<tr  *ngFor="let m of jsonData[0].value">
+  <td>1</td>
+  <td >
+    {{m.l_id1}}
+  </td>
+  <td>
+    <mat-form-field appearance="outline">
+      <mat-select [(value)]="m.l_id2" (selectionChange)="getSltsScnd(m.l_id2)" placeholder="Select No.Of L2 Slots" required>
+        <mat-option *ngFor="let s of jsonData[0].slotTdata" [value]="s.s_id">
+          {{s.s_id}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </td>
+  <td>
+    {{m.l_id3}}
+  </td>
+</tr>
+
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="row endBtn">
+      <button mat-raised-button type="submit" class="saveBtn-color " aria-label="SAVE" (click)="save()">
+        SAVE
+      </button>
+    </div> -->
+  <!-- </div> -->
+
+</div>
+<!-- </div> -->

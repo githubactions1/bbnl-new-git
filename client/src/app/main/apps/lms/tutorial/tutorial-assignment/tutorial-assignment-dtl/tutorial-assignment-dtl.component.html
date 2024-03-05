@@ -1,0 +1,96 @@
+<div id="courses" class="page-layout simple fullwidth pageBackground">
+  <!-- HEADER -->
+  <!-- <div class="container header accent pghdrStyle text-center pt-16">
+    <h2 style="text-transform: uppercase">Schedule Trainings </h2>
+    
+    <button mat-fab class="add-event-button mat-accent" aria-label="Add event"
+      [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+      <mat-icon>add</mat-icon>
+    </button>
+    
+  </div> -->
+  <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+    fxLayoutAlign.gt-xs="space-between center">
+    <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="mt-10 font-size-16">
+      <div class="logo">
+        <mat-icon class="logo-icon mr-16">calendar_today</mat-icon>
+        <span class="logo-text h1 font-weight-600">
+          Schedule Trainings
+        </span>
+      </div>
+    </div>
+    <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%" class="mt-10 font-size-16">
+      <div class="header-top-line"></div>
+    </div>
+    <!-- ADD EVENT BUTTON -->
+    <button mat-fab class="add-event-button mat-accent"  aria-label="Add event"
+    [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+    <mat-icon>add</mat-icon>
+</button>
+<!-- / ADD EVENT BUTTON -->
+  </div>
+  <div class="content  w-100-p ">
+    <div fxLayout="row wrap" class="p-12">
+      <!-- <div class="row"> -->
+
+      <div fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="ebt m-12" *ngFor="let s of  assignLst">
+        <mat-card class="example-card cls-trng cardShadw">
+
+
+          <div fxLayout="column">
+            <p class="pt-8   m-0 crs-ttl text-center font-weight-700 font-size-16">
+              {{s.trng_nm}}</p>
+            <p class="pt-0 line-height-1.75  m-0  text-center font-weight-600 font-size-14 cnt-desc">
+              {{s.trng_disc}}</p>
+            <div class="divider">
+              <p class="divider-cntnt"></p>
+            </div>
+            <div fxLayout="row" class="mt-12">
+              <p fxLayout="row" class="pt-0 pl-8 cnt-txt   m-0 font-size-12">
+                <mat-icon class="mr-4 font-size-16 font-weight-700">calendar_today</mat-icon>
+                start Date:
+              </p>
+              <p class="pt-0   m-0  font-size-12">
+                {{s.Assign_st_dt | date}}</p>
+            </div>
+            <div fxLayout="row">
+              <p fxLayout="row" class="pt-0 pl-8 cnt-txt  m-0 font-size-12">
+                <mat-icon class="mr-4 font-size-16 font-weight-700">calendar_today</mat-icon>
+                End Date:
+              </p>
+              <p class="pt-0   m-0 font-size-12">
+                {{s.Assign_end_dt | date}}</p>
+            </div>
+            <div fxLayout="row" class="text-center">
+              <div fxLayout="column" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="ebt m-4">
+                <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12 font-weight-700">Assigned By</p>
+                <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">Commissioner</p>
+              </div>
+              <div fxFlex.gt-md="50%" fxLayout="column" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="ebt m-4">
+                <p class="pt-0 pl-8 m-0   font-size-12 font-weight-700">Assigned Date</p>
+                <p class="pt-0 pl-8 m-0 font-size-12">22/10/2019</p>
+              </div>
+            </div>
+            <div>
+
+
+              <div class="crs-actns-cntnr">
+
+                <div class="crs-actns">
+
+                  <button class="btn" (click)="schedule(s)"><i class="fa fa-play-circle"></i> Schedule</button>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </mat-card>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

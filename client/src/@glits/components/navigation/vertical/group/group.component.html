@@ -1,0 +1,16 @@
+<ng-container *ngIf="!item.hidden">
+
+    <div class="group-title" [ngClass]="item.classes">
+        <span class="hint-text" [translate]="item.translate">{{ item.mnu_itm_nm }}</span>
+    </div>
+
+    <div class="group-items">
+        <ng-container *ngFor="let item of item.sub_mnus">
+            <ds-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></ds-nav-vertical-group>
+            <ds-nav-vertical-collapsable *ngIf="item.type=='collapsable'"
+                                           [item]="item"></ds-nav-vertical-collapsable>
+            <ds-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></ds-nav-vertical-item>
+        </ng-container>
+    </div>
+
+</ng-container>

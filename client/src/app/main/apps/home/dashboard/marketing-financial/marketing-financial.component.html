@@ -1,0 +1,441 @@
+<div class="page-layout simple pageBackground tabbed">
+  <div class="text-right font-weight-600 font-size-16 pr-16">
+    <span class="material-icons loc_transform">location_on</span>{{dstrctNm}}
+  </div>
+  <div class="font-size-18 font-weight-600 p-8">Individual CAFs</div>
+  <div fxLayout="row wrap" class="ml-16 mb-12" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+      <div class="ds-card dsbbrdcrds cardOne">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt red-fg">{{share[0] == undefined ? 0 : share[0].indvl_ttl_shre}}</div>
+              <div class="h4 nme">Total Revenue {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].prev_mnth_indvl_ttl_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_mnth_indvl_ttl_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardTwo">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt green-fd">{{share[0].indvl_apsfl_shre}}</div>
+              <div class="h4 nme">Total APSFL Share {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].pre_indvl_apsfl_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_indvl_apsfl_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt light-blue-fg">{{share[0].indvl_mso_shre}}</div>
+              <div class="h4 nme">Total MSO Share {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].pre_indvl_mso_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_indvl_mso_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardFive">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt orange-fg">{{share[0].indvl_lmo_shre}}</div>
+              <div class="h4 nme">Total LMO Share {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].pre_indvl_lmo_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_indvl_lmo_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="font-size-18 font-weight-600 p-8">Enterprise CAFs</div>
+  <div fxLayout="row wrap" class="ml-16 mb-12" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardOne">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt red-fg">{{share[0].ent_ttl_shre}}</div>
+              <div class="h4 nme">Total Revenue {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].prev_mnth_ent_ttl_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_mnth_ent_ttl_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardTwo">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt green-fd">{{share[0].ent_apsfl_shre}}</div>
+              <div class="h4 nme">Total APSFL Share {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].pre_ent_apsfl_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_ent_apsfl_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt light-blue-fg">{{share[0].ent_mso_shre}}</div>
+              <div class="h4 nme">Total MSO Share {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].pre_ent_mso_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_ent_mso_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card dsbbrdcrds cardFive">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="totlCnt inrSctn">
+            <div class="cntDtls">
+
+              <div class="h1 cnt orange-fg">{{share[0].ent_lmo_shre}}</div>
+              <div class="h4 nme">Total LMO Share {{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].pre_ent_lmo_shre}}</div>
+              <div class="h4 nme">{{mnthcrnt}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{share[0].curnt_ent_lmo_shre}}</div>
+              <div class="h4 nme">{{mnthnm}}&nbsp;{{currentyear}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="column" fxLayout.xs="column">
+    <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+      <div class="ds-card mb-40 chrtDSCrd" style="margin-right: 0%;">
+        <div class="font-size-18 font-weight-600 p-8 table-Header-border-bottom">Monthly Revenue Share Summary</div>
+        <dx-chart id="chart" class="hmechrt" [dataSource]="chartdata" (onPointClick)="onPointClick($event)">
+          <dxi-series valueField="APSFL_SHARE" name="APSFL" color="#01959f"></dxi-series>
+          <dxi-series valueField="LMO_SHARE" title="LMO" name="LMO" color="#e96058"></dxi-series>
+          <dxi-series valueField="MSO_SHARE" name="MSO" color="#5e495a"></dxi-series>
+          <dxi-value-axis name="TOTAL_INVOICE_AMOUNT" position="left">
+            <dxo-grid [visible]="true"></dxo-grid>
+            <dxo-title text="Total Revenue"></dxo-title>
+          </dxi-value-axis>
+          <dxo-common-series-settings argumentField="month" type="bar">
+            <dxo-label [visible]="true" [format]="{ type:'currency',currency:'INR', precision:'0'}"
+              backgroundColor="none">
+            </dxo-label>
+          </dxo-common-series-settings>
+          <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+          </dxo-legend>
+          <dxo-tooltip [enabled]="true"
+            [format]="{ type:'currency',currency:'INR', precision:'0'}" [zIndex]="5000">
+          </dxo-tooltip>
+          <dxo-export [enabled]="true"></dxo-export>
+        </dx-chart>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="column" fxLayout.xs="column">
+    <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+      <div class="ds-card mb-40 " style="margin-right: 0%;">
+        <div class="px-16 table-Header-border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+            <div class="px-16 font-size-18 font-weight-600" fxLayout="row" fxLayoutAlign="space-between center">
+              Revenue Share Details</div>
+          </div>
+          <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 transform-filter-div">
+            <div class="px-16" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="transform-text px-16 font-weight-600">Year</div>
+              <mat-form-field class="cssdrp px-16" appearance="outline">
+                <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedYearGrid">
+                  <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button type="submit" mat-flat-button
+                class="mat-raised-button gtDtls px-8 w-45-p transform-get-data-button" (click)="getgriddata();">Get
+                Data</button>
+            </div>
+
+          </div>
+          <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+
+          </div>
+
+        </div>
+
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="griddata" [remoteOperations]="false"
+          [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+          [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+          (onCellPrepared)="onCellPrepared($event)" [masterDetail]="{ enabled: true, template: 'detail' }">
+          <dxo-paging [pageSize]="12"></dxo-paging>
+          <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[12, 25, 50, 100]"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+          <dxo-group-panel [visible]="false"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select">
+          </dxo-column-chooser>
+          <dxo-export [enabled]="true" fileName="revShareSummary" [allowExportSelectedData]="true">
+          </dxo-export>
+          <div>button</div>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column [allowResizing]="true" caption="S.No" dataField='invce_mm' alignment="center" width="60"
+            height="40" [allowFiltering]="false" [allowHeaderFiltering]="false"></dxi-column>
+          <dxi-column [allowResizing]="true" caption="Invoice Year" dataField='invce_yr' alignment="center" width="150"
+            height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" caption="Invoice Month" dataField='month' alignment="left" width="150"
+            height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Total CAFS Invoiced"
+            dataField='TOT_CAFS_INVOICED' alignment="center" width="150" height="40" filter="true">
+          </dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Individual CAFS Invoiced"
+            dataField='INV_CAFS_INVOICED' alignment="center" width="150" height="40" filter="true">
+          </dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Enterprise CAFS Invoiced"
+            dataField='ENT_CAFS_INVOICED' alignment="center" width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="New CAFS Invoiced"
+            dataField='NEW_CAFS_INVOICED' alignment="center" width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Invoice Amount"
+            dataField='INVOICE_AMOUNT' [format]="{ style:'currency',currency:'INR', precision:'2'}" alignment="right"
+            width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Invoice Tax"
+            dataField='INVOICE_TAX' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+            width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="APSFL Share"
+            dataField='APSFL_SHARE' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+            width="150" height="40" filter="true"></dxi-column>
+          <dxi-column caption="LMO Share" [filterOperations]="['contains', '=']" dataField='LMO_SHARE'
+            [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right" width="150" height="40"
+            filter="true"></dxi-column>
+          <dxi-column caption="MSO Share" [filterOperations]="['contains', '=']" dataField='MSO_SHARE'
+            [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right" width="150" height="40"
+            filter="true"></dxi-column>
+          <dxi-column caption="Total LMO's" [filterOperations]="['contains', '=']" dataField='LMO_CT' alignment="center"
+            width="150" height="40" filter="true">
+          </dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Total Mso's"
+            dataField='MSO_CT' alignment="center" width="150" height="40" filter="true">
+          </dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Box Invoiced Amount"
+            dataField='BOX_INVOICED_ONLY_AMOUNT' [format]="{ type:'currency',currency:'INR', precision:'2'}"
+            alignment="right" width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Total Box Invoiced CAFS"
+            dataField='BOX_ONLY_INVOICED_CAFS' alignment="center" width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Prorated CAFS"
+            dataField='PRORATED_BILL_CAFS' alignment="center" width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Voip Invoice Amount"
+            dataField='VOIP_INVOICED' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+            width="150" height="40" filter="true"></dxi-column>
+          <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="ADDons Invoice Amount"
+            dataField='ADDONS_INVOICED' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+            width="150" height="40" filter="true"></dxi-column>
+          <div *dxTemplate="let employee of 'detail'">
+            <!-- <div class="master-detail-caption">LMO Details</div> -->
+            <dx-data-grid [dataSource]="employee.data.lmoDtls" [remoteOperations]="false" [allowColumnReordering]="true"
+              [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+              [allowColumnResizing]="true">
+              <dxo-export [enabled]="true" fileName="revShareLMOSummary" [allowExportSelectedData]="true"></dxo-export>
+              <dxi-column [allowResizing]="true" caption="S.No" dataField='s_no' alignment="center" width="60"
+                height="40" [allowFiltering]="false" [allowHeaderFiltering]="false"></dxi-column>
+              <dxi-column [allowResizing]="true" caption="LMO Code" dataField='agnt_cd' alignment="center" width="150"
+                height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" caption="LMO Name" dataField='agnt_nm' alignment="left" width="150"
+                height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Total CAFS Invoiced"
+                dataField='TOT_CAFS_INVOICED' alignment="center" width="150" height="40" filter="true">
+              </dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']"
+                caption="Individual CAFS Invoiced" dataField='INV_CAFS_INVOICED' alignment="center" width="150"
+                height="40" filter="true">
+              </dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']"
+                caption="Enterprise CAFS Invoiced" dataField='ENT_CAFS_INVOICED' alignment="center" width="150"
+                height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="New CAFS Invoiced"
+                dataField='NEW_CAFS_INVOICED' alignment="center" width="150" height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Invoice Amount"
+                dataField='INVOICE_AMOUNT' [format]="{ style:'currency',currency:'INR', precision:'2'}"
+                alignment="right" width="150" height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Invoice Tax"
+                dataField='INVOICE_TAX' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+                width="150" height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="APSFL Share"
+                dataField='APSFL_SHARE' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+                width="150" height="40" filter="true"></dxi-column>
+              <dxi-column caption="LMO Share" [filterOperations]="['contains', '=']" dataField='LMO_SHARE'
+                [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right" width="150" height="40"
+                filter="true"></dxi-column>
+              <dxi-column caption="MSO Share" [filterOperations]="['contains', '=']" dataField='MSO_SHARE'
+                [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right" width="150" height="40"
+                filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Box Invoiced Amount"
+                dataField='BOX_INVOICED_ONLY_AMOUNT' [format]="{ type:'currency',currency:'INR', precision:'2'}"
+                alignment="right" width="150" height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']"
+                caption="Total Box Invoiced CAFS" dataField='BOX_ONLY_INVOICED_CAFS' alignment="center" width="150"
+                height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Prorated CAFS"
+                dataField='PRORATED_BILL_CAFS' alignment="center" width="150" height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="Voip Invoice Amount"
+                dataField='VOIP_INVOICED' [format]="{ type:'currency',currency:'INR', precision:'2'}" alignment="right"
+                width="150" height="40" filter="true"></dxi-column>
+              <dxi-column [allowResizing]="true" [filterOperations]="['contains', '=']" caption="ADDons Invoice Amount"
+                dataField='ADDONS_INVOICED' [format]="{ type:'currency',currency:'INR', precision:'2'}"
+                alignment="right" width="150" height="40" filter="true"></dxi-column>
+            </dx-data-grid>
+          </div>
+        </dx-data-grid>
+      </div>
+    </div>
+  </div>
+</div>

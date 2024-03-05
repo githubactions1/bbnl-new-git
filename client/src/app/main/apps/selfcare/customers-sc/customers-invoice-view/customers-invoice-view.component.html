@@ -1,0 +1,548 @@
+<div class="page-layout simple pageBackground">
+    <button (click)="captureScreen()" style="height: 45px;
+    background: #ffc0cb1c;
+    color: #f1663c;
+    font-size: 18px;
+    font-weight: 700;">Download Invoice</button>
+    <div id="content" *ngIf="cstmrmnthdat">
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+        <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%"></div>
+        <div fxFlex="100" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      
+            <div class="ds-card p-12">
+                <div fxLayout="row wrap" fxLayoutAlign="start top">
+                    <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <img class="imgclss" src="assets/images/APSFL.png">
+                    </div>
+             
+                    <div fxFlex="100" fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <p class="txt" style="font-size:18px;font-weight:700;text-align:center;margin-top: 0%;">Andhra Pradesh State FiberNet Ltd. <br>(A
+                            Govt. of A.P
+                            Enterprise)</p>
+                    </div>   
+                    <div fxFlex="100" fxFlex.gt-lg="40%" fxFlex.gt-md="0%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <img class="imgclss1" src="assets/images/apfiber_logo.png">
+                    </div>
+                </div>
+      
+      
+      
+                <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <th colspan="6" class="taxinvcsth">
+                            Tax Invoice
+                        </th>
+                    </tr>
+                    <tr style="padding-top:2%">
+                        <td colspan="1" style="width:40%">
+                            <p style="font-weight: 700;">Name And Address of Customer</p>
+                            <p>{{cstmrmnthdat[0].contactname}}</p>
+                            <p style="line-height: 1.6;">{{cstmrmnthdat[0].address}}</p>
+                            <p>{{cstmrmnthdat[0].vlge_nm}}</p>
+                            <p>{{cstmrmnthdat[0].dstrt_nm + ' '+ 'Andhra pradesh'}}</p>
+                            <p>{{cstmrmnthdat[0].blng_pn_cd}}</p>
+                            <p>{{cstmrmnthdat[0].num}}</p>
+
+                        </td>
+                        <td style="border-top: none !important;padding:0px!important;">
+                            <table width="100%" cellspacing="0" cellpadding="0" class="table" style="margin-bottom: 0px;">
+                                <tr *ngIf="cstmrmnthdat[0].entrpe_type_id">
+                                    <td style="border-top: none !important;width:50%">Enterprise Customer ID</td>
+                                    <td class="intext">{{cstmrmnthdat[0].customerid}}</td>
+                                </tr>
+                                <tr *ngIf="cstmrmnthdat[0].entrpe_type_id==null">
+                                    <td style="border-top: none !important;width:50%">Customer ID</td>
+                                    <td class="intext">{{cstmrmnthdat[0].customerid}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Payment Customer ID</td>
+                                    <td class="intext">{{cstmrmnthdat[0].customerid}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    <td class="intext">{{cstmrmnthdat[0].num}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Invoice Number</td>
+                                    <td class="intext">{{cstmrmnthdat[0].cst_invoiceid}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Invoice Date</td>
+                                    <td class="intext">{{cstmrmnthdat[0].billdate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bill Period</td>
+                                    <td class="intext">{{cstmrmnthdat[0].billstart}} to {{cstmrmnthdat[0].billend}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Payment Due Date</td>
+                                    <td class="intext">{{cstmrmnthdat[0].duedate}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+      
+                </table>
+      
+      
+                <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                    <tr width="100%">
+                        <td colspan="6" class="paymntth">
+                            <span>Payment Details</span></td>
+                    </tr>
+                    <tr>
+                        <th class="intext pmnttbltxt">Previous Balance</th>
+                        <th class="intext pmnttbltxt">Last Payment</th>
+                        <th class="intext pmnttbltxt">Balance Amount</th>
+                        <th class="intext pmnttbltxt">Adjustment</th>
+                        <th class="intext pmnttbltxt">Current Bill Amount</th>
+                        <th class="intext pmnttbltxt">Amount Payable</th>
+                    </tr>
+                    <tr>
+                        <td class="intext pmnttbltxt">A</td>
+                        <td class="intext pmnttbltxt">B</td>
+                        <td class="intext pmnttbltxt">C=A-B</td>
+                        <td class="intext pmnttbltxt">D</td>
+                        <td class="intext pmnttbltxt">E</td>
+                        <td class="intext pmnttbltxt">E+C-D</td>
+      
+                    </tr>
+                    <tr>
+                        <td class="intext pmnttbltxt">{{cstmrmnthdat[0].prvbal}}</td>
+                        <td class="intext pmnttbltxt">{{cstmrmnthdat[0].pyble_at}}</td>
+                        <td class="intext pmnttbltxt">{{cstmrmnthdat[0].balnce}}</td>
+                        <td class="intext pmnttbltxt">{{cstmrmnthdat[0].adjsd_at}}</td>
+                        <td class="intext pmnttbltxt">{{cstmrmnthdat[0].crrnt_bill}}</td>
+                        <td class="intext pmnttbltxt">{{cstmrmnthdat[0].crrnt_bill + cstmrmnthdat[0].balnce}}</td>
+      
+                    </tr>
+                </table>
+      
+      
+                <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                    <tr width="100%">
+                        <td colspan="6" class="paymntth">
+                            <span>Last Payment</span></td>
+                    </tr>
+                    <tr width="100%">
+                        <th class="intext">Description</th>
+                        <th class="intext">Date</th>
+                        <th class="intext">Amount</th>
+                    </tr>
+                    <tr>
+                        <td class="intext">payment</td>
+                        <td class="intext">{{cstmrmnthdat[0].pd_dt}}</td>
+                        <td class="intext" style="text-align: right;">{{cstmrmnthdat[0].pyble_at}}</td>
+      
+                    </tr>
+                </table>
+      
+      
+                <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table"
+                    style="page-break-after:always">
+                    <tr width="100%">
+                        <td colspan="12" style="text-align:center;">
+                            <span class="thsummary">Summary of Current Charges - All Accounts
+                            </span></td>
+                    </tr>
+                    <tr width="100%">
+                        <th class="intext">Sno</th>
+                        <th class="intext">Account Number</th>
+                        <th class="intext">Account Name</th>
+                        <th class="intext">Amount(RS)</th>
+                        <th class="intext">Tax(RS)</th>
+                        <th class="intext">Total Amount(RS)</th>
+                    </tr>
+                    <tr *ngFor="let c of cstmrmnthdat[0].cafDtls;let i=index">
+                        <td class="intext">{{i+1}}</td>
+                        <td class="intext">{{c.cafid}}</td>
+                        <td class="intext">{{c.contactname}}</td>
+                        <td class="intext" style="text-align: right;">{{c.invce_at}}</td>
+                        <td class="intext" style="text-align: right;">{{c.cgst_at+c.sgst_at}}</td>
+                        <td class="intext" style="text-align: right;">{{c.inve_amnt}}</td>
+                    </tr>
+                    <tr>
+                        <td class="intext">Total Charges</td>
+                        <td class="intext"></td>
+                        <td class="intext"></td>
+                        <td class="intext"></td>
+                        <td class="intext"></td>
+                        <td class="intex" style="text-align: right;">{{cstmrmnthdat[0].ttl_tax}}</td>
+                    </tr>
+      
+                </table>
+      
+                <div class="page">
+                    <div class="subpage" *ngFor="let c of cstmrmnthdat[0].cafDtls;">
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table" id="tablebrk">
+                            <tr>
+                                <th colspan="6"
+                                    style="padding-left: 5px; line-height: 0px;font-size: 16px; font-weight: bold; text-align: center; background-color: #FFFAFA;">
+                                    Tax Invoice </th>
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <p style="font-weight: 700;">Name And Address of Customer</p>
+                                    <p>{{c.contactname}}</p>
+                                    <p style="line-height: 1.6;">{{c.address}}</p>
+                                    <p>{{c.vlge_nm}}</p>
+                                    <p>{{c.dstrt_nm + ' '+ 'Andhra pradesh'}}</p>
+                                    <p>{{c.blng_pn_cd}}</p>
+                                    <p>{{c.num}}</p>
+                                </td>
+                                <td style="border-top: none !important;padding:0px!important">
+                                    <table width="100%" cellspacing="0" cellpadding="0" class="table" 
+                                        style="margin-bottom: 0px;">
+                                        <tr>
+                                            <td style="border-top: none !important;width:50%">Enterprise Customer ID</td>
+                                            <td class="intext">{{c.customerid}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border-top: none !important;width:50%">Customer ID</td>
+                                            <td class="intext">{{c.customerid}}</td>
+                                        </tr>
+      
+                                        <tr>
+                                            <td>Payment Customer ID</td>
+                                            <td class="intext">{{c.cafid}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone Number</td>
+                                            <td class="intext">{{c.num}}</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+      
+                        </table>
+      
+      
+      
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Package Details</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Description</th>
+                                <th class="intext">Installation Date</th>
+                            </tr>
+      
+                            <tr *ngFor="let p of c.packages">
+                                <td class="intext" *ngIf="p.pckge_nm">{{p.pckge_nm}}</td>
+                                <td class="intext" *ngIf="p.plan_act">{{p.plan_act}}</td>
+                            </tr>
+      
+      
+      
+                        </table>
+      
+      
+      
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table"
+                            style="page-break-after:always">
+                            <tr width="100%">
+                                <th class="intext" style="text-align: center;">Summary of Current Charge</th>
+                                <th class="intext" style="text-align: center;">Amount (Rs.) </th>
+                            </tr>
+                            <tr>
+                                <td class="intext">Monthly Charge</td>
+                                <td class="intext" style="text-align: right;"><span style="float:right">{{c.invce_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Telephone Usage Charges</td>
+                                <td class="intext" style="text-align: right;"><span style="float:right">{{c.voip_chrge_at}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Internet Usage Charges</td>
+                                <td class="intext"><span style="float:right">{{c.hsi_chrge_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Value Added Services</td>
+                                <td class="intext" style="text-align: right;"><span style="float:right">{{c.value_add_srvce_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Recurring Charges</td>
+                                <td class="intext" style="text-align: right;"><span style="float:right">{{c.recring_chrge_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">VOD</td>
+                                <td class="intext"><span style="float:right">{{c.recring_chrge_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Discounts / Adjustments</td>
+                                <td class="intext"><span style="float:right">{{c.adjsd_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Total</td>
+                                <td class="intext"><span style="float:right">{{c.invce_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">CGST</td>
+                                <td class="intext"><span style="float:right">{{c.cgst_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">SGST</td>
+                                <td class="intext"><span style="float:right">{{c.sgst_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Total Tax</td>
+                                <td class="intext"><span style="float:right">{{c.sgst_at+c.cgst_at}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Late Fee</td>
+                                <td class="intext"><span style="float:right"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="intext">Grand Total</td>
+                                <td class="intext"><span style="float:right">{{c.inve_amnt}}</span></td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" id="df" class="table page-break">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Monthly Charges</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Sno</th>
+                                <th class="intext">Description</th>
+                                <th class="intext">Charge Type</th>
+                                <th class="intext">Start Date</th>
+                                <th class="intext">End Date</th>
+                                <th class="intext">Charges</th>
+                            </tr>
+                            <tr *ngFor="let p1 of c.packages; let i=index">
+                                <td>{{i+1}}</td>
+                                <td class="intext">{{p1.pckge_nm}}</td>
+                                <td class="intext">{{p1.chrge_cd}}</td>
+                                <td class="intext">{{p1.chrge_frm_dt}}</td>
+                                <td class="intext">{{p1.chrge_to_dt}}</td>
+                                <td class="intext" style="text-align:right">{{p1.chrge_at}}</td>      
+                            </tr>
+      
+      
+      
+                            <tr>
+                                <td class="intext"></td>
+                                <td class="intext"></td>
+                                <td class="intext"></td>
+                                <td class="intext"></td>
+                                <td class="intext">Total</td>
+                                <td class="intext" style="text-align:right">{{c.invce_at}}</td>
+      
+                            </tr>
+                        </table>
+      
+      
+                        <p style="margin-left: 2%;">Other Charges / Discounts & Adjustments</p>
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>VOD / Movie Charges</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Sno</th>
+                                <th class="intext">VOD/ Movie Name</th>
+                                <th class="intext">Date</th>
+                                <th class="intext">Charges</th>
+                            </tr>
+      
+                        </table>
+      
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Recurring Charges</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Sno</th>
+                                <th class="intext">Description</th>
+                                <th class="intext">Date</th>
+                                <th class="intext">Charges</th>
+                            </tr>
+      
+                        </table>
+      
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Discounts / Adjustments</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Sno</th>
+                                <th class="intext">Description</th>
+                                <th class="intext">Date</th>
+                                <th class="intext">Charges</th>
+                            </tr>
+      
+                        </table>
+      
+      
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Internet Data Usage</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Description</th>
+                                <th class="intext">Units (GB)</th>
+                                <th class="intext">Duration (HH:MM:SS)</th>
+                            </tr>
+                            <tr width="100%">
+                                <td class="intext">{{cstmrmnthdat[0].hsi_pckge_nm}}</td>
+                                <td class="intext" style="text-align:center">{{cstmrmnthdat[0].hsi_total}}</td>
+                                <td class="intext">00:00:00</td>
+                            </tr>
+      
+                        </table>
+      
+                        <p style="margin-left: 2%;font-size: 14px;font-weight: 500;">Telephone - {{cstmrmnthdat[0].phne_nu}}</p>
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Telephone Usage Charges</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Type Of Usage</th>
+                                <th class="intext">Units</th>
+                                <th class="intext">Duration</th>
+                                <th class="intext">Charges</th>
+      
+                            </tr>
+                            <tr width="100%" *ngFor="let v1 of c.voipDtls; let i=index">
+                                <td class="intext" *ngIf="c.voipDtls.length>0">{{v1.type}}</td>
+                                <td class="intext" *ngIf="c.voipDtls.length>0">{{v1.count}}</td>
+                                <td class="intext" *ngIf="c.voipDtls.length>0">{{v1.duration}}</td>
+                                <td class="intext" *ngIf="c.voipDtls.length>0">{{v1.charge}}</td>
+                            </tr>
+      
+                        </table>
+      
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>Local</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Date</th>
+                                <th class="intext">Time</th>
+                                <th class="intext">Called Number</th>
+                                <th class="intext">Duration</th>
+                                <th class="intext">Units</th>
+                                <th class="intext">Charge</th>
+      
+                            </tr>
+                                <tr width="100%" *ngFor="let l of c.localCalls; let i=index">
+                                    <td class="intext" *ngIf="c.localCalls.length>0">{{l.date}}</td>
+                                    <td class="intext" *ngIf="c.localCalls.length>0">{{l.time}}</td>
+                                    <td class="intext" *ngIf="c.localCalls.length>0">{{l.number}}</td>
+                                    <td class="intext" *ngIf="c.localCalls.length>0">{{l.duration}}</td>
+                                    <td class="intext" *ngIf="c.localCalls.length>0">{{l.count}}</td>
+                                    <td class="intext" *ngIf="c.localCalls.length>0">{{l.charge}}</td>
+                                </tr>
+
+      
+                        </table>
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>STD</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Date</th>
+                                <th class="intext">Time</th>
+                                <th class="intext">Called Number</th>
+                                <th class="intext">Duration</th>
+                                <th class="intext">Units</th>
+                                <th class="intext">Charge</th>
+      
+                            </tr>
+                                <tr width="100%" *ngFor="let s of c.stdCalls; let i=index">
+                                    <td class="intext" *ngIf="c.stdCalls.length>0">{{s.date}}</td>
+                                    <td class="intext" *ngIf="c.stdCalls.length>0">{{s.time}}</td>
+                                    <td class="intext" *ngIf="c.stdCalls.length>0">{{s.number}}</td>
+                                    <td class="intext" *ngIf="c.stdCalls.length>0">{{s.duration}}</td>
+                                    <td class="intext" *ngIf="c.stdCalls.length>0">{{s.count}}</td>
+                                    <td class="intext" *ngIf="c.stdCalls.length>0">{{s.charge}}</td>
+                                </tr>
+
+      
+                        </table>
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>ISD</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Date</th>
+                                <th class="intext">Time</th>
+                                <th class="intext">Called Number</th>
+                                <th class="intext">Duration</th>
+                                <th class="intext">Units</th>
+                                <th class="intext">Charge</th>
+      
+                            </tr>
+                                <tr width="100%" *ngFor="let st of c.istdCalls; let i=index">
+                                    <td class="intext" *ngIf="c.istdCalls.length>0">{{st.date}}</td>
+                                    <td class="intext" *ngIf="c.istdCalls.length>0">{{st.time}}</td>
+                                    <td class="intext" *ngIf="c.istdCalls.length>0">{{st.number}}</td>
+                                    <td class="intext" *ngIf="c.istdCalls.length>0">{{st.duration}}</td>
+                                    <td class="intext" *ngIf="c.istdCalls.length>0">{{st.count}}</td>
+                                    <td class="intext" *ngIf="c.istdCalls.length>0">{{st.charge}}</td>
+                                </tr>
+      
+                        </table>
+                        <table width="100%" border="1px" cellspacing="0" cellpadding="0" class="table"
+                            style="page-break-after:always">
+                            <tr width="100%">
+                                <td colspan="6" class="paymntth">
+                                    <span>LandLine</span></td>
+                            </tr>
+                            <tr width="100%">
+                                <th class="intext">Date</th>
+                                <th class="intext">Time</th>
+                                <th class="intext">Called Number</th>
+                                <th class="intext">Duration</th>
+                                <th class="intext">Units</th>
+                                <th class="intext">Charge</th>
+      
+                            </tr>
+      
+                        </table>
+      
+ 
+<div style="margin-left: 2%;font-family:Times New Roman;font-size:16px;text-indent: -10px">
+    <p><span>*</span> In case of overdue / defaults, the right to deactivate your services, is reserved. </p>
+    <p><span>*</span> All disputes are subject to Vijayawada jurisdiction only.</p>
+    <p><span>*</span> GST Regn No :37AANCA9069P1ZM.</p>
+    <p><span>*</span> GST is currently charged at 18%. </p>
+    <p><span>*</span> SAC Code :998419. </p>
+    <p><span>*</span> PAN No.:AANCA9069P and CIN No.:U72200TG2015SGC101155. </p>
+    <p><span>*</span> All the Amounts and Taxes shown are in Indian Rupees.</p>
+    <p><span>*</span> This Invoice is system generated hence signature and stamp is not required. </p>
+    <p><span>*</span> Payment done through Cheques are subject to realization. </p>
+    <p><span>*</span> E&OE Errors and omissions excepted. </p>
+    <p><span>*</span> Now you can make your payments online by using your Net     Banking or Master / Visa / Diner Club credit cards and Master / Maestro / Visa / Rupay debit cards, please visit https://bbnlbss.apsfl.co.in/css for further details.</p>
+    <p><span>*</span> Cash payments should be made to the authorized persons only.</p>
+    <p><span>*</span> Cheques should be in favour of M/s Andhra Pradesh State FiberNet Limited, Vijayawada</p>.
+    <p style="font-weight:500">* Note: Please remit the amount to the following: </p>
+    <p style="font-weight:500">Account through DD/Cheque/NEFT/RTGS: M/s Andhra Pradesh State FiberNet Limited 
+        A/c No: 8213140704
+        Bank: Kotak Mahindra Bank, K T Road, One town, Vijayawada -520001. 
+        IFSC Code: KKBK0007626. </p>
+    <p><span>*</span> Outstanding amounts must be paid through cheques or pay online within the due date mentioned. </p>
+    <p><span>*</span> Out station cheques and post dated cheques will not be accepted. Penal action will be levied in
+        case of cheque bounce. </p>
+    <p><span>*</span> Late payment charges applicable on non-payment of bill on or before due date is Rs.100 or 2% of
+        invoice value whichever is higher subject to maximum charge of Rs 300. </p>
+    <p><span>*</span> For any Queries & Complaints on Billing, Renewals or Technical queries Call :9949208991 ( Toll
+        Free ) or mail to corporate@apsfl.co.in or mail to apsfl@ap.gov.in</p>
+</div> 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

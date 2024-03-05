@@ -1,0 +1,332 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div fxLayout="row wrap" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardOne">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class = "cardBgOne">
+            <mat-icon  class = "dwnldIcn">backup</mat-icon>
+        </div>
+
+           <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+            class="totlCnt inrSctnOne">
+            <div class="cntDtls">
+
+              <div class="h1 cnt">{{hsiCrrntMnthData[0].up}}</div>
+              <div class="h4 nme">Current Month Upload</div>
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+          class="totlCnt inrSctnOne">
+          <div class="cntDtls">
+
+            <div class="h1 cnt">{{hsiCrrntMnthData[1].up}}</div>
+            <div class="h4 nme">Previous Month Upload</div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div fxLayout="row">
+
+          <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  class = "cardBgTwo">
+            <mat-icon  class = "dwnldIcn">cloud_download</mat-icon>
+        </div>
+
+
+          <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+            class="totlCnt inrSctnTwo">
+            <div class="cntDtls">
+              <div class="h1 cnt">{{hsiCrrntMnthData[0].dwn}}</div>
+              <div class="h4 nme">Current Month Download</div>
+
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+          class="totlCnt inrSctnTwo">
+          <div class="cntDtls">
+            <div class="h1 cnt">{{hsiCrrntMnthData[1].dwn}}</div>
+            <div class="h4 nme">Previous Month Download</div>
+
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div fxLayout="row">
+
+          <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  class = "cardBgThree">
+            <mat-icon  class = "dwnldIcn">backup</mat-icon>
+        </div>
+
+          <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+            class="totlCnt inrSctnSvn">
+            <div class="cntDtls">
+              <div class="h1 cnt">{{hsiCrrntDayData[0].tdy_up}}</div>
+              <div class="h4 nme">Today Upload</div>
+
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+          class="totlCnt inrSctnSvn">
+          <div class="cntDtls">
+            <div class="h1 cnt">{{hsiCrrntDayData[1].prvs_up}}</div>
+            <div class="h4 nme">Previous Day Upload</div>
+
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"  class = "cardBgFour">
+            <mat-icon  class = "dwnldIcn">cloud_download</mat-icon>
+        </div>
+        <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+            class="totlCnt inrSctnEght">
+            <div class="cntDtls">
+              <div class="h1 cnt">{{hsiCrrntDayData[0].tdy_dwn}}</div>
+              <div class="h4 nme">Today Download</div>
+
+            </div>
+          </div>
+          <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%"
+          class="totlCnt inrSctnEght">
+          <div class="cntDtls">
+            <div class="h1 cnt">{{hsiCrrntDayData[1].prvs_dwn}}</div>
+            <div class="h4 nme">Previous Day Download</div>
+
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="row m-16 mt-0" style="margin-top:1%!important">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear2" (selectionChange)="selectyear2()">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div> -->
+  <div class="ds-card m-16 mt-0">
+    <div fxLayout="row" fxLayout.xs = "column">
+      <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="0%"></div>
+    <div fxFlex = "100" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle"> MONTH WISE CAF DOWNLOAD USAGE</div>
+    <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear2" (selectionChange)="selectyear2()">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </div>
+    <div id="chart-demo">
+      <dx-chart id="chart" [dataSource]="hsiMnthWiseCafsCnt">
+        <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+     <dxi-series valueField="BELOW_50_D" name="<50GB"></dxi-series>
+    <dxi-series valueField="50_TO_100_D" name="50GB to 100GB"></dxi-series>
+    <dxi-series valueField="100_TO_200_D" name="100GB to 200GB"></dxi-series>
+    <dxi-series valueField="ABOVE_200_D" name=">200GB"></dxi-series>
+        <dxi-value-axis>
+          <dxo-title text="Total CAFS"></dxo-title>
+        </dxi-value-axis>
+        <dxo-common-series-settings argumentField="mnth_nm" type="spline">
+          <dxo-label [visible]="false">
+            <dxo-format type="decimal"></dxo-format>
+          </dxo-label>
+        </dxo-common-series-settings>
+        <dxo-argument-axis [valueMarginsEnabled]="false" [axisDivisionFactor]="35"
+          discreteAxisDivisionMode="crossLabels">
+          <dxo-grid [visible]="true"></dxo-grid>
+        </dxo-argument-axis>
+        <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+          <dxo-label [visible]="true" backgroundColor="#949494">
+            <dxo-font color="#fff" [size]="12">
+            </dxo-font>
+          </dxo-label>
+        </dxo-crosshair>
+        <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+        </dxo-legend>
+
+        <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip1" [zIndex]="5000"></dxo-tooltip>
+        <dxo-export [enabled]="false"></dxo-export>
+      </dx-chart>
+
+    </div>
+  </div>
+  <!-- <div class="row m-16 mt-0" style="margin-top:1%!important">
+    <div class="col-8"></div>
+    <div class="col-2">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-2">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedMonth"
+          placeholder="Select Month" (selectionChange)="selectmnth()">
+          <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div> -->
+ 
+  <div class="ds-card m-16 mt-0">
+
+    <div fxLayout="row" fxLayout.xs = "column">
+
+    <div fxFlex = "100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="0%"  class = "pt-8 chrtTiTle">
+      DAY WISE DATA USAGE
+    </div>
+    <!-- <div fxFlex = "100" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle"> Month Wise CAF Download Usage</div> -->
+    <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+        [(value)]="selectedYear" (selectionChange)="selectmnth()">
+        <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedMonth"
+        placeholder="Select Month" (selectionChange)="selectmnth()">
+        <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    </div>
+
+
+
+
+
+
+    <div id="chart-demo">
+      <dx-chart id="chart" [dataSource]="hsiDayWise">
+        <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+        <dxi-series *ngFor="let energy of architecturesInfo" [valueField]="energy.value" [name]="energy.name"
+          [color]="energy.color">
+        </dxi-series>
+        <dxi-value-axis>
+          <dxo-label [customizeText]="customizeText"></dxo-label>
+          <dxo-title text="Usage In Giga Bytes"></dxo-title>
+        </dxi-value-axis>
+        <dxo-common-series-settings argumentField="day" type="spline">
+          <dxo-title text="Days in month"></dxo-title>
+          <dxo-label [visible]="false">
+            <dxo-format type="decimal"></dxo-format>
+          </dxo-label>
+        </dxo-common-series-settings>
+        <dxo-argument-axis [valueMarginsEnabled]="false" [axisDivisionFactor]="35"
+          discreteAxisDivisionMode="crossLabels">
+          <dxo-grid [visible]="true"></dxo-grid>
+        </dxo-argument-axis>
+        <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+          <dxo-label [visible]="true" backgroundColor="#949494">
+            <dxo-font color="#fff" [size]="12">
+            </dxo-font>
+          </dxo-label>
+        </dxo-crosshair>
+        <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+        </dxo-legend>
+
+        <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000"></dxo-tooltip>
+        <dxo-export [enabled]="false"></dxo-export>
+      </dx-chart>
+
+    </div>
+  </div>
+  <!-- <div class="row m-16 mt-0" style="margin-top:1%!important">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear1" (selectionChange)="selectyear()">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div> -->
+  <div class="ds-card m-16 mt-0">
+
+
+    <div fxLayout="row" fxLayout.xs = "column">
+      <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="0%"></div>
+    <div fxFlex = "100" fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle">MONTHLY DATA USAGE</div>
+    <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" placeholder="Select Year" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear1" (selectionChange)="selectyear()">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </div>
+
+    <div id="chart-demo">
+      <dx-chart id="chart" [dataSource]="hsiMnthWise" >
+        <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+        <dxi-series *ngFor="let energy of monthwisedata" [valueField]="energy.value" [name]="energy.name"
+          [color]="energy.color">
+        </dxi-series>
+        <dxi-value-axis>
+          <dxo-label [customizeText]="customizeText"></dxo-label>
+          <dxo-title text="Usage In Giga Bytes"></dxo-title>
+        </dxi-value-axis>
+        <dxo-common-series-settings argumentField="mnth_nm" type="spline">
+          <dxo-label [visible]="false">
+            <dxo-format type="decimal"></dxo-format>
+          </dxo-label>
+        </dxo-common-series-settings>
+        <dxo-argument-axis [valueMarginsEnabled]="false" [axisDivisionFactor]="15"
+          discreteAxisDivisionMode="crossLabels">
+          <dxo-grid [visible]="true"></dxo-grid>
+        </dxo-argument-axis>
+        <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+          <dxo-label [visible]="true" backgroundColor="#949494">
+            <dxo-font color="#fff" [size]="12">
+            </dxo-font>
+          </dxo-label>
+        </dxo-crosshair>
+        <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+        </dxo-legend>
+
+        <dxo-tooltip [enabled]="true" [zIndex]="5000" [customizeTooltip]="customizeTooltip2"></dxo-tooltip>
+        <dxo-export [enabled]="false"></dxo-export>
+      </dx-chart>
+
+    </div>
+  </div>
+</div>

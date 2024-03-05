@@ -1,0 +1,75 @@
+.agntDshbrdCmpnt{
+
+    .dsbbrdcrds{
+        max-width: 93%;
+        min-width: 93%;
+        margin: 10% 5%;
+        border-radius: 6px;
+        // box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+        // color:white;
+    }
+
+    .chrtCrd
+    {
+        max-width: 100%;
+        min-width: 100%;
+        box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+    }
+.totlCnt{
+    border-right: 1px solid #e0e0e0;
+}
+.inrSctn{
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cntDtls
+{
+    padding-top: 24px;
+    text-align: center;
+}
+
+.nme{
+    font-size: 13px;
+    padding-top: 5px;
+}
+
+.cnt{
+    font-size: 20px;
+    font-weight: 500;
+}
+.cardOne
+{
+    // background: linear-gradient(to right, #ffbf96, #fe7096) !important;
+    border-left: .25rem solid #4e73df!important;
+}
+.cardTwo
+{
+    // background: linear-gradient(to right, #90caf9, #047edf 99%) !important;
+    border-left: .25rem solid #1cc88a!important;
+}
+.cardThree
+{
+    // background: linear-gradient(to right, #84d9d2, #07cdae) !important;
+    border-left: .25rem solid #36b9cc!important;
+}
+.cardFour
+{
+    // background: linear-gradient(to right, #ffbf96, #fe7096) !important;
+    border-left: .25rem solid #f6c23e!important;
+}
+.cardFive
+{
+    // background: linear-gradient(to right, #90caf9, #047edf 99%) !important;
+    border-left: .25rem solid #1cc88a!important;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 350px;
+  }
+  #chartdiv2 {
+    width: 100%;
+    height: 350px;
+  }  
+}

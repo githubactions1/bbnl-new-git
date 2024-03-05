@@ -1,0 +1,119 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+      <div class="spinner-1">
+        <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+      </div>
+    </div>
+  </div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  
+  <div fxLayout="row wrap" fxLayoutAlign="center top">
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%" >
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">{{activecnt}}</div>
+              <div class="h1 cnt msocnt">Total active Connections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%" >
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">{{spndcnt}}</div>
+              <div class="h1 cnt msocnt">Total Suspended Connections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%" >
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">{{tercnt}}</div>
+              <div class="h1 cnt msocnt">Total Terminated Connections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%" >
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">{{blkcnt}}</div>
+              <div class="h1 cnt msocnt">Total Yet To Connect</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%" >
+      <div class="ds-card  dsbbrdcrds  cardFour">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">{{ttlcnt}}</div>
+              <div class="h1 cnt msocnt">Total Connections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%" >
+      <div class="ds-card  dsbbrdcrds  cardTwo">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">{{rowData.length}}</div>
+              <div class="h1 cnt msocnt">Total Organizations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+    <div class="ds-card m-12" *ngIf="permissions">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+        [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+        (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false" style="width: 100%;">
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+          <!-- or "select" -->
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Enterprise Customers"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [alignment]="f.algnmnt" [width]="f.width" [allowFiltering]="f.filter"  [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+        <dxi-column [showInColumnChooser]="false" type="buttons"
+          [width]="100" caption="View" cellTemplate="ViewTemplate">
+          <div *dxTemplate="let data of 'ViewTemplate'">
+            <div class="cursor-pointer tblVwBtn" (click)="onCellClick(data)">
+              View
+            </div>
+          </div>
+        </dxi-column>
+        
+      </dx-data-grid>
+
+    </div>
+</div>

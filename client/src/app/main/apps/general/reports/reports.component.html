@@ -1,0 +1,120 @@
+<div class="page-layout simple tabbed pageBackground rprtsLstCmpnt">
+        <div *ngIf="loader">
+                <div class="loading-indicator">
+                        <div class="spinner-2">
+                                <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+                        </div>
+                </div>
+        </div>
+        <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+        <div fxLayout="row wrap" fxLayoutAlign="start top">
+                <div *ngFor='let c of ctgrylst; let i = index' class="p-16" fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%"
+                        fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+                        <mat-checkbox class="matChckBx" [(ngModel)]="c.chk_ind" (change)="changeCheckbox()">
+                                {{c.rpt_ctgry_nm}}</mat-checkbox>
+                </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="mtcrd">
+                <div class="form-label">Search Report</div>
+                <mat-form-field class="w-100-p" appearance="outline">
+                        <input matInput placeholder="Search a report..." [(ngModel)]="searchText">
+                </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column">
+                <div fxFlex="33%">
+                        <div class="content misreports" fxLayout="column wrap" fxLayoutAlign="start top" style="display: block !important;">
+                                <div class="text-left"
+                                        *ngFor="let d of rptLst | filter:searchText; let idx = index; let len = count;"
+                                        fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%"
+                                        fxFlex.gt-xs="100%">
+                                        <div class="inrCrd" *ngIf="len / 3 > idx">
+                                                <div class="titlebrder p-4 info">{{d.grp_nm}} ({{d.opts.length}})</div>
+                                                <div style="height:407px !important;overflow: auto !important;">
+                                                <dl class="rprtsLst" *ngFor="let f of d.opts">
+                                                        <div *ngIf="f.rpt_shw_in" (click)="gotoRpt(f, d)"
+                                                                class="lstBrder">
+                                                                <dt>
+                                                                        <div class="optnNm fg-blue-dark">
+                                                                                {{f.grp_nm}}
+                                                                        </div>
+                                                                        <span *ngIf="f.cmplt_in == 1">
+                                                                                <mat-icon
+                                                                                        class="secondary-text s-12 mat-icon material-icons cmpltdIcn">
+                                                                                        star</mat-icon>
+                                                                        </span>
+                                                                </dt>
+                                                                <dd class="rprtDscrptnTxt">
+                                                                        {{f.rpt_desc_txt}}</dd>
+                                                        </div>
+                                                </dl>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div fxFlex="33%">
+                        <div class="content misreports" fxLayout="column wrap" fxLayoutAlign="start top" style="display: block !important;">
+                                <div class="text-left"
+                                        *ngFor="let d of rptLst  | filter:searchText; let idx=index;let len = count;"
+                                        fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%"
+                                        fxFlex.gt-xs="100%">
+                                        <div class="inrCrd" *ngIf="idx  > (len/3) && (2 * len / 3) >= idx">
+                                                <div class="titlebrder p-4 info">{{d.grp_nm}} ({{d.opts.length}})</div>
+                                                <div style="height:407px !important;overflow: auto !important;">
+                                                <dl class="rprtsLst" *ngFor="let f of d.opts ">
+                                                        <div *ngIf="f.rpt_shw_in" (click)="gotoRpt(f, d)"
+                                                                class="lstBrder">
+                                                                <dt>
+                                                                        <div class="optnNm fg-blue-dark">
+                                                                                {{f.grp_nm}}
+                                                                        </div>
+                                                                        <span *ngIf="f.cmplt_in == 1">
+                                                                                <mat-icon
+                                                                                        class="secondary-text s-12 mat-icon material-icons cmpltdIcn">
+                                                                                        star</mat-icon>
+                                                                        </span>
+                                                                </dt>
+                                                                <dd class="rprtDscrptnTxt">
+                                                                        {{f.rpt_desc_txt}}</dd>
+                                                        </div>
+                                                </dl>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div fxFlex="33%">
+                        <div class="content misreports" fxLayout="column wrap" fxLayoutAlign="start top" style="display: block !important;">
+                                <div class="text-left"
+                                        *ngFor="let d of rptLst  | filter:searchText; let idx=index;let len = count;"
+                                        fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%"
+                                        fxFlex.gt-xs="100%">
+                                        <div class="inrCrd" *ngIf="idx > (2 * len / 3)">
+                                                <div class="titlebrder p-4 info">{{d.grp_nm}} ({{d.opts.length}})</div>
+                                                <div style="height:407px !important;overflow: auto !important;">
+                                                <dl class="rprtsLst" *ngFor="let f of d.opts ">
+                                                        <div *ngIf="f.rpt_shw_in" (click)="gotoRpt(f, d)"
+                                                                class="lstBrder">
+                                                                <dt>
+                                                                        <div class="optnNm fg-blue-dark">
+                                                                                {{f.grp_nm}}
+                                                                        </div>
+                                                                        <span *ngIf="f.cmplt_in == 1">
+                                                                                <mat-icon
+                                                                                        class="secondary-text s-12 mat-icon material-icons cmpltdIcn">
+                                                                                        star</mat-icon>
+                                                                        </span>
+                                                                </dt>
+                                                                <dd class="rprtDscrptnTxt">
+                                                                        {{f.rpt_desc_txt}}</dd>
+                                                        </div>
+                                                </dl>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>

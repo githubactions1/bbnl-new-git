@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="start center" class="border-bottom-1 indigo-50-fg p-12 mb-12">
+    <div class="font-size-18 font-weight-600 indigo-900-fg">Group Settings</div>
+  </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="m-4">
+            <div>Enter No</div>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Number" [(ngModel)]="groupNbr">
+            </mat-form-field>
+        </div>
+        <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="m-4">
+            <div>Enter Group Name</div>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Group Name" [(ngModel)]="groupName">
+            </mat-form-field>
+        </div>
+        <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="m-4">
+            <button mat-raised-button (click)="saveRooms()" class="blue-900-fg border-1">Save</button>
+        </div>
+    </div>

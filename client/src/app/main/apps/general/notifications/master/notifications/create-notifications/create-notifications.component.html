@@ -1,0 +1,84 @@
+<div class="page-layout blank infrastrectre pageBackground mnuPrfleCmpnt">
+  <app-top-header [headrIcon]="'notifications_active'" [headrName]="'Notifications'"></app-top-header>
+  <div class="text-right"><button class="mat-raised-button mt-4 mb-4 topbtnClor  m-24"
+      matTooltip="Add New Profile" (click)="opensideBar('addNotfctn',null)">
+      <mat-icon _ngcontent-qri-c39=""
+        class=" font-size-24 line-height-34 mat-icon notranslate vertical-align-text-bottom material-icons"
+        role="img" aria-hidden="true">add_alert</mat-icon>
+      Create Notification
+    </button></div>
+
+  <div class="m-12" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between start">
+    <div fxFlex fxFlex.gt-lg="96%" fxFlex.gt-md="96%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" fxLayoutGap="20px"
+      class="mt-10 font-size-16">
+        <ag-grid-angular #agGrid style="width: 100%; height: 500px;" id="myGrid" class="ag-theme-balham p-12 mb-24"
+          [columnDefs]="columnDefs" [rowData]="allNotfctnsLst" [floatingFilter]="true"
+          [suppressHorizontalScroll]="false" [getRowHeight]="getRowHeight" [pagination]="pagination"
+          [paginationPageSize]="paginationPageSize">
+        </ag-grid-angular>
+    </div>
+  </div>
+
+  <!-- sidebar -->
+
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addNotfctn" position="right" [invisibleOverlay]="false">
+    <ng-container>
+
+
+      <section fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-card fxFlex fxFlex.xs="100%">
+          <mat-card-title>Create a new Notification</mat-card-title>
+          <form [formGroup]="newNtfctnForm" autocomplete="off" novalidate (ngSubmit)="createNtfctn(newNtfctnForm.value)"
+            fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <mat-card-content class="w-100-p">
+              <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                class="w-100-p">
+                <mat-form-field appearance="outline" class="w-100-p">
+                  <textarea matInput placeholder="Message" formControlName="ntfnMsg"></textarea>
+                  <mat-error *ngIf="hasError('ntfnMsg', 'required')">Message is required</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                class="w-100-p">
+                <mat-form-field appearance="outline" class="w-100-p">
+                  <mat-select placeholder="Select Category" formControlName="catgryId" required
+                    restrictKeywordValidator="Cat">
+                    <mat-option>--</mat-option>
+                    <!-- <mat-option *ngFor="let icn of icnsLst" [value]="icn.icn_id">
+                      <span><img src="{{icn.icn_img}}" class="l-img"></span>&nbsp;&nbsp;&nbsp;<span>{{icn.icn_nm_alias}}</span>
+                    </mat-option> -->
+                    <mat-option *ngFor="let n of ntfnCatLst" [value]="n.alert_cat_id">
+                      <span>{{n.alert_cat_nm}}</span>
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error *ngIf="hasError('catgryId','required')">Please choose an icn</mat-error>
+                  <mat-error *ngIf="hasError('catgryId','invalidValue')">Please choose any other
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between" class="w-100-p">
+                <mat-form-field appearance="outline" class="w-100-p">
+                  <mat-select placeholder="Select Group" [(value)]="selectedoptions" formControlName="grpControl"
+                    required multiple>
+                    <mat-option *ngFor="let g of grpLst" [value]="g.grp_id">
+                      <span>{{g.grp_nm}}</span>
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="hasError('grpControl','required')">Please choose a group</mat-error>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+            <mat-card-actions text-align="center">
+              <button mat-raised-button color="primary" [disabled]="!newNtfctnForm.valid">Create</button>
+              <button type="button" mat-raised-button color="warn"
+                (click)="opensideBar('addNotfctn',null)">Cancel</button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </section>
+    </ng-container>
+  </ds-sidebar>
+  <!-- sidebar -->
+</div>

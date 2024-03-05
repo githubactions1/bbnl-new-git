@@ -1,0 +1,138 @@
+.search {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex: 1 1 1e-09px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 5px;
+
+    overflow: hidden;
+
+    .mat-icon {
+        margin: 0;
+    }
+
+    input {
+        padding: 0 12px 0 8px;
+        height: 36px;
+        border: none;
+    }
+}
+.search-wrapper{
+background-color: white;
+}
+.ds-card {
+    max-width: 100% !important; 
+    min-width: none !important; 
+    border-radius: 3px;
+    border: 1px solid;
+}
+.user-block{
+    width: fit-content;
+    padding: 0px 10px 0px 10px;
+}
+// .user-thumb{
+//     width: 50px;
+//     height: 50px;
+//     border-radius: 100%;
+//     overflow: hidden;
+//     max-width: unset;
+// }
+.user-item{
+    // position: relative;
+    // padding-right: 15px !important;
+    // padding-left: 15px !important;;
+    position: relative;
+    padding: 0px 20px 0px 20px;
+}
+.user-checkbox{
+    position: absolute;
+    right: 0;
+}
+.more-dropdown-no-padding{
+    width: fit-content;
+    padding: 0px 10px;
+}
+.user-nm{
+    text-align: center !important;
+    width: 75px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    line-height: normal;
+    font-weight: 500;
+}
+.user-info{
+    text-align: center !important;
+    width: 75px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: normal;
+}
+.user-card{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-left: 32px;
+    margin-top: 30px;
+}
+.filter-content{
+    position: relative;
+}
+.filter-form{
+    position: absolute;
+    z-index: 3;
+    top: 56px;
+}
+.filter-icn{
+    cursor: pointer;
+
+}
+.srch-results{
+    z-index: 2;
+    position: absolute;
+    top: 56px;
+}
+.slctd-usr-lst{
+    // z-index: 1;
+    // position: absolute;
+    // top: 48px;
+}
+.rslts-row{
+    height: 300px;
+    overflow: auto;
+}
+.slct-option{
+    width: fit-content;
+    padding: 2px;
+    background: #3a97da;
+    border-radius: 6px;
+    color: white;
+    font-size: 0px;
+    cursor: pointer;
+}
+.slct-options-top{
+    text-align: end;
+    justify-content: flex-end;
+    padding: 5px;
+}
+.slct-options-btm{
+    text-align: center;
+    justify-content: center;
+    padding: 5px;
+}
+::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    box-shadow: inset 0 0 0 12px rgba(58, 151, 218, 0.41) !important;
+    border-radius: 12px;
+}
+.del-usr{
+    cursor: pointer;
+}

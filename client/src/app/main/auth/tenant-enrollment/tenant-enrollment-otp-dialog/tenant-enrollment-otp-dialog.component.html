@@ -1,0 +1,39 @@
+<form name="otpForm" [formGroup]="otpForm" novalidate>
+    <div class="font-size-12 font-weight-500 primary-900-fg text-center">Enter OTP</div>
+    <div class="text-center">
+        <mat-form-field appearance="outline" fxFlex fxFlex.gt-lg="25%"
+            fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="text-center">
+            <input matInput type="text" maxlength="1" appAutofocus
+                formControlName="fstVlu" (keyup)="getFstFocusChnge($event)"
+                id="input1" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex fxFlex.gt-lg="25%"
+            fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="text-center">
+            <input matInput type="text" maxlength="1" formControlName="scndVlu"
+                (keyup)="getScndFocusChnge($event)" #input2 />
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex fxFlex.gt-lg="25%" class="text-center"
+            fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+            <input matInput type="text" maxlength="1" formControlName="thrdVlu"
+                (keyup)="getTrdFocusChnge($event)" #input3 />
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex fxFlex.gt-lg="25%" class="text-center"
+            fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+            <input matInput type="text" maxlength="1" formControlName="frthVlu"
+                #input4 />
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center" class="error" *ngIf="err_msg">
+        {{err_msg}}
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <div fxFlex fxFlex.gt-lg="22%" fxFlex.gt-md="33%" fxFlex.gt-sm="50%"
+            fxFlex.gt-xs="100%">
+            <button mat-flat-button type="submit" aria-label="submit"
+            class="mat-raised-button  saveBtn-color" aria-label="Get OTP"
+                (click)="validateOtp()">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>

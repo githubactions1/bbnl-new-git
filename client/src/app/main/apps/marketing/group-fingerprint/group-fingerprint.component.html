@@ -1,0 +1,1121 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt" *ngIf="permissions">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <ds-loading *ngIf="loader"></ds-loading>
+  <div fxLayout="row">
+    <div fxFlex="80"></div>
+    <div fxFlex="16">
+
+      <!-- <button class="addBtn-color mb-8 mt-8 mat-raised-button mat-primary" color="primary" mat-raised-button=""
+        style="float:right" (click)="opensideBar('addFormPanel',null)">
+        <span class="mat-button-wrapper">
+          <mat-icon class="addfld-icon-color mat-icon material-icons mat-icon-no-color" role="img" aria-hidden="true">
+            person</mat-icon>
+          <span class="pt-2">&nbsp;Add New Customer</span>
+        </span>
+      </button> -->
+
+      <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        *ngIf="showBckBtn" (click)="bckBtn()">
+
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- <div>
+    <mat-radio-group (change)='Onchanslct(GlbTypeMsg)' [(ngModel)]="GlbTypeMsg">
+      <mat-radio-button *ngFor='let mgctr of msctgry' class="example-margin" [value]="mgctr.msgs_ctgry_id">{{mgctr.msgs_ctgry_nm}}</mat-radio-button>
+      <mat-radio-button class="example-margin" value="glbal">Global Message</mat-radio-button>
+      <mat-radio-button class="example-margin" value="grp">Group Message</mat-radio-button>
+    </mat-radio-group>
+  </div> -->
+
+
+<div *ngIf="permissions.insrt_in==0">
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor">You do not have permissions to do this operation. Please contact Administrator to get permissions.</div>
+</div>
+
+  <mat-tab-group (selectedTabChange)="selectedPageIndex($event)" *ngIf="permissions.insrt_in==1">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Global Message
+      </ng-template>
+      <div *ngIf="isGlobalMsg">
+        <div>
+          <div class="msgct">This Message will be send to <strong>{{Tlcafsct.tl_cafs}}</strong> Users
+          </div>
+       
+        </div>
+        <div class="rdogrp">
+          <mat-radio-group #radio (change)='inputslct(TypeMsg,$event)' [(ngModel)]="TypeMsg">
+            <mat-radio-button [checked]='mgctr.msgs_ctgry_id==1 ? true : false' *ngFor='let mgctr of msctgry'
+              class="example-margin" [value]="mgctr.msgs_ctgry_id">
+              {{mgctr.msgs_ctgry_nm}}</mat-radio-button>
+            <!-- <mat-radio-button class="example-margin" value="OSD">OSD</mat-radio-button>
+      <mat-radio-button class="example-margin" value="Scroll" >Scroll Text</mat-radio-button> -->
+          </mat-radio-group>
+        </div>
+
+
+        <div *ngIf="msctgry.length>0 && shofrm =='Finger'" class="ds-card m-12">
+
+          <form class="form-horizontal p-4" [formGroup]="cafFngrFrm">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Position<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="postn" placeholder="480,480">
+                  <mat-error>Position is required!</mat-error>
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="fnt_typ" required>
+                    <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+                      {{f.fnt_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>FontType required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Size<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <input matInput formControlName="fnt_sz"  placeholder="36">
+                  <mat-error>Font Size is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font color<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="fnt_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>Font color is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Duration<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="dur"  placeholder="22" required>
+                  <mat-error>Duration is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select FingerPrintType<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="fng_typ" required>
+                    <mat-option value="0">
+                      Static
+                    </mat-option>
+                    <mat-option value="1">
+                      Random
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>FingerPrintType is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Channel<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="chnl">
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Background Color<span class="reqSgnColor">*</span></div>
+
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="bg_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>Background Color is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>Expiry Date is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+
+            <div fxLayout="row" style="justify-content: center;"  fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="send(cafFngrFrm)">submit</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafFngrFrm)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <div *ngIf="shofrm=='OSD'" class="card p-16">
+
+          <form class="form-horizontal" [formGroup]="cafFngrFrm2">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Position<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="postn" placeholder="480,480">
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="fnt_typ" required>
+                    <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+                      {{f.fnt_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>FontType required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Size<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <input matInput formControlName="fnt_sz"  placeholder="36" required>
+                  <mat-error>Font Size required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font color<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="fnt_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Duration<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="dur" placeholder="22" required>
+                  <mat-error>Duration is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Background Color<span class="reqSgnColor">*</span></div>
+
+                <!-- <mat-label>Father/Husband Name</mat-label> -->
+                <!-- <input matInput formControlName="bg_clr"> -->
+
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="bg_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+                <!-- <mat-error>Last Name is required!</mat-error> -->
+
+              </div>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>End Date is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">User can Close Message<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="usrmsgcls" required>
+                    <mat-option value="1">
+                      true
+                    </mat-option>
+                    <mat-option value="0">
+                      false
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>FingerPrintType is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="msgtyp" required>
+                    <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+                      {{m.msge_type_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>MessageType is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+<!--               
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Subscriber Codes</div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Father/Husband Name</mat-label>
+                  <input matInput formControlName="sub_cd">
+                  <textarea matInput formControlName="sub_cd" placeholder="Em10345,Em5679"></textarea>
+                  <mat-error>Last Name is required!</mat-error>
+                </mat-form-field>
+              </div> -->
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <textarea matInput formControlName="msg" placeholder="Message"></textarea>
+                  <!-- <input  matInput formControlName="msg"> -->
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+
+
+            </div>
+            <div fxLayout="row" style="justify-content: center;"  fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="send(cafFngrFrm2)">submit</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafFngrFrm2)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+        <div *ngIf="shofrm=='Scroll'" class="card p-16">
+
+          <form class="form-horizontal" [formGroup]="cafFngrFrm3">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="msgtyp" required>
+                    <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+                      {{m.msge_type_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>MessageType is required</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">*Duration</div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="dur" placeholder="22" required>
+                  <mat-error>Duration is required!</mat-error>
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>End Date is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <textarea matInput formControlName="msg" placeholder="Message"></textarea>
+                  <!-- <input matInput formControlName="msg"> -->
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+
+            </div>
+            <div fxLayout="row" style="justify-content: center;"  fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="send(cafFngrFrm3)">Submit</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafFngrFrm3)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Group Message
+      </ng-template>
+      <div>
+        <div class="ds-card m-12">
+
+          <form class="form-horizontal p-4" [formGroup]="cafGrpFngrFrm">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select District</div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select (selectionChange)="getMandals($event.value)" formControlName="dstrc_id">
+                    <mat-option *ngFor="let d of districts" [value]="d.dstrt_id">
+                      {{d.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Mandal</div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select (selectionChange)="getvillages($event.value)" formControlName="mndl_id">
+                    <mat-option *ngFor="let m of mndl_lst" [value]="m.mndl_nu"> 
+                      {{m.mndl_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>mandal is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Village</div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="vlge_id">
+                    <mat-option *ngFor="let v of vlge_lst" [value]="v.vlge_id">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Village is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+
+            <div fxLayout="row" style="justify-content: center;" fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="serch(cafGrpFngrFrm.value)">Search</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafGrpFngrFrm)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <ds-loading *ngIf="loadpanl"></ds-loading>
+        <div *ngIf="showTble" class="p-40 pt-0">
+          <div class="ds-card grid" *ngIf="(permissions.slct_in==1)?true:false">
+            <dx-data-grid #dataGridRef id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [columnAutoWidth]="true"
+              [allowColumnReordering]="true"[allowColumnResizing]="true"  [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" style="width:100%">
+              <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-load-panel [(visible)]="loadpanl"
+              [enabled]="true">
+           </dxo-load-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+                <!-- or "select" -->
+              </dxo-column-chooser>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"
+                [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+            </dx-data-grid>
+
+          </div>
+
+
+
+        </div>
+
+
+        <div *ngIf="showTble">
+          <div class="rdogrp">
+          <mat-radio-group (change)='inputslct(TypeMsg)' [(ngModel)]="TypeMsg">
+            <mat-radio-button [checked]='mgctr.msgs_ctgry_id==1 ? true : false' *ngFor='let mgctr of msctgry'
+              class="example-margin" [value]="mgctr.msgs_ctgry_id">
+              {{mgctr.msgs_ctgry_nm}}</mat-radio-button>
+            <!-- <mat-radio-button class="example-margin" value="OSD">OSD</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Scroll" >Scroll Text</mat-radio-button> -->
+          </mat-radio-group>
+        </div>
+        </div>
+
+
+        <div *ngIf=" msctgry.length>0 && shofrm == 'Finger'" class="card p-16">
+
+          <form class="form-horizontal" [formGroup]="cafFngrFrm">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Position<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="postn" placeholder="480,480">
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="fnt_typ" required>
+                    <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+                      {{f.fnt_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>FontType required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Size<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <input matInput formControlName="fnt_sz" placeholder="36" required >
+                  <mat-error>Font Size required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font color<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="fnt_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Duration<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="dur" placeholder="22" required>
+                  <mat-error>Duration is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select FingerPrintType<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="fng_typ" required>
+                    <mat-option value="0">
+                      Static
+                    </mat-option>
+                    <mat-option value="1">
+                      Random
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>FingerPrintType is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Channel<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="chnl">
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Background Color<span class="reqSgnColor">*</span></div>
+
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="bg_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <!-- <mat-error>Last Name is required!</mat-error> -->
+                </mat-form-field>
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>End Date is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+
+
+            </div>
+
+            <div fxLayout="row" style="justify-content: center;" fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="send(cafFngrFrm)">Submit</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafFngrFrm)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <div *ngIf="shofrm=='OSD'" class="card p-16">
+
+          <form class="form-horizontal" [formGroup]="cafFngrFrm2">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Position<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="postn" placeholder="480,480">
+                  <mat-error>Position is required!</mat-error>
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="fnt_typ" required>
+                    <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+                      {{f.fnt_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>FontType required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font Size<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <input matInput formControlName="fnt_sz" placeholder="36">
+                  <mat-error>Font Size required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Font color<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="fnt_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>Font color is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Duration<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="dur" placeholder="22" required>
+                  <mat-error>Duration is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Background Color<span class="reqSgnColor">*</span></div>
+
+                <!-- <mat-label>Father/Husband Name</mat-label> -->
+                <!-- <input matInput formControlName="bg_clr"> -->
+
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                  <mat-select formControlName="bg_clr" required>
+                    <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                      {{c.clr_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>Background Color is required!</mat-error>
+                </mat-form-field>
+                <!-- <mat-error>Last Name is required!</mat-error> -->
+
+              </div>
+
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>Expiry Date is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">User can Close Message<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="usrmsgcls" required>
+                    <mat-option value="1">
+                      true
+                    </mat-option>
+                    <mat-option value="0">
+                      false
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>User can Close Message is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message Type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="msgtyp" required>
+                    <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+                      {{m.msge_type_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>MessageType is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+             
+              <!-- <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Subscriber Code</div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Father/Husband Name</mat-label>
+                  <input matInput formControlName="sub_cd">
+                  <textarea matInput formControlName="sub_cd" placeholder="LMO123,Lmo456"></textarea>
+                  <mat-error>Last Name is required!</mat-error>
+                </mat-form-field>
+              </div> -->
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <textarea matInput formControlName="msg" placeholder="Message"></textarea>
+                  <!-- <input  matInput formControlName="msg"> -->
+                  <mat-error>Message is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+            <div fxLayout="row" style="justify-content: center;"  fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="send(cafFngrFrm2)">Submit</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafFngrFrm2)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+        <div *ngIf="shofrm=='Scroll'" class="card p-16">
+
+          <form class="form-horizontal" [formGroup]="cafFngrFrm3">
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message Type</div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Gender</mat-label> -->
+                  <!-- (selectionChange)="getLmo($event.value)"  -->
+                  <mat-select formControlName="msgtyp" required>
+                    <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+                      {{m.msge_type_nm}}
+                    </mat-option>
+
+                  </mat-select>
+                  <mat-error>MessageType is required</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Duration</div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <input matInput formControlName="dur" placeholder="22" required>
+                  <mat-error>Duration is required!</mat-error>
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>Expiry Date is required!</mat-error>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Message<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Father/Husband Name</mat-label> -->
+                  <textarea matInput formControlName="msg" placeholder="Message"></textarea>
+                  <!-- <input matInput formControlName="msg"> -->
+                  <mat-error>Message is required!</mat-error>
+                </mat-form-field>
+
+                <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+              </div>
+            </div>
+
+            <div fxLayout="row" style="justify-content: center;"  fxFlexFill>
+              <div>
+                <button class="mat-raised-button gtDtls" (click)="send(cafFngrFrm3)">Submit</button>
+              </div>
+              <div style="margin-left: 8px;">
+                <button class="mat-raised-button gtDtls" (click)="Reset(cafFngrFrm3)">Reset</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+
+
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        LMO Message
+      </ng-template>
+      <div class="ds-card m-12" id="scrollTop">
+
+
+        <form fxLayout="column" [formGroup]="firstFormGroup" class="p-16">
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Position<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Father/Husband Name</mat-label> -->
+                <input matInput formControlName="postn" placeholder="480,480">
+                <mat-error>Position is required!</mat-error>
+              </mat-form-field>
+
+              <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Font Type<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Gender</mat-label> -->
+                <!-- (selectionChange)="getLmo($event.value)"  -->
+                <mat-select formControlName="fnt_typ" required>
+                  <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+                    {{f.fnt_nm}}
+                  </mat-option>
+
+                </mat-select>
+                <mat-error>FontType required</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Font Size<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Gender</mat-label> -->
+                <!-- (selectionChange)="getLmo($event.value)"  -->
+                <input matInput formControlName="fnt_sz"  placeholder="36">
+                <mat-error>Font Size is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Font color<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                <mat-select formControlName="fnt_clr" required>
+                  <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                    {{c.clr_nm}}
+                  </mat-option>
+
+                </mat-select>
+                <mat-error>Font color is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Background Color<span class="reqSgnColor">*</span></div>
+
+              <!-- <mat-label>Father/Husband Name</mat-label> -->
+              <!-- <input matInput formControlName="bg_clr"> -->
+
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Father/Husband Name</mat-label> -->
+
+                <mat-select formControlName="bg_clr" required>
+                  <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+                    {{c.clr_nm}}
+                  </mat-option>
+
+                </mat-select>
+                <mat-error>Background Color is required!</mat-error>
+              </mat-form-field>
+              <!-- <mat-error>Last Name is required!</mat-error> -->
+
+            </div>
+
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Enter Message<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Middle Name</mat-label> -->
+                <textarea matInput formControlName="msg" required></textarea>
+                <mat-error>Message is required!</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+            <div fxFlex="40" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Duration<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>First Name</mat-label> -->
+                <input matInput formControlName="dur"  placeholder="22" required>
+                <mat-error> Duration is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Expiry Date<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <input matInput [matDatepicker]="picker" [readonly]="true" formControlName="ex_dt" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>Expiry Date is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">User Can Close Message <span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Billing Frequency</mat-label> -->
+                <mat-select formControlName="usrmsgcls" required>
+                  <mat-option [value]='1'>True</mat-option>
+                  <mat-option [value]='2'>False </mat-option>
+                </mat-select>
+                <!-- <input matInput formControlName="frqncy_id" required> -->
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Message Type<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Gender</mat-label> -->
+                <!-- (selectionChange)="getLmo($event.value)"  -->
+                <mat-select formControlName="msgtyp" required>
+                  <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+                    {{m.msge_type_nm}}
+                  </mat-option>
+
+                </mat-select>
+                <mat-error>MessageType is required</mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Lmo codes</div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>First Name</mat-label> -->
+                <textarea matInput formControlName="lmo_id" placeholder="Lmo123,Lmo345 rule"></textarea>
+                <!-- <input matInput placeholder="Lmo123,Lmo345 rule"formControlName="lmo_id" > -->
+                <!-- <mat-error> Lmo code is required!</mat-error> -->
+              </mat-form-field>
+            </div>
+            (or)
+            <div fxFlex="60" fxFlex.xs="100" class="px-8">
+              <div fxFlex.xl="30" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Lmo Codes</div>
+                <input type="file" id="file"   (change)="uploadedFile($event)">
+                <label for="file">Choose a file</label>
+                <div *ngIf='isValid==true'>{{upldFileNm}}</div>
+                <div class='vldecxl' *ngIf='isValid==false'>Please Upload Valid Excel !</div>
+              </div>
+              <div fxFlex.xl="30" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 m-24">
+                <div class="form-label"></div>
+                <button mat-flat-button  type="submit" aria-label="Areas"
+                  class="mat-raised-button font-weight-bold addTextColor" type="button" (click)="downloadtemplate()">
+                  <mat-icon matTooltip="Add Areas">cloud_download</mat-icon> Download Template
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+          <div fxLayout="row" style="justify-content: center;" fxFlexFill>
+            <div>
+              <button class="mat-raised-button gtDtls" (click)="send(firstFormGroup)">submit</button>
+            </div>
+            <div style="margin-left: 8px;">
+              <button class="mat-raised-button gtDtls" (click)="Reset(firstFormGroup)">Reset</button>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+    </mat-tab>
+
+
+
+  </mat-tab-group>
+
+
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,178 @@
+<!-- SEARCH -->
+<div fxLayout="column" class="filter-content" fxLayoutAlign="center center" fxFlex>
+  <div class=" w-100-p mt-8 " fxLayout="row" fxLayoutAlign="center center" fxFlex>
+
+    <div class="search-wrapper mt-16 mt-sm-0 w-100-p">
+
+      <div class="search" fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-icon>search</mat-icon>
+        <input class="w-100-p" [formControl]="searchInput" placeholder="Search for a user">
+        <mat-icon class="filter-icn" (click)="showFilters()">filter_list</mat-icon>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Filters-->
+  <div   *ngIf="isFilters" class=" w-100-p  filter-form" fxLayout="row" fxLayoutAlign="flex-end" fxFlex>
+
+
+    <div class="card-preview ">
+
+      <div class="ds-card p-8">
+        <form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="FilterForm" >
+
+          <mat-form-field appearance="outline" fxFlex="100" class="w-100-p">
+            <mat-label>Select District</mat-label>
+            <mat-select  placeholder="Select District"  (selectionChange)="ulbLst($event)">
+              <mat-option *ngFor="let dst of schdistLst"[value]= "dst.dstrt_id">{{dst.dstrt_nm}}</mat-option>
+            </mat-select>
+            <mat-error>District is required!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex="100" class="w-100-p">
+            <mat-label>Select Mandal/ULB's</mat-label>
+            <mat-select  placeholder="Select ULB" (selectionChange)="svmLst($event)">
+              <!-- <mat-select-trigger>
+                {{ulbs.value ? ulbs.value[0] : ''}}
+                <span *ngIf="ulbs.value?.length > 1" class="example-additional-selection">
+                  (+{{ulbs.value.length - 1}} {{ulbs.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger> -->
+              <mat-option *ngFor="let ulb of ulbL" [value]="ulb.mndl_id">
+                {{ulb.mndl_nm}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Ulb is required!</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100" class="w-100-p">
+            <mat-label>Select Sachivalayam</mat-label>
+            <mat-select  placeholder="Select Sachivalayam" (selectionChange)="onSvmSelect($event)">
+              <!-- <mat-select-trigger>
+                {{ulbs.value ? ulbs.value[0] : ''}}
+                <span *ngIf="ulbs.value?.length > 1" class="example-additional-selection">
+                  (+{{ulbs.value.length - 1}} {{ulbs.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger> -->
+              <mat-option *ngFor="let svm of svmL" [value]="svm.svm_id">
+                {{svm.svm_nm}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Ulb is required!</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100" class="w-100-p">
+            <mat-label>Select Departments</mat-label>
+            <mat-select  placeholder="Select Department" (selectionChange)="dprtLstid($event)">
+              <!-- <mat-select-trigger>
+                {{dprmt.value ? dprmt.value[0] : ''}}
+                <span *ngIf="dprmt.value?.length > 1" class="example-additional-selection">
+                  (+{{dprmt.value.length - 1}} {{dprmt.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger> -->
+              <mat-option *ngFor="let dprt of dprtL" [value]="dprt.dprt_id">
+                  {{dprt.dprt_nm}}
+                </mat-option>
+              </mat-select>
+            
+            <mat-error>Department is required!</mat-error>
+          </mat-form-field>
+
+          <div fxLayout="row" class="mb-16">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center">
+              <button mat-flat-button class="scdl-btn" (click)="saveFilters()">Apply </button>
+              <!-- <button mat-raised-button color="primary" class='ml-8' (click)="saveDtls()">SAVE</button> -->
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- Results-->
+  <div *ngIf="isResults" class=" w-100-p   srch-results" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+
+
+    <div class="card-preview  w-100-p">
+   
+      <div class="ds-card">
+        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="ui-block">
+           
+            <div class="row slct-options-top" > <p class="slct-option" (click)="toggleSelectAll()"> <mat-icon class="font-size-22">check_box</mat-icon></p>
+              <p class="slct-option ml-8" (click)="toggleSelect()"> <mat-icon class="font-size-22">check</mat-icon></p>
+            </div>
+            <div class="row p-2 rslts-row"  >
+              <div class="col col-lg-2 col-md-2 col-sm-4 col-4  user-card"*ngFor="let usr of users">
+                <div class=" user-item ">
+                  <mat-checkbox class="user-checkbox" [checked]="isSelectAll" *ngIf="isSelectable"(change)="checkchng(usr,$event)"></mat-checkbox>
+                  <div class="user-thumb">
+                    <!-- (click)="$event.stopPropagation(row)"
+                      (change)="ckdTktAdjstData($event, row); $event ? selectiontwo.toggle(row) : null"
+                      [checked]="selectiontwo.isSelected(row)" [aria-label]="checkboxLabel(row)" -->
+                    <img
+                      src="https://middle.pngfans.com/20190526/yi/user-logo-png-user-computer-icons-clipart-c58837c78f66866c.jpg"
+                      alt="author" width="100%">
+                  </div>
+                  <div>
+                    <p class="user-nm  m-0">{{usr.mrcht_emp_nm}}</p>
+                    <p class="user-info  m-0">{{usr.mrcht_emp_nm}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row slct-options-btm" > <button mat-raised-button color="accent" (click)="onSelectUsers()">Done</button>
+            </div>
+         
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+</div>
+  <!--Selected Results-->
+  <div *ngIf="finalresults" class=" w-100-p   slctd-usr-lst" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+
+
+      <div class="card-preview  w-100-p">
+     
+        <div class="ds-card">
+          <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="ui-block">
+              <div class="row slct-options-top" > <p class="slct-option" (click)="toggleSelectAll()"> <mat-icon class="font-size-22">delete_sweep</mat-icon></p>
+               
+              </div>
+              <div class="row p-2 rslts-row">
+                
+                <div class="col col-lg-2 col-md-2 col-sm-4 col-4  user-card" *ngFor="let usr of slctedusrs">
+  
+  
+                  <div class=" user-item ">
+                    <!-- <mat-checkbox class="user-checkbox" [checked]="isSelectAll" *ngIf="isSelectable"></mat-checkbox> -->
+                    <mat-icon class="user-checkbox del-usr" (click)="delUsr(usr)">delete</mat-icon>
+                    <div class="user-thumb">
+                      <img
+                        src="https://middle.pngfans.com/20190526/yi/user-logo-png-user-computer-icons-clipart-c58837c78f66866c.jpg"
+                        alt="author" width="100%">
+                    </div>
+                    <div>
+                      <p class="user-nm  m-0">{{usr.usr_nm}}</p>
+                      <p class="user-info  m-0">Info</p>
+                    </div>
+                  </div>
+  
+                </div>
+               
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+  
+  
+  </div>

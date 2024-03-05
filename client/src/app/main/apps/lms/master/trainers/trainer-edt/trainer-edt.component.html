@@ -1,0 +1,227 @@
+<div class="container">
+  <div class="page-layout simple tabbed">
+
+  <div class="container header accent pghdrStyle text-center pt-16">
+      <div class="row">
+        <!-- <div style='margin-left: 30px;'><mat-icon (click)='back()'>arrow_back</mat-icon></div> -->
+         <div style='margin-left: 674px;'> <h2 style="text-transform: uppercase">trainer Form</h2></div> 
+    </div>
+    </div>
+    <div  fxLayout="column" fxLayoutAlign="start" class=" mat-card mat-elevation-z4 frmcnt content" dsPerfectScrollbar>
+      
+      <form class=" p-8" fxLayout="column" name="ScheduleForm" [formGroup]="ScheduleForm"  *ngIf="!edit">
+         
+        <div fxLayout="row" class="ptb-20">
+            <p class="bdlngCss"><b>
+                <mat-icon>business</mat-icon>Trainer Form
+              </b> </p>
+          </div>
+
+
+          <div fxLayout="row" class="ptb-20">
+          <div class = "avtarImg" *ngIf="shwImgView">
+            <input hidden accept="image/*" #fileInput (change)="preview(fileInput.files)" type="file" id="file">
+            <img [src]="shwsrcimg" height="80" width="100" class="view-img" />
+          </div>
+          </div>
+    
+
+  
+       
+          <div>
+            <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+              <mat-label>Trainer Name</mat-label>
+              <input matInput name="trainer " formControlName="trnrnm" required>
+              <mat-error>Trainer name is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+              <mat-label>Select Department</mat-label>
+              <mat-select placeholder="Select Department" formControlName="dpt" required >
+                <mat-option *ngFor="let dst of dptl" [value]="dst.dprt_id">{{dst.dprt_nm}}</mat-option>
+              </mat-select>
+              <mat-error>Department is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+              <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+                  <mat-label>Select District</mat-label>
+                  <mat-select placeholder="Select District" formControlName="dstct" required (selectionChange)="ulbLst($event.value)" >
+                    <mat-option *ngFor="let dst of distlst" [value]="dst.dstrt_id">{{dst.dstrt_nm}}</mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Select ULB's</mat-label>
+          <mat-select formControlName="ulbs" placeholder="Select ULB" required (selectionChange)="svmlst($event.value)" >
+            <mat-option *ngFor="let ulb of ulbL" [value]="ulb.mndl_id">
+              {{ulb.mndl_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Ulb is required!</mat-error>
+        </mat-form-field>
+          </div>
+          <div>
+           
+      <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+        <mat-label>Select sachivalayam</mat-label>
+        <mat-select formControlName="svms" placeholder="Select sachivalayam" required  >
+          <mat-option *ngFor="let svm of svm" [value]="svm.svm_id">
+            {{svm.svm_nm}}
+          </mat-option>
+        </mat-select>
+        <mat-error>sachivalayam is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Mobile number</mat-label>
+          <input matInput name="trainer number" formControlName="number" required>
+          <mat-error>Mobile number is required!</mat-error>
+        </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+            <mat-label>Email</mat-label>
+            <input matInput name="trainer Email" formControlName="Email" required>
+            <mat-error>Email id is required!</mat-error>
+          </mat-form-field>
+        </div>
+       <div class="pl-8">
+          
+      <mat-radio-group   formControlName="radio1" >
+          <p style="margin-right: 24px;" class="radiop">Master Trainer</p>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" value="1">
+            Yes
+          </mat-radio-button>
+        </div>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" value="0">
+           No
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    
+    </div>
+    <div fxLayout="row" class="mb-16">
+      <div  class="upload"><button type="button" mat-raised-button color="accent" (click)="fileInput.click()">image upload</button>&nbsp;&nbsp;</div>
+    
+      <input hidden accept="image/*" #fileInput (change)="preview(fileInput.files)" type="file" id="file">
+      <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto"*ngIf="shwImgView">
+        <img [src]="shwsrcimg" height="80" width="100" class="view-img" />&nbsp;&nbsp;
+      </div> -->
+     
+    </div>
+        <div fxLayout="row" class="mb-16">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center">
+            <button mat-flat-button class="scdl-btn" (click)="schdlTrng()" type="button">Submit </button>
+            <!-- <button mat-raised-button color="primary" class='ml-8' (click)="saveDtls()">SAVE</button> -->
+          </div>
+        </div>
+
+      </form>
+      <form class=" p-8" fxLayout="column" name="ScheduleForm" [formGroup]="ScheduleForm" *ngIf="edit">
+         
+        <div fxLayout="row" class="ptb-20">
+            <p class="bdlngCss"><b>
+                <mat-icon>business</mat-icon>trainer Form
+              </b> </p>
+          </div>
+    
+
+  
+       
+          <div>
+            <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+              <mat-label>trainer Name</mat-label>
+              <input matInput name="trainer " formControlName="trnrnm" required>
+              <mat-error>trainer name is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+              <mat-label>Select Department</mat-label>
+              <mat-select placeholder="Select Department"formControlName="dpt" required >
+                <mat-option *ngFor="let dst of dptl" [value]="dst.dprt_id">{{dst.dprt_nm}}</mat-option>
+              </mat-select>
+              <mat-error>Department is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+              <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+                  <mat-label>Select District</mat-label>
+                  <mat-select placeholder="Select District" formControlName="dstct" required (selectionChange)="ulbLst($event.value)" >
+                    <mat-option *ngFor="let dst of distlst" [value]="dst.dstrt_id">{{dst.dstrt_nm}}</mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Select Mandal</mat-label>
+          <mat-select formControlName="ulbs" placeholder="Select Mandal" required (selectionChange)="svmlst($event.value)" >
+            <mat-option *ngFor="let ulb of ulbL" [value]="ulb.mndl_id">
+              {{ulb.mndl_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Mandal is required!</mat-error>
+        </mat-form-field>
+          </div>
+          <div>
+           
+      <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+        <mat-label>Select sachivalayam</mat-label>
+        <mat-select formControlName="svms" placeholder="Select sachivalayam" required  >
+          <mat-option *ngFor="let svml of svm" [value]="svml.svm_id">
+            {{svml.svm_nm}}
+          </mat-option>
+        </mat-select>
+        <mat-error>sachivalayam is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+        <mat-label>Mobile number</mat-label>
+        <input matInput name="trainer number" formControlName="number" required>
+        <mat-error>Mobile number is required!</mat-error>
+      </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+            <mat-label>Email</mat-label>
+            <input matInput name="trainer Email" formControlName="Email" required>
+            <mat-error>Email id is required!</mat-error>
+          </mat-form-field>
+        </div>
+       <div class="pl-8">
+          
+      <mat-radio-group   formControlName="radio1" >
+          <p style="margin-right: 24px;" class="radiop">Master Trainer</p>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" [value] = "1">
+            Yes
+          </mat-radio-button>
+        </div>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" [value] = "0">
+           No
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    
+    </div>
+    <div fxLayout="row" class="mb-16">
+        <div  class="upload"><button type="button" mat-raised-button color="accent" (click)="fileInput.click()">image upload</button>&nbsp;&nbsp;</div>
+      
+        <input hidden accept="image/*" #fileInput (change)="preview(fileInput.files)" type="file" id="file">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto"*ngIf="shwImgView">
+          <img [src]="shwsrcimg" height="80" width="100" class="view-img" />&nbsp;&nbsp;
+        </div>
+       
+      </div>
+        <div fxLayout="row" class="mb-16">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center">
+            <button mat-flat-button class="scdl-btn" (click)="update()" type="button">update </button>
+            
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+

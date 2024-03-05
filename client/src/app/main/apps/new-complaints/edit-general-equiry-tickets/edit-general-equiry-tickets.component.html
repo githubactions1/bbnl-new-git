@@ -1,0 +1,137 @@
+<div class="page-layout blank usrEmplye cstmrPrflePageBackground cusAcntCmpnt">
+    <!-- HEADER -->
+    <div *ngIf="clsbtn">
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+            <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="50" fxFlex.xs="100" class="px-8"></div>
+            <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="cursor-pointer tblPrfleBtn" style="text-align: center" (click)="close()">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="content" style="padding:0%">
+    <form fxLayout="column" [formGroup]="viewGenralenqydata" style="margin: auto;" >
+        <!-- <input  type='hidden'  required formControlName="gen_enq_id" value="" > -->
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Enquiry  Type<span class="reqSgnColor">*</span>
+                </div>
+                <!-- <mat-form-field appearance="outline">
+                    <mat-select matNativeControl  formControlName="ticket_type" >
+                        <mat-option *ngFor="let tcktyp of ticket_type" [value]="tcktyp.value">
+                            {{tcktyp.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                  
+                </mat-form-field> -->
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="ticket_type"  required/>
+                    <mat-error>Name is Required </mat-error>
+                </mat-form-field>
+            </div>
+            <div  fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Name
+                    
+                </div>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="Name"  required/>
+                    <mat-error>Name is Required </mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div  fxFlex="100" fxFlex.xs="100" class="px-8" formGroupName="districtInfo" style="width:100%">
+                <div fxFlex="100" fxFlex.xs="100" class="px-8" >
+                    <div class="form-label">District Name</div>
+                    <mat-form-field appearance="outline">
+                      <mat-select (selectionChange)="dstmangers()" formControlName="district" required >
+                        <mat-option *ngFor="let dst of districts" [value]="dst.dstrt_id">
+                            {{dst.dstrt_nm}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>District Name is Required</mat-error>
+                    </mat-form-field>
+                  </div><br>
+                <div  fxFlex="100" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Dstrt Sales Manager Name </div>
+                    <mat-form-field appearance="outline">
+                      <mat-select formControlName="dst_manager" required >
+                        <mat-option *ngFor="let dstman of dstmanager" [value]="dstman.sales_manager_nm">
+                          {{dstman.sales_manager_nm}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Sales Manager is required</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+            <div  fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Email
+                    <!--  -->
+                </div>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="Email" />
+                    <mat-error>Email is Required </mat-error>
+                </mat-form-field>
+            </div>
+            <div  fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Mandal
+                    
+
+                </div>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="mandal" required />
+                    <mat-error>Mandal name is Required </mat-error>
+                </mat-form-field>
+            </div>
+            <div  fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Village
+                </div>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="village" />
+
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Mobile Number
+                    
+
+                </div>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="mobileNumber"  required/>
+                    <mat-error>Mobile Number is Required </mat-error>
+                </mat-form-field>
+            </div>
+           
+            <div  fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Pincode
+                    
+
+                </div>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="pincode" required />
+                    <mat-error>Pincode is Required </mat-error>
+                </mat-form-field>
+            </div>                           
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                <div class="form-label">
+                    Description
+                </div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <!-- <mat-label>Leave a comment</mat-label> -->
+                    <textarea matInput class="form-control" formControlName="description"
+                        placeholder="Description" required></textarea>
+                    <mat-error> Description is Required</mat-error>
+                </mat-form-field>
+                <!-- value="{{c.complaint}}" -->
+            </div>
+        </div>
+       
+    </form>
+</div>
+</div>

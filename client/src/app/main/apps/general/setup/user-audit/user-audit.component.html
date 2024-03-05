@@ -1,0 +1,94 @@
+<div class="page-layout blank usrAcnts pageBackground">
+
+  <!-- <app-top-header [headrIcon] = "'person'" [headrName]="'User Login Information'"></app-top-header> -->
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div class="p-40 pt-8 pb-8">
+  <div class="ds-card fullWidth pt-16 pb-16" style="width:100%;max-width: 100%; min-width: 100%;">
+    <div fxLayout="row">
+        <div fxFlex="10"></div>
+      <div fxFlex="20">
+     
+    <mat-form-field>
+      <input matInput [matDatepicker]="fromdate" placeholder="Choose From date" [(ngModel)]="lgn_inpts.frm_dt">
+      <mat-datepicker-toggle matSuffix [for]="fromdate" ></mat-datepicker-toggle>
+      <mat-datepicker #fromdate></mat-datepicker>
+    </mat-form-field>
+    </div>
+    <div fxFlex="5"></div>
+    <div fxFlex="20">
+    <mat-form-field>
+      <input matInput [matDatepicker]="todate" placeholder="Choose To date" [(ngModel)]="lgn_inpts.to_dt">
+      <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+      <mat-datepicker #todate></mat-datepicker>
+    </mat-form-field>
+    </div>
+    <div fxFlex="10" class="mt-8">
+    <button mat-raised-button color="primary" class="m-2 gtDtls" (click)="getloginDtls()">Login Details</button>
+    </div>
+    <!-- <div fxFlex="20" class="mt-8">
+      <button mat-raised-button color="primary" class="m-2 resetBtn-color" (click)="resetloginDtls()" *ngIf = "showReset">Reset</button>
+     </div> -->
+    <div fxFlex="10"></div>
+    
+    </div>
+
+</div>
+  </div>
+
+
+<div class="p-40 pt-0" >
+    <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+          [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+          style="width:100%">
+          <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select">
+            <!-- or "select" -->
+          </dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="User Login Information"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+            [width]="100" caption="Edit" cellTemplate="editTemplate">
+            <div *dxTemplate="let data of 'editTemplate'">
+              <div class="tblEdtBtn cursor-pointer" (click)="onCellClick(data)">
+                Edit
+              </div>
+            </div>
+          </dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+            [width]="100" caption="Delete" cellTemplate="delTemplate">
+            <div *dxTemplate="let data of 'delTemplate'">
+              <div class="tblDelBtn cursor-pointer" (click)="onCellClick(data)">
+                Delete
+              </div>
+            </div>
+          </dxi-column>
+        </dx-data-grid>
+</div>
+  <!-- <ag-grid-angular #agGrid style="width: 100%; height: 530px;" class="ag-theme-balham p-12"
+      [pagination]="pagination" [paginationPageSize]="paginationPageSize" [rowData]="rowData"
+      [columnDefs]="columnDefsTwo" [enableFilter]="true" [getRowHeight]="getRowHeight" 
+        [floatingFilter]="true" >
+  </ag-grid-angular> -->
+</div>
+
+
+
+  </div>
+

@@ -1,0 +1,165 @@
+
+
+ <div class="page-layout simple pageBackground">
+
+
+  <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+  fxLayoutAlign.gt-xs="space-between center">
+  <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="mt-10 font-size-16">
+    <div class="logo">
+      <mat-icon class="logo-icon mr-16">receipt</mat-icon>
+      <span class="logo-text h1 font-weight-600">
+        {{active_board.title}}
+      </span>
+    </div>
+  </div>
+  <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%" class="mt-10 font-size-16">
+    <div class="header-top-line"></div>
+  </div>
+</div>
+
+
+
+<div class="m-20">
+ <div class="content">
+
+   <mat-tab-group dynamicHeight  [selectedIndex]="currentTab" (selectedIndexChange)="selectedIndex($event)">
+
+     <mat-tab  *ngFor="let t of active_board.tabs" label="{{t.nm}}">
+<br><br>
+
+       <div fxLayout="row" class="text-center">
+           <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+
+              
+ 
+                <div class="card">
+                 <div class="card-header"> FormControl Example</div>
+                 <div class="card-body">
+                    <button  mat-raised-button (click)="opensideBar('addFormPanel',null)">Create New</button>
+                    <!-- <ds-form-builder [formDetails]=formDetails></ds-form-builder> -->                 
+                 </div>
+               </div>
+ 
+
+
+
+           </div>
+           <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+             {{active_tab.fltrs|json}}
+
+               <div class="card">
+                <div class="card-header">glits Form</div>
+                <div class="card-body">
+                    
+
+                </div>
+               </div>
+
+           </div>
+         </div>
+
+       
+           <!-- Sec-1 end-->
+
+
+           
+           <div fxLayout="row" class="mt-28">
+               <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                 <div class="ds-card">
+                   <div class="text-left">
+                     <app-ticket-list></app-ticket-list>
+                     <!-- <h2 class="p-12 m-0 font-size-16 text-center font-weight-500 border-bottom titlebrder">{{varHdr}}</h2> -->
+                     <!-- <app-download-button (excelEvent)="downloadExcel($event.data)"
+                       [rowData]="tablData.dwnLadExcl.excelData" [headers]="excelDataHeaders" [isExcelDwnLd]="isExcelDwnLd"
+                       [excelFileNm]="excelFileNm" style="padding: 10px">
+                     </app-download-button> -->
+                         <!-- <ag-grid-angular class="ag-theme-balham p-12 agGrdTble" [rowData]="rowData" [enableFilter]="true"
+                           style="width: 1612px; height: 575px;" [columnDefs]="columnDefs" (cellClicked)="getUlbData($event)"
+                           [floatingFilter]="true" [pagination]="true" [getRowHeight]="getRowHeight" 
+                           [paginationPageSize]="paginationPageSize" [suppressHorizontalScroll]="false">
+                         </ag-grid-angular> -->
+                   </div>
+                   <mat-spinner diameter="14" style="margin-left: 50%;" *ngIf="spnrIn"></mat-spinner>
+                 </div>
+               </div>
+             </div>
+
+     </mat-tab>
+    
+   </mat-tab-group>
+
+
+</div>
+
+<!-- </div> -->
+
+
+  <!-- sidebar -->
+
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+      <ng-container>
+        <!-- <div fxLayout="column" fxLayoutAlign="space-between center"> -->
+          <div fxLayout="column">
+
+            <div class="card">
+                <div class="card-header crdHdng">{{formDetails.stngs.new_title}}
+                    <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null)" class="closeSidebar" style="float:right">cancel
+                      </mat-icon>
+
+                </div>
+                <div class="card-body">
+
+                    <!-- {{formDetails.stngs.new_title|json}} -->
+                    <ds-form-builder style="width:100%;padding:24px" [formDetails]=formDetails></ds-form-builder>
+
+                </div>
+            </div>
+
+          <!-- <mat-toolbar class="side-bar-header-color">
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+              class="w-100-p">
+              <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                <span> {{formDetails.stngs.new_title}}</span>
+              </div>
+              <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+
+                <span>
+                  <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null)" class="closeSidebar">cancel
+                  </mat-icon>
+                </span>
+              </div>
+            </div>
+          </mat-toolbar> -->
+        <!-- <mat-card-content> -->
+            
+        <div class="m-0 p-16" fxLayout="row"  fxLayoutAlign="end center">
+  
+          <!-- <button *ngIf="action === 'edit'" mat-button class="mr-8 deleteBtn-color deleteBtn-color" (click)="matDialogRef.close(['delete',FormLoctn])"
+          aria-label="Delete" matTooltip="Delete">
+          DELETE
+      </button> -->
+  
+      <button *ngIf="deleteCategory" mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete" matTooltip="Delete" (click)="saveOutletCategory()">
+        DELETE
+      </button>
+  
+
+  
+      <!-- <button *ngIf="action !== 'edit'" mat-raised-button color="primary" class="save-button saveBtn-color" (click)="matDialogRef.close(FormLoctn)"
+          [disabled]="FormLoctn.invalid" aria-label="SAVE">
+          ADD
+      </button> -->
+  
+      <!-- <button *ngIf="action === 'edit'" mat-button class="save-button saveBtn-color"
+          (click)="matDialogRef.close(['save',FormLoctn])" [disabled]="FormLoctn.invalid" aria-label="SAVE">
+          SAVE
+      </button> -->
+      </div>
+          <!-- </mat-card-content> -->
+        </div>
+      </ng-container>
+    </ds-sidebar>
+  
+  
+  <!-- sidebar -->

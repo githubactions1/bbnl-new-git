@@ -1,0 +1,248 @@
+<div class="container usrAcnts pageBackground">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+<app-top-header [headrIcon] = "'account_box'" [headrName]="'Change Log'"></app-top-header>
+<div class="m-24">
+    <!-- <div fxLayout="row">
+      <div fxFlex="80"></div>
+      <div fxFlex="20">
+        <button mat-raised-button color="primary" (click)="opensideBar('addFormPanel',null)" style="float:right"
+          class="addBtn-color mb-8">
+          <mat-icon class="addfld-icon-color">person</mat-icon>
+          <span class="pt-2">&nbsp;Add Change Log</span>
+        </button>
+      </div>
+    </div> -->
+    <form [formGroup]="formCmpnt"  class="mt-12">
+    <div fxLayout="row" fxLayoutAlign="start start">
+      <div  fxFlex = "100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="0%">
+      <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="cmpntnm" required [(ngModel)]="selectedCmpntId"  (ngModelChange)="onCmpntNmSelection()">
+          <mat-option  [value]="0">ALL</mat-option>
+          <mat-option  *ngFor="let cl of cmpntlst"  [value]="cl.cmpnt_id">
+               {{cl.cmpnt_nm}}
+            </mat-option>
+          </mat-select>
+        <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon> -->
+        <!-- <mat-error>Country is required!</mat-error> -->
+    </mat-form-field>
+  </div>
+
+    
+
+  <div  fxFlex = "100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="0%" >
+      <button mat-raised-button  (click)="opensideBar('addFormPanel',null)" style="float:right"
+    class="gtDtls mt-8">
+    <mat-icon >person</mat-icon>
+    <span class="pt-2">&nbsp;Add Change Log</span>
+    </button>
+  </div>
+</div>
+      </form>
+
+<!-- 
+      <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
+        [columnDefs]="columnDefs" [getRowHeight]="getRowHeight"(cellClicked)="onCellClick($event)"[pagination]="true"
+
+        [paginationPageSize]="15"  [floatingFilter]="true"
+        [suppressHorizontalScroll]="false">
+      </ag-grid-angular> -->
+
+
+      <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+        <dx-data-grid class="p-8" id="gridContainer"
+                [dataSource]="rowData"
+                [remoteOperations]="false"
+                [allowColumnReordering]="true"
+                [rowAlternationEnabled]="true"
+                [showColumnLines]="true"
+                [showRowLines]="true"
+                [showBorders]="true"
+                style="width:100%"
+                (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false">
+                <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true" ></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <dxo-group-panel [visible]="true" ></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false" ></dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select">
+                </dxo-column-chooser>
+                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Change Log"></dxo-export>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"   alignment="f.cellStyle.text-align" [width]="f.width" ></dxi-column>
+                    <dxi-column [showInColumnChooser]="false"  [visible]="(permissions.updt_in==1)?true:false" type="buttons" [width]="100" caption="Edit" cellTemplate="editTemplate">
+                         <div *dxTemplate="let data of 'editTemplate'">  
+                            <div class="tblEdtBtn" (click)="onEdit2(data)">  
+                                Edit  
+                            </div>  
+                        </div>
+                    </dxi-column>
+                    <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false"  type="buttons" [width]="100" caption="Delete" cellTemplate="delTemplate" >
+                         <div *dxTemplate="let data of 'delTemplate'">  
+                            <div class="tblDelBtn" (click)="onDelete2(data)">  
+                                Delete  
+                            </div>  
+                        </div>
+                    </dxi-column>
+         </dx-data-grid>
+      
+      </div>
+      <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+
+
+
+
+      
+    </div>
+
+
+  <!-- sidebar -->
+
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+    <ng-container>
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-toolbar class="side-bar-header-color">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+            class="w-100-p">
+            <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <span> {{sideBarHeader}} Change Log</span>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <!-- <span class="remaining-space"></span> -->
+              <span>
+                <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel','key')" class="closeSidebar">cancel
+                </mat-icon>
+              </span>
+            </div>
+          </div>
+        </mat-toolbar>
+        <!-- <mat-card-content> -->
+        <form [formGroup]="formChangeLog" fxLayout="column" style="width:80%" class="mt-12">
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Choose date</div>
+              <mat-form-field appearance="outline">
+                  <!-- <mat-label>Choose date</mat-label> -->
+              <input matInput [matDatepicker]="fromdate" placeholder="Choose date" formControlName="Dte" >
+              <mat-datepicker-toggle matSuffix [for]="fromdate" ></mat-datepicker-toggle>
+              <mat-datepicker #fromdate></mat-datepicker>
+              </mat-form-field>
+              </div>
+          </div>
+
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Version</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Version</mat-label> -->
+              <input matInput formControlName="version" required>
+            </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Type</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>Type</mat-label> -->
+              <mat-select formControlName="cmpnt" required>
+                <mat-option  *ngFor="let cl of cmpntlst"  [value]="cl.cmpnt_id">
+                   {{cl.cmpnt_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+
+
+          <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="100" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Category</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Category</mat-label> -->
+            <mat-select formControlName="category" required>
+                <mat-option  *ngFor="let cl of ctgrylst"  [value]="cl.ctgry_id">
+                   {{cl.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon> -->
+            <!-- <mat-error>Country is required!</mat-error> -->
+        </mat-form-field>
+          </div>
+          </div>
+
+            <!-- <div fxLayout="row" fxLayoutAlign="start start">
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="Description" required></textarea>
+            </mat-form-field>
+          </div> -->
+
+          <div *ngFor="let d of dscrptnLst">
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="100" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Description</div>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>Description</mat-label> -->
+                <textarea matInput [(ngModel)]="d.descriptiontxt" [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
+            </div>
+            </div>
+          </div>
+
+
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <div fxFlex fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%">
+              <mat-divider></mat-divider>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="addDesCrptn" (click)="addDscrptn(dscrptnLst)">
+              <mat-icon>add_circle_outline</mat-icon>
+            </div>
+            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%">
+              <mat-divider></mat-divider>
+            </div>
+            <div fxFlex fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+          </div>
+
+
+          <!-- <div fxLayout="row" fxLayoutAlign="start start">
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Select Department</mat-label>
+              <mat-select placeholder="Select Department" formControlName="dprt_id" matInput required>
+                <mat-option *ngFor="let dp of dprtlst" [value]="dp.dprt_id">
+                  {{dp.dprt_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+
+        </form>
+        <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+          <button *ngIf="deleteChngelog" mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete" matTooltip="Delete" (click)="saveChangLog()">
+            DELETE
+          </button>
+
+          <button  *ngIf="!deleteChngelog" mat-flat-button type="submit" class="mat-raised-button w-30-p saveBtn-color"
+            [disabled]="formChangeLog.invalid" aria-label="SAVE" (click)="saveChangLog()">
+            SAVE
+          </button>
+
+        </div>
+        <!-- </mat-card-content> -->
+      </div>
+    </ng-container>
+  </ds-sidebar>
+  <!-- sidebar -->
+</div>

@@ -1,0 +1,44 @@
+<div class="page-layout simple pageBackground tabbed">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="ds-card m-12">
+    <dx-data-grid class="p-8" id="gridContainer" [dataSource]="notoperatindata" [allowColumnReordering]="true"
+      [showBorders]="true" [columns]="['olt_id']" [rowAlternationEnabled]="true" [showColumnLines]="true"
+      [showRowLines]="true" [showBorders]="true">
+
+      <dxi-column dataField="dstrt_nm" caption="District Name" [groupIndex]="0"></dxi-column>
+      <dxi-column dataField="sno" caption="sno" alignment="center"></dxi-column>
+      <dxi-column dataField="olt_nm" caption="OLT Name"></dxi-column>
+      <dxi-column dataField="sbstn_nm" caption="Substation Name"></dxi-column>
+      <dxi-column dataField="hr" caption="Down Hours" alignment="center"></dxi-column>
+      <dxi-column dataField="down_time" caption="Last Update" alignment="center"></dxi-column>
+      <dxi-column dataField="olt_id" caption="OLT ID" alignment="center"></dxi-column>
+      <dxi-column dataField="sftwe_vrsn_tx" caption="Software version"></dxi-column>
+      <dxi-column dataField="hrdwe_vrsn_tx" caption="Hardeware version"></dxi-column>
+      <dxi-column dataField="site_nm" caption="Site Name"></dxi-column>
+      <dxi-column dataField="olt_type_nm" caption="OLT Type Name"></dxi-column>
+      <dxi-column dataField="olt_ip_addr_tx" caption="OLT Ip Address" alignment="center"></dxi-column>
+      <dxi-column dataField="olt_srl_nu" caption="OLT Serial Number" alignment="center"></dxi-column>
+      <dxi-column dataField="ste_nm" caption="State Name"></dxi-column>
+      <dxi-column dataField="sts_nm" caption="Status Name" alignment="center"></dxi-column>
+
+
+
+
+      <dxo-search-panel [visible]="true"></dxo-search-panel>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+      <dxo-summary>
+        <dxi-total-item column="olt_id" name="Total Olts" summaryType="count"></dxi-total-item>
+        <dxi-group-item column="olt_id" name="Total Olts" summaryType="count" [alignByColumn]="true"
+          [showInGroupFooter]="true">
+        </dxi-group-item>
+        <!-- <dxi-group-item column="hr"  name="Total Down Olts" summaryType="count" [showInGroupFooter]="true">
+      </dxi-group-item> -->
+        <!-- <dxi-group-item column="Price" summaryType="sum" [showInGroupFooter]="true" showInColumn="City">
+      </dxi-group-item> -->
+      </dxo-summary>
+      <dxo-export [enabled]="true"></dxo-export>
+    </dx-data-grid>
+  </div>
+</div>

@@ -1,0 +1,239 @@
+
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <ds-loading *ngIf="shwLdr"></ds-loading>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div class="text-right gridBtns"  *ngIf="permissions">
+   
+    <mat-button-toggle-group class = "topbtnClor mr-8" appearance="legacy" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle id="addGridBtn" *ngIf="(permissions.insrt_in==1)?true:false"
+      (click)="addNewCaf()"><mat-icon class="logo-icon mat-icon material-icons mat-icon-no-color">person_outline</mat-icon>
+      BBNL Add CAF </mat-button-toggle>
+    </mat-button-toggle-group>
+    
+    
+    <!-- <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button   " (click)="addNewNode()">Add Node</button>
+    <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button   ml-4" (click)="addNewCaf()">Add CAF</button>
+    <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  ml-4" (click)="saveBulkUpload()">Bulk Upload</button> -->
+    
+
+  </div>
+  <div class="m-8 ds-card p-4 mt-4"  *ngIf="permissions">
+    <form class="form-horizontal" [formGroup]="cafFRm">
+
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="50" fxFlex.sm="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Select District</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Gender</mat-label> -->
+            <!-- (selectionChange)="getLmo($event.value)"  -->
+            <mat-select (selectionChange)="getMandals($event.value)" formControlName="dstrc_id">
+              <mat-option *ngFor="let d of districts" [value]="d.dstrt_id">
+                {{d.dstrt_nm}}
+              </mat-option>
+            </mat-select>
+            <!-- <mat-error>District is required!</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Select Mandal</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Gender</mat-label> -->
+            <!-- (selectionChange)="getLmo($event.value)"  -->
+            <mat-select formControlName=mndl_nu>
+              <mat-option *ngFor="let m of mndl_lst" [value]="m.mndl_nu">
+                {{m.mndl_nm}}
+              </mat-option>
+            </mat-select>
+            <!-- <mat-error>mandal is required!</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div fxFlex="50" style="position: relative;" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Select LMO</div>
+          <!-- <mat-form-field appearance="outline">
+            <input matInput formControlName="lmo_nm">
+           
+
+          </mat-form-field> -->
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto"
+              formControlName="lmo_nm">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+              <ng-container *ngIf="!isLoading">
+                <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                  <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </mat-form-field>
+          <!-- <div class="vw_lmo">
+            <a (click)='ViewLmolst()'>View Lmo List</a>
+          </div> -->
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Mobile No</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Father/Husband Name</mat-label> -->
+            <input matInput formControlName="mobileno" type="number">
+            <!-- <mat-error>Last Name is required!</mat-error> -->
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+
+        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">CAF</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Father/Husband Name</mat-label> -->
+            <input matInput formControlName="CAf">
+            <!-- <mat-error>Last Name is required!</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Customer Oragniztion Name</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Father/Husband Name</mat-label> -->
+            <input matInput formControlName="org_nm">
+            <!-- <mat-error>Last Name is required!</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div fxFlex="50" fxFlex.md="79" fxFlex.xs="100" class="px-8">
+
+          <div class="form-label">Select Status</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Gender</mat-label> -->
+            <!-- (selectionChange)="getLmo($event.value)"  -->
+            <mat-select formControlName="Caf_sts">
+              <mat-option *ngFor="let cs of Cafstus" [value]="cs.enty_sts_id">
+                {{cs.sts_nm}}
+              </mat-option>
+            </mat-select>
+            <mat-error>CafStatus is required!</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="50" fxFlex.md="20" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Aadhar</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Father/Husband Name</mat-label> -->
+            <input matInput formControlName="adhar" type="number">
+            <!-- <mat-error>Last Name is required!</mat-error> -->
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+
+		<div fxFlex="50" fxFlex.md="79" fxFlex.xs="100" class="px-8">
+
+          <div class="form-label">Department Name</div>
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Gender</mat-label> -->
+            <!-- (selectionChange)="getLmo($event.value)"  -->
+            <mat-select formControlName="ent_dprtmnt_nm">
+              <mat-option *ngFor="let cs of department_names" [value]="cs.dprmnt_id">
+                {{cs.dprmnt_nm}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Department Name is required!</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">Start Date(Activation)</div>
+          <mat-form-field appearance="outline">
+            <input matInput [matDatepicker]="picker1" formControlName="str_dt">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <!-- <mat-error>Start Date is required!</mat-error> -->
+          </mat-form-field>
+
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+          <div class="form-label">End Date(Activation)</div>
+          <mat-form-field appearance="outline">
+            <input matInput [matDatepicker]="picker" formControlName="end_dt">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!-- <mat-error>End Date is required!</mat-error> -->
+          </mat-form-field>
+
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="pt-32">
+          <div class="form-label"></div>
+          <!-- <mat-form-field appearance="outline"> -->
+          <!-- <mat-label>Father/Husband Name</mat-label> -->
+          <mat-checkbox formControlName="till_dt">Till Date</mat-checkbox>
+          <!-- <mat-error>Last Name is required!</mat-error> -->
+          <!-- </mat-form-field> -->
+        </div>
+        <div fxFlex="50" fxFlex.xs="100" class="pt-32"> </div>
+        <div fxFlex="50" fxFlex.xs="100" class="pt-32"> </div>
+      </div>
+      <div fxLayout="row" style="justify-content: center;" fxLayout.xs="row" fxFlexFill>
+        <div>
+          <button mat-raised-button color='primary' class="gtDtls" (click)="getDetails()">Get Details</button>
+        </div>
+        <div style="margin-left: 8px;">
+          <button mat-raised-button color='primary' class="gtDtls" (click)="Reset(cafFRm)">Reset</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="ds-card m-12" *ngIf="showTble">
+
+    <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+      [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+      [showBorders]="true" [allowColumnResizing]="true" style="width:100%"
+      (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)">
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+        fileName="Customers List"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+        [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+      <!-- <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="profile"
+        cellTemplate="ViewTemplate">
+        <div *dxTemplate="let data of 'ViewTemplate'">
+          <div class="cursor-pointer tblPrfleBtn" (click)="onviewClick(data)">
+            Profile
+          </div>
+        </div>
+      </dxi-column> -->
+      <!-- <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="edit" cellTemplate="EditTemplate"
+        *ngIf="(permissions.updt_in==1)?true:false">
+        <div *dxTemplate="let data of 'EditTemplate'">
+          <div class="cursor-pointer tblEdtBtn" (click)="onCelleditClick(data)">
+            Edit
+          </div>
+        </div>
+      </dxi-column> -->
+    </dx-data-grid>
+  </div>
+</div>
+
+<!-- sidebar -->
+<ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div class="card">
+        <div class="card-body" *ngIf="cstmrData">
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle"
+            style="float:right">cancel </mat-icon>
+          <ds-customer-profile [cstmrData]="cstmrData"></ds-customer-profile>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>
+<!-- sidebar -->

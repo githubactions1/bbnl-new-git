@@ -1,0 +1,34 @@
+<div class="sidebar-content">
+
+    <div class="card">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-24" fxLayout="column" fxLayoutAlign="start center">
+
+            <!-- USER -->
+            <mat-icon>group</mat-icon>
+            <span class="font-size-24 font-weight-300">Your Groups</span>
+            <!-- / USER -->
+
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" dsPerfectScrollbar>
+
+            <div class="nav material2">
+
+                <div class="nav-item" aria-label="inbox" *ngFor="let grp of grps">
+                    <a class="nav-link" matRipple (click)="changeGroup(grp)"
+                       [ngClass]="{'active accent':grp.id === active_id }">
+                        <span class="title">{{grp.name}}</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- / SIDEBAR CONTENT -->

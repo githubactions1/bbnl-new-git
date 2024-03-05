@@ -1,0 +1,54 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <ds-loading *ngIf=""></ds-loading>
+    <div fxLayout="row">
+        <div fxFlex="80"></div>
+        <div *ngIf="" fxFlex="16">
+            <div class="text-right mt-24">
+                <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/home'"
+                    class="mat-raised-button font-weight-bold addTextColor" type="button">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <ng-container>
+        <div class="ds-card m-12" id="scrollTop">
+            <div fxLayout="row wrap" fxLayout.sm="column" *ngFor="let wallt of walletinfo">
+                <div fxFlex.lg="70%" fxFlex.md="50%" fxFlex.lt-sm="100%">
+                    <form fxLayout="column" [formGroup]="amount_details" (ngSubmit)="addWalletamount()">
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Current Wallet Balance
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput formControlName="current_balance"  value="{{wallt.balance}}" readonly  />
+                                    <!-- <mat-error>Current Wallet Balance is Required </mat-error> -->
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                <div class="form-label">
+                                    Add Money to Wallet
+                                    <span class="reqSgnColor">*</span>
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput formControlName="add_to_wallet" required />
+                                    <mat-error> Add Money to Wallet is Required </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="50" fxFlex.xs="100" class="px-8 mt-5">
+                                <button mat-flat-button class="mat-raised-button saveBtn-color btnWdth paynow"> Proceed to add Wallet
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+</div>

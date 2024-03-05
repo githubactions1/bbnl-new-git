@@ -1,0 +1,15 @@
+:host(.cdk-overlay-dark-backdrop) {
+    background: rgb(210, 205, 232) !important;
+}
+:host-context(.cdk-overlay-dark-backdrop) {
+    background: rgb(210, 205, 232) !important;
+}
+:root {
+    background: rgb(210, 205, 232) !important;
+}
+:cdk-overlay-dark-backdrop {
+    background: rgb(210, 205, 232) !important;
+}
+:host-context .cdk-overlay-dark-backdrop {
+    background: rgb(210, 205, 232) !important;
+}

@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="page-layout simple tabbed">
+
+    <div class="container header accent pghdrStyle text-center pt-16">
+      <div class="row">
+        <div style='margin-left: 674px;'>
+          <h2 style="text-transform: uppercase">New Course Form</h2>
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <form class=" p-8" fxLayout="column" name="courseForm" [formGroup]="courseForm">
+
+        <div fxLayout="row" class="ptb-20">
+          <p class="bdlngCss"><b>
+              <mat-icon>assignment</mat-icon>Assign Training
+            </b> </p>
+        </div>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-50-p">
+          <mat-label>Select Training</mat-label>
+          <mat-select [formControl]="trng_nm" placeholder="Select Department" required>
+
+            <mat-option *ngFor="let t of offlnTrngs" [value]="t.trng_id">
+              {{t.trng_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Training is required!</mat-error>
+        </mat-form-field>
+        <div fxFlex="1 0 auto" fxLayout="row" fxLayout.gt-xs="row" class="w-50-p">
+
+          <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" name="start" formControlName="SchDatestart">
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error>Start Date is required!</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="pr-sm-8 no-errors-spacer endmrgn " fxFlex="50">
+            <mat-label class="ml-16">End Date</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" name="end" formControlName="SchDateend">
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+            <mat-error>End Date is required!</mat-error>
+          </mat-form-field>
+
+        </div>
+        <div fxLayout="row">
+
+          <div fxFlex="25" fxFlex.gt-sm="50" fxLayout="column" class="m-8 nav-cntnr">
+
+            <div class="nav-tree-itm w-100-p h-100-p" fxLayout="column">
+              <div fxLayout="row" class="nav-hdr">
+                <p class="nav-lbl">Select District</p>
+                <mat-checkbox (change)="checkAll($event,'district')">Select All</mat-checkbox>
+              </div>
+              <div class="nav-cntnt w-100-p h-100-p" fxLayout="column">
+                <div>
+                  <input [(ngModel)]="searchDst" placeholder="search district" [ngModelOptions]="{standalone: true}"
+                    class="srch-fltr">
+                </div>
+                <mat-checkbox *ngFor="let d of dstLst | filter : searchDst : 'district'" (change)="checkDst($event,d)"
+                  [checked]="d.isSelected">{{d.dstrt_nm}}</mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="25" fxFlex.gt-sm="50" fxLayout="column" class="m-8 nav-cntnr">
+
+            <div class="nav-tree-itm w-100-p h-100-p" fxLayout="column">
+              <div fxLayout="row" class="nav-hdr">
+                <p class="nav-lbl">Select Ulb/Mandal</p>
+                <mat-checkbox (change)="checkAll($event,'ulbs')">Select All</mat-checkbox>
+              </div>
+              <div class="nav-cntnt w-100-p h-100-p" fxLayout="column">
+
+                <input [(ngModel)]="searchUlb" placeholder="Search Ulb/Mandal" [ngModelOptions]="{standalone: true}"
+                  class="srch-fltr">
+                <div class="spinner-div" *ngIf="showUlbSpinner">
+                  <mat-spinner></mat-spinner>
+                </div>
+                <div fxLayout="column" class="w-100-p " *ngFor="let u of ulbLst  | filter : searchUlb :'ulb'">
+                  <p class="ulb-ttl">{{u.dst.dstrt_nm}}</p>
+
+                  <mat-checkbox *ngFor="let ul of u.ulbs " (change)="checkUlb($event,ul)" [checked]="ul.isSelected">
+                    {{ul.mndl_nm}}</mat-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="25" fxFlex.gt-sm="50" fxLayout="column" class="m-8 nav-cntnr">
+
+            <div class="nav-tree-itm w-100-p h-100-p" fxLayout="column">
+              <div fxLayout="row" class="nav-hdr">
+                <p class="nav-lbl">Select Sachivalayam</p>
+                <mat-checkbox (change)="checkAll($event,'sachivalayam')">Select All</mat-checkbox>
+              </div>
+              <div class="nav-cntnt w-100-p h-100-p" fxLayout="column">
+
+                <input [(ngModel)]="searchDst" placeholder="search Sachivalayam" [ngModelOptions]="{standalone: true}"
+                  class="srch-fltr">
+
+                <div class="spinner-div" *ngIf="showSvmSpinner">
+                  <mat-spinner></mat-spinner>
+                </div>
+                <div fxLayout="column" class="w-100-p" infinite-scroll [infiniteScrollDistance]="scrollDistance"
+                  [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle"
+                  (scrolled)="onScrollDown()" (scrolledUp)="onUp()">
+                  <div *ngFor="let s of svmPag ">
+                    <p class="ulb-ttl">{{s.ulb.mndl_nm}}</p>
+                    <mat-checkbox *ngFor="let sv of s.svms " (change)="checkSvm($event,sv)" [checked]="sv.isSelected">
+                      {{sv.svm_nm}}</mat-checkbox>
+                    </div>
+                </div>
+                <!-- <div fxLayout="column" class="w-100-p " *ngFor="let s of svmLst  ">
+                  <p class="ulb-ttl">{{s.ulb.mndl_nm}}</p>
+                  <mat-checkbox *ngFor="let sv of s.svms " (change)="checkSvm($event,sv)" [checked]="sv.isSelected">
+                    {{sv.svm_nm}}</mat-checkbox>
+                </div> -->
+                <!-- <mat-checkbox *ngFor="let s of svmLst | filter : searchDst : 'district'" (change)="checkSvm($event,s)"
+                  [checked]="s.isSelected">{{s.svm_nm}}</mat-checkbox> -->
+              </div>
+            </div>
+          </div>
+          <div fxFlex="25" fxFlex.gt-sm="50" fxLayout="column" class="m-8 nav-cntnr">
+            <div class="nav-tree-itm w-100-p h-100-p" fxLayout="column">
+              <div fxLayout="row" class="nav-hdr">
+                <p class="nav-lbl">Select Department</p>
+                <mat-checkbox (change)="checkAll($event,'department')">Select All</mat-checkbox>
+              </div>
+              <div class="nav-cntnt w-100-p h-100-p" fxLayout="column">
+                <div>
+                  <input [(ngModel)]="searchDpt" placeholder="search department" [ngModelOptions]="{standalone: true}"
+                    class="srch-fltr">
+                </div>
+                <!-- <mat-checkbox *ngFor="let r of dptLst | filter : searchDpt : 'department'" (change)="checkDpt($event,d)"
+                  [checked]="d.isSelected">{{d.dstrt_nm}}</mat-checkbox> -->
+                <mat-checkbox *ngFor="let d of dptLst | filter : searchDpt : 'department'" (change)="checkDpt($event,d)"
+                  [checked]="d.isSelected">{{d.dprt_nm}}</mat-checkbox>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+        <div fxLayout="row" class="mb-16">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center">
+            <button mat-flat-button class="scdl-btn" (click)="schdlTrng()" type="button">Submit </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,299 @@
+<div class="page-layout simple fullwidth pageBackground">
+
+    <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+        fxLayoutAlign.gt-xs="space-between center">
+        <div fxFlex fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%"
+            class="mt-10 font-size-16">
+            <div class="logo">
+                <mat-icon class="logo-icon mr-16">assignment</mat-icon>
+                <span class="logo-text h1 font-weight-600">
+                    New Training
+                </span>
+            </div>
+        </div>
+        <div fxFlex fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%" fxFlex.gt-xs="85%"
+            class="mt-10 font-size-16">
+            <div class="header-top-line"></div>
+        </div>
+    </div>
+
+    <div class="editForm pt-28">
+        <form class="p-8" fxLayout="column" name="dynamicForm" [formGroup]="dynamicForm" class="frmAlgnmnt">
+            <div fxLayout="row">
+                <mat-form-field appearance="outline" fxFlex="50" class="px-8">
+                    <mat-label>Training Name</mat-label>
+                    <input matInput formControlName="trng_nm" class="form-input"
+                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                    <div *ngIf="submitted && f.crs_nm.errors" class="invalid-feedback">
+                        <div *ngIf="f.crs_nm.errors.required">Training Name is required</div>
+                    </div>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Category</mat-label>
+                    <mat-select placeholder="category" formControlName="trng_ctgry_id" #singleSelect>
+                        <mat-option *ngFor='let ctgry of catgryLst' [value]="ctgry.trng_ctgry_id">
+                            {{ctgry.trng_ctgry_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <div fxLayout="row">
+
+                <mat-form-field appearance="outline" fxFlex="50" class="px-8">
+                    <mat-label>Start date</mat-label>
+                    <input matInput [matDatepicker]="startDatePicker" name="start" formControlName="trng_st_dt">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                    <mat-error>Start Date is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="pr-sm-8 no-errors-spacer endmrgn " fxFlex="50">
+                    <mat-label class="ml-16">End Date</mat-label>
+                    <input matInput [matDatepicker]="endDatePicker" name="end" formControlName="trng_end_dt">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                    <mat-error>End Date is required!</mat-error>
+                </mat-form-field>
+
+            </div>
+            <!-- <div class="form-group w-50-p" fxFlex="50">
+                <label class="form-label">Training Description</label>
+                <textarea type="text" formControlName="trng_desc" class="form-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.disc.errors }"></textarea>
+                <div *ngIf="submitted && f.disc.errors" class="invalid-feedback">
+                    <div *ngIf="f.disc.errors.required">Training Description is required</div>
+                </div>
+            </div> -->
+            <div fxLayout="row">
+                <mat-form-field appearance="outline" fxFlex="100" class="px-8">
+                    <mat-label>Training Description</mat-label>
+                    <textarea matInput formControlName="trng_desc" class="form-input"
+                        [ngClass]="{ 'is-invalid': submitted && f.disc.errors }">
+
+                </textarea>
+                    <div *ngIf="submitted && f.disc.errors" class="invalid-feedback">
+                        <div *ngIf="f.disc.errors.required">Training Description is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+
+
+
+            <div fxLayout="row">
+
+                <div class="form-group w-50-p px-8" fxFlex="50">
+                    <mat-radio-group formControlName="trn_online_in">
+                        <label class="form-label">Course Type : </label>
+                        <div fxFlex.gt-md="25%" class="typ-radio" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+                            <mat-radio-button (change)="onTypeChange($event)" class="example-margin" [value]="1">
+                                Online
+                            </mat-radio-button>
+                        </div>
+                        <div fxFlex.gt-md="25%" class="typ-radio" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+                            <mat-radio-button (change)="onTypeChange($event)" class="example-margin" [value]="0">
+                                Class Room
+                            </mat-radio-button>
+
+                        </div>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <!-- </form> -->
+            <div *ngIf="isOnline">
+                <div fxLayout="row" class="ptb-20 mb-2">
+                    <p class="bdlngCss"><b>
+                            Course Content
+                        </b> </p>
+                </div>
+                <div fxLayout="column" class="add-content mb-32">
+                    <mat-divider></mat-divider>
+
+                    <button class="btn" type="button" (click)="addSection()"><i class="fa fa-plus-circle"></i> Add
+                        Section</button>
+
+                </div>
+
+
+                <ng-template [ngIf]="currentVenue">
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let ticket of t.controls; let i = index" [expanded]="i == ticket.length">
+                                
+                            <mat-expansion-panel-header class="sctn-hdr">
+                                <mat-panel-title class="sctn-ttl">
+                                    {{ticket.controls.sctn_nm.value}}
+                                </mat-panel-title>
+
+                            </mat-expansion-panel-header>
+                            <div [formGroup]="ticket" fxLayout="row" class=" mt-8">
+                                <div fxLayout="row" class="flwdth">
+                                    <div fxLayout="column" fxFlex="80">
+
+                                        <mat-form-field appearance="outline" fxFlex="40">
+                                            <mat-label>sectionName</mat-label>
+                                            <input matInput formControlName="sctn_nm">
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" fxFlex="40">
+                                            <mat-label>Section Description</mat-label>
+                                            <textarea matInput placeholder="Section Description"
+                                                formControlName="sctn_desc"></textarea>
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div fxLayout="row" fxFlex="20" class="mt-4" fxLayoutAlign="flex-end">
+                                            <button class="btn" type="button" (click)="deleteSection(i)"><i class="fa fa-plus-circle"></i> delete
+                                                Section{{i + 1}}</button>
+
+                                        <button class="add-vid-btn" type="button" (click)="addVideo(ticket,i)"><i
+                                                class="fa fa-plus-circle"></i> Add Video</button>
+
+
+                                        <button class="add-vid-btn ml-8" type="button" (click)="addTest(ticket)"><i
+                                                class="fa fa-plus-circle"></i> Add Test</button>
+
+                                    </div>
+
+                                    <!-- <div fxLayout="row" fxLayoutAlign="start center" class="w-50-p">
+                                        <mat-form-field appearance="outline" fxFlex="100">
+                                            <mat-label>Section Description</mat-label>
+                                            <textarea matInput placeholder="Section Description"
+                                                formControlName="sctn_desc"></textarea>
+                                        </mat-form-field>
+
+                                    </div> -->
+                                </div>
+
+                                <!-- <div fxLayout="row">
+                                    <button class="add-vid-btn" type="button" (click)="addVideo(ticket)"><i
+                                            class="fa fa-plus-circle"></i> Add Video</button>
+                                    <button class="add-vid-btn ml-8" type="button" (click)="addTest(ticket)"><i
+                                            class="fa fa-plus-circle"></i> Add Test</button>
+
+                                </div> -->
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+
+                            </div>
+
+                            <div *ngFor="let cn of ticket.controls.vids.controls; let j = index">
+
+                                <div fxLayout="row" fxLayoutAlign="space-between center" class="vid-row">
+                                    <h5 class="card-title">Video {{i + 1}}</h5>
+                                    <button class="btn" type="button" (click)="deletevideo(ticket,i)"><i class="fa fa-plus-circle"></i> Delete
+                                        video{{i + 1}}</button>
+                                </div>
+                                <div [formGroup]="cn" class="column">
+                                    <div fxLayout="row" fxLayoutAlign="start center" class="mt-8">
+                                        <mat-form-field appearance="outline" fxFlex="50">
+                                            <mat-label>Video Name</mat-label>
+                                            <input matInput formControlName="vid_nm">
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" fxFlex="50">
+                                            <mat-label>Video Url</mat-label>
+                                            <input (blur)="getDuration($event,cn)" matInput formControlName="vid_url">
+
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div *ngFor="let t of ticket.controls.tests.controls; let i = index">
+                                <div fxLayout="row" fxLayoutAlign="space-between center" class="vid-row">
+                                    <h5 class="card-title">Test {{i + 1}}</h5>
+                                    <button class="add-vid-btn ml-8" type="button" (click)="addQuestion(t)"><i
+                                            class="fa fa-plus-circle"></i> Add Question</button>
+                                            <button class="add-vid-btn ml-8" type="button" (click)="deletetest(ticket,i)"><i
+                                                class="fa fa-plus-circle"></i> Delete Test</button>
+                                </div>
+                                <div [formGroup]="t" fxLayout="row" fxLayoutAlign="start center" class="mt-8">
+                                    <mat-form-field appearance="outline" fxFlex="50">
+                                        <mat-label>Test Name</mat-label>
+                                        <input matInput formControlName="test_nm">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" fxFlex="50">
+                                        <mat-label>Test Description</mat-label>
+                                        <input matInput formControlName="test_desc">
+
+                                    </mat-form-field>
+                                </div>
+
+
+
+
+                                <div *ngFor="let q of  t.controls.qstns.controls; let k = index">
+
+                                    <h5 class="card-title mt-8 font-weight-700">Question {{k + 1}} :</h5>
+                                    <div [formGroup]="q" class="form-row" fxLayout="column">
+                                        <div fxLayout="row" fxLayoutAlign="start center">
+                                            <mat-form-field appearance="outline" fxFlex="100">
+                                                <mat-label>Enter Question</mat-label>
+                                                <input matInput formControlName="qstn_nm">
+
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div fxLayout="column">
+
+                                        <mat-form-field appearance="outline" class="w-80-p" fxFlex="50">
+                                            <mat-label>Option One</mat-label>
+                                            <input matInput formControlName="opt_1"
+                                                (change)="onChangeInpt(q,'option1',1)">
+
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" class="w-80-p" fxFlex="50">
+                                            <mat-label>Option Two</mat-label>
+                                            <input matInput formControlName="opt_2"
+                                                (change)="onChangeInpt(q,'option2',2)">
+
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" class="w-80-p" fxFlex="50">
+                                            <mat-label>Option Threee</mat-label>
+                                            <input matInput formControlName="opt_3"
+                                                (change)="onChangeInpt(q,'option3',3)">
+
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" class="w-80-p" fxFlex="50">
+                                            <mat-label>Option Four</mat-label>
+                                            <input matInput formControlName="opt_4"
+                                                (change)="onChangeInpt(q,'option4',4)">
+
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" class="w-80-p" fxFlex="50">
+                                            <mat-select formControlName="crct_opt">
+                                                <mat-option *ngFor="let a of q.controls.answers.controls"
+                                                    [value]="a.controls.id.value">
+                                                    {{a.controls.option.value}}
+                                                </mat-option>
+                                            </mat-select>
+
+                                            </mat-form-field>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </ng-template>
+
+            </div>
+            <div fxLayout="row" class="mt-12" fxLayoutAlign="center center">
+                <button *ngIf="!update" (click)="saveTraining()" mat-raised-button type="submit" color="accent">
+                    Save
+                </button>
+                <button *ngIf="update" (click)="updateTrng()" mat-raised-button type="submit" color="accent">
+                    update
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<div class="page-layout simple pageBackground prtAsgnCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+  <div *ngIf="permissions">
+    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+      <!-- <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="px-8"></div> -->
+      <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="px-8">
+        <div class="ds-card m-12 p-4" *ngIf="shwFltrDiv">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                <div  class="chsefle">
+                  <div class="form-label">Bulk Upload</div>
+                  <input type="file" id="file"accept=".xlsx, .xls, .csv"  (change)="uploadedFile($event)" required>
+                  <label for="file">Choose a file</label>
+                  <div *ngIf='isValid==true'>{{upldFileNm}}</div>
+                  <div class='vldecxl' *ngIf='isValid==false'>Please Upload Valid Excel !</div>
+                </div>
+              
+                <div class="px-8 m-24">
+                  <div class="form-label"></div>
+                  <button mat-flat-button type="submit" aria-label="Areas"
+                    class="mat-raised-button font-weight-bold addTextColor" type="button" (click)="downloadtemplate()">
+                    <mat-icon matTooltip="Add Areas">cloud_download</mat-icon> Download Template
+                  </button>
+                </div>
+              
+            <div fxFlex="25" fxFlex.xs="100" class="px-8 m-28">
+              <button mat-raised-button color="primary" (click)="getagntTrmndCafsData();" class="gtDtls">GET DETAILS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="px-8"></div> -->
+    </div>
+
+
+    <div class="ds-card m-12 p-4 font-weight-600 text-center slctGtDta" *ngIf="!shwTbl && shwFltrDiv">Please Select the
+      Above to
+      get Data</div>
+    <div class="ds-card m-12" *ngIf="shwTbl">
+      <div class="p-4">
+        <dx-data-grid id="gridContainer" [dataSource]="agntTrmndCafLst" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" [allowColumnResizing]="true" style="width:100%"
+          (onSelectionChanged)="onRowSelected($event)">
+          <dxo-selection *ngIf="(permissions.slct_in==1)?true:false" mode="multiple"></dxo-selection>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+            [showInfo]="true"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column [allowResizing]="true" *ngFor="let f of agntTrmndCafLstColumnDefs" [visible]="!f.hide"
+            [dataField]="f.field" [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"
+            [alignment]="f.alignment" [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"
+            [dataType]="f.dataType" [format]="f.format"></dxi-column>
+        </dx-data-grid>
+      </div>
+      <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+    </div>
+    <div class="text-right m-8" *ngIf="shwBtns">
+      <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+        (click)="aprveCafsTrmnd()">Terminate CAF</button>
+    </div>
+  </div>
+
+  <!-- sidebar -->
+  <ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+    <div fxLayout="column">
+
+      <div class="card">
+        <div class="card-header crdHdng">CAF Termination
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel
+          </mat-icon>
+        </div>
+        <div class="card-body">
+          <ds-loading *ngIf="shwLdr"></ds-loading>
+          <dx-data-grid id="gridContainer" [dataSource]="slctdCafs" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" style="width:100%">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+            <dxo-search-panel [visible]="false" [highlightCaseSensitive]="false"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="false"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+            <dxo-export [enabled]="false" [allowExportSelectedData]="true"></dxo-export>
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxi-column *ngFor="let f of trmndSlctdCafLstColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width" [alignment]="f.alignment">
+            </dxi-column>
+          </dx-data-grid>
+          <ng-container>
+            <form [formGroup]="cafTrmndFormGroup">
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.xs="100" class="px-8">
+                  <div class="form-label">Enter Comment</div>
+                  <mat-form-field appearance="outline">
+                    <textarea placeholder="Write a Comment" matInput formControlName="caf_trmnd_aprvl_desc_tx"
+                      required></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+            <div class="text-center m-8 mb-24" *ngIf="shwBtns">
+              <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                (click)="saveaprveCafsTrmnd()">Submit</button>
+              <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color"
+                (click)="closeSideBar()">Cancel</button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ds-sidebar>
+</div>

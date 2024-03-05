@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="page-layout simple tabbed pageBackground">     
+        <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+            fxLayoutAlign.gt-xs="space-between center">
+            <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                class="mt-10 font-size-16">
+                <div class="logo">
+                    <mat-icon class="logo-icon mr-16">business</mat-icon>
+                    <span class="logo-text h1 font-weight-600">
+                        stock upload Form
+                    </span>
+                </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%"
+                class="mt-10 font-size-16">
+                <div class="header-top-line"></div>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="start" class=" mat-card mat-elevation-z4 frmcnt content"
+            fusePerfectScrollbar>
+
+            <form class=" p-8" fxLayout="column" [formGroup]='stocupldform'>
+
+                <div fxLayout="row" class="ptb-20">
+                    <p class="bdlngCss"><b>
+                            <mat-icon>business</mat-icon>stock upload Details
+                        </b> </p>
+                </div>
+                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                        <div class="form-label">product Type*</div>
+                        <mat-form-field appearance="outline">
+                            <mat-select placeholder="Select product" formControlName="prdttype" required
+                                (selectionChange)="prdpfxchg($event.value)">
+                                <mat-option *ngFor='let prd of prdct_type' [value]="prd.prd_id">{{prd.prdct_nm}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>product is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                        <div class="form-label">Enter LMO Code*</div>
+                        <mat-form-field appearance="outline">
+                            <input type="text" placeholder="Agents" aria-label="Assignee" matInput
+                                formControlName="agnt_id" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option.agnt_frst_nm}} | {{option.agnt_cd}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                
+                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                        <div class="form-label">Select Prifix*</div>
+                        <mat-form-field *ngIf='nwpfix' appearance="outline">
+                            <mat-select formControlName="prefix" placeholder="Select prifix" required>
+                                <mat-option *ngFor='let prm of prdpfx' [value]='prm.prfx_txt'>{{prm.prfx_txt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                   
+                </div>
+
+               
+                <div class="drop-container dropzone" dropZone (hovered)="toggleHover($event)"
+                    (dropped)="uploadedFile($event)" [class.hovering]="isHovering">
+                    <p class="m-0">
+                        Drag a file here or
+                        <label class="upload-button">
+                            <input type="file" multiple="" (change)="uploadedFile($event)"> browse
+                        </label>
+                        to upload.
+                    </p>
+                    <span *ngIf='shwrcds' class='ttlRcds'>Total Records({{ttlRcds}})</span>
+                    <p class='vldecxl' *ngIf='isValid==false'>Please Upload Valid Excel</p>
+                </div>
+
+                <div fxLayout="row" class="mb-16">
+                    <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                        class="text-center">
+                        <button mat-button class="scdl-btn" [disabled]=" !isValid && !stocupldform.valid "
+                            (click)="stockUpdt()" type="button">Submit</button>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,347 @@
+<div class="page-layout blank usrEmplye pageBackground usrAcntCmpnt">
+    <!-- <app-top-header [headrIcon] = "'people_outline'" [headrName]="'Users'"></app-top-header>  -->
+    <div *ngIf="loader">
+        <div class="loading-indicator">
+            <div class="spinner-2">
+              <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+            </div>
+          </div>
+    </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div fxLayout="row">
+        <div fxFlex="80"></div>
+        <div fxFlex="20">
+            <!-- <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+                *ngIf="showAddBtn" (click)="tbleStpr('new')">
+                <mat-icon class="addfld-icon-color vertical-align-text-bottom">person</mat-icon>
+                <span class="pt-2 ">&nbsp;Add New User</span>
+            </button> -->
+            <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+                *ngIf="showBckBtn" (click)="bckBtn()">
+
+                <span class="pt-2">Back</span>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="showTble" class="p-40 pt-0">
+        <div class="ds-card m-12">
+            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+                [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+                [showRowLines]="true" [showBorders]="true"  (onToolbarPreparing)="(user.permissions.insrt_in==1)?onToolbarPreparing($event):false"
+                [columnHidingEnabled]="true" style="width:100%">
+                <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false" [contextMenuEnabled]="true" expandMode="rowClick"></dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select">
+                    <!-- or "select" -->
+                </dxo-column-chooser>
+                <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="users">
+                </dxo-export>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of columnDefs" [visible]="!f.visible" [dataField]="f.field"
+                    [caption]="f.headerName" alignment="f.cellStyle.text-align" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+                <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.updt_in==1)?true:false"
+                    type="buttons" [width]="100" caption="Edit" cellTemplate="editTemplate">
+                    <div *dxTemplate="let data of 'editTemplate'">
+                        <div class="tblEdtBtn" (click)="onCellClick(data)">
+                            Edit
+                        </div>
+                    </div>
+                </dxi-column>
+                <dxi-column [showInColumnChooser]="false" [visible]="(user.permissions.dlte_in==1)?true:false"
+                    type="buttons" [width]="100" caption="Delete" cellTemplate="delTemplate">
+                    <div *dxTemplate="let data of 'delTemplate'">
+                        <div class="tblDelBtn" (click)="onCellClick(data)">
+                            Delete
+                        </div>
+                    </div>
+                </dxi-column>
+            </dx-data-grid>
+        </div>
+        <!-- <ag-grid-angular #agGrid style="width: 100%; height: 530px;" class="ag-theme-balham p-12"
+            [pagination]="pagination" [paginationPageSize]="paginationPageSize" [rowData]="rowData"
+            [columnDefs]="columnDefs" [enableFilter]="true" [getRowHeight]="getRowHeight" [rowSelection]="rowSelection"
+            [loadingCellRenderer]="loadingCellRenderer" [defaultColDef]="defaultColDef"
+            [localeTextFunc]="localeTextFunc" [overlayLoadingTemplate]="overlayLoadingTemplate"
+            [loadingCellRendererParams]="loadingCellRendererParams" [suppressHorizontalScroll]="false"
+            [floatingFilter]="true" (cellClicked)="onCellClick($event)">
+        </ag-grid-angular> -->
+    </div>
+
+    <div class="ds-card usrcrteCrd" id="scrollTop" *ngIf="showStepr">
+        <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">User Form</div>
+        <mat-divider></mat-divider>
+        <form fxLayout="column" [formGroup]="firstFormGroup" class="m-24">
+            <ng-template matStepLabel>Add User</ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter First Name</div>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="firstName" placeholder="First name" required>
+                        <mat-error> Name is required!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter Last Name</div>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="lastName" placeholder="Last name" required>
+                        <mat-error>Last Name is required!</mat-error>
+                    </mat-form-field>
+                </div>
+
+
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Select Designation</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="designation" required>
+                            <mat-option *ngFor="let d of dsgnlst" [value]="d.dsgn_id">
+                                {{d.dsgn_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>Designation is required!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Select Department</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="department" required>
+                            <mat-option *ngFor="let dp of dprtlst" [value]="dp.dprt_id">
+                                {{dp.dprt_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>Department is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Select Branches</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="branches" required>
+                            <mat-option *ngFor="let ou of outletslst" [value]="ou.otlt_id">
+                                {{ou.otlt_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>Branches is required!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Select Organisation</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="organisation" required>
+                            <mat-option *ngFor="let or of orgnlst" [value]="or.orgn_id">
+                                {{or.orgn_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>organisation is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Select User Category</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="usercategory" required>
+                            <mat-option *ngFor="let u of usrCtgryLst" [value]="u.usr_ctgry_id">
+                                {{u.usr_ctgry_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>User Category is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter Mobile Number</div>
+                    <mat-form-field appearance="outline">
+                        <!-- <mat-label>Mobile Number</mat-label> -->
+                        <input type="number" matInput formControlName="mobileNumber" required
+                            onKeyPress="if(this.value.length==10) return false;">
+                        <mat-error>Mobile Number is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter Email</div>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="email" required>
+                        <mat-error>Email is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter Address</div>
+                    <mat-form-field appearance="outline">
+                        <textarea matInput formControlName="address" required></textarea>
+                        <mat-error>Address is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- <div fxLayout="row" fxLayout.xs="column" fxFlexFill> -->
+            <div *ngIf="shownewpassword" class="px-8" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter User Name</div>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="userName" readonly="true" required>
+                        <mat-error>User Name is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter New Password</div>
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <input matInput type="password" formControlName="password">
+                        <mat-error>Password is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div *ngIf="showpassword" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter User Name</div>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="userName" required>
+                        <mat-error>User Name is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Enter Password</div>
+                    <mat-form-field appearance="outline" class="w-100-p" class="px-8">
+                        <input matInput type="password" formControlName="password" required>
+                        <mat-error>Password is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div *ngIf="shownewpassword" fxFlex="50" fxFlex.xs="100">
+                    <div class="form-label">Enter Confirm Password</div>
+                    <mat-form-field appearance="outline" class="w-100-p px-8">
+                        <mat-label>Confirm New Password</mat-label>
+                        <input matInput type="password" formControlName="confirmPassword">
+                        <mat-error>Confirm Password is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="showpassword" fxFlex="50" fxFlex.xs="100">
+                    <div class="form-label">Enter Confirm Password</div>
+                    <mat-form-field appearance="outline" class="w-100-p px-8">
+                        <input matInput type="password" formControlName="confirmPassword" required>
+                        <mat-error>Confirm Password is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50" class="pt-8">
+                    <div class="group-gap">
+
+                        <!-- Upload image -->
+                        <div class="avatar-upload" fxLayout="row">
+
+                            <div class="avatar-preview">
+                                <img class="avatar" [src]="imageUrl" *ngIf="imageUrl != null">
+                                <img class="avatar" *ngIf="imageUrl == null" src="assets/images/avatars/profile.jpg">
+                                <!-- <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                                </div> -->
+                            </div>
+                            <div class="avatar-edit pt-16">
+                                <label>
+                                    <input (change)="uploadFile($event)" type='file' id="imageUpload"
+                                        accept=".png, .jpg, .jpeg" #fileInput style="color: #1b75b6;"
+                                        style="display:none" />
+                                    <span
+                                        class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 uploadImgBtn">
+                                        <mat-icon _ngcontent-qri-c39=""
+                                            class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color"
+                                            role="img" aria-hidden="true">add_a_photo</mat-icon>
+                                        Upload Image
+                                    </span>
+                                </label>
+                                <!-- <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                        (change)="uploadFile($event)" style="color: #1b75b6;" /> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="30" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Assign Menu Profile</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="mnuPrfle" *ngIf="frm_type == 'new'">
+                            <mat-option *ngFor="let m of menuProfls" [value]="m.mnu_prfle_id">
+                                {{m.mnu_prfle_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-select formControlName="mnuPrfle" *ngIf="frm_type != 'new'">
+                            <mat-option *ngFor="let m of menuProfls" [value]="m.mnu_prfle_id"
+                                [disabled]="m.mnu_prfle_id">
+                                {{m.mnu_prfle_nm}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="30" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Assign Setup Profile</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="stpPrfle" *ngIf="frm_type == 'new'">
+                            <mat-option *ngFor="let s of setupPrfls" [value]="s.stp_prfle_id">
+                                {{s.stp_prfle_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-select formControlName="stpPrfle" *ngIf="frm_type != 'new'">
+                            <mat-option *ngFor="let s of setupPrfls" [value]="s.stp_prfle_id"
+                                [disabled]="s.stp_prfle_id">
+                                {{s.stp_prfle_nm}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="30" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Assign Report Profile</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="rptPrfle" *ngIf="frm_type == 'new'">
+                            <mat-option *ngFor="let r of reportPrfls" [value]="r.rpt_prfle_id">
+                                {{r.rpt_prfle_nm}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-select formControlName="rptPrfle" *ngIf="frm_type != 'new'">
+                            <mat-option *ngFor="let r of reportPrfls" [value]="r.rpt_prfle_id"
+                                [disabled]="r.rpt_prfle_id">
+                                {{r.rpt_prfle_nm}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="30" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Assign Roles</div>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="rolenm" (selectionChange)="filter($event)" multiple
+                            [(value)]="selected">
+                            <mat-option *ngFor="let r of rleNms" [value]="r.rle_id">{{r.rle_nm}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button color="primary" class="m-2 saveBtn-color" (click)="onSubmit()"
+                    [disabled]="check()">Save</button>
+                <button type="reset" mat-raised-button color="primary" class="m-2 resetBtn-color">Reset</button>
+                <mat-spinner *ngIf="spnrCtrl" class="spnr-styl"></mat-spinner>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,947 @@
+<div class="page-layout simple pageBackground tabbed">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+<!-- Tickets (Today) start here -->
+  <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+    <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+      <span class="headtxt">TICKETS (TODAY)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{todaydatacounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{todaydatacounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{todaydatacounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{todaydatacounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="todayschrt" class="piChrt">
+            <dxi-series argumentField="status" valueField="area">
+                <dxo-label [visible]="true">
+                    <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                </dxo-label>
+            </dxi-series>
+            <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                [rowCount]="0">
+            </dxo-legend>
+            <dxo-size [width]="350" [height]="200"></dxo-size>
+            <!-- <dxo-export [enabled]="true"></dxo-export> -->
+        </dx-pie-chart>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        
+        <span class="headtxt">TICKETS (PREVIOUS DAY)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{yesdatacounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{yesdatacounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{yesdatacounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{yesdatacounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Tickets (Today) end here -->
+
+  
+<!-- Tickets (Present Month) start here -->
+  <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+      <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <span class="headtxt">TICKETS (PRESENT MONTH)</span>
+          <div class="ds-card  dsbbrdcrds  cardOne">
+              <div fxLayout="row" class="inrSctn">                
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">
+                          <div class="h1 cnt">{{tkdatacounts[0].Open}}</div>
+                          <div class="h4 nme">OPEN TICKETS</div>
+                      </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{tkdatacounts[0].Close}}</div>
+                      <div class="h4 nme">CLOSED TICKETS</div>
+                  </div>
+              </div>
+
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">                        
+                          <div class="h1 cnt">{{tkdatacounts[0].Resolved}}</div>
+                          <div class="h4 nme">RESOLVED</div>
+                      </div>
+                  </div>
+              </div>
+              <div fxLayout="row">
+                  <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">
+                          <div class="h1 cnt">{{tkdatacounts[0].total}}</div>
+                          <div class="h4 nme">TOTAL TICKETS</div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+         
+          <span class="headtxt">PRESENT MONTH</span>
+          <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{enterdatacounts[0].enterprise}}</div>
+                        <div class="h4 nme">ENTERPRISE</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{domedatacounts[0].Domestic}}</div>
+                    <div class="h4 nme">DOMESTIC</div>
+                </div>
+            </div>
+               
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{grievandatacounts[0].Greviences}}</div>
+                        <div class="h4 nme">GRIEVANCE</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+      
+      <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+          <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="ticktschrt" class="piChrt">
+              <dxi-series argumentField="status" valueField="area">
+                  <dxo-label [visible]="true">
+                      <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                  </dxo-label>
+              </dxi-series>
+              <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                  [rowCount]="0">
+              </dxo-legend>
+              <dxo-size [width]="350" [height]="200"></dxo-size>
+              <!-- <dxo-export [enabled]="true"></dxo-export> -->
+          </dx-pie-chart>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+          
+        <span class="headtxt">TICKETS (PREVIOUS MONTH)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row" class="inrSctn">                
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{prevsdatacounts[0].Open}}</div>
+                      <div class="h4 nme">OPEN TICKETS</div>
+                  </div>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+              class="totlCnt">
+              <div class="cntDtls">
+                  <div class="h1 cnt">{{prevsdatacounts[0].Close}}</div>
+                  <div class="h4 nme">CLOSED TICKETS</div>
+              </div>
+          </div>
+
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">                        
+                      <div class="h1 cnt">{{prevsdatacounts[0].Resolved}}</div>
+                      <div class="h4 nme">RESOLVED</div>
+                  </div>
+              </div>
+          </div>
+          <div fxLayout="row">
+              <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{prevsdatacounts[0].total}}</div>
+                      <div class="h4 nme">TOTAL TICKETS</div>
+                  </div>
+              </div>
+          </div>
+
+      </div>     
+		<span class="headtxt">PREVIOUS MONTH</span>
+      <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row" class="inrSctn">
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{entprvsmonthdatacounts[0].enterprise}}</div>
+                      <div class="h4 nme">ENTERPRISE</div>
+                  </div>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{domeprvsmonthdatacounts[0].domestic}}</div>
+                      <div class="h4 nme">DOMESTIC</div>
+                  </div>
+              </div>
+
+          </div>
+          <div fxLayout="row">
+              <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{grievanprvsmonthdatacounts[0].grevience}}</div>
+                      <div class="h4 nme">GRIEVANCE</div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+      </div>
+  </div>
+<!-- Tickets (Present Month) end here -->
+
+ <!-- ENTERPRISE (Today , Previous) Day start here -->
+ <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+    <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+      <span class="headtxt">ENTERPRISE (TODAY)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{enttodaycounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{enttodaycounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{enttodaycounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{enttodaycounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="enttdycnt" class="piChrt">
+            <dxi-series argumentField="status" valueField="area">
+                <dxo-label [visible]="true">
+                    <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                </dxo-label>
+            </dxi-series>
+            <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                [rowCount]="0">
+            </dxo-legend>
+            <dxo-size [width]="350" [height]="200"></dxo-size>
+            <!-- <dxo-export [enabled]="true"></dxo-export> -->
+        </dx-pie-chart>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        
+        <span class="headtxt">ENTERPRISE (PREVIOUS DAY)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{entprvsdaycounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{entprvsdaycounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{entprvsdaycounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{entprvsdaycounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ENTERPRISE(Today , Previous) Day end here -->
+
+  
+<!-- ENTERPRISE (Present,Previous Month) start here -->
+  <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+      <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <span class="headtxt">ENTERPRISE (PRESENT MONTH)</span>
+          <div class="ds-card  dsbbrdcrds  cardOne">
+              <div fxLayout="row" class="inrSctn">                
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">
+                          <div class="h1 cnt">{{entprsntmnthdatacounts[0].Open}}</div>
+                          <div class="h4 nme">OPEN TICKETS</div>
+                      </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{entprsntmnthdatacounts[0].Close}}</div>
+                      <div class="h4 nme">CLOSED TICKETS</div>
+                  </div>
+              </div>
+
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">                        
+                          <div class="h1 cnt">{{entprsntmnthdatacounts[0].Resolved}}</div>
+                          <div class="h4 nme">RESOLVED</div>
+                      </div>
+                  </div>
+              </div>
+              <div fxLayout="row">
+                  <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">
+                          <div class="h1 cnt">{{entprsntmnthdatacounts[0].total}}</div>
+                          <div class="h4 nme">TOTAL TICKETS</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+          <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="entprsntmnthchrt" class="piChrt">
+              <dxi-series argumentField="status" valueField="area">
+                  <dxo-label [visible]="true">
+                      <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                  </dxo-label>
+              </dxi-series>
+              <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                  [rowCount]="0">
+              </dxo-legend>
+              <dxo-size [width]="350" [height]="200"></dxo-size>
+              <!-- <dxo-export [enabled]="true"></dxo-export> -->
+          </dx-pie-chart>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+          
+          <span class="headtxt">ENTERPRISE (PREVIOUS MONTH)</span>
+          <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{entprvousmnthdatacounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+  
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{entprvousmnthdatacounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+  
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{entprvousmnthdatacounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{entprvousmnthdatacounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+  
+        </div>     
+  
+        </div>
+  </div>
+<!-- ENTERPRISE (Present,Previous Month) end here -->
+
+
+
+
+<!-- DOMESTIC (Today,Previous) start here -->
+<div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+    <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+      <span class="headtxt">DOMESTIC (TODAY)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{domestictodaycounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{domestictodaycounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{domestictodaycounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{domestictodaycounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="dnsttodayschrt" class="piChrt">
+            <dxi-series argumentField="status" valueField="area">
+                <dxo-label [visible]="true">
+                    <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                </dxo-label>
+            </dxi-series>
+            <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                [rowCount]="0">
+            </dxo-legend>
+            <dxo-size [width]="350" [height]="200"></dxo-size>
+            <!-- <dxo-export [enabled]="true"></dxo-export> -->
+        </dx-pie-chart>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        
+        <span class="headtxt">DOMESTIC (PREVIOUS DAY)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{domesticprvsdaycounts[0].Open}}</div>
+                        <div class="h4 nme">OPEN TICKETS</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{domesticprvsdaycounts[0].Close}}</div>
+                    <div class="h4 nme">CLOSED TICKETS</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{domesticprvsdaycounts[0].Resolved}}</div>
+                        <div class="h4 nme">RESOLVED</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{domesticprvsdaycounts[0].total}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- DOMESTIC (Today,Previous) end here -->
+
+  
+<!-- DOMESTIC (Present Month) start here -->
+  <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+      <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <span class="headtxt">DOMESTIC (PRESENT MONTH)</span>
+          <div class="ds-card  dsbbrdcrds  cardOne">
+              <div fxLayout="row" class="inrSctn">                
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">
+                          <div class="h1 cnt">{{domesticprsntmnthdatacounts[0].Open}}</div>
+                          <div class="h4 nme">OPEN TICKETS</div>
+                      </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{domesticprsntmnthdatacounts[0].Close}}</div>
+                      <div class="h4 nme">CLOSED TICKETS</div>
+                  </div>
+              </div>
+
+                  <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">                        
+                          <div class="h1 cnt">{{domesticprsntmnthdatacounts[0].Resolved}}</div>
+                          <div class="h4 nme">RESOLVED</div>
+                      </div>
+                  </div>
+              </div>
+              <div fxLayout="row">
+                  <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                      class="totlCnt">
+                      <div class="cntDtls">
+                          <div class="h1 cnt">{{domesticprsntmnthdatacounts[0].total}}</div>
+                          <div class="h4 nme">TOTAL TICKETS</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+          <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="dmstctprsntchrt" class="piChrt">
+              <dxi-series argumentField="status" valueField="area">
+                  <dxo-label [visible]="true">
+                      <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                  </dxo-label>
+              </dxi-series>
+              <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                  [rowCount]="0">
+              </dxo-legend>
+              <dxo-size [width]="350" [height]="200"></dxo-size>
+              <!-- <dxo-export [enabled]="true"></dxo-export> -->
+          </dx-pie-chart>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">          
+        <span class="headtxt">DOMESTIC (PREVIOUS MONTH)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row" class="inrSctn">                
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{domesticprvousmnthdatacounts[0].Open}}</div>
+                      <div class="h4 nme">OPEN TICKETS</div>
+                  </div>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+              class="totlCnt">
+              <div class="cntDtls">
+                  <div class="h1 cnt">{{domesticprvousmnthdatacounts[0].Close}}</div>
+                  <div class="h4 nme">CLOSED TICKETS</div>
+              </div>
+          </div>
+
+              <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">                        
+                      <div class="h1 cnt">{{domesticprvousmnthdatacounts[0].Resolved}}</div>
+                      <div class="h4 nme">RESOLVED</div>
+                  </div>
+              </div>
+          </div>
+          <div fxLayout="row">
+              <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                  class="totlCnt">
+                  <div class="cntDtls">
+                      <div class="h1 cnt">{{domesticprvousmnthdatacounts[0].total}}</div>
+                      <div class="h4 nme">TOTAL TICKETS</div>
+                  </div>
+              </div>
+          </div>
+
+      </div>     
+
+      </div>
+  </div>
+<!-- DOMESTIC (Present Month) end here -->
+
+<!-- Source (Present Month) start here -->
+  <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin: 1em 0;">
+    <div fxFlex="100" fxFlex.gt-lg="39%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+      <span class="headtxt">SOURCE (PRESENT MONTH)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{sourceprsntmnthdatacounts[0].subcriber_app}}</div>
+                        <div class="h4 nme">SUBSCRIBER APP</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{sourceprsntmnthdatacounts[0].call_center}}</div>
+                    <div class="h4 nme">CALL CENTER</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{sourceprsntmnthdatacounts[0].lmo_app}}</div>
+                        <div class="h4 nme">LMO APP</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{sourceprsntmnthdatacounts[0].total_tickets}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        <dx-pie-chart id="pie" title="" [palette]="pieColorPalette" [dataSource]="oltschrt" class="piChrt">
+            <dxi-series argumentField="status" valueField="area">
+                <dxo-label [visible]="true">
+                    <dxo-connector [visible]="true" [width]="3"></dxo-connector>
+                </dxo-label>
+            </dxi-series>
+            <dxo-legend verticalAlignment="right" horizontalAlignment="center" itemTextPosition="right"
+                [rowCount]="0">
+            </dxo-legend>
+            <dxo-size [width]="350" [height]="200"></dxo-size>
+            <!-- <dxo-export [enabled]="true"></dxo-export> -->
+        </dx-pie-chart>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-lg="41%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="100%">
+        
+        <span class="headtxt">SOURCE (PREVIOUS MONTH)</span>
+        <div class="ds-card  dsbbrdcrds  cardOne">
+            <div fxLayout="row" class="inrSctn">                
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{sourcepremnthdatacounts[0].subcriber_app}}</div>
+                        <div class="h4 nme">SUBSCRIBER APP</div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                class="totlCnt">
+                <div class="cntDtls">
+                    <div class="h1 cnt">{{sourcepremnthdatacounts[0].call_center}}</div>
+                    <div class="h4 nme">CALL CENTER</div>
+                </div>
+            </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">                        
+                        <div class="h1 cnt">{{sourcepremnthdatacounts[0].lmo_app}}</div>
+                        <div class="h4 nme">LMO APP</div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">{{sourcepremnthdatacounts[0].total_tickets}}</div>
+                        <div class="h4 nme">TOTAL TICKETS</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    
+</div>
+<!-- Source (Present Month) end here -->
+
+  
+<!-- Pending Activities start here -->
+  <div class="row m-12">
+      <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+          <span class="headtxt">CAF OPERATIONS(AS ON TODAY)</span>
+          <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-bottom: 1em">
+              <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+
+                  <div class="ds-card  dsbbrdcrds  cardOne">
+                      <div fxLayout="row" class="inrSctn">
+                          <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                              fxFlex.gt-xs="100%" class="totlCnt">
+                              <div class="cntDtls">
+                                <div class="h4 nme2">RESUME PENDING</div>
+                                  <div class="h1 cnt">{{resumedatacounts[0].resume_pending}}</div>                                  
+                              </div>
+                          </div>
+
+                          <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                          fxFlex.gt-xs="100%" class="totlCnt">
+                          <div class="cntDtls">
+                            <div class="h4 nme2">PENDING ACTIVATION</div>
+                              <div class="h1 cnt">{{pendingdatacounts[0].pending_activation}}</div>                                  
+                          </div>
+                      </div>
+
+
+                      <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                      fxFlex.gt-xs="100%" class="totlCnt">
+                      <div class="cntDtls">
+                        <div class="h4 nme2">BOX CHANGE</div>
+                          <div class="h1 cnt">{{boxdatacounts[0].box_change}}</div>                                  
+                      </div>
+                  </div>
+
+
+                  <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                  fxFlex.gt-xs="100%" class="totlCnt">
+                  <div class="cntDtls">
+                    <div class="h4 nme2">PON CHANGE</div>
+                      <div class="h1 cnt">{{pondatacounts[0].pon_change}}</div>                                  
+                  </div>
+              </div>
+
+
+              
+              <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+              fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h4 nme2">SUSPEND PENDING</div>
+                  <div class="h1 cnt">{{suspenddatacounts[0].suspend_pending}}</div>                                  
+              </div>
+          </div>
+
+
+          <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+          fxFlex.gt-xs="100%" class="totlCnt">
+          <div class="cntDtls">
+            <div class="h4 nme2">TERMINATION PENDING</div>
+              <div class="h1 cnt">{{termdatacounts[0].termination_pending}}</div>                                  
+          </div>
+      </div>
+
+
+                      </div>
+                  </div>
+              </div>             
+          </div>
+      </div>     
+  </div>
+<!-- Pending Activities end here -->
+
+
+<!-- Category Wise start here -->
+  <div class="row m-12">
+    <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+        <span class="headtxt">CATEGORY WISE TOP 6 (PRESENT MONTH)</span>
+        <div fxLayout="row wrap" fxLayoutAlign="start top" style="margin-bottom: 1em">
+            <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+
+                <div class="ds-card  dsbbrdcrds  cardOne">
+                    <div fxLayout="row" class="inrSctn">
+                        <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                            fxFlex.gt-xs="100%" class="totlCnt">
+                            <div class="cntDtls">
+                              <div class="h4 nme2">{{name[0].category}}</div>
+                                <div class="h1 cnt">{{categorywisedatacounts[0].count}}</div>                                  
+                            </div>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                        fxFlex.gt-xs="100%" class="totlCnt">
+                        <div class="cntDtls">
+                          <div class="h4 nme2">{{name[1].category}}</div>
+                            <div class="h1 cnt">{{categorywisedatacounts[1].count}}</div>                                  
+                        </div>
+                    </div>
+
+
+                    <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                    fxFlex.gt-xs="100%" class="totlCnt">
+                    <div class="cntDtls">
+                      <div class="h4 nme2">{{name[2].category}}</div>
+                        <div class="h1 cnt">{{categorywisedatacounts[2].count}}</div>                                  
+                    </div>
+                </div>
+
+
+                <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+                fxFlex.gt-xs="100%" class="totlCnt">
+                <div class="cntDtls">
+                  <div class="h4 nme2">{{name[3].category}}</div>
+                    <div class="h1 cnt">{{categorywisedatacounts[3].count}}</div>                                  
+                </div>
+            </div>
+
+
+            
+            <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+            fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme2">{{name[4].category}}</div>
+                <div class="h1 cnt">{{categorywisedatacounts[4].count}}</div>                                  
+            </div>
+        </div>
+
+
+        <div fxFlex="100" fxFlex.gt-lg="17%" fxFlex.gt-md="17%" fxFlex.gt-sm="17%"
+        fxFlex.gt-xs="100%" class="totlCnt">
+        <div class="cntDtls">
+          <div class="h4 nme2">{{name[5].category}}</div>
+            <div class="h1 cnt">{{categorywisedatacounts[5].count}}</div>                                  
+        </div>
+    </div>
+
+
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </div>     
+</div>

@@ -1,0 +1,16 @@
+@mixin ds-sidebar-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    ds-sidebar {
+        background: map-get($background, background);
+    }
+
+    .ds-sidebar-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+
+        &.ds-sidebar-overlay-invisible {
+            background-color: transparent;
+        }
+    }
+}

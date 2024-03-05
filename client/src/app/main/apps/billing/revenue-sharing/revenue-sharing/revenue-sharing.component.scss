@@ -1,0 +1,22 @@
+.gtDtlsBtn
+{
+    position: relative;
+    transform: translateY(32%); 
+}
+.customScroll {
+   ::ng-deep.dx-datagrid {
+        line-height: inherit;
+        overflow-x: scroll;
+        min-width: 80vw;
+        max-width: 80vw;
+    }
+    .customTwo{
+        ::ng-deep.dx-datagrid {
+            line-height: inherit;
+            overflow-x: scroll;
+            min-width: 76vw;
+            max-width: 76vw;
+        }
+    }
+}
+

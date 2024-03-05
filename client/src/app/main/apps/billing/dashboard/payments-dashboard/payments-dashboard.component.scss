@@ -1,0 +1,159 @@
+.dsbbrdcrds{
+    max-width: 93%;
+    min-width: 93%;
+    margin: 0% 3%;
+    border-radius: 6px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+}
+.widget-statstic-card {
+    position: relative;
+    overflow: hidden;
+}
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 11px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 11px 0 rgba(0,0,0,.12);
+    border: none;
+    margin-bottom: 30px;
+}
+.card .card-header {
+    background-color: transparent;
+    border-bottom: none;
+    padding: 25px 20px;
+}
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+.card-block {
+    padding: 1.55rem;
+}
+.card .card-header+.card-block, .card .card-header+.card-block-big {
+    padding-top: 0;
+}
+.widget-statstic-card .st-icon {
+    color: #fff;
+    font-size: 23px;
+    padding: 35px 35px 15px 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+.bg-c-blue {
+    background-color: #4680ff;
+}
+::ng-deep .options {
+    padding: 20px;
+    background-color: rgba(191, 191, 191, 0.15);
+    margin-top: 20px;
+}
+::ng-deep .option {
+    margin-top: 10px;
+}
+::ng-deep .caption {
+    font-size: 18px;
+    font-weight: 500;
+}
+::ng-deep .option > span {
+    margin-right: 10px;
+}
+::ng-deep .option > .dx-widget {
+    display: inline-block;
+    vertical-align: middle;
+}
+.today-card {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    border-radius: 6px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+}
+.bg-c-blue {
+    background-color: #4680ff;
+}
+.bg-c-pink {
+    background-color: #fc6180;
+}
+.bg-c-green {
+    background-color: #93be52;
+}
+.bg-c-yellow {
+    background-color: #ffb64d;
+}
+.border-today-card{
+    text-align: center;
+    color: white;
+    padding: 16px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.bg-icon-green{
+    background-color: #8bbe40;
+}
+.bg-icon-blue{
+    background-color: #1d90f3;
+}
+.bg-icon-pink{
+    background-color: #e14867;
+}
+
+.fg-icon-green{
+    color: #58821a;
+}
+.fg-icon-blue{
+    color: #0c5b9f;
+}
+.fg-icon-pink{
+    color: #82132a;
+}
+.fg-icon-yellow{
+    color: #af6f14;
+}
+.border-top-blue{
+    border-top: 2px solid #2967ef;
+}
+.border-radius-6{
+    border-radius: 6px;
+}
+.border-top-pink{
+    border-top: 2px solid #f35877;
+}
+.border-top-green{
+    border-top: 2px solid #8fd623;
+}
+.border-top-yellow{
+    border-top: 2px solid #f7a42c;
+}
+.cnt{
+    font-size: 16px;
+    font-weight: 500;
+    padding-top:1%;
+}
+@media only screen and (min-width:320px) and (max-width:1440px){
+    .cnt{
+        font-size: 14px!important;
+        }
+    .nme{
+        font-size: 12px!important;
+        font-weight: 400!important;
+    }
+}
+.nme{
+    font-size: 13px;
+    padding-top: 0px;
+    color: #795548;
+    padding-bottom: 2%;
+}
+.shreMnthTxtClr{
+    color: #1058a8;
+}
+.pymnt_dshbrd_card_header{
+    border-top: 2px solid #4e8be8;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}

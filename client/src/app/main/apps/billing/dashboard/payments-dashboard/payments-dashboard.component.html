@@ -1,0 +1,205 @@
+<div class="page-layout simple pageBackground tabbed">
+  <div class="m-24">
+    <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="mb-12" *ngIf="agntPdTdyMnth">
+      <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="35%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%" class="pr-8 mb-4">
+        <div class="ds-card today-card">
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex="100" fxFlex.gt-xl="18%" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%"
+              fxFlex.gt-xs="18%" class="bg-c-blue border-today-card">
+              <mat-icon>money</mat-icon>
+              <div>Payments Received</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt text-center">{{agntPdTdyMnth.crnt_mnth_pd_amt == null ? 0 : agntPdTdyMnth.crnt_mnth_pd_amt}}</h2>
+              <div class="h4 nme text-center">This Month</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt text-center">{{agntPdTdyMnth.tdy_pd_amt == null ? 0 : agntPdTdyMnth.tdy_pd_amt}}</h2>
+              <div class="h4 nme text-center">Today</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt text-center">{{agntPdTdyMnth.ystrdy_pd_amt == null ? 0 : agntPdTdyMnth.ystrdy_pd_amt}}</h2>
+              <div class="h4 nme text-center">Yesterday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="50%"
+        fxFlex.gt-xs="100%" class="pr-8">
+        <div class="ds-card today-card">
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex="100" fxFlex.gt-xl="18%" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%"
+              fxFlex.gt-xs="18%" class="bg-c-pink border-today-card">
+              <mat-icon>supervisor_account</mat-icon>
+              <div>LMOs Paid</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt text-center">{{agntPdTdyMnth.crnt_mnth_pd_lmo}}</h2>
+              <div class="h4 nme text-center">This Month</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt">{{agntPdTdyMnth.tdy_pd_lmo}}</h2>
+              <div class="h4 nme">Today</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt text-center">{{agntPdTdyMnth.ystrdy_pd_lmo}}</h2>
+              <div class="h4 nme text-center">Yesterday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="35%" fxFlex.gt-sm="50%"
+        fxFlex.gt-xs="100%" class="pr-8" *ngIf="apsflShreData">
+        <div class="ds-card today-card">
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex="100" fxFlex.gt-xl="18%" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%"
+              fxFlex.gt-xs="18%" class="bg-c-green border-today-card">
+              <mat-icon>format_shapes</mat-icon>
+              <div>APSFL <br> Share</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="18%" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%"
+            fxFlex.gt-xs="18%" class="text-center p-28">
+            <h2 class="h1 cnt text-center shreMnthTxtClr">{{apsflShreData.mnth_nm}}</h2>
+            <div class="h4 nme font-size-12 font-weight-600 shreMnthTxtClr text-center">{{crntYr}}</div>
+          </div>
+            <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt text-center">{{apsflShreData.indvl_apsfl_shre}}</h2>
+              <div class="h4 nme text-center">Domestic</div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%"
+              fxFlex.gt-xs="18%" class="text-center p-28">
+              <h2 class="h1 cnt">{{apsflShreData.entrp_apsfl_shre}}</h2>
+              <div class="h4 nme">Enterprise</div>
+            </div>
+            <!-- <div class="font-size-12 font-weight-600 shreMnthTxtClr text-center">For Month {{apsflShreData.mnth_nm}}</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="mb-12">
+      <div fxFlex="100" fxFlex.gt-xl="60%" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="55%" fxFlex.gt-xs="100%" class="pr-8">
+        <div class="ds-card" style="height: 560px;">
+          <div class="px-16 transform-filter-div border-bottom pymnt_dshbrd_card_header p-8" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="100" fxFlex.gt-xl="85%" fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%"
+              fxFlex.gt-xs="100%" class="pr-8">
+              Monthly Payments Received
+            </div>
+          </div>
+          <dx-chart id="chart" class="hmechrt" [dataSource]="chartdata">
+            <dxi-series valueField="tot_amt" name="Total Amount" color="#01959f"></dxi-series>
+            <dxi-value-axis name="tot_amt" position="left">
+              <dxo-grid [visible]="true"></dxo-grid>
+              <dxo-title text="Total Amount Paid"></dxo-title>
+            </dxi-value-axis>
+            <dxo-common-series-settings argumentField="dt" type="bar">
+              <dxo-label [visible]="true" format="₹ #,##,##,##,###.##"
+                backgroundColor="none">
+              </dxo-label>
+            </dxo-common-series-settings>
+            <dxo-argument-axis>
+              <!-- <dxo-grid [visible]="true"></dxo-grid> -->
+              <dxo-title text="Months"></dxo-title>
+            </dxo-argument-axis>
+            <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+            </dxo-legend>
+            <dxo-size [height]="520"></dxo-size>
+            <!-- <dxo-title text="LMO Payments Received">
+              <dxo-subtitle text="(Monthly)">
+              </dxo-subtitle>
+            </dxo-title> -->
+            <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"
+            format="₹ #,##,##,##,###.##" [zIndex]="5000">
+            </dxo-tooltip>
+            <dxo-export [enabled]="true"></dxo-export>
+          </dx-chart>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-xl="40%" fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="45%" fxFlex.gt-xs="100%"
+        class="pr-8">
+        <div class="ds-card" style="height: 560px;">
+          <div class="pymnt_dshbrd_card_header border-bottom p-8">LMO Balance Amounts as of today</div>
+          <div class="p-4" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+            fxLayoutAlign.gt-xs="space-between start">
+            <dx-data-grid id="gridContainer" [dataSource]="agntBlnceMnthdata" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" style="max-width:100%" [allowColumnResizing]="true">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+              </dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+              <dxo-group-panel [visible]="false"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+              <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="LMO Details"></dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width" [alignment]="f.alignment"
+                [allowResizing]="true" [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"
+                [format]="f.valueFormat"></dxi-column>
+            </dx-data-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="mt-12">
+      <div fxFlex="100" fxFlex.gt-xl="100%" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%"
+        fxFlex.gt-xs="100%" class="pr-8">
+        <div class="ds-card">
+          <div class="px-16 transform-filter-div border-bottom pymnt_dshbrd_card_header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="100" fxFlex.gt-xl="85%" fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%"
+              fxFlex.gt-xs="100%" class="pr-8">
+              Daywise LMO Payments For {{crntMnthNm}} {{crntYr}}
+            </div>
+            <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%"
+              fxFlex.gt-xs="100%" class="pr-8">
+              <div class="font-weight-600 mr-12 transform-text font-size-12">Select Month</div>
+              <mat-form-field appearance="outline">
+                <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="crntMnth"
+                  (selectionChange)="selectedMnth($event)">
+                  <mat-option *ngFor="let m of months" [value]='m.id'>{{m.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div *ngIf="shwNoDataDiv" class="text-center font-weight-600 p-12">No Data Available</div>
+          <div *ngIf="!shwNoDataDiv">
+            <dx-chart id="chart" class="hmechrt" [dataSource]="dyWseChartdata">
+              <dxi-series valueField="tot_dy_amt_aprvd" name="Approved Amount" color="#97c95c"></dxi-series>
+              <dxi-series valueField="tot_dy_amt_nt_aprvd" name="Amount Yet to Approve" color="#f5564a"></dxi-series>
+              <dxi-value-axis name="tot_dy_amt" position="left">
+                <dxo-grid [visible]="true"></dxo-grid>
+                <dxo-title text="Total Amount Paid"></dxo-title>
+              </dxi-value-axis>
+              <dxo-common-series-settings argumentField="dt" type="stackedBar">
+                <dxo-label [visible]="true" format="₹ #,##,##,##,##0.##"
+                  backgroundColor="none">
+                </dxo-label>
+              </dxo-common-series-settings>
+              <dxo-argument-axis>
+                <dxo-title text="Days"></dxo-title>
+              </dxo-argument-axis>
+              <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+              </dxo-legend>
+              <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"
+              format="₹ #,##,##,##,##0.##" [zIndex]="5000">
+              </dxo-tooltip>
+              <dxo-export [enabled]="true"></dxo-export>
+            </dx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1597 @@
+<div *ngIf = "!manilsts">
+    <div class="ds-card m-12 ng-star-inserte page-layout simple pageBackground tabbed">
+        <div class="page-layout simple pageBackground">
+            <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+            <div class="px-16 table-Header-border-bottom" fxLayout="row" fxLayoutAlign="space-between center"
+                *ngIf="usrcatid">
+                <div fxFlex.xl="25" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                    <div class="px-16 font-size-18 font-weight-600" fxLayout="row" fxLayoutAlign="space-between center">
+                        Select District</div>
+                </div>
+                <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8 transform-filter-div">
+                    <div class="px-16" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                        <mat-form-field class="cssdrp px-16" appearance="outline">
+                            <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedDstrt"
+                                (selectionChange)="selectedDstrct($event)">
+                                <mat-option *ngFor="let d of dstrctLst" [value]='d.dstrt_id'>{{d.dstrt_nm}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button type="submit" mat-flat-button
+                            class="mat-raised-button gtDtls px-8 w-65-p transform-get-data-button"
+                            (click)="getLmoWiseData();">Get
+                            Data</button>
+                    </div>
+    
+                </div>
+                <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+    
+                </div>
+    
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start top">
+    
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>PREPAID CAF OVERVIEW</b></h3>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showNineteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardNineteen'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Prepaid LMO's</div>
+                                    <b>
+                                        <div>{{totalprepaidlmodata}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardOne'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Prepaid CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0]['Total_CAF_count']}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwelve == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">CAF's Renewed- MTD</div>
+                                    <b>
+                                        <div>{{MonthlyRenewedcafsData}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Today Renewed CAF's</div>
+                                    <b>
+                                        <div>{{TodayrenewedcafsData}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwentyOne'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Today Advance Renewed CAF's</div>
+                                    <b>
+                                        <div>{{todayadvancerenewedcafsData}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwenty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwenty'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Advance Renewed CAF's - MTD</div>
+                                    <b>
+                                        <div>{{advancerenewalcafsData}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwentyTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Suspended CAF's Previous Day</div>
+                                    <b>
+                                        <div>{{previousdaysuspendedcafsData}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Suspended CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Suspended}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Active CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Active}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminated CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Terminated}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSeven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Resume Pending CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Resume_Pending}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSix == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Suspend Pending CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Suspend_Pending}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFive == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminated Pending CAF's</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Termination_Pending}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Pending Activation</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Pending_Activation}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Box Change</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Box_Change_Initiated}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Pon Change</div>
+                                    <b>
+                                        <div>{{totalprepaidcafsData[0].Pon_Change_Initiated}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showEleven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Today Expired CAF's</div>
+                                    <b>
+                                        <div>{{TodayExpiredcafsData}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>PREPAID REVENUE SHARE</b></h3>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFifteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">LMO/MSO Revenue Share - Today</div>
+                                    <b>
+                                        <div>{{TodayrevenueData | currency:"INR"}}</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSixteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">LMO/MSO Revenue Share - MTD</div>
+                                    <b>
+                                        <div>{{MonthlyrevenueData | currency:"INR"}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showEighteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">APSFL Revenue Share - Today</div>
+                                    <b>
+                                        <div>{{TodaycollectionData | currency:"INR"}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSeventeen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">APSFL Revenue Share - MTD</div>
+                                    <b>
+                                        <div>{{MonthlycollectionData | currency:"INR"}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Alacarte Today</div>
+                                    <b>
+                                        <div>{{TodayrevshareAlacarteData}}</div>
+                                    </b>
+
+                                    <!-- <div class="h4 nme">{{MonthlycollectionData}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Alacarte Monthly</div>
+                                    <b>
+                                        <div>{{MonthlyrevshareAlacarteData}}</div>
+                                    </b>
+
+                                    <!-- <div class="h4 nme">{{MonthlycollectionData}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Plan Change Today</div>
+                                    <b>
+                                        <div>{{TodayplanchangeData}}</div>
+                                    </b>
+
+                                    <!-- <div class="h4 nme">{{MonthlycollectionData}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Plan Change MTD</div>
+                                    <b>
+                                        <div>{{MonthlyplanchangeData}}</div>
+                                    </b>
+
+                                    <!-- <div class="h4 nme">{{MonthlycollectionData}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminate Initiate Today</div>
+                                    <b>
+                                        <div>{{TodayterminateinitiateData}}</div>
+                                    </b>
+
+                                    <!-- <div class="h4 nme">{{MonthlycollectionData}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminate Initiate Monthly</div>
+                                    <b>
+                                        <div>{{MonthlyterminateinitiateData}}</div>
+                                    </b>
+
+                                    <!-- <div class="h4 nme">{{MonthlycollectionData}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>SUBSCRIBER PURCHASE</b></h3>
+                </div>
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Online Collection - MTD</div>
+                                    <b>
+                                        <div>{{onlinecollectionmtd}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Online Collection - Today</div>
+                                    <b>
+                                        <div>{{onlinecollectiontoday}}</div>
+                                    </b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>Package Data</b></h3>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Mini</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeminicafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyFive == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Basic</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homebasiccafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtySix == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Essential</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeessentialcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtySeven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Premium</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homepremiumcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home GOLD</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homegoldcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home GOLD PLUS</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homegoldpluscafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showForty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home PLATINUM</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeplatinumcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home LIFE</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homelifecafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home ULTRA</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeultracafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home PIE</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homepiecafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">OTT MINI</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].ootminicafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyFive == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">OTT MAXI</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].ottmaxicafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortySix == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">OTT PRIME</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].ootprimecafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortySeven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">TEST HSI 60</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].testhsi60}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">TEST HSI 100</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].testhsi100}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">HOME STANDARD</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homestandard}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFifty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Test Pack</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].testpack}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFiftyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">ALACARTE</div>
+                                    <b><div>{{allalacartecount}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row" *ngIf="ShowGr==true">
+                    <div class="row gridTop" id="target">
+                        <div class="col-lg-12 col-md-12 mgnb-8 p-5">
+                            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="gridData" [remoteOperations]="false"
+                                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [allowColumnResizing]="true"
+                                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:99%">
+                                <dxo-paging [pageSize]="10"></dxo-paging>
+                                <dxo-pager [visible]="true" [showPageSizeSelector]="true"
+                                    [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                                <dxo-column-chooser [enabled]="true" mode="select">
+                                </dxo-column-chooser>
+                                <dxo-export [enabled]="true" [allowExportSelectedData]="true" [fileName]="cardType">
+                                </dxo-export>
+                                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                                <dxi-column *ngFor="let f of gridColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                                    [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width"
+                                    [allowResizing]="true">
+                                </dxi-column>
+                            </dx-data-grid>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div *ngIf = "manilsts">
+    
+         <div class="ds-card m-12 ng-star-inserte page-layout simple pageBackground tabbed">
+        <div class="page-layout simple pageBackground">
+            <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+            <div class="px-16 table-Header-border-bottom" fxLayout="row" fxLayoutAlign="space-between center"
+            *ngIf="usrcatid">
+            <div fxFlex.xl="25" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="px-16 font-size-18 font-weight-600" fxLayout="row" fxLayoutAlign="space-between center">
+                    Select District</div>
+            </div>
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8 transform-filter-div">
+                <div class="px-16" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                    <mat-form-field class="cssdrp px-16" appearance="outline">
+                        <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedDstrt"
+                            (selectionChange)="selectedDstrct($event)">
+                            <mat-option *ngFor="let d of dstrctLst" [value]='d.dstrt_id'>{{d.dstrt_nm}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button type="submit" mat-flat-button
+                        class="mat-raised-button gtDtls px-8 w-65-p transform-get-data-button"
+                        (click)="getLmoWiseData();">Get
+                        Data</button>
+                </div>
+    
+            </div>
+            <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+    
+            </div>
+    
+        </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start top">
+    
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>PREPAID CAF OVERVIEW</b></h3>
+                    </div>
+    
+    
+    <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+        <div [ngClass]="showNineteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardNineteen'">
+            <div fxLayout="row">
+                <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt inrSctn">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">Total Prepaid LMO Data</div>
+                         
+                        <b><a href="javascript:void(0)" (click)="getData(19)">{{totalprepaidlmodata}}</a></b>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+        <div [ngClass]="showOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardOne'">
+            <div fxLayout="row">
+                <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                    class="totlCnt inrSctn">
+                    <div class="cntDtls">
+                        <div class="h1 cnt">Total Prepaid CAF's</div>
+                        <b><a href="javascript:void(0)" (click)="getData(1)">{{totalprepaidcafsData[0]['Total_CAF_count']}}</a></b>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Today Renewed CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(13)">{{TodayrenewedcafsData}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwelve == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Monthly Renewed CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(12)">{{MonthlyRenewedcafsData}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwenty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwenty'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Advance Renewed CAF's - MTD</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(20)">{{advancerenewalcafsData}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwentyOne'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Today Advance Renewed CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(21)">{{todayadvancerenewedcafsData}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                  <div [ngClass]="showTwentyTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwentyTwo'">
+                      <div fxLayout="row">
+                          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                              class="totlCnt inrSctn">
+                              <div class="cntDtls">
+                                  <div class="h1 cnt">Previous Day Suspended CAF's</div>
+                                  <b><a href="javascript:void(0)" (click)="getData(22)">{{previousdaysuspendedcafsData}}</a></b>
+    
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Suspended CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(3)">{{totalprepaidcafsData[0].Suspended}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Active CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(2)">{{totalprepaidcafsData[0].Active}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+               
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminated CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(4)">{{totalprepaidcafsData[0].Terminated}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFive == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Termination Pending CAF's</div>
+                                    <b><a href="javascript:void(0)"
+                                            (click)="getData(5)">{{totalprepaidcafsData[0].Termination_Pending}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSix == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Suspend Pending CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(6)">{{totalprepaidcafsData[0].Suspend_Pending}}</a></b>
+    
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSeven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Resume Pending CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(7)">{{totalprepaidcafsData[0].Resume_Pending}}</a></b>
+    
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Pending Activation</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(8)">{{totalprepaidcafsData[0].Pending_Activation}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Box Change</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(9)">{{totalprepaidcafsData[0].Box_Change_Initiated}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Pon Change</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(10)">{{totalprepaidcafsData[0].Pon_Change_Initiated}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showEleven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Today Expired CAF's</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(11)">{{TodayExpiredcafsData}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>PREPAID REVENUE SHARE</b></h3>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFifteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">LMO/MSO Revenue Share - Daily</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(15)">{{TodayrevenueData | currency:"INR"}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSixteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">LMO/MSO Revenue Share - MTD</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(16)">{{MonthlyrevenueData | currency:"INR"}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showEighteen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">APSFL Revenue Share - Daily</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(18)">{{TodaycollectionData | currency:"INR"}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showSeventeen == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">APSFL Revenue Share - MTD</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(17)">{{MonthlycollectionData | currency:"INR"}}</a></b>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Alacarte Today</div>
+                                    <b><a href="javascript:void(0)"
+                                            (click)="getData(28)">{{TodayrevshareAlacarteData | currency:"INR"}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Alacarte MTD</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(29)">{{MonthlyrevshareAlacarteData
+                                            |
+                                            currency:"INR"}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Plan Change Today</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(30)">{{TodayplanchangeData |
+                                            currency:"INR"}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Plan Change MTD</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(31)">{{MonthlyplanchangeData |
+                                            currency:"INR"}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminate Initiate Today</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(32)">{{TodayterminateinitiateData |
+                                            currency:"INR"}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Terminate Initiate Monthly</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(33)">{{MonthlyterminateinitiateData
+                                            |
+                                            currency:"INR"}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>SUBSCRIBER PURCHASE</b></h3>
+                </div>
+               
+                           
+    
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Online Collection - MTD</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(23)">{{onlinecollectionmtd}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showTwentyFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Online Collection - Today</div>
+                                    <b><a href="javascript:void(0)" (click)="getData(24)">{{onlinecollectiontoday}}</a></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <h3 style="padding: 10px 0 0 10px;"><b>Package Data</b></h3>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Mini</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeminicafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyFive == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Basic</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homebasiccafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtySix == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Essential</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeessentialcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtySeven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home Premium</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homepremiumcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home GOLD</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homegoldcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showThirtyNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home GOLD PLUS</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homegoldpluscafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showForty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home PLATINUM</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeplatinumcafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyone == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home LIFE</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homelifecafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyTwo == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home ULTRA</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homeultracafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyThree == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Home PIE</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homepiecafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyFour == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">OTT MINI</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].ootminicafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyFive == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">OTT MAXI</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].ottmaxicafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortySix == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">OTT PRIME</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].ootprimecafs}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortySeven == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">TEST HSI 60</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].testhsi60}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyEight == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">TEST HSI 100</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].testhsi100}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFortyNine == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">HOME STANDARD</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].homestandard}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFifty == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">Test Pack</div>
+                                    <b><div>{{totalprepaidcafsplnsData[0].testpack}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="50%">
+                    <div [ngClass]="showFiftyOne == true ? 'active_class' : 'ds-card  dsbbrdcrds  cardTwo'">
+                        <div fxLayout="row">
+                            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                                class="totlCnt inrSctn">
+                                <div class="cntDtls">
+                                    <div class="h1 cnt">ALACARTE</div>
+                                    <b><div>{{allalacartecount}}</div></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row" *ngIf="ShowGr==true">
+                    <div class="row gridTop" id="target">
+                        <div class="col-lg-12 col-md-12 mgnb-8 p-5">
+                            <dx-data-grid class="p-8" id="gridContainer" [dataSource]="gridData" [remoteOperations]="false"
+                                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [allowColumnResizing]="true"
+                                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:99%">
+                                <dxo-paging [pageSize]="10"></dxo-paging>
+                                <dxo-pager [visible]="true" [showPageSizeSelector]="true"
+                                    [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                                <dxo-column-chooser [enabled]="true" mode="select">
+                                </dxo-column-chooser>
+                                <dxo-export [enabled]="true" [allowExportSelectedData]="true" [fileName]="cardType">
+                                </dxo-export>
+                                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                                <dxi-column *ngFor="let f of gridColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                                    [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width"
+                                    [allowResizing]="true">
+                                </dxi-column>
+                            </dx-data-grid>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    </div>

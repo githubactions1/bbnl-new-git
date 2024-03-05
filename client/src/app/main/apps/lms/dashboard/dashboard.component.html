@@ -1,0 +1,397 @@
+<div class="page-layout blank pageBackground">
+
+     <!-- HEADER -->
+     <!-- <div class="container header accent pghdrStyle text-center pt-16">
+        <h2 style="text-transform: uppercase"> Training Report </h2>
+       
+        <button *ngIf="upld" mat-fab class="add-event-button mat-accent"  (click)="upload()" aria-label="Add event"
+            [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+            <mat-icon>add</mat-icon>
+        </button>
+        
+    </div> -->
+    <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+    fxLayoutAlign.gt-xs="space-between center">
+    <div fxFlex fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="mt-10 font-size-16">
+      <div class="logo">
+        <mat-icon class="logo-icon mr-16">list_alt</mat-icon>
+        <span class="logo-text h1 font-weight-600">
+          Training Report
+        </span>
+      </div>
+    </div>
+    <div fxFlex fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%" fxFlex.gt-xs="85%" class="mt-10 font-size-16">
+      <div class="header-top-line"></div>
+    </div>
+  </div>
+  <div class="m-20">
+    <div class="content">
+
+      <mat-tab-group dynamicHeight  [selectedIndex]="currentTab" (selectedIndexChange)="selectedIndex($event)">
+
+        <mat-tab  label="ClassRoom Training">
+
+         
+          <app-fltrheader ></app-fltrheader>
+          <div fxLayout="row" class="text-center">
+              <div fxFlex fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%" fxFlex.gt-xs="70%"></div>
+              <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%">
+                <div fxLayout="row" class="text-center">
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="h-40"
+                    style='margin-top: 15px;'>
+                    <mat-button-toggle value="URBAN" *ngFor="let c of toggleBtns"
+                      [ngStyle]="{'background-color': c.isActive===true  ? '#3a97da ' : '', 'color':c.isActive===true ?  '#ffffff' : '' }"
+                      (click)="getTrainingData(c.trng_id,dshBrdUrbn_in)">{{c.trng_nm}}
+                    </mat-button-toggle>
+                    <!-- <mat-button-toggle value="RURAL"
+                      [ngStyle]="{'background-color': trnbtnEnb==='Introductory'  ? '#3a97da' : '', 'color': trnbtnEnb==='Introductory' ? '#ffffff' : '' }"
+                      (click)="getTrainingData('114841790497947674')">Indraductory Training</mat-button-toggle> -->
+                  </mat-button-toggle-group>
+                  <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%">
+                    <mat-form-field style="width: 70%;">
+                      <mat-label class="lblCss">
+                        More Trainings
+                      </mat-label>
+                      <mat-select name="food" (selectionChange)="getTrainingData(trng_id,dshBrdUrbn_in)">
+                        <mat-option *ngFor="let c of trngLst" [value]="c.trng_id">
+                          {{c.trng_nm}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- Sec-1 start-->
+              <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between" class="mb-20">
+                <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                  <div class="ds-card customChart_Hgt totCntCrd">
+                    <p class="text-center font-size-30 font-weight-600 ds-black-40-fg mb-0 mt-16">  {{ttl_schduled.ttl_mbrs_ct}}</p>
+                    <p class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-12 pb-8">Total Assigned Members</p>
+                    <!-- <p class="text-center font-weight-400 ds-black-50-fg mt-4 mb-0 font-size-13 pb-40">Total Identified :
+                      {{totIdntfdCnt}}</p> -->
+                    <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                      class="rowCustomHeight pstns">
+                      <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                        <div *ngIf="totPrcntData">
+                          <mat-progress-bar mode="determinate" value={{totPrcntData[0].totIdntfdCntPrcnt}}></mat-progress-bar>
+                        </div>
+                      </div>
+                      <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt--7">
+                        <div class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                          {{totPrcntData[0].totIdntfdCntPrcnt}}%</div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-12">
+                  <div class="ds-card">
+                    <div id="totPrcntChartDiv" class="customChart_Hgt"></div>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Sec-1 end-->
+              <!-- Sec-2 start-->
+              <div fxLayout="row" fxLayoutAlign="space-evenly"  class="mb-20">
+                <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-0">
+                  <div class="ds-card grdientCrdOne">
+                     <div class="text-right dbIcns" > <mat-icon aria-hidden="false" aria-label="Example home icon" >people</mat-icon></div>
+                    <p class="text-center font-size-32 font-weight-600 ds-black-40-fg mb-0 mrgnTop">
+                         {{ttl_schduled.tl_atend}}
+                      </p>
+                    <p class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Total Attended</p>
+                  <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                      class="rowCustomHeight">
+                      <!-- <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                        <div *ngIf="totPrcntData">
+                          <mat-progress-bar mode="determinate" value={{totPrcntData[0].totmebatdprct}}></mat-progress-bar>
+                        </div>
+                      </div>
+                      <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt--7">
+                        <div class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                          {{totPrcntData[0].totmebatdprct}}%</div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-12">
+                  <div class="ds-card grdientCrdTwo">
+                      <div class="text-right dbIcns" > <mat-icon aria-hidden="false" aria-label="Example home icon" >people</mat-icon></div>
+                    <p class="text-center font-size-32 font-weight-600 ds-black-40-fg mb-0 mrgnTop"> {{ttl_schduled.yet_attend}}</p>
+                    <p class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Yet to Attended</p>
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between">
+                      <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="p-12 ">
+                        <div class="text-center font-weight-600 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                          {{ttl_schduled.tl_shduld}}</div>
+                        <div class="font-size-12 text-center">Scheduled</div>
+                      </div>
+                      <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="p-12">
+                        <div class="text-center font-weight-600 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">{{ttl_schduled.tl_ntshduld}}
+                        </div>
+                        <div class="font-size-12 text-center">Not Scheduled</div>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                      class="rowCustomHeight">
+                      <!-- <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                        <div *ngIf="totPrcntData">
+                          <mat-progress-bar mode="determinate" value={{totPrcntData[0].totPaintsPrcnt}}></mat-progress-bar>
+                        </div>
+                      </div> -->
+                      <!-- <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt--7">
+                        <div class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                          {{totPrcntData[0].totPaintsPrcnt}}%</div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-12">
+                  <div class="ds-card grdientCrdThree">
+                      <div class="text-right dbIcns" > <mat-icon aria-hidden="false" aria-label="Example home icon" >people</mat-icon></div>
+                    <p class="text-center font-size-32 font-weight-600 ds-black-40-fg mb-0 mrgnTop">{{ttl_schduled.tl_ntatd}} </p>
+                    <p class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Not Attended
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
+              <!-- Sec-2 end-->
+              <!-- Sec-3 start-->
+              <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="text-center mt-12">
+              <div class="ds-card">
+                <div class="text-left">
+                  <h2 class="p-12 m-0 font-size-16 text-center font-weight-500 border-bottom titlebrder">{{varHdr}}</h2>
+                </div>
+                
+                <!-- <h2 class="p-12 font-size-16 font-weight-500 border-bottom titlebrder">{{varHdr}}</h2> -->
+                <div id="chartdiv" style="width: 100%; height: 318px;"></div>
+                <div class="text-right">
+                  <button *ngIf='btngdywise' (click)="gtDtwisegrp()" style="background: #369bcc;
+                            border: 1px solid #cccccc;padding: 5px;color: white;font-weight: 600;font-size: 11px;">Last 10 days report</button>
+                  <button *ngIf='!btngdywise' (click)="gtDtwisegrpbk()" style="background: #369bcc;
+                            border: 1px solid #cccccc;padding: 5px;color: white;font-weight: 600;font-size: 11px;">BacK</button>
+                </div>
+              </div>
+            </div>
+            <div class='position-relative'>
+                <div  class="position-absolute font-size-30 ds-white-fg p-16 align-left-570px align-bottom-326px " style="margin-left: 536px;margin-top: -635px;">
+                    <mat-spinner *ngIf='spinner==false' [value]='value'></mat-spinner>
+                    
+                  </div>
+                </div>
+              <div fxLayout="row" class="mt-28">
+                  <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                    <div class="ds-card">
+                      <div class="text-left">
+                        <!-- <h2 class="p-12 m-0 font-size-16 text-center font-weight-500 border-bottom titlebrder">{{varHdr}}</h2> -->
+                        <app-download-button (excelEvent)="downloadExcel($event.data)"
+                          [rowData]="tablData.dwnLadExcl.excelData" [headers]="excelDataHeaders" [isExcelDwnLd]="isExcelDwnLd"
+                          [excelFileNm]="excelFileNm" style="padding: 10px">
+                        </app-download-button>
+                        <ag-grid-angular class="ag-theme-balham p-12 agGrdTble" [rowData]="rowData" [enableFilter]="true"
+                              [columnDefs]="columnDefs" (cellClicked)="getUlbData($event)"
+                              [floatingFilter]="true" [pagination]="true" [getRowHeight]="getRowHeight" 
+                              [paginationPageSize]="paginationPageSize" [suppressHorizontalScroll]="false">
+                            </ag-grid-angular>
+                      </div>
+                      <mat-spinner diameter="14" style="margin-left: 50%;" *ngIf="spnrIn"></mat-spinner>
+                    </div>
+                  </div>
+                </div>
+
+        </mat-tab>
+
+       
+       
+       
+       
+       
+       <!-- Online training -->
+       
+       
+       <mat-tab label="Online Training">
+          
+       
+        <app-fltrheader ></app-fltrheader>
+        <div fxLayout="row" class="text-center">
+            <div fxFlex fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%" fxFlex.gt-xs="70%"></div>
+            <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%">
+              <div fxLayout="row" class="text-center">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="h-40"
+                  style='margin-top: 15px;'>
+                  <mat-button-toggle value="URBAN" *ngFor="let c of toggleBtns"
+                    [ngStyle]="{'background-color': c.isActive===true  ? '#3a97da ' : '', 'color':c.isActive===true ?  '#ffffff' : '' }"
+                    (click)="getTrainingData(c.trng_id,dshBrdUrbn_in)">{{c.trng_nm}}
+                  </mat-button-toggle>
+                  <!-- <mat-button-toggle value="RURAL"
+                    [ngStyle]="{'background-color': trnbtnEnb==='Introductory'  ? '#3a97da' : '', 'color': trnbtnEnb==='Introductory' ? '#ffffff' : '' }"
+                    (click)="getTrainingData('114841790497947674')">Indraductory Training</mat-button-toggle> -->
+                </mat-button-toggle-group>
+                <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="40%">
+                  <mat-form-field style="width: 70%;">
+                    <mat-label class="lblCss">
+                      More Trainings
+                    </mat-label>
+                    <mat-select name="food" (selectionChange)="getTrainingData(trng_id,dshBrdUrbn_in)">
+                      <mat-option *ngFor="let c of trngLst" [value]="c.trng_id">
+                        {{c.trng_nm}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- Sec-1 start-->
+            <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between" class="mb-20">
+              <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                <div class="ds-card customChart_Hgt totCntCrd">
+                  <p class="text-center font-size-30 font-weight-600 ds-black-40-fg mb-0 mt-16">  {{ttl_schduled.ttl_mbrs_ct}}</p>
+                  <p class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-12 pb-8">Total Assigned Members</p>
+                  <!-- <p class="text-center font-weight-400 ds-black-50-fg mt-4 mb-0 font-size-13 pb-40">Total Identified :
+                    {{totIdntfdCnt}}</p> -->
+                  <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                    class="rowCustomHeight pstns">
+                    <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                      <div *ngIf="totPrcntData">
+                        <mat-progress-bar mode="determinate" value={{totPrcntData[0].totIdntfdCntPrcnt}}></mat-progress-bar>
+                      </div>
+                    </div>
+                    <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt--7">
+                      <div class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                        {{totPrcntData[0].totIdntfdCntPrcnt}}%</div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+              <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-12">
+                <div class="ds-card">
+                  <div id="totPrcntChartDiv" class="customChart_Hgt"></div>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Sec-1 end-->
+            <!-- Sec-2 start-->
+            <div fxLayout="row" fxLayoutAlign="space-evenly"  class="mb-20">
+              <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-0">
+                <div class="ds-card grdientCrdOne">
+                   <div class="text-right dbIcns" > <mat-icon aria-hidden="false" aria-label="Example home icon" >people</mat-icon></div>
+                  <p class="text-center font-size-32 font-weight-600 ds-black-40-fg mb-0 mrgnTop">
+                       {{ttl_schduled.tl_atend}}
+                    </p>
+                  <p *ngIf='Ttl_mbrs_Viwd==false' class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Total Attended</p>
+                  <p *ngIf='Ttl_mbrs_Viwd==true' class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Total view</p>
+                <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                    class="rowCustomHeight">
+                    <!-- <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                      <div *ngIf="totPrcntData">
+                        <mat-progress-bar mode="determinate" value={{totPrcntData[0].totmebatdprct}}></mat-progress-bar>
+                      </div>
+                    </div>
+                    <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt--7">
+                      <div class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                        {{totPrcntData[0].totmebatdprct}}%</div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-12">
+                <div class="ds-card grdientCrdTwo">
+                    <div class="text-right dbIcns" > <mat-icon aria-hidden="false" aria-label="Example home icon" >people</mat-icon></div>
+                  <p class="text-center font-size-32 font-weight-600 ds-black-40-fg mb-0 mrgnTop"> {{ttl_schduled.yet_attend}}</p>
+                  <p *ngIf='Ttl_mbrs_Viwd==false'class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Yet to Attended</p>
+                  <p *ngIf='Ttl_mbrs_Viwd==true' class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Yet to viewed</p>
+                  <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between">
+                    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="p-12 ">
+                      <div class="text-center font-weight-600 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                        {{ttl_schduled.tl_shduld}}</div>
+                      <div class="font-size-12 text-center">Scheduled</div>
+                    </div>
+                    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="p-12">
+                      <div class="text-center font-weight-600 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">{{ttl_schduled.tl_ntshduld}}
+                      </div>
+                      <div class="font-size-12 text-center">Not Scheduled</div>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                    class="rowCustomHeight">
+                    <!-- <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                      <div *ngIf="totPrcntData">
+                        <mat-progress-bar mode="determinate" value={{totPrcntData[0].totPaintsPrcnt}}></mat-progress-bar>
+                      </div>
+                    </div> -->
+                    <!-- <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt--7">
+                      <div class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-13 pb-4">
+                        {{totPrcntData[0].totPaintsPrcnt}}%</div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="ml-12">
+                <div class="ds-card grdientCrdThree">
+                    <div class="text-right dbIcns" > <mat-icon aria-hidden="false" aria-label="Example home icon" >people</mat-icon></div>
+                  <p class="text-center font-size-32 font-weight-600 ds-black-40-fg mb-0 mrgnTop">{{ttl_schduled.tl_ntatd}} </p>
+                  <p *ngIf='Ttl_mbrs_Viwd==false'class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Not Attended
+                  </p>
+                  <p *ngIf='Ttl_mbrs_Viwd==true' class="text-center font-weight-400 ds-black-50-fg mt-0 mb-0 font-size-16 pb-4">Not viewed
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+            <!-- Sec-2 end-->
+            <!-- Sec-3 start-->
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center mt-12">
+            <div class="ds-card">
+              <div class="text-left">
+                <h2 class="p-12 m-0 font-size-16 text-center font-weight-500 border-bottom titlebrder">{{varHdr}}</h2>
+              </div>
+              
+              <!-- <h2 class="p-12 font-size-16 font-weight-500 border-bottom titlebrder">{{varHdr}}</h2> -->
+              <div id="chartdiv" style="width: 100%; height: 318px;"></div>
+              <div class="text-right">
+                <button *ngIf='btngdywise' (click)="gtDtwisegrp()" style="background: #369bcc;
+                          border: 1px solid #cccccc;padding: 5px;color: white;font-weight: 600;font-size: 11px;">Last 10 days report</button>
+                <button *ngIf='!btngdywise' (click)="gtDtwisegrpbk()" style="background: #369bcc;
+                          border: 1px solid #cccccc;padding: 5px;color: white;font-weight: 600;font-size: 11px;">BacK</button>
+              </div>
+            </div>
+          </div>
+            
+            <div fxLayout="row" class="mt-28">
+                <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                  <div class="ds-card">
+                    <div class="text-left">
+                      <!-- <h2 class="p-12 m-0 font-size-16 text-center font-weight-500 border-bottom titlebrder">{{varHdr}}</h2> -->
+                      <app-download-button (excelEvent)="downloadExcel($event.data)"
+                        [rowData]="tablData.dwnLadExcl.excelData" [headers]="excelDataHeaders" [isExcelDwnLd]="isExcelDwnLd"
+                        [excelFileNm]="excelFileNm" style="padding: 10px">
+                      </app-download-button>
+                      <ag-grid-angular class="ag-theme-balham p-12 agGrdTble" [rowData]="rowData" [enableFilter]="true"
+                            [columnDefs]="columnDefs" (cellClicked)="getUlbData($event)"
+                            [floatingFilter]="true" [pagination]="true" [getRowHeight]="getRowHeight" 
+                            [paginationPageSize]="paginationPageSize" [suppressHorizontalScroll]="false">
+                          </ag-grid-angular>
+                    </div>
+                    <mat-spinner diameter="14" style="margin-left: 50%;" *ngIf="spnrIn"></mat-spinner>
+                  </div>
+                </div>
+              </div>
+
+            
+        </mat-tab>
+
+        <!-- <mat-tab label="Tests">
+          
+
+        </mat-tab> -->
+      </mat-tab-group>
+
+
+  </div>
+
+  <!-- </div> -->

@@ -1,0 +1,211 @@
+<div class="container usrEmplye pageBackground">
+    <!-- <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+  fxLayoutAlign.gt-xs="space-between center">
+  <div fxFlex fxFlex.gt-lg="15%" fxFlex.gt-md="15%" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%" class="mt-10 font-size-16">
+    <div class="logo">
+      <mat-icon class="logo-icon mr-16">person</mat-icon>
+      <span class="logo-text h1 font-weight-600">
+        Employees
+      </span>
+    </div>
+  </div>
+  <div fxFlex fxFlex.gt-lg="85%" fxFlex.gt-md="85%" fxFlex.gt-sm="85%" fxFlex.gt-xs="85%" class="mt-10 font-size-16">
+    <div class="header-top-line"></div>
+  </div>
+</div> -->
+
+    <!-- <app-top-header [headrIcon] = "'person'" [headrName]="'Employees'"></app-top-header> -->
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+    <div class="m-24">
+        <div fxLayout="row">
+            <div fxFlex="80"></div>
+            <div fxFlex="20">
+                <!-- <button mat-raised-button color="primary"  (click)="newentry()" style="float:right">  -->
+                <button mat-raised-button color="primary" (click)="opensideBar('addFormPanel','new',null)"
+                    style="float:right" class="addBtn-color mb-8">
+
+                    <mat-icon class="addfld-icon-color">person</mat-icon>
+                    <span class="pt-2">&nbsp;Add Employee</span>
+                </button>
+            </div>
+        </div>
+        <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
+            [columnDefs]="columnDefs" [getRowHeight]="getRowHeight" (cellClicked)="onCellClick($event)"
+            [floatingFilter]="true" [pagination]="true" [overlayLoadingTemplate]="overlayLoadingTemplate"
+            [loadingCellRendererParams]="loadingCellRendererParams" [paginationPageSize]="10"
+            [suppressHorizontalScroll]="false" (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+    </div>
+
+
+
+
+
+    <!-- sidebar -->
+
+    <ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+        <ng-container>
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                <mat-toolbar class="side-bar-header-color">
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                        class="w-100-p">
+                        <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                            <span>{{leftsidebarHdng}}</span>
+                        </div>
+                        <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                            class="text-right">
+                            <!-- <span class="remaining-space"></span> -->
+                            <span>
+                                <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null,null)"
+                                    class="closeSidebar">cancel
+                                </mat-icon>
+                            </span>
+                        </div>
+                    </div>
+                </mat-toolbar>
+                <!-- <mat-card-content> -->
+                <form [formGroup]="formEmployee" style="width:80%" class="mt-12">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Name</mat-label>
+                            <input name="name" formControlName="mrcht_emp_nm" matInput required>
+                            <mat-error>Name is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Email</mat-label>
+                            <input name="email" formControlName="eml_tx" matInput required>
+                            <mat-error>Email is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Phone</mat-label>
+                            <input name="number" minlength=10 maxlength=10 formControlName="mbl_nu" matInput required>
+                            <mat-error>Phone is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Select Designation</mat-label>
+                            <mat-select placeholder="Select Job Title" formControlName="dsgn_id" matInput required>
+                                <mat-option *ngFor="let ds of dsgnlst" [value]="ds.dsgn_id">
+                                    {{ds.dsgn_nm}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>Designation is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Select Department</mat-label>
+                            <mat-select placeholder="Select Department" formControlName="dprts_id" matInput required>
+                                <mat-option *ngFor="let dp of dprtlst" [value]="dp.dprt_id">
+                                    {{dp.dprt_nm}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>Department is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>District</mat-label>
+                            <mat-select placeholder="select Dstrict" (selectionChange)="getMndlLst()"
+                                formControlName="dstrt_id" matInput required>
+                                <mat-option *ngFor="let crddta of dstlst" [value]="crddta.dstrt_id">
+                                    {{crddta.dstrt_nm}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>District is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Mandal</mat-label>
+                            <mat-select placeholder="select Mandal" formControlName="mndl_id" matInput required>
+                                <mat-option *ngFor="let mndl of mnadlLst" [value]="mndl.mndl_id">
+                                    {{mndl.mndl_nm}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>Mandal is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Select Gender</mat-label>
+                            <mat-select placeholder="Select Gender" formControlName="gndr_id" matInput required>
+                                <mat-option *ngFor="let gn of gndlst" [value]="gn.gndr_id">
+                                    {{gn.gndr_nm}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>Gender is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Date Of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                                formControlName="dob_dt">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error>Date Of Birth is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Aadhaar Number</mat-label>
+                            <input name="name" formControlName="adhr_nu" matInput>
+                            <mat-error>Aadhaar is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Address</mat-label>
+                            <textarea name="name" formControlName="addrs_tx" matInput></textarea>
+                            <mat-error>Address is required!</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </form>
+
+                <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+                    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                        *ngIf="deleteEmplye">
+                        <button mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete"
+                            matTooltip="Delete" (click)="delEmployee()">
+                            DELETE
+                        </button>
+                    </div>
+
+                    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                        *ngIf="!deleteEmplye">
+                        <button mat-flat-button type="submit" class="mat-raised-button w-100-p saveBtn-color"
+                            aria-label="SAVE" (click)="saveEmployee()">
+                            SAVE
+                        </button>
+                    </div>
+                    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8"
+                            aria-label="SAVE" (click)="opensideBar('addFormPanel',null,null)">
+                            CANCEL
+                        </button>
+                    </div>
+
+                </div>
+                <!-- </mat-card-content> -->
+            </div>
+        </ng-container>
+    </ds-sidebar>
+
+
+    <!-- sidebar -->
+
+
+</div>

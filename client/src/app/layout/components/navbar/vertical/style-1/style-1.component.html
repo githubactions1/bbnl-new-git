@@ -1,0 +1,53 @@
+<div class="navbar-top">
+
+    <div class="logo">
+        <!-- <img class="logo-icon" src="assets/images/logos/ds.svg"> -->
+        <!-- <span class="logo-text secondary-text" style="color:white">{{tm}}  </span> -->
+    </div>
+
+    <div class="buttons">
+
+        <button mat-icon-button class="toggle-sidebar-folded"
+                (click)="toggleSidebarFolded()" fxHide.lt-lg>
+            <mat-icon class="secondary-text" style="color:black">menu</mat-icon>
+        </button>
+
+        <button mat-icon-button class="toggle-sidebar-opened"
+                (click)="toggleSidebarOpened()" fxHide.gt-md>
+            <mat-icon class="secondary-text">arrow_back</mat-icon>
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="navbar-scroll-container"
+     dsPerfectScrollbar [dsPerfectScrollbarOptions]="{suppressScrollX: true}">
+
+    <div class="user sidebarLeft" fxLayout="column">
+
+
+
+        <div class="h3 username font-weight-700 text-center sdeMnuUsrDtls" *ngIf="usrdtls"><h4>Welcome, {{usrdtls.frst_nm}}</h4></div>
+        <div class="h3 username sdeMnuUsrDtlse"><p style="font-size: 13px;">{{tm_dsgn_nm}}</p><p style="font-size: 11px;">{{tm_hyrchy_grp_nm}} <span *ngIf="tm_hrchy_nm">({{tm_hrchy_nm}})</span></p></div>
+        <div class="avatar-container" [ngClass]="dsConfig.layout.navbar.primaryBackground">
+                <img class="avatar"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7z7gpNkFOLMZ8XvfyXVBc9VIVwLqTVFpayJDCtQmr3IqIHsnQiQ&s">
+                <!-- <img class="avatar" *ngIf="tm_logo" [src]="tm_logo"> -->
+            <!-- <img class="avatar" src="https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAUP-TO-RS-350PAYT42833FAC1/0x1920/70/1.jpg"> -->
+            <!-- <img class="avatar" src="assets/images/{{tm_logo}}"> -->
+        </div>
+
+    </div>
+    <!-- <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6"><button mat-raised-button color="primary" class="addbtn" (click)="add()">+</button>
+        </div>
+    </div> -->
+
+    <div class="navbar-content" style="background: white !important;">
+        <ds-navigation class="material2" layout="vertical"></ds-navigation>
+    </div>
+
+</div>
+ 

@@ -1,0 +1,322 @@
+<div class="page-layout simple pageBackground pkgesrvceLstCmpnt">
+  <div *ngIf="loader == true">
+    <div class="loading-indicator">
+      <div class="spinner-2">
+        <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+      </div>
+    </div>
+  </div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div class="p-16">
+    <ng-container>
+      <div>
+        <div class="ds-card">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row">
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="px-8">
+              <div class="form-label">Enter CAF Number</div>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" [(ngModel)]="caf_num">
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="3%" fxFlex.gt-md="3%" fxFlex.gt-sm="3%" fxFlex.gt-xs="3%" class="px-8">
+              <p class = "orcls">(OR)</p>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="px-8">
+              <div class="form-label">Subscriber Code</div>
+              <mat-form-field  appearance="outline">
+                <input matInput type="text" [(ngModel)]="sbscr_cd">
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+              class="px-8 mt-32">
+              <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"
+                (click)="getDtls()">
+                Get Details
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="lngndchnlsLST text-center slctGtDta" *ngIf="msgin">
+            {{message}}
+          </div>
+          <div class="lngndchnlsLST text-center slctGtDta" *ngIf="nocafdtls">
+            {{message1}}
+          </div>
+        <div *ngIf="showdata">
+
+
+          <form [formGroup]="cafupdfrm" style="width:100%" class="mt-12" fxLayout="column">
+            <div class="ds-card">
+
+              <div class="caf-header pt-8 pl-12" *ngFor="let s of cafdata">
+                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column"
+                  fxLayoutAlign.gt-md="start">
+                  <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="px-8">
+                    <div class="user-info" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-sm="row"
+                      fxLayoutAlign.gt-sm="start center">
+                      <div class="caf-name">{{s.lst_nm}} {{s.cstmr_nm}} -
+                        <span>{{s.caf_nu}}</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column"
+                  fxLayoutAlign.gt-md="start">
+                  <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.xs="100" class="px-8">
+                    <div>
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.mbl_nu"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No: </span>{{s.mbl_nu}}</p>
+                        </div>
+                        <div fxFlex.xl="48" fxFlex.lg="48" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.olt_crd_nu"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Card: </span>{{s.olt_crd_nu}}</p>
+                        </div>
+                      </div>
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.caf_type_nm"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Type: </span>{{s.caf_type_nm}}</p>
+                        </div>
+                        <div fxFlex.xl="48" fxFlex.lg="48" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.olt_prt_splt_tx"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">OLT Split: </span>{{s.olt_prt_splt_tx}}</p>
+                        </div>
+                      </div>
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.pckge_nm"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Package Name: </span>{{s.pckge_nm}}</p>
+                        </div>
+                        <div fxFlex.xl="48" fxFlex.lg="48" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.olt_onu_id"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">ONU: </span>{{s.olt_onu_id}}</p>
+                        </div>
+                      </div>
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.address"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Address: </span>{{s.address}}</p>
+                        </div>
+                      </div>
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">LMO: </span>{{s.agnt_nm}} -
+                          <span>{{s.agnt_cd}}</span></p>
+                        </div>
+                      </div>
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span
+                            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No: </span>{{s.ofce_mbl_nu}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- / HEADER -->
+
+              <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="mt-12 mb-12">
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8" *ngIf="shwedtbtn">
+                  <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"
+                    (click)="edit()">
+                    Edit
+                  </button>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">AAA-Code</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline">
+                      <input matInput formControlName="aaa_cd">
+                      <mat-error>Enter AAA-Code</mat-error>
+                    </mat-form-field>
+                  </span>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">Agora Code</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline">
+                      <input matInput formControlName="agora_cd" (blur)="onAgoraBlur()">
+                      <mat-error>Enter Agora Code</mat-error>
+                    </mat-form-field>
+                  </span>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Middleware Subscriber Code</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="mdlwre_cd">
+                    <mat-error>Enter Middleware Subscriber Code</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">CAF Status</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline" fxFlex>
+                      <mat-select placeholder="Select CAF Status" formControlName="enty_sts_id" matInput required>
+                        <mat-option *ngFor="let c of cafstslst" [value]="c.enty_sts_id">
+                          {{c.sts_nm}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Select CAF Status</mat-error>
+                    </mat-form-field>
+                  </span>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">ONU Model</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="onu_mdle_cd">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="mt-24">
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">ONU Serial Number</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="onu_srl_nu">
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">Agora Serial Number</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline">
+                      <input matInput formControlName="agora_srl_nu" (blur)="onONUBlur()">
+                    </mat-form-field>
+                  </span>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">ONU MAC Address</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline">
+                      <input matInput formControlName="onu_mac_addr">
+                      <mat-error>Enter ONU MAC Address</mat-error>
+                    </mat-form-field>
+                  </span>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">IPTV Serial Number</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline">
+                      <input matInput formControlName="iptv_srl_nu">
+                      <mat-error>Enter IPTV Serial Number</mat-error>
+                    </mat-form-field>
+                  </span>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">IPTV MAC Address</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="iptv_mac_addr" (blur)="onIptvBlur()">
+                    <mat-error>Enter IPTV MAC Address</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="mt-24">
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Termination Date</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="picker" formControlName="trmnd_dt">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8 indicator-position">
+                  <span>
+                    <span class="form-label">Terminated</span>
+                    <mat-slide-toggle class="tp-margin" [checked]="trmndChecked" [disabled] = "trmndDisable"
+                      (change)="ButtonToggletrmnd($event.source.checked)">
+                    </mat-slide-toggle>
+                  </span>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <span>
+                    <div class="form-label">Suspended Date</div>
+                  </span>
+                  <span>
+                    <mat-form-field appearance="outline">
+                      <input matInput [matDatepicker]="picker2" formControlName="spnd_ts">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </span>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8 indicator-position">
+                  <span class="form-label">Suspended</span>
+                  <mat-slide-toggle class="tp-margin" [checked]="spsndChecked" [disabled] = "spsndDisable"
+                    (change)="ButtonTogglespsnd($event.source.checked)">
+                  </mat-slide-toggle>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8">
+                  <div class="form-label">Activation Date</div>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="picker1" formControlName="actv_dt">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error>Select Activation Date</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                  class="px-8 indicator-position">
+                  <span class="form-label">Active</span>
+                  <mat-slide-toggle class="tp-margin" [checked]="actvChecked" [disabled] = "actvDisable"
+                    (change)="ButtonToggleactv($event.source.checked)">
+                  </mat-slide-toggle>
+                </div>
+              </div>
+              
+              
+              <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE" *ngIf="edibtnenble"
+                  (click)="Updtcafdtls()">
+                  Update
+                </button>
+                <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8" aria-label="SAVE"
+                  (click)="cancel()">
+                  CANCEL
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

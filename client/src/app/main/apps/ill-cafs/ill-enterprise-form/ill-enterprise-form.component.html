@@ -1,0 +1,1400 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div fxLayout="row" class="mt-24">
+    <ds-loading *ngIf="loader"></ds-loading>
+    <div fxFlex="80"></div>
+    <div fxFlex="16">
+      <div class="text-right">
+        <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/ILL/caf'"
+          class="mat-raised-button font-weight-bold addTextColor" type="button">
+          <!-- <mat-icon matTooltip="Go Back">chevron_left</mat-icon> -->
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-container>
+    <div class="ds-card m-12" id="scrollTop">
+      <form fxLayout="column" [formGroup]="firstFormGroup">
+        <mat-horizontal-stepper linear #stepper>
+          <mat-step label="Customer Information" formGroupName="custInfo">
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Customer Information</div>
+            <mat-divider style="margin-bottom: 13px;"></mat-divider>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Organization type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <mat-select (selectionChange)="getsuborg()" formControlName="org_typ" required>
+                    <mat-option *ngFor="let o of org" [value]="o.entrpe_type_id">
+                      {{o.entrpe_type_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error></mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select SUB Organization type<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="sub_org_typ" required>
+                    <mat-option *ngFor="let o of suborg" [value]="o.entrpe_sub_type_id">
+                      {{o.entrpe_sub_type_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error></mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter PAN No <span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="pan_card_no" required onKeyPress="if(this.value.length==10) return false;">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter GST No <span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline" required>
+                  <input matInput formControlName="gst_no" required onKeyPress="if(this.value.length==15) return false;">
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Organization Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="orgName" required>
+                  <mat-error>Organization Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Contact person Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="cntprsnName" required>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Contact Person Designation<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="cntprsndis" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Contact Person Mobile Number<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="cntct_prsn_mobileNumber" required
+                    onKeyPress="if(this.value.length==10) return false;">
+                  <mat-error>Mobile Number is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Date of Incorporation<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker1" formControlName="activationdate" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                  <mat-error>Date Of Birth is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Email <span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="email" required>
+                  <mat-error>Email is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Billing Frequency<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="frqncy_id" required>
+                    <mat-option *ngFor="let b of blng_frqncy_lst" [value]="b.frqncy_id">
+                      {{b.frqncy_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Billing Frequency is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Identity Proof<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <mat-select (selectionChange)="enableUpld()" formControlName="prf_typ_id" required>
+                    <mat-option *ngFor="let p of prf_typ" [value]="p.prf_typ_id">
+                      {{p.prf_typ_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Identity proof is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill *ngIf="upldFleEnble">
+              <div fxFlex="33" fxFlex.xs="100" class="px-8" *ngIf="OthersTxt">
+                <div class="form-label">Enter Others<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="prf_idnty_thrs" required>
+                  <mat-error>Others input is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Upload address proof Document<span class="reqSgnColor">*</span></div>
+                <input #imageInput formControlName="prf_idnty_url" type="file" accept="image/*,application/pdf"
+                  (change)="processFile(1,$event)" style="margin-top: 7% !important;">
+              </div>
+            </div>
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Organization Location Address</div>
+            <mat-divider style="margin-bottom: 13px;"></mat-divider>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter House/Flat No<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>House/Flat No</mat-label> -->
+                  <input matInput formControlName="instl_house_flat_no" required>
+                  <mat-error> House/Flat No is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Building Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Building Name</mat-label> -->
+                  <input matInput formControlName="instl_buildingname">
+                  <!-- <mat-error>Building Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Street Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Street Name</mat-label> -->
+                  <input matInput formControlName="instl_streetname" required>
+                  <mat-error>Street Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Area/Locality Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Area/Locality Name</mat-label> -->
+                  <input matInput formControlName="instl_Area_Localityname" required>
+                  <mat-error>Area/Locality Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Pin Code<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Pin Code</mat-label> -->
+                  <input type="number" matInput formControlName="instl_pincode" required>
+                  <mat-error>Pin Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select State Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>State</mat-label> -->
+                  <mat-select formControlName="instl_state" required>
+                    <mat-option *ngFor="let st of ste_lst" [value]="st.ste_id">
+                      {{st.ste_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>State is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select District Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>District</mat-label> -->
+                  <mat-select formControlName="instl_district" required>
+                    <mat-option *ngFor="let ds of instl_dstrt_lst" [value]="ds.dstrt_id">
+                      {{ds.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Mandal Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Mandal</mat-label>{{instl_mandal}} -->
+                  <mat-select formControlName="instl_mandal" required>
+                    <mat-option *ngFor="let m of instl_mndl_lst" [value]="m.mndl_nu">
+                      {{m.mndl_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Mandal is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select City/Village Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>City/Village</mat-label> -->
+                  <mat-select formControlName="instl_city_villagename" required>
+                    <mat-option *ngFor="let v of instl_vlge_lst" [value]="v.vlge_nu">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>City/Village is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter FAX no </div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Enter FAX</mat-label> -->
+                  <input matInput formControlName="instl_fax_no">
+                </mat-form-field>
+              </div>
+              <!-- <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Longitude</div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Longitude</mat-label>
+                  <input matInput formControlName="instl_longitude">
+                  <mat-error>Mobile Number is required!</mat-error>
+                </mat-form-field>
+              </div> -->
+
+            </div>
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Organization Billing Address</div>
+            <mat-divider style="margin-bottom: 13px;"></mat-divider>
+            <mat-checkbox formControlName="instl_chk_ind" (change)="checkValue(isChecked?'false':'true')">Same As
+              Organization Location Address </mat-checkbox>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter House/Flat No<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>House/Flat No</mat-label> -->
+                  <input matInput formControlName="blng_house_flat_no" required>
+                  <mat-error> House/Flat No is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Building Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Building Name</mat-label> -->
+                  <input matInput formControlName="blng_buildingname">
+                  <!-- <mat-error>Building Name is required!</mat-error> -->
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Street Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Street Name</mat-label> -->
+                  <input matInput formControlName="blng_streetname" required>
+                  <mat-error>Street Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Area/Locality Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Area/Locality Name</mat-label> -->
+                  <input matInput formControlName="blng_Area_Localityname" required>
+                  <mat-error>Area/Locality Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Pin Code<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Pin Code</mat-label> -->
+                  <input type="number" matInput formControlName="blng_pincode" required>
+                  <mat-error>Pin Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select State Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>State</mat-label> -->
+                  <mat-select formControlName="blng_state" required>
+                    <mat-option *ngFor="let st of ste_lst" [value]="st.ste_id">
+                      {{st.ste_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>State is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select District Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>District</mat-label> -->
+                  <mat-select formControlName="blng_district" required>
+                    <mat-option *ngFor="let ds of blng_dstrt_lst" [value]="ds.dstrt_id">
+                      {{ds.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Mandal Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Mandal</mat-label>{{instl_mandal}} -->
+                  <mat-select formControlName="blng_mandal" required>
+                    <mat-option *ngFor="let m of blng_mndl_lst" [value]="m.mndl_nu">
+                      {{m.mndl_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Mandal is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select City/Village Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>City/Village</mat-label> -->
+                  <mat-select formControlName="blng_city_villagename" required>
+                    <mat-option *ngFor="let v of blng_vlge_lst" [value]="v.vlge_nu">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>City/Village is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter FAX no</div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="blng_fax_no">
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select Business Identity Proof<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <mat-select (selectionChange)="enableUpldBsn()" formControlName="bsn_prf_typ_id" required>
+                    <mat-option *ngFor="let p of prf_typ" [value]="p.prf_typ_id">
+                      {{p.prf_typ_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Business Address Identity proof is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8" *ngIf="OthersTxtBsn">
+                <div class="form-label">Enter Others<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="prf_idnty_bsn_thrs" required>
+                  <mat-error>Others input is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-8" *ngIf="upldFleBsnEnble">
+                <div class="form-label">Upload billing address proof Document<span class="reqSgnColor">*</span></div>
+                <input #imageInput formControlName="addrs_idnty_prf_url" type="file" accept="image/*,application/pdf"
+                  (change)="BsnprocessFile(2,$event)" style="margin-top: 7%;">
+              </div>
+            </div>
+           
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">IT Contact Details</div>
+            <mat-divider style="margin-bottom: 13px;"></mat-divider>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Contact Person Name<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="iTcntprsnName" required>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Contact Person Mobile Number<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="iTcntct_prsn_mobileNumber" required
+                    onKeyPress="if(this.value.length==10) return false;">
+                  <mat-error>Mobile Number is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enter Contact Person Email<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="iTcnctPrsnemail" required>
+                  <mat-error>Email is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+            <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="text-align: right;">
+
+                <button mat-flat-button matStepperNext [disabled]="customerInfo.invalid"
+                  class="mat-raised-button gtDtls" aria-label="SAVE" type="button">
+                  Next
+                </button>
+                <!-- <button mat-flat-button matStepperNext class="mat-raised-button gtDtls" aria-label="SAVE" type="button">
+                  Next
+                </button> -->
+                <!-- <button (click)="downloadPdf()">downlaod</button> -->
+
+              </div>
+            </div>
+          </mat-step>
+          <mat-divider></mat-divider>
+
+          <mat-step label="Service requirement">
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <!-- <div fxFlex="33" fxFlex.xs="100" class="px-4">
+
+                <div class="form-label">Select IP Address Scheme<span class="reqSgnColor">*</span></div>
+                <mat-radio-group aria-label="Select an option" formControlName="ip_schme">
+                  <mat-radio-button value="1">IPV4</mat-radio-button>&nbsp;
+                  <mat-radio-button value="2">IPV6</mat-radio-button>&nbsp;
+                  <mat-radio-button value="3">BOTH</mat-radio-button>
+
+                </mat-radio-group>
+              </div> -->
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter Internet Port Speed<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="intrnt_prt_spd_up">
+                </mat-form-field>
+              </div>
+              <div fxFlex="15" fxFlex.xs="100" class="px-4">
+                <div class="form-label" style="margin-top: 10%; "></div>
+                <mat-radio-group aria-label="Select an option" formControlName="intrnt_prt_spd_up_txt">
+                  <mat-radio-button value="Kbps">Kbps</mat-radio-button>&nbsp;
+                  <mat-radio-button value="Mbps">Mbps</mat-radio-button>&nbsp;
+                  <mat-radio-button value="Gbps">Gbps</mat-radio-button>
+
+                </mat-radio-group>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Select Plan<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <mat-select  formControlName="pckge_pln" required>
+                    <mat-option *ngFor="let s of slctd_plns" [value]="s.slctd_pln_id">
+                      {{s.slctd_pln_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter Recurring Charges Per Month<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput (change)="getGstAmnt();" formControlName="price">
+                </mat-form-field>
+              </div>
+              <!-- <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter Internet Down Port Speed<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="intrnt_prt_spd_dwn">
+                </mat-form-field>
+              </div>
+              <div fxFlex="15" fxFlex.xs="100" class="px-4">
+                <div class="form-label" style="margin-top: 10%; "></div>
+                <mat-radio-group aria-label="Select an option" formControlName="intrnt_prt_spd_dwn_txt">
+                  <mat-radio-button value="Kbps">Kbps</mat-radio-button>&nbsp;
+                  <mat-radio-button value="Mbps">Mbps</mat-radio-button>&nbsp;
+                  <mat-radio-button value="Gbps">Gbps</mat-radio-button>
+
+                </mat-radio-group>
+              </div> -->
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <!-- <div fxFlex="25" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter Charge Amount<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput (change)="getGstAmnt();" formControlName="price">
+                </mat-form-field>
+              </div> -->
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">GST Amount<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="gst_at" readonly>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <!-- <div class="form-label">Enter APSFL Share<span class="reqSgnColor">*</span></div> -->
+                <div class="form-label">Total Recurring Charges<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="apsfl_shre" readonly>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter One Time Charges<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="onetmechrge">
+                </mat-form-field>
+              </div>
+              <!-- <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter LMO Share<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="lmo_shre">
+                </mat-form-field>
+              </div> -->
+
+              <!-- <div fxFlex="25" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter MSO Share<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="mso_shre">
+                </mat-form-field>
+              </div> -->
+            </div>
+            <!-- <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter One Time Charge Amount<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="onetmechrge">
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter APSFL Share<span class="reqSgnColor">*</span></div>
+                <div class="form-label">Total Amount<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="one_tme_apsfl_shre" readonly>
+                </mat-form-field>
+              </div>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Enter LMO Share<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="one_tm_lmo_shre">
+                </mat-form-field>
+              </div>
+            </div> -->
+            
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Number of connections<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="num_cnts">
+                </mat-form-field>
+              </div>
+              <div fxFlex="25" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Contract Period<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="cntrct_prd">
+                </mat-form-field>
+              </div>
+              <div fxFlex="15" fxFlex.xs="100" class="px-4">
+                <div class="form-label" style="margin-top: 10%;"></div>
+                <mat-radio-group aria-label="Select an option" formControlName="cntrct_prd_txt">
+                  <mat-radio-button value="1">Months</mat-radio-button>&nbsp;
+                  <mat-radio-button value="2">Years</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <!-- <div fxFlex="25" fxFlex.xs="100" class="px-4">
+                <div class="form-label">Billing Periodicity<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="blng_prdcty">
+                </mat-form-field>
+              </div> -->
+              <div fxFlex="33" fxFlex.xs="100" class="px-4">
+              <div class="form-label">Select Core Service<span class="reqSgnColor">*</span></div>
+              <mat-form-field appearance="outline">
+                <mat-select  formControlName="cre_srvc" multiple required>
+                  <mat-option *ngFor="let c of cre_srvcs" [value]="c.cre_srvce_id">
+                    {{c.cre_srvce_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            </div>
+            <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="text-align: right;">
+                <button mat-flat-button (click)="save()" class="mat-raised-button gtDtls" aria-label="SAVE"
+                  type="button">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
+    </div>
+  </ng-container>
+</div>
+<div id="full">
+  <div class="book">
+    <div class="page">
+      <div id="contentToConvert" style="display:none;" class="subpage">
+        <div class="row">
+          <div class="col-4">
+            <img src="assets/images/APSFL.png" style="width: 80%">
+          </div>
+          <div class="col-5">
+            <h2 style="text-align: center;
+            font-size: 27px;
+            margin-top: 6%;
+            text-transform: uppercase;
+            margin-bottom: 0px;
+            font-weight: 700;
+            color: #383737;">Customer Application Form</h2>
+            <p style="font-size: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin: 0px;
+            color: #616161;
+            margin-top: 5px;">3rd Floor, NTR Administrative Block, Pandit Nehru Bus Station, NH – 65, Vijayawada – 520001</p>
+          </div>
+          <div class="col-3">
+          </div>
+        </div>
+        <div style="border: 1px solid black;
+        margin: 25px 10px 1px 10px;"></div>
+        <div style="font-weight: 800;font-size:16px;margin-top: 1%;margin-left: 3%;">*CUSTOMER INFORMATION</div>
+        <div class="row" style="margin-top: 1%;margin-left: 3%;margin-right: 3%;
+        border: 1px solid black;">
+          <div class="col-3" style="font-size: 1.2em;
+          font-weight: 700;
+          padding: 0.5%;"><p style="margin-top: 2%;font-size: 15px;">*&nbsp;Name Of Organization</p><p style="font-weight: 400;
+        margin-top: -2%;
+        font-size: 14px;
+        margin-left: 2%;">(pls. leave space after each word)</p></div>
+          <div class="col-9" style="padding: 0.5%;">
+            <table>
+              <tr>
+                <th *ngFor="let i of ItmLst" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                width: 75px !important;
+           text-align: center;
+                font-size: 1.2em;
+                height:22px;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+            <table style="margin-top: 1%;">
+              <tr>
+                <th *ngFor="let i of ItmLst1" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                width: 75px !important;
+                height:22px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+          </div>
+          
+    
+        </div>
+        <div class="row" style="margin-top: 1%;margin-left: 3%;margin-right: 3%;">
+          <div class="col-3" style="font-size: 15px;
+          font-weight: 700;
+          "><p style="margin-top: 2%;">*&nbsp;Customer Phone Number</p></div>
+          <div class="col-2">
+            <div class="row" style="align-items: center;">
+              <table>
+                <tr>
+                  <th *ngFor="let i of StdCd" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                  width: 25px;
+             text-align: center;
+                  font-size: 1.2em;
+                  height:22px;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+            <div class="row" style="align-items:center;font-size: 18px;
+            font-weight: 400;"><p>(STD Code)</p></div>
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <table>
+                <tr>
+                  <th *ngFor="let i of PhnNum" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                  width: 25px;
+             text-align: center;
+                  font-size: 1.2em;
+                  height:22px;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+            <div class="row" style="text-align:center;font-size: 18px;
+            font-weight: 400;">(Phone Number)</div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 1%;margin-left: 3%;margin-right: 3%;">
+          <div class="col-3" style="font-size: 15px;
+          font-weight: 700;
+          "><p style="margin-top: 2%;">*&nbsp;PAN/GIR Number</p></div>
+          <div class="col-4">
+            <div class="row" style="align-items: center;">
+              <table>
+                <tr>
+                  <th *ngFor="let i of PanrGir" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                  width: 25px;
+             text-align: center;
+                  font-size: 1.2em;
+                  height:22px;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 1%;margin-left: 3%;margin-right: 3%;">
+          <div class="col-3" style="font-size: 15px;
+          font-weight: 700;
+          "><p style="margin-top: 2%;">*&nbsp;Proof of Identity Attached</p></div>
+          <div class="col-8" style="text-transform: uppercase;border-bottom: 1px solid black;
+          margin-top: 1%;
+          width: 100%;">{{ProofOfId}}
+          </div>
+        </div>
+        <div class="row" style="margin-top: 1%;margin-left: 3%;margin-right: 3%;
+          font-size: 15px;
+          font-weight: 700;">
+          <div class="col-12"><p>
+            *&nbsp;Service Ordering Address</p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+        <div class="col-12">
+          <table>
+            <tr>
+              <th *ngFor="let i of SrvdOrdAddLn1" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+              width: 30px;
+         text-align: center;
+              font-size: 1.2em;
+              height:22px;
+              font-weight: 700;
+              font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+            </tr>
+          </table>
+          <table style="margin-top: 0.5%">
+            <tr>
+              <th *ngFor="let i of SrvdOrdAddLn2" style="margin:5%;border: 1px solid black;
+              width: 30px;
+              height:22px;
+              text-align: center;
+              font-size: 1.2em;
+              font-weight: 700;
+              font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+            </tr>
+          </table>
+        </div>
+    
+        </div>
+        <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+          <div class="col-1">
+            City
+          </div>
+          <div class="col-7">
+            <table style="margin-top: 0.5%">
+              <tr>
+                <th *ngFor="let i of SoCtyNm" style="margin:5%;border: 1px solid black;
+                width: 25px;
+                height:22px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+    
+          </div>
+          <div class="col-2" style="float: left;">Pin Code</div>
+          <div clas="col-2" style="float: right;">
+            <table style="margin-top: 0.5%">
+              <tr>
+                <th *ngFor="let i of SoPnCd" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                width: 25px;
+                height:22px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+          <div class="col-1">
+            State
+          </div>
+          <div class="col-7">
+            <table style="margin-top: 0.5%">
+              <tr>
+                <th *ngFor="let i of SoStNm" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;
+                width: 25px;
+                height:22px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+    
+          </div>
+          <div class="col-2">Country</div>
+          <div clas="col-3">
+            <table style="margin-top: 0.5%">
+              <tr>
+                <th *ngFor="let i of SoCntryNm" style="margin:5%;border: 1px solid black;padding: none;border-spacing: 0;margin: none;
+                width: 25px;
+                height:22px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row" style="margin-left: 3%;margin-top: 5%;margin-right: 3%;">
+          <div class="col-2" style="font-size: 15px;
+          font-weight: 700;
+          "><p style="margin-top: 2%;">*&nbsp;GST Number</p></div>
+          <div class="col-10">
+            <div class="row" style="align-items: center;">
+              <table>
+                <tr>
+                  <th *ngFor="let i of GstNum" style="margin:5%;border: 1px solid black;margin: none;padding: none;border-spacing: 0;
+                  width: 25px;
+             text-align: center;
+                  font-size: 1.2em;
+                  height:22px;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;
+        font-weight: 700;">
+          <div class="col-2" style="font-size: 15px;
+          font-weight: 700;
+          "><p style="margin-top: 2%;">*&nbsp;Billing Address</p></div>
+          <!-- <div class="col-4">
+            <input type="radio" name="BilAd">
+            <label style="padding-left: 1%;">A. Same as Diapatch Address above</label>
+          </div>
+          <div class="col-3">
+            <input type="radio" name="BilAd">
+            <label style="padding-left: 1%;">B. Central Billing address</label>
+          </div>
+          <div class="col-3">
+            <input type="radio" name="BilAd">
+            <label style="padding-left: 1%;">B. As per Below</label>        
+          </div> -->
+          <div class="col-10">
+          <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="sameblng">
+            <mat-radio-button value="1">A. Same as Diapatch Address above</mat-radio-button>&nbsp;
+            <mat-radio-button style="padding-left: 2%;" value="2">B. Central Billing address</mat-radio-button>&nbsp;
+            <mat-radio-button style="padding-left: 2%;" value="3">B. As per Below</mat-radio-button>
+          </mat-radio-group> -->
+          <img src="assets/images/checked.png" *ngIf="sameblng == 1">&nbsp;<span *ngIf="sameblng == 1">A. Same as Diapatch Address above</span>&nbsp;&nbsp;
+          <img src="assets/images/unchecked.png" *ngIf="sameblng != 1"/>&nbsp;<span *ngIf="sameblng != 1">A. Same as Diapatch Address above</span>&nbsp;&nbsp;
+          <img src="assets/images/checked.png" *ngIf="sameblng == 2">&nbsp;<span *ngIf="sameblng == 2">B. Central Billing address</span>&nbsp;&nbsp;
+          <img src="assets/images/unchecked.png" *ngIf="sameblng != 2"/>&nbsp;<span *ngIf="sameblng != 2">B. Central Billing address</span>&nbsp;&nbsp;
+          <img src="assets/images/checked.png" *ngIf="sameblng == 3">&nbsp;<span *ngIf="sameblng == 3">B. As per Below</span>&nbsp;&nbsp;
+          <img src="assets/images/unchecked.png" *ngIf="sameblng != 3"/>&nbsp;<span *ngIf="sameblng != 3">B. As per Below</span>&nbsp;&nbsp;
+    
+    
+          </div>
+        </div>
+        <!-- <div class="row" style="margin-left: 3%;margin-top: 0.5%;margin-right: 3%;">
+          <div class="col-3" style="font-size: 15px;
+          font-weight: 700;
+          "><p style="margin-top: 2%;">*&nbsp;Billing Account Number</p></div>
+          <div class="col-9">
+            <div class="row" style="align-items: center;">
+              <table>
+                <tr>
+                  <th *ngFor="let i of BlnAcNum" style="margin:5%;border-left: 1px solid black;
+                  border-bottom: 1px solid black;
+                  border-right: 1px solid black;
+                  border-top: 1px solid black;
+                  width: 30px;
+             text-align: center;
+                  font-size: 1.2em;
+                  height:22px;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+            </div>
+        </div> -->
+        <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+          <div class="col-12">
+            <div class="row">
+              <div class="col-1"> C/O</div>
+              <div class="col-11">
+            <table style="float:right;">
+              <tr>
+                <th *ngFor="let i of BilAddLn1" style="margin:5%;border: 1px solid black;
+                width: 30px;
+           text-align: center;
+                font-size: 1.2em;
+                height:22px;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+          </div>
+          </div>
+            <table style="margin-top: 0.5%;float:right;">
+              <tr>
+                <th *ngFor="let i of BilAddLn2" style="margin:5%;border: 1px solid black;
+                width: 30px;
+                height:22px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 700;
+                font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+              </tr>
+            </table>
+          </div>
+      
+          </div>
+          <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+            <div class="col-1">
+              City
+            </div>
+            <div class="col-7">
+              <table style="margin-top: 0.5%">
+                <tr>
+                  <th *ngFor="let i of BilCtyNm" style="margin:5%;border: 1px solid black;
+                  width: 25px;
+                  height:22px;
+                  text-align: center;
+                  font-size: 1.2em;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+      
+            </div>
+            <div class="col-2" style="float:right;">Pin Code</div>
+            <div clas="col-2">
+              <table style="margin-top: 0.5%;float:left">
+                <tr>
+                  <th *ngFor="let i of BilPnCd" style="margin:5%;border: 1px solid black;
+                  width: 25px;
+                  height:22px;
+                  text-align: center;
+                  font-size: 1.2em;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;" >
+            <div class="col-1">
+              State
+            </div>
+            <div class="col-7">
+              <table style="margin-top: 0.5%">
+                <tr>
+                  <th *ngFor="let i of BilStNm" style="margin:5%;border: 1px solid black;
+                  width: 25px;
+                  height:22px;
+                  text-align: center;
+                  font-size: 1.2em;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+      
+            </div>
+            <div class="col-2">Country</div>
+            <div clas="col-3">
+              <table style="margin-top: 0.5%">
+                <tr>
+                  <th *ngFor="let i of BilCntryNm" style="margin:5%;border: 1px solid black;
+                  width: 25px;
+                  height:22px;
+                  text-align: center;
+                  font-size: 1.2em;
+                  font-weight: 700;
+                  font-family: 'Times New Roman', Times, serif;text-transform: uppercase;">{{i}}</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;">
+            <div class="col-4" style="font-size: 15px;
+            font-weight: 700;
+            "><p style="margin-top: 2%;">*&nbsp;Proof of Billing Address Attached</p></div>
+            <div class="col-8" style="text-transform: uppercase;border-bottom: 1px solid black;
+            margin-top: 1%;
+            width: 100%;">{{ProofOfBil}}
+            </div>
+          </div>
+          <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;font-size: 15px;font-weight: 700;"><div class="col-12">*&nbsp;Contact Person(s)</div></div>
+            <div class="row" style="margin-top: 0.5%;font-size: 15px;margin-left: 3%;margin-right: 3%;">
+              <div class="col-12">
+              <table style="border: 1px solid black;width:100%;text-transform: uppercase;">
+              <tr style="border: 1px solid black;">
+                <th style="border-right: 1px solid black;">Function/Department</th>
+                <th style="border-right: 1px solid black;">Name</th>
+                <th style="border-right: 1px solid black;">Mobile</th>
+                <th style="border-right: 1px solid black;">*Email</th>
+              </tr>
+              <tr style="border: 1px solid black;">
+                <td style="margin-left:1%;border-right: 1px solid black;">General</td>
+                <td style="margin-left:1%;border-right: 1px solid black;">{{pdfBindDat[0].cntct_nm}}</td>
+                <td style="margin-left:1%;border-right: 1px solid black;">{{pdfBindDat[0].cntct_mble1_nu}}</td>
+                <td style="margin-left:1%;border-right: 1px solid black;">{{pdfBindDat[0].loc_eml1_tx}}</td>
+              </tr>
+              <tr style="border: 1px solid black;">
+                <td style="margin-left:1%;border-right: 1px solid black;">Technical</td>
+                <td style="margin-left:1%;border-right: 1px solid black;">{{pdfBindDat[0].cntct_prsn_nm}}</td>
+                <td style="margin-left:1%;border-right: 1px solid black;">{{pdfBindDat[0].cntct_prsn_phne_num}}</td>
+                <td style="margin-left:1%;border-right: 1px solid black;">{{pdfBindDat[0].cntct_prsn_eml}}</td>
+              </tr>
+    
+            </table>
+            </div>
+            </div>
+            <div class="row" style="margin-top: 1%;margin-left: 3%;font-size: 15px;margin-right: 3%;font-weight: 700;"><div class="col-12">*&nbsp;Service requirement</div></div>
+            
+            <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                ">
+                  <div class="col-4" style="font-size: 15px;
+                  font-weight: 500;width:18%"
+                  ><p style="margin-top: 0.5%;">*&nbsp;Ip Address Scheme</p></div>
+                  <div class="col-8">
+                  <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="ipaddrss">
+                    <mat-radio-button value="1">Ipv4</mat-radio-button>&nbsp;
+                    <mat-radio-button style="padding-left: 2%;" value="2">Ipv6</mat-radio-button>&nbsp;
+                    <mat-radio-button style="padding-left: 2%;" value="3">Both</mat-radio-button>
+                  </mat-radio-group> -->
+                  <img src="assets/images/checked.png" *ngIf="ipaddrss == 1">&nbsp;<span *ngIf="ipaddrss == 1">Ipv4</span>&nbsp;&nbsp;
+                  <img src="assets/images/unchecked.png" *ngIf="ipaddrss != 1"/>&nbsp;<span *ngIf="ipaddrss != 1">Ipv4</span>&nbsp;&nbsp;
+                  <img src="assets/images/checked.png" *ngIf="ipaddrss == 2">&nbsp;<span *ngIf="ipaddrss == 2">Ipv6</span>&nbsp;&nbsp;
+                  <img src="assets/images/unchecked.png" *ngIf="ipaddrss != 2"/>&nbsp;<span *ngIf="ipaddrss != 2">Ipv6</span>&nbsp;&nbsp;
+                  <img src="assets/images/checked.png" *ngIf="ipaddrss == 3">&nbsp;<span *ngIf="ipaddrss == 3">Both</span>&nbsp;&nbsp;
+                  <img src="assets/images/unchecked.png" *ngIf="ipaddrss != 3"/>&nbsp;<span *ngIf="ipaddrss != 3">Both</span>&nbsp;&nbsp;
+                  </div>
+            </div>
+            <div class="row" style="margin-top: 0.5%;margin-left: 3%;margin-right: 3%;">
+              <div class="col-2" style="font-size: 15px;
+              font-weight: 500;
+              "><p style="margin-top: 2%;">*&nbsp;Package Name</p></div>
+              <div class="col-4" style="border: 1px solid black;
+              width: 100%;
+              text-align: center;
+              height: 32px;">
+    {{PrdctSlc}}          
+    </div>
+              <div class="col-4" style="font-size: 15px;
+              font-weight: 500;width:13%
+              "><p style="margin-top: 0.5%;">*&nbsp;Number of Connections</p></div>
+              <div class="col-1">
+                <table style="margin-top: 0.5%">
+                  <tr>
+                    <th *ngFor="let i of NumOfCon" style="margin:5%;border: 1px solid black;
+                    width: 25px;
+                    height:22px;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 500;
+                    font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;
+                ">
+                  <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;Internet Port Speeed</p></div>
+                  <div class="col-2">
+                    <table style="margin-top: 0.5%">
+                      <tr>
+                        <th *ngFor="let i of IntPrtSpd" style="margin:5%;border-left: 1px solid black;
+                        border-bottom: 1px solid black;
+                        border-right: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-8">
+                  <mat-radio-group aria-label="Select an option" formControlName="ip_speed">
+                    <mat-radio-button value="1">KBPS</mat-radio-button>&nbsp;
+                    <mat-radio-button style="padding-left: 2%;" value="2">MBPS</mat-radio-button>&nbsp;
+                    <mat-radio-button style="padding-left: 2%;" value="3">GBPS</mat-radio-button>
+                  </mat-radio-group>
+                  </div>
+            </div> -->
+            <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                ">
+                  <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;Fee Model</p></div>
+                  <div class="col-10">
+                    <table style="margin-top: 0.5%">
+                      <tr>
+                        <th *ngFor="let i of FeeMdl" style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                      </tr>
+                    </table>
+                  </div>
+            </div>
+            <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;">
+              <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;width:13%
+                  "><p style="margin-top: 0.5%;">*&nbsp;Contract Period</p></div>
+                  <div class="col-1">
+                    <table style="margin-top: 1%">
+                      <tr>
+                        <th *ngFor="let i of CntrcyPd" style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                        
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-8">
+                  <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="cnctprdtyp">
+                    <mat-radio-button value="1">Months</mat-radio-button>&nbsp;
+                    <mat-radio-button style="padding-left: 2%;" value="2">Years</mat-radio-button>&nbsp;
+                  </mat-radio-group> -->
+    
+                  <img src="assets/images/checked.png" *ngIf="cnctprdtyp == 1">&nbsp;<span *ngIf="cnctprdtyp == 1">Months</span>&nbsp;&nbsp;
+                  <img src="assets/images/unchecked.png" *ngIf="cnctprdtyp != 1"/>&nbsp;<span *ngIf="cnctprdtyp != 1">Months</span>&nbsp;&nbsp;
+                  <img src="assets/images/checked.png" *ngIf="cnctprdtyp == 2">&nbsp;<span *ngIf="cnctprdtyp == 2">Years</span>&nbsp;&nbsp;
+                  <img src="assets/images/unchecked.png" *ngIf="cnctprdtyp != 2"/>&nbsp;<span *ngIf="cnctprdtyp != 2">Years</span>&nbsp;&nbsp;
+
+              </div>
+            <!-- </div>
+          </div>
+          <div>
+            <div style=" float: left;width: 50%;padding: 1px;">
+              <div style="display: flex;flex-direction: row;">
+                <p style="flex: 29;flex-grow: 1;">Billing Periodicity</p>
+                <p>: &nbsp;</p>
+                <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">3 months</p>
+              </div>
+            </div>
+            <div style=" float: left;width: 50%;padding: 1px;">
+              <div style="display: flex;flex-direction: row;">
+                <p style="flex: 29;flex-grow: 1;">LMO Code</p>
+                <p>: &nbsp;</p>
+                <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">LMO18966</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style=" float: left;width: 50%;padding: 1px;">
+              <div style="display: flex;flex-direction: row;">
+                <p style="flex: 29;flex-grow: 1;">LMO Name</p>
+                <p>: &nbsp;</p>
+                <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">k.chandra
+                  shekar</p>
+              </div>
+            </div>
+            <div style=" float: left;width: 50%;padding: 1px;">
+              <div style="display: flex;flex-direction: row;">
+                <p style="flex: 29;flex-grow: 1;">LMO Mobile</p>
+                <p>: &nbsp;</p>
+                <p style="padding-left:1%;flex: 70;flex-grow: 2;border: 1px solid black;line-height: 1.5em;">8500642370
+                </p>
+              </div>
+            </div> -->
+                
+    
+    
+        
+        </div>
+        <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 1%;font-size: 15px;
+                ">
+                  <div class="col-1" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;Price</p></div>
+                  <div class="col-1">
+                    <table style="margin-top: 0.5%;width:100%">
+                      <tr>
+                        <th style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{price}}</th>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-1" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;GST</p></div>
+                  <div class="col-1">
+                    <table style="margin-top: 0.5%;width:100%">
+                      <tr>
+                        <th style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{gst}}</th>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;APSFL Share</p></div>
+                  <div class="col-1">
+                    <table style="margin-top: 0.5%;width:100%">
+                      <tr>
+                        <th style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{apsflshre}}</th>
+                      </tr>
+                    </table>
+                  </div>
+                  <!-- <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;MSO Share</p></div>
+                  <div class="col-1">
+                    <table style="margin-top: 0.5%;width:100%">
+                      <tr>
+                        <th style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{msoshre}}</th>
+                      </tr>
+                    </table>
+                  </div> -->
+                  <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;LMO share</p></div>
+                  <div class="col-1">
+                    <table style="margin-top: 0.5%;width:100%">
+                      <tr>
+                        <th style="margin:5%;border: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{lmoshre}}</th>
+                      </tr>
+                    </table>
+                  </div>
+            </div>
+        <!-- <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+                ">
+                  <div class="col-2" style="font-size: 15px;
+                  font-weight: 500;
+                  "><p style="margin-top: 0.5%;">*&nbsp;Billing Periodicity</p></div>
+                  <div class="col-10">
+                    <table style="margin-top: 0.5%">
+                      <tr>
+                        <th *ngFor="let i of BilPrdct" style="margin:5%;border-left: 1px solid black;
+                        border-bottom: 1px solid black;
+                        border-right: 1px solid black;
+                        width: 25px;
+                        height:22px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                      </tr>
+                    </table>
+                  </div>
+            </div> -->
+            <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+            ">
+              <div class="col-2" style="font-size: 15px;
+              font-weight: 500;
+              "><p style="margin-top: 0.5%;">*&nbsp;LMO Name</p></div>
+              <div class="col-10">
+                <table style="margin-top: 0.5%">
+                  <tr>
+                    <th *ngFor="let i of LmoNm" style="margin:5%;border: 1px solid black;
+                    width: 25px;
+                    height:22px;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 500;
+                    font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="row" style="margin-left: 3%;margin-right: 3%;margin-top: 0.5%;font-size: 15px;
+            ">
+              <div class="col-2" style="font-size: 15px;
+              font-weight: 500;
+              "><p style="margin-top: 0.5%;">*&nbsp;LMO Code</p></div>
+              <div class="col-3">
+                <table style="margin-top: 0.5%">
+                  <tr>
+                    <th *ngFor="let i of LmoCd" style="margin:5%;border: 1px solid black;
+                    width: 25px;
+                    height:22px;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 500;
+                    font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-2" style="font-size: 15px;
+              font-weight: 500;
+              "><p style="margin-top: 0.5%;">*&nbsp;LMO Mobile</p></div>
+              <div class="col-3">
+                <table style="margin-top: 0.5%">
+                  <tr>
+                    <th *ngFor="let i of LmoMbl" style="margin:5%;border: 1px solid black;
+                    width: 25px;
+                    height:22px;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 500;
+                    font-family: 'Times New Roman', Times, serif;">{{i}}</th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+

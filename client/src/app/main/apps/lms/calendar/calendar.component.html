@@ -1,0 +1,116 @@
+<div id="schedule" class="page-layout simple fullwidth pageBackground">
+
+    <!-- HEADER -->
+    <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+    fxLayoutAlign.gt-xs="space-between center">
+    <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="mt-10 font-size-16">
+      <div class="logo">
+        <mat-icon class="logo-icon mr-16">calendar_today</mat-icon>
+        <span class="logo-text h1 font-weight-600">
+          Schedules
+        </span>
+      </div>
+    </div>
+    <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%" class="mt-10 font-size-16">
+      <div class="header-top-line"></div>
+    </div>
+    <!-- ADD EVENT BUTTON -->
+    <button mat-fab class="add-event-button mat-accent"  aria-label="Add event"
+    [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+    <mat-icon>add</mat-icon>
+</button>
+<!-- / ADD EVENT BUTTON -->
+  </div>
+     
+    <div class="content mt-320" dsPerfectScrollbar [@animate]="{value:'*',params:{delay:'200ms',y:'50px'}}">
+        <div>
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                <div class="header-bottom" fxLayout="row" fxLayoutAlign="center center"
+                    [@animate]="{value:'*',params:{delay:'150ms'}}">
+
+                    <button mat-icon-button class="arrow" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                        (viewDateChange)="selectedDay = {date:$event}" aria-label="Previous">
+                        <mat-icon>chevron_left</mat-icon>
+                    </button>
+
+                    <div class="title">
+                        {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+                    </div>
+
+                    <button mat-icon-button class="arrow" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                        (viewDateChange)="selectedDay = {date:$event}" aria-label="Next">
+                        <mat-icon>chevron_right</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <!-- <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+                <div class="title">
+                    Schedules on <br> <span class="scdl-dte">{{viewDate | date}}</span>
+                </div>
+            </div> -->
+        </div>
+        <!-- CONTENT -->
+        <div fxLayout="column" class="scdl-cntnt">
+            <div fxFlex fxLayout="row" fxLayoutAlign="center center" fxFlex.gt-lg="40%" fxFlex.gt-md="40%"
+                fxFlex.gt-sm="40%" fxFlex.gt-xs="40%">
+
+                <div [ngSwitch]="view" class="scdl-calendar">
+                    <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="schedules"
+                        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+                        (eventClicked)="editEvent('edit', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"
+                        (beforeViewRender)="beforeMonthViewRender($event)">
+                    </mwl-calendar-month-view>
+
+
+                </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%">
+                    <div class="title">
+                        Schedules on <br> <span class="scdl-dte">{{viewDate | date}}</span>
+                    </div>
+                </div>
+            <div fxFlex fxLayout="row " fxLayoutAlign="none center" fxFlex.gt-lg="50%" fxFlex.gt-md="50%"
+                fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="scdl-lst">
+                
+
+                <div class="ds-card scdl-crd text-center" *ngFor="let s of mnthSchedules">
+
+                    <div fxLayout="column" fxLayoutAlign="space-between start">
+
+                        <p class="scdl-ttl">{{s.trng_nm}}</p>
+                        <p class="scdl-desc">{{s.meta.desc}}</p>
+
+                        <p>
+                            <mat-icon class="mr-4 font-size-16">location_on</mat-icon><span
+                                class="scdl-span">{{s.meta.location}}</span>
+                        </p>
+                        <div fxFlex fxLayout="row">
+                            <p>
+                                <mat-icon class="mr-4 font-size-16">calendar_today</mat-icon><span
+                                    class="scdl-span">From: {{s.start | date}}</span>
+                            </p>
+
+                        </div>
+
+                        <div fxFlex fxLayout="row">
+                            <p>
+                                <mat-icon class="mr-4 font-size-16">calendar_today</mat-icon><span class="scdl-span">To:
+                                    {{s.end | date}}</span>
+                            </p>
+
+                        </div>
+                        <div class="view-btn">
+                            <!-- <button class="btn-view" (click)="editEvent('view')" mat-button color="accent">View</button> -->
+                            <button class="btn-view"  mat-button color="accent" (click)="scheduleAssignment(s)">view</button>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- / CONTENT -->
+
+    </div>

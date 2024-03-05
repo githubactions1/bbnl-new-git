@@ -1,0 +1,153 @@
+.rt{
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    font-size: 13px;
+      font-weight: 700;
+      p{
+        margin: 0px !important;
+      }
+  }
+  .pln-nm{
+    font-size: 14px;
+    font-weight: 800;
+    color: #f16136;
+    text-decoration: underline;
+    margin-top: 6px;
+    padding:20px 0px
+  }
+  .plan-lbl{
+    width: 100%;
+  }
+  .card-wrapper {
+    position: relative;
+    width: 235px;
+    height: 241px;
+    float: left;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+  .c-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .c-card ~ .card-content {
+    transition: all 500ms ease-out;
+  }
+  .c-card ~ .card-content .card-state-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    background-position: 0 0;
+    transition: all 100ms ease-out;
+  }
+  .c-card ~ .card-content:before {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 0;
+    height: 0;
+    border-top: 52px solid #795548;
+    border-left: 30px solid transparent;
+    transition: all 200ms ease-out;
+  }
+  .c-card ~ .card-content:after {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 50px solid #FFF;
+    border-left: 30px solid transparent;
+    transition: all 200ms ease-out;
+  }
+  .c-card ~ .card-content:hover {
+    border: 1px solid #795548;
+  }
+  .c-card ~ .card-content:hover .card-state-icon {
+    background-position: -30px 0;
+  }
+  .c-card ~ .card-content:hover:before {
+    border-top: 32px solid #795548;
+  }
+  .c-card:checked ~ .card-content {
+    border: 1px solid #795548;
+  }
+  .c-card:checked ~ .card-content .card-state-icon {
+    background-position: -90px 2px;
+  }
+  .c-card:checked ~ .card-content:before {
+    border-top: 32px solid #795548;
+        background: url("assets/images/tick.svg") no-repeat;
+  }
+  .c-card:checked ~ .card-content:after {
+    border-top: 32px solid #795548;
+    
+  }
+  .c-card:checked:hover ~ .card-content .card-state-icon {
+    background-position: -60px 2px;
+  }
+  .c-card:checked:hover ~ .card-content:before {
+    border-top: 32px solid #795548;
+  }
+  .c-card:checked:hover ~ .card-content:after {
+    border-top: 32px solid #795548;
+  }
+  .grid-wrapper {
+    margin: 0 auto;
+    width: 97%;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+  }
+//   .card-content {
+//     border: 1px solid #CCC;
+//     border-radius: 4px;
+//     background: white;
+//     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+   
+//   }
+
+  .addCafBtn{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    box-shadow: none;
+    background: #f16136;
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 16px
+  }
+  .addBtnstls{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    cursor: pointer;
+  }
+
+  .page {
+    border: none;
+			border-radius: none;
+      width: 210mm;
+      height: 397mm; 
+			padding: 2%;
+			background-color: white !important;
+}

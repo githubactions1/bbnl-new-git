@@ -1,0 +1,233 @@
+<div class="container">
+  <div class="page-layout simple tabbed pageBackground">
+    <div *ngIf="loader">
+      <div class="loading-indicator">
+          <div class="spinner-2">
+            <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+          </div>
+        </div>
+  </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">You do not have permissions to do this operation. Please contact Administrator to get permissions.</div>
+    <mat-tab-group (selectedTabChange)="tabClick($event)" *ngIf="permissions">
+      <mat-tab label="TRANSFER STOCK" *ngIf="(permissions.insrt_in==1)?true:false">
+        <form class="m-12" fxLayout="column" [formGroup]='cpeTransfrForm'>
+          <div class="ds-card p-12">
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">From Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker" readonly placeholder="From Date" formControlName="fromDt">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">To Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="pickerTo" readonly placeholder="To Date" formControlName="toDt">
+                  <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Tenant Type</div>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="Select Cpe" formControlName="tnanttype">
+                    <mat-option *ngFor='let t of tnant_type' [value]="t.prtnr_id">{{t.prtnr_nm}}</mat-option>
+                  </mat-select>
+                  <mat-error>Tenant is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%"
+                fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+                <div class="form-label">Tenant Code</div>
+                <mat-form-field appearance="outline" fxFlex>
+                  <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto"
+                    formControlName="agnt_id">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                    <ng-container *ngIf="!isLoading">
+                      <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                        <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                      </mat-option>
+                    </ng-container>
+                  </mat-autocomplete>
+                  <mat-error>LMO Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Cpe Serial Number</div>
+                <mat-form-field appearance="outline">
+                  <input name="name" matInput formControlName="srlnum" />
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Box Type</div>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="Select box Type" formControlName="boxtype">
+                    <mat-option *ngFor='let prd of prdct_type' [value]="prd.prdct_id">{{prd.prdct_nm}}</mat-option>
+                  </mat-select>
+                  <mat-error>Box Type is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="11%" fxFlex.gt-md="14%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="px-8 mt-32">
+                <input type="file" id="file"  (change)="uploadedFile($event)" accept=".xlsx, .xls, .csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.ods, application/vnd.ms-excel" [disabled]="chsefle" required>
+                <label for="file">CHOOSE A FILE</label>
+              </div>
+              <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                *ngIf='shwrcds'>
+                <div class="mt-40 pl-4">
+                  <span class='ttlRcds' *ngIf="mssg">please unselect the records and upload a excel</span>
+                  <!-- <span class='ttlRcds' *ngIf="exclGrid">Total Records({{ttlRcds}})</span> -->
+                  <span class='vldecxl' *ngIf='isValid==false' style="color: red;">&nbsp;Please Upload Valid
+                    Excel</span>
+                  <span class='vldecxl' *ngIf='isValid==false' style="color: red;">&nbsp;{{mess}}</span>
+                </div>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                class="px-8">
+                <button type="button" mat-raised-button (click)="downloadtemplate()" class="mt-32 ">
+                  <mat-icon class="mr-4">cloud_download</mat-icon>Download Template
+                </button>
+              </div>
+            </div>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" class="btnsmarg" fxFlexFill>
+              <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="20" fxFlex.xs="100" class="px-8">
+                <button type="submit" mat-flat-button class="mat-raised-button mt-20 w-100-p gtDtls" (click)="submit()">Search</button>
+              </div>
+              <!-- <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="20" fxFlex.xs="100" class="px-8">
+                <button type="button" mat-flat-button class="mat-raised-button mt-20 w-100-p gtDtls"
+                  (click)="delete()" [disabled]="deletebtn">Delete Stocks</button>
+              </div> -->
+            </div>
+          </div>
+        </form>
+        <div class="ds-card m-12" *ngIf="exclGrid">
+            <div fxLayout="row" fxLayout.xs="column">
+              <div fxFlex.xl="85" fxFlex.lg="85" fxFlex.md="50" fxFlex.xs="100">
+                <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                  Uploaded Data Records
+                </div>
+              </div>
+              <div fxFlex.xl="12" fxFlex.lg="12" fxFlex.md="50" fxFlex.xs="100" class="text-right p-12">
+                <div><span class='font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg ttlRcds'>Total Records
+                    ({{ttlRcds}})</span></div>
+              </div>
+            </div>
+            <dx-data-grid id="gridContainer" [allowColumnResizing]="true" [dataSource]="ExclDta" [showBorders]="true" [remoteOperations]="true" [allowColumnReordering]="true"
+            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+            style="width:100%" (onSelectionChanged)="onSelectionChanged($event)">
+              <dxi-column  [allowResizing]="true"  *ngFor="let f of columnDefsRcrd" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+              alignment="f.cellStyle.text-align" [width]="f.width" [alignment] = "f.algnmnt"></dxi-column>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+                <!-- or "select" -->
+              </dxo-column-chooser>
+            </dx-data-grid>
+        </div>
+          <!-- <div>{{cpeAgentStock[0].lmo_code}} Cpe Stock</div> -->
+          <div class="ds-card m-12" *ngIf="cpeAgntGrid">
+            <ds-loading *ngIf="showLdr"></ds-loading>
+            <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+            <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true" [dataSource]="cpeAgentStock" [showBorders]="true" [remoteOperations]="true"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+              [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" style="width:100%" [(selectedRowKeys)]="selectedItems" (onToolbarPreparing)="onToolbarPreparing($event)" (onCellPrepared)="onCellPrepared(columnDefs,$event)" (onCellClick)="onCellClick($event)" (onSelectionChanged)="onSelectionChanged($event)">
+              <dxi-column [allowResizing]="true"  *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" alignment="f.cellStyle" [width]="f.width"
+              [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+              <dxo-selection showCheckBoxesMode="always" mode="multiple" allowSelectAll="false"></dxo-selection>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+              <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="CPE Allocation">
+              </dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+            </dx-data-grid>
+          </div>
+        </div>
+        <form class=" p-8" fxLayout="column" [formGroup]='agntTransfrForm'>
+          <div class="ds-card" *ngIf="updldcard">
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="100" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%"
+                fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+                <div class="form-label">Tenant Code</div>
+                <mat-form-field appearance="outline" fxFlex>
+                  <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto"
+                    formControlName="agnt">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                    <ng-container *ngIf="!isLoading">
+                      <mat-option *ngFor="let agent of filteredAgenSe;trackBy:trackByfunction" [value]="agent">
+                        <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                      </mat-option>
+                    </ng-container>
+                  </mat-autocomplete>
+                  <mat-error>LMO Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" class="btnsmarg" fxFlexFill>
+              <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="20" fxFlex.xs="100" class="px-8">
+                <button type="submit" mat-flat-button class="mat-raised-button mt-32 w-100-p saveBtn-color"
+                  [disabled]="agntTransfrForm.invalid" (click)="transferBox()">Update</button>
+              </div>
+              <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="20" fxFlex.xs="100" class="px-8">
+                <button type="button" mat-flat-button class="mat-raised-button mt-32 w-100-p saveBtn-color"
+                  (click)="cancel()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="MY TRANSFERS">
+        <div class="m-8">
+          <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+            <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true" [dataSource]="uploadCpeStock" [showBorders]="true"
+              [remoteOperations]="true" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+              [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true"
+              style="width:100%">
+              <dxi-column  [allowResizing]="true" *ngFor="let f of columnDefsUpdl" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <!-- <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling> -->
+            </dx-data-grid>
+          </div>
+          </div>
+      </mat-tab>
+      <mat-tab label="RECENT TRANSFERS">
+        <div class="m-8">
+          <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+            <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true" [dataSource]="recentCpeStock" [showBorders]="true"
+            [remoteOperations]="true" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+            [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true"
+            style="width:100%">
+              <dxi-column [allowResizing]="true" *ngFor="let f of columnDefsRecnt" [visible]="!f.hide" [dataField]="f.field"
+                [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"[allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 12, 20]"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <!-- <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling> -->
+            </dx-data-grid>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

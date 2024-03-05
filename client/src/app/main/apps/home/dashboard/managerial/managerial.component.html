@@ -1,0 +1,457 @@
+<div class="page-layout simple pageBackground tabbed">
+
+    <div class="dbcrdsbgrnd">
+        <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+                <div class="ds-card dsbbrdcrds">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-blue border-radius-6">
+                        <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                            class="totlCnt inrSctn">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.agntCount[0].ttl_cnt}}</div>
+                                <div class="h4 nme">Total Tenants</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.agntCount[0].mso_cnt}}</div>
+                                <div class="h4 nme">MSO's</div>
+                            </div>
+                        </div>
+                        <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.agntCount[0].lmo_cnt}}</div>
+                                <div class="h4 nme">LMO's</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+                <div class="ds-card  dsbbrdcrds">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-pink border-radius-6">
+                        <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                            class="totlCnt inrSctn">
+                            <div class="cntDtls">
+                                <div class="h1 cnt">{{this.cafCount[0].ttl_cnt}}</div>
+                                <div class="h4 nme">Total CAFS</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+                                <div class="h1 cnt">{{this.cafCount[0].ind_cnt}}</div>
+                                <div class="h4 nme">Individual CAFS</div>
+
+                            </div>
+                        </div>
+                        <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+                                <div class="h1 cnt">{{this.cafCount[0].ent_cnt}}</div>
+                                <div class="h4 nme">Enterprise CAFS</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+                <div class="ds-card  dsbbrdcrds">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-green border-radius-6">
+                        <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                            class="totlCnt inrSctn">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.cafCount[0].ent_cnt}}</div>
+                                <div class="h4 nme">Total Enterprise CAFS</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.cafCount[0].ent_govt_cnt}}</div>
+                                <div class="h4 nme">Government</div>
+                            </div>
+                        </div>
+                        <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.cafCount[0].ent_priv_cnt}}</div>
+                                <div class="h4 nme">Private</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+                <div class="ds-card  dsbbrdcrds">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-yellow border-radius-6">
+                        <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                            class="totlCnt inrSctn">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.stpBxsCount[0].ttl_stp_bxs }}</div>
+                                <div class="h4 nme">Total CPE Stock</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.stpBxsCount[0].ttl_mso_stp_bxs}}</div>
+                                <div class="h4 nme">MSO's Stock</div>
+                            </div>
+                        </div>
+                        <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.stpBxsCount[0].ttl_lmo_stp_bxs}}</div>
+                                <div class="h4 nme">LMO's Stock</div>
+                            </div>
+                        </div>
+                        <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="100%"
+                            class="totlCnt">
+                            <div class="cntDtls">
+
+                                <div class="h1 cnt">{{this.stpBxsCount[0].ttl_apsfl_stp_bxs}}</div>
+                                <div class="h4 nme">APSFL Stock</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ds-loading *ngIf="showLdr"></ds-loading>
+
+    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+        <div fxFlex="100" fxFlex.gt-xl="65%" fxFlex.gt-lg="65%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="ds-card m-12">
+                <div class="p-16" id="chart-demo">
+                    <dx-chart palette="Violet" [dataSource]="cafLst7DyCount">
+                        <dxi-series *ngFor="let c of cafOprtns" [valueField]="c.value" [name]="c.name">
+                        </dxi-series>
+                        <dxi-value-axis position="left">
+                            <dxo-grid [visible]="true"></dxo-grid>
+                            <dxo-title text="Total CAF Operation Counts"></dxo-title>
+                        </dxi-value-axis>
+                        <dxo-common-series-settings #seriesSettings argumentField="oprn_dt" [type]="types[0]">
+                            <dxo-label [visible]="true" backgroundColor="none" color="black">
+                            </dxo-label>
+                        </dxo-common-series-settings>
+                        <dxo-margin [bottom]="20"></dxo-margin>
+                        <dxo-argument-axis [valueMarginsEnabled]="false" discreteAxisDivisionMode="crossLabels">
+                            <dxo-grid [visible]="true"></dxo-grid>
+                            <dxo-title text="Date"></dxo-title>
+                        </dxo-argument-axis>
+                        <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+                        </dxo-legend>
+                        <dxo-title text="CAF Operations">
+                            <dxo-subtitle text="(Last 7 Days)">
+                            </dxo-subtitle>
+                        </dxo-title>
+                        <dxo-export [enabled]="true"></dxo-export>
+                        <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000"></dxo-tooltip>
+                    </dx-chart>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%" *ngIf="cafTdyCount">
+            <div  fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8">
+                <div class="ds-card today-card">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="bg-c-blue border-today-card">
+                            <mat-icon>supervisor_account</mat-icon>
+                            <div>CAFs</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="20%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.tot_caf_prv_ct}}</h2>
+                            <div class="h4 nme">Today <br> Provisioned</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="20%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.tot_caf_spnd_ct}}</h2>
+                            <div class="h4 nme">Today <br> Suspended</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="20%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.tot_caf_rsme_ct}}</h2>
+                            <div class="h4 nme">Today <br> Resumed</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="20%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.tot_caf_trmd_ct}}</h2>
+                            <div class="h4 nme">Today <br> Terminated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.sm="row wrap" fxLayout.xs="column" class="w-100-p m-8">
+                <div class="ds-card today-card">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="bg-c-pink border-today-card">
+                            <mat-icon>how_to_reg</mat-icon>
+                            <div>CAF Operations</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.bx_chnge_ct}}</h2>
+                            <div class="h4 nme">Today <br> Box Change</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.pn_change_ct}}</h2>
+                            <div class="h4 nme">Today <br> PON Change</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div  fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8">
+                <div class="ds-card today-card">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="bg-c-green border-today-card">
+                            <mat-icon>dynamic_feed</mat-icon>
+                            <div>Packages</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.addon_iptv_prchs_ct}}</h2>
+                            <div class="h4 nme">Today <br> Addon IPTV</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="30%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="text-center p-16">
+                            <h2 class="h1 cnt">{{cafTdyCount.addon_hsi_prchs_ct}}</h2>
+                            <div class="h4 nme">Today <br> Addon HSI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div  fxLayout="row wrap" fxLayoutAlign="start top" class="w-100-p m-8">
+                <div class="ds-card today-card">
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top">
+                        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%" class="bg-c-yellow border-today-card">
+                            <mat-icon>call</mat-icon>
+                            <div>VOIP <br> Calls</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="13%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%" class="text-center p-12">
+                            <h2 class="h1 cnt">{{cafTdyCount.incmng_cals_ct}}</h2>
+                            <div class="h4 nme">Today <br> Incoming</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="13%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%" class="text-center p-12">
+                            <h2 class="h1 cnt">{{cafTdyCount.otgng_cals_ct}}</h2>
+                            <div class="h4 nme">Today <br> Outgoing</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="13%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%" class="text-center p-12">
+                            <h2 class="h1 cnt">{{cafTdyCount.in_ntwrk_cals_ct}}</h2>
+                            <div class="h4 nme">Today <br> Innetwork</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="13%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%" class="text-center p-12">
+                            <h2 class="h1 cnt">{{cafTdyCount.local_cals_ct}}</h2>
+                            <div class="h4 nme">Today <br> Local</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="13%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%" class="text-center p-12">
+                            <h2 class="h1 cnt">{{cafTdyCount.std_cals_ct}}</h2>
+                            <div class="h4 nme">Today <br> STD</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="30%" fxFlex.gt-lg="13%" fxFlex.gt-md="12%" fxFlex.gt-sm="12%" fxFlex.gt-xs="12%" class="text-center p-12">
+                            <h2 class="h1 cnt">{{cafTdyCount.isd_cals_ct}}</h2>
+                            <div class="h4 nme">Today <br> ISD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+
+
+    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" *ngIf="crntPrvsMnthCounts">
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-icon-green">
+                        <mat-icon>account_circle</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_caf_prv_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_caf_prv_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}}</div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-green">
+                        <div>CAFs Provisioned</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-icon-blue">
+                        <mat-icon>priority_high</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_caf_spnd_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_caf_spnd_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}} </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-blue">
+                        <div>CAFs Suspended</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-icon-pink">
+                        <mat-icon>format_size</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_caf_trmd_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_caf_trmd_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}} </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-pink">
+                        <div>CAFs Terminated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-c-yellow">
+                        <mat-icon>track_changes</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_bx_chnge_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_bx_chnge_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}} </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-yellow">
+                        <div>Box Change</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-icon-green">
+                        <mat-icon>loop</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_pn_change_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_pn_change_ct}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}} </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-green">
+                        <div>PON Change</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-icon-blue">
+                        <mat-icon>folder_shared</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_add_pckgs}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_add_pckgs}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}} </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-blue">
+                        <div>Add-on Packages</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="14%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+            fxFlex.gt-xs="50%">
+            <div class="ds-card dsbbrdcrds widget-statstic-card">
+                <div class="card-block">
+                    <div class="icofont icofont-presentation-alt st-icon bg-icon-pink">
+                        <mat-icon>phone_in_talk</mat-icon>
+                    </div>
+                    <div  fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-12">
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center border-right">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.lst_mnth_tot_voip_cls}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.lst_mnth_nm}} {{crntPrvsMnthCounts.lst_year}}</div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%" class="text-center">
+                            <div class="h1 cnt">{{crntPrvsMnthCounts.crt_mnth_tot_voip_cls}}</div>
+                            <div class="h4 nme">{{crntPrvsMnthCounts.crt_mnth_nm}} {{crntPrvsMnthCounts.crnt_year}} </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-weight-500 fg-icon-pink">
+                        <div>VOIP Calls</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

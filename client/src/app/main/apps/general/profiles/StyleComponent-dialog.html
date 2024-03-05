@@ -1,0 +1,35 @@
+<mat-toolbar matDialogTitle class="mat-accent m-0">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="title dialog-title">Left Menus</span>
+    <button mat-icon-button (click)="close()" aria-label="Close dialog" class="btnclse">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-list class="sidemenuOptns">
+
+  <div *ngFor="let p of menulst">
+    <mat-list-item *ngIf="p.prnt_mnu_itm_id == 0">
+      <h4 mat-line> {{ p.mnu_itm_nm }}</h4>
+      <mat-slide-toggle [checked]="p.a_in ==1" (change)="change(p,$event);"></mat-slide-toggle>
+    </mat-list-item>
+    <div *ngIf="p.prnt_mnu_itm_id != 0">
+      <div>
+        <h4 mat-line class="itmprnt"> {{p.prnt_mnu_itm_nm}}</h4>
+      </div>
+      <mat-list-item *ngFor="let a of p.sub_mnus">
+        <h4 mat-line> {{ a.mnu_itm_nm }}</h4>
+        <mat-slide-toggle [checked]="a.a_in==1" (change)="change(p,$event,a);"></mat-slide-toggle>
+      </mat-list-item>
+    </div>
+
+  </div>
+<!-- 
+  <div *ngFor = "let m of menulst">
+    <div>
+      <h4 mat-line class="itmprnt"> {{m.mnu_itm_nm}}</h4>
+    </div>
+  </div> -->
+
+</mat-list>

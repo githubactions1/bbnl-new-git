@@ -1,0 +1,480 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <div *ngIf="loader">
+    <div class="loading-indicator">
+        <div class="spinner-2">
+          <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+        </div>
+      </div>
+</div>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  
+  <div fxLayout="row">
+    <div fxFlex="80"></div>
+    <div fxFlex="16">
+
+      <!-- <button class="addBtn-color mb-8 mt-8 mat-raised-button mat-primary" color="primary" mat-raised-button=""
+        style="float:right" (click)="opensideBar('addFormPanel',null)">
+        <span class="mat-button-wrapper">
+          <mat-icon class="addfld-icon-color mat-icon material-icons mat-icon-no-color" role="img" aria-hidden="true">
+            person</mat-icon>
+          <span class="pt-2">&nbsp;Add New Customer</span>
+        </span>
+      </button> -->
+
+      <button mat-raised-button color="primary" class="m-16 mr-40 addBtn addBtn-color" style="float:right"
+        *ngIf="showBckBtn" (click)="bckBtn()">
+
+        <span class="pt-2">Back</span>
+      </button>
+    </div>
+  </div>
+  <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">You do not have permissions to do this operation. Please contact Administrator to get permissions.</div>
+  <div *ngIf="showTble && permissions" class="p-4 pt-0" >
+    <div class="ds-card m-12" *ngIf="(permissions.slct_in==1)?true:false">
+    
+      <dx-data-grid 
+      #dataGridRef
+      class="p-4"
+      
+      id="gridContainer" [dataSource]="store" [remoteOperations]="true" [allowColumnReordering]="true" [columnAutoWidth]="true"
+        [rowAlternationEnabled]="true"[allowColumnResizing]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+   
+        (onOptionChanged)="getPgeIndx($event)"
+        style="width:100%">
+        <dxo-selection mode="multiple"></dxo-selection>
+        <dxo-paging    [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true" [showInfo]="true" [allowedPageSizes]="[10, 25, 50, 100,1000]"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          alignment="f.cellStyle.text-align" [width]="f.width" [alignment] = "f.algnmnt"
+          [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+        <!-- <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="Edit" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              Edit
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+          [width]="100" caption="Delete" cellTemplate="delTemplate">
+          <div *dxTemplate="let data of 'delTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              Delete
+            </div>
+          </div>
+        </dxi-column>
+        <dxi-column [showInColumnChooser]="false"  type="buttons"
+        [width]="100" caption="view" cellTemplate="ViewTemplate">
+        <div *dxTemplate="let data of 'ViewTemplate'">
+          <div class="cursor-pointer"(click)="onCellClick(data)">
+         view
+          </div>
+        </div>
+      </dxi-column> -->
+      </dx-data-grid>
+
+    </div>
+<div>
+     <div class="rdogrp" *ngIf="permissions.insrt_in">
+      <mat-radio-group (change)='inputslct(TypeMsg)' [(ngModel)]="TypeMsg">
+        <mat-radio-button [checked]='mgctr.msgs_ctgry_id==1 ? true : false' *ngFor='let mgctr of msctgry' class="example-margin" [value]="mgctr.msgs_ctgry_id">{{mgctr.msgs_ctgry_nm}}</mat-radio-button>
+        <!-- <mat-radio-button class="example-margin" value="OSD">OSD</mat-radio-button>
+        <mat-radio-button class="example-margin" value="Scroll" >Scroll Text</mat-radio-button> -->
+      </mat-radio-group>
+    </div>
+ </div>
+
+
+ <div  *ngIf="msctgry.length>0 && shofrm=='Finger' && permissions.insrt_in==1" class="ds-card p-4 m-8">
+  
+  <form  class="form-horizontal" [formGroup]="cafFngrFrm" >  
+    
+   <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+   
+   
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Position*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <input matInput formControlName="postn" placeholder="480,480">
+        <!-- <mat-error>Last Name is required!</mat-error> -->
+        <mat-error>Position required</mat-error>
+      </mat-form-field>
+     
+      <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Font Type*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Gender</mat-label> -->
+        <!-- (selectionChange)="getLmo($event.value)"  -->
+        <mat-select formControlName="fnt_typ" required>
+          <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+          {{f.fnt_nm}}
+          </mat-option>
+         
+        </mat-select>
+        <mat-error>FontType required</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Font Size*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Gender</mat-label> -->
+        <!-- (selectionChange)="getLmo($event.value)"  -->
+        <input matInput formControlName="fnt_sz">
+        <mat-error>FontType required</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Font color*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        
+        <mat-select formControlName="fnt_clr" required>
+          <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+          {{c.clr_nm}}
+          </mat-option>
+         
+        </mat-select>
+        <mat-error>Font color is required!</mat-error>
+      </mat-form-field>
+    </div>
+    
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Duration*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <input matInput formControlName="dur">
+        <mat-error>Duration is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Select FingerPrintType*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Gender</mat-label> -->
+        <!-- (selectionChange)="getLmo($event.value)"  -->
+        <mat-select formControlName="fng_typ" required>
+          <mat-option  value="Static">
+           Static
+          </mat-option>
+          <mat-option  value="Random">
+            Random
+           </mat-option>
+        </mat-select>
+        <mat-error>FingerPrintType is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Channel*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <input matInput formControlName="chnl">
+        <mat-error>Channel is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Background Color*</div>
+
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        
+        <mat-select formControlName="bg_clr" required>
+          <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+          {{c.clr_nm}}
+          </mat-option>
+         
+        </mat-select>
+        <mat-error>Background color is required!</mat-error>
+      </mat-form-field>
+      
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Expiry Date*</div>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>End Date is required!</mat-error>
+      </mat-form-field>
+
+    </div>
+   
+  </div>
+
+  
+  <div fxLayout="row" style="justify-content: center;"  fxFlexFill >
+    <div >
+      <button mat-raised-button color='primary' [disabled]='!cafFngrFrm.valid ' (click)="send(cafFngrFrm.value)" >Submit</button>
+      </div>
+      <div  style="margin-left: 8px;">
+        <button mat-raised-button color='primary' class = "gtDtls" (click)="Reset(cafFngrFrm)" >Reset</button>
+        </div>
+      
+  </div>
+</form>  
+</div>
+<div  *ngIf="shofrm=='OSD'" class="ds-card p-4 m-8">
+  
+  <form  class="form-horizontal" [formGroup]="cafFngrFrm2">  
+    
+   <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+   
+   
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Position*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <input matInput formControlName="postn" placeholder="480,480">
+        <mat-error>Position is required!</mat-error>
+      </mat-form-field>
+
+      <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Font Type*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Gender</mat-label> -->
+        <!-- (selectionChange)="getLmo($event.value)"  -->
+        <mat-select formControlName="fnt_typ" required>
+          <mat-option *ngFor='let f of msgfnts' [value]="f.fnt_id">
+          {{f.fnt_nm}}
+          </mat-option>
+         
+        </mat-select>
+        <mat-error>FontType is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Font Size*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Gender</mat-label> -->
+        <!-- (selectionChange)="getLmo($event.value)"  -->
+        <input matInput formControlName="fnt_sz" placeholder="36" required >
+        <mat-error>Font Size is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Font color*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        
+        <mat-select formControlName="fnt_clr" required>
+          <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+          {{c.clr_nm}}
+          </mat-option>
+         
+        </mat-select>
+        <mat-error>Font color is required!</mat-error>
+      </mat-form-field>
+    </div>
+    
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Duration*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <input matInput formControlName="dur" placeholder="22" required>
+        <mat-error>Duration is required!</mat-error>
+      </mat-form-field>
+    </div>
+   
+  
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Background Color*</div>
+     
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <!-- <input matInput formControlName="bg_clr"> -->
+
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>Father/Husband Name</mat-label> -->
+          
+          <mat-select formControlName="bg_clr" required>
+            <mat-option *ngFor='let c of msgclrs' [value]="c.clr_id">
+            {{c.clr_nm}}
+            </mat-option>
+           
+          </mat-select>
+          <mat-error>Background color is required!</mat-error>
+        </mat-form-field>
+        <!-- <mat-error>Last Name is required!</mat-error> -->
+      
+    </div>
+
+  
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Expiry Date*</div>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>Expiry Date is required!</mat-error>
+      </mat-form-field>
+
+    </div>
+    
+ 
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">User can Close Message*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Gender</mat-label> -->
+        <!-- (selectionChange)="getLmo($event.value)"  -->
+        <mat-select formControlName="usrmsgcls" required>
+          <mat-option  value="1">
+           true
+          </mat-option>
+          <mat-option  value="0">
+            false
+           </mat-option>
+        </mat-select>
+        <mat-error>User can Close is required</mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Message Type*</div>
+       <mat-form-field appearance="outline">
+         <!-- <mat-label>Gender</mat-label> -->
+         <!-- (selectionChange)="getLmo($event.value)"  -->
+         <mat-select formControlName="msgtyp" required>
+           <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+            {{m.msge_type_nm}}
+           </mat-option>
+          
+         </mat-select>
+         <mat-error>MessageType is required</mat-error>
+       </mat-form-field>
+     </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+    
+  
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Subscriber Code</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <textarea matInput formControlName="sub_cd" placeholder="EA097587,EA74678"></textarea>
+
+        <!-- <input matInput formControlName="sub_cd"> -->
+        <!-- <mat-error>Last Name is required!</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Message*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <textarea  matInput formControlName="msg" placeholder="Message"></textarea>
+        <!-- <input  matInput formControlName="msg"> -->
+        <mat-error>Message is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+   
+  </div>
+  <div fxLayout="row" style="justify-content: center;"  fxFlexFill >
+    <div >
+      <button mat-raised-button color='primary' [disabled]='!cafFngrFrm2.valid ' (click)="send(cafFngrFrm2.value)" >Submit</button>
+      </div>
+      <div  style="margin-left: 8px;">
+        <button mat-raised-button color='primary' class = "gtDtls" (click)="Reset(cafFngrFrm2)" >Reset</button>
+        </div>
+      
+  </div>
+</form>  
+</div>
+
+<div  *ngIf="shofrm=='Scroll'" class="ds-card p-4 m-8">
+  
+  <form  class="form-horizontal" [formGroup]="cafFngrFrm3">  
+    
+   <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+  
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Message Type*</div>
+       <mat-form-field appearance="outline">
+         <!-- <mat-label>Gender</mat-label> -->
+         <!-- (selectionChange)="getLmo($event.value)"  -->
+         <mat-select formControlName="msgtyp" required>
+           <mat-option *ngFor='let m of msgType' [value]="m.msge_type_id">
+            {{m.msge_type_nm}}
+           </mat-option>
+          
+         </mat-select>
+         <mat-error>MessageType is required</mat-error>
+       </mat-form-field>
+     </div>
+   
+  
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Duration*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <input matInput formControlName="dur">
+        <mat-error>Duration is required!</mat-error>
+      </mat-form-field>
+
+      <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Expiry Date*</div>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" formControlName="ex_dt">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>Expiry Date is required!</mat-error>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+      <div class="form-label">Message*</div>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Father/Husband Name</mat-label> -->
+        <textarea  matInput formControlName="msg" placeholder="Message"></textarea>
+        <!-- <input matInput formControlName="msg"> -->
+        <mat-error>Message is required!</mat-error>
+      </mat-form-field>
+
+      <!-- <a style='margin-left: 211px;'(click)='ViewLmolst()'>View Lmo List</a> -->
+
+    </div>
+  </div>
+  
+  <div fxLayout="row" style="justify-content: center;"  fxFlexFill >
+    <div >
+      <button mat-raised-button color='primary' [disabled]='!cafFngrFrm3.valid ' (click)="send(cafFngrFrm3.value)" >Submit</button>
+      </div>
+      <div  style="margin-left: 8px;">
+        <button mat-raised-button color='primary' class = "gtDtls" (click)="Reset(cafFngrFrm3)" >Reset</button>
+        </div>
+      
+  </div>
+</form>  
+</div>
+    <!-- <ag-grid-angular #agGrid style="width: 100%; height: 530px;" class="ag-theme-balham p-12" [pagination]="pagination"
+      [paginationPageSize]="paginationPageSize" [rowData]="rowData" [columnDefs]="columnDefs" [enableFilter]="true"
+      [getRowHeight]="getRowHeight" [rowSelection]="rowSelection" [loadingCellRenderer]="loadingCellRenderer"
+      [defaultColDef]="defaultColDef" [localeTextFunc]="localeTextFunc"
+      [overlayLoadingTemplate]="overlayLoadingTemplate" [loadingCellRendererParams]="loadingCellRendererParams"
+      [suppressHorizontalScroll]="false" [floatingFilter]="true" (cellClicked)="onCellClick($event)">
+    </ag-grid-angular> -->
+  </div>
+</div>

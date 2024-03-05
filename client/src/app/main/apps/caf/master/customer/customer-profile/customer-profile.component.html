@@ -1,0 +1,854 @@
+<div class="page-layout blank usrEmplye cstmrPrflePageBackground cusAcntCmpnt">
+  <!-- HEADER -->
+  <div *ngIf="clsbtn">
+    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+      <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="50" fxFlex.xs="100" class="px-8"></div>
+      <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+        <div class="cursor-pointer tblPrfleBtn" style="text-align: center" (click)="close()">
+          close
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header pt-8 pl-12" *ngFor="let s of cafDtlsData">
+    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+      <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="px-8">
+        <div class="user-info" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-sm="row"
+          fxLayoutAlign.gt-sm="start center">
+          <!--<div class="name">{{s.lst_nm?s.lst_nm:cafDtls.lst_nm}} {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} -
+            <span>{{s.caf_nu}}</span></div>-->
+			<div class="name" *ngIf="s.apsl_bbnl == 'APSFL'">{{s.lst_nm?s.lst_nm:cafDtls.lst_nm}} {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} -
+            <span>{{s.caf_nu}}</span></div>
+          <div class="name" *ngIf="s.apsl_bbnl == 'BBNL' && s.caf_type_id == 1">{{s.lst_nm?s.lst_nm:cafDtls.lst_nm}} {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} -
+            <span>{{s.caf_nu}}</span></div>
+          <div class="name" *ngIf="s.apsl_bbnl == 'BBNL' && s.caf_type_id == 2"> {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} - <span>{{s.caf_nu}}</span></div>
+		  <div class="name" *ngIf="s.apsl_bbnl == 'GOI' && s.caf_type_id == 1">{{s.lst_nm?s.lst_nm:cafDtls.lst_nm}} {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} -
+            <span>{{s.caf_nu}}</span></div>
+          <div class="name" *ngIf="s.apsl_bbnl == 'GOI' && s.caf_type_id == 2"> {{s.cstmr_nm?s.cstmr_nm:cafDtls.cstmr_nm}} - <span>{{s.caf_nu}}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+      <!-- <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="50" class="px-8"> -->
+      <div fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+        <div>
+          <!-- <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">LMO: </span>{{s.agnt_nm}} - <span>{{s.agnt_cd}}</span></p> -->
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.mbl_nu"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No: </span>{{s.mbl_nu}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.email"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Email: </span>{{s.email == null ? 'NA': s.email}}
+          </p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.instl_eml1_tx"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Email:
+            </span>{{s.instl_eml1_tx == null ? 'NA': s.instl_eml1_tx}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.phne_nu"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Allocated Phoneno:
+            </span>{{s.phne_nu == null ? 'No Number Assigned': s.phne_nu}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.adhr_nu"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Aadhaar No: </span>{{s.adhr_nu}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.sts_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Status: </span>{{s.sts_nm}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" ><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Activated On: </span>{{s.actvn_dts}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" ><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Suspended On: </span>{{s.spnd_ts}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" ><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Terminated On: </span>{{s.trmnd_ts}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.caf_type_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Type: </span>{{s.caf_type_nm}}</p>
+			<p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.caf_type_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">APSFL/BBNL: </span>{{s.apsl_bbnl}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.pckge_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Package Name: </span>{{s.pckge_nm}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.frqncy_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Billing Frequency: </span>{{s.frqncy_nm}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.instl_addr1_tx"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Address: </span>{{s.instl_addr1_tx}},
+            {{s.instl_addr2_tx}} {{s.instl_ara_tx}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.dstrt_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr"></span>{{s.dstrt_nm}}, {{s.mndl_nm}} {{s.vlge_nm}}
+          </p>
+		  <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.caf_type_id == 2"><span
+            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Department Name: </span>{{s.ent_dept_nm}} </p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.caf_type_id == 2"><span
+            class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Organization Code: </span>{{s.orgnsn_cd}} </p>
+        </div>
+
+      </div>
+      <div fxFlex.xl="48" fxFlex.lg="48" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+        <div>
+		  <p class="font-size-13 font-weight-400 fuse-white--fg" ><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Resumed On: </span>{{s.rsme_dts}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">LMO: </span>{{s.agnt_nm}} -
+            <span>{{s.agnt_cd}}</span></p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg" *ngIf="s.agnt_nm"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No: </span>{{s.ofce_mbl_nu}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Network Manager:
+            </span>{{s.netwrk_cntct_nm == null ? 'NA' : s.netwrk_cntct_nm}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No:
+            </span>{{s.netwrk_mbl_nu == null ? 'NA' : s.netwrk_mbl_nu}}</p>
+
+          <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Sales Manager:
+            </span>{{s.sales_cntct_nm == null ? 'NA' : s.sales_cntct_nm}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Mobile No:
+            </span>{{s.sales_mbl_nu == null ? 'NA' : s.sales_mbl_nu}}</p>
+			
+		<p class="font-size-13 font-weight-400 fuse-white--fg"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Renewed On:
+            </span>{{s.pack_strt == null ? 'NA' : s.pack_strt}}</p>
+          <p class="font-size-13 font-weight-400 fuse-white--fg"><span
+              class="font-size-14 font-weight-400 cstmrDtlLblTxtClr">Valid Till:
+            </span>{{s.pack_expry == null ? 'NA' : s.pack_expry}}</p>
+			
+        </div>
+      </div>
+      <!-- <div fxFlex.xl="33" fxFlex.lg="33" fxFlex.md="50" fxFlex.xs="100" class="px-8"></div> -->
+    </div>
+  </div>
+  <!-- / HEADER -->
+  <!-- CONTENT -->
+  <div class="content">
+    <mat-tab-group (selectedTabChange)="tabChangeFn($event)" [(selectedIndex)]="selectedIndex">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          OLT-ONT Details
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12">
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+              <div class="cstmr-prfle-dtls-card" *ngFor="let b of rowData">
+                <div class="cstmr-prfle-dtls-card-header">ONU Details</div>
+                <div fxLayout.xl="column" fxLayout.lg="column" fxLayout.md="column" fxLayout.xs="column"
+                  fxLayoutAlign.gt-md="start" class="p-12">
+                  <div class="cstmr-prfle-dtls-card-lbl"> ONU Serial No
+                    <span class="prfle-dtls-txt">{{b.onu_srl_nu}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> ONU MAC Address
+                    <span class="prfle-dtls-txt">{{b.onu_mac_addr_tx}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> ONU Model Name
+                    <span class="prfle-dtls-txt">{{b.onu_mdl_nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> IPTV Serial Number
+                    <span class="prfle-dtls-txt">{{b.iptv_srl_nu}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> IPTV MAC Address
+                    <span class="prfle-dtls-txt">{{b.iptv_mac_addr_tx}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> IPTV Model Name
+                    <span class="prfle-dtls-txt">{{b.iptv_mdl_nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Subscriber ID (IPTV)
+                    <span class="prfle-dtls-txt">{{b.mdlwe_sbscr_id}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Aghora Code
+                    <span class="prfle-dtls-txt">{{b.aghra_cd}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> AAA Code
+                    <span class="prfle-dtls-txt">{{b.aaa_cd}}</span>
+                  </div>
+                </div>
+                <div class="text-center mt-8 pb-4">
+                  <button class="btn btn-primary font-size-14 w-40-p" (click)="restartBox(b)">ONU Reboot</button></div>
+              </div>
+
+              <div class="cstmr-prfle-dtls-card mt-8" *ngFor="let b of rowData">
+                <div class="cstmr-prfle-dtls-card-header">OLT Details</div>
+                <div *ngIf="ontDtls" fxLayout.xl="column" fxLayout.lg="column" fxLayout.md="column" fxLayout.xs="column"
+                  fxLayoutAlign.gt-md="start" class="p-12">
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT ID
+                    <span class="prfle-dtls-txt">{{b.olt_id}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> POP/OLT Name
+                    <span class="prfle-dtls-txt">{{b.olt_nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Sub-station
+                    <span class="prfle-dtls-txt">{{b.sbstn_nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT IP Address
+                    <span class="prfle-dtls-txt">{{b.olt_ip_addr_tx}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT Serial No
+                    <span class="prfle-dtls-txt">{{b.olt_srl_nu}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT Port
+                    <span class="prfle-dtls-txt">{{b.olt_prt_nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT SPLIT
+                    <span class="prfle-dtls-txt">{{b.olt_prt_splt_tx}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Card No.
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.card}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OnuId
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.onuId}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT Operational State
+                    <span class="prfle-dtls-txt">{{b.ste_nm}}</span>
+                    <div>In State from <span class="prfle-dtls-txt">{{b.oprtnl_ste_chnge_ts}}</span></div>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> OLT Status
+                    <span class="prfle-dtls-txt">{{b.sts_nm}}</span>
+                    <div>In Status from <span class="prfle-dtls-txt">{{b.oprnl_sts_chnge_ts}}</span></div>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Data Refreshed on
+                    <span class="prfle-dtls-txt">{{b.lst_rfrh_ts}}</span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+              <div class="cstmr-prfle-dtls-card">
+                <div class="cstmr-prfle-dtls-card-header">ONT Details</div>
+                <div fxLayout.xl="column" fxLayout.lg="column" fxLayout.md="column" fxLayout.xs="column"
+                  fxLayoutAlign.gt-md="start" class="p-12" *ngIf="ontDtls">
+                  <div class="cstmr-prfle-dtls-card-lbl"> Operational State
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.operationalState}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> ONU Status
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.onuStatus}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Last down Cause
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.lastDownCause}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Last down Time
+                    <span
+                      class="prfle-dtls-txt">{{noOntDtls == true || (ontDtls.status.lastDownTime == 'NaN undefined NaN NaN:NaN:NaN') ? '--' : ontDtls.status.lastDownTime}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Last Dying Gasp Time
+                    <span
+                      class="prfle-dtls-txt">{{noOntDtls == true || (ontDtls.status.lastDyingGaspTime == 'NaN undefined NaN NaN:NaN:NaN') ? '--' : ontDtls.status.lastDyingGaspTime}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Last Up Time
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.lastUpTime}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Online Duration
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.status.onlineDuration}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Agora Alarms
+                    <span
+                      class="prfle-dtls-txt">{{noOntDtls == true ||  (ontDtls.status.alarms == undefined) ? '--' : ontDtls.status.alarms.length}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> IP Address
+                    <span class="prfle-dtls-txt">--</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Temperature(ºC)
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.sensor.temperature}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Received power 1550nm (dBm)
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.sensor.rxPower1550nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Received power 1490nm (dBm)
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.sensor.rxPower1490nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Transmitted power 1310nm (dBm)
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.sensor.txPower1310nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Distance(km)
+                    <span class="prfle-dtls-txt">{{noOntDtls == true ? '--' : ontDtls.sensor.distance}}</span>
+                  </div>
+                </div>
+                <div class="text-center mt-8 pb-4">
+                  <button class="btn btn-primary font-size-14 w-40-p" (click)="getONTDetails()">Refresh</button></div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+          <!-- <dx-data-grid class="p-8" id="gridContainer" [dataSource]="rowData" [remoteOperations]="false"
+            [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+            [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+            <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxi-column *ngFor="let f of boxcolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+              [allowFiltering]="f.filter"></dxi-column>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+
+          </dx-data-grid> -->
+
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Package Details
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12" *ngIf="addonPckgsPrm">
+          <dx-data-grid class="p-8" id="gridContainer"
+            (onToolbarPreparing)="(shwPckgeAddBtn == true && addonPckgsPrm.insrt_in == 1)?onToolbarPreparing($event):false" [dataSource]="pkgeData"
+            [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+            style="width:100%">
+            <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxi-column *ngFor="let f of packagecolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+              [allowFiltering]="f.filter"></dxi-column>
+            <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption="Status"
+              cellTemplate="editTemplate" [visible]="activeLbl">
+              <div *dxTemplate="let data of 'editTemplate'">
+                <div class="tblActvBtn">
+                  Active
+                </div>
+              </div>
+            </dxi-column>
+          </dx-data-grid>
+
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          VOIP Details
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12">
+          <div class="text-center font-weight-600 font-size-14 p-16" *ngIf="shwNoDataDiv">{{shwVoipMsg}}</div>
+          <dx-data-grid *ngIf="!shwNoDataDiv" class="p-8" id="gridContainer" [dataSource]="voipData"
+            [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+            style="width:100%">
+            <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxi-column *ngFor="let f of voipcolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+              [allowFiltering]="f.filter"></dxi-column>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+
+          </dx-data-grid>
+
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          HSI Usage
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12">
+          <div class="cstmr-prfle-dtls-card" *ngIf="shwTrlHsiCrd">
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start" class="p-8">
+                <div fxFlex.xl="25" fxFlex.lg="30" fxFlex.md="30" fxFlex.xs="40" class="px-8 hsiLmtText">
+                  Data consumption exceeds FUP
+                </div>
+                <div fxFlex.xl="25" fxFlex.lg="30" fxFlex.md="35" fxFlex.xs="100" class="px-8 hsiSpdTxt">
+                  {{crntDataSpd}}
+                  <span class="font-size-12 fonr-weight-600">On {{crntDataSpd_apldDt}}</span>
+                  <div class="hsiSpdLbl reduced-text-color">Reduced Speed</div>
+                </div>
+                <div fxFlex.xl="25" fxFlex.lg="30" fxFlex.md="25" fxFlex.xs="100" class="px-8 hsiSpdTxt">
+                  {{prvsDataSpd}}
+                <div class="hsiSpdLbl actual-text-color">Actual Speed</div>
+                </div>
+            </div>
+          </div>
+              <dx-data-grid class="p-8" id="gridContainer" [dataSource]="hsiData" [remoteOperations]="false"
+                [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%"
+                [masterDetail]="{ enabled: true, template: 'detail' }">
+                <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                </dxo-export>
+                <dxo-filter-row [visible]="false"></dxo-filter-row>
+                <dxi-column *ngFor="let f of hsicolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                  [allowFiltering]="f.filter"></dxi-column>
+                
+                <div *dxTemplate="let eachdayData of 'detail'">
+                  <dx-data-grid [dataSource]="eachdayData.data.eachday" [showBorders]="true" [columnAutoWidth]="true"
+                    class="max-width-100" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+                    [showBorders]="true">
+                    <dxi-column *ngFor="let f of hsiEachdaycolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                      [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                      [allowFiltering]="f.filter"></dxi-column>
+              </dx-data-grid>
+            </div>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                  [showInfo]="true"></dxo-pager>
+          </dx-data-grid>
+          
+
+          <div class="cstmr-prfle-dtls-card m-12">
+            <div class="p-16" id="chart-demo1">
+              <dx-chart palette="Violet" [dataSource]="hsiEchDayLineGraph">
+                <dxi-series *ngFor="let c of cafHsiUsgeOprtns" [valueField]="c.value" [name]="c.name" [color]="c.color">
+                </dxi-series>
+                <dxi-value-axis position="left">
+                  <dxo-grid [visible]="true"></dxo-grid>
+                  <dxo-title text="Total Usage (In GB)"></dxo-title>
+                </dxi-value-axis>
+                <dxo-common-series-settings #seriesSettings1 argumentField="oprn_dy" [type]="types[0]">
+                  <dxo-label [visible]="true" backgroundColor="none" color="black">
+                  </dxo-label>
+                </dxo-common-series-settings>
+                <dxo-margin [bottom]="20"></dxo-margin>
+                <dxo-argument-axis [valueMarginsEnabled]="false" discreteAxisDivisionMode="crossLabels">
+                  <dxo-grid [visible]="true"></dxo-grid>
+                  <dxo-title text="Days"></dxo-title>
+                </dxo-argument-axis>
+                <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+                </dxo-legend>
+                <dxo-title text="HSI Usage">
+                 <!-- <dxo-subtitle [text]="grphMnthYr">
+                  </dxo-subtitle> -->
+                </dxo-title>
+                <dxo-size [height]="400" [width]="1480">
+                </dxo-size>
+                <dxo-export [enabled]="true"></dxo-export>
+                <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000"></dxo-tooltip>
+              </dx-chart>
+            </div>
+          </div>
+
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Related CAFS
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12">
+          <div class="text-center font-weight-600 font-size-14 p-16" *ngIf="shwRltdCfsNoDataDiv">No Related CAFS
+            Available</div>
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start"
+            *ngIf="sameCafDtls && !shwRltdCfsNoDataDiv">
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+              <div class="cstmr-prfle-dtls-card " *ngFor="let c of cafAdhrMtchData">
+                <div class="cstmr-prfle-dtls-card-header">CAF Details</div>
+                <div class="p-12">
+                  <div class="cstmr-prfle-dtls-card-lbl"> CAF Number
+                    <span class="prfle-dtls-txt">{{c.caf_nu}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Status
+                    <span class="prfle-dtls-txt">{{c.sts_nm}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl">Activation Date
+                    <span class="prfle-dtls-txt">{{c.actvn_dt}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Recent Suspended Date
+                    <span class="prfle-dtls-txt">{{c.spnd_ts}}</span>
+                  </div>
+                  <div class="cstmr-prfle-dtls-card-lbl"> Recent Resume Date
+                    <span class="prfle-dtls-txt">{{c.rsme_ts}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start"
+            *ngIf="!sameCafDtls && !shwRltdCfsNoDataDiv">
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+
+              <div class="cstmr-prfle-dtls-card">
+                <div class="cstmr-prfle-dtls-card-header">CAFs with same Aadhar</div>
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="cafAdhrMtchData" [remoteOperations]="false"
+                  [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+                  <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                  </dxo-export>
+                  <dxo-filter-row [visible]="false"></dxo-filter-row>
+                  <dxi-column *ngFor="let f of cafAdhrMtchDataColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                    [allowFiltering]="f.filter"></dxi-column>
+                  <dxo-paging [pageSize]="10"></dxo-paging>
+                  <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                    [showInfo]="true"></dxo-pager>
+                </dx-data-grid>
+              </div>
+
+
+
+              <div class="cstmr-prfle-dtls-card mt-8">
+                <div class="cstmr-prfle-dtls-card-header">CAFs with same Mobile Number</div>
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="cafMblnuMtchData" [remoteOperations]="false"
+                  [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+                  <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                  </dxo-export>
+                  <dxo-filter-row [visible]="false"></dxo-filter-row>
+                  <dxi-column *ngFor="let f of cafMblnuMtchDataColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                    [allowFiltering]="f.filter"></dxi-column>
+                  <dxo-paging [pageSize]="10"></dxo-paging>
+                  <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                    [showInfo]="true"></dxo-pager>
+                </dx-data-grid>
+              </div>
+
+
+            </div>
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+
+              <div class="cstmr-prfle-dtls-card">
+                <div class="cstmr-prfle-dtls-card-header">CAFs from same Customer</div>
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="cafCstmrMtchData" [remoteOperations]="false"
+                  [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+                  <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                  </dxo-export>
+                  <dxo-filter-row [visible]="false"></dxo-filter-row>
+                  <dxi-column *ngFor="let f of cafCstmrMtchDataColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                    [allowFiltering]="f.filter"></dxi-column>
+                  <dxo-paging [pageSize]="10"></dxo-paging>
+                  <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                    [showInfo]="true"></dxo-pager>
+                </dx-data-grid>
+              </div>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Events
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12" *ngIf="inEvntTab">
+          <ds-events [enty_id]=cafSts [enty_ky]=cafId></ds-events>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Invoice
+        </ng-template>
+        <ds-loading *ngIf="shwLdr"></ds-loading>
+        <div class=" m-12">
+          <div class="text-center font-weight-600 font-size-14 p-16" *ngIf="noInvceDataDiv">No details available</div>
+
+          <dx-data-grid *ngIf="!noInvceDataDiv" class="p-8" id="gridContainer" [dataSource]="invoiceData"
+            [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+            [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+            style="width:100%" (onCellClick)="onCelInvClick($event)"
+            [masterDetail]="{ enabled: true, template: 'detail' }">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true">
+            </dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="false"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="false" mode="select">
+            </dxo-column-chooser>
+            <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+            </dxo-export>
+            <dxo-filter-row [visible]="false"></dxo-filter-row>
+            <dxi-column *ngFor="let f of invoicecolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+              [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter">
+            </dxi-column>
+            <div *dxTemplate="let agrmtData of 'detail'">
+              <dx-data-grid [dataSource]="invoiceChrgsData" [showBorders]="true" [columnAutoWidth]="true"
+                class="max-width-100" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+                [showBorders]="true">
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                  [showInfo]="true">
+                </dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxi-column caption="S.No" dataField="s_no" [width]="120" alignment="center"></dxi-column>
+                <dxi-column caption="Package Name" dataField="pckge_nm" [width]="150" alignment="center"></dxi-column>
+                <dxi-column caption="Package Type Name" dataField="pckage_type_nm" [width]="150" alignment="center">
+                </dxi-column>
+                <dxi-column caption="Charge Code" dataField="chrge_cd" [width]="150" alignment="center"></dxi-column>
+                <dxi-column caption="Charge Code Description" dataField="chrge_cde_dscn_tx" [width]="200"
+                  alignment="center"></dxi-column>
+                <dxi-column caption="Charge Amount" dataField="chrge_at" [width]="150" alignment="right"></dxi-column>
+                <dxi-column caption="TAX" dataField="tax_at" [width]="150" alignment="right"></dxi-column>
+                <dxi-column caption="Total" dataField="tl_at" [width]="150" alignment="right"></dxi-column>
+              </dx-data-grid>
+            </div>
+            <!-- <dxo-paging [pageSize]="10"></dxo-paging>
+           <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager> -->
+          </dx-data-grid>
+
+        </div>
+      </mat-tab>
+      <!-- <mat-tab>
+      <ng-template mat-tab-label>
+        Evevnts
+      </ng-template>
+      <div class=" m-12" >
+        <dx-data-grid class="p-8" id="gridContainer" [dataSource]="hsiData" [remoteOperations]="false"
+          [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+          [showRowLines]="true" [showBorders]="true" style="width:100%">
+          <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+          </dxo-export>
+          <dxo-filter-row [visible]="false"></dxo-filter-row>
+          <dxi-column *ngFor="let f of hsicolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+            [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+           <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+              [showInfo]="true"></dxo-pager>
+
+        </dx-data-grid>
+
+      </div>
+    </mat-tab> -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Add On Invoice
+      </ng-template>
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+      <div class=" m-12">
+        <div class="text-center font-weight-600 font-size-14 p-16" *ngIf="noInvceaddonDataDiv">No details available</div>
+
+        <dx-data-grid *ngIf="!noInvceaddonDataDiv" class="p-8" id="gridContainer" [dataSource]="invoiceaddonData"
+          [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+          [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+          style="width:100%" (onCellClick)="onCeladdonInvClick($event)"
+          [masterDetail]="{ enabled: true, template: 'detail' }">
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+            [showInfo]="true">
+          </dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+          <dxo-group-panel [visible]="false"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+          <dxo-column-chooser [enabled]="false" mode="select">
+          </dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+          </dxo-export>
+          <dxo-filter-row [visible]="false"></dxo-filter-row>
+          <dxi-column *ngFor="let f of addoninvoicecolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+            [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter">
+          </dxi-column>
+          <div *dxTemplate="let agrmtData of 'detail'">
+            <dx-data-grid [dataSource]="invoiceaddonChrgsData" [showBorders]="true" [columnAutoWidth]="true"
+              class="max-width-100" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+              [showBorders]="true">
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+                [showInfo]="true">
+              </dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxi-column caption="S.No" dataField="s_no" [width]="120" alignment="center"></dxi-column>
+              <dxi-column caption="Package Name" dataField="pckge_nm" [width]="150" alignment="center"></dxi-column>
+              <dxi-column caption="Package Type Name" dataField="pckage_type_nm" [width]="150" alignment="center">
+              </dxi-column>
+              <dxi-column caption="Charge Code Description" dataField="chrge_cde_dscn_tx" [width]="200"
+                alignment="center"></dxi-column>
+                <dxi-column caption="Charge Code" dataField="chrge_cd" [width]="150" alignment="center"></dxi-column>
+              <dxi-column caption="Charge Amount" dataField="chrge_at" [width]="150" alignment="right"></dxi-column>
+              <dxi-column caption="TAX" dataField="tax_at" [width]="150" alignment="right"></dxi-column>
+              <dxi-column caption="Total" dataField="tl_at" [width]="150" alignment="right"></dxi-column>
+              <dxi-column caption="Total Amount" dataField="ttlamt" [width]="150" alignment="right"></dxi-column>
+            </dx-data-grid>
+          </div> 
+
+        </dx-data-grid>
+
+      </div>
+    </mat-tab>
+     <mat-tab>
+      <ng-template mat-tab-label>
+        Support Tickets
+      </ng-template>
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+      <div class=" m-12">
+        <div class="text-center font-weight-600 font-size-14 p-16" *ngIf="shwNoDataDiv">{{shwTicketMsg}}</div>
+        <dx-data-grid *ngIf="!shwNoDataDiv" class="p-8" id="gridContainer" [dataSource]="TicketData"
+          [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+          [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+          style="width:100%">
+          <dxo-export [enabled]="(user.permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+          </dxo-export>
+          <dxo-filter-row [visible]="false"></dxo-filter-row>
+          <dxi-column *ngFor="let f of ticketcolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+            [caption]="f.headerName" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+            [allowFiltering]="f.filter"></dxi-column>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="false" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"
+            [showInfo]="true"></dxo-pager>
+
+        </dx-data-grid>
+
+      </div>
+    </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+
+   <!-- <ds-loading *ngIf="shwLdr"></ds-loading>
+    <div fxLayout="row" class="ml-24 mr-24" style="padding-top: 10px;">
+      <mat-card class="matcard" style="height: 500px;width: 100%;">
+       
+      </mat-card>
+    </div>  -->
+</div> 
+
+
+<!-- sidebar -->
+
+<ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div class="card">
+        <div class="card-body">
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle"
+            style="float:right">cancel </mat-icon>
+          <mat-tab-group (selectedTabChange)="tabChangePckgeFn($event)" [(selectedIndex)]="selectedPckgeIndex">
+            <mat-tab>
+              <ng-template mat-tab-label class="pckge-mat-tab-label">
+                IPTV
+              </ng-template>
+              <div class="m-12">
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="addOnStandardPckgsLst"
+                  [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+                  [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                  style="width:100%"
+                  (onSelectionChanged)="addOnPckgsSlctd($event)" (onRowExpanding)="getChanneslList($event)"
+                  [masterDetail]="{ enabled: true, template: 'detail' }">
+                  <dxo-paging [pageSize]="10"></dxo-paging>
+                  <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                  </dxo-pager>
+                  <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                  <!-- <dxo-filter-panel [visible]="true"></dxo-filter-panel> -->
+                  <dxo-selection mode="multiple"></dxo-selection>
+                  <!-- <dxo-group-panel [visible]="true"></dxo-group-panel> -->
+                  <!-- <dxo-grouping [autoExpandAll]="false"></dxo-grouping> -->
+                  <!-- <dxo-column-chooser [enabled]="true" mode="select"> -->
+                  <!-- </dxo-column-chooser> -->
+                  <!-- <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                    fileName="Package Agreement"> -->
+                  <!-- </dxo-export> -->
+                  <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+                  <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" [alignment]="f.alignment" [allowFiltering]="f.filter"
+                    [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+                  <div *dxTemplate="let agrmtData of 'detail'">
+                    <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [remoteOperations]="false" [allowColumnReordering]="true" 
+                    [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                      *ngIf="view == true" [columnAutoWidth]="true">
+                      <dxi-column [allowResizing]="true" caption="Sno" alignment="center" dataField="s_no"></dxi-column>
+                      <dxi-column [allowResizing]="true" caption="Channel Name" alignment="left" dataField="chnle_nm"></dxi-column>
+                    </dx-data-grid>
+                  </div>
+                </dx-data-grid>
+                <div class="text-right m-8" *ngIf="shwSveBtn">
+                  <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                    (click)="saveAddonPckgs()">Save</button>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label class="pckge-mat-tab-label">
+                HSI
+              </ng-template>
+              <div class="text-center font-weight-600 m-12" *ngIf="hsiPckgsData && hsiPckgsData.length==0">No HSI addons available</div>
+              <div *ngIf="hsiPckgsData && hsiPckgsData.length!=0">
+              <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start" class="mt-8">
+                <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="45" fxFlex.xs="50" class="px-8" *ngFor="let h of hsiPckgsData; let i=index">
+                  <div class="ds-card hsi-card">
+                    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                      <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="30" fxFlex.xs="100" class="px-8 mt-28">
+                        <mat-checkbox [(ngModel)]="hsiPckgsData[i].checked"
+                        id="hsiPckgsData[{{i}}]" 
+                        name="hsiPckgsData[{{i}}]" (change)="updateSelection(i, h)"></mat-checkbox>
+                      </div>
+                      <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="70" fxFlex.xs="100" class="px-8 text-center">
+                        <div class="font-weight-600 p-12 font-size-14 hsi-card-header-color">{{h.pckge_nm}} - ({{h.vle_tx}}GB)</div>
+                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                          <div fxFlex.xl="40" fxFlex.lg="30" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                            <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.ttl_cst}}</div>
+                            <div class="font-size-12">Total Cost</div>
+                          </div>
+                          <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                            <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.chrge_at}}</div>
+                            <div class="font-size-12">Charges</div>
+                          </div>
+                          <div fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                            <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.gst_at}}</div>
+                            <div class="font-size-12">GST</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-right m-8">
+                <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                  (click)="saveAddonHsiPckgs()">Save</button>
+              </div>
+            </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label class="pckge-mat-tab-label">
+                Remove IPTV Addons
+              </ng-template>
+              <div class="m-12">
+                <dx-data-grid class="p-8" id="gridContainer" [dataSource]="removeAddonPckgs" [remoteOperations]="false"
+                  [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+                  [showRowLines]="true" [showBorders]="true" (onSelectionChanged)="addOnPckgsSlctdFrDlt($event)"
+                  (onRowExpanding)="getChanneslList($event)" [masterDetail]="{ enabled: true, template: 'detail' }">
+                  <dxo-paging [pageSize]="10"></dxo-paging>
+                  <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                  </dxo-pager>
+                  <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                  <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                  <dxo-selection mode="multiple"></dxo-selection>
+                  <dxo-group-panel [visible]="true"></dxo-group-panel>
+                  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                  <dxo-column-chooser [enabled]="true" mode="select">
+                  </dxo-column-chooser>
+                  <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                    fileName="Package Agreement">
+                  </dxo-export>
+                  <dxo-filter-row [visible]="true"></dxo-filter-row>
+                  <dxi-column *ngFor="let f of rmvAddonscolumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" [alignment]="f.algnmnt" [allowFiltering]="f.filter"
+                    [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+                  <div *dxTemplate="let agrmtData of 'detail'">
+                    <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [showBorders]="true"
+                      *ngIf="view == true" [columnAutoWidth]="true">
+                      <dxi-column [allowResizing]="true" caption="Sno" dataField="indx"></dxi-column>
+                      <dxi-column [allowResizing]="true" caption="Channel Name" dataField="chnle_nm"></dxi-column>
+                    </dx-data-grid>
+                  </div>
+                </dx-data-grid>
+              </div>
+              <div fxFlex="100%" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="ml-24">
+                <div class="form-label">Reason For Remove</div>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl comment-width" appearance="outline">
+                  <textarea placeholder="Write a Comment" matInput [(ngModel)]="comment"
+                    [ngModelOptions]="{standalone: true}" required></textarea>
+                </mat-form-field>
+              </div>
+              <div class="text-right m-8" *ngIf="shwRmBtn">
+                <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button saveBtn-color mr-8"
+                  (click)="removeAddonPckgsFn()">Remove Package</button>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

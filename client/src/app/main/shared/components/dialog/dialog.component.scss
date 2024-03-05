@@ -1,0 +1,54 @@
+.add-files-btn {
+    float: right;
+    background-color: #6286e6 !important;
+  }
+  
+  :host {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  
+  .actions {
+    justify-content: flex-end;
+  }
+  
+  .container {
+    height: 100%;
+  }
+
+
+  .mat-dialog-container {
+    display: block;
+    padding: 32px !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    width: 100% !important;
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    margin-left: 28% !important;
+}
+  
+.flCss
+ {
+  color: #e24040;
+  margin-left: 11px;
+ }
+
+
+
+ .scCss
+ {
+  color: #058651;
+  margin-left: 11px;
+ }
+
+ .mat-dialog-container {
+
+  padding: 23px !important;
+ 
+}

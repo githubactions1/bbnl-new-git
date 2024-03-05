@@ -1,0 +1,345 @@
+<div id="courses" class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <div class="container header accent pghdrStyle text-center pt-16">
+        <h2 style="text-transform: uppercase"> My Courses </h2>
+        <!-- ADD EVENT BUTTON -->
+        <button  mat-fab class="add-event-button mat-accent" aria-label="Add event"
+        [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+        <mat-icon>add</mat-icon>
+    </button>
+        <!-- / ADD EVENT BUTTON -->
+    </div>
+    <!-- <ds-sidebar class="sidebar" name="contacts-main-sidebar" position="left" lockedOpen="gt-sm">
+
+
+        <div class="content" dsPerfectScrollbar>
+
+            <div class="content py-16" dsPerfectScrollbar>
+
+                <div class="nav material2">
+
+                    <div class="nav-item trningLst" aria-label="inbox">
+                        <a class="nav-link" matRipple (click)="changeFilter(3)"
+                            [ngClass]="{'active accent':filterBy == 3}">
+                            <span class="title">completed</span>
+                        </a>
+                    </div>
+
+                    <div class="nav-item trningLst" aria-label="frequently contacted">
+                        <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy == 2}"
+                            (click)="changeFilter(2)">
+                            <div class="title">Inprogres</div>
+                        </a>
+                    </div>
+                   
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </ds-sidebar> -->
+
+   
+    
+    <div class="content">
+
+        <mat-tab-group dynamicHeight (selectedTabChange)="onTabChanged($event);">
+
+            <mat-tab label="ClassRoom Training" class="cls-trng" >
+                <div fxLayout="row">
+                    <div class="content  p-24 pb-56 ">
+                        <ds-sidebar class="sidebar" name="contacts-main-sidebar" position="left" lockedOpen="gt-sm">
+
+
+                            <div class="content" dsPerfectScrollbar>
+                    
+                                <div class="content py-16" dsPerfectScrollbar>
+                    
+                                    <div class="nav material2">
+                    
+                                        <div class="nav-item trningLst" aria-label="inbox">
+                                            <a class="nav-link" matRipple (click)="changeFilter(3)"
+                                                [ngClass]="{'active accent':filterBy == 3}">
+                                                <span class="title">completed</span>
+                                            </a>
+                                        </div>
+                    
+                                        <div class="nav-item trningLst" aria-label="frequently contacted">
+                                            <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy == 2}"
+                                                (click)="changeFilter(2)">
+                                                <div class="title">Inprogres</div>
+                                            </a>
+                                        </div>
+                                       
+                    
+                    
+                                    </div>
+                    
+                                </div>
+                            </div>
+                    
+                    
+                        </ds-sidebar>
+                        
+                    </div>
+                    <div class="content  w-100-p ">
+                        <div fxLayout="row wrap" class="p-12">
+                            <!-- <div class="row"> -->
+                           
+                            <div fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="ebt m-12" *ngFor="let trnl of  catTrngs"
+                                >
+                                <mat-card class="example-card cls-trng cardShadw">
+
+
+                                    <div fxLayout="column">
+                                        <p class="pt-8   m-0 crs-ttl text-center font-weight-700 font-size-16">
+                                            {{trnl.trng_nm}}</p>
+                                        <p
+                                            class="pt-0 line-height-1.75  m-0  text-center font-weight-600 font-size-14 cnt-desc">
+                                            {{trnl.trng_disc}}</p>
+                                        <div class="divider">
+                                            <p class="divider-cntnt"></p>
+                                        </div>
+                                        <div fxLayout="row" class="mt-12">
+                                            <p fxLayout="row" class="pt-0 pl-8 cnt-txt   m-0 font-size-12">
+                                                <mat-icon class="mr-4 font-size-16">calendar_today</mat-icon>
+                                                Total Assignments Done:
+                                            </p>
+                                            <p class="pt-0   m-0  font-size-12">
+                                                10</p>
+                                        </div>
+                                        <div fxLayout="row">
+                                            <p fxLayout="row" class="pt-0 pl-8 cnt-txt  m-0 font-size-12">
+                                                <mat-icon class="mr-4 font-size-16">supervisor_account</mat-icon>
+                                                Toatal Batches Scheduled:
+                                            </p>
+                                            <p class="pt-0   m-0 font-size-12">
+                                                20</p>
+                                        </div>
+                                        <div fxLayout="row" class="text-center">
+                                            <div fxLayout="column" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                                                fxFlex.gt-xs="50%" class="ebt m-4">
+                                                <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">Created By</p>
+                                                <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">Commissioner</p>
+                                            </div>
+                                            <div fxFlex.gt-md="50%" fxLayout="column" fxFlex.gt-sm="50%"
+                                                fxFlex.gt-xs="50%" class="ebt m-4">
+                                                <p class="pt-0 pl-8 m-0   font-size-12">Created Date</p>
+                                                <p class="pt-0 pl-8 m-0 font-size-12">22/10/2019</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="crs-actns-cntnr">
+
+                                                <div class="crs-actns">
+
+                                                    <button class="btn" (click)="viewCourse(dprt)"><i
+                                                            class="fa fa-play-circle"></i> Assign</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-card>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </mat-tab>
+
+            <mat-tab label="Online Training">
+                <div fxLayout="row">
+                    <div class="content  p-24 pb-56">
+                        <ds-sidebar class="sidebar" name="contacts-main-sidebar" position="left" lockedOpen="gt-sm">
+
+
+                            <div class="content" dsPerfectScrollbar>
+                    
+                                <div class="content py-16" dsPerfectScrollbar>
+                    
+                                    <div class="nav material2">
+                    
+                                        <div class="nav-item trningLst" aria-label="inbox">
+                                            <a class="nav-link" matRipple (click)="changeFilter(3)"
+                                                [ngClass]="{'active accent':filterBy == 3}">
+                                                <span class="title">completed</span>
+                                            </a>
+                                        </div>
+                    
+                                        <div class="nav-item trningLst" aria-label="frequently contacted">
+                                            <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy == 2}"
+                                                (click)="changeFilter(2)">
+                                                <div class="title">Inprogres</div>
+                                            </a>
+                                        </div>
+                                       
+                    
+                    
+                                    </div>
+                    
+                                </div>
+                            </div>
+                    
+                    
+                        </ds-sidebar>
+                    </div>
+
+                    <div class="content ">
+                        <div class="row">
+
+                            <div class="row p-12">
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt m-12"
+                                *ngFor="let trnl of  catTrngs">
+                                    <mat-card class="example-card cardShadw">
+
+                                        <img src="https://cnet4.cbsistatic.com/img/NlyoQRNtMD1kFL4pKE1LzkM6uhI=/940x0/2018/03/16/5b1ba726-2c4d-4163-b14d-ed97ff23f959/20180316-windows-10-background-01.jpg" alt="author" class="crd-img">
+                                        <div>
+                                            <p
+                                                class="pt-0 line-height-1.75 crs-ttl-onl text-center font-weight-700 font-size-16">
+                                                {{trnl.trng_nm}}</p>
+                                                <p
+                                                class="pt-0 line-height-1.75 crs-ttl-onl-desc text-center font-weight-500 font-size-12">
+                                                {{trnl.trng_disc}}</p>
+                                            <div>
+                                                    <div class="divider">
+                                                            <p class="divider-cntnt"></p>
+                                                        </div>
+                                                <!-- <div class='icnalgmt' fxFlex.gt-md="45%" fxFlex.gt-sm="45%"
+                                                    fxFlex.gt-xs="45%">
+                                                    <mat-icon class='column maticn' (click)='onRatingChanged(star)'
+                                                        *ngFor='let star of ratingArr;index as i'> {{showIcon(i)}}
+                                                    </mat-icon>
+                                                    <span style='font-size: smaller;'>last updated:09nov</span>
+                                                </div> -->
+                                                <div fxLayout="row" class="text-center">
+                                                        <div fxLayout="column" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                                                            fxFlex.gt-xs="50%" class="ebt m-4">
+                                                            <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">Created By</p>
+                                                            <p class="pt-0 pl-8  m-0 cnt-txt  font-size-12">Commissioner</p>
+                                                        </div>
+                                                        <div fxFlex.gt-md="50%" fxLayout="column" fxFlex.gt-sm="50%"
+                                                            fxFlex.gt-xs="50%" class="ebt m-4">
+                                                            <p class="pt-0 pl-8 m-0   font-size-12">Created Date</p>
+                                                            <p class="pt-0 pl-8 m-0 font-size-12">22/10/2019</p>
+                                                        </div>
+                                                    </div>
+                                                <div class="crs-actns-cntnr">
+
+                                                    <div class="crs-actns">
+                                                        <!-- <p *ngIf='dprt.crs_cplt_in==2 || dprt.crs_cplt_in==3 '>60%
+                                                            completed</p>
+                                                        <p *ngIf='dprt.crs_cplt_in==1 '>&nbsp;</p> -->
+                                                        <button  class="btn"
+                                                            (click)="viewCourse(dprt)"><i class="fa fa-play-circle"></i>
+                                                            Resume</button>
+                                                        <!-- <button *ngIf='dprt.crs_cplt_in==2' class="btn"
+                                                            (click)="viewCourse(dprt)"><i class="fa fa-play-circle"></i>
+                                                            Resume Course</button>
+                                                        <button *ngIf='dprt.crs_cplt_in==3' class="btn"
+                                                            (click)="viewCourse(dprt)"><i class="fa fa-play-circle"></i>
+                                                            Start Again</button> -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </mat-card>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="content  p-24 pb-56" *ngIf="filterBy == 5 ">
+                        <div class="row">
+
+                            <div class="row">
+
+
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;"> Home</div>
+                                    </mat-card>
+                                </div>
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;"> Horticulture Dep</div>
+                                    </mat-card>
+                                </div>
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;"> Animal Husbandry and Dairy development</div>
+                                    </mat-card>
+                                </div>
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;">Medical & Health Dept</div>
+                                    </mat-card>
+                                </div>
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;">Revenue</div>
+                                    </mat-card>
+                                </div>
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;">Sericulture Dept</div>
+                                    </mat-card>
+                                </div>
+                                <div fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" class="ebt"
+                                    style="padding: 24px;" (click)="viewCourse('view')">
+                                    <mat-card class="example-card cardShadw" style="background-color: #fafbfc;">
+
+                                        <div><img src="assets/images/50prcnt.jpg" alt="author"></div>
+                                        <div class="pt-0 line-height-1.75 text-center font-weight-500 font-size-16"
+                                            style="height: 50px;"> Social Welfare (TW Dept. in Tribal Areas)</div>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </mat-tab>
+
+
+        </mat-tab-group>
+
+    </div>
+</div>

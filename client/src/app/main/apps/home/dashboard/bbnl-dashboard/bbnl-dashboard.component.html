@@ -1,0 +1,428 @@
+<div class="page-layout simple pageBackground tabbed">
+
+  <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+    class="m-12 dstrt-card" *ngIf="shwDstrctDrpdwn">
+    <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <div class="font-weight-600 mr-12 transform-text">BBNL DASHBOARD</div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-xl="80%" fxFlex.gt-lg="80%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+    </div>
+    <div fxFlex="100" fxFlex.gt-xl="20%" fxFlex.gt-lg="20%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+      *ngIf="dstrctNm" class="loc_div_transform">
+      <div class="text-right font-weight-600 font-size-16 pr-16 dstrt-lbl">
+        <span class="material-icons loc_transform">location_on</span>{{dstrctNm}}
+      </div>
+    </div>
+  </div>
+  <div class="text-right font-weight-600 font-size-16 pr-16" *ngIf="!shwDstrctDrpdwn">
+    <span class="material-icons loc_transform">location_on</span>{{dstrctNm}}
+  </div>
+  <div class="dbcrdsbgrnd">
+
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card dsbbrdcrds" *ngIf="agntCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-blue border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{agntCount[0].ttl_cnt}}</div>
+                <div class="h4 nme">Total Tenants</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{agntCount[0].mso_cnt}}</div>
+                <div class="h4 nme">MSO's</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{agntCount[0].lmo_cnt}}</div>
+                <div class="h4 nme">LMO's</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-pink border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount[0].ttl_cnt}}</div>
+                <div class="h4 nme">Total CAFS</div>
+
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount[0].ind_cnt}}</div>
+                <div class="h4 nme">Individual CAFS</div>
+
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{cafCount[0].ent_cnt}}</div>
+                <div class="h4 nme">Enterprise CAFS</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card  dsbbrdcrds" *ngIf="cafCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-green border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{cafCount[0].ent_cnt}}</div>
+                <div class="h4 nme">Total Enterprise CAFS</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start top">
+            <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt"><b><a href="javascript:void(0)" (click)="getData(1)">{{cafCount[0].bbnl}}</a></b></div>
+                <div class="h4 nme">BBNL</div>
+              </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt"><b><a href="javascript:void(0)" (click)="getData(2)">{{cafCount[0].goi}}</a></b></div>
+                <div class="h4 nme">GOI</div>
+              </div>
+            </div>
+			
+			<div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="100%" class="totlCnt">
+              <div class="cntDtls">
+
+                <div class="h1 cnt"><b><a href="javascript:void(0)" (click)="getData(3)">{{cafCount[0].Others}}</a></b></div>
+                <div class="h4 nme">Others</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds" *ngIf="stpBxsCount">
+          <div fxLayout="row wrap" fxLayoutAlign="start top" class="border-top-yellow border-radius-6">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctn">
+              <div class="cntDtls">
+
+                <div class="h1 cnt"><b><a href="javascript:void(0)" (click)="getData(4)">{{totalotlcnt[0].count }}</a></b></div>
+                <div class="h4 nme">Total Olt Count</div>
+              </div>
+            </div>
+          </div>
+          <!-- <div fxLayout="row wrap" fxLayoutAlign="start top"> -->
+            <!-- <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="100%" class="totlCnt"> -->
+              <!-- <div class="cntDtls"> -->
+
+                <!-- <div class="h1 cnt">{{stpBxsCount[0].ttl_mso_stp_bxs}}</div> -->
+                <!-- <div class="h4 nme">MSO's Stock</div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div fxFlex fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="40%" fxFlex.gt-xs="100%" class="totlCnt"> -->
+              <!-- <div class="cntDtls"> -->
+
+                <!-- <div class="h1 cnt">{{stpBxsCount[0].ttl_lmo_stp_bxs}}</div> -->
+                <!-- <div class="h4 nme">LMO's Stock</div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="100%" class="totlCnt"> -->
+              <!-- <div class="cntDtls"> -->
+
+                <!-- <div class="h1 cnt">{{stpBxsCount[0].ttl_apsfl_stp_bxs}}</div> -->
+                <!-- <div class="h4 nme">APSFL Stock</div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="row" *ngIf="ShowGr==true">
+            <div class="row gridTop" id="target">
+                <div class="col-lg-12 col-md-12 mgnb-8 p-5">
+                    <dx-data-grid class="p-8" id="gridContainer" [dataSource]="gridData" [remoteOperations]="false"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [allowColumnResizing]="true"
+                        [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:99%">
+                        <dxo-paging [pageSize]="10"></dxo-paging>
+                        <dxo-pager [visible]="true" [showPageSizeSelector]="true"
+                            [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                        <dxo-column-chooser [enabled]="true" mode="select">
+                        </dxo-column-chooser>
+                        <dxo-export [enabled]="true" [allowExportSelectedData]="true" [fileName]="cardType">
+                        </dxo-export>
+                        <dxo-filter-row [visible]="true"></dxo-filter-row>
+                        <dxi-column *ngFor="let f of gridColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                            [caption]="f.headerName" [alignment]="f.alignment" [width]="f.width"
+                            [allowResizing]="true">
+                        </dxi-column>
+                    </dx-data-grid>
+                </div>
+            </div>
+        </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-xl="65%" fxFlex.gt-lg="65%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <div class="ds-card m-12">
+        <div class="px-16 table-Header-border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="font-weight-600 font-size-18">LMO Wise Monthly Summary</div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="px-16 transform-filter-div" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="font-weight-600 mr-12 transform-text">Year</div>
+              <mat-form-field appearance="outline">
+                <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedYear">
+                  <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxFlex="100" fxFlex.gt-xl="18%" fxFlex.gt-lg="18%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <div class="px-16 transform-filter-div" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="font-weight-600 mr-12 transform-text">Month</div>
+              <mat-form-field appearance="outline">
+                <mat-select class="simplified" fxLayoutAlign="space-between center" [(value)]="selectedMonth">
+                  <mat-option *ngFor="let m of months" [value]='m.id'>{{m.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div fxFlex="100" fxFlex.gt-xl="15%" fxFlex.gt-lg="15%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%"
+            fxFlex.gt-xs="100%">
+            <button type="submit" mat-flat-button class="mat-raised-button gtdtabtnalgnmnt gtDtls"
+              (click)="getLmoWiseData()">Get Data</button>
+          </div>
+        </div>
+        <div class="p-4" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+          fxLayoutAlign.gt-xs="space-between start">
+          <dx-data-grid id="gridContainer" [dataSource]="lmoSumryCnts" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+            [showBorders]="true" style="max-width:100%" [allowColumnResizing]="true">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+            </dxo-pager>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+            <dxo-group-panel [visible]="false"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true" fileName="LMO Details"></dxo-export>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+              alignment="f.cellStyle.text-align" [width]="f.width" [alignment]="f.alignment" [allowResizing]="true"
+              [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"
+              [format]="{type:f.type,currency:f.currency, precision:f.precision}"></dxi-column>
+          </dx-data-grid>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-xl="35%" fxFlex.gt-lg="35%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" *ngIf="crntPrvsMnthCounts">
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+          fxFlex.gt-xs="50%">
+          <div class="ds-card dsbbrdcrds widget-statstic-card">
+            <div class="card-block">
+              <div class="icofont icofont-presentation-alt st-icon bg-icon-green">
+                <mat-icon>account_circle</mat-icon>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16">
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center border-right">
+                  <div class="h1 cnt">{{cafOprtnPrvMnth == undefined ? 0 : cafOprtnPrvMnth.prv_mnth_caf_prv_ct}}</div>
+                  <div class="h4 nme">{{prvMnthNm}} {{crntYrNm}}</div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center">
+                  <div class="h1 cnt">{{cafOprtnCrntMnth == undefined ? 0 : cafOprtnCrntMnth.crnt_mnth_caf_prv_ct}}
+                  </div>
+                  <div class="h4 nme">{{crntMnthNm}} {{crntYrNm}}</div>
+                </div>
+              </div>
+              <div class="text-center font-weight-500 fg-icon-green">
+                <div>CAFs Provisioned</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+          fxFlex.gt-xs="50%">
+          <div class="ds-card dsbbrdcrds widget-statstic-card">
+            <div class="card-block">
+              <div class="icofont icofont-presentation-alt st-icon bg-icon-blue">
+                <mat-icon>priority_high</mat-icon>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16">
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center border-right">
+                  <div class="h1 cnt">{{cafOprtnPrvMnth == undefined ? 0 : cafOprtnPrvMnth.prv_mnth_caf_spnd_ct}}</div>
+                  <div class="h4 nme">{{prvMnthNm}} {{crntYrNm}}</div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center">
+                  <div class="h1 cnt">{{cafOprtnCrntMnth == undefined ? 0 : cafOprtnCrntMnth.crnt_mnth_caf_spnd_ct}}
+                  </div>
+                  <div class="h4 nme">{{crntMnthNm}} {{crntYrNm}} </div>
+                </div>
+              </div>
+              <div class="text-center font-weight-500 fg-icon-blue">
+                <div>CAFs Suspended</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" *ngIf="crntPrvsMnthCounts">
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+          fxFlex.gt-xs="50%">
+          <div class="ds-card dsbbrdcrds widget-statstic-card">
+            <div class="card-block">
+              <div class="icofont icofont-presentation-alt st-icon bg-c-yellow">
+                <mat-icon>restore</mat-icon>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16">
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center border-right">
+                  <div class="h1 cnt">{{cafOprtnPrvMnth == undefined ? 0 : cafOprtnPrvMnth.prv_mnth_caf_rsme_ct}}</div>
+                  <div class="h4 nme">{{prvMnthNm}} {{crntYrNm}}</div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center">
+                  <div class="h1 cnt">{{cafOprtnCrntMnth == undefined ? 0 : cafOprtnCrntMnth.crnt_mnth_caf_rsme_ct}}
+                  </div>
+                  <div class="h4 nme">{{crntMnthNm}} {{crntYrNm}} </div>
+                </div>
+              </div>
+              <div class="text-center font-weight-500 fg-icon-yellow">
+                <div>CAF Resume</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+          fxFlex.gt-xs="50%">
+          <div class="ds-card dsbbrdcrds widget-statstic-card">
+            <div class="card-block">
+              <div class="icofont icofont-presentation-alt st-icon bg-icon-pink">
+                <mat-icon>format_size</mat-icon>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16">
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center border-right">
+                  <div class="h1 cnt">{{cafOprtnPrvMnth == undefined ? 0 : cafOprtnPrvMnth.prv_mnth_caf_trmnd_ct}}</div>
+                  <div class="h4 nme">{{prvMnthNm}} {{crntYrNm}}</div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center">
+                  <div class="h1 cnt">{{cafOprtnCrntMnth == undefined ? 0 : cafOprtnCrntMnth.crnt_mnth_trmnd_ct}}</div>
+                  <div class="h4 nme">{{crntMnthNm}} {{crntYrNm}} </div>
+                </div>
+              </div>
+              <div class="text-center font-weight-500 fg-icon-pink">
+                <div>CAFs Terminated</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" *ngIf="crntPrvsMnthCounts">
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+          fxFlex.gt-xs="50%">
+          <div class="ds-card dsbbrdcrds widget-statstic-card">
+            <div class="card-block">
+              <div class="icofont icofont-presentation-alt st-icon bg-icon-blue">
+                <mat-icon>track_changes</mat-icon>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16">
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center border-right">
+                  <div class="h1 cnt">{{cafOprtnPrvMnth == undefined ? 0 : cafOprtnPrvMnth.prv_mnth_bx_chnge_ct}}</div>
+                  <div class="h4 nme">{{prvMnthNm}} {{crntYrNm}}</div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center">
+                  <div class="h1 cnt">{{cafOprtnCrntMnth == undefined ? 0 : cafOprtnCrntMnth.crnt_mnth_bx_chnge_ct}}
+                  </div>
+                  <div class="h4 nme">{{crntMnthNm}} {{crntYrNm}} </div>
+                </div>
+              </div>
+              <div class="text-center font-weight-500 fg-icon-blue">
+                <div>Box Change</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+          fxFlex.gt-xs="50%">
+          <div class="ds-card dsbbrdcrds widget-statstic-card">
+            <div class="card-block">
+              <div class="icofont icofont-presentation-alt st-icon bg-icon-green">
+                <mat-icon>loop</mat-icon>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start top" fxLayoutAlign="start top" class="p-16">
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center border-right">
+                  <div class="h1 cnt">{{cafOprtnPrvMnth == undefined ? 0 : cafOprtnPrvMnth.prv_mnth_pn_chnge_ct}}</div>
+                  <div class="h4 nme">{{prvMnthNm}} {{crntYrNm}}</div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xl="50%" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%"
+                  fxFlex.gt-xs="50%" class="text-center">
+                  <div class="h1 cnt">{{cafOprtnCrntMnth == undefined ? 0 : cafOprtnCrntMnth.crnt_mnth_pn_chnge_ct}}
+                  </div>
+                  <div class="h4 nme">{{crntMnthNm}} {{crntYrNm}} </div>
+                </div>
+              </div>
+              <div class="text-center font-weight-500 fg-icon-green">
+                <div>PON Change</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div>

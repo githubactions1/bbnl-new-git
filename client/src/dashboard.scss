@@ -1,0 +1,416 @@
+.titlebrder{
+    border-right: 1px solid #e8e8e8;
+    color: #d02518;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 3px solid #0d5fa5;
+    background: #f4faff;
+    border-bottom: 1px solid #cce3f7!important;
+}
+.addBtn-color{
+    background-color: #b78f81 !important;
+}
+.addBtn-icon-color{
+    color: #292b73 !important;
+}
+.ds-white--fg{
+    color: white !important;
+}
+.addBtn{
+    height: 36px;
+    line-height: 34px;
+}
+.vertical-align-text-bottom{
+    vertical-align: text-bottom;
+}
+.saveBtn-color{
+    background-color: #475c97!important;
+    color: white !important;
+}
+.resetBtn-color{
+    background-color: #ea673d !important;
+    color: white !important;
+}
+
+.deleteBtn-color{
+    background-color: #ea3d3d !important;
+    color: white !important;
+}
+.editBtn-color{
+    background-color: #f9f9f9 !important;
+}
+.moreBtn-color{
+    background-color: #475c97!important;
+    color:#265bc4 !important;
+}
+.deleteBtn-icon-color {
+    color: #e23b3b !important;
+}
+.mat-pseudo-checkbox-checked:after {
+    width: 10px !important;
+    height: 5px !important;
+}
+.border-radius-3{
+    border-radius: 3px;
+}
+
+button:focus {
+    outline: none!important;
+}
+
+// .ag-theme-balham .ag-ltr .ag-has-focus .ag-cell-focus, .ag-theme-balham .ag-rtl .ag-has-focus .ag-cell-focus {
+//     border: 0px solid #0091EA!important;
+//     outline: none!important;
+// }
+
+.mat-primary[disabled]
+{
+    color: rgba(255, 255, 255, 0.26)!important;
+}
+.closeSidebar:hover{
+    color: #fdb5b5;
+    cursor: pointer;
+}
+.mreBtnstls{
+    background-color: #f9f9f9 !important;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    cursor: pointer;
+    line-height: 20px;
+    border-radius: 3px;
+    border:0px;
+    mat-icon{
+      width:16px!important;
+      min-width:16px!important;
+      font-size:16px!important
+    }
+    .mat-icon {
+      
+      width: 16px!important;
+    }
+  .material-icons { 
+        font-size: 17px!important;
+    }
+    .pt-2{
+        padding-top:2px!important;
+    }
+}
+.edtBtnstls,.dlteBtnStyls{
+    background-color: #f9f9f9 !important;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    cursor: pointer;
+    line-height: 20px;
+    border-radius: 3px;
+    border:0px;
+    mat-icon{
+      width:16px!important;
+      min-width:16px!important;
+      font-size:16px!important
+    }
+    .mat-icon {
+      
+      width: 16px!important;
+    }
+  .material-icons { 
+        font-size: 16px!important;
+    }
+    .pt-2{
+        padding-top:2px!important;
+    }
+  }
+.gridBtns{
+    padding: 10px 10px 6px 0px;
+    .mat-button-toggle-checked {
+        background-color: #e0e0e0;
+        color: rgb(0, 0, 0)!important;
+        background-color: #f9deb1;
+        // border-right: 1px solid;
+    }
+    // .mat-button-toggle {
+
+     
+    //     color: white !important;
+    //     background-color: #795548;
+    //     border-right: 0px solid;
+    //     font-weight: 600;
+    
+    // }
+}
+
+
+
+.topbtnClor
+{
+
+    background-color: white !important;
+    border-color: #ddd !important;
+    color: #2c5685 !important;
+    box-shadow: 0 4px 12px 0 rgba(123, 149, 153, 0.36) !important;
+    font-weight: bold !important;
+    border: 1px solid #dddddd;
+   .mat-button-toggle {
+    color: #2c5685 !important;
+    
+ }
+}
+
+
+
+
+
+
+
+.permMsg {
+    text-align: center;
+    font-size: 20px;
+    padding: 30px;
+}
+  .myPrfleSidebar,.ds-form-sidebar{
+    .card-header {
+        color: #272a73;
+        // background: repeating-linear-gradient(-55deg, #f6ba5236, #f6ba522e 10px, #ffd18012 10px, #ffd1803d 20px);
+        background: repeating-linear-gradient(-55deg, rgba(246, 186, 82, 0.21176470588235294), rgba(246, 186, 82, 0.1803921568627451) 10px, rgba(255, 209, 128, 0.07058823529411765) 10px, rgba(255, 209, 128, 0.23921568627450981) 20px);
+        font-weight: 700;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    .myPrfleSidebar,.ds-form-sidebar{
+        min-width: 450px !important;
+      }
+  }
+  @media only screen and (max-width: 600px) {
+    .myPrfleSidebar,.ds-form-sidebar{
+        width: 250px;
+        min-width: 300px !important;
+      }
+  }
+  .ds-card.grid {
+    max-width: 100%;
+    min-width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    padding:10px;
+    background: #fffcf7!important;
+}
+//   .usrAcnts{
+//     .ag-theme-balham .ag-header-cell-menu-button .ag-icon-menu {
+//         display: none!important;
+//     }
+//     .ag-center-cols-container
+//     {
+//         width:100%!important;
+//     }
+//   }
+
+//   .usrEmplye{
+//     .ag-theme-balham .ag-header-cell-menu-button .ag-icon-menu {
+//         display: none!important;
+//     }
+   
+//   }
+.header {
+    // color: #282a73 !important;
+    // background-color: #f9f5ee !important;
+    // color: #282a73 !important;
+    // background-color: #f9f5ee !important;
+    // background: url(/assets/images/backgrounds/dark-material-bg.jpg) no-repeat 0 45%;
+    font-weight: bold;
+    // padding: 9px 16px !important;
+    // background: repeating-linear-gradient(-55deg, #f6ba5236, #f6ba522e 10px, #ffd18012 10px, #ffd1803d 20px);
+    background: repeating-linear-gradient(-55deg, rgba(246, 186, 82, 0.21176470588235294), rgba(246, 186, 82, 0.1803921568627451) 10px, rgba(255, 209, 128, 0.07058823529411765) 10px, rgba(255, 209, 128, 0.23921568627450981) 20px);
+}
+.pageBackground{
+    // background-color: #f9f5ee !important;
+    background-color: #fffcf7 !important;
+    padding-bottom: 25px;
+}
+.header-top-line{
+    border-top: 1px dashed #d2d2d2!important;
+    margin-top: 6px!important;
+}
+.side-bar-header-color{
+
+    // background: #795548 !important;
+    // color: #f5f5f5 !important;
+    color: #272a73!important;
+    // background: repeating-linear-gradient(-55deg, #f6ba5236, #f6ba522e 10px, #ffd18012 10px, #ffd1803d 20px)!important;
+    background: repeating-linear-gradient(-55deg, rgba(246, 186, 82, 0.21176470588235294), rgba(246, 186, 82, 0.1803921568627451) 10px, rgba(255, 209, 128, 0.07058823529411765) 10px, rgba(255, 209, 128, 0.23921568627450981) 20px)!important;
+    font-weight: 700!important;
+    border-bottom: 2px solid #f5e5d1;
+
+
+}
+
+// lms training styles
+
+
+
+.chckbxBrdr
+{
+    .mat-checkbox-frame {
+        border-color:#ffffff!important;
+    }
+
+   
+        .mat-checkbox-background{
+            background: transparent!important;
+        }
+        .mat-checkbox-checkmark-path {
+            stroke: #40548f!important;
+            stroke-width: 3.13333px!important;
+        }
+
+}
+
+.sidebarLeft{
+    h3,h4,.h3{
+        font-weight:500!important
+    }
+}
+
+.addfld-icon-color
+{
+  color: #613d30!important;
+}
+
+// Page Header Custom Styles
+
+.l-h {
+    h1 {
+        font-size: 22px;
+        margin: 0.30em;
+        vertical-align: middle;
+        font-weight: 600;
+    }
+    .mat-icon {
+        vertical-align: middle;
+    }
+
+    float: left;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.r-h {
+    float: right;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: right;
+    // padding-right: 30px;
+    .visible {
+        display: block
+    }
+    i:hover {
+        color: rgba(255, 118, 0, 0.87);
+        cursor: pointer;
+    }
+}
+
+
+@media only screen and (max-width: 600px) and (min-width: 400px) {
+    .r-h .visible {
+        display: none;
+    }
+    .l-h h1{
+            font-size: 17px;
+            font-weight: 500;
+            color: #383737;
+    }
+  }
+
+// Form Style Custom Changes
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    border: 0px;
+  }
+  .mat-form-field {
+    width: 100%;
+    font-size: 13px;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+    padding: 3px 1em !important;
+    margin-top: 2px !important;
+  }
+  .form-label{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0px 5px 5px 5px;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-outline-start .mat-form-field-outline-end{
+    border-radius: 3px 0 0 3px;
+    border-right-style: none;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0.25em 0 0.3em !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 5px .75em 0 .75em !important;
+}
+// Custom Devexpress styles ---------------------------
+
+.dx-datagrid .dx-datagrid-headers .dx-header-row > td, .dx-datagrid .dx-datagrid-headers .dx-header-filter {
+    outline: none;
+    background: #2c5685;
+    /* border-bottom: 5px solid #dddddd !important; */
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 13px;
+    margin-right: 4px;
+  }
+  .dx-datagrid .dx-header-filter:before {
+    content: "\f050";
+    font-size: 10px;
+}
+.dx-datagrid-headers {
+    color: #959595;
+    font-weight: normal;
+    -ms-touch-action: pinch-zoom;
+    touch-action: pinch-zoom;
+    border-bottom: 5px solid #ddd !important;
+}
+  .dx-datagrid .dx-column-indicators {
+    float: right;
+  }
+  .dx-datagrid .dx-row-lines > td {
+    border-bottom: 1px solid #f5f5f5 !important;
+  }
+//   .dx-datagrid .dx-row-alt > td, .dx-datagrid .dx-row-alt > tr > td {
+//     background-color: #f9f9f9 !important;
+//   }
+  .dx-datagrid-borders .dx-datagrid-rowsview, .dx-datagrid-headers + .dx-datagrid-rowsview {
+    border-top: 1px solid #f9f9f9;
+  }
+  
+  .dx-datagrid-borders > .dx-datagrid-rowsview, .dx-datagrid-borders > .dx-datagrid-total-footer {
+    border-bottom: 1px solid #f9f9f9;
+  }
+  .dx-datagrid .dx-column-lines > td {
+    border-left: 1px solid #f5f5f5 !important;
+    border-right: 1px solid #f5f5f5 !important;
+    font-size: 12px;
+    color: #040404;
+}
+  
+  .dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit {
+    width: 100px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.demo-icon{
+    font-size: 18px;
+    margin-left: -13px;
+    color: #000;
+    [class^="ds-"]:before, [class*=" ds-"]:before {
+        font-family: "fontello";
+        margin-top: -5px;
+        margin-left: -0.4em;
+        font-size: 80% !important;
+}
+.accent i {
+    color: #0b0d7d;
+}
+}
+
+
+
+

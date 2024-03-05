@@ -1,0 +1,83 @@
+<div class="container pageBackground">
+    <div class="example-container" *ngIf="showData" [class.example-is-mobile]="mobileQuery.matches">
+        <mat-sidenav-container class="example-sidenav-container">
+            <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" (opened)="events.push('open!')"
+                (closed)="events.push('close!')" [(opened)]="opened" [fixedInViewport]="mobileQuery.matches"
+                fixedTopGap="56" class="trbleShtSideNav">
+                <mat-action-list>
+                    <button mat-list-item [class.sdeNavItmSelected]='selectedItem === index'
+                        *ngFor="let a of sections; let index = index"
+                        (click)="sctnSlctd(a, index);selectedItem = index">
+                        {{a.sctn_nm}} </button>
+                    <button mat-list-item *ngIf="newContent"> {{content.sctn_nm}} </button>
+                    <div class="text-center">
+                        <button mat-raised-button color="primary" class="w-30-p m-8" (click)="addSctn()"
+                            *ngIf="!newContent">
+                            Add
+                        </button>
+                    </div>
+                </mat-action-list>
+            </mat-sidenav>
+            <div class="toolbar">
+                <mat-toolbar color="primary" class="trbleShtMatToolbar">
+                    <mat-toolbar-row>
+                        <span><button mat-button (click)="sidenav.toggle()">
+                                <mat-icon>menu</mat-icon>
+                            </button></span>
+                        <span>{{page.pge_nm}}</span>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+            </div>
+            <div class="content">
+                <div fxLayout="row" *ngIf="!newContent && !edtContent">
+                    <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <div class="m-24">
+                            <mat-card class=" trbleShtExmpleCrd">
+                                <mat-card-header>
+                                    <mat-card-title>
+                                        <span class="font-weight-bold">{{content.sctn_nm}}</span>
+                                    </mat-card-title>
+                                    <div class="">
+                                        <button mat-stroked-button (click)="editContent(content)">Edit</button>
+                                    </div>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <div class="m-16 contactTable" [innerHtml]="content.dscptn_txt"></div>
+                                </mat-card-content>
+                                <div class="timestamp">{{content.upd_tmstmp || content.crtd_tmstmp}} |
+                                    {{content.updte_usr_nm || content.crte_usr_nm}} </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" *ngIf="newContent || edtContent">
+                    <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <div class="m-24">
+                            <!-- <form [formGroup]="froalForm"> -->
+                                <mat-card class="">
+                                    <mat-card-header>
+                                        <mat-card-title>
+                                            <input class="sctnTtlCss" placeholder="Section Title" type="text"
+                                                style="margin-left : -14px;" [(ngModel)]="content.sctn_nm">
+                                        </mat-card-title>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <textarea id="{{content.sctn_id}}" [froalaEditor]="content.froalaOptns"
+                                            [(froalaModel)]="content.dscptn_txt"></textarea>
+                                        <!-- <textarea id="{{content.sctn_id}}" [froalaEditor]="content.froalaOptns"
+                                            formControlName="cntnt_tx"></textarea> -->
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                        <button mat-button (click)="saveSctn()" *ngIf="newContent">Save</button>
+                                        <button mat-button (click)="updtSctn()" *ngIf="edtContent">Save</button>
+                                        <button mat-button (click)="cancel()" color="primary">cancel</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-sidenav-container>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<h4 class="log-mdl-hdr pt-4 pb-4">Latest Log Information</h4>
+  <div mat-dialog-content>
+    <table mdbTable>
+      <thead>
+        <tr>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let lg_data of data; let i = index">
+          <th scope="row" class="tbleHdr">{{i + 1 }}</th>
+          <td  class="tbleHdr">{{ lg_data.chng_lg_dt }}</td>
+          <td  class="tbleHdr">{{ lg_data.chng_lg_txt }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<mat-dialog-actions align="end">
+  <ng-container ngProjectAs="btn-close">
+    <button mat-button color="warn" (click)="decline()">No Thanks</button>
+  </ng-container>
+  <button mat-button color="primary" (click)="accept()">Ok</button>
+</mat-dialog-actions>

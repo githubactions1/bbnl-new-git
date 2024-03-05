@@ -1,0 +1,262 @@
+<div class="page-layout simple pageBackground">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div>
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card  dsbbrdcrds  cardOne">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnOne">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{iptvCardsCnts[0].iptv_actve_sbcr_ct}}</div>
+                <div class="h4 nme">Total Subscribers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card  dsbbrdcrds  cardTwo">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnTwo">
+              <div class="cntDtls">
+                <div class="h1 cnt">{{iptvCardsCnts[0].iptv_nlne_ltv_ct}}</div>
+                <div class="h4 nme">Live Online</div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+
+        <div class="ds-card  dsbbrdcrds  cardFour">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnThree">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{iptvCardsCnts[0].iptv_nlne_ct}}</div>
+                <div class="h4 nme">VOD Online</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds  cardFive">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnFore">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{iptvCardsCnts[0].iptv_tdy_rgtn_ct}}</div>
+                <div class="h4 nme">Today Register</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnSix">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{addonCrdsCnt[0].ttl_actv_addns}}</div>
+                <div class="h4 nme">Active Addon Packages</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnSvn">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{addonCrdsCnt[0].tdy_actv_addns}}</div>
+                <div class="h4 nme">Today Active Addon packages</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="33%" fxFlex.gt-xs="50%">
+        <div class="ds-card  dsbbrdcrds">
+          <div fxLayout="row">
+            <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+              class="totlCnt inrSctnEght">
+              <div class="cntDtls">
+
+                <div class="h1 cnt">{{addonCrdsCnt[0].tdy_deactv_addns}}</div>
+                <div class="h4 nme">Today Deactive Addon Packages</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- <div class="row m-16 mt-0">
+      <div class="col-10"></div>
+      <div class="col-2">
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="picker" readonly placeholder="Select Date" (dateChange)="addEvent('change', $event)" [(value)]="selectedDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>  
+      </div>
+      
+    </div> -->
+  <div class="ds-card m-16 mt-0">
+
+    <div fxLayout="row" fxLayout.xs = "column">
+      <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="0%"></div>
+    <div fxFlex = "100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle">HOUR SUBSCRIBERS REPORT</div>
+    <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" readonly placeholder="Select Date" (dateChange)="addEvent('change', $event)" [(value)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      </div>
+    </div>
+
+
+  <div id="chart-demo">
+    <dx-chart id="chart" [dataSource]="iptvlivedshbrd">
+      <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+      <dxi-series *ngFor="let energy of architecturesInfo" [valueField]="energy.value" [name]="energy.name" [color]="energy.color">
+      </dxi-series>
+      <dxi-value-axis>
+        <dxo-title text="Subscribers"></dxo-title>
+        <dxo-grid [visible]="true"></dxo-grid>       
+      </dxi-value-axis>
+      <dxo-common-series-settings argumentField="x-axis" type="spline">
+        <dxo-label [visible]="false">
+          <dxo-format type="decimal"></dxo-format>
+      </dxo-label>
+      </dxo-common-series-settings>
+      <dxo-argument-axis [valueMarginsEnabled]="false" discreteAxisDivisionMode="crossLabels">
+        <dxo-grid [visible]="true"></dxo-grid>
+      </dxo-argument-axis>
+      <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+        <dxo-label [visible]="true" backgroundColor="#949494">
+          <dxo-font color="#fff" [size]="12">
+          </dxo-font>
+        </dxo-label>
+      </dxo-crosshair>
+      <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+      </dxo-legend>
+
+      <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip" [zIndex]="5000"></dxo-tooltip>
+      <dxo-export [enabled]="true"></dxo-export>
+    </dx-chart>
+
+</div>
+</div>
+
+<!-- <div class="row m-16 mt-0">
+  <div class="col-8"></div>
+  <div class="col-2">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" fxLayoutAlign="space-between center"
+          [(value)]="selectedYear">
+          <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>
+  <div class="col-2"> 
+    <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" fxLayoutAlign="space-between center"
+            [(value)]="selectedMonth" placeholder="Select Month" (selectionChange)="selectmnth()">
+            <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+  </div>
+  
+</div> -->
+<div class="ds-card m-16 mt-0">
+
+  <div fxLayout="row" fxLayout.xs = "column">
+    <div fxFlex = "100" fxFlex.gt-lg="60%" fxFlex.gt-md="60%" fxFlex.gt-sm="60%" fxFlex.gt-xs="100%" class = "pt-8 chrtTiTle">DAY WISE SUBSCRIBERS REPORT</div>
+    <div fxFlex = "100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+      <mat-form-field class="cssdrp" appearance="outline">
+        <mat-select class="simplified" fxLayoutAlign="space-between center"
+            [(value)]="selectedYear" (selectionChange)="selectmnth()">
+            <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    </div>
+  
+  <div fxFlex = "100"  fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="100%">
+    <mat-form-field class="cssdrp" appearance="outline">
+      <mat-select class="simplified" fxLayoutAlign="space-between center"
+          [(value)]="selectedMonth" placeholder="Select Month" (selectionChange)="selectmnth()">
+          <mat-option *ngFor="let m of months" [value]='m.id'>{{m.nm}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>
+  </div>
+
+  <div id="chart-demo">
+    <dx-chart id="chart" [dataSource]="iptvMnthdshbrd">
+      <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
+      <dxi-series *ngFor="let energy of monthdshbrdcnts" [valueField]="energy.value" [name]="energy.name" [color]="energy.color">
+      </dxi-series>
+      <dxi-value-axis>
+        <dxo-title text="Subscribers"></dxo-title>
+        <dxo-grid [visible]="true"></dxo-grid>       
+      </dxi-value-axis>
+      <dxo-common-series-settings argumentField="iptv_dt" type="line">
+        <dxo-label [visible]="false">
+          <dxo-format type="decimal"></dxo-format>
+      </dxo-label>
+      </dxo-common-series-settings>
+      <dxo-argument-axis [valueMarginsEnabled]="true" [allowDecimals]="false" [axisDivisionFactor]="10" discreteAxisDivisionMode="crossLabels">
+        <dxo-grid [visible]="true"></dxo-grid>
+      </dxo-argument-axis>
+      <!-- <dxo-argument-axis>
+        <dxi-constant-line [value]="min" [color]="green"></dxi-constant-line>
+        <dxi-constant-line [value]="max" [color]="blue"></dxi-constant-line>
+        <dxi-constant-line [value]="average" [color]="blue"></dxi-constant-line>
+      </dxo-argument-axis>
+    
+    <dxi-value-axis>
+        <dxi-constant-line [value]="min" [color]="green"></dxi-constant-line>
+        <dxi-constant-line [value]="max" [color]="blue"></dxi-constant-line>
+        <dxi-constant-line [value]="average" [color]="blue"></dxi-constant-line>
+    </dxi-value-axis> -->
+    
+  
+      <dxo-crosshair [enabled]="true" color="#949494" [width]="3" dashStyle="dot">
+        <dxo-label [visible]="true" backgroundColor="#949494">
+          <dxo-font color="#fff" [size]="12">
+          </dxo-font>
+        </dxo-label>
+      </dxo-crosshair>
+      <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="bottom">
+      </dxo-legend>
+
+      <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip1" [zIndex]="5000"></dxo-tooltip>
+      <dxo-export [enabled]="true"></dxo-export>
+    </dx-chart>
+
+</div>
+</div>
+
+
+
+</div>
+</div>

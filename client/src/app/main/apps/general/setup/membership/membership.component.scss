@@ -1,0 +1,144 @@
+table {
+  width: 100%;
+}
+
+.mb-16 {
+margin-bottom: 2px !important;
+}
+
+#tableId {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tableId td, #tableId th {
+  border: 1px solid #ddd;
+  padding: 2px;
+  padding-left: 10px;
+}
+
+
+#tableId th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  // background-color: #416a9c;
+  background-color: #40548f;
+  color: white;
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 12px;
+}
+
+.mat-cell {
+  font-size: 12px;
+}
+
+
+// tr.mat-footer-row, tr.mat-row {
+//     // height: 30px;
+//     /* font-size: 28px !important; */
+// }
+
+// tr.mat-header-row {
+//     height: 44px;
+// }
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.nrml
+{
+  cursor: pointer;
+}
+
+.payrolldtls{
+
+  table tr td:last-child {
+  border-right: 0px solid #dadcdc!important;
+  }
+  
+  .mat-header-cell {
+  
+    display: table-cell!important;
+    justify-content: center;
+    border-right: 1px solid rgba(224, 224, 224, 0.1803921568627451);
+  }
+  
+  .mat-cell {
+  
+    display: table-cell!important;
+    justify-content: center;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 0px!important;
+}
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 0px!important;
+}
+
+}
+
+.cnfhrtnPyrol
+{
+  mat-form-field{
+
+    width: 15%!important;
+    margin: 0px 30px!important;
+}
+
+.rptsbtns
+{
+    // background-color: #40548f !important;
+    background-color: #3190a6!important;
+    color:white!important;
+    margin: 0px 15px;
+}
+
+}
+
+
+
+.mat-raised-button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 90px;
+  line-height: 36px;
+  padding: 0px 17px;
+  border-radius: 4px;
+  overflow: visible;
+  transform: translate3d(0,0,0);
+  transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}
+.mat-checkbox-layout {
+cursor: inherit;
+align-items: baseline;
+vertical-align: middle;
+display: inline-flex;
+border: 1px solid #FFF !important;
+white-space: nowrap;
+}
+.mat-checkbox-inner-container-no-side-margin {
+margin-left: 0;
+margin-right: 0;
+border: 1px solid white !important;
+}

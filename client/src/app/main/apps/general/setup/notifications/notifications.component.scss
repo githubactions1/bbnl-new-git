@@ -1,0 +1,92 @@
+// .mat-drawer-container {
+//      width:100%;
+// }
+
+.ntfctnCmpnt{
+
+.ds-card {
+     min-width: 100%;
+ }
+}
+//  .rptOptsLst{
+//      height: 280px;
+//      overflow-y: auto;
+//  }
+//  .myPrfleSidebar{
+//      width: 550px;
+//      min-width: 550px !important;
+//  }
+//  .edit-ds-card{
+//      // height: 650px !important;
+//      height: auto;
+//  }
+//  .edit-rptOptsLst{
+//      height: 580px;
+//      overflow-y: auto;
+//  }
+//  .listHeaderStyle{
+//      background-color: #f6f6f6;
+//      color: black !important;
+//  }
+//  .pmdlcs{
+//      color: rgba(0, 0, 0, 0.87);
+//      font-family: Muli, Helvetica Neue, Arial, sans-serif;
+//      font-size: 16px;
+//      margin-left: 5%;
+     
+//  }
+//  .ag-row {
+//      white-space: nowrap;
+//      width: 100%;
+//      height: 40px !important;
+//  }
+
+ .saveBtn-color{
+     width:100% !important;
+ }
+ .loading-indicator {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .spinner-2:before {
+    // content:"";
+    // box-sizing: border-box;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // height: 80px;
+    // width: 80px;
+    // margin-top: -40px;
+    // margin-left: -40px;
+    // border-radius: 50%;
+    // border: 3px solid transparent;
+    // border-top-color: #009688;
+    // border-bottom-color: #009688;
+    // animation: spinner 0.7s ease infinite;
+  
+  
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 80px;
+    width: 80px;
+    margin-top: -35px;
+    margin-left: -35px;
+    border-radius: 50%;
+    border: 5px solid #d2d2d2;
+    border-top-color: #212684;
+    border-bottom-color: #009688;
+    -webkit-animation: spinner 0.7s ease infinite;
+    animation: spinner 0.9s ease infinite;
+  
+  }

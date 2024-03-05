@@ -1,0 +1,316 @@
+<div id="profile" class="page-layout simple tabbed pageBackground">
+    <!-- <div class="header p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between end">
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="start center" *ngIf="prflData">
+            <img class="profile-image avatar huge" *ngIf="!userData.mrcht_usr_imge_url_tx"
+                src="assets/images/avatars/profile.jpg" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <img class="profile-image avatar huge" *ngIf="userData.mrcht_usr_imge_url_tx"
+                src="assets/images/{{userData.mrcht_usr_imge_url_tx}}"
+                [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                {{prflData.fst_nm}} {{prflData.lst_nm || ''}}
+                <p style="font-size: 20px;margin: 0px;"><span>{{prflData.dsgn_nm}}</span><span
+                        *ngIf="userData.hyrchy_grp_nm">, </span><span>{{userData.hyrchy_grp_nm}}</span></p>
+            </div>
+        </div>
+    </div> -->
+    <div class="header">
+        <div class="block-content bg-primary-op text-center overflow-hidden">
+            <div class="user-info">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="start center" *ngIf="prflData" class="user-dtls-pos">
+                    <img class="profile-image avatar huge" *ngIf="!userData.mrcht_usr_imge_url_tx"
+                        src="assets/images/avatars/profile.jpg"
+                        [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img class="profile-image avatar huge" *ngIf="userData.mrcht_usr_imge_url_tx"
+                        src="assets/images/{{userData.mrcht_usr_imge_url_tx}}"
+                        [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        {{prflData.fst_nm}} {{prflData.lst_nm || ''}}
+                        <p style="font-size: 20px;margin: 0px;"><span>{{prflData.dsgn_nm}}</span><span
+                                *ngIf="userData.hyrchy_grp_nm">, </span><span>{{userData.hyrchy_grp_nm}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <mat-tab-group dynamicHeight="true" (selectedTabChange)="yourFn($event)">
+            <mat-tab label="About">
+                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                    <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+                    <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                        <div class="tbsCntnt ds-card ">
+                            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">User Profile</div>
+                            <mat-divider></mat-divider>
+                            <form fxLayout="column" [formGroup]="userProfileForm" class="m-24">
+                                <ng-template matStepLabel>Add User</ng-template>
+
+
+
+                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">First Name</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>First Name</mat-label> -->
+                                            <input matInput formControlName="firstName" placeholder="First name"
+                                                required>
+                                            <mat-error> Name is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Last Name</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Last Name</mat-label> -->
+                                            <input matInput formControlName="lastName" placeholder="Last name">
+                                            <mat-error>Last Name is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Designation</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Designation</mat-label> -->
+                                            <mat-select formControlName="designation">
+
+                                                <mat-option *ngFor="let d of dsgnlst" [value]="d.dsgn_id">
+                                                    {{d.dsgn_nm}}
+                                                </mat-option>
+
+                                            </mat-select>
+                                            <mat-error>designation is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Department</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Department</mat-label> -->
+                                            <mat-select formControlName="department">
+                                                <mat-option *ngFor="let dp of dprtlst" [value]="dp.dprt_id">
+                                                    {{dp.dprt_nm}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error>department is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Branches</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Branches</mat-label> -->
+                                            <mat-select formControlName="branches">
+
+                                                <mat-option *ngFor="let ou of outletslst" [value]="ou.otlt_id">
+                                                    {{ou.otlt_nm}}
+                                                </mat-option>
+
+                                            </mat-select>
+                                            <mat-error>Branches is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Organisation</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Organisation</mat-label> -->
+                                            <mat-select formControlName="organisation">
+                                                <mat-option *ngFor="let or of orgnlst" [value]="or.orgn_id">
+                                                    {{or.orgn_nm}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error>organisation is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+
+                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Mobile Number</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Mobile Number</mat-label> -->
+                                            <input type="number" matInput formControlName="mobileNumber" required
+                                                onKeyPress="if(this.value.length==10) return false;">
+                                            <mat-error>Mobile Number is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Email</div>
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Email</mat-label> -->
+                                            <input matInput formControlName="email">
+                                            <mat-error>Email is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                    <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                                        <div class="form-label">Address</div>
+
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Address</mat-label> -->
+                                            <textarea matInput formControlName="address"></textarea>
+                                            <mat-error>Address is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="img-upld">
+                                    <div fxFlex="50" fxFlex.xs="100" class="pt-8 ">
+                                        <div class="group-gap">
+                                            <div class="avatar-upload" fxLayout="row">
+
+                                                <div class="avatar-preview">
+                                                    <img [src]="imageUrl">
+                                                </div>
+                                                <div class="avatar-edit pt-8">
+                                                    <label>
+                                                        <input (change)="uploadFile($event)" type='file'
+                                                            id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                                            style="color: #1b75b6;" style="display:none" />
+                                                        <span
+                                                            class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 uploadImgBtn">
+                                                            <mat-icon _ngcontent-qri-c39=""
+                                                                class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color"
+                                                                role="img" aria-hidden="true">add_a_photo</mat-icon>
+                                                            Upload Image
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div fxFlex="50" fxFlex.xs="100" class="pt-8">
+                                        <button mat-raised-button color="accent" class="gtDtls"
+                                            aria-label="Save Changes" [disabled]="userProfileForm.invalid"
+                                            (click)="saveUsrDt()">
+                                            Save Changes
+                                        </button>
+                                        <div class="spnr-styl" *ngIf="spnrCtrl">Please wait.. <mat-spinner
+                                                diameter="20">
+                                            </mat-spinner>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Change Password">
+                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                    <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+                    <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                        <!-- <div class="col-lg-1 col-md-1"></div>
+                    <div class="col-lg-10 col-md-10"> -->
+                        <div id="reset-password-form" class="tbsCntnt ds-card ">
+                            <!-- <div class="ds-card m-12"> -->
+                            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Change Your
+                                Password</div>
+                            <mat-divider></mat-divider>
+                            <form fxLayout="row" fxLayout.xs="column" fxFlexFill name="resetPasswordForm"
+                                [formGroup]="resetPasswordForm" novalidate>
+
+
+                                <!-- <div fxFlex="33"></div> -->
+                                <div fxFlex="34">
+                                    <mat-error style="text-align: center;" *ngIf="err_msg">
+                                        <span>{{err_msg}}</span> <br />
+                                    </mat-error>
+                                    <div fxLayout="row" fxLayout.xs="column">
+                                        <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                                            <div class="form-label">Enter Old Password</div>
+                                            <mat-form-field appearance="outline">
+                                                <!-- <mat-label>Enter Old Password</mat-label> -->
+                                                <input matInput type="password" formControlName="old_pswrd">
+                                                <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                                                <mat-error
+                                                    *ngIf="resetPasswordForm.get('old_pswrd').hasError('required')">
+                                                    Old Password is required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div fxLayout="row" fxLayout.xs="column">
+                                        <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                                            <div class="form-label">New Password</div>
+                                            <mat-form-field appearance="outline">
+                                                <!-- <mat-label>New Password</mat-label> -->
+                                                <input matInput type="password" formControlName="nw_pswrd">
+                                                <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                                                <mat-error
+                                                    *ngIf="resetPasswordForm.get('nw_pswrd').hasError('required')">
+                                                    <!-- Password at least one number, one lowercase and one uppercase letter -->
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <div class="form-label">
+                                                <h6>
+                                                    Note: Password must be 4 characters at least one number, one lowercase and one uppercase letter
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div fxLayout="row" fxLayout.xs="column">
+                                        <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                                            <div class="form-label">Password (Confirm)</div>
+                                            <mat-form-field appearance="outline">
+                                                <!-- <mat-label>Password (Confirm)</mat-label> -->
+                                                <input matInput type="password" formControlName="passwordConfirm">
+                                                <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                                                <mat-error
+                                                    *ngIf="resetPasswordForm.get('passwordConfirm').hasError('required')">
+                                                    Password confirmation is required
+                                                </mat-error>
+                                                <mat-error
+                                                    *ngIf="!resetPasswordForm.get('passwordConfirm').hasError('required') &&
+                                                                                       resetPasswordForm.get('passwordConfirm').hasError('passwordsNotMatching')">
+                                                    Passwords must match
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <button mat-raised-button class="submit-button" color="accent"
+                                        aria-label="RESET MY PASSWORD" [disabled]="resetPasswordForm.invalid"
+                                        (click)="submit()">
+                                        Submit
+                                    </button>
+                                </div>
+                                <div fxFlex="33"></div>
+                            </form>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div fxFlex="100%" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Login History">
+                <div class="row" *ngIf="lgnTbClicked">
+                    <div class="col-lg-1 col-md-1"></div>
+                    <div class="col-lg-10 col-md-10">
+                        <app-custom-report lgnrptid="114841790497947687" shwRptHeader="false" shwRptDesc="false">
+                        </app-custom-report>
+                    </div>
+                    <div class="col-lg-1 col-md-1"></div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+</div>

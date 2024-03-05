@@ -1,0 +1,259 @@
+<div class="page-layout simple" id="loginTwo">
+    <div id="login" class=" bg inner-scroll" fxLayout="row" fxLayoutAlign="start" *ngIf="!msoDiv && !lmoDiv">
+        <!-- <div fxLayout="row" fxLayoutAlign="start"> -->
+        <div fxFlex fxFlex.gt-lg="73%" fxFlex.gt-md="63%" fxFlex.gt-sm="50%" fxFlex.gt-xs="22%">
+			<div>
+                <img src="/assets/images/cm2.png" style="width: 100px; margin-top: 10px;">
+            </div>
+        </div>
+        <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="25%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+            <div>
+                <img src="/assets/images/modi.png" style="width: 100px; margin-top: 10px;">
+            </div>
+        </div>
+
+        <!-- </div> -->
+        <!-- <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+            <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+
+            </div>
+
+        </div> -->
+        <!-- <div id="login-form-wrapper" dsPerfectScrollbar *ngIf="showhide" -->
+        <div id="login-form-wrapper"  *ngIf="showhide"
+            [@animate]="{value:'*',params:{delay:'200ms',x:'100%'}}">
+
+            <div id="login-form">
+                <div class="logoImg">
+                    <img src="/assets/images/logo.png">
+                </div>
+
+
+                <div class="title">LOGIN TO YOUR ACCOUNT</div>
+
+                <form name="loginForm" [formGroup]="loginForm" novalidate>
+                    <div class="text-center m--font-success m--font-bolder">{{stopWatchTm}}</div>
+                    <mat-error style="text-align: center;" *ngIf="err_msg">
+                        <span>{{err_msg}}</span> <br />
+                    </mat-error>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username">
+                        <mat-icon matSuffix class="secondary-text">username</mat-icon>
+                        <mat-error *ngIf="loginForm.get('username').hasError('required')">
+                            Username is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password">
+                        <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+					<div class="row login-form-margin rcpta">
+                        <span style="background: #e8f0fe;width: 70%;">
+                            <img [src]="captchImg" alt="Capcha to load">
+                        </span>
+                        <span (click)="getCaptchaText()" style="margin: 5% 0% 1% 7%;">
+                            <mat-icon matSuffix>autorenew</mat-icon>
+                        </span>
+                    </div>
+                    <!-- <nz-form-label class="lbl" nzFor="rmcCtznCptch">Enter the code from the above image</nz-form-label>
+                      <nz-form-item class="ant-form-item">
+                        <nz-form-control nzErrorTip="Please enter above code!" style="width: 100%; height: 100%;">
+                          <nz-input-group nzPrefixIcon="pic-center" style="width: 100%;height: 100%;background: #f5f5f5;">
+                            <input nz-input name="rmcCtznCptch" id="rmcCtznCptch" autocomplete="off" type="text"
+                            formControlName="captcha">
+                          </nz-input-group>
+                        </nz-form-control>
+                      </nz-form-item> -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter the captcha from the above image</mat-label>
+                        <input matInput formControlName="captcha">
+                        <mat-error *ngIf="loginForm.get('captcha').hasError('required')">
+                            captcha is required
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                        fxLayoutAlign="space-between center">
+                        <mat-checkbox class="remember-me" aria-label="Remember Me">
+                            Remember Me
+                        </mat-checkbox>
+
+                        <a class="forgot-password" [routerLink]="'/admin/forgot-password'">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+                    <button mat-raised-button class="submit-button lgnBtnClr" aria-label="LOGIN" [disabled]="loginForm.invalid"
+                        (click)="doLogin()">
+                        LOGIN
+                    </button>
+                    <!-- <div class="separator ng-tns-c262-245"><span class="text ng-tns-c262-245">OR</span></div> -->
+                    <!-- <button mat-raised-button class="submit-button msoRegBtnClr" aria-label="MSO" -->
+                    <!-- (click)="gotoMsoRegPage()"> -->
+                    <!-- MSO Registration -->
+                <!-- </button> -->
+                <!-- <button mat-raised-button class="submit-button lmoRegBtnClr" aria-label="LMO" -->
+                    <!-- (click)="gotoLmoRegPage()"> -->
+                    <!-- LMO Registration -->
+                <!-- </button> -->
+
+                <div class="mb-app">
+                    <div class="mb-app-text">
+                        <div class="mb-app-text__download">Download Mobile App</div>
+                    </div>
+                    <div class="mb-app__section">
+                        <div class="mb-app-subsection">
+                            <!-- ../client/src/assets/images/app_icon.png -->
+                            <img class="mb-app__bbc-logo" src="../../../../assets/images/app_icon.png" width="106" height="106">
+                        </div>
+                        <div class="mb-app-subsection">
+                            <a class="mb-app-subsection--link mb-app-subsection--playstore" href="https://play.google.com/store/apps/details?id=com.glits.apfsl" target="_parent">
+                                <img class="mb-app__play-store" src="//news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg" width="161" height="auto" border="0">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
+
+
+                <p class="footerTxt">
+                    <span class="ftrTxt">Powered by</span>
+                    <span>Green Lantern IT Solutions Private Limited</span></p>
+
+
+            </div>
+        </div>
+
+
+
+
+        <!-- new merchanttttttttttttttttttttttttttttt -->
+
+        <div id="login-form-wrapperTwo" dsPerfectScrollbar *ngIf="newmerchant"
+            [@animate]="{value:'*',params:{delay:'200ms',x:'100%'}}">
+            <div>
+                <mat-icon class="frmclse" (click)="merchantcloseForm()">clear</mat-icon>
+            </div>
+            <div id="login-form">
+
+                <div class="logo" fxHide.gt-xs>
+                    <img src="assets/images/logos/ds.svg">
+                </div>
+
+                <div class="title">Request For Register</div>
+
+                <form name="regForm" [formGroup]="regForm" novalidate>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" formControlName="name">
+                        <mat-icon matSuffix class="secondary-text">person_add</mat-icon>
+                        <mat-error>
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                        <mat-error *ngIf="regForm.get('email').hasError('required')">
+                            Email is required
+                        </mat-error>
+                        <mat-error *ngIf="!regForm.get('email').hasError('required') &&
+                            regForm.get('email').hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="number" formControlName="number">
+                        <mat-icon matSuffix class="secondary-text">phone_android</mat-icon>
+                        <mat-error>
+                            Phone Number is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Organization</mat-label>
+                        <input matInput type="text" formControlName="org">
+                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                        <mat-error>
+                            Organization is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
+                        [disabled]="loginForm.invalid" (click)="login()">
+                        SUBMIT
+                    </button>
+
+                    <ul>
+                        <li>Fill out the application telling us about your business and products</li>
+                        <li>Sign the Retailer Agreement with a Smartcard representative</li>
+                        <li>Complete your seller profile and connect your payment account</li>
+                        <li>Choose an integration method, add your items and test orders</li>
+                        <li>When you’re ready, we’ll do a final review and then get you selling</li>
+                    </ul>
+
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- new merchanttttttttttttttttttttttttttttttttttttttttttttt -->
+
+    </div>
+
+   
+
+    <div class="inrCntnt" *ngIf="!msoDiv && !lmoDiv">
+        <div fxLayout="row" fxLayoutAlign="start">
+
+            <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="65%" fxFlex.gt-xs="55%">
+                <div class="wlcme">
+                    <h1>Welcome to</h1>
+                </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start">
+            <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="55%">
+                <div class="lgnImg">
+                    <img src="/assets/images/logo-1.png">
+                </div>
+            </div>
+            <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"></div>
+        </div>
+
+    </div>
+    <div class="endCntn" *ngIf="!msoDiv && !lmoDiv">
+        <div fxLayout="row" fxLayoutAlign="start">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="38%" fxFlex.gt-sm="15%" fxFlex.gt-xs="2%"></div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                <p class="pwrdBy">Powered by</p>
+
+                <p class="abtCmpny"><b>Green Lantern IT Solutions Private Limited</b></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="msoDiv && !lmoDiv">
+        <app-mso-enrollment></app-mso-enrollment>
+    </div>
+    <div *ngIf="lmoDiv && !msoDiv">
+        <app-lmo-enrollment></app-lmo-enrollment>
+    </div> -->
+</div>

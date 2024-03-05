@@ -1,0 +1,44 @@
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 0rem;
+}
+.closeSidebarPrfle{
+    z-index: 999;
+    position: relative;
+    color: white;
+}
+@media only screen and (min-width:1100px) and (max-width:3500px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 1050px !important;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1100px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 1000px !important;
+    }
+}
+@media only screen and (min-width:500px) and (max-width:768px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 750px !important;
+    }
+}
+@media only screen and (min-width:320px) and (max-width:500px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 250px !important;
+    }
+}
+@media only screen and (min-width:1500px) and (max-width:2500px)
+{
+    .myPrfleSidebar, .ds-form-sidebar {
+        min-width: 1550px !important;
+    }
+}
+::ng-deep .dx-datagrid-nowrap .dx-header-row > td > .dx-datagrid-text-content {
+    white-space: nowrap;
+    color: white !important;
+}

@@ -1,0 +1,261 @@
+<div class="page-layout simple pageBackground pkgesrvceLstCmpnt">
+    <div *ngIf="loader == true">
+        <div class="loading-indicator">
+          <div class="spinner-2">
+            <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+          </div>
+        </div>
+      </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div *ngIf="mainFrm">
+        <!-- <div class="text-right gridBtns">
+            <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle mat-raised-button *ngIf="(permissions.insrt_in==1)?true:false" id="addGridBtn" style="background-color: #795548 !important;"
+                    (click)="openForm('new',null)">Add New {{formDetails.stngs.form_title}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+        </div> -->
+        <div class="ds-card  m-8" *ngIf="permissions">
+            <dx-data-grid class="p-8"  id="gridContainer" [dataSource]="gridData" [remoteOperations]="false"
+                [allowColumnReordering]="true" [allowColumnResizing]="true"[rowAlternationEnabled]="true" [showColumnLines]="true" [columnAutoWidth]="true"
+                [showRowLines]="true" [showBorders]="true"[columnAutoWidth]="true" (onToolbarPreparing)="(permissions.insrt_in==1)?onToolbarPreparing($event):false">
+                <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"[showInfo]="true"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                <dxo-column-chooser [enabled]="true" mode="select">
+                </dxo-column-chooser>
+                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="Service Pack List">
+                </dxo-export>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName"  [width]="f.width" [allowResizing]="true" 
+                [alignment]="f.alignment" [format]="{type:f.type,currency:f.currency, precision:f.precision}"  [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+                <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+                    [width]="100" caption="Edit" cellTemplate="editTemplate" [allowResizing]="true" >
+                    <div *dxTemplate="let data of 'editTemplate'">
+                        <div class="tblEdtBtn " (click)="onEdit2(data)">
+                            Edit
+                        </div>
+                    </div>
+                </dxi-column>
+                <dxi-column [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+                    [width]="100" caption="Delete" cellTemplate="delTemplate" [allowResizing]="true" >
+                    <div *dxTemplate="let data of 'delTemplate'">
+                        <div class="tblDelBtn " (click)="onDelete2(data)">
+                            Delete
+                        </div>
+                    </div>
+                </dxi-column>
+            </dx-data-grid>
+
+        </div>
+        <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+    </div>
+    <div *ngIf="frmDtls" class="p-16">
+        <ng-container>
+            <div>
+                <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+                    class="w-100-p">
+                    <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+                        <span class="mainHdng">{{leftsidebarHdng}}</span>
+                    </div>
+                    <button mat-flat-button type="submit" class="mat-raised-button  gtDtls" aria-label="SAVE"
+                        (click)="back()">
+                        Back
+                    </button>
+
+                </div>
+                <form [formGroup]="srvcpckForm" style="width:100%" class="mt-12" fxLayout="column">
+                    <mat-divider></mat-divider>
+                  <div class="lngndchnlsLST">
+                    <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="mt-24">
+                        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                            class="px-8">
+                            <span>
+                                <div class="form-label">Core Service</div>
+                            </span>
+                            <span>
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-select placeholder="Select Core Service" (selectionChange)="selectedcresrvc()"
+                                        formControlName="cre_srvce_id" matInput required [disabled]="isdisabled">
+                                        <mat-option *ngFor="let c of cresrvcslst" [value]="c.cre_srvce_id">
+                                            {{c.cre_srvce_nm}}
+                                        </mat-option>
+                                    </mat-select>
+                                <mat-error>Please Select Core Service</mat-error>
+                                </mat-form-field>
+                            </span>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                            class="px-8">
+                            <span>
+                                <div class="form-label">Service Pack Type</div>
+                            </span>
+                            <span>
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-select placeholder="Select Service Type" formControlName="srvcpk_type_id"
+                                        matInput required>
+                                        <mat-option *ngFor="let s of srvcpcktypelst" [value]="s.srvcpk_type_id">
+                                            {{s.srvcpk_type_nm}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>Select Service Pack Type</mat-error>
+                                </mat-form-field>
+                            </span>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                            class="px-8">
+                            <div class="form-label">Service Pack Name</div>
+                            <mat-form-field appearance="outline">
+                                <input matInput formControlName="srvcpk_nm">
+                                <mat-error>Enter Service Pack Name</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                            class="px-8">
+                            <div class="form-label">Select Effective Date</div>
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="picker" formControlName="efcte_dt">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error>Select Effective Date</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                            class="px-8">
+                            <div class="form-label">Select Expiration Date</div>
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="picker1" formControlName="expry_dt">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                                <mat-error>Select Expire Date</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
+                <div>
+                    <div *ngIf="shwhsifrm">
+                        <form [formGroup]="hsiVlForm" style="width:100%" class="mt-12" fxLayout="column">
+                            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                <div formArrayName="hsi_vls" class="w-100-p">
+                                   
+                                    <table class="portSplitng mt-16">
+                                        <tr>
+                                        <th>Sno</th>
+                                          <th>Code</th>
+                                          <th>Label</th>
+                                          <th>Name</th>
+                                          <th>Value</th>
+                                        </tr>
+                                      <tr *ngFor="let h of hsifm.controls; let pointIndex=index"
+                                      [formGroupName]="pointIndex" >
+                                        <td style="text-align: center;">
+                                            {{pointIndex + 1}}
+                                        </td>
+                                        <td >
+                                            {{h.value.hsi_nm}}
+                                        </td>
+                                        <td>
+                                            {{h.value.hsi_lbl}}
+                                        </td>
+                                        <td>
+                                            {{h.value.hsi_cd}}
+                                        </td>
+                                        <td>
+                                            <mat-form-field appearance="outline">
+                                                <input name="name" matInput formControlName="vlu_txt">
+                                            </mat-form-field>
+                                        </td>
+                                      </tr>
+                                      
+                                      </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <mat-divider *ngIf="shwChnls"></mat-divider>
+                    <div *ngIf="shwChnls" class="lngndchnlsLST">
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="100" fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%"
+                                fxFlex.gt-xs="70%" class="px-8">
+                                <div class="mtcrd">
+                                    <div class="form-label">Search Channels</div>
+                                    <mat-form-field class="w-100-p" appearance="outline">
+                                        <input matInput placeholder="Search an option" [(ngModel)]="searchText">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+                                fxFlex.gt-xs="50%" class="px-8 srvceLst"></div>
+                        </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                            <div fxFlex="100" fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%"
+                                fxFlex.gt-xs="70%" class="px-8 srvceLst ">
+                                <p class="chnlTitle">Select Channels</p>
+                                <div fxLayout="column" class="chanlsLst">
+                                    <div *ngFor="let c of chnleLst | filterGrp:searchText">
+                                        <div class="lngeNm">{{c.grp_nm}}
+                                        </div>
+                                        <ul>
+                                            <li fxFlex="50" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"
+                                                fxFlex.gt-xs="33%" *ngFor="let cnl of c.opts  | filter:searchText let i=index" >
+                                                <mat-checkbox (change)="getid($event,cnl,i)" [checked]="cnl.isActive">
+                                                </mat-checkbox>
+                                                <span class="pkgenm">{{cnl.opt_nm}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%"
+                                fxFlex.gt-xs="50%" class="px-8 srvceLst">
+
+                                <p class="chnlTitle">Selected Channels</p>
+                                <div fxLayout="column" class="chanlsLst">
+                                    <ul>
+                                        <div *ngFor="let s of selectedid; let i=index">
+                                            <li *ngIf="s.isActive==true">
+                                                {{s.chnle_nm}} 
+                                                <mat-icon class="logo-icon delbtncls" (click)="delbtn(s)">
+                                                    delete_outline
+                                                </mat-icon> <span></span>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lngndchnlsLST1 text-center slctGtDta" *ngIf="shwnodata">
+                        {{message}}
+                    </div>
+                </div>
+            
+                <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                        <button mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete"
+                            *ngIf="deleteEmplye" matTooltip="Delete" (click)="delpackage()">
+                            DELETE
+                        </button>
+                        <button mat-flat-button type="submit" *ngIf="!shwnodata" [disabled]="!srvcpckForm.valid"
+                            class="mat-raised-button  gtDtls" aria-label="SAVE" (click)="saveSrvcpck()">
+                            SAVE
+                        </button>
+                        <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8"
+                            aria-label="SAVE" (click)="back()">
+                            CANCEL
+                        </button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,212 @@
+<div class="container pageBackground">
+  <mat-sidenav-container class="ticket_container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+      (closed)="events.push('close!')" class="ticket_sidenav">
+      <app-support-sidemenu (ClickEvent)="getEvent($event)"></app-support-sidemenu>
+    </mat-sidenav>
+    <ds-loading *ngIf="searchLoader"></ds-loading>
+    <div class="toolbar">
+      <mat-toolbar class="tickets-toolbar">
+        <mat-toolbar-row>
+          <!-- <span><button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button></span> -->
+          <span>{{title}}</span>
+          <span class="example-spacer"></span>
+          <span class="w-32-p" style="width: 32%;" fxShow.xs="false">
+            <mat-form-field class="mt-16 ticket-search-form-field" appearance="outline">
+              <mat-icon matPrefix class="search-icon-color">search</mat-icon>
+              <input matInput placeholder="Search Tickets" [formControl]="searchInput">
+            </mat-form-field>
+          </span>
+          <!-- <mat-icon fxShow.xs="false" class="example-icon cursor-pointer" aria-hidden="false" aria-label="Example heart icon"
+          matTooltip="Create New Ticket" matTooltipClass="example-tooltip-red" (click)="openForm()">add_box</mat-icon> -->
+          <!-- <mat-icon fxShow.xs="false" class="example-icon cursor-pointer" aria-hidden="false" aria-label="Example delete icon"
+          matTooltip="Filter Tickets" matTooltipClass="example-tooltip-red">filter_list</mat-icon> -->
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="content ticket-pageBackground">
+      <app-ticket-list [ticketsDta]="ticketsData"></app-ticket-list>
+    </div>
+  </mat-sidenav-container>
+</div>
+
+<!-- sidebar -->
+<!-- <ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+
+      <div class="card">
+        <div class="card-header crdHdng">New Ticket
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel
+          </mat-icon>
+        </div>
+        <div class="card-body">
+          <form fxLayout="column" [formGroup]="ticketFormGroup" class="rgstrnFrm">
+          <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Create Ticket for</div>
+          <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+            <mat-select formControlName="orgn_typ">
+              <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                {{o.ctgry_nm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Ticket Type</div>
+          <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+            <mat-select formControlName="orgn_typ">
+              <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                {{o.ctgry_nm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="form-label textOverflowStyle form-sub-heading">Look up existing details</div>
+
+          
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Name</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Contact Field</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="form-label textOverflowStyle form-sub-heading">Contact Details</div>
+
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Name</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="name" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Email</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="name" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Phone</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="number" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Client Level</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Building</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">PC ID</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="number" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Department</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="form-label textOverflowStyle form-sub-heading">Ticket Template</div>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Choose a Template</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="form-label textOverflowStyle form-sub-heading">Ticket Info</div>
+
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Category</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Priority</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <mat-select formControlName="orgn_typ">
+                <mat-option *ngFor="let o of categories" [value]="o.ctgry_id">
+                  {{o.ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Due Date</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="name" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Cc</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="name" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Bcc</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="name" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Subject</div>
+            <mat-form-field appearance="outline" class="pl-1rm pr-1rm">
+              <input name="name" matInput formControlName="name">
+            </mat-form-field>
+            <div class="form-label textOverflowStyle pt-1rm pl-1rm pr-1rm">Message</div>
+            <dx-html-editor [(value)]="editorValue" class="m-12">
+              <dxo-toolbar>
+                  <dxi-item formatName="undo"></dxi-item>
+                  <dxi-item formatName="redo"></dxi-item>
+                  <dxi-item formatName="separator"></dxi-item>
+                  <dxi-item formatName="header" [formatValues]="[false, 1, 2, 3, 4, 5]"></dxi-item>
+                  <dxi-item formatName="separator"></dxi-item>
+                  <dxi-item formatName="bold"></dxi-item>
+                  <dxi-item formatName="italic"></dxi-item>
+                  <dxi-item formatName="strike"></dxi-item>
+                  <dxi-item formatName="underline"></dxi-item>
+                  <dxi-item formatName="separator"></dxi-item>
+                  <dxi-item formatName="alignLeft"></dxi-item>
+                  <dxi-item formatName="alignCenter"></dxi-item>
+                  <dxi-item formatName="alignRight"></dxi-item>
+                  <dxi-item formatName="alignJustify"></dxi-item>
+                  <dxi-item formatName="separator"></dxi-item>
+                  <dxi-item widget="dxButton" [options]="toolbarButtonOptions"></dxi-item>
+              </dxo-toolbar>
+              Enter text here
+          </dx-html-editor>
+          <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="text-align: right;">
+                <button mat-flat-button type="submit" aria-label="SAVE"
+                    class="mat-raised-button  saveBtn-color" (click)="saveTicket()">Create Ticket</button>
+            </div>
+            <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8"
+                aria-label="SAVE" (click)="closeSideBar()">
+                Cancel
+              </button>
+          </div>
+        </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+</ds-sidebar> -->
+<!-- sidebar -->

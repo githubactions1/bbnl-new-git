@@ -1,0 +1,174 @@
+<div class="page-layout simple pageBackground prtAsgnCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <div class="row fltrcrd m-8">
+    <!-- <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%" class="px-8"></div> -->
+    <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%" class="px-8">
+      <div class="form-label">Caf Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="cafnumber" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%" class="px-8">
+      <p class="orcls">(OR)</p>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%" class="px-8">
+      <div class="form-label">Mobile Number</div>
+      <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+        <input matInput type="text" [(ngModel)]="mobilenumber" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </div>
+    <!-- <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%" class="px-8"></div> -->
+    <div fxFlex="20" fxFlex.xs="100" class="px-8 gtDtlsBtn">
+      <button mat-raised-button color="primary" (click)="getdetails();" class="gtDtls">GET DETAILS</button>
+    </div>
+  </div>
+  <!-- <div class="row"> -->
+    <!-- <p class="hdngtitle pl-8">Monthly Payments</p> -->
+    <div class="ds-card m-12" >
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="collectionData" [remoteOperations]="false" [allowColumnReordering]="true"
+        [rowAlternationEnabled]="true" [allowColumnResizing]="true"  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width: 100%;">
+        <dxo-selection mode="single" *ngIf="(permissions.slct_in==1)?true:false"></dxo-selection>
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser [enabled]="true" mode="select">
+        </dxo-column-chooser>
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+          [alignment]="f.algnmnt" [width]="f.width" [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"  [format]="f.format == true ? {type:f.type,currency:f.currency, precision:f.precision}: false"></dxi-column>
+          <dxi-column [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+          [width]="100" caption="" cellTemplate="editTemplate">
+          <div *dxTemplate="let data of 'editTemplate'">
+            <div class="cursor-pointer" (click)="onCellClick(data)">
+              <button class="slctBtn">Pay</button>
+            </div>
+          </div>
+        </dxi-column>
+      </dx-data-grid>
+    </div>
+    <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+  <!-- </div> -->
+</div>
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container *ngIf="sidebar">
+    <div fxLayout="column">
+      <div>
+        <div class="card-header crdHdng">Payment Entry Information
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">
+            cancel</mat-icon>
+        </div>
+        <!-- <div class="card-body" fxLayout.lt-md="column" fxLayout.xs="column">
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">Payment Mode</div>
+              <mat-form-field appearance="outline">
+                <mat-select [(value)]="paymntcode" required>
+                  <mat-option *ngFor="let p of paymntodes" [value]="p.pymnt_mde_id">
+                    {{p.pymnt_mde_nm}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50" fxFlex.xs="50" class="px-8">
+              <div class="form-label">Amount</div>
+              <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+                <input matInput type="text" [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" #myInput>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column">
+          <div fxFlex="20" fxFlex.xs="100" class="px-8"></div>
+          <div fxFlex="30" fxFlex.xs="100" class="px-8">
+            <button mat-raised-button type="submit" class="saveBtn-color" aria-label="SAVE"
+              (click)="save()" style= "width: 100%;">
+              SAVE
+            </button>
+          </div>
+          <div fxFlex="30" fxFlex.xs="100" class="px-8">
+            <button mat-raised-button type="close" aria-label="CANCEL" (click)="closeSideBar()">
+              CANCEL
+            </button>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8"></div>
+        </div>
+
+        </div> -->
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>View Customer Due Details</ng-template>
+         
+              <div class="row">
+                <div class="ds-card grid" *ngIf="(permissions.slct_in==1)?true:false">
+                  <dx-data-grid id="gridContainer" [dataSource]="cstmrDueDetails" [remoteOperations]="false"
+                    [allowColumnReordering]="true" [allowColumnResizing]="true"  [rowAlternationEnabled]="true" [showColumnLines]="true"
+                    [showRowLines]="true" [showBorders]="true" style="width:100%"
+                    (onSelectionChanged)="selectInvoices($event)">
+                    <dxo-selection mode="multiple"></dxo-selection>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                    <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                    <dxo-column-chooser [enabled]="true" mode="select">
+                    </dxo-column-chooser>
+                    <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                    </dxo-export>
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                    <dxi-column [allowResizing]="true" *ngFor="let f of detailColumnsDefs" [visible]="!f.hide" [dataField]="f.field"
+                      [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+                  </dx-data-grid>
+                </div>
+                <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+              </div>
+              <div fxLayout="row">
+                <div fxFlex="100%" fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%"></div>
+                <div fxFlex="100%" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%"><button
+                    mat-raised-button color="primary" matStepperNext>Next</button></div>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Enter Amount</ng-template>
+              <div fxLayout="row" fxLayout.xs="column">
+                <div fxFlex="5" fxFlex.xs="5" class="px-8"></div>
+                <div fxFlex="5" fxFlex.xs="5" class="px-8" style="margin-top: 2.6%;">
+                </div>
+                <div fxFlex="15" fxFlex.xs="15" class="px-8">
+                  <mat-label>
+                    <div class="lbl mndlTitle">Total Amount</div>
+                    <div class="lbl_cntnt mndalName">{{finalSum}}</div>
+                  </mat-label><br>
+                </div>
+                <div fxFlex="15" fxFlex.xs="15" class="px-8">
+                  <div class="form-label">Payment Mode</div>
+                  <mat-form-field appearance="outline">
+                    <mat-select [(value)]="paymd" required>
+                      <mat-option *ngFor="let p of paymntodes" [value]="p.pymnt_mde_id">
+                        {{p.pymnt_mde_nm}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="15" fxFlex.xs="15" class="px-8">
+                </div>
+              </div>
+              <div class="row">
+                <div fxFlex="85" fxFlex.xs="85" class="px-8"></div>
+                <button mat-raised-button matStepperPrevious class="m-2">Back</button>
+                <!-- <button mat-raised-button color="warn" (click)="stepper.reset()" class = "m-2">Reset</button> -->
+                <button mat-raised-button color="primary" (click)="save()" class="m-2"> Save</button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

@@ -1,0 +1,102 @@
+<div class="page-layout blank usrEmplye cstmrPrflePageBackground cusAcntCmpnt">
+    <!-- HEADER -->
+    <div *ngIf="clsbtn">
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+            <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="50" fxFlex.xs="100" class="px-8"></div>
+            <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="cursor-pointer tblPrfleBtn" style="text-align: center" (click)="close()">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- / HEADER -->
+    <!-- CONTENT -->
+    <div class="content" >
+        <form  fxLayout="column" [formGroup]="addsla">
+                <input  type='hidden'  formControlName="sla_id" value="" >
+                <input  type='hidden'  formControlName="issue_owner" value="" >
+
+                <!-- <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                 <div class="form-label">Issue Owner id</div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type='hidden' matNativeControl required
+                        formControlName="issue_owner" value="" readonly>
+                    </mat-form-field>
+                </div> -->
+                <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Issue Owner</div>
+                    <!-- <mat-form-field appearance="outline">
+                        <mat-select matNativeControl  required filter="true" id="complaint_owner"
+                            name="complaint_owner" formControlName="owner_typ"
+                            (selectionChange)="getsubemployee($event.value)" (click)="reset()" >
+                            <mat-option *ngFor="let o of org" [value]="o.complaint_owner_id">
+                                {{o.complaint_owner_name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>Issue Owner is Required</mat-error>
+                    </mat-form-field> -->
+                    <mat-form-field appearance="outline">
+                        <input matInput type='text' matNativeControl required
+                        formControlName="owner_typ" value="" readonly>
+                    </mat-form-field>
+                </div>
+                
+               
+                <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Level One Time(Mins)<span class="reqSgnColor">*</span>  
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type='text' matNativeControl required
+                        formControlName="level_one_time" value="" >
+                        <mat-error> Escalation Level Time is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Level Two Time(Mins) <span class="reqSgnColor">*</span>  
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type='text' matNativeControl required
+                        formControlName="level_two_time" value="" >
+                        <mat-error> Escalation Level Time is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                    <div class="form-label"> Level Three Time(Mins) 
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type='text' matNativeControl 
+                        formControlName="level_three_time" value="" >
+                    </mat-form-field>
+                </div>
+                
+                <div fxFlex="20" fxFlex.xs="100" class="px-8">
+                    <div class="form-label"> Level Four Time(Mins)   
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type='text' matNativeControl 
+                        formControlName="level_four_time" value="" >
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.xs="100" class="px-8">
+                    <div class="form-label">Other Emails   
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type='email' matNativeControl 
+                        formControlName="Other_emails" value="" >
+                        <mat-error> Other Emails is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row"  fxLayout.xs="column" style="text-align:end;" fxFlexFill>
+                    <div fxFlex="50" fxFlex.xs="100" class="px-8 mt-5">
+                        <button (click)="slaedit()" [disabled]="!addsla.valid" mat-flat-button type="submit"
+                         class="mat-raised-button saveBtn-color btnWdth" aria-label="SAVE">
+                           Update
+                        </button>
+                    </div>
+                </div>
+                <!-- </div> -->
+                </form>
+    </div>
+</div>

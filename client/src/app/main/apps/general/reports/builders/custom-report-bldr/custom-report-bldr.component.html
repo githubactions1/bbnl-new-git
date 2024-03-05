@@ -1,0 +1,431 @@
+<div class="page-layout simple pageBackground custmRprtBldrCmpnt">
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <ds-loading *ngIf="loader == true"></ds-loading>
+  <div class="input-row" fxLayout="row">
+    <div fxFlex fxFlex.gt-lg="6%" fxFlex.gt-md="6%" fxFlex.gt-sm="6%" fxFlex.gt-xs="6%"
+      style="margin-top: 1%;margin-left: 3%;">
+      <button mat-raised-button color="primary" (click)="back()" *ngIf="showCmRpts == true">Back</button>
+    </div>
+    <div fxFlex fxFlex.gt-lg="74%" fxFlex.gt-md="74%" fxFlex.gt-sm="74%" fxFlex.gt-xs="74%"></div>
+    <div fxFlex fxFlex.gt-lg="16%" fxFlex.gt-md="16%" fxFlex.gt-sm="16%" fxFlex.gt-xs="16%">
+      <div>
+        <button mat-raised-button color="primary" (click)="custRpts()" class="mt-20 cstmRprtBtn gtDtls" *ngIf="showCmRpts == false;">View Existing
+          Report</button>
+      </div>
+
+    </div>
+    <div fxFlex fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%"></div>
+  </div>
+  <div class="ds-card usrcrteCrd">
+    <form class="c-form" *ngIf="showCmRpts == false">
+      <div fxLayout="row">
+        <p class="bdlngCss"><b>
+            <mat-icon>call_to_action</mat-icon>Report Details
+          </b> </p>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxFlexFill fxLayoutGap="20px"
+        fxLayoutGap.lt-md="0px">
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Report Name</div>
+            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+              <input matInput placeholder="Placeholder" type="text" [(ngModel)]="report_name"
+                [ngModelOptions]="{standalone: true}" (ngModelChange)="onReportChange();" required>
+            </mat-form-field>
+          </div>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Description Text</div>
+            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+              <input matInput placeholder="Placeholder" type="text" [(ngModel)]="descrp_txt"
+                [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxFlexFill fxLayoutGap="20px"
+        fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Select Group</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectGrp" required>
+                <mat-option *ngFor="let g of grplist" [value]="g.grp_id">
+                  {{g.grp_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Select category</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectCtgy" required>
+                <mat-option *ngFor="let c of ctgrylist" [value]="c.rpt_ctgry_id">
+                  {{c.rpt_ctgry_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <p class="bdlngCss"><b>
+            <mat-icon>archive</mat-icon> For Report
+          </b> </p>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxFlexFill fxLayoutGap="20px"
+        fxLayoutGap.lt-md="0px">
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Excel</div>
+
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectexcel" (selectionChange)="getexcel(selectexcel)" required>
+                <mat-option [value]="1">Yes</mat-option>
+                <mat-option [value]="0">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.xs="100" class="px-8" *ngIf="excelflenm">
+            <div class="form-label">Excel Filename</div>
+            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+              <input matInput placeholder="Placeholder" type="text" [(ngModel)]="excelname"
+                [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Pdf</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectPdf" (selectionChange)="getPdf(selectPdf)" required>
+                <mat-option [value]="1">Yes</mat-option>
+                <mat-option [value]="0">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.xs="100" class="px-8" *ngIf="pdfflenm">
+            <div class="form-label">Pdf Filename</div>
+            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+              <input matInput placeholder="Placeholder" type="text" [(ngModel)]="pdfname"
+                [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Pagination</div>
+            <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline">
+              <input matInput placeholder="Placeholder" type="text" [(ngModel)]="pgnation"
+                [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Standed Variables</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectStandVrbles" required>
+                <mat-option *ngFor="let s of stanedVrblsList" [value]="s.vrble_id">
+                  {{s.vrble_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="20" fxFlex.xs="100" class="px-8">
+            <div class="form-label">DB Connection</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectDbConctors" required>
+                <mat-option *ngFor="let db of connectionList" [value]="db.cntns_id">
+                  {{db.cntns_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <p class="bdlngCss"><b>
+            <mat-icon>ballot</mat-icon>Filter Details
+          </b> </p>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxFlexFill fxLayoutGap="20px"
+        fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100" class="px-8">
+            <div class="form-label">Add Filters</div>
+            <mat-form-field appearance="outline">
+              <mat-select [(value)]="selectFltrs" multiple>
+                <mat-option *ngFor="let f of fltrlist" [value]="f.fltr_id">
+                  {{f.fltr_nm}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button (click)="addfltrs(varble,dta)"
+            class="mat-raised-button mb-4 fltrscss gtDtls"><span>+</span>ADD
+            FILTERS</button>
+        </div>
+      </div>
+
+      <div *ngFor="let item of dataft">
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="50" fxFlex.xs="100">
+            <p class="lblcs">{{item.name}}
+              <span class="psbtn" (click)="addtxtbox(item)">+</span>
+            </p>
+          </div>
+        </div>
+        <div class="tBle">
+          <table>
+            <tr>
+              <th>Label Text</th>
+              <th>Default Value</th>
+              <th>Sequence Id</th>
+              <th>Variable Text</th>
+              <th>Accept</th>
+              <th>Accept description</th>
+              <th colspan="2">Swap</th>
+              <th>Action</th>
+
+            </tr>
+            <tr *ngFor="let itm of item.inputbox let i=index">
+              <td>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline" class="px-8"
+                  style="font-size:13px">
+                  <input matInput placeholder="Placeholder" type="text" [(ngModel)]="itm.inputnm"
+                    [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline" class="px-8"
+                  style="font-size:13px">
+                  <input matInput placeholder="Placeholder" type="text" [(ngModel)]="itm.default"
+                    [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-label>
+                  <span class="lbtvlue sqvlcs">{{i+1}}</span>
+                </mat-label>
+              </td>
+              <td>
+                <mat-label>
+                  <span class="lbtvlue" style="margin-left: 3%;font-size: 14px;">{{item.name}}_{{i}}</span>
+                </mat-label>
+
+              </td>
+
+              <td>
+                <mat-checkbox [(ngModel)]="itm.accept" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+              </td>
+
+              <td>
+                <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline" class="px-8"
+                  style="font-size:13px">
+                  <input matInput placeholder="Placeholder" type="text" [(ngModel)]="itm.acceptdes"
+                    [ngModelOptions]="{standalone: true}" required>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <div *ngIf="i !=0">
+                  <div (click)="upward(item,itm,i)" class="arrws">
+                    <mat-icon>arrow_upward</mat-icon>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div *ngIf="i+1 != item.inputbox.length">
+                  <div (click)="downwward(item,itm,i)" class="arrws">
+                    <mat-icon>arrow_downward</mat-icon>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div (click)="delete(item,itm,i)">
+                  <mat-icon style="font-size: 28px;cursor: pointer; color: red;">delete_outline</mat-icon>
+                </div>
+              </td>
+
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <p class="bdlngCss"><b>
+            <mat-icon>assignment</mat-icon>Enter Your Query
+          </b> </p>
+      </div>
+
+
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div fxFlex>
+          <mat-form-field appearance="outline" fxFlex>
+            <textarea matInput placeholder="Textarea" [(ngModel)]="query" name="query"
+              style="height: 300px;"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex>
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle (click)="onSubmit()" *ngIf="shwSubmtBtn" class="sbmtBtn">Submit</mat-button-toggle>
+            <mat-button-toggle (click)="onUpdate()" *ngIf="shwUpdtBtn" class="updtBtn">Update</mat-button-toggle>
+            <mat-button-toggle class="cnclBtn">Cancel</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div fxLayout="row">
+            <p class="bdlngCss"><b>
+                <mat-icon>chrome_reader_mode</mat-icon>Columns Details
+              </b> </p>
+          </div>
+        </div>
+
+        <div class="custom_ds_table">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width: 80px;">Sno</th>
+                <th style="min-width: 150px;">Column name</th>
+                <th>Column Sequence</th>
+                <th>Display name</th>
+                <th style="min-width: 135px;">Visible On Report</th>
+                <th style="min-width: 100px;">Add filter</th>
+                <th style="min-width: 135px;">Width</th>
+                <th style="min-width: 135px;">datatype</th>
+                <th>Reference another report</th>
+                <th>Report Url</th>
+                <th>Report passing parameters</th>
+                <th>Report Filters parameters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let clumns of columnnames let i=index">
+                <td>{{i+1}}</td>
+                <td>{{clumns.type}}</td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.csequence"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.displaynm"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-checkbox [(ngModel)]="clumns.visibleonrpt" [ngModelOptions]="{standalone: true}" required
+                    class="vsbleRprt">
+                  </mat-checkbox>
+                </td>
+                <td>
+                  <mat-checkbox [(ngModel)]="clumns.filterin" [ngModelOptions]="{standalone: true}" required
+                    class="vsbleRprt"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.width"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.datatype"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.refanrpt"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.rpturl"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.rptparameters"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width lngCs ltlngwdth frmcsAl" appearance="outline"
+                    style="font-size:13px">
+                    <input matInput placeholder="Placeholder" type="text" [(ngModel)]="clumns.rptfilterparameters"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top: 1%;">
+          <div>
+            <button mat-raised-button color="primary" class="clumnscss gtDtls" (click)="svcolumnsdata(columnnames)"
+              *ngIf="shwSaveClms">Save Columns Data</button>
+            <button mat-raised-button color="primary" class="clumnscss gtDtls" (click)="upcolumnsdata(columnnames)"
+              *ngIf="shwUpdClms">Update Columns Data</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form class="c-form" *ngIf="showCmRpts == true">
+      <div class="ds-card grid" *ngIf="(permissions.slct_in==1)?true:false">
+        <dx-data-grid id="gridContainer" [dataSource]="csmtList" [remoteOperations]="false"
+          [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+          [showBorders]="true" (onRowClick)="startEdit($event)" style="width:100%">
+          <dxo-paging [pageSize]="20"></dxo-paging>
+          <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+          <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+          <dxo-column-chooser [enabled]="true" mode="select">
+          </dxo-column-chooser>
+          <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true" fileName="test">
+          </dxo-export>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            [alignment]="f.cellStyle" [width]="f.width" [groupIndex]="f.groupIndex">
+          </dxi-column>
+          <dxo-summary>
+            <dxi-group-item column="rpt_nm" [summaryType]="count" displayFormat="{0} Reports">
+            </dxi-group-item>
+          </dxo-summary>
+        </dx-data-grid>
+
+      </div>
+      <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+    </form>
+  </div>
+</div>

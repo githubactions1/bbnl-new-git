@@ -1,0 +1,65 @@
+.sidemenuOptns {
+    // height: 200px !important;
+    overflow: auto !important;
+    margin: 10px 0;
+    padding: 10px;
+}
+.mat-list-item {
+    cursor: pointer;
+}
+.parent_menu_item {
+    margin: 0 0 10px;
+}
+.menu_item {
+    // border-top: 1px solid blue;
+}
+.child_menu_item{
+    // border-top: 1px solid blue;
+}
+.example-container {
+    border: 1px solid #555;
+    height: 100%;
+}
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.mt-18 {
+    margin-top: 18px !important;
+  }
+.mb_M9{
+    margin-bottom: -9%;
+}
+.sidemenuOptnsWthoutScroll {
+    margin: 10px 0;
+    padding: 10px;
+}
+.sidemenuOptnsWthoutScroll .mat-list-item {
+    display: block;
+    height: 62px;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    padding: 0;
+}
+.ticket-sidemenu-icon-style{
+    // background: #3a3f48;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 4px;
+}
+.ticket-sidemenu-prnt-item{
+    color: #dadada !important;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 1;
+    padding: 8px 5px 10px;
+}

@@ -1,0 +1,177 @@
+@import "src/@glits/scss/ds";
+
+.dbcrdsbgrnd{
+    background: #ffffff;
+    box-shadow: 0 6px 16px 0 rgba(179, 200, 204, 0.26);
+}
+
+.gtdtabtnalgnmnt{
+   margin-top:32px
+}
+
+
+.ds-card .card-divider {
+    margin: 0px;
+}
+.ds-card .card-divider1 {
+    margin: 0px;
+    border-left: 1px solid rgba(0, 0, 0, 0.12);;
+}
+.cardleft{
+    padding-left: 3%;
+    padding-top: 3%;
+}
+.cardrght{
+    margin-top: 2rem;
+    font-size: 13px;
+    color: black;
+}
+.cardtxtlft{
+    font-size: 13px;
+    color: black;
+}
+.crtmnth{
+    font-size: 18px;
+    color: black;
+}
+.cardrght1{
+    font-size: 13px;
+    color: black;
+}
+.ds-card {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid;
+    // margin-right: 3%;
+}
+.cssdrp { margin-top: 1%; width: 90%; }
+ul{
+    width: 100%;
+    padding-top: 1%;
+    li:first-child{
+        float: left;
+        display: inline;
+        width: 25%;
+    }
+    li:nth-child(2),li:nth-child(3),li:nth-child(4){
+        float: left;
+        display: inline;
+        width: 20%;
+    }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 0.5em 0;
+}
+.ds-card1{
+    margin-right: 0%;
+}
+.labelText{  
+    fill: green !important;  
+}  
+
+.dsbbrdcrds{
+    max-width: 93%;
+    min-width: 93%;
+    margin: 4% 3%;
+    border-radius: 6px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+}
+
+.dsbbrdcrds1{
+    max-width: 93%;
+    min-width: 93%;
+    margin: 1% 5%;
+    border-radius: 6px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+}
+
+.chrtCrd
+{
+    max-width: 100%;
+    min-width: 100%;
+    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+}
+.totlCnt{
+border-right: 1px solid #e0e0e0;
+}
+.inrSctn{
+border-bottom: 1px solid #e0e0e0;
+border-top: 2px solid #72729e;
+}
+
+.cntDtls
+{
+padding-top: 30px;
+text-align: center;
+}
+
+.nme{
+font-size: 13px;
+padding-top: 0px;
+color: #795548;
+padding-bottom: 2%;
+}
+
+.cnt{
+font-size: 16px;
+font-weight: 500;
+padding-top:1%;
+}
+
+@media only screen and (min-width:320px) and (max-width:1440px){
+    .cnt{
+        font-size: 14px!important;
+        
+        }
+
+        .nme{
+            font-size: 12px!important;
+            font-weight: 400!important;
+        }
+}
+
+.msocnt,.lmocnt{
+    padding-bottom:30px;
+}
+
+.green-fd{
+    color:#01959f !important
+}
+.mb-40 {
+    margin-bottom: 18px !important;
+}
+
+@media only screen and (min-width:320px) and (max-width:480px){
+   .mblpdng{
+       padding-left:0px;
+       li{
+         width:100%!important;
+       }
+   }
+
+   .chrtDSCrd{
+       overflow: auto!important;
+   }
+
+   .hmechrt{
+    width: 1900px!important;
+   }
+
+   .gtdtabtnalgnmnt{
+       margin-top:8px!important
+   }
+
+}
+.table-Header-border-bottom{
+    border-bottom: 1px solid #f1f1f1;
+}
+.transform-get-data-button{
+    transform: translateY(-19%);
+}
+.active_class{
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid;
+    color:orange;
+}

@@ -1,0 +1,69 @@
+<div class="page-layout simple pageBackground">
+  <div id="scrolledtabs" class="tbs" *ngIf="cafsData.length>1"> 
+    <dx-tabs
+        [dataSource]="longtabs"
+        [width]="300"
+        [scrollByContent]="true"
+        [showNavButtons]="true" [selectedIndex]="0" (onItemClick)="selectTab($event)"
+    ></dx-tabs>
+</div>
+<div class="ds-card  dsbbrdcrds1" style="padding: 1%;">
+  <div fxFlex="100" fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+    <div fxLayout="row wrap">
+      <div class="col-6">
+        <h1 class="hdr">Invoice Details</h1>
+      </div>
+      <div class="col-4">
+        <div class="">Year</div>
+                                <mat-form-field class="cssdrp" appearance="outline">
+                                    <mat-select class="simplified" fxLayoutAlign="space-between center"
+                                        [(value)]="selectedYear" (selectionChange)="selectyear()">
+                                        <mat-option *ngFor="let y of years" [value]='y'>{{y}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+      </div>
+    </div>
+    <ds-loading *ngIf="shwLdr"></ds-loading>
+    <div style="height: 400px;
+    overflow-y: scroll;padding-top:3%">
+      <div>
+        <table style="width:100%">
+          <tr>
+            <th>Sno</th>
+            <th>Invoice Id</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Invoice From Date</th>
+            <th>Invoice To Date</th>
+            <th>Package</th>
+            <th>Invoice Charges</th>
+            <th>TAX</th>
+            <th>Amount</th>
+            <th>Payment Status</th>
+            <th>Payment TimeStamp</th>
+            <th>View</th>
+
+
+          </tr>
+          <tr *ngFor="let c of invoiceData" style="overflow-x:auto;">
+            <td style="text-align:center">{{c.sno}}</td>
+            <td style="text-align:center">{{c.caf_invce_id}}</td>
+            <td style="text-align:center">{{c.invce_yr}}</td>
+            <td>{{c.invce_mm}}</td>
+            <td>{{c.invce_frm_dt}}</td>
+            <td>{{c.invce_to_dt}}</td>
+            <td>{{c.pckge_nm}}</td>
+            <td>{{c.invcedtl}}</td>
+            <td style="text-align:center">{{c.tax_at}}</td>
+            <td style="text-align:center">{{c.tl_at}}</td>
+            <td>{{c.pymnt_sts}}</td>
+            <td>{{c.pd_ts}}</td>
+            <td><button class="btn" (click)="viewhtml(c)">view invoice</button></td>
+
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

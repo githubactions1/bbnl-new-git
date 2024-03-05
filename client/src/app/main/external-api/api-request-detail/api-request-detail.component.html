@@ -1,0 +1,94 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+
+
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+<!-- 
+  <div>
+    <p class="ent-ttl">{{data[0].frst_nm}}</p>
+    <p class="ent-addrs">{{data[0].instl_addr2_tx}}</p>
+    <p class="ent-cntct"><span>Email:{{data[0].instl_eml1_tx}}</span> &nbsp;&nbsp; <span>Mobile:{{data[0].mbl_nu}}</span>
+    </p>
+  </div> -->
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardOne">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">Action</div>
+              <div class="h1 cnt msocnt">{{apiDtls.actn_nm}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardOne">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">Entity</div>
+              <div class="h1 cnt msocnt">{{apiDtls.enty_nm}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="50%">
+
+      <div class="ds-card  dsbbrdcrds  cardOne">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-xs="100%" class="totlCnt">
+            <div class="cntDtls">
+              <div class="h4 nme">Entity Id</div>
+              <div class="h1 cnt msocnt">{{apiDtls.enty_ky}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div fxLayout="row" class="ml-24 mr-24">
+    <div class="ds-card grid" style="background-color: white !important;">
+      <dx-data-grid id="gridContainer" [dataSource]="grdLst" [remoteOperations]="false"
+        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true"
+        [showRowLines]="true" [showBorders]="true" style="width:100%"
+        [masterDetail]="{ enabled: true, template: 'detail' }">
+
+        <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+        </dxo-export>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+          [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+          <dxi-column [showInColumnChooser]="false" type="buttons" [width]="100" caption=" "
+          cellTemplate="ViewTemplate" >
+          <div *dxTemplate="let data of 'ViewTemplate'" >
+            
+            <div  *ngIf="data.row.data.retry" class="cursor-pointer tblVwBtn" (click)="onCellClick(data.row.data)">
+            Retry
+            </div>
+          
+          </div>
+        </dxi-column>
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+        
+         <div *dxTemplate="let entCust of 'detail'">
+        <dx-data-grid [dataSource]="entCust.data.retryArray" [showBorders]="true" [columnAutoWidth]="true" [rowAlternationEnabled]="true" [showColumnLines]="true">
+          <dxi-column *ngFor="let f of rtryColumns" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+            alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+        </dx-data-grid>
+        
+      </div>
+      </dx-data-grid>
+
+    </div>
+  </div>
+</div>

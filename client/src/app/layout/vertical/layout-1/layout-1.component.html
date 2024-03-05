@@ -1,0 +1,134 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!dsConfig.layout.sidepanel.hidden && dsConfig.layout.sidepanel.position === 'left'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <div *ngIf="usrDtls"><app-notification-bar></app-notification-bar></div>
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="dsConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container">
+
+        <!-- NAVBAR: Left -->
+        <ng-container *ngIf="dsConfig.layout.navbar.position === 'left'">
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="container">
+
+            <!-- TOOLBAR: Below fixed -->
+            <ng-container *ngIf="dsConfig.layout.toolbar.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container>
+            <!-- / TOOLBAR: Below fixed -->
+
+            <div id="container-3" class="container" dsPerfectScrollbar
+                 [dsPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+                <!-- TOOLBAR: Below static -->
+                <ng-container *ngIf="dsConfig.layout.toolbar.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+                <!-- / TOOLBAR: Below static -->
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below static -->
+                <ng-container *ngIf="dsConfig.layout.footer.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+                <!-- / FOOTER: Below static -->
+
+            </div>
+
+            <!-- FOOTER: Below fixed -->
+            <ng-container *ngIf="dsConfig.layout.footer.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container>
+            <!-- / FOOTER: Below fixed -->
+
+        </div>
+
+        <!-- NAVBAR: Right -->
+        <ng-container *ngIf="dsConfig.layout.navbar.position === 'right'">
+            <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Right -->
+
+    </div>
+
+    <!-- FOOTER: Above -->
+    <ng-container *ngIf="dsConfig.layout.footer.position === 'above'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+    <!-- FOOTER: Above -->
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!dsConfig.layout.sidepanel.hidden && dsConfig.layout.sidepanel.position === 'right'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- QUICK PANEL -->
+<!--<ds-sidebar name="quickPanel" position="right" class="quick-panel">
+    <quick-panel></quick-panel>
+</ds-sidebar>-->
+<!-- / QUICK PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS                                                                                            -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!dsConfig.layout.toolbar.hidden"
+             [ngClass]="dsConfig.layout.toolbar.customBackgroundColor === true ? dsConfig.layout.toolbar.position + ' ' + dsConfig.layout.toolbar.background : dsConfig.layout.toolbar.position">
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!dsConfig.layout.footer.hidden"
+            [ngClass]="dsConfig.layout.footer.customBackgroundColor === true ? dsConfig.layout.footer.position + ' ' + dsConfig.layout.footer.background : dsConfig.layout.footer.position">
+    </footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <ds-sidebar name="navbar" class="navbar-ds-sidebar"
+                  [folded]="dsConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!dsConfig.layout.navbar.hidden">
+        <navbar [variant]="dsConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </ds-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+    <!--<ds-sidebar name="navbar" position="right" class="navbar-ds-sidebar"
+                  [folded]="dsConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!dsConfig.layout.navbar.hidden">
+        <navbar [variant]="dsConfig.layout.navbar.variant" class="right-navbar"></navbar>
+    </ds-sidebar>-->
+</ng-template>
+<!-- / RIGHT NAVBAR -->

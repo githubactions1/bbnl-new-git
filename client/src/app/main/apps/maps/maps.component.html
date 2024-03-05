@@ -1,0 +1,282 @@
+
+<mat-sidenav-container class="tp-container">
+  <mat-sidenav mode="side" opened class="wdthFrSdnv" *ngIf="sidenav == true;">
+    <div class="card-header crdHdng bckgrnd">
+      <p class="fltrCs">OLT Filters <span>
+        <!-- <mat-icon matTooltip="close" (click)="clsSdNav()" class="closeSidebar" style="float:right">
+        cancel</mat-icon> -->
+      </span></p>
+    </div>
+    <div class=" row pdngFtn tpOne">
+      <div fxFlex="100" fxFlex.gt-lg="45%" fxFlex.gt-md="45%" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%" class="px-8">
+        <div class="form-label">District</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="dstrcts" (selectionChange)="slctddstrcts(dstrcts)" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let d of distrctLst" [value]="d">
+              {{d.dstrt_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+        <div fxFlex="100" fxFlex.gt-lg="45%" fxFlex.gt-md="45%" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%" class="px-8">
+          <div class="form-label">Mandal</div>
+          <mat-form-field appearance="outline">
+            <mat-select [(value)]="mndls" (selectionChange)="slctdmndl(mndls)" required>
+              <mat-option [value]="0">ALL</mat-option>
+              <mat-option *ngFor="let m of mandalLst" [value]="m">
+                {{m.mndl_nm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    </div>
+    <div class=" row pdngFtn tpZroP">
+      <div fxFlex="100" fxFlex.gt-lg="45%" fxFlex.gt-md="45%" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%" class="px-8">
+        <div class="form-label">OLT Type</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="typs" (selectionChange)="slctdtyp(typs)" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let t of typLsts" [value]="t">
+              {{t.asrt_type_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="45%" fxFlex.gt-md="45%" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%" class="px-8">
+        <div class="form-label">OLT Group</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="grps" (selectionChange)="slctdgrp(grps)" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let g of grpLsts" [value]="g">
+              {{g.asrt_grp_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="pdngFtn tpOne">
+      <div class="form-label">OLT Type</div>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="typs" (selectionChange)="slctdtyp(typs)" required>
+          <mat-option [value]="0">ALL</mat-option>
+          <mat-option *ngFor="let t of typLsts" [value]="t">
+            {{t.asrt_type_nm}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+    <div class="row pdngFtn tpZroP">
+      <!-- <div fxFlex="100" fxFlex.gt-lg="45%" fxFlex.gt-md="45%" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%" class="px-8">
+        <div class="form-label">OLT Group</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="grps" (selectionChange)="slctdgrp(grps)" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let g of grpLsts" [value]="g">
+              {{g.asrt_grp_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+      <div fxFlex="100" fxFlex.gt-lg="45%" fxFlex.gt-md="45%" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%" class="px-8">
+        <div class="form-label">OLT Category</div>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="ctgrys" (selectionChange)="slctdCtgry(ctgrys)" required>
+            <mat-option [value]="0">ALL</mat-option>
+            <mat-option *ngFor="let c of ctgryLsts" [value]="c">
+              {{c.asrt_ctgry_nm}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    
+    </div>
+   
+    <mat-tab-group (selectedTabChange)="tabChangeFn($event)">
+      <mat-tab label="({{inservicecount}})In Service">
+        <div *ngIf="viewI" class="p-20 custom_ds_table">
+          <div class="mtcrd">
+            <mat-form-field class="w-100-p" appearance="outline">
+              <input matInput placeholder="Search a OLT..." [(ngModel)]="searchText">
+            </mat-form-field>
+          </div>
+          <table class="portAlctn">
+            <thead>
+              <tr>
+                <th>SNO</th>
+                <th>OLT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let v of viewLst | filter:searchText; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{v.asrt_nm}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="!viewI" class="p-20">
+          NO DATA
+        </div>
+      </mat-tab>
+      <mat-tab label="({{blockedcount}})Blocked">
+        <div *ngIf="viewB" class="p-20 custom_ds_table">
+          <div class="mtcrd">
+            <mat-form-field class="w-100-p" appearance="outline">
+              <input matInput placeholder="Search a OLT..." [(ngModel)]="searchTextOne">
+            </mat-form-field>
+          </div>
+          <table class="portAlctn">
+            <thead>
+              <tr>
+                <th>SNO</th>
+                <th>OLT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let v of viewLst | filter:searchTextOne; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{v.asrt_nm}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="!viewB" class="p-20 custom_ds_table">
+          NO DATA
+        </div>
+      </mat-tab>
+      <mat-tab label="({{plannedcount}})Planned">
+        <div *ngIf="viewP" class="p-16 custom_ds_table">
+          <div class="mtcrd">
+            <mat-form-field class="w-100-p" appearance="outline">
+              <input matInput placeholder="Search a OLT..." [(ngModel)]="searchTextTwo">
+            </mat-form-field>
+          </div>
+          <table class="portAlctn">
+            <thead>
+              <tr>
+                <th>SNO</th>
+                <th>OLT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let v of viewLst | filter:searchTextTwo; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{v.asrt_nm}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="!viewP" class="p-16">
+          NO DATA
+        </div>
+      </mat-tab>
+      <mat-tab label="({{Maintenancecount}})Maintenance">
+        <div *ngIf="viewM" class="p-20 custom_ds_table">
+          <div class="mtcrd">
+            <mat-form-field class="w-100-p" appearance="outline">
+              <input matInput placeholder="Search a OLT..." [(ngModel)]="searchTextThree">
+            </mat-form-field>
+          </div>
+          <table class="portAlctn">
+            <thead>
+              <tr>
+                <th>SNO</th>
+                <th>OLT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let v of viewLst | filter:searchTextThree; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{v.asrt_nm}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="!viewM" class="p-16">
+          NO DATA
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <div class="row">
+      <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%"></div>
+      
+      <span><img src="../../../../assets/icons/flags/blacksort.png" style="width: 30px;height: 30px;"></span><p class="lblCls">Substation Node</p>
+      <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%"></div>
+      <span><img src="../../../../assets/icons/flags/blacklayout.png" style="width: 30px;height: 30px;"></span><p class="lblCls">Mandal Nodes</p>
+    
+      <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%"></div>
+    </div>
+    <div class="row">
+      <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%"></div>
+      <span><img src="../../../../assets/icons/flags/blackstar.png" style="width: 30px;height: 30px;"></span><p class="lblCls">Zonal Nodes</p>
+      <div fxFlex="100" fxFlex.gt-lg="16%" fxFlex.gt-md="16%" fxFlex.gt-sm="16%" fxFlex.gt-xs="16%"></div>
+      <span><img src="../../../../assets/icons/flags/blackpin.png" style="width: 30px;height: 30px;"></span><p class="lblCls">District Nodes</p>
+      <div fxFlex="100" fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="10%" fxFlex.gt-xs="10%"></div>
+    </div>
+    <div class="row">
+      <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+      <span><img src="../../../../assets/icons/flags/blackpole.png" style="width: 30px;height: 30px;"></span><p class="lblClt">NOC</p>
+      <div fxFlex="100" fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%"></div>
+      <span><img src="../../../../assets/icons/flags/blackhalfcircle.png" style="width: 30px;height: 30px;"></span><p class="lblCls">Man Nds Downgraded</p>
+      <div fxFlex="100" fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%"></div>
+      <span><img src="../../../../assets/icons/flags/blackpoadcast.png" style="width: 30px;height: 30px;"></span><p class="lblCls">Other</p>
+      <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+    </div>
+    <div class="row">
+      <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+      <span><img src="../../../../assets/icons/flags/circley.png" style="width: 22px;height: 22px;"></span><p class="lblCl">In Service</p>
+      <div fxFlex="100" fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%"></div>
+      <span><img src="../../../../assets/icons/flags/circler.png" style="width: 22px;height: 22px;"></span><p class="lblCl">Block/Planned</p>
+      <div fxFlex="100" fxFlex.gt-lg="4%" fxFlex.gt-md="4%" fxFlex.gt-sm="4%" fxFlex.gt-xs="4%"></div>
+      <span><img src="../../../../assets/icons/flags/circleg.png" style="width: 22px;height: 22px;"></span><p class="lblCl">Maintenance</p>
+      <div fxFlex="100" fxFlex.gt-lg="5%" fxFlex.gt-md="5%" fxFlex.gt-sm="5%" fxFlex.gt-xs="5%"></div>
+    </div>
+
+    <!-- <div class="row bdrbtsl tpTwo"></div> -->
+    <!-- <div class="pdngFtn mapLblsCss row">
+      <span><img src="../../../../assets/icons/flags/wifi.png" style="width: 30px;height: 30px;"></span><p class="lblCls">Substations</p>
+      <span><img src="../../../../assets/icons/flags/marker.png" style="width: 30px;height: 30px;margin-left: 3%;"></span><p class="lblCls">OLT</p>
+   
+    </div> -->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div id="map" class="mapHght"></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!-- ///////////////////////////////////////////Sidebar/////////////////////////////////////////////////////////////////////// -->
+
+<ds-sidebar class="form-panel ds-form-sidebar tmpSdBar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div class="card">
+        <div class="card-header crdHdng bckgrnd">
+          <p class="fltrCs">OLT Details<span> 
+             <!-- <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel
+          </mat-icon> -->
+        </span></p>
+        </div>
+          <div class="ds-card m-12" *ngIf="tableView == true">
+            <dx-data-grid class="p-8" id="gridContainer" [allowColumnResizing]="true"   [dataSource]="clckDta" [remoteOperations]="false" [allowColumnReordering]="true"
+              [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" style="width:100%">
+               <dxo-selection *ngIf="true" mode="single"></dxo-selection>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+              <dxo-column-chooser [enabled]="true" mode="select">
+              </dxo-column-chooser>
+              <dxo-export [enabled]="false" [allowExportSelectedData]="true" fileName="OLT"></dxo-export>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+                [alignment]="f.alignment" [width]="f.width" [allowFiltering]="f.filter" [allowHeaderFiltering]="f.filter"></dxi-column>
+            </dx-data-grid>
+          </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

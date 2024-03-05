@@ -1,0 +1,1319 @@
+<div class="usrEmplye pageBackground usrAcntCmpnt crnrbg1">
+    <!-- <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header> -->
+    <div class="crnrbg2">
+        <div fxLayout="row" class="hdrRow">
+            <div fxFlex.xl="15" fxFlex.lg="19" fxFlex.md="25" fxFlex.sm="25" fxFlex.xs="100" class="px-8 apsflLogo">
+                <img src="/assets/images/APSFL.png">
+            </div>
+            <div fxFlex.xl="70" fxFlex.lg="62" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="px-8 mblhdnTxt">
+                <p class="rgsrtnHdng"> MSO Registration</p>
+            </div>
+            <div fxFlex.xl="15" fxFlex.lg="19" fxFlex.md="25" fxFlex.sm="25" fxFlex.xs="100" class="px-8 cmimg">
+                <img src="/assets/images/cm2.png">
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row">
+            <div fxFlex.xl="3" fxFlex.lg="3" fxFlex.md="3" fxFlex.sm="3" fxFlex.xs="2"></div>
+            <div fxFlex.xl="94" fxFlex.lg="94" fxFlex.md="94" fxFlex.sm="94" fxFlex.xs="100">
+                
+
+                <div fxLayout="row">
+
+                <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="50" class = "mblvwHdng">MSO Registration</div>
+                <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="50" class="text-right mt-16 mr-8">
+                  <button mat-raised-button class="lgnBtnClr" aria-label="LOGIN"
+                        (click)="goBack()">
+                        <mat-icon matTooltip="Go Back">account_circle</mat-icon> Go to Login
+                    </button>
+                </div>
+                </div>
+                <ds-loading *ngIf="shwLdr"></ds-loading>
+                <div class="div-card">
+                    <div>
+                        <div class="form-panel" name="addFormPanel" position="right">
+                            <ng-container>
+                                <form fxLayout="column" [formGroup]="agntFormGroup" class="rgstrnFrm">
+                                <mat-accordion class="example-headers-align mb-12" multi>
+                                    <mat-expansion-panel [expanded]="true">
+                                        <!-- <mat-expansion-panel-header class="ds-card-header"> -->
+                                            <!-- <mat-panel-title> -->
+                                                <!-- <div
+                                                    class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                    If pending OTP validation, Please enter these to get details</div> -->
+                                            <!-- </mat-panel-title> -->
+                                        <!-- </mat-expansion-panel-header> -->
+                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                                                <div class="form-label textOverflowStyle">Aadhar No
+                                                </div>
+                                                <mat-form-field appearance="outline">
+                                                    <input name="number" type="number" matInput formControlName="adhr_Nu">
+                                                    <mat-error>Aadhar number should be 12 digits
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div fxFlex="25" fxFlex.xs="100" class="px-8" formGroupName="officeAddress">
+                                                <div class="form-label textOverflowStyle">Mobile
+                                                    No<span class="reqSgnColor">*</span>
+                                                </div>
+                                                <mat-form-field appearance="outline">
+                                                    <!-- <mat-label>Mobile No</mat-label> -->
+                                                    <input name="number" type="number" matInput formControlName="ofce_mble_Nu" required>
+                                                    <mat-error>Mobile No is required!</mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div fxFlex="15" fxFlex.xs="100" class="px-8 mt-36">
+                                                <button mat-flat-button type="submit" aria-label="SAVE"
+                                                class="mat-raised-button  gtDtls w-20-p"
+                                                (click)="getAgntDtls()"
+                                                style="width: 100% !important">Get Details</button>
+                                            </div>
+                                        </div>
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+                                </form>
+  
+                                <div class="fuse-card usrcrteCrd" id="scrollTop">
+                                    <form fxLayout="column" [formGroup]="agntFormGroup" class="rgstrnFrm">
+                                        <mat-accordion class="example-headers-align mb-12" multi>
+                                            <mat-expansion-panel [expanded]="true">
+                                                <mat-expansion-panel-header class="ds-card-header">
+                                                    <mat-panel-title>
+                                                        <div
+                                                            class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            <!--  <mat-icon>account_circle</mat-icon> -->
+                                                            Company Information</div>
+                                                    </mat-panel-title>
+                                                    <!--  <mat-panel-description class="text-right">  -->
+                                                    <!-- <mat-icon>account_circle</mat-icon> -->
+                                                    <!-- </mat-panel-description> -->
+                                                </mat-expansion-panel-header>
+                                                
+                                                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                    fxLayout.xs="column" fxFlexFill>
+
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">Company Name<span
+                                                                class="reqSgnColor">*</span></div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="name" matInput formControlName="agnt_nm"
+                                                                required>
+                                                            <mat-error>Company Name is required!</mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">Select Company
+                                                            Type<span class="reqSgnColor">*</span>
+                                                        </div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-select formControlName="orgn_typ">
+                                                                <mat-option *ngFor="let o of orgnTypLst"
+                                                                    [value]="o.orgn_type_id">
+                                                                    {{o.orgn_type_nm}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                            <mat-error>Company Type is required!</mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                                                        <div class="form-label textOverflowStyle">Aadhar No<span class="reqSgnColor">*</span>
+                                                        </div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="number" type="number" matInput formControlName="adhr_Nu" required>
+                                                            <mat-error>Aadhar number should be 12 digits
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="20" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">PAN No</div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="name" matInput formControlName="pan_Nu">
+                                                            <mat-error>Please enter PAN number in this format 'AAAPL1234C'
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                    fxLayout.xs="column" fxFlexFill>
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="20" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">TAN No </div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="number" matInput formControlName="tan_Nu">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="20" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">TIN No</div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="number" matInput formControlName="tan_nu">
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="20" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">GST No</div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="name" matInput formControlName="gst_Nu">
+                                                            <mat-error>Please enter GST in this format '22AAAAA0000A1Z5'
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+
+
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="20" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">Postal Registration No
+                                                        </div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input name="number" matInput formControlName="pstl_reg_Nu">
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="20" fxFlex.xs="100"
+                                                        class="px-8">
+                                                        <div class="form-label textOverflowStyle">Postal Expiration Date
+                                                        </div>
+                                                        <mat-form-field appearance="outline">
+                                                            <input matInput [matDatepicker]="picker"
+                                                                placeholder="Postal Expiration Date"
+                                                                formControlName="pstl_exp_dt">
+                                                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #picker></mat-datepicker>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+                                        <!-- <ng-template matStepLabel>Add User</ng-template> -->
+                                        <!-- ***Office & branch address section*** -->
+
+                                        <mat-accordion class="example-headers-align mb-12" multi>
+                                            <mat-expansion-panel [expanded]="true">
+                                                <mat-expansion-panel-header class="ds-card-header">
+                                                    <mat-panel-title>
+                                                        <div
+                                                            class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            Address
+                                                            Details</div>
+                                                    </mat-panel-title>
+                                                    <!-- <mat-panel-description class="text-right"> -->
+                                                    <!-- Type your name and age -->
+                                                    <!--  <mat-icon>my_location</mat-icon> -->
+                                                    <!-- </mat-panel-description> -->
+                                                </mat-expansion-panel-header>
+                                                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                    fxLayout.xs="column">
+                                                    <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100"
+                                                        class="border-right-light-color pr-12">
+                                                        <div
+                                                            class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            Office
+                                                            Details</div>
+                                                        <mat-divider></mat-divider>
+                                                        <br>
+                                                        <ng-container formGroupName="officeAddress">
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Contact
+                                                                        Name<span class="reqSgnColor">*</span></div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Contact Name</mat-label> -->
+                                                                        <input name="name" matInput
+                                                                            formControlName="ofce_cntct_Nm" required>
+                                                                        <mat-error>Contact Name is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Mobile
+                                                                        No<span class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="number" type = "number" matInput
+                                                                            formControlName="ofce_mble_Nu" required>
+                                                                        <mat-error>Mobile No is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Email
+                                                                        Id<span class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Email Id</mat-label> -->
+                                                                        <input matInput formControlName="ofce_email"
+                                                                            required>
+                                                                        <mat-error>Email is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">
+                                                                        Address1<span class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <textarea matInput
+                                                                            formControlName="ofce_address1"
+                                                                            required></textarea>
+                                                                        <mat-error>Address is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Address2
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <textarea matInput
+                                                                            formControlName="ofce_address2"></textarea>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Locality
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="name" matInput
+                                                                            formControlName="ofce_lcty_nm">
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Area</div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="name" matInput
+                                                                            formControlName="ofce_ara_nm">
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">City</div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="name" matInput
+                                                                            formControlName="ofce_City">
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">State<span
+                                                                            class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>State</mat-label> -->
+                                                                        <mat-select formControlName="ofce_State">
+                                                                            <mat-option *ngFor="let s of statesLst"
+                                                                                [value]="s.ste_id">
+                                                                                {{s.ste_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <mat-error>State is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">
+                                                                        District<span class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>District </mat-label> -->
+                                                                        <mat-select formControlName="ofce_Dstrt">
+                                                                            <mat-option *ngFor="let d of dstrctsLst"
+                                                                                [value]="d.dstrt_id">
+                                                                                {{d.dstrt_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <mat-error>District is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">
+                                                                        Mandal<span class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Mandal</mat-label> -->
+                                                                        <mat-select formControlName="ofce_Mndl"
+                                                                            required>
+                                                                            <mat-option *ngFor="let m of mndlLst"
+                                                                                [value]="m.mndl_nu">
+                                                                                {{m.mndl_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <mat-error>Mandal is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">
+                                                                        Village<span class="reqSgnColor">*</span>
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Village</mat-label> -->
+                                                                        <mat-select formControlName="ofce_Vlge"
+                                                                            required>
+                                                                            <mat-option *ngFor="let v of vlge_lst"
+                                                                                [value]="v.vlge_id">
+                                                                                {{v.vlge_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <mat-error>Village is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">
+                                                                        Pincode<span class="reqSgnColor">*</span> </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="number" matInput
+                                                                            formControlName="ofce_pn_cd" required>
+                                                                        <mat-error>Pincode is required!</mat-error>
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div fxLayout="row" fxLayout.xs="column">
+                                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                            <div class="form-label textOverflowStyle">
+                                                                                LandLine</div>
+                                                                            <mat-form-field appearance="outline">
+                                                                                <input name="number" matInput
+                                                                                    placeholder="STD Code"
+                                                                                    formControlName="ofce_lndline_cd">
+                                                                            </mat-form-field>
+                                                                        </div>
+                                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                            <mat-form-field appearance="outline"
+                                                                                class="mt-24">
+                                                                                <input name="number" matInput
+                                                                                    placeholder="Landline No"
+                                                                                    formControlName="ofce_lndline">
+                                                                            </mat-form-field>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+                                                    <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50" fxFlex.xs="100"
+                                                        class="pr-12">
+                                                        <div fxLayout="row" fxLayout.xs="column">
+                                                            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                <div
+                                                                    class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                                    Branch Details</div>
+                                                            </div>
+                                                            <div fxFlex="50" fxFlex.xs="100" class="px-8 text-right">
+                                                                <mat-checkbox [(ngModel)]="isChecked"
+                                                                    formControlName="brnch_chk_ind"
+                                                                    (change)="checkValue($event)">Same
+                                                                    as Office Address</mat-checkbox>
+                                                            </div>
+                                                        </div>
+                                                        <mat-divider></mat-divider>
+                                                        <br>
+                                                        <ng-container formGroupName="branchAddress">
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Contact
+                                                                        Name</div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Contact Name</mat-label> -->
+                                                                        <input name="name" matInput
+                                                                            formControlName="brnch_cntct_Nm">
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Mobile No
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Mobile No</mat-label> -->
+                                                                        <input name="number" type = "number" matInput
+                                                                            formControlName="brnch_mble_Nu">
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Email Id
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Email Id</mat-label> -->
+                                                                        <input matInput formControlName="brnch_email">
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Address1
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <textarea matInput
+                                                                            formControlName="brnch_address1"></textarea>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Address2
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <textarea matInput
+                                                                            formControlName="brnch_address2"></textarea>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Locality
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="name" matInput
+                                                                            formControlName="brnch_lcty_nm">
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Area</div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="name" matInput
+                                                                            formControlName="brnch_ara_nm">
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">City</div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="name" matInput
+                                                                            formControlName="brnch_City">
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">State
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>State</mat-label> -->
+                                                                        <mat-select formControlName="brnch_State">
+                                                                            <mat-option *ngFor="let s of statesLst"
+                                                                                [value]="s.ste_id">
+                                                                                {{s.ste_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <!-- <mat-error>State is required!</mat-error> -->
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">District
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>District </mat-label> -->
+                                                                        <mat-select formControlName="brnch_Dstrt">
+                                                                            <mat-option
+                                                                                *ngFor="let d of brnch_dstrct_lst"
+                                                                                [value]="d.dstrt_id">
+                                                                                {{d.dstrt_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <!-- <mat-error>District is required!</mat-error> -->
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Mandal
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Mandal</mat-label> -->
+                                                                        <mat-select formControlName="brnch_Mndl">
+                                                                            <mat-option *ngFor="let m of brnch_mndlLst"
+                                                                                [value]="m.mndl_nu">
+                                                                                {{m.mndl_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <!-- <mat-error>Mandal is required!</mat-error> -->
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div fxLayout="row" fxLayout.xs="column">
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Village
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <!-- <mat-label>Village</mat-label> -->
+                                                                        <mat-select formControlName="brnch_Vlge">
+                                                                            <mat-option *ngFor="let v of brnch_vlge_lst"
+                                                                                [value]="v.vlge_id">
+                                                                                {{v.vlge_nm}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                        <!-- <mat-error>Village is required!</mat-error> -->
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div class="form-label textOverflowStyle">Pincode
+                                                                    </div>
+                                                                    <mat-form-field appearance="outline">
+                                                                        <input name="number" matInput
+                                                                            formControlName="brnch_pn_cd">
+                                                                    </mat-form-field>
+                                                                </div>
+
+                                                                <div fxFlex="33" fxFlex.xs="100" class="px-8">
+                                                                    <div fxLayout="row" fxLayout.xs="column">
+                                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                            <div class="form-label textOverflowStyle">
+                                                                                LandLine</div>
+                                                                            <mat-form-field appearance="outline">
+                                                                                <input name="number" matInput
+                                                                                    placeholder="STD Code"
+                                                                                    formControlName="brnch_lndline_cd">
+                                                                            </mat-form-field>
+                                                                        </div>
+                                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                            <mat-form-field appearance="outline"
+                                                                                class="mt-24">
+                                                                                <input name="number" matInput
+                                                                                    placeholder="Landline No"
+                                                                                    formControlName="brnch_lndline">
+                                                                            </mat-form-field>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+                                        <div formArrayName="srvng_areas" class="mb-12">
+                                            <mat-accordion class="example-headers-align mb-12" multi>
+                                                <mat-expansion-panel [expanded]="false">
+                                                    <mat-expansion-panel-header class="ds-card-header">
+                                                        <mat-panel-title>
+                                                            <div
+                                                                class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                                Serving Areas
+                                                            </div>
+                                                        </mat-panel-title>
+                                                        <!-- <mat-panel-description class="text-right"> -->
+                                                        <!-- Type your name and age -->
+                                                        <!--  <mat-icon>location_on</mat-icon> -->
+                                                        <!-- </mat-panel-description> -->
+                                                    </mat-expansion-panel-header>
+                                                    <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                                        <div fxFlex="50" fxFlex.xs="100" class="pt-12"></div>
+                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                            <div
+                                                                class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg text-right">
+                                                                <button mat-flat-button type="submit" aria-label="Areas"
+                                                                    class="mat-raised-button font-weight-bold addTextColor"
+                                                                    type="button" (click)="addSrvngAreas()">
+                                                                    <mat-icon matTooltip="Add Areas">add_box</mat-icon>
+                                                                    Add More Areas
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngFor="let item of srvngAreas.controls; let pointIndex=index"
+                                                        [formGroupName]="pointIndex" class="addCardStyle">
+                                                        <div class="text-right cursor-pointer">
+                                                            <mat-icon matTooltip="close"
+                                                                (click)="deleteSrvngAreas(pointIndex)">cancel
+                                                            </mat-icon>
+                                                        </div>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column" fxFlexFill>
+                                                            <!-- <button type="button" (click)="deleteSrvngAreas(pointIndex)">Delete Selling Point</button> -->
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Area Name
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Contact Name</mat-label> -->
+                                                                    <input name="name" matInput
+                                                                        formControlName="ara_nm">
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Cable Type
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <mat-select formControlName="cbl_type">
+                                                                        <mat-option *ngFor="let c of srvng_cbl_type_lst"
+                                                                            [value]="c.cble_type_id">
+                                                                            {{c.cble_type_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Running Cable
+                                                                    Length</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <input matInput formControlName="rng_cbl_lngth">
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">State</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <mat-select formControlName="srv_ara_state"
+                                                                        [(ngModel)]="item.selectedSrvAraSte"
+                                                                        (selectionChange)="getDstrct(item.selectedSrvAraSte,3)">
+                                                                        <mat-option *ngFor="let s of statesLst"
+                                                                            [value]="s.ste_id">
+                                                                            {{s.ste_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column" fxFlexFill>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">District</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>District </mat-label> -->
+                                                                    <mat-select formControlName="srv_ara_dstrt"
+                                                                        [(ngModel)]="item.selectedSrvAraDsrt"
+                                                                        (selectionChange)="getMndl(item.selectedSrvAraDsrt,3)">
+                                                                        <mat-option *ngFor="let d of dst_lst"
+                                                                            [value]="d.dstrt_id">
+                                                                            {{d.dstrt_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Mandal</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Mandal</mat-label> -->
+                                                                    <mat-select formControlName="srv_ara_mndl"
+                                                                        [(ngModel)]="item.selectedSrvAraMndl"
+                                                                        (selectionChange)="getvillages(item.selectedSrvAraMndl,3)">
+                                                                        <mat-option *ngFor="let m of mnd_lst"
+                                                                            [value]="m.mndl_nu">
+                                                                            {{m.mndl_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Village</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Village</mat-label> -->
+                                                                    <mat-select formControlName="srv_ara_vlge">
+                                                                        <mat-option *ngFor="let v of vlgLst"
+                                                                            [value]="v.vlge_id">
+                                                                            {{v.vlge_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div ffxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Subscription
+                                                                    Count</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Contact Name</mat-label> -->
+                                                                    <input name="name" matInput
+                                                                        formControlName="sbsc_ct">
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column" fxFlexFill>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Connection
+                                                                    Count</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Contact Name</mat-label> -->
+                                                                    <input name="name" matInput
+                                                                        formControlName="cnct_ct">
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Digital
+                                                                    Connection Count</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Contact Name</mat-label> -->
+                                                                    <input name="name" matInput
+                                                                        formControlName="dgtl_cnct_ct">
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Analog
+                                                                    Connection Count</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Contact Name</mat-label> -->
+                                                                    <input name="name" matInput
+                                                                        formControlName="anlg_cnct_ct">
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </mat-expansion-panel>
+                                            </mat-accordion>
+                                        </div>
+
+                                        <div formArrayName="srvng_asts" class="mb-12">
+                                            <mat-accordion class="example-headers-align" multi>
+                                                <mat-expansion-panel [expanded]="false">
+                                                    <mat-expansion-panel-header class="ds-card-header">
+                                                        <mat-panel-title>
+                                                            <div
+                                                                class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                                Serving Assets
+                                                            </div>
+                                                        </mat-panel-title>
+                                                        <!-- <mat-panel-description class="text-right"> -->
+                                                        <!-- Type your name and age -->
+                                                        <!--  <mat-icon>router</mat-icon> -->
+                                                        <!-- </mat-panel-description> -->
+                                                    </mat-expansion-panel-header>
+                                                    <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8 pt-12"></div>
+                                                        <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                            <div
+                                                                class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg text-right">
+                                                                <button mat-flat-button type="submit"
+                                                                    aria-label="Assets"
+                                                                    class="mat-raised-button font-weight-bold addTextColor"
+                                                                    type="button" (click)="addSrvngAsts()">
+                                                                    <mat-icon matTooltip="Add Assets">add_box</mat-icon>
+                                                                    Add Asset
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngFor="let item of srvngAsts.controls; let pointIndex=index"
+                                                        [formGroupName]="pointIndex" class="addCardStyle">
+                                                        <div class="text-right cursor-pointer">
+                                                            <mat-icon matTooltip="close"
+                                                                (click)="deleteSrvngAsts(pointIndex)">cancel
+                                                            </mat-icon>
+                                                        </div>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column" fxFlexFill>
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Cable Type
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <mat-select formControlName="arv_ast_cbl_type">
+                                                                        <mat-option *ngFor="let c of srvng_cbl_type_lst"
+                                                                            [value]="c.cble_type_id">
+                                                                            {{c.cble_type_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Asset Type
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <mat-select formControlName="ast_type">
+                                                                        <mat-option *ngFor="let a of srvng_ast_type_lst"
+                                                                            [value]="a.asrt_id">
+                                                                            {{a.asrt_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Route Name
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <input name="name" matInput
+                                                                        formControlName="rte_nm">
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Sent Transtime
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <input name="name" matInput
+                                                                        formControlName="snt_trns_tm">
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column" fxFlexFill>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Imie Number
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <input name="name" matInput
+                                                                        formControlName="ime_nu">
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Version Number
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <input name="name" matInput
+                                                                        formControlName="vrsn_nu">
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </mat-expansion-panel>
+                                            </mat-accordion>
+                                        </div>
+
+                                        <!-- <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Associated Substations</div>
+                <mat-divider></mat-divider>
+                <br> -->
+
+                                        <mat-accordion class="example-headers-align mb-12" multi>
+                                            <mat-expansion-panel [expanded]="false">
+                                                <mat-expansion-panel-header class="ds-card-header">
+                                                    <mat-panel-title>
+                                                        <div
+                                                            class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            Associated Substations</div>
+                                                    </mat-panel-title>
+                                                    <!-- <mat-panel-description class="text-right"> -->
+                                                    <!-- Type your name and age -->
+                                                    <!--  <mat-icon>assistant_photo</mat-icon> -->
+                                                    <!-- </mat-panel-description> -->
+                                                </mat-expansion-panel-header>
+                                                <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                                                    <div formArrayName="sb_stns" class="w-100-p">
+                                                        <div class="divTable">
+                                                            <div class="divTableBody">
+                                                                <div class="divTableRow">
+                                                                    <div class="divTableCell">Substation</div>
+                                                                    <div class="divTableCell">Distance to Substation
+                                                                    </div>
+                                                                </div>
+                                                                <div class="divTableRow"
+                                                                    *ngFor="let item of sbStns.controls; let pointIndex=index"
+                                                                    [formGroupName]="pointIndex">
+                                                                    <div class="divTableCell">
+                                                                        <!-- <mat-form-field appearance="outline"> -->
+                                                                        <!-- <div class="dx-field-value" formControlName="sb_stn">
+                                            <dx-select-box #selectBox
+                                            [dataSource]="productsDataSource"
+                                            [acceptCustomValue]="false"
+                                            displayExpr="ste_nm"
+                                            [value]="statesLst[0]"
+                                            [searchEnabled]="true"></dx-select-box> -->
+                                                                        <!-- <mat-option *ngFor="let ad of agntDocTyps" [value]="ad.stnd_dcmns_id">
+                                                {{ad.stnd_dcmns_nm}}
+                                              </mat-option> -->
+                                              <dx-select-box #selectBox
+                                              [dataSource]="sb_stn_lst"
+                                              formControlName="sb_stn"
+                                              displayExpr="sbstn_nm_cd"
+                                              (onValueChanged)="onValueChanged($event)"
+                                              [searchMode]="searchModeOption"
+                                              [searchExpr]="searchExprOption"
+                                              [searchTimeout]="searchTimeoutOption"
+                                              [minSearchLength]="minSearchLengthOption"
+                                              [searchEnabled]="true"></dx-select-box>
+                                                                    </div>
+                                                                    <!-- <mat-select formControlName="sb_stn">
+                                        <mat-option *ngFor="let s of statesLst" [value]="s.ste_id">
+                                          {{s.ste_nm}}
+                                        </mat-option>
+                                      </mat-select> -->
+                                                                    <!-- </mat-form-field> -->
+                                                                    <!-- </div> -->
+                                                                    <div class="divTableCell">
+                                                                        <mat-form-field appearance="outline">
+                                                                            <input name="name" matInput
+                                                                                formControlName="sb_stn_dst">
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+
+
+                                        <mat-accordion class="example-headers-align" multi>
+                                            <mat-expansion-panel [expanded]="false">
+                                                <mat-expansion-panel-header class="ds-card-header">
+                                                    <mat-panel-title>
+                                                        <div
+                                                            class="font-size-16 font-weight-600 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            Proof
+                                                            Documents</div>
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+
+                                                <div fxLayout="row" fxLayout.xs="column">
+                                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                        <div
+                                                            class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            ID
+                                                            Proof</div>
+                                                        <mat-divider></mat-divider>
+                                                        <br>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="column"
+                                                            fxLayout.xs="column">
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">ID Number
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>ID Number </mat-label> -->
+                                                                    <input name="number" matInput
+                                                                        formControlName="id_Nu">
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class=" form-label textOverflowStyle">Documents
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Documents</mat-label> -->
+                                                                    <mat-select formControlName="id_dcmn" getagntCtgry>
+                                                                        <mat-option *ngFor="let id of agntDocTyps"
+                                                                            [value]="id.dcmnt_type_id">
+                                                                            {{id.dcmnt_type_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div class="avatar-edit pt-16 m-12">
+                                                                <button mat-raised-button class="choosefile">
+                                                                    <mat-icon _ngcontent-qri-c39=""
+                                                                        class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color color"
+                                                                        role="img" aria-hidden="true">unarchive
+                                                                    </mat-icon>
+                                                                    Choose Documents
+                                                                    <input type="file" class="hide_file"
+                                                                        (change)="uploadFile(2,$event)"
+                                                                        accept=".png, .jpg, .jpeg">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                        <!-- </div> -->
+                                                        <!-- <div fxFlex="50" fxFlex.xs="100" class="px-8"> -->
+                                                        <div
+                                                            class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            Address
+                                                            Proof
+                                                        </div>
+                                                        <mat-divider></mat-divider>
+                                                        <br>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="column"
+                                                            fxLayout.xs="column">
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Address Number
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Address Number </mat-label> -->
+                                                                    <input name="number" matInput
+                                                                        formControlName="adrs_Nu">
+                                                                </mat-form-field>
+                                                            </div>
+
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Documents
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Documents</mat-label> -->
+                                                                    <mat-select formControlName="adrs_dcmn">
+                                                                        <mat-option *ngFor="let ad of agntDocTyps"
+                                                                            [value]="ad.dcmnt_type_id">
+                                                                            {{ad.dcmnt_type_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div class="avatar-edit pt-16 m-12">
+                                                                <button mat-raised-button class="choosefile">
+                                                                    <mat-icon _ngcontent-qri-c39=""
+                                                                        class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color color"
+                                                                        role="img" aria-hidden="true">unarchive
+                                                                    </mat-icon>
+                                                                    Choose Documents
+                                                                    <input type="file" class="hide_file"
+                                                                        (change)="uploadFile(2,$event)"
+                                                                        accept=".png, .jpg, .jpeg">
+                                                                </button>
+                                                                <!-- <button mat-raised-button>
+                                                                    <label>
+                                                                        <input (change)="uploadFile(2,$event)"
+                                                                            type='file' id="imageUpload"
+                                                                            accept=".png, .jpg, .jpeg" #fileInput
+                                                                            style="display:none" />
+                                                                        <span
+                                                                            class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 file-upload-button">
+                                                                            <mat-icon _ngcontent-qri-c39=""
+                                                                                class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color"
+                                                                                role="img" aria-hidden="true">
+                                                                                cloud_upload</mat-icon>
+                                                                            Choose Documents
+                                                                        </span>
+                                                                    </label>
+                                                                </button> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div fxLayout="row" fxLayout.xs="column">
+                                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                        <div
+                                                            class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            License Details
+                                                        </div>
+                                                        <mat-divider></mat-divider>
+                                                        <br>
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column">
+                                                            <div fxFlex.xl="33" fxFlex.lg="33" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">License Number
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>ID Number </mat-label> -->
+                                                                    <input name="number" matInput
+                                                                        formControlName="lnse_Nu">
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="33" fxFlex.lg="33" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Region</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Documents</mat-label> -->
+                                                                    <mat-select formControlName="lnse_rg" getagntCtgry>
+                                                                        <mat-option *ngFor="let d of dstrctsLst"
+                                                                            [value]="d.dstrt_id">
+                                                                            {{d.dstrt_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                                <div class="avatar-edit pt-16 m-12">
+                                                                    <button mat-raised-button class="choosefile">
+                                                                        <mat-icon _ngcontent-qri-c39=""
+                                                                            class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color color"
+                                                                            role="img" aria-hidden="true">unarchive
+                                                                        </mat-icon>
+                                                                        Choose Documents
+                                                                        <input type="file" class="hide_file"
+                                                                            (change)="uploadFile(3,$event)"
+                                                                            accept=".png, .jpg, .jpeg">
+                                                                    </button>
+                                                                    <!-- <button mat-raised-button>
+                                                                        <label>
+                                                                            <input (change)="uploadFile(3,$event)"
+                                                                                type='file' id="imageUpload"
+                                                                                accept=".png, .jpg, .jpeg" #fileInput
+                                                                                style="display:none" />
+                                                                            <span
+                                                                                class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 file-upload-button">
+                                                                                <mat-icon _ngcontent-qri-c39=""
+                                                                                    class="secondary-text s-24 mat-icon notranslate material-icons mat-icon-no-color vertical-align-text-bottom addBtn-icon-color"
+                                                                                    role="img" aria-hidden="true">
+                                                                                    cloud_upload</mat-icon>
+                                                                                Choose Documents
+                                                                            </span>
+                                                                        </label>
+                                                                    </button> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- </div> -->
+                                                    <div fxFlex="50" fxFlex.xs="100" class="px-8">
+                                                        <div
+                                                            class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                                                            Bank Details
+                                                        </div>
+                                                        <mat-divider></mat-divider>
+                                                        <br>
+
+
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column">
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Account Number
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Account Number </mat-label> -->
+                                                                    <input name="number" matInput
+                                                                        formControlName="acnt_Nu">
+                                                                    <!-- <mat-error>Account Number is required!</mat-error> -->
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">IFSC Code
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>IFSC Code</mat-label> -->
+                                                                    <input name="name" matInput
+                                                                        formControlName="ifsc_cd">
+                                                                    <!-- <mat-error>IFSC Code is required!</mat-error> -->
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Account Type
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Account Type</mat-label> -->
+                                                                    <mat-select formControlName="accnt_typ">
+                                                                        <mat-option *ngFor="let b of bnkacntType"
+                                                                            [value]="b.bnk_acnt_typ_id">
+                                                                            {{b.bnk_acnt_typ_nm}}
+                                                                        </mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+
+                                                        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row"
+                                                            fxLayout.xs="column">
+                                                            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Branch</div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Branch </mat-label> -->
+                                                                    <input name="Name" matInput formControlName="brnch">
+                                                                </mat-form-field>
+                                                            </div>
+
+                                                            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="50"
+                                                                fxFlex.xs="100" class="px-8">
+                                                                <div class="form-label textOverflowStyle">Bank Name
+                                                                </div>
+                                                                <mat-form-field appearance="outline">
+                                                                    <!-- <mat-label>Bank Name</mat-label> -->
+                                                                    <input name="number" matInput
+                                                                        formControlName="bnk_nm">
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <!-- <div fxFlex="50" fxFlex.xs="100" class="px-8"> -->
+
+                                                <!-- </div> -->
+                                                <!-- </div> -->
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                        <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+                                            <!-- <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                        style="text-align: right;" *ngIf="deletebtn">
+                        <button mat-button class="mat-raised-button deleteBtn-color" aria-label="Delete"
+                            matTooltip="Delete" (click)="deleteAgent()">
+                            DELETE
+                        </button>
+                    </div> -->
+                                            <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="100%"
+                                                fxFlex.gt-xs="100%">
+                                            </div>
+
+                                            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%"
+                                                fxFlex.gt-xs="100%" style="text-align: right;">
+                                                <button mat-flat-button type="submit" aria-label="SAVE"
+                                                    class="mat-raised-button  gtDtls w-20-p"
+                                                    (click)="saveAgent()"
+                                                    style="width: 100% !important" *ngIf="!selfRegPndg" [disabled]="sbmtBtnDsble">{{btnNm}}</button>
+                                                    <button mat-flat-button type="submit" aria-label="SAVE"
+                                                    class="mat-raised-button  gtDtls w-20-p"
+                                                    (click)="sndAgntOtp()"
+                                                    style="width: 100% !important" *ngIf="selfRegPndg">Resend OTP</button>
+                                                <!-- style="width: 20%;" -->
+                                            </div>
+
+
+
+                                            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%"
+                                                fxFlex.gt-xs="100%">
+                                                <button mat-flat-button
+                                                    class="mat-raised-button  cnclBtn-color ml-8  w-20-p"
+                                                    aria-label="SAVE" (click)="reset()" style="width: 100% !important">
+                                                    RESET
+                                                </button>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </ng-container>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div fxFlex.xl="3" fxFlex.lg="3" fxFlex.md="3" fxFlex.sm="3" fxFlex.xs="2"></div>
+        </div>
+        <!-- <div fxLayout="row" class="abtFtr">
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="100" fxFlex.xs="100"></div>
+            <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="100" fxFlex.xs="100" class="abtFtrTxT">
+                <p class="ftrStyles"> Powered By <span class="cmpnyNmae">glits Software Innovations Pvt Ltd.</span></p>
+            </div>
+        </div> -->
+    </div>
+</div>

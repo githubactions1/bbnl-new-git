@@ -1,0 +1,138 @@
+<!-- <div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" dsPerfectScrollbar>
+
+        <form [formGroup]="FormLoctn">
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Name</mat-label>
+                    <input name="name" formControlName="mrcht_emp_nm" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Email</mat-label>
+                    <input name="email" formControlName="eml_tx" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Phone</mat-label>
+                    <input name="number" minlength=10 maxlength=10 formControlName="mbl_nu" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Select Designation</mat-label>
+                    <mat-select placeholder="Select Job Title" formControlName="dsgn_id" matInput required>
+                        <mat-option *ngFor="let ds of dsgnlst" [value]="ds.dsgn_id">
+                            {{ds.dsgn_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Select Department</mat-label>
+                    <mat-select placeholder="Select Department" formControlName="dprts_id" matInput required>
+                        <mat-option *ngFor="let dp of dprtlst" [value]="dp.dprt_id">
+                            {{dp.dprt_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>District</mat-label>
+                    <mat-select placeholder="select Dstrict" (selectionChange)="getMndlLst()" formControlName="dstrt_id" matInput required>
+                        <mat-option *ngFor="let crddta of dstlst" [value]="crddta.dstrt_id">
+                            {{crddta.dstrt_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Mandal</mat-label>
+                    <mat-select placeholder="select Mandal" (selectionChange)="getScvmLst()" formControlName="mndl_id" matInput required>
+                        <mat-option *ngFor="let mndl of mnadlLst" [value]="mndl.mndl_id">
+                            {{mndl.mndl_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Select Sachivalayam</mat-label>
+                    <mat-select placeholder="Select Sachivalayam" formControlName="svm_id" matInput required>
+                        <mat-option *ngFor="let sa of svmlst" [value]="sa.svm_id">
+                            {{sa.svm_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Select Gender</mat-label>
+                    <mat-select placeholder="Select Gender" formControlName="gndr_id" matInput required>
+                        <mat-option *ngFor="let gn of gndlst" [value]="gn.gndr_id">
+                            {{gn.gndr_nm}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Date Of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dob_dt">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Aadhaar Number</mat-label>
+                    <input name="name" formControlName="adhr_nu" matInput>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Address</mat-label>
+                    <textarea name="name" formControlName="addrs_tx" matInput></textarea>
+                </mat-form-field>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <button *ngIf="action === 'edit'" mat-button class="mr-8" (click)="matDialogRef.close(['delete',FormLoctn])" aria-label="Delete"
+            matTooltip="Delete">
+            DELETE
+        </button>
+
+        <button *ngIf="action !== 'edit'" mat-button class="save-button" (click)="img(FormLoctn);matDialogRef.close(FormLoctn)" [disabled]="FormLoctn.invalid"
+            aria-label="SAVE">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit'" mat-button class="save-button" (click)="matDialogRef.close(['save',FormLoctn])" aria-label="SAVE">
+            SAVE
+        </button>
+
+    </div>
+</div> -->

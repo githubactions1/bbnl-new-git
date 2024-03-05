@@ -1,0 +1,143 @@
+
+<div class="container">
+  <div class="page-layout simple tabbed pageBackground">
+
+  <div class="container header accent pghdrStyle text-center pt-16">
+      <!-- <div class="row">
+         <div style='margin-left: 674px;'> <h2 style="text-transform: uppercase">Venue Creation Form</h2></div> 
+    </div> -->
+    <div class="header p-16" fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row"
+    fxLayoutAlign.gt-xs="space-between center">
+    <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%" class="mt-10 font-size-16">
+      <div class="logo">
+        <mat-icon class="logo-icon mr-16">business</mat-icon>
+        <span class="logo-text h1 font-weight-600">
+          Venue Creation Form
+        </span>
+      </div>
+    </div>
+    <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%" class="mt-10 font-size-16">
+      <div class="header-top-line"></div>
+    </div>
+  </div>
+    </div>
+    <div  fxLayout="column" fxLayoutAlign="start" class=" mat-card mat-elevation-z4 frmcnt content" dsPerfectScrollbar>
+      
+      <form class=" p-8" fxLayout="column" name="ScheduleForm" [formGroup]="ScheduleForm">
+         
+        <div fxLayout="row" class="ptb-20">
+            <p class="bdlngCss"><b>
+                <mat-icon>business</mat-icon>Venue Location Details
+              </b> </p>
+          </div>
+    
+
+  
+       
+ 
+          <div>
+              <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+                  <mat-label>Select District</mat-label>
+                  <mat-select placeholder="Select District" formControlName="dstct" required (selectionChange)="ulbLst()" >
+                    <mat-option *ngFor="let dst of schdistLst" [value]="dst.dstrt_id">{{dst.dstrt_nm}}</mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50" class="w-100-p">
+          <mat-label>Select ULB's</mat-label>
+          <mat-select formControlName="ulbs" placeholder="Select ULB" required  >
+            <mat-option *ngFor="let ulb of ulbL" [value]="ulb.mndl_id">
+              {{ulb.mndl_nm}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Ulb is required!</mat-error>
+        </mat-form-field>
+          </div>
+          <div >
+        <mat-form-field appearance="outline"fxFlex="50" class="w-100-p">
+        <mat-label>Venue Name</mat-label>
+        <input matInput name="Venue Name" formControlName="vnunm" required>
+        <mat-error>Venue name is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline"fxFlex="50" class="w-100-p">
+          <mat-label>Capacity</mat-label>
+          <input matInput type="number" name="Capacity" formControlName="Capacity" required>
+          <mat-error>Capacity is required!</mat-error>
+        </mat-form-field>
+          </div>
+      <mat-form-field appearance="outline" class="w-100-p">
+          <mat-label>Address</mat-label>
+          <textarea matInput  formControlName="address"  mat-maxlength="50"  max-rows="4">
+          </textarea>
+      </mat-form-field>
+      <div >
+      <mat-form-field appearance="outline" fxFlex="50"class="w-100-p">
+          <mat-label>Contact person Name</mat-label>
+          <input matInput name="Contact person Name" formControlName="prsn_nm" required>
+          <mat-error>Contact person name is required!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline"fxFlex="50" class="w-100-p">
+            <mat-label>Contact person number</mat-label>
+            <input matInput type="number" name="Contact person number" formControlName="prsn_num" required>
+            <mat-error>Contact person number is required!</mat-error>
+          </mat-form-field>
+        </div>
+    
+       <div class="pl-8">
+          <mat-radio-group   formControlName="urbn_in" >
+              <p style="margin-right: 59px;" class="radiop"> URBAN/RURAL</p>
+              <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+                <mat-radio-button class="example-margin" [value]="1">
+                    Urban
+                </mat-radio-button>
+              </div>
+              <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+                <mat-radio-button class="example-margin" [value]="0">
+                    Rural
+                </mat-radio-button>
+                
+              </div>
+            </mat-radio-group>
+      <mat-radio-group   formControlName="radio1" >
+          <p style="margin-right: 24px;" class="radiop">Projector Availability</p>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" [value]="1">
+            Yes
+          </mat-radio-button>
+        </div>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" [value]="0">
+           No
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+      
+      <mat-radio-group  formControlName="radio2" >
+          <p style="margin-right: 60px;" class="radiop">Mic Availability</p>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" [value]="1">
+            Yes
+          </mat-radio-button>
+        </div>
+        <div fxFlex.gt-md="15%" class="typ-radio" fxFlex.gt-sm="15%" fxFlex.gt-xs="15%">
+          <mat-radio-button class="example-margin" [value]="0">
+           No
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </div>
+   
+
+        <div fxLayout="row" class="mb-16">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+            class="text-center">
+            <button mat-flat-button class="scdl-btn" (click)="schdlTrng()" type="button"*ngIf="!edit">Submit </button>
+            <button mat-flat-button class="scdl-btn" (click)="update()" type="button"*ngIf="edit">update </button>
+            <!-- <button mat-raised-button color="primary" class='ml-8' (click)="saveDtls()">SAVE</button> -->
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

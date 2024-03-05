@@ -1,0 +1,225 @@
+<div class="container">
+  <div class="page-layout simple tabbed pageBackground">
+    <div *ngIf="loader">
+      <div class="loading-indicator">
+          <div class="spinner-2">
+            <img src="assets/images/logos/glits_D.png" style="max-width: 150%;">
+          </div>
+        </div>
+  </div>
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <div class="ds-card m-12 p-12 text-center noPermsMsgColor" *ngIf="!permissions">{{shwPermMsg}}</div>
+    <mat-tab-group (selectedTabChange)="tabChangeFn($event)" *ngIf="permissions">
+      <mat-tab label="UPLOAD BANK STATEMENT" *ngIf="(permissions.insrt_in==1)?true:false">
+        <!-- <div class="ds-card m-12">
+          <div class="p-16 font-size-14 font-weight-500 text-center">Note: <span>Option is to Upload the APSFL Andhra Bank Statement</span> </div>
+        </div> -->
+        <div class="notification notification-danger">
+          <strong>Note : </strong> This Option is to Upload the APSFL Andhra Bank Statements.
+        </div>
+        <div class="fltrbg m-8 p-4">
+          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+              <div class="form-label">Upload Bank Statement</div>
+              <input type="file" id="file1" (change)="uploadedExclFile($event)" required>
+              <label for="file1">Choose a Bank Statement</label>
+              <div *ngIf='isValid==true'>{{upldFileNm}}</div>
+              <div class='vldecxl' *ngIf='isValid==false'>Please Upload Valid Excel !</div>
+            </div>
+            <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 m-24">
+              <div class="form-label"></div>
+              <button mat-flat-button type="submit" aria-label="Areas"
+                class="mat-raised-button font-weight-bold addTextColor" type="button" (click)="downloadtemplate()">
+                <mat-icon matTooltip="Add Areas">cloud_download</mat-icon> Download Template
+              </button>
+            </div>
+          </div>
+        </div>
+        <ds-loading *ngIf="showLdr"></ds-loading>
+        <div *ngIf="exclUpld">
+          <div class="ds-card m-12" *ngIf="uploadedLmoData.length">
+            <div class="p-4 font-size-14 font-weight-500 titlebrder">Uploaded Payment Details</div>
+            <div fxLayout="row" fxLayout.xs="column" class="p-16">
+              <div fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+                <dx-data-grid id="gridContainer" [dataSource]="uploadedLmoData" [showBorders]="true"
+                  [remoteOperations]="true" [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                  [showColumnLines]="true" [showRowLines]="true">
+                  <dxi-column *ngFor="let f of instrdWthLmoColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+                  <dxo-paging [pageSize]="12"></dxo-paging>
+                  <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+                  [showInfo]="true" [allowedPageSizes]="[15, 25, 50, 100]"></dxo-pager>
+                </dx-data-grid>
+              </div>
+            </div>
+          </div>
+          <div class="ds-card m-12" *ngIf="toBeInstrdWthLmo.length">
+            <div class="p-4 font-size-14 font-weight-500 titlebrder">Upload Payment Details</div>
+            <div fxLayout="row" fxLayout.xs="column" class="p-16">
+              <div fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+                <dx-data-grid id="gridContainer" [dataSource]="toBeInstrdWthLmo" [showBorders]="true"
+                  [remoteOperations]="true" [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                  [showColumnLines]="true" [showRowLines]="true">
+                  <dxi-column *ngFor="let f of toBeInstrdWthLmoColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                    [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"></dxi-column>
+                  <dxo-paging [pageSize]="12"></dxo-paging>
+                  <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+                  [showInfo]="true" [allowedPageSizes]="[15, 25, 50, 100]"></dxo-pager>
+                </dx-data-grid>
+              </div>
+            </div>
+            <div class="text-right m-8">
+              <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color w-10-p"
+                (click)="saveBulkUpload()">Submit</button>
+            </div>
+          </div>
+          <div class="ds-card m-12">
+            <div class="p-4 font-size-14 font-weight-500 titlebrder">Upload Payment Details Without LMO</div>
+            <div fxLayout="row" fxLayout.xs="column" class="p-16">
+              <form [formGroup]="lmoPymntsForm" class="mt-12 w-100-p" fxLayout="column">
+                <div formArrayName="lmoCode">
+                  <table class="portSplitng mt-16">
+                    <tr>
+                      <th>Sno</th>
+                      <th>Transact By</th>
+                      <th>LMO Name</th>
+                      <th>Amount</th>
+                      <th>Date</th>
+                      <th>LMO Code</th>
+                    </tr>
+                    <tr *ngFor="let h of agntFm.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                      <td>
+                        {{pointIndex + 1}}
+                      </td>
+                      <td>
+                        {{h.value.trns_ctgry}}
+                      </td>
+                      <td>
+                        {{h.value.lmo_nm}}
+                      </td>
+                      <td>
+                        {{h.value.tot_amt}}
+                      </td>
+                      <td>
+                        {{h.value.Date}}
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="Search LMO Code" aria-label="State" [matAutocomplete]="auto"
+                            formControlName="lmo_cd">
+                          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                            <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                            <ng-container *ngIf="!isLoading">
+                              <mat-option *ngFor="let agent of filteredAgents;trackBy:trackByfunction" [value]="agent">
+                                <span><b>{{agent.agnt_nm}}</b> ({{agent.agnt_cd}})</span>
+                              </mat-option>
+                            </ng-container>
+                          </mat-autocomplete>
+                          <mat-error>LMO is required!</mat-error>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </form>
+            </div>
+            <div class="text-right m-8">
+              <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color w-10-p"
+                (click)="saveBulkUploadWthOutLmo()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="MY UPLOADS">
+        <div class="ds-card mt-8">
+          <div fxLayout="row" fxLayout.xs="column" class="p-4">
+            <div fxFlex.xs="100" class=" w-100-p" fxLayout="column" fxLayoutAlign="start start">
+              <dx-data-grid #dataGridRef id="gridContainer" [dataSource]="bnkStmtPymntsByUsrLst"
+                [remoteOperations]="true" [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                [showColumnLines]="true" [columnAutoWidth]="true" [showRowLines]="true" [showBorders]="true"
+                style="width:100%">
+                <dxo-header-filter [visible]="true"></dxo-header-filter>
+                <dxo-paging [pageSize]="15"></dxo-paging>
+                <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+                  [showInfo]="true" [allowedPageSizes]="[15, 25, 50, 100]"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+                <dxo-group-panel [visible]="false"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                </dxo-export>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of bnkStmtPymntsByUsrLstColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                  [format]="{type:f.type,currency:f.currency, precision:f.precision}" [allowHeaderFiltering]="f.columnFiltering" [allowFiltering]="f.filter"></dxi-column>
+              </dx-data-grid>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="RECENT UPLOADS">
+        <mat-expansion-panel class="m-8">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Filter Transactions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form class="p-8" fxLayout="column" [formGroup]='bnkStmtPymntForm'>
+            <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select From Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker1" placeholder="Payment Date"
+                    formControlName="bnkStmtPymntFrmDt">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Select To Date<span class="reqSgnColor">*</span></div>
+                <mat-form-field appearance="outline">
+                  <input matInput [matDatepicker]="picker2" placeholder="Payment Date"
+                    formControlName="bnkStmtPymntToDt">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8 m-24">
+                <div class="form-label"></div>
+                <button mat-flat-button type="submit" aria-label="Get Payments" class="mat-raised-button gtDtls"
+                  (click)="getAllRcntUploads()">Get Data</button>
+              </div>
+            </div>
+          </form>
+        </mat-expansion-panel>
+        <div class="ds-card mt-8">
+          <div fxLayout="row" fxLayout.xs="column" class="p-4">
+            <div fxFlex.xs="100" class="w-100-p" fxLayout="column" fxLayoutAlign="start start">
+              <dx-data-grid #dataGridRef id="gridContainer" [dataSource]="recentbnkStmtPymntsLst"
+                [remoteOperations]="true" [allowColumnReordering]="true" [allowColumnResizing]="true" [rowAlternationEnabled]="true"
+                [showColumnLines]="true" [columnAutoWidth]="true" [showRowLines]="true" [showBorders]="true"
+                style="width:100%">
+                <dxo-header-filter [visible]="true"></dxo-header-filter>
+                <dxo-paging [pageSize]="15"></dxo-paging>
+                <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+                  [showInfo]="true" [allowedPageSizes]="[15, 25, 50, 100]"></dxo-pager>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+                <dxo-group-panel [visible]="false"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+                <dxo-column-chooser [enabled]="false" mode="select"></dxo-column-chooser>
+                <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true">
+                </dxo-export>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column *ngFor="let f of recentbnkStmtPymntsColumnDefs" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width" [allowResizing]="true" [alignment]="f.alignment"
+                  [format]="{type:f.type,currency:f.currency, precision:f.precision}" [allowHeaderFiltering]="f.columnFiltering" [allowFiltering]="f.filter"></dxi-column>
+              </dx-data-grid>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

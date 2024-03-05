@@ -1,0 +1,137 @@
+<!-- <div class="container header accent pghdrStyle text-center pt-16">
+  <h2 style="text-transform: uppercase"> Training Report</h2>
+  <button mat-icon-button aria-label="Close dialog">
+    <mat-icon>close</mat-icon>
+  </button>
+</div> -->
+<div class="dialog-content-wrapper">
+
+  <mat-toolbar matDialogTitle class="dlg-hdr m-0">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Trainer Details</span>
+      <div>
+        <!-- <button mat-icon-button class="mr-12" (click)="getPdf()" matTooltip="Download as Pdf">
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button> -->
+        <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<div>
+<div fxLayout="row" fxLayoutAlign="center" class="m-8">
+    <img src={{trainerdata.trnr_img_url}}
+    alt="author" class="crd-img">
+</div>
+  <div fxLayout="column" fxLayoutAlign="start" fxLayout.gt-xs="column" class="p-12">
+      <p class="pt-0 line-height-1.75 trnr-ttl-onl text-center font-weight-700 font-size-16">
+          Name:{{trainerdata.trnr_nm}}</p>
+          <p class="pt-0 line-height-1.75 trnr-ttl-onl-desc text-center font-weight-500 font-size-12">
+              Department: {{trainerdata.dprt_nm}}</p>
+              <p class="pt-0 line-height-1.75 trnr-ttl-onl-desc text-center font-weight-500 font-size-12">
+                  District: {{trainerdata.dstrt_nm}}</p>
+                  <p class="pt-0 line-height-1.75 trnr-ttl-onl-desc text-center font-weight-500 font-size-12">
+                      Mandal: {{trainerdata.mndl_nm}}</p>
+      <!-- <div fxFlex fxLayout="row">
+        <div fxFlex>
+          <p fxFlex fxLayout="row">
+            <mat-icon class="mr-4 font-size-24">perm_identity</mat-icon>
+            <span class="scdl-span">Name:{{trainerdata.trnr_nm}}</span>
+          </p>
+        </div>
+        <div fxFlex>
+          <p fxFlex fxLayout="row">
+            
+            <span class="scdl-span">Department: {{trainerdata.dprt_nm}}</span>
+          </p>
+        </div>
+      </div> -->
+      <!-- <div fxFlex fxLayout="row">
+        <div fxFlex>
+          <p fxFlex fxLayout="row">
+            
+            <span class="scdl-span">District: {{trainerdata.dstrt_nm}}</span>
+          </p>
+        </div>
+        <div fxFlex>
+          <p fxFlex fxLayout="row">
+            
+            <span class="scdl-span">Mandal: {{trainerdata.mndl_nm}}</span>
+          </p>
+        </div>
+      </div> -->
+    </div>
+<div fxLayout="row" fxLayoutAlign="center" fxLayout.gt-xs="row" class="p-12">
+  <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxLayout="column" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+    <div class="ds-card example-card ht">
+      <div class="text-center">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+            <h2 class="p-8 font-size-12 font-weight-500 border-bottom titlebrder" style="text-transform: uppercase">
+             Total Training </h2>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="text-center font-size-12 font-weight-400 ds-black-40-fg ">
+
+          <span class="ttl-cnt">10</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxLayout="column" class="ml-8" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" >
+    <div class="ds-card example-card ht">
+      <div class="text-center">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+
+            <h2 class="p-8 font-size-12 font-weight-500 border-bottom titlebrder" style="text-transform: uppercase">
+                Total Batches</h2>
+          </div>
+        </div>
+
+      </div>
+
+      <div>
+
+
+        <p class="text-center font-size-12 font-weight-400 ds-black-40-fg ">
+
+          <span class="ttl-cnt">20</span>
+        </p>
+     
+      </div>
+    </div>
+  </div>
+
+  <!-- <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxLayout="column" class="ml-8" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%" (click)="crddata(3)">
+    <div class="ds-card example-card">
+      <div class="text-center">
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="100%" fxFlex.gt-md="100%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+
+            <h2 class="p-8 font-size-12 font-weight-500 border-bottom titlebrder" style="text-transform: uppercase">
+              Trainer Details</h2>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="text-center font-size-12 font-weight-400 ds-black-40-fg">
+          <span class="ttl-cnt">{{statusDtls.trnr_nm}}</span>
+          <br>
+          <span class="ttl-cnt">9154181403</span>
+        </p>
+      </div>
+    </div>
+  </div> -->
+
+</div>
+
+
+
+</div>
+</div>

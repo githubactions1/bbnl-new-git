@@ -1,0 +1,68 @@
+.chsefle {
+    width: 25%;
+}
+.vldecxl {
+    color: red;
+}
+
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    display:none;
+  }
+  [type="file"] + label {
+    // background: #f15d22;
+    background:#0f73bc;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: inherit;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    width:100%;
+    text-align:center;
+    outline: none;
+    padding: 0.8rem 25px;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    vertical-align: middle;
+    
+    &:hover {
+      background-color: darken(#f15d22, 10%);
+    }
+    }
+    .loading-indicator {
+      position: fixed;
+      z-index: 999;
+      height: 2em;
+      width: 2em;
+      overflow: show;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }

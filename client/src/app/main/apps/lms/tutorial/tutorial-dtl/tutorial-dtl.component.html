@@ -1,0 +1,140 @@
+<div class="page-layout carded left-sidebar tabbed inner-scroll">
+
+
+
+
+    <!-- CENTER -->
+    <div class="center m-0">
+
+        <!-- CONTENT HEADER -->
+
+        <!-- HEADER -->
+        <div class="container header accent pghdrStyle text-center pt-16">
+            <h2 style="text-transform: uppercase" class="w-100-p">{{data.trng_nm}}</h2>
+            <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+        </div>
+        <!-- / CONTENT HEADER -->
+        <div class="content" style="height: 416px">
+
+            <mat-tab-group dynamicHeight="true">
+                <mat-tab label="Course Content">
+
+                    <!-- <div fxFlex fxFlex.gt-lg="80%" fxFlex.gt-md="80%" fxFlex.gt-sm="80%" fxFlex.gt-xs="80%"
+                        class="content-card"> -->
+
+                        <!-- <div *ngIf='hoverIdx == true' class="position-relative m-auto iconhvr ">
+               <div  class='row'>
+                  <div  class="position-absolute font-size-20 ds-white-fg p-16 align-left align-bottom-326px"style='margin-left: 19px; margin-top: -38px;'>
+                      <mat-icon   (click)='prv()' class='plyicon'>chevron_left</mat-icon>
+                  </div>
+                     <div  class="position-absolute font-size-30 ds-white-fg p-16 align-left-570px align-bottom-326px " style="margin-left: 933px;margin-top: -49px;">
+                        <mat-icon   (click)='next()'class='plyicon'>chevron_right</mat-icon>
+                        
+                      </div>
+                    
+                  </div>
+               </div> -->
+
+                        <div fxFlex fxLayout="row">
+                      
+                            <div class="test" fxFlex fxLayout="column">
+                                <div *ngIf='isVideo' class="video-container">
+                                <div  class="vidcnt" [innerHtml]="iframe_html">
+
+                                </div>
+                                <div class="prev-button"> <mat-icon (click)='prv()'  class="prev mr-8">skip_previous</mat-icon></div>
+                                <div class="next-button"><mat-icon (click)='next()' class="next mr-8">skip_next</mat-icon></div>
+                              </div>
+                                <div *ngIf='!isVideo'>
+                                    <app-tests [testData]="testArray"></app-tests>
+                                </div>
+
+
+                            </div>
+        
+
+                            <!-- SIDEBAR -->
+                            <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+                                <ds-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2" position="left"
+                                    lockedOpen="gt-md">
+
+
+
+                                    <!-- SIDEBAR CONTENT -->
+                                    <div dsPerfectScrollbar>
+
+                                        <mat-tab-group>
+
+                                            <mat-tab label="Index">
+                                                <div>
+                                                    <accordion [options]="options" [menus]="menus">
+                                                    </accordion>
+                                                </div>
+
+                                            </mat-tab>
+
+
+                                        </mat-tab-group>
+
+                                    </div>
+                                    <!-- / SIDEBAR CONTENT -->
+
+                                </ds-sidebar>
+                            </div>
+
+                            <!-- / SIDEBAR -->
+                        </div>
+                    <!-- </div> -->
+                </mat-tab>
+                <mat-tab label="OverView">
+                    <div class="p-24 w-75-p">
+                        <p>
+                            {{data.trng_disc}}
+                        </p>
+
+                        <p>
+                            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class
+                            aptent taciti
+                            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur vitae
+                            sagittis odio.
+                            Suspendisse ullamcorper nunc non pellentesque laoreet. Curabitur eu tortor id quam pretium
+                            mattis. Proin ut quam
+                            velit.
+                        </p>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Pre-requisites">
+                    <div class="demo-content line-height-1.75 p-24 w-75-p">
+
+                        <h1 class="m-0">Course Name</h1>
+                        <h4 class="mt-0 secondary-text">Author Name</h4>
+
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor nibh, convallis
+                            sed purus nec,
+                            auctor venenatis nisl. Suspendisse potenti. Nullam sagittis nulla in diam finibus, sed
+                            pharetra velit
+                            vestibulum. Suspendisse euismod in urna eu posuere.
+                        </p>
+                    </div>
+                </mat-tab>
+
+
+                <mat-tab label="Material">
+
+                </mat-tab>
+
+            </mat-tab-group>
+
+        </div>
+
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

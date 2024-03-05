@@ -1,0 +1,45 @@
+@mixin toolbar-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    toolbar {
+
+        .toolbar-separator {
+            background: map-get($foreground, divider);
+        }
+    }
+}
+
+.mnu{
+    button:focus {
+        outline: 0px auto -webkit-focus-ring-color;
+    }
+    .mat-button {
+        border-radius: 2px;
+    }
+}
+
+.mnu_itm {
+    button:focus {
+        outline: 0px auto -webkit-focus-ring-color;
+    }
+}
+
+::ng-deep{
+    .mat-button {
+        border-radius: 2px;
+    }
+    .mat-elevation-z4 {
+    box-shadow: 0px 2px 4px -1px rgba(167, 166, 166, 0.2), 0px 4px 5px 0px rgba(165, 162, 162, 0.14), 0px 1px 10px 0px rgba(95, 93, 93, 0.12);
+}
+.mat-menu-panel {
+    min-width: 170px;
+    border-radius: 2px;
+}
+}
+
+.mr-12 {
+    margin-right: 12px !important;
+    text-transform: capitalize;
+}
+     

@@ -1,0 +1,410 @@
+<div class="page-layout simple pageBackground">
+  <div id="scrolledtabs" class="tbs" *ngIf="ttldata.length>1"> 
+    <dx-tabs
+        [dataSource]="longtabs"
+        [width]="300"
+        [scrollByContent]="true"
+        [showNavButtons]="true" [selectedIndex]="0" (onItemClick)="selectTab($event)"
+    ></dx-tabs>
+</div>
+<div class="ds-card  dsbbrdcrds1" style="padding: 1%;">
+  <div fxLayout="row wrap" fxLayoutAlign="start top">
+ 
+
+      <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+       <div fxLayout="row wrap">
+          <h1 class="hdr">CAF Details</h1>
+        </div>
+
+
+<ul class ="cafDtlS">
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">CAF Number</p>
+      </div>
+      <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%"><p class="rghtLbl" *ngIf="cafDtls[0].caf_nu">{{cafDtls[0].caf_nu}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].caf_nu">NA</p>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">CAF Name</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].caf_nu">{{cafDtls[0].cstmr_nm}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].caf_nu">NA</p>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Subscriber Code</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].mdlwe_sbscr_id">{{cafDtls[0].mdlwe_sbscr_id}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].mdlwe_sbscr_id">NA</p>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Activation Date</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].caf_nu">{{cafDtls[0].actvn_ts}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].caf_nu">NA</p>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Assigned Number</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].phne_nu">{{cafDtls[0].phne_nu}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].phne_nu">NA</p>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Address</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].address">{{cafDtls[0].address}}</p>
+         <p class="rghtLbl" *ngIf="!cafDtls[0].address">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Connection Status</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].sts_nm">{{cafDtls[0].sts_nm}}</p>
+            <p class="rghtLbl" *ngIf="!cafDtls[0].sts_nm">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Billing Frequency</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].frqncy_nm">{{cafDtls[0].frqncy_nm}}</p>
+            <p class="rghtLbl" *ngIf="!cafDtls[0].frqncy_nm">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Package</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].pckge_nm">{{cafDtls[0].pckge_nm}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].pckge_nm">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Serial Number</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].onu_srl_nu">{{cafDtls[0].onu_srl_nu}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].onu_srl_nu">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">Box Model</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].mdle_nm">{{cafDtls[0].mdle_nm}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].mdle_nm">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">LMO Name</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].agnt_nm">{{cafDtls[0].agnt_nm}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].agnt_nm">NA</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div fxLayout="row">
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="lftLbl">LMO Mobile No.</p>
+      </div>
+    <div fxFlex="20" fxFlex.gt-lg="18%" fxFlex.gt-md="18%" fxFlex.gt-sm="18%" fxFlex.gt-xs="18%">:</div>
+      <div fxFlex="40" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%">
+        <p class="rghtLbl" *ngIf="cafDtls[0].ofce_mbl_nu">{{cafDtls[0].ofce_mbl_nu}}</p>
+        <p class="rghtLbl" *ngIf="!cafDtls[0].ofce_mbl_nu">NA</p>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+      </div>
+      <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+        style="margin:auto;">
+        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [plugins]="barchartOptions" [colors]="doughnutChartColors" [chartType]="'doughnut'" [legend]="true"
+           *ngIf="pieChartData">
+        </canvas>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="ds-card  dsbbrdcrds1" style="padding: 1%;">
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <div fxLayout="row wrap">
+        <h1 class="hdr">Internet Usage</h1>
+      </div>
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+      <div style="overflow-x:auto;" class="tblebrdrlne">
+        <div>
+          <table style="width:100%">
+            <tr>
+              <th>Sno</th>
+              <th>Year</th>
+              <th>Month</th>
+              <th>Download(GB)</th>
+              <th>Upload(GB)</th>
+              <th>Total(GB)</th>
+              <th>FUP Limit(GB)</th>
+              <th>Day Wise</th>
+
+            </tr>
+            <tr *ngFor="let c of hsiData">
+              <td style="text-align:center">{{c.s_no}}</td>
+              <td style="text-align:center">{{c.yr_ct}}</td>
+              <td>{{c.month}}</td>
+              <td style="text-align:center">{{c.TD}}</td>
+              <td style="text-align:center">{{c.TU}}</td>
+              <td style="text-align:center">{{c.total}}</td>
+              <td style="text-align:center">{{c.mnth_usge_lmt_ct}}</td>
+              <td><button class="btn" (click)="getdaywisedata(c.yr_ct,c.mnt_ct)">day wise details</button></td>
+
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="48%" fxFlex.gt-md="48%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" style="margin-left: 2%;">
+      <div fxLayout="row wrap">
+        <h1 class="hdr" style="text-transform: capitalize;">Internet {{this.monthName}} month Daywise usage details</h1>
+      </div>
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+      <canvas baseChart [chartType]="'line'" [datasets]="chartData" [labels]="chartLabels" [legend]="true"
+        [options]="chartOptions" *ngIf="chartData">
+      </canvas>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="ds-card  dsbbrdcrds1" style="padding: 1%;">
+    <div fxLayout="row wrap" fxLayoutAlign="start top">
+    <div fxFlex="100" fxFlex.gt-lg="58%" fxFlex.gt-md="58%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+      <div fxLayout="row wrap">
+        <div class="col-8">
+        <h1 class="hdr">Package History Details</h1>
+        </div>
+        <div class="col-4">
+          <span><button class="btn" (click)="openSideBar('addFormPanel','new',null)">Purchase Addon Packages</button></span>
+        </div>
+      </div>
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+      <div style="overflow-x:auto;" class="tblebrdrlne">
+        <div>
+          <table style="width:100%">
+            <tr>
+              <th>Sno</th>
+              <th>Package Name</th>
+              <th>Service Package</th>
+              <th>Core Service Name</th>
+              <th>Charges</th>
+              <th>GST Charges</th>
+              <th>Activation Date</th>
+              <th>Status</th>
+            </tr>
+            <tr *ngFor="let p of pkgeData">
+              <td>{{p.sno}}</td>
+              <td>{{p.pckge_nm}}</td>
+              <td>{{p.cre_srvce_nm}}</td>
+              <td>{{p.srvcpk_nm}}</td>
+              <td style="text-align: center;">{{p.chrge_at}}</td>
+              <td style="text-align: center;">{{p.gst_at}}</td>
+              <td>{{p.plan_act}}</td>
+              <td *ngIf="activeLbl" class="tblActvBtn">Active</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-lg="40%" fxFlex.gt-md="40%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" style="margin-left: 2%;">
+      <div fxLayout="row wrap">
+        <h1 class="hdr">IPTV Channels List</h1>
+      </div>
+      <ds-loading *ngIf="shwLdr"></ds-loading>
+      <div class="srvceLst">
+          <div fxLayout="column" class="chanlsLst">
+            <div *ngFor="let d of chnlesLst">
+              <div class="lngeNm">{{d.grp_nm}}
+              </div>
+              <ul>
+                <li fxFlex="50" fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="33%" fxFlex.gt-sm="33%" fxFlex.gt-xs="33%"
+                  *ngFor="let cnl of d.opts">
+                  <span class="pkgenm">{{cnl.opt_nm}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+
+
+</div>
+
+<ds-sidebar class="form-panel ds-form-sidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+  <ng-container>
+    <div fxLayout="column">
+      <div class="card">
+        <div class="card-body">
+          <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle"
+            style="float:right">cancel </mat-icon>
+            <mat-tab-group (selectedTabChange)="tabChangePckgeFn($event)" [(selectedIndex)]="selectedPckgeIndex">
+              <mat-tab>
+                <ng-template mat-tab-label class="pckge-mat-tab-label">
+                  IPTV
+                </ng-template>
+                <div class="m-12">
+                  <dx-data-grid class="p-8" id="gridContainer" [dataSource]="addOnStandardPckgsLst"
+                    [remoteOperations]="false" [allowColumnReordering]="true" [allowColumnResizing]="true"
+                    [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                    style="width:100%"
+                    (onSelectionChanged)="addOnPckgsSlctd($event)" (onRowExpanding)="getChanneslList($event)"
+                    [masterDetail]="{ enabled: true, template: 'detail' }">
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true">
+                    </dxo-pager>
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                    <!-- <dxo-filter-panel [visible]="true"></dxo-filter-panel> -->
+                    <dxo-selection mode="multiple"></dxo-selection>
+                    <!-- <dxo-group-panel [visible]="true"></dxo-group-panel> -->
+                    <!-- <dxo-grouping [autoExpandAll]="false"></dxo-grouping> -->
+                    <!-- <dxo-column-chooser [enabled]="true" mode="select"> -->
+                    <!-- </dxo-column-chooser> -->
+                    <!-- <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+                      fileName="Package Agreement"> -->
+                    <!-- </dxo-export> -->
+                    <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+                    <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                      [caption]="f.headerName" [alignment]="f.alignment" [allowFiltering]="f.filter"
+                      [allowHeaderFiltering]="f.filter" [width]="f.width"></dxi-column>
+                    <div *dxTemplate="let agrmtData of 'detail'">
+                      <dx-data-grid [allowColumnResizing]="true" [dataSource]="ChanlArry" [remoteOperations]="false" [allowColumnReordering]="true" 
+                      [allowColumnResizing]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                        *ngIf="view == true" [columnAutoWidth]="true">
+                        <dxi-column [allowResizing]="true" caption="Sno" alignment="center" dataField="s_no"></dxi-column>
+                        <dxi-column [allowResizing]="true" caption="Channel Name" alignment="left" dataField="chnle_nm"></dxi-column>
+                      </dx-data-grid>
+                    </div>
+                  </dx-data-grid>
+                  <div class="text-right m-8" *ngIf="shwSveBtn">
+                    <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                      (click)="saveAddonPckgs()">Save</button>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label class="pckge-mat-tab-label">
+                  HSI
+                </ng-template>
+                <div class="text-center font-weight-600 m-12" *ngIf="hsiPckgsData && hsiPckgsData.length==0">No HSI addons available</div>
+                <div *ngIf="hsiPckgsData && hsiPckgsData.length!=0">
+                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start" class="mt-8">
+                  <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="45" fxFlex.xs="50" class="px-8" *ngFor="let h of hsiPckgsData; let i=index">
+                    <div class="ds-card hsi-card">
+                      <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                        <div fxFlex.xl="10" fxFlex.lg="10" fxFlex.md="30" fxFlex.xs="100" class="px-8 mt-28">
+                          <mat-checkbox [(ngModel)]="hsiPckgsData[i].checked"
+                          id="hsiPckgsData[{{i}}]" 
+                          name="hsiPckgsData[{{i}}]" (change)="updateSelection(i, h)"></mat-checkbox>
+                        </div>
+                        <div fxFlex.xl="90" fxFlex.lg="90" fxFlex.md="70" fxFlex.xs="100" class="px-8 text-center">
+                          <div class="font-weight-600 p-12 font-size-14 hsi-card-header-color">{{h.pckge_nm}} - ({{h.vle_tx}}GB)</div>
+                          <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayoutAlign.gt-md="start">
+                            <div fxFlex.xl="40" fxFlex.lg="30" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                              <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.ttl_cst}}</div>
+                              <div class="font-size-12">Total Cost</div>
+                            </div>
+                            <div fxFlex.xl="35" fxFlex.lg="35" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                              <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.chrge_at}}</div>
+                              <div class="font-size-12">Charges</div>
+                            </div>
+                            <div fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="45" fxFlex.xs="50" class="px-8">
+                              <div class="font-size-14 hsi-card-value-color font-weight-600">{{h.gst_at}}</div>
+                              <div class="font-size-12">GST</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right m-8">
+                  <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  saveBtn-color mr-8"
+                    (click)="saveAddonHsiPckgs()">Save</button>
+                </div>
+              </div>
+              </mat-tab>
+            </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ds-sidebar>

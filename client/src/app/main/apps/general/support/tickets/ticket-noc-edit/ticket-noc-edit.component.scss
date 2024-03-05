@@ -1,0 +1,212 @@
+.mndalName
+{
+    border: 1px solid #dbdbdb;
+    padding: 9px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    background: #f9f9f9;
+    height: 40px;
+}
+
+.fw-500{
+    font-weight: 500;
+    margin-left: 1%;
+}
+.hgt-Fsx{
+    height: 56px;
+}
+.headtxt{
+    margin-left: 1%;
+    margin-top: 1%;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(238, 73, 24);
+    }
+.rowCs{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.fntwghtS{
+    font-weight: 700;
+}
+.typeName
+{
+    border: 1px solid #dbdbdb;
+    padding: 9px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    background: #f9f9f9;
+    height: 40px;
+}
+ .frstRw{
+    margin-top: -5%;
+ }  
+ 
+ .bdlngCss{
+    margin-left: 0%;
+    margin-top: 1%;
+    font-size: 18px;
+    color: #1563bb;
+    border-bottom: 1px solid #a2c6ef;
+    line-height: 0.1em;
+    // / margin: 10px 0 20px; /
+    width: 100%;
+    b{
+        background-color: #fff;
+        font-weight: 500;
+        padding-right: 15px;
+        .mat-icon{
+            font-size: 23px;
+            margin-right: 6px;
+        }
+    }
+  }
+  .sctnTtlCss {
+    padding: 12px;
+    /* border-bottom: 1px solid #d0cfcf; */
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 17px;
+    color: orangered;
+  }
+::ng-deep.fr-box.fr-basic .fr-wrapper {
+        background: #f9f9f9;
+        border: 1px solid #CCCCCC;
+        border-bottom-color: #efefef;
+        top: 0;
+        left: 0;
+    }
+    ::ng-deep.fr-box.fr-basic .fr-element {
+        font-family: sans-serif;
+        color: #414141;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-x: auto;
+        min-height: 220px;
+        text-align: left;
+    }
+
+    .border-top-right-radius-5{
+        border-top-right-radius: 5px;
+    }
+    .border-bottom-right-radius-5{
+        border-bottom-right-radius: 5px;
+    }  
+    .border-bottom-left-radius-5{
+        border-bottom-left-radius: 5px;
+    } 
+    .ds-card-bottom-section-bg{
+        background-color: #fcfbfd;
+    }
+
+    .pdng_mnu{
+        padding: 2%;
+        margin-top: -4%;
+        background-color: #4a4946 !important;
+    }
+    .popHdrTxt{
+        margin-left: 5%;
+        color: white;
+        font-size: 16px;
+        margin-top: 2%;
+        float: right;
+        width: 80%;
+    }
+    .Popcncl{
+        margin-left: 30%;
+        margin-top: 3%;
+        color: white;
+        cursor: pointer;
+    }
+    .PopcnclTck{
+        margin-top: 3%;
+        color: white;
+        cursor: pointer;
+        /* float: left; */
+        width: 10%;
+        text-align: right;
+    }
+
+    .PopPdng{
+        padding: 8%;
+    }
+    .PopMtFld{
+        padding: 8%;
+        margin-top: -19%;
+    }
+    ::ng-deep.mat-menu-content {
+        width: 515px !important;
+        overflow: hidden !important;
+      }
+    ::ng-deep .mat-list-base .mat-list-item {
+        color: white !important;
+    }
+    ::ng-deep .mat-menu-panel {
+        min-width: 515px !important;
+        max-width: 515px !important;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        max-height: calc(100vh - 48px);
+        border-radius: 4px;
+        outline: 0;
+      }
+
+      .SvCncl{
+        margin-top: -8%;
+        margin-left: 32%;
+    }
+
+    .sCs{
+        margin-top: 1%;
+        margin-left: 1%;
+    }
+    .bdrbtm{
+        border-bottom: 1px solid #dee2e6 !important;
+    }
+    .bkgrdclr{
+        background-color: #f16136 !important;
+    }
+    .ds-plcholder{
+        width: 130px;
+        height: 120px;
+        background-color: #ddd;
+        border-radius: 5px;
+        // margin: auto;
+        .ds-plchdlr-icon{
+            margin: auto;
+            text-align: center;
+            width: 130px !important;
+            height: 120px !important;
+            line-height: 120px !important;
+            color: rgba(0, 0, 0, 0.34) !important;
+            cursor: pointer;
+        }
+        img{
+            width: 130px;
+            height: 120px;
+            object-fit: fill;
+            border-radius: 5px;
+            position: relative;
+            border: 1px solid #dbdbdb;
+        }
+        .close{
+            position: absolute;
+        z-index: 1;
+        /* right: 0; */
+        // margin-left: -3%;
+        margin-left: 8%;
+        font-size: 35px;
+        background: #f55;
+        width: 23px;
+        height: 23px;
+        line-height: 0px;
+        border-radius: 100%;
+        // margin-top: -3%;
+        color: #fff;
+        opacity: 1;
+        text-shadow: 0px 0px transparent;
+        font-weight: 200;
+        }
+    }

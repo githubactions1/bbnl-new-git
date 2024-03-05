@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="page-layout simple tabbed pageBackground">
+    <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+    <ds-loading *ngIf="loader"></ds-loading>
+        <div class="ds-card m-12 p-12">
+          <div fxLayout.xl="row"  fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+            <div  class="chsefle">
+              <div class="form-label">Bulk Upload</div>
+              <input type="file" id="file"accept=".xlsx, .xls, .csv"  (change)="uploadedFile($event)" required>
+              <label for="file">Choose a file</label>
+              <div *ngIf='isValid==true'>{{upldFileNm}}</div>
+              <div class='vldecxl' *ngIf='isValid==false'>Please Upload Valid Excel !</div>
+            </div>
+          
+            <div class="px-8 m-24">
+              <div class="form-label"></div>
+              <button mat-flat-button type="submit" aria-label="Areas"
+                class="mat-raised-button font-weight-bold addTextColor" type="button" (click)="downloadtemplate()">
+                <mat-icon matTooltip="Add Areas">cloud_download</mat-icon> Download Template
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card m-12 mt-12" *ngIf="exclGrid">
+          <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlex.xl="85" fxFlex.lg="85" fxFlex.md="50" fxFlex.xs="100">
+              <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                Uploaded Data Records
+              </div>
+            </div>
+            <div fxFlex.xl="12" fxFlex.lg="12" fxFlex.md="50" fxFlex.xs="100" class="text-right p-12">
+              <div><span *ngIf='shwrcds'
+                  class='font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg ttlRcds'>Total Records
+                  ({{ttlRcds}})</span></div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div >
+            <div  class="px-8 mt-12">
+              <dx-data-grid id="gridContainer" [dataSource]="ExclDta" [allowColumnReordering]="true"
+                [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                [remoteOperations]="true">
+                <dxi-column *ngFor="let f of columnDefsRcrd" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+                <dxo-paging [pageSize]="12"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[8, 12, 20]"></dxo-pager>
+              </dx-data-grid>
+            </div>
+          </div>
+        
+        </div>
+
+        <!-- <div class="ds-card mt-12" *ngIf="lmoSlctd">
+          <div fxLayout="row" fxLayout.xs="column" class="p-16">
+            <div fxFlex.xs="100" class="px-8" fxLayout="column" fxLayoutAlign="start start">
+              <dx-data-grid id="gridContainer" [dataSource]="agntPymntLst" [showBorders]="true"
+                [remoteOperations]="true" [allowColumnReordering]="true" [rowAlternationEnabled]="true"
+                [showColumnLines]="true" [showRowLines]="true">
+                <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field"
+                  [caption]="f.headerName" alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+                <dxo-paging [pageSize]="12"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[8, 12, 20]"></dxo-pager>
+              </dx-data-grid>
+            </div>
+          </div>
+        </div> -->
+        <div class="ds-card m-12 p-12 cardsGrd">
+        <form fxLayout="row wrap" fxLayoutAlign="start top"  [formGroup]="firstFormGroup">
+          <div fxFlex.xl="20" fxFlex.lg="20" fxFlex.md="25"  fxFlex.sm="25"  fxFlex.xs="100" *ngFor="let p of packages  let i=index">
+
+          <div class="grid-wrapper">
+        
+            
+            <div class="card-wrapper " >
+              <input class="c-card" type="radio" [checked]="p.checked"  formControlName="crnt_pckge_id" name="crnt_pckge_id" id="pck_{{i}}" [value]="p.pckge_id" (click)="getpackagedta(p)" >
+              <div class="ds-card crdwdth card-content">
+                <div class="card-state-icon"></div>
+                <label class="plan-lbl" for="pck_{{i}}">
+                  <p class="pln-nm">{{p.pckge_nm}}</p>
+                  <ul fxLayout="column" class="srv-lst">
+                    <li *ngFor="let s of p.srvcs">{{s.srvcpk_nm}}</li>
+                  </ul>
+                  <mat-divider></mat-divider>
+                  <div fxLayout="column" >
+                    <div fxLayout="row" class="rt">
+                      <div fxFlex="50" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <p class ="algnlft">Rental :</p>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                    <p class ="algnrgt">{{p.chrg_at}}</p>
+                      </div>
+                  </div>
+                    <div fxLayout="row" class="rt">
+                      <div fxFlex="50" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                      <p class ="algnlft">Tax :</p>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                      <p class ="algnrgt">{{p.gst_at}}</p>
+                      </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div fxLayout="row" class="rt">
+                      <div fxFlex="50" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                      <p class ="algnlft">Total :</p>
+                      </div>
+                      <div fxFlex="50" fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+                      <p class ="algnrgt">{{p.total}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              </div>
+          </div>
+        </div>
+        </form>
+        <div class="text-center m-8">
+          <button mat-flat-button type="submit" aria-label="SAVE" class="mat-raised-button  gtDtls w-10-p"
+            (click)="saveBulkUpload()">Submit</button>
+        </div>
+  </div>
+       </div>
+       <!-- <div fxLayout="column" fxLayout.xs="column" fxFlexFill>
+    </div> -->
+</div>

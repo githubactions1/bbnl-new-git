@@ -1,0 +1,145 @@
+<!-- <div class="dialog-content-wrapper">
+<mat-toolbar matDialogTitle class="dlgHdr m-0">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Course Details</span>
+      <div>
+    
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="dlg-cntnt">
+  <div class="crs-cntnt">
+          <div class="demo-content line-height-1.75 p-12">
+
+              <h1 class="m-0">Course Name</h1>
+              <h4 class="mt-0 secondary-text">Author Name</h4>
+          
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor nibh, convallis sed purus nec,
+                  auctor venenatis nisl. Suspendisse potenti. Nullam sagittis nulla in diam finibus, sed pharetra velit
+                  vestibulum. Suspendisse euismod in urna eu posuere.
+              </p>
+              </div>
+  
+      <mat-tab-group  mat-align-tabs="center">
+      <mat-tab label="Course Content">
+          <div>
+              <accordion 
+              [options]="options" 
+              [menus]="menus">
+            </accordion>
+          </div>
+      </mat-tab>
+
+      <mat-tab label="About">
+          <p>
+              Ut ornare sit amet velit vel congue. Ut nec tristique eros. Lorem ipsum dolor sit amet, consectetur
+              <b>adipiscing elit</b>. Vivamus sed lorem quis nibh porta iaculis. Vestibulum ut eleifend ante, at semper mi.
+              Nam imperdiet est nisi, quis hendrerit tellus convallis et. Morbi in luctus neque. Curabitur elementum ut est et
+              gravida. In hac habitasse platea dictumst. In et placerat eros, eu tempor turpis. Curabitur ac felis finibus,
+              elementum lectus vitae, venenatis est. Integer mollis nisl a eros scelerisque varius. Etiam venenatis lectus vel
+              erat condimentum tristique vel vel mi. Nulla id euismod mi, et mollis tellus.
+          </p>
+      
+          <p>
+              Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti
+              sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur vitae sagittis odio.
+              Suspendisse ullamcorper nunc non pellentesque laoreet. Curabitur eu tortor id quam pretium mattis. Proin ut quam
+              velit.
+          </p>
+      </mat-tab>
+    
+  </mat-tab-group>
+  
+</div>
+  
+<div  class="p-24 dlg-actns text-center" >
+    <button class="btn" (click)="startCourse()"><i class="fa fa-play-circle"></i> Start Course</button>
+    
+</div>
+</div>
+</div> -->
+<div id="profile" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="space-between end">
+
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="start center">
+            
+            <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+               <p class="hdr-p">{{data.trng_nm}}</p>
+               <p class="hdr-p-sub">{{data.trng_nm  }}Essentials Course will teach you Retouching as well </p>
+               <p class="hdr-p-sub"><span>(23,911) students enrolled</span></p>
+               <p class="hdr-p-sub"><b>Created by:</b>&nbsp; Danial Wilter Scott &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span><b>Last updated:</b> 10/12/2019</span></p>
+               <p class="hdr-p-sub"><mat-icon>speaker_notes</mat-icon>English</p>
+            </div>
+            
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
+            <!-- <button mat-raised-button color="accent" aria-label="Follow">Start Course</button> -->
+            <button class="btn" (click)="startCourse(data)"><i class="fa fa-play-circle"></i> Start Course</button>
+            <button class="btn" ><i class="fa fa-bookmark"></i> Bookmark </button>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <mat-tab-group dynamicHeight="true">
+
+            <mat-tab label="OverView">
+              <div class="p-24 w-75-p">
+                <p>
+                   {{data.trng_disc}}
+                </p>
+            
+                <p>
+                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti
+                    sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur vitae sagittis odio.
+                    Suspendisse ullamcorper nunc non pellentesque laoreet. Curabitur eu tortor id quam pretium mattis. Proin ut quam
+                    velit.
+                </p>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Pre-requisites">
+                <div class="demo-content line-height-1.75 p-24 w-75-p">
+
+                    <h1 class="m-0">Course Name</h1>
+                    <h4 class="mt-0 secondary-text">Author Name</h4>
+                
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor nibh, convallis sed purus nec,
+                        auctor venenatis nisl. Suspendisse potenti. Nullam sagittis nulla in diam finibus, sed pharetra velit
+                        vestibulum. Suspendisse euismod in urna eu posuere.
+                    </p>
+                    </div>
+            </mat-tab>
+
+            <mat-tab label="Course Content">
+                <div class="w-100-p">
+                    <accordion 
+                    [options]="options" 
+                    [menus]="menus">
+                  </accordion>
+                </div>
+            </mat-tab>
+            <mat-tab label="Material">
+               
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

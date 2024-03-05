@@ -1,0 +1,23 @@
+.mat-raised-button {
+    font-weight: 700;
+    border: 1px solid #10c317;
+    line-height: 30px;
+}
+body.theme-default .mat-flat-button, body.theme-default .mat-raised-button, body.theme-default .mat-fab, body.theme-default .mat-mini-fab {
+    color: #0c9811 !important;
+    background-color: white;
+}
+i.s-48, mat-icon.s-48 {
+    font-size: 26px !important;
+    width: 5px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    line-height: 20px !important;
+    color: green !important;
+}
+.excelIcn{
+    width: 35px;
+    box-shadow: 2px 4px 36px 3px #f5f0f0;
+    cursor: pointer;
+}

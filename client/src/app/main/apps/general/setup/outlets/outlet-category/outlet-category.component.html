@@ -1,0 +1,122 @@
+<div class="container usrAcnts pageBackground">
+<pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+    <!-- <div class="ml-sm-32" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+    
+          <div class="search-wrapper mt-16 mt-sm-0">
+            <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon>search</mat-icon>
+              <input (keyup)="applyFilter($event.target.value)" placeholder="Search Filter">
+            </div>
+          </div>
+        </div> -->
+  
+  <div class="m-24">
+  <div fxLayout="row">
+          <div fxFlex="80"></div>
+          <div fxFlex="20">
+    <button mat-raised-button color="primary" (click)="opensideBar('addFormPanel',null)"  style="float:right" class = "addBtn-color mb-8">
+        <mat-icon class="addfld-icon-color">person</mat-icon>
+        <span class="pt-2">&nbsp;Add Category</span>
+    </button>
+    </div>
+  </div>
+      <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs" [getRowHeight]="getRowHeight"
+        (cellClicked)="onCellClick($event)" [pagination]="true" [overlayLoadingTemplate]="overlayLoadingTemplate"
+        [loadingCellRendererParams]="loadingCellRendererParams" (gridReady)="onGridReady($event)"
+        [paginationPageSize]="10"  [suppressHorizontalScroll]="false" [floatingFilter]="true">
+      </ag-grid-angular>
+    </div>
+
+
+
+
+  <!-- sidebar -->
+
+  <ds-sidebar class="form-panel myPrfleSidebar" name="addFormPanel" position="right" [invisibleOverlay]="false">
+    <ng-container>
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-toolbar class="side-bar-header-color">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between"
+            class="w-100-p">
+            <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+              <span> Add New Category</span>
+            </div>
+            <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class= "text-right">
+              <!-- <span class="remaining-space"></span> -->
+              <span>
+                <mat-icon matTooltip="close" (click)="opensideBar('addFormPanel',null)" class="closeSidebar">cancel
+                </mat-icon>
+              </span>
+            </div>
+          </div>
+        </mat-toolbar>
+      <!-- <mat-card-content> -->
+        <form [formGroup]="formOutletCategory" style="width:80%" class="mt-12">
+
+          <div fxLayout="row" fxLayoutAlign="start start">
+              <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>Name</mat-label>
+                  <input name="name" formControlName="otlt_ctgry_nm" matInput required>
+              </mat-form-field>
+          </div>
+
+      </form>
+      <div class="m-0 p-16" fxLayout="row"  fxLayoutAlign="end center">
+
+        <!-- <button *ngIf="action === 'edit'" mat-button class="mr-8 deleteBtn-color deleteBtn-color" (click)="matDialogRef.close(['delete',FormLoctn])"
+        aria-label="Delete" matTooltip="Delete">
+        DELETE
+    </button> -->
+    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="deleteCategory">
+    <button  mat-button class="mat-raised-button  deleteBtn-color" aria-label="Delete" matTooltip="Delete" (click)="saveOutletCategory()">
+      DELETE
+    </button>
+    </div>
+
+    <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" *ngIf="!deleteCategory">
+    <button  mat-flat-button type="submit" class="mat-raised-button w-100-p saveBtn-color"
+            [disabled]="formOutletCategory.invalid" aria-label="SAVE" (click)="saveOutletCategory()">
+            SAVE
+          </button>
+    </div>
+
+          <div fxFlex fxFlex.gt-lg="50%" fxFlex.gt-md="50%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%">
+          <button  mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color ml-8"
+          aria-label="SAVE" (click)="opensideBar('addFormPanel',null)">
+         CANCEL
+        </button>
+        </div>
+
+    <!-- <button *ngIf="action !== 'edit'" mat-raised-button color="primary" class="save-button saveBtn-color" (click)="matDialogRef.close(FormLoctn)"
+        [disabled]="FormLoctn.invalid" aria-label="SAVE">
+        ADD
+    </button> -->
+
+    <!-- <button *ngIf="action === 'edit'" mat-button class="save-button saveBtn-color"
+        (click)="matDialogRef.close(['save',FormLoctn])" [disabled]="FormLoctn.invalid" aria-label="SAVE">
+        SAVE
+    </button> -->
+    </div>
+        <!-- </mat-card-content> -->
+      </div>
+    </ng-container>
+  </ds-sidebar>
+
+
+<!-- sidebar -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

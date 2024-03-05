@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="page-layout simple tabbed">
+    <div class="container header accent" fxLayout fxLayout.xs="column" fxLayoutGap.xs="0"
+      style="height: 60px; min-height: 60px; max-height: 60px;">
+      <div fxLayoutAlign="center" fxFlex="100%" fxLayoutGap="50px" class="text-center">
+        <h2 class="hDRcS">e - Sachivalaym Login Information</h2>
+      </div>
+    </div>
+    <div *ngIf="dtFltrCntl">
+      <mat-card>
+        <div fxLayout="row">
+          <div fxFlex fxFlex.gt-lg="30%" fxFlex.gt-md="30%" fxFlex.gt-sm="30%" fxFlex.gt-xs="30%"
+            style="padding: 17px;">
+          </div>
+          <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker_frm" placeholder="Choose from date"
+                [(ngModel)]="lgn_inpts.frm_dt">
+              <mat-datepicker-toggle matSuffix [for]="picker_frm"></mat-datepicker-toggle>
+              <mat-datepicker #picker_frm></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div fxFlex fxFlex.gt-lg="25%" fxFlex.gt-md="25%" fxFlex.gt-sm="25%" fxFlex.gt-xs="25%">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker_to" placeholder="Choose to date" [(ngModel)]="lgn_inpts.to_dt">
+              <mat-datepicker-toggle matSuffix [for]="picker_to"></mat-datepicker-toggle>
+              <mat-datepicker #picker_to></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+            style="padding: 11px;">
+            <button mat-raised-button color="primary" (click)="lgnDtls();">LOGIN DETAILS</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <mat-card>
+      <div>
+
+        <div class="box-f" id="box-f" [ngClass]="getCss()">
+          <div style="text-align: right; color: #268bd4;">
+            <span style="cursor:pointer;" (click)="dtFltrCntl = !dtFltrCntl">
+              <mat-icon *ngIf="!dtFltrCntl">expand_more</mat-icon>
+              <mat-icon *ngIf="dtFltrCntl">expand_less</mat-icon>
+              <mat-icon>date_range</mat-icon>
+            </span>
+          </div>
+
+          <div style="padding: 8px;color: #245e88; text-align: center">
+            <h2>Distict Wise Login Information</h2>
+          </div>
+          <div class="test-header" style="color: #7b4242;">
+            <div fxLayout="row">
+              <div fxFlex fxFlex.gt-lg="70%" fxFlex.gt-md="70%" fxFlex.gt-sm="70%" fxFlex.gt-xs="70%">
+                Selected Distict: <span id="selectedRows"></span>
+              </div>
+              <div fxFlex fxFlex.gt-lg="20%" fxFlex.gt-md="20%" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%"
+                class="text-right">
+                <p style="color: #1747f5; text-decoration: underline; " >
+                 <span style="cursor:pointer;" (click)="getNvrLgnDtls();">Never LoggedIn Details</span></p>
+              </div>
+              <div fxFlex fxFlex.gt-lg="10%" class="text-right" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                fxFlex.gt-xs="10%">
+                <span (click)="csvExprt('distct');"><img class="excelIcn" src="assets/images/excelIcn.png"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <ag-grid-angular #agGridDstct style="width: 100%; height: 320px;" id="myGridDstct" class="ag-theme-balham"
+            (cellClicked)="mnldlWseLgnInfo($event);" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+            [animateRows]="true" [rowData]="rowData" [getRowHeight]="getRowHeight" (gridReady)="onGridReady($event)"
+            [rowClassRules]="rowClassRules" [pagination]="true" [paginationPageSize]="14" [rowSelection]="rowSelection"
+            (selectionChanged)="onSelectionChanged()"  [suppressHorizontalScroll]="false">
+          </ag-grid-angular> -->
+        </div>
+
+        <div *ngIf="lgnCntCtrl">
+          <div style="text-align: right; color: #268bd4;">
+            <span style="cursor:pointer;" (click)="dtFltrCntl = !dtFltrCntl">
+              <mat-icon *ngIf="!dtFltrCntl">expand_more</mat-icon>
+              <mat-icon *ngIf="dtFltrCntl">expand_less</mat-icon>
+              <mat-icon>date_range</mat-icon>
+            </span>
+          </div>
+          <div style="padding: 8px;color: #245e88; text-align: center">
+            <h2>In <span style="color: #ec5d5d;"> {{lgn_inpts.dstct_nm}}</span> Distict <span style="color: #1ea94f;">
+                {{lgn_inpts.prsn_nm}} </span> LoggedIn Information</h2>
+
+          </div>
+          <div class="test-header" style="color: #7b4242; cursor: pointer;">
+            <div fxLayout="row">
+              <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                <span (click)="bckDstctTbl();">
+                  <mat-icon style="font-size: 17px;">arrow_back</mat-icon> Back To Distict Info
+                </span>
+              </div>
+              <div fxFlex fxFlex.gt-lg="10%" class="text-right" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                fxFlex.gt-xs="10%">
+                <span style="float: right;" (click)="csvExprt('dstct_lgn');"><img class="excelIcn"
+                    src="assets/images/excelIcn.png"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <ag-grid-angular #agGridDstctLgnRpt style="width: 100%; height: 320px;" id="myGridDstctLgnCnt"
+            class="ag-theme-balham" [columnDefs]="dstctLgnCntscolumnDefs" [defaultColDef]="defaultColDef"
+            [animateRows]="true" [rowData]="rowDataDstctLgnCnt" [getRowHeight]="getRowHeight"
+            (gridReady)="onGridReadyDstctLgnCnt($event)" [rowClassRules]="rowClassRules" [pagination]="true"
+            [paginationPageSize]="14"  [suppressHorizontalScroll]="false">
+          </ag-grid-angular> -->
+        </div>
+
+      </div>
+
+      <div *ngIf="mdlLgnTblCtrl">
+        <div class="box-f" id="box-m" [ngClass]="getMndlCss()">
+          <div style="padding: 8px;color: #245e88; text-align: center">
+            <h2>In <span style="color: #ec5d5d;"> {{lgn_inpts.dstct_nm}}</span> Distict Mandal Wise Login Information
+            </h2>
+          </div>
+          <div class="test-header">
+            <div fxLayout="row">
+              <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                &nbsp;
+              </div>
+              <div fxFlex fxFlex.gt-lg="10%" class="text-right" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                fxFlex.gt-xs="10%">
+                <span style="float: right;" (click)="csvExprt('mndl');"><img class="excelIcn"
+                    src="assets/images/excelIcn.png"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <ag-grid-angular #agGridMndl style="width: 100%; height: 320px;" id="myGridMndl" class="ag-theme-balham"
+            [columnDefs]="columnMdlDefs" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowDataMndl"
+            [getRowHeight]="getRowHeight" (gridReady)="onGridReadyMdl($event)" [pagination]="true"
+            [paginationPageSize]="14" [overlayLoadingTemplate]="overlayLoadingTemplate"
+            (cellClicked)="mndlLgnCtnsTbl($event);"  [suppressHorizontalScroll]="false">
+          </ag-grid-angular> -->
+        </div>
+        <div *ngIf="mndllgnCntCtrl">
+          <div style="padding: 8px;color: #245e88; text-align: center">
+            <h2>In <span style="color: #ec5d5d;"> {{lgn_inpts.mndl_nm}}</span> Mandal <span style="color: #1ea94f;">
+                {{lgn_inpts.mndl_prsn_nm}} </span> LoggedIn Information</h2>
+          </div>
+          <div class="test-header" style="color: #7b4242; cursor: pointer;">
+            <div fxLayout="row">
+              <div fxFlex fxFlex.gt-lg="90%" fxFlex.gt-md="90%" fxFlex.gt-sm="90%" fxFlex.gt-xs="90%">
+                <span (click)="bckMndlTbl();">
+                  <mat-icon style="font-size: 17px;">arrow_back</mat-icon> Back To Mandal Info
+                </span>
+              </div>
+              <div fxFlex fxFlex.gt-lg="10%" class="text-right" fxFlex.gt-md="10%" fxFlex.gt-sm="10%"
+                fxFlex.gt-xs="10%">
+                <span style="float: right;" (click)="csvExprt('mndl_lgn');"><img class="excelIcn"
+                    src="assets/images/excelIcn.png"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <ag-grid-angular #agGridMndlLgnRpt style="width: 100%; height: 320px;" id="myGridMndlLgnCnt"
+            class="ag-theme-balham" [columnDefs]="dstctLgnCntscolumnDefs" [defaultColDef]="defaultColDef"
+            [animateRows]="true" [rowData]="rowDataMndlLgnCnt" [getRowHeight]="getRowHeight"
+            (gridReady)="onGridReadyDstctLgnCnt($event)" [rowClassRules]="rowClassRules" [pagination]="true"
+            [paginationPageSize]="14"  [suppressHorizontalScroll]="false">
+          </ag-grid-angular> -->
+        </div>
+
+      </div>
+      <br>
+      <br>
+
+    </mat-card>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ------------------------------- -->

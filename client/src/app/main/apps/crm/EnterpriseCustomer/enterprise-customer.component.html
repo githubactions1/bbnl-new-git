@@ -1,0 +1,538 @@
+<div class="page-layout simple pageBackground enterpriseCmpnt">
+
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+  <!-- <div class="text-right gridBtns">
+    <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle *ngIf="(permissions.insrt_in==1)?true:false" id="addGridBtn" (click)="addNewEntry()">Add New
+        {{formDetails.stngs.form_title}}
+      </mat-button-toggle>
+      <mat-button-toggle *ngIf="(permissions.exprt_in==1)?true:false" id="exportBtn" (click)="onBtnExport()">Export
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div> -->
+  <div class="ds-card grid" *ngIf="(permissions.slct_in==1)?true:false">
+    <!-- <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="gridData"
+      [columnDefs]="columnDefs" [getRowHeight]="getRowHeight" (cellClicked)="onCellClick($event)" [pagination]="true"
+      [paginationPageSize]="15" [suppressHorizontalScroll]="false" [floatingFilter]="true">
+    </ag-grid-angular> -->
+
+    <dx-data-grid id="gridContainer" [dataSource]="rowData" [remoteOperations]="false" [allowColumnReordering]="true"
+      [rowAlternationEnabled]="true" [allowColumnResizing]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+      (onToolbarPreparing)="onToolbarPreparing($event)" style="width:100%">
+      <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [visible]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select">
+        <!-- or "select" -->
+      </dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column [allowResizing]="true" *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        alignment="f.cellStyle.text-align" [width]="f.width"></dxi-column>
+      <dxi-column [allowResizing]="true" [showInColumnChooser]="false" [visible]="(permissions.updt_in==1)?true:false" type="buttons"
+        [width]="100" caption="Edit" cellTemplate="editTemplate">
+        <div *dxTemplate="let data of 'editTemplate'">
+          <div class="cursor-pointer" (click)="onCellClick(data)">
+            Edit
+          </div>
+        </div>
+      </dxi-column>
+      <dxi-column [allowResizing]="true" [showInColumnChooser]="false" [visible]="(permissions.dlte_in==1)?true:false" type="buttons"
+        [width]="100" caption="Delete" cellTemplate="delTemplate">
+        <div *dxTemplate="let data of 'delTemplate'">
+          <div class="cursor-pointer" (click)="onCellClick(data)">
+            Delete
+          </div>
+        </div>
+      </dxi-column>
+    </dx-data-grid>
+  </div>
+  <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{permMessage}}</div>
+
+  <!-- sidebar  -->
+  <ds-sidebar class="form-panel myPrfleSidebar ds-form-sidebar" name="addFormPanel" position="right"
+    [invisibleOverlay]="false">
+    <ng-container>
+      <div fxLayout="column">
+
+        <div class="card">
+          <div class="card-header crdHdng">
+            {{formDetails.stngs.form_title}}
+            <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar" style="float:right">cancel
+            </mat-icon>
+          </div>
+
+          <form fxLayout="column" [formGroup]="EnterpriseCstmrForm" class="m-24">
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Enterprise Customer Information
+            </div>
+            <mat-divider></mat-divider>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enterprise Customer Name*</div>
+                <mat-form-field appearance="outline">
+                  <input tyep="text" matInput formControlName="entrpe_cstmr_nm" required>
+                  <mat-error>Enterprise Customer Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Enterprise Customer Code*</div>
+                <mat-form-field appearance="outline">
+                  <input tyep="text" matInput formControlName="entrpe_cstmr_cd" required>
+                  <mat-error>Enterprise Customer Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="23" fxFlex.xs="100">
+
+                <!-- <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Organization Information
+                </div> -->
+                <div class="form-label">Type of Organization*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <mat-select formControlName="entrpe_type_id" (selectionChange)="getEntrpeCstmrSubType()" required>
+                    <mat-option *ngFor="let ecs of entpr_cstmr_typ" [value]="ecs.entrpe_type_id">
+                      {{ecs.entrpe_type_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error> Type is required!</mat-error>
+                </mat-form-field>
+                <div class="form-label">Sub Type of Organization*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <mat-select formControlName="entpnr_sub_type_id" required>
+                    <mat-option *ngFor="let ecst of entpr_cstmr_sub_typ" [value]="ecst.entrpe_sub_type_id">
+                      {{ecst.entrpe_sub_type_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Sub Type is required!</mat-error>
+                </mat-form-field>
+                <div class="form-label">Organization Name*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input tyep="text" matInput formControlName="entpnr_org_nm" required>
+                  <mat-error>Organization Name is required!</mat-error>
+                </mat-form-field>
+
+                <div class="form-label">Reg.No/VAT No/TAN No*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input type="text" matInput formControlName="rgstn_vat_tan_no" required>
+                  <mat-error>Sub Type is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="23" fxFlex.xs="100">
+                <!-- <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Contact Person Information
+                </div> -->
+
+                <div class="form-label">Person Name*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input tyep="text" matInput formControlName="cntct_prsn_nm" required>
+                  <mat-error>Person Name is required!</mat-error>
+                </mat-form-field>
+
+                <div class="form-label">Person Mobile*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input tyep="number" matInput formControlName="cntct_prsn_mble_nu"
+                    onKeyPress="if(this.value.length==10) return false;" required>
+                  <mat-error>Person Mobile is required!</mat-error>
+                </mat-form-field>
+
+                <div class="form-label">Person Email*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input tyep="email" matInput formControlName="cntct_prsn_emle_tx" required>
+                  <mat-error>Person Email is required!</mat-error>
+                </mat-form-field>
+
+                <div class="form-label">Person Designation*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <mat-select formControlName="cntct_prsn_dsgn_id" required>
+                    <mat-option *ngFor="let d of dsgns_lst" [value]="d.dsgn_id">
+                      {{d.dsgn_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>person designation is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxFlex="23" fxFlex.xs="100">
+                <!-- <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Billing Information</div> -->
+                <div class="form-label">Billing Frequency*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <mat-select formControlName="blng_frqny_id" required>
+                    <mat-option *ngFor="let bl of blng_frqncy_lst" [value]="bl.frqncy_id">
+                      {{bl.frqncy_nm}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <div class="form-label">Incorporate date*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input matInput [matDatepicker]="incrpDt" placeholder="Choose date" formControlName="incrn_dt"
+                    required>
+                  <mat-datepicker-toggle matSuffix [for]="incrpDt"></mat-datepicker-toggle>
+                  <mat-datepicker #incrpDt></mat-datepicker>
+                </mat-form-field>
+
+                <div class="form-label">Activation Date*</div>
+                <mat-form-field appearance="outline" class="px-8">
+                  <input matInput [matDatepicker]="actvtn_dt" placeholder="Choose date" formControlName="actvtn_dt"
+                    required>
+                  <mat-datepicker-toggle matSuffix [for]="actvtn_dt"></mat-datepicker-toggle>
+                  <mat-datepicker #actvtn_dt></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="31" fxFlex.xs="100">
+
+                <div fxLayout="row">
+                  <div fxFlex="70" fxFlex.xs="100">
+                    <!-- <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Document Information
+                    </div> -->
+                    <div class="form-label">Aadhaar Number*</div>
+                    <mat-form-field appearance="outline" class="px-8">
+                      <input type="number" matInput formControlName="adhr_nu"
+                        onKeyPress="if(this.value.length==12) return false;" required>
+                      <mat-error>Aadhaar number is required!</mat-error>
+                    </mat-form-field>
+
+                    <div class="form-label">PAN Number*</div>
+                    <mat-form-field appearance="outline" class="px-8">
+                      <input matInput formControlName="pan_nu" required>
+                      <mat-error>PAN Number is required!</mat-error>
+                    </mat-form-field>
+
+                    <div class="form-label">GST Number*</div>
+                    <mat-form-field appearance="outline" class="px-8">
+                      <input matInput formControlName="gst_nu">
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="25" fxFlex.xs="100">
+                    <label>
+                      <input (change)="uploadAdhr($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                        #fileInput style="display:none" />
+                      <span class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 adhrInpt">
+                        <mat-icon _ngcontent-qri-c39="" role="img" aria-hidden="true">add_a_photo</mat-icon>
+                      </span>
+                    </label>
+                    <i class="material-icons" *ngIf="adhr_img_url != null">check_circle</i>
+                    <label>
+                      <input (change)="uploadPan($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                        #fileInput style="display:none" />
+                      <span class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 panInpt">
+                        <mat-icon _ngcontent-qri-c39="" role="img" aria-hidden="true">add_a_photo</mat-icon>
+                      </span>
+                    </label>
+                    <i class="material-icons" *ngIf="pan_img_url != null">check_circle</i>
+                    <label>
+                      <input (change)="uploadGst($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                        #fileInput style="display:none" />
+                      <span class="btn btn-primary font-size-16 font-weight-600 ml-16 border-radius-3 gstInpt">
+                        <mat-icon _ngcontent-qri-c39="" role="img" aria-hidden="true">add_a_photo</mat-icon>
+                      </span>
+                    </label>
+                    <i class="material-icons" *ngIf="gst_img_url != null">check_circle</i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- <ng-container formGroupName="installationAddress"> -->
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Installation Address</div>
+
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">House/Flat No*</div>
+                <mat-form-field appearance="outline">
+                  <input type="text" matInput formControlName="instl_hse_nu" required>
+                  <mat-error> House/Flat No is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Building Name*</div>
+                <mat-form-field appearance="outline">
+                  <input type="text" matInput formControlName="instl_bldng_tx" required>
+                  <mat-error>Building Name is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Street*</div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="instl_strte_tx" required>
+                  <mat-error>Street is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Area/Locality*</div>
+                <mat-form-field appearance="outline">
+                  <input type="text" matInput formControlName="instl_lclty_tx" required>
+                  <mat-error>Area/Locality is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">State*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select (selectionChange)="getDistricts()" formControlName="instl_ste_id" required>
+                    <mat-option *ngFor="let st of ste_lst" [value]="st.ste_id">
+                      {{st.ste_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>State is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">District*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="instl_dstrt_id" (selectionChange)="getMandals([{id:1}])" required>
+                    <mat-option *ngFor="let ds of dstrt_lst" [value]="ds.dstrt_id">
+                      {{ds.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Mandal*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="instl_mndle_id" (selectionChange)="getvillages([{id:1}])" required>
+                    <mat-option *ngFor="let m of mndl_lst" [value]="m.mndl_id">
+                      {{m.mndl_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Mandal is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">City/Village*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="instl_cty_id" required>
+                    <mat-option *ngFor="let v of vlge_lst" [value]="v.vlge_id">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>City/Village is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Pin Code*</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="instl_pn_cd"
+                    onKeyPress="if(this.value.length==6) return false;" required>
+                  <mat-error>Pin Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Land Line</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="instl_lnd_nu">
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Latitude</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="instl_lat">
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Longitude</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="instl_lng">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Fax</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="instl_fax_nu">
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- </ng-container> -->
+
+            <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">Billing Address</div>
+            <mat-checkbox (change)="checkValue($event)" formControlName="instl_chk_ind">Same address for
+              installtion/billing
+            </mat-checkbox>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">House/Flat No*</div>
+                <mat-form-field appearance="outline">
+                  <input type="text" matInput formControlName="blng_hse_nu" required>
+                  <mat-error> House/Flat No is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Building Name*</div>
+                <mat-form-field appearance="outline">
+                  <input type="text" matInput formControlName="blng_bldng_tx" required>
+                  <mat-error>Street is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Street*</div>
+                <mat-form-field appearance="outline">
+                  <input type="text" matInput formControlName="blng_strte_tx" required>
+                  <mat-error>Street is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Area/Locality*</div>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="blng_lclty_tx" required>
+                  <mat-error>Area/Locality is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">State*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select (selectionChange)="getDistricts()" formControlName="blng_ste_id" required>
+                    <mat-option *ngFor="let st of ste_lst" [value]="st.ste_id">
+                      {{st.ste_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>State is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">District*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="blng_dstrt_id" (selectionChange)="getMandals([{id:2}])" required>
+                    <mat-option *ngFor="let ds of dstrt_lst" [value]="ds.dstrt_id">
+                      {{ds.dstrt_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>District is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Mandal*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="blng_mndle_id" (selectionChange)="getvillages([{id:2}])" required>
+                    <mat-option *ngFor="let m of mndal_lst" [value]="m.mndl_id">
+                      {{m.mndl_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Mandal is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">City/Village*</div>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="blng_cty_id" required>
+                    <mat-option *ngFor="let v of vlge_lst" [value]="v.vlge_id">
+                      {{v.vlge_nm}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>City/Village is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Pin Code*</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="blng_pn_cd"
+                    onKeyPress="if(this.value.length==6) return false;" required>
+                  <mat-error>Pin Code is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Land Line</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="blng_lnd_nu">
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Latitude</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="blng_lat">
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Longitude</div>
+                <mat-form-field appearance="outline">
+                  <input type="number" matInput formControlName="blng_lng">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="25" fxFlex.xs="100" class="px-8">
+                <div class="form-label">Fax</div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Fax</mat-label>
+                  <input type="number" matInput formControlName="blng_fax_nu">
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- </ng-container> -->
+            <div class="card-body">
+
+              <div fxFlex fxFlex.gt-lg="33%" fxFlex.gt-md="33%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="text-align: right;">
+                <button mat-flat-button type="submit" class="mat-raised-button saveBtn-color"
+                  [disabled]="EnterpriseCstmrForm.invalid" aria-label="SAVE" (click)="SaveEntpeCstmrForm()"
+                  style="width: 20%;">
+                  SAVE
+                </button>
+              </div>
+              <div fxFlex fxFlex.gt-lg="8%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+                style="margin-left: 14px;">
+                <button mat-flat-button type="reset" class="mat-raised-button  cnclBtn-color" aria-label="SAVE">
+                  RESET
+                </button>
+              </div>
+              <div fxFlex fxFlex.gt-lg="10%" fxFlex.gt-md="10%" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" style="max-width: 8%;
+            ">
+                <button mat-flat-button type="submit" class="mat-raised-button  cnclBtn-color" aria-label="SAVE"
+                  (click)="close()">
+                  CANCEL
+                </button>
+              </div>
+              <!-- <div fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button color="primary" class="m-2 saveBtn-color" (click)="SaveEntpeCstmrForm()">
+                  <span *ngIf="hdr_type == 'new'">Save</span>
+                  <span *ngIf="hdr_type == 'Edit'">Update</span>
+                </button>
+                <button type="reset" mat-raised-button color="primary" class="m-2 resetBtn-color">Reset</button>
+                <mat-spinner *ngIf="spnrCtrl" class="spnr-styl"></mat-spinner>
+              </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+  </ds-sidebar>
+  <!-- sidebar -->
+</div>

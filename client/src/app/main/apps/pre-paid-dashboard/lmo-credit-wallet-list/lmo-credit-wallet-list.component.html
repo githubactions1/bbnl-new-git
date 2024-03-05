@@ -1,0 +1,103 @@
+<div class="page-layout blank usrEmplye pageBackground cusAcntCmpnt">
+  <ds-loading *ngIf="searchLoader"></ds-loading>
+  <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+  <div fxLayout="row">
+      <div fxFlex="80"></div>
+      <div *ngIf="" fxFlex="16">
+          <div class="text-right mt-24">
+              <button mat-flat-button type="submit" aria-label="Go Back" [routerLink]="'/admin/home'"
+                  class="mat-raised-button font-weight-bold addTextColor" type="button">
+                  Back
+              </button>
+          </div>
+      </div>
+  </div>
+
+  <ng-container>
+      <div class="ds-card m-12" id="scrollTop">
+          <div fxLayout="row wrap" fxLayout.sm="column">
+              <div fxFlex.lg="100%" fxFlex.md="50%" fxFlex.lt-sm="100%">
+                  <form fxLayout="column" [formGroup]="walletreportsData" >
+                      <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                          <div fxFlex="15" fxFlex.xs="100" class="px-8">
+                              <div class="form-label">
+                                 Start Date
+                                  <span class="reqSgnColor">*</span>
+                              </div>
+                              <mat-form-field appearance="outline">
+                                  <!-- <mat-label>Choose a date</mat-label> -->
+                                  <input matInput [matDatepicker]="picker1" formControlName="fromDate" [(ngModel)]="myDateValue">
+                                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                          </div>
+                          <div fxFlex="15" fxFlex.xs="100" class="px-8">
+                              <div class="form-label">
+                                 End Date
+                                  <span class="reqSgnColor">*</span>
+                              </div>
+                              <mat-form-field appearance="outline">
+                                  <!-- <mat-label>Choose a date</mat-label> -->
+                                  <input matInput [matDatepicker]="picker2"
+                                  formControlName="toDate" [(ngModel)]="toDate">
+                                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                          </div>
+                          <div *ngIf="lmotype" fxFlex="15" fxFlex.xs="100" class="px-8">
+                              <div class="form-label">LMO Code
+                              </div>
+                              <mat-form-field appearance="outline">
+                                  <input matInput formControlName="wallet_type" placeholder="LMO code" />
+                              </mat-form-field>
+                          </div>
+                          <div fxLayout="row wrap" fxLayout.sm="column" style="text-align: center;">
+                              <div fxFlex="100" fxFlex.xs="100" class="px-8 mt-5" >
+                                  <button (click)="walletDate()" mat-flat-button type="submit"
+                                      class="mat-raised-button saveBtn-color btnWdth" aria-label="SAVE">Get Search</button>                           
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>      
+          </div>
+      </div>
+
+      <div *ngIf="getreport">
+      <dx-data-grid class="p-8" id="gridContainer" [dataSource]="walletReports" [remoteOperations]="false"
+      [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showColumnLines]="true" [showRowLines]="true"
+      [showBorders]="true" [allowColumnResizing]="true" 
+      style="width:100%;">
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showInfo]="true" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-filter-panel [visible]="true"></dxo-filter-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+      <dxo-export [enabled]="(permissions.exprt_in==1)?true:false" [allowExportSelectedData]="true"
+        fileName="Lmo Credit Report"></dxo-export>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column *ngFor="let f of columnDefs" [visible]="!f.hide" [dataField]="f.field" [caption]="f.headerName"
+        [allowFiltering]="f.filter" [alignment]="f.alignment" [width]="f.width" [filterOperations]="f.filterOperations"
+        [allowHeaderFiltering]="f.columnFiltering" [allowResizing]="true"></dxi-column>
+      
+    </dx-data-grid>
+    </div>
+  </ng-container>
+  <ds-sidebar  class="form-panel ds-form-sidebar" name="addFormPanel1" position="right" [invisibleOverlay]="false">
+      <ng-container>
+          <div fxLayout="column">
+            <div class="card">
+              <ds-loading *ngIf="sdeMnuLdr"></ds-loading>
+                <div class="card-body" *ngIf="cstmrData">
+                  <mat-icon matTooltip="close" (click)="closeSideBar()" class="closeSidebar closeSidebarPrfle" style="float:right">cancel </mat-icon>
+                  <ds-edit-complaints [cstmrData]="cstmrData"></ds-edit-complaints>
+                </div>
+            </div>
+        </div>
+      </ng-container>
+    </ds-sidebar>
+</div>

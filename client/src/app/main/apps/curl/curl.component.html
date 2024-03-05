@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="page-layout simple tabbed pageBackground" *ngIf="permissions">
+        <pg-top-header [headerDtls]="getHeaderDtls()"></pg-top-header>
+
+        <div class="content" *ngIf="(permissions.insrt_in==1)?true:false">
+            <div class="ds-card m-12 p-4">
+                <form [formGroup]="curlForm" class="example-form p-4" fxLayout="column">
+                    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                        <div fxFlex="15" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Select Entity</div>
+                            <mat-form-field appearance="outline">
+                                <mat-select (selectionChange)="onentityselect()" formControlName="entity" required>
+                                    <mat-option *ngFor="let e of entitylst" [value]="e">
+                                        {{e.enty_nm}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>District is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="15" fxFlex.xs="100" class="px-8">
+                            <div class="form-label">Select Action</div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="action">
+                                    <mat-option *ngFor="let a of actionlst" [value]="a">
+                                        {{a.actn_nm}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                        <div fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.xs="100" class="px-8">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Enter your commands</mat-label>
+                                <textarea cdkTextareaAutosize matInput name="commands" formControlName="commands"
+                                    placeholder="Ex. curl -XGET..."></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                        <div fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" class="px-8">
+                            <button color="primary" mat-button [disabled]="curlForm.invalid"
+                                (click)="execute()">Execute</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ds-loading *ngIf="shwLdr"></ds-loading>
+            <div class="ds-card m-12">
+                <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxFlexFill>
+                    <div fxFlex.xl="85" fxFlex.lg="85" fxFlex.md="50" fxFlex.xs="100">
+                        <div class="font-size-17 font-weight-500 pt-8 mb-0 pl-8 pb-8 red-800-fg">
+                            Results
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div *ngFor="let r of curlRslts; let idx = index;">
+                    <div class="p-12">
+                        <div><span>{{idx+1}}) </span><span>{{r.url}}</span></div>
+                        <div>Results: {{r.results | json}}</div>
+                        <div>Error: {{r.error | json}}</div>
+                    </div>
+                    <mat-divider *ngIf="idx < curlRslts.length-1"></mat-divider>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="(permissions.slct_in==1)?false:true" class="permMsg">{{mainMessage}}</div>
+</div>

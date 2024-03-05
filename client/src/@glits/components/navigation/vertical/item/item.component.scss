@@ -1,0 +1,25 @@
+:host {
+
+    .folded:not(.unfolded) & {
+
+        .nav-link {
+
+            > .nav-link-title,
+            > .nav-link-badge {
+                opacity: 0;
+                transition: opacity 200ms ease;
+            }
+        }
+    }
+}
+.accent {
+    // background-color: #40548f !important;
+    background-color: #3190a6!important;
+    color: #ffffff !important;
+    width: 100% !important;
+}
+.delicn{
+    cursor: pointer;
+    font-size:20px;
+    margin-top: 52%;
+}

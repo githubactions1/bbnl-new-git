@@ -1,0 +1,69 @@
+<ng-container *ngIf="!item.hidden">
+
+    <!-- item.mnu_itm_url_tx -->
+    <div cols="12" rowHeight="6:10" *ngIf="item.mnu_itm_url_tx && !item.externalUrl && !item.function">
+       
+            <div class="nav-link" [ngClass]="item.classes" [routerLink]="[item.mnu_itm_url_tx]" [routerLinkActive]="['active', 'accent']"
+                [routerLinkActiveOptions]="{exact: item.exactMatch || false}">
+                <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+            </div>
+        
+      
+    </div>
+
+
+    <!-- item.externalUrl -->
+    <div cols="12" rowHeight="6:10" *ngIf="item.mnu_itm_url_tx && item.externalUrl && !item.function">
+      
+            <a class="nav-link" [ngClass]="item.classes" [href]="item.mnu_itm_url_tx" [target]="item.openInNewTab ? '_blank' : '_self'">
+                <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+            </a>
+       
+
+    </div>
+
+    <!-- item.function -->
+    <div cols="12" rowHeight="6:10" *ngIf="!item.mnu_itm_url_tx && item.function">
+        
+            <span class="nav-link" [ngClass]="item.classes" (click)="item.function()">
+                <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+            </span>
+      
+        
+
+    </div>
+
+    <!-- item.mnu_itm_url_tx && item.function -->
+    <div cols="12" rowHeight="6:10" *ngIf="item.mnu_itm_url_tx && !item.externalUrl && item.function">
+        
+            <a class="nav-link" [ngClass]="item.classes" (click)="item.function()" [routerLink]="[item.mnu_itm_url_tx]"
+                [routerLinkActive]="['active', 'accent']" [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
+                [target]="item.openInNewTab ? '_blank' : '_self'">
+                <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+            </a>
+       
+      
+
+    </div>
+
+    <!-- item.externalUrl && item.function -->
+    <div cols="12" rowHeight="6:10" *ngIf="item.mnu_itm_url_tx && item.externalUrl && item.function">
+       
+            <a class="nav-link" [ngClass]="item.classes" (click)="item.function()" [href]="item.mnu_itm_url_tx"
+                [target]="item.openInNewTab ? '_blank' : '_self'">
+                <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+            </a>
+       
+
+    </div>
+
+    <ng-template #itemContent>
+        <!-- <mat-icon class="nav-link-icon">{{item.mnu_itm_icn_tx}}</mat-icon> -->
+        <i class="demo-icon {{item.mnu_itm_icn_tx}}"></i>
+        <span class="nav-link-title" [translate]="item.translate">{{item.mnu_itm_nm}}</span>
+        <span class="nav-link-badge" *ngIf="item.badge" [translate]="item.badge.translate" [ngStyle]="{'background-color': item.badge.bg,'color': item.badge.fg}">
+            {{item.badge.title}}
+        </span>
+    </ng-template>
+
+</ng-container>
