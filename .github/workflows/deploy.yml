@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: '12.x'  # Specify the desired Node.js version
 
+      - name: To Install the Node Modules
+        working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/
+        run: |
+          npm i --legacy-peer-deps
+
       - name: Build client app
         working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
         run: |
