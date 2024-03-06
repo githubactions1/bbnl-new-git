@@ -38,14 +38,16 @@ jobs:
           cp /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
           cp /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
 
-      - name: Stop forever
-        continue-on-error: true
-        run: |
-          forever stop /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+     # - name: Stop forever
+      #  continue-on-error: true
+       # run: |
+        #  forever stop /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           
       - name: start forever
         run: |
           pwd
-          forever start /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
+          forever start nodeapp.js
           forever list
+          forever logs 0 -f 
 
