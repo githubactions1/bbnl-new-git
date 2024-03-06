@@ -22,7 +22,7 @@ jobs:
         run: |
           #yum install bzip2 -y
           #npm install phantomjs-prebuilt
-          npm i --legacy-peer-deps
+          npm i
 
       - name: Build client app
         working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
