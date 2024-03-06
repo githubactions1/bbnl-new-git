@@ -54,5 +54,4 @@ jobs:
           cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
           forever start nodeapp.js
           forever list
-          forever logs 0 -f 
 
