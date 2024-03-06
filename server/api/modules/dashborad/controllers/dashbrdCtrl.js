@@ -1649,7 +1649,7 @@ exports.dasanCreateOnuCtrl = (req, res) => {
     var fnm = "dasanCreateOnuCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/dasanCreateOnu",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/dasanCreateOnu",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1672,7 +1672,7 @@ exports.dasanCreateOnuHsiCtrl = (req, res) => {
     var fnm = "dasanCreateOnuHsiCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/dasanCreateOnuHsi",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/dasanCreateOnuHsi",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1695,7 +1695,7 @@ exports.dasanCreateOnuIptvCtrl = (req, res) => {
     var fnm = "dasanCreateOnuIptvCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/dasanCreateOnuIptv",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/dasanCreateOnuIptv",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1718,7 +1718,7 @@ exports.createHuaweiProfileCtrl = (req, res) => {
     var fnm = "createHuaweiProfileCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv1/caf_operations/ext/wrapper/createHuaweiProfile",
+		url : "http://202.53.92.35/apiv1/caf_operations/ext/wrapper/createHuaweiProfile",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1741,7 +1741,7 @@ exports.createNewSubscriberCtrl = (req, res) => {
     var fnm = "createNewSubscriberCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/createNewSubscriber",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/createNewSubscriber",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1764,7 +1764,7 @@ exports.firstTimeaddnewservicepackCtrl = (req, res) => {
     var fnm = "firstTimeaddnewservicepackCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/firstTimeaddnewservicepack",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/firstTimeaddnewservicepack",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1787,7 +1787,7 @@ exports.huaweiAAAviewCtrl = (req, res) => {
     var fnm = "huaweiAAAviewCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/bbnlgetAaaProfile",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/bbnlgetAaaProfile",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1810,7 +1810,7 @@ exports.huaweiAAAdeleteCtrl = (req, res) => {
     var fnm = "huaweiAAAdeleteCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/deleteAaaProfile",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/deleteAaaProfile",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1833,7 +1833,7 @@ exports.updateHuaweiProfileCtrl = (req, res) => {
     var fnm = "updateHuaweiProfileCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/updateHuaweiProfile",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/updateHuaweiProfile",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1856,7 +1856,7 @@ exports.HuaweiBngUpdateProfileCtrl = (req, res) => {
     var fnm = "HuaweiBngUpdateProfileCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/HuaweiRadiusIsu",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/HuaweiRadiusIsu",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1879,7 +1879,7 @@ exports.dasanBoxchangeCtrl = (req, res) => {
     var fnm = "dasanBoxchangeCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/managedelementmgrCtp",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/managedelementmgrCtp",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1902,7 +1902,7 @@ exports.AAAdasanupdateBoxchangeCtrl = (req, res) => {
     var fnm = "AAAdasanupdateBoxchangeCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv1/caf_operations/ext/wrapper/updategetAaaProfile",
+		url : "http://202.53.92.35/apiv1/caf_operations/ext/wrapper/updategetAaaProfile",
 		method : "post",
 		json : true,
 		body :  req.body
@@ -1925,7 +1925,7 @@ exports.IPtvdasanBoxReplaceCtrl = (req, res) => {
     var fnm = "IPtvdasanBoxReplaceCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/replaceDevice",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/replaceDevice",
 		method : "post",
 		json : true,
 		body :  req.body 
@@ -1948,7 +1948,7 @@ exports.disconnectservicepackCtrl = (req, res) => {
     var fnm = "disconnectservicepackCtrl";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     var data_view = {
-		url : "http://172.16.0.129/apiv2/ext/wrapper/disconnectservicepack",
+		url : "http://202.53.92.35/apiv2/ext/wrapper/disconnectservicepack",
 		method : "post",
 		json : true,
 		body :  req.body 

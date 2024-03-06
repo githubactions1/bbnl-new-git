@@ -18,7 +18,7 @@ exports.hsiAddOnCalls = function (data, crSrvcs) {
             "method": 1,
             "aplcn_id": 20,
             //"url": "http://172.16.4.104:8080/radiusISU?code=Change-Filter-Request&Client="+data.aaa_cd+"&cisco-avpair=subscriber:sd="+data.sd+",subscriber:sa="+data.sa+"",
-            "url": "http://172.16.0.129/apiv2/ext/wrapper/CiscoRadiusIsu",
+            "url": "http://202.53.92.35/apiv2/ext/wrapper/CiscoRadiusIsu",
             "headerDtls": "",
             "cre_srvce_id": 1,
             "input": {
@@ -34,7 +34,7 @@ exports.hsiAddOnCalls = function (data, crSrvcs) {
             "method": 1,
             "aplcn_id": 1,
             //"url": "http://172.16.4.107/prov4serv/prov_if?oper=update&client=" + data.aaa_cd + "&avp=Filter-Id<>nonblock<>check&avp=accessId<>" + data.accessId + "<>reply&avp=Profile<>pV4<>reply&avp=cisco-avpair<>subscriber:sa=" + data.fup + "<>reply&avp=cisco-avpair<>subscriber:accounting-list=default<>reply",
-            "url": "http://172.16.0.129/apiv1/caf_operations/ext/wrapper/updateAaaProfile",
+            "url": "http://202.53.92.35/apiv1/caf_operations/ext/wrapper/updateAaaProfile",
             "headerDtls": "",
             "cre_srvce_id": 1,
             "input": {
@@ -50,7 +50,7 @@ exports.hsiAddOnCalls = function (data, crSrvcs) {
             "method": 1,
             "aplcn_id": 1,
             //"url": "http://172.16.4.107/prov4serv/prov_if?oper=view&client=" + data.aaa_cd ,
-            "url": "http://172.16.0.129/apiv2/ext/wrapper/getAaaProfile" ,
+            "url": "http://202.53.92.35/apiv2/ext/wrapper/getAaaProfile" ,
             "headerDtls": "",
             "cre_srvce_id": 1,
             "input": {

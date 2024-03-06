@@ -2805,7 +2805,7 @@ exports.dynamicUPItStlmntCtrl = (req, res) => {
                 vcryp.update(hash_str);
                 var vhash = vcryp.digest('hex');
                 var options = {
-                    url: `http://172.16.0.129/apiv2/ext/wrapper/PayUStatusCheck`,
+                    url: `http://202.53.92.35/apiv2/ext/wrapper/PayUStatusCheck`,
 					headers: {
 						"content-type": "application/json"
 					},
@@ -3008,7 +3008,7 @@ exports.dynamicUPItStlmntOpenCtrl = (req, res) => {
                 vcryp.update(hash_str);
                 var vhash = vcryp.digest('hex');
                 var options = {
-                    url: `http://172.16.0.129/apiv2/ext/wrapper/PayUStatusCheck`,
+                    url: `http://202.53.92.35/apiv2/ext/wrapper/PayUStatusCheck`,
 					headers: {
 						"content-type": "application/json"
 					},
@@ -3219,7 +3219,7 @@ exports.dynamicSbscrUPItStlmntOpenCtrl = (req, res) => {
                 vcryp.update(hash_str);
                 var vhash = vcryp.digest('hex');
                 var options = {
-                    url: `http://172.16.0.129/apiv2/ext/wrapper/PayUStatusCheck`,
+                    url: `http://202.53.92.35/apiv2/ext/wrapper/PayUStatusCheck`,
 					headers: {
 						"content-type": "application/json"
 					},

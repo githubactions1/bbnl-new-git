@@ -3195,7 +3195,7 @@ exports.vilidateCAF = function (req, res) {
     var fnm = "vilidateCAF";
     log.info(`In ${fnm}`, 0, cntxtDtls);
     let caf_id = req.params.caf_id;
-    request.get(`http://172.16.0.129:4302/dreamops/validate/all/${caf_id}`, function (err, req_res, body) {
+    request.get(`http://202.53.92.35:4302/dreamops/validate/all/${caf_id}`, function (err, req_res, body) {
         if (err) {
             df.formatErrorRes(req, res, err, cntxtDtls, fnm, { error_status: "120", err_message: "Failed to get CAF Batch validation details." });
         }

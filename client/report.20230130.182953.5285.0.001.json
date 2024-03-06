@@ -281,7 +281,7 @@
         "name": "em1",
         "internal": false,
         "mac": "14:18:77:43:6e:f8",
-        "address": "172.16.0.129",
+        "address": "202.53.92.35",
         "netmask": "255.255.255.0",
         "family": "IPv4"
       },
@@ -494,7 +494,7 @@
     "SHLVL": "2",
     "LOGNAME": "root",
     "WINDOW": "0",
-    "SSH_CONNECTION": "172.16.0.145 60088 172.16.0.129 22",
+    "SSH_CONNECTION": "172.16.0.145 60088 202.53.92.35 22",
     "LESSOPEN": "||/usr/bin/lesspipe.sh %s",
     "XDG_RUNTIME_DIR": "/run/user/0",
     "_": "/usr/local/bin/node"

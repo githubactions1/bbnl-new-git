@@ -102,7 +102,7 @@ exports.get_onuCtrl = (req, res) => {
         const dasan_sts = {
           //url: 'http://172.16.14.11:8090/nbi/managedelementmgr/' + olt_ip_addr + '/ctp/' + olt_crd_nu + '/' + results[0].olt_prt_nm + '/' + results[0].olt_onu_id + '',
           //url: 'http://172.16.14.11:8090/nbi/managedelementmgr/172.16.195.191/ctp/1/4/112',
-		  url: 'http://172.16.0.129/apiv2/ext/wrapper/onurefresh',
+		  url: 'http://202.53.92.35/apiv2/ext/wrapper/onurefresh',
           headers: {
             "Authorization": "Basic Og==",
             "password": "1234",

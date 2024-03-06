@@ -12,7 +12,7 @@ var MySQLConPool = {};
 
 //var USER = 'WEBAPPPROD';
 
-var USER = 'bbnl';
+var USER = 'bbnlmysql';
 var PWD = 'C@llforbbnldb#137';
 //var PWD = 'w4b@pp!0D';
 var DATABASE = 'BSS_ONLINE_U';

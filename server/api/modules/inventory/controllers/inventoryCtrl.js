@@ -88,7 +88,7 @@ exports.uploadSetupBox = (req, res) => {
                                 .then((results1) => {
                                     duplicate = results1
 									var data_view = {
-										url : "http://172.16.0.129/apiv2/ext/wrapper/inventoryUpladfromBbnlBss",
+										url : "http://202.53.92.35/apiv2/ext/wrapper/inventoryUpladfromBbnlBss",
 										method : "post",
 										json : true,
 										body : {

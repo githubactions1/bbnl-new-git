@@ -77,7 +77,7 @@ exports.get_newaadhaarDtlsCtrl = function (req, res) {
 	var options = {
         method: 'get',
         //json: true, // Use,If you are sending JSON data
-        url: `http://172.16.0.129/apiv2/ext/wrapper/BBNL_aadhaar/${req.params.u_id}`,
+        url: `http://202.53.92.35/apiv2/ext/wrapper/BBNL_aadhaar/${req.params.u_id}`,
     }
 	console.log("options in aadhaar",options)
 	request(options,function(err, resp, body){
