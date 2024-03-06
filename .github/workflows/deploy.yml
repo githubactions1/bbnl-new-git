@@ -18,33 +18,33 @@ jobs:
           node-version: '12.x'  # Specify the desired Node.js version
 
       - name: Build client app
-        working-directory: /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
+        working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
         run: |
           pwd
           npm ci
           npm run build
 
       - name: Deploy client app
-        working-directory: /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
+        working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
         run: |
-          rm -rf /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
-          mkdir /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
-          cp -rf /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/client/dist/* /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
+          rm -rf /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
+          mkdir /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
+          cp -rf /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/client/dist/* /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
 
       - name: Deploy config files
         run: |
-          rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
-          rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
-          cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
-          cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
+          rm -f /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
+          rm -f /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
+          cp /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
+          cp /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
 
       - name: Stop forever
         continue-on-error: true
         run: |
-          forever stop /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          forever stop /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           
       - name: start forever
         run: |
           pwd
-          forever start /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          forever start /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           forever list
