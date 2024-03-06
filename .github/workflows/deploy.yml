@@ -31,12 +31,12 @@ jobs:
           mkdir /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
           cp -rf /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/client/dist/* /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/apsfl
 
-      #- name: Deploy config files
-        #run: |
-          #rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
-          #rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
-          #cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
-          #cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
+      - name: Deploy config files
+        run: |
+          rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
+          rm -f /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
+          cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
+          cp /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/test/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
 
       - name: Stop forever
         continue-on-error: true
