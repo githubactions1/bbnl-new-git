@@ -54,6 +54,6 @@ jobs:
         run: |
           pwd
           cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
-          forever start nodeapp.js
+          forever start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           forever list
 
