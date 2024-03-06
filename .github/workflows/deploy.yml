@@ -20,8 +20,8 @@ jobs:
       - name: To Install the Node Modules
         working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/
         run: |
-          yum install bzip2 -y
-          npm install phantomjs-prebuilt
+          #yum install bzip2 -y
+          #npm install phantomjs-prebuilt
           npm i --legacy-peer-deps
 
       - name: Build client app
