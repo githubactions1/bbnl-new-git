@@ -50,10 +50,24 @@ jobs:
        # run: |
         #  forever stop /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           
-      - name: start forever
+      #- name: start forever
+        #run: |
+         # pwd
+          #cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
+          #forever start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          #forever list
+
+      - name: stop pm2
         run: |
           pwd
           cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
-          forever start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
-          forever list
+          pm2 stop  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          pm2 ls
+
+      - name: start pm2
+        run: |
+          pwd
+          cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
+          pm2 start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          pm2 ls
 
