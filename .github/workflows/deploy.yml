@@ -17,6 +17,13 @@ jobs:
         with:
           node-version: '12.x'  # Specify the desired Node.js version
 
+      - name: To Install the Node Modules
+        working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/
+        run: |
+          #yum install bzip2 -y
+          #npm install phantomjs-prebuilt
+          npm i
+
       - name: Build client app
         working-directory: /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/client
         run: |
@@ -38,14 +45,29 @@ jobs:
           cp /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.uat.json /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/bss.config.json
           cp /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.uat.js /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/config/db.config.js
 
-      - name: Stop forever
-        continue-on-error: true
-        run: |
-          forever stop /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+     # - name: Stop forever
+      #  continue-on-error: true
+       # run: |
+        #  forever stop /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           
-      - name: start forever
+      #- name: start forever
+        #run: |
+         # pwd
+          #cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
+          #forever start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          #forever list
+
+      - name: stop pm2
         run: |
           pwd
-          forever start /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
-          forever list
+          cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
+          pm2 stop  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          pm2 ls
+
+      - name: start pm2
+        run: |
+          pwd
+          cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
+          pm2 start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
+          pm2 ls
 
