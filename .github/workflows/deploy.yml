@@ -70,4 +70,3 @@ jobs:
           cd /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git
           pm2 start  /home/dpay/actions-runner/_work/bbnl-new-git/bbnl-new-git/nodeapp.js
           pm2 ls
-
